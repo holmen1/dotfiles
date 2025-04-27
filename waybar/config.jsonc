@@ -1,0 +1,103 @@
+// -*- mode: jsonc -*-
+{
+    // "layer": "top", // Waybar at top layer
+    // "position": "bottom", // Waybar position (top|bottom|left|right)
+    // "height": 18, // Waybar height (to be removed for auto height)
+    // "width": 1280, // Waybar width
+    "spacing": 4, // Gaps between modules (4px)
+    // Choose the order of the modules
+    "modules-left": [
+        "custom/appmenu",
+        "hyprland/window"
+    ],
+    "modules-center": [
+        "hyprland/workspaces"
+    ],
+    "modules-right": [
+        //"cpu",
+        //"memory",
+        //"backlight",
+        "network",
+	"battery",
+        "clock",
+        "tray"
+    ],
+
+    // Hyprland Window
+    "hyprland/window": {
+        "rewrite": {
+            "(.*) - Brave": "$1",
+            "(.*) - Firefox": "$1",
+            "(.*) - Visual Studio Code": "$1",
+            "(.*) - Brave Search": "$1"
+        },
+        "separate-outputs": true
+    },
+    // Rofi Application Launcher
+    "custom/appmenu": {
+        "format": "\u677E", // matsu
+        "tooltip-format": "Left: Right: Show all keybindings",
+        "on-click": "~/.config/waybar/keybindings.sh",
+        "return-type": "json",
+        "interval": 600
+    },
+    // Workspaces
+    "hyprland/workspaces" : {
+        "on-click": "activate",
+        "active-only": false,
+        "all-outputs": true,
+        "format": "{}",
+        "format-icons": {
+			"urgent": "",
+			"active": "",
+			"default": ""
+        },
+        "persistent-workspaces": {
+             "*": 0
+        }  
+    },
+    "tray": {
+        // "icon-size": 21,
+        "spacing": 2
+    },
+    "clock": {
+        "timezone": "Europe/Stockholm",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%Y-%m-%d}"
+    },
+    "cpu": {
+        "format": "{usage}% ",
+        "on-click": "kitty -e htop",
+        "tooltip": false
+    },
+    "memory": {
+        "format": "{}% ",
+        "on-click": "kitty -e htop"
+    },
+    "battery": {
+        "states": {
+            "full": 95,
+            "good": 60,
+            "warning": 20,
+            "critical": 5
+        },
+        "format": "{capacity}% {icon}",
+        "format-charging": "{capacity}% ",
+        "format-plugged": "{capacity}% ",
+        "format-alt": "{time} {icon}",
+        "format-good": "{capacity}% {icon}",
+	"format-full": "",// An empty format will hide the module
+        "format-icons": ["", "", "", "", ""]
+    },
+    "network": {
+        //"interface": "wlp2*", // (Optional) To force the use of this interface
+        //"format-wifi": "{signalStrength}% ",
+        "format-wifi": "",
+        "format-ethernet": "{ipaddr}/{cidr} ",
+        "tooltip-format": "{essid} {ifname} via {gwaddr} ",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected ⚠",
+        "tooltip-format-disconnected": "ip addr show \niwctl --passphrase pwd station interface connect networkname",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    }
+}
