@@ -22,48 +22,14 @@ After you generate an SSH key pair, you must add the public key to GitHub.com to
 
 ## Xmonad
 xmonad is a tiling window manager for X. Windows are arranged automatically to tile the screen without gaps or overlap, maximizing screen use, here configured with xmobar to provide a status bar  
-```
-$ sudo apt install xmonad libghc-xmonad-dev libghc-xmonad-contrib-dev xmobar
-```
-Additional packages for wallpaper, system-tray, d-menu
-```
-$ sudo apt install suckless-tools kitty trayer feh xscreensaver xcompmgr
-```
 
-Screen brightness
-```
-$ sudo apt install brightnessctl 
-```
-
-Link configuration
-```
-$ ./scripts/link_config.sh ~/repos/debian13
-```
-
-Disable display manager, startx  
-
-To enable display manager, add .config/xmonadxmonad-session-rc  
-Edit xmonad-session like so
-```
-$ diff /usr/bin/xmonad-session /usr/bin/xmonad-session.bak 
-3c3
-< if [ -r ".config/xmonad/xmonad-session-rc" ]
----
-> if [ -r ".xmonad/xmonad-session-rc" ]
-5c5
-<   . .config/xmonad/xmonad-session-rc
----
->   . .xmonad/xmonad-session-rc
-```
-
-
-[README](https://github.com/holmen1/archinstall/blob/xmonad/dotfiles/xmonad/README.md)
+[REAME](https://github.com/holmen1/dotfiles/blob/master/dotfiles/xmonad/README.md)
 
 ## kitty
-[README](https://github.com/holmen1/archinstall/blob/desktop/dotfiles/kitty/README.md)
+[README](https://github.com/holmen1/dotfiles/blob/master/dotfiles/kitty/README.md)
 
 ## neovim
-[README](https://github.com/holmen1/archinstall/blob/desktop/dotfiles/nvim/README.md)
+[README](https://github.com/holmen1/dotfiles/blob/master/dotfiles/nvim/README.md)
 
 
 
