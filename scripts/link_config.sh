@@ -13,10 +13,10 @@ links=(
     "$BASE_DIR/dotfiles/kitty:~/.config/kitty"
     "$BASE_DIR/dotfiles/xmobar:~/.config/xmobar"
     "$BASE_DIR/dotfiles/xmonad:~/.config/xmonad"
-#    "$BASE_DIR/dotfiles/rofi:~/.config/rofi"
+    #"$BASE_DIR/dotfiles/rofi:~/.config/rofi"
     #"$BASE_DIR/dotfiles/nvim:~/.config/nvim"
-    "$BASE_DIR/dotfles/.bashrc:~/.bashrc"
-#    "$BASE_DIR/dotfiles/.xinitrc:~/.xinitrc"
+    "$BASE_DIR/dotfiles/.bashrc:~/.bashrc"
+    "$BASE_DIR/dotfiles/.xinitrc:~/.xinitrc"
 )
 
 # Create the symbolic links

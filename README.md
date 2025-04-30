@@ -82,13 +82,6 @@ luastyles: failed to install
 * [ ] Install script
 
 
-
-### Deskstop
-sudo tasksel
-
-### Python
-sudo apt install python3.11-venv
-
 ### Vim
 sudo apt remove vim-tiny  
 sudo apt install vim  
@@ -110,17 +103,6 @@ set laststatus=2
 set showmode  
 set showcmd  
 
-### VScode
-sudo apt install ./Downloads/code_1.92.0-1722473020_amd64.deb
 
-### VScode (from Flatpack) run from terminal [not recomended]
-sudo ln -s /var/lib/flatpak/exports/bin/com.visualstudio.code /usr/local/bin/code  
 
-### dconf
-sudo dconf-editor /
-
-### Cleanup
-sudo apt autoremove  
-sudo apt clean  
-sudo flatpak uninstall --unused
 
