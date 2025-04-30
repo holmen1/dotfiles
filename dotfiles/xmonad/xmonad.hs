@@ -5,8 +5,8 @@ import XMonad.Hooks.StatusBar.PP
 import XMonad.Hooks.FadeWindows
 import XMonad.Actions.CycleWS
 import XMonad.Hooks.EwmhDesktops (ewmhFullscreen, ewmh)
-import System.IO.Unsafe (unsafePerformIO)
-import System.Environment (lookupEnv)
+import System.Environment (lookupEnv, getExecutablePath)
+import System.FilePath (takeDirectory, (</>))
 
 myModMask       = mod4Mask -- Rebind Mod to the Super key
 myTerminal      = "kitty"
@@ -41,19 +41,21 @@ myConfig additionalKeys' = def
     , ((myModMask, xK_f                   ), spawn myBrowser)
     , ((myModMask .|. shiftMask, xK_Return), spawn myTerminal)
     , ((myModMask, xK_c                   ), kill)
-    -- , ((0, xK_F6 ), spawn "brightnessctl set 10%-")  -- Decrease brightness
-    -- , ((0, xK_F7), spawn "brightnessctl set +10%")  -- Increase brightness
     , ((myModMask .|. shiftMask, xK_z), spawn "xscreensaver-command -lock")
     , ((myModMask, xK_Tab), nextWS)  -- Cycle to the next workspace
-    -- , ((myModMask .|. shiftMask, xK_s), unGrab *> spawn "scrot -s ~/Downloads/screenshot_%Y-%m-%d_%H-%M-%S.png")
+    -- TODO , ((myModMask .|. shiftMask, xK_s), unGrab *> spawn "scrot -s ~/Downloads/screenshot_%Y-%m-%d_%H-%M-%S.png")
     ] ++ additionalKeys'
 
 -- Define machine-specific keybindings based on HOSTNAME
 machineSpecificKeys :: IO [((KeyMask, KeySym), X ())]
 machineSpecificKeys = do
+    exePath <- getExecutablePath
+    let logFilePath = takeDirectory exePath </> "xmonad-debug.log"
     hostname <- lookupEnv "HOSTNAME"
-    print hostname -- Debug: Print the hostname
-    appendFile "/tmp/xmonad-debug.log" ("Hostname: " ++ show hostname ++ "\n") -- Log hostname
+    -- debug log ~/.cache/xmonad/xmonad-debug.log
+    appendFile logFilePath $ case hostname of
+        Nothing -> "Error: HOSTNAME not found\n"
+        Just h  -> "Hostname: " ++ h ++ "\n"
     return $ case hostname of
         Just "xps" -> [ ((0, xK_F6), spawn "brightnessctl set 10%-")
                       , ((0, xK_F7), spawn "brightnessctl set +10%")
@@ -61,7 +63,7 @@ machineSpecificKeys = do
         Just "hp"  -> [ ((0, xK_F9), spawn "brightnessctl set 10%-")
                       , ((0, xK_F10), spawn "brightnessctl set +10%")
                       ]
-        _ -> [] -- Default to no brightness keys if HOSTNAME is not set or unrecognized
+        _ -> []
 
 myWorkspaces = map show [1..5]
 myLayoutHook = tiled ||| Mirror tiled ||| Full
@@ -74,8 +76,8 @@ myFadeHook = composeAll [ opaque, isUnfocused --> transparency 0.8 ]
 
 myXmobarPP :: PP
 myXmobarPP = def
-    { ppSep   = xmobarColor myMagenta "" $ ppSep def -- Apply magenta to the default separators
+    { ppSep   = xmobarColor myMagenta "" $ ppSep def
      , ppTitleSanitize   = xmobarStrip
      , ppCurrent         = xmobarColor myCyan ""
-    , ppOrder = \[ws, l, wins] -> [l, ws, wins]
+     , ppOrder = \[ws, l, wins] -> [l, ws, wins]
     }
