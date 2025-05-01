@@ -39,3 +39,5 @@ export PS1="\[\e[32m\]\u@\h \[\e[33m\]\w\[\e[36m\] \$(parse_git_branch)\$(parse_
 
 # iw
 export PATH=$PATH:/usr/sbin
+
+[ -f "/home/holmen1/.ghcup/env" ] && . "/home/holmen1/.ghcup/env" # ghcup-env
