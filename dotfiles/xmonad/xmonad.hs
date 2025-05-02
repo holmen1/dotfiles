@@ -10,7 +10,7 @@ import System.FilePath (takeDirectory, (</>))
 
 myModMask       = mod4Mask -- Rebind Mod to the Super key
 myTerminal      = "kitty"
-myBrowser       = "brave-browser"
+myBrowser       = "brave"
 myAppLauncher   = "dmenu_run"
 myMagenta       = "#FF00FF"
 myCyan          = "#00FFFF"
@@ -63,6 +63,9 @@ machineSpecificKeys = do
         Just "hp"  -> [ ((0, xK_F9), spawn "brightnessctl set 10%-")
                       , ((0, xK_F10), spawn "brightnessctl set +10%")
                       ]
+        Just "x"  ->  [ ((0, xK_F5), spawn "brightnessctl set 10%-")
+                      , ((0, xK_F6), spawn "brightnessctl set +10%")
+                      ] -- ThinkPad 11e
         _ -> []
 
 myWorkspaces = map show [1..5]

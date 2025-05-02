@@ -5,7 +5,7 @@ install_packages() {
   local pkglist=$1
   while IFS= read -r package; do
     if ! pacman -Qi "$package" &> /dev/null; then
-      yay -S --noconfirm "$package"
+      pacman -S --noconfirm "$package"
     else
       echo "$package is already installed"
     fi

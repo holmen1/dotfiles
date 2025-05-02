@@ -1,7 +1,12 @@
 #!/bin/bash
 
-# Define the output directory
-OUTPUT_DIR=~/repos/archinstall/packages
+# Check if output directory is provided
+if [ -z "$1" ]; then
+  echo "Usage: $0 <output-directory>"
+  exit 1
+fi
+
+OUTPUT_DIR="$1"
 
 # Export the list of explicitly installed packages
 pacman -Qqen > "$OUTPUT_DIR/pkglist.txt"
