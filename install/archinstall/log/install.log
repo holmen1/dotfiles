@@ -1,0 +1,1811 @@
+[2025-05-02 07:11:05] - DEBUG - Hardware model detected: LENOVO 20G9S00N00; UEFI mode: True
+[2025-05-02 07:11:05] - DEBUG - Processor model detected: Intel(R) Celeron(R) CPU  N3150  @ 1.60GHz
+[2025-05-02 07:11:05] - DEBUG - Memory statistics: 2485880 available out of 3821516 total installed
+[2025-05-02 07:11:05] - DEBUG - Could not detect virtual system: ['/usr/bin/systemd-detect-virt'] exited with abnormal exit code [1]: none
+
+[2025-05-02 07:11:05] - DEBUG - System is not running in a VM: ['/usr/bin/systemd-detect-virt'] exited with abnormal exit code [1]: none
+
+[2025-05-02 07:11:05] - DEBUG - Virtualization detected: None; is VM: False
+[2025-05-02 07:11:05] - DEBUG - Graphics devices detected: dict_keys(['Intel Corporation Atom/Celeron/Pentium Processor x5-E8000/J3xxx/N3xxx Integrated Graphics Controller (rev 21)'])
+[2025-05-02 07:11:06] - DEBUG - Disk states before installing:
+{
+    "blockdevices": [
+        {
+            "name": "loop0",
+            "path": "/dev/loop0",
+            "pkname": null,
+            "log_sec": 512,
+            "size": "846 MiB",
+            "pttype": null,
+            "ptuuid": null,
+            "rota": false,
+            "tran": null,
+            "partn": null,
+            "partuuid": null,
+            "parttype": null,
+            "uuid": null,
+            "fstype": "squashfs",
+            "fsver": "4.0",
+            "fsavail": 0,
+            "fsuse_percentage": "100%",
+            "type": "loop",
+            "mountpoint": "/run/archiso/airootfs",
+            "mountpoints": [
+                "/run/archiso/airootfs"
+            ],
+            "fsroots": [
+                "/"
+            ],
+            "children": []
+        },
+        {
+            "name": "sda",
+            "path": "/dev/sda",
+            "pkname": null,
+            "log_sec": 512,
+            "size": "122104 MiB",
+            "pttype": "gpt",
+            "ptuuid": "41fe259d-89f6-416e-96c2-7eaab278ffa3",
+            "rota": false,
+            "tran": "sata",
+            "partn": null,
+            "partuuid": null,
+            "parttype": null,
+            "uuid": null,
+            "fstype": null,
+            "fsver": null,
+            "fsavail": null,
+            "fsuse_percentage": null,
+            "type": "disk",
+            "mountpoint": null,
+            "mountpoints": [],
+            "fsroots": [],
+            "children": [
+                {
+                    "name": "sda1",
+                    "path": "/dev/sda1",
+                    "pkname": "sda",
+                    "log_sec": 512,
+                    "size": "1024 MiB",
+                    "pttype": "gpt",
+                    "ptuuid": "41fe259d-89f6-416e-96c2-7eaab278ffa3",
+                    "rota": false,
+                    "tran": null,
+                    "partn": 1,
+                    "partuuid": "677f2f5a-8b1c-4d49-a08d-8ac704f5172b",
+                    "parttype": "c12a7328-f81f-11d2-ba4b-00a0c93ec93b",
+                    "uuid": "D5A3-E179",
+                    "fstype": "vfat",
+                    "fsver": "FAT32",
+                    "fsavail": null,
+                    "fsuse_percentage": null,
+                    "type": "part",
+                    "mountpoint": null,
+                    "mountpoints": [],
+                    "fsroots": [],
+                    "children": []
+                },
+                {
+                    "name": "sda2",
+                    "path": "/dev/sda2",
+                    "pkname": "sda",
+                    "log_sec": 512,
+                    "size": "121079 MiB",
+                    "pttype": "gpt",
+                    "ptuuid": "41fe259d-89f6-416e-96c2-7eaab278ffa3",
+                    "rota": false,
+                    "tran": null,
+                    "partn": 2,
+                    "partuuid": "adca2bb4-a7c5-4e3b-b419-36e3d5b75cc2",
+                    "parttype": "4f68bce3-e8cd-4db1-96e7-fbcaf984b709",
+                    "uuid": "c39a4ee8-1e47-495b-a503-11e73356e702",
+                    "fstype": "btrfs",
+                    "fsver": null,
+                    "fsavail": null,
+                    "fsuse_percentage": null,
+                    "type": "part",
+                    "mountpoint": null,
+                    "mountpoints": [],
+                    "fsroots": [],
+                    "children": []
+                }
+            ]
+        },
+        {
+            "name": "sdb",
+            "path": "/dev/sdb",
+            "pkname": null,
+            "log_sec": 512,
+            "size": "59040 MiB",
+            "pttype": "dos",
+            "ptuuid": "698d5a3c",
+            "rota": true,
+            "tran": "usb",
+            "partn": null,
+            "partuuid": null,
+            "parttype": null,
+            "uuid": "2025-05-01-10-09-37-00",
+            "fstype": "iso9660",
+            "fsver": "Joliet Extension",
+            "fsavail": null,
+            "fsuse_percentage": null,
+            "type": "disk",
+            "mountpoint": null,
+            "mountpoints": [],
+            "fsroots": [],
+            "children": [
+                {
+                    "name": "sdb1",
+                    "path": "/dev/sdb1",
+                    "pkname": "sdb",
+                    "log_sec": 512,
+                    "size": "1012 MiB",
+                    "pttype": "dos",
+                    "ptuuid": "698d5a3c",
+                    "rota": true,
+                    "tran": null,
+                    "partn": 1,
+                    "partuuid": "698d5a3c-01",
+                    "parttype": "0x0",
+                    "uuid": "2025-05-01-10-09-37-00",
+                    "fstype": "iso9660",
+                    "fsver": "Joliet Extension",
+                    "fsavail": null,
+                    "fsuse_percentage": null,
+                    "type": "part",
+                    "mountpoint": null,
+                    "mountpoints": [],
+                    "fsroots": [],
+                    "children": []
+                },
+                {
+                    "name": "sdb2",
+                    "path": "/dev/sdb2",
+                    "pkname": "sdb",
+                    "log_sec": 512,
+                    "size": "173 MiB",
+                    "pttype": "dos",
+                    "ptuuid": "698d5a3c",
+                    "rota": true,
+                    "tran": null,
+                    "partn": 2,
+                    "partuuid": "698d5a3c-02",
+                    "parttype": "0xef",
+                    "uuid": "6813-4861",
+                    "fstype": "vfat",
+                    "fsver": "FAT32",
+                    "fsavail": null,
+                    "fsuse_percentage": null,
+                    "type": "part",
+                    "mountpoint": null,
+                    "mountpoints": [],
+                    "fsroots": [],
+                    "children": []
+                }
+            ]
+        }
+    ]
+}
+[2025-05-02 07:11:06] - INFO - Fetching Arch Linux package database...
+[2025-05-02 07:11:08] - INFO - Checking version...
+[2025-05-02 07:11:09] - DEBUG - Failed determine pacman version: ['/usr/bin/pacman', '-Qu', 'archinstall'] exited with abnormal exit code [1]: [?25l[?25h
+[2025-05-02 07:11:09] - DEBUG - Mounting /dev/sda2: mount /dev/sda2 /mnt/arch_btrfs
+[2025-05-02 07:11:10] - DEBUG - Partition /dev/sda2 is currently mounted at: ['/mnt/arch_btrfs']
+[2025-05-02 07:11:10] - DEBUG - Unmounting mountpoint: /mnt/arch_btrfs
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror mirror.aarnet.edu.au with current score of 1.8866731996782535
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror mirror.aarnet.edu.au with current score of 6.055703969506499
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror mir.archlinux.fr with current score of 5.961375351562273
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror ftp.tu-chemnitz.de with current score of 16.50747761742499
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror ftp.hosteurope.de with current score of 4.995889687439277
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror ftp.hosteurope.de with current score of 7.410183677897296
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror mirrors.rit.edu with current score of 3.9202858762103
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror mirrors.rit.edu with current score of 1.7278570263221846
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror mirrors.rit.edu with current score of 3.312366858460778
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror ftp.ek-cer.hu with current score of 3.3015188065315586
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror ftp.nluug.nl with current score of 6.354259851424104
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror ftp.nluug.nl with current score of 4.662689516311662
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror ftp.gwdg.de with current score of 4.582504338770379
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror ftp.gwdg.de with current score of 4.8930097040831075
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror mirror.puzzle.ch with current score of 3.1857281947105105
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror mirror.puzzle.ch with current score of 3.6363577793520747
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror mirror.puzzle.ch with current score of 4.751070203054574
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror ftp.linux.org.tr with current score of 8.008551564855551
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror ftp.uni-kl.de with current score of 14.865540569069527
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror ftp.uni-kl.de with current score of 16.66951283392931
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror ftp.uni-bayreuth.de with current score of 15.258026014856032
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror mirror.csclub.uwaterloo.ca with current score of 2.139225644834794
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror mirror.csclub.uwaterloo.ca with current score of 4.217233515350078
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror mirror.csclub.uwaterloo.ca with current score of 4.494704717240165
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror mirror.umd.edu with current score of 6.727984799896933
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror mirror.umd.edu with current score of 5.640613610715354
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror mirror.umd.edu with current score of 7.617718198055935
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror ftp.iinet.net.au with current score of 4.87430421040233
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror ftp.iinet.net.au with current score of 8.113395126154781
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror ftp-stud.hs-esslingen.de with current score of 8.037846928230698
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror ftp-stud.hs-esslingen.de with current score of 8.342070831458575
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror mirror.archlinux.no with current score of 2.8525924644214453
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror mirror.archlinux.no with current score of 1.8098539794187387
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror mirror.internode.on.net with current score of 5.994416044033475
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror mirror.internode.on.net with current score of 8.689311712945768
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror mirror.isoc.org.il with current score of 5.693516850835238
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror mirror.isoc.org.il with current score of 4.092715703904122
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror ftp.osuosl.org with current score of 8.173878799444108
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror ftp.osuosl.org with current score of 7.836095809189568
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror ftp.osuosl.org with current score of 10.596539434222297
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror archlinux.c3sl.ufpr.br with current score of 3.966442935043478
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror archlinux.c3sl.ufpr.br with current score of 3.1088078773214365
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror archlinux.c3sl.ufpr.br with current score of 5.358243573412996
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror mirror.yandex.ru with current score of 5.591009376162364
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror mirror.yandex.ru with current score of 4.974639123809213
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror ftp.spline.inf.fu-berlin.de with current score of 6.75146891864017
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror ftp.spline.inf.fu-berlin.de with current score of 4.750693745142291
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror rsync.spline.inf.fu-berlin.de with current score of 14.16713407504635
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror mirror.selfnet.de with current score of 4.41147051099764
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror mirror.selfnet.de with current score of 3.1177976697682013
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror mirror.selfnet.de with current score of 5.686362318398771
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror mirrors.lug.mtu.edu with current score of 0.6870775900285793
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror mirrors.lug.mtu.edu with current score of 0.9426914441775185
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror mirrors.lug.mtu.edu with current score of 4.058575088260624
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror ftp.rediris.es with current score of 4.3612260921414485
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror archlinux.nautile.nc with current score of 5.144904982363117
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror archlinux.nautile.nc with current score of 5.911979716910628
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror rsync.archlinux.nautile.nc with current score of 13.229238736528787
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror ftp.otenet.gr with current score of 5.3753503986299815
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror mirrors.xmission.com with current score of 3.720008322190049
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror ftp.cc.uoc.gr with current score of 6.904267155286951
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror ftp.tku.edu.tw with current score of 4.111482334801179
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror ftp.tku.edu.tw with current score of 6.395554156851724
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror mirrors.kernel.org with current score of 3.7830554493150186
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror mirrors.kernel.org with current score of 2.6483571854599517
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror mirrors.kernel.org with current score of 4.302626337698125
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror mirrors.163.com with current score of 10.322596017320665
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror archlinux.mirror.kangaroot.net
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror ftp.rnl.tecnico.ulisboa.pt with current score of 3.5715545859675966
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror ftp.rnl.tecnico.ulisboa.pt with current score of 3.7911436851867935
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror ftp.rnl.tecnico.ulisboa.pt with current score of 5.1644456333647195
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror mirrors.dotsrc.org with current score of 1.7164741860210126
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror mirrors.dotsrc.org with current score of 1.2240705992130811
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror mirrors.dotsrc.org with current score of 3.9289535577922416
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror mirror.its.dal.ca with current score of 9.774593094617863
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror mirror.its.dal.ca with current score of 11.153896836183536
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror archlinux.mirrors.ovh.net with current score of 10.625523208052886
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror archlinux.mirrors.ovh.net with current score of 9.05944314240227
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror ftp.jaist.ac.jp with current score of 4.774863044733254
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror ftp.jaist.ac.jp with current score of 7.858747072097526
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror ftp.jaist.ac.jp with current score of 5.982990437768836
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror ftp.halifax.rwth-aachen.de with current score of 2.339746183526594
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror ftp.halifax.rwth-aachen.de with current score of 3.0480121456853713
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror ftp.halifax.rwth-aachen.de with current score of 4.246697823602848
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror artfiles.org with current score of 16.97434617452085
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror mirror.datacenter.by with current score of 4.788983396684179
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror mirror.datacenter.by with current score of 4.496615354400302
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror archlinux.uib.no with current score of 8.196307744161448
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror mirrors.cat.pdx.edu with current score of 195.68610916850824
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror mirrors.cat.pdx.edu with current score of 196.30100931699457
+[2025-05-02 07:11:32] - DEBUG - Loaded mirror mirror.vpsfree.cz with current score of 4.325286830786689
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror archlinux.cs.nycu.edu.tw with current score of 4.675505403428243
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror archlinux.cs.nycu.edu.tw with current score of 3.605511018511817
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror archlinux.cs.nycu.edu.tw with current score of 6.205540362404021
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror ftp.byfly.by with current score of 5.045946891241831
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror ftp.byfly.by with current score of 4.357742962525301
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror archlinux.mirror.root.lu
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.rutgers.edu with current score of 2.321661932905244
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.rutgers.edu
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror ftp.ntua.gr with current score of 4.408599156992049
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror ftp.ntua.gr
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.nix.org.ua with current score of 7.8352717640760075
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.nix.org.ua with current score of 8.76265376736258
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.nix.org.ua with current score of 10.840043135095046
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.ustc.edu.cn with current score of 2.509851910503087
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.ustc.edu.cn with current score of 3.25438969123382
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror rsync.mirrors.ustc.edu.cn with current score of 4.624030477833489
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror ftp.lysator.liu.se with current score of 3.269796857935606
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror ftp.lysator.liu.se with current score of 4.089936213690962
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror ftp.lysator.liu.se with current score of 4.418083968029778
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.ams1.nl.leaseweb.net with current score of 2.5457622364278913
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.fra10.de.leaseweb.net with current score of 2.5919347537738506
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.sfo12.us.leaseweb.net with current score of 0.9305111809607587
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.wdc1.us.leaseweb.net with current score of 3.015966322794422
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.ams1.nl.leaseweb.net with current score of 2.19477801593201
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.fra10.de.leaseweb.net with current score of 1.7731074179936774
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.sfo12.us.leaseweb.net with current score of 1.4222131360994206
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.wdc1.us.leaseweb.net with current score of 3.222150858602597
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.ams1.nl.leaseweb.net
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.fra10.de.leaseweb.net with current score of 3.941170017303934
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.sfo12.us.leaseweb.net with current score of 4.723234788981219
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.n-ix.net with current score of 2.3518256901658754
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.n-ix.net with current score of 2.190763858001116
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror ftp.kaist.ac.kr with current score of 3.416652825464248
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror ftp.kaist.ac.kr with current score of 7.9598000795209405
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.dkm.cz with current score of 2.758556306784178
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.dkm.cz with current score of 3.27183929377836
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.dkm.cz with current score of 4.707917932855649
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.gigenet.com with current score of 4.297886598287537
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror arch.softver.org.mk with current score of 6.896664713545414
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror ftp.tsukuba.wide.ad.jp with current score of 6.070085594354326
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror ftp.tsukuba.wide.ad.jp with current score of 8.880495479632431
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.lnx.sk with current score of 27.808865000571483
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.lnx.sk with current score of 28.055225816632316
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.ps.kz with current score of 3.7285320578961527
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.ps.kz with current score of 3.036978846183909
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.ps.kz with current score of 7.464359456523648
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.bytemark.co.uk with current score of 2243.2609985123418
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.bytemark.co.uk with current score of 2243.9176303487134
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.bytemark.co.uk with current score of 2245.0244219711126
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.liquidweb.com with current score of 11.100341619552234
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.liquidweb.com with current score of 12.863201688485962
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.pmf.kg.ac.rs with current score of 11.526404103226788
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.rol.ru
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.rol.ru
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.i3d.net with current score of 32.016815903534436
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.i3d.net with current score of 28.66173803248723
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.archlinux.ikoula.com with current score of 7.065927734495274
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror ftp.swin.edu.au with current score of 3.557974153707395
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror ftp.swin.edu.au with current score of 6.633695310066914
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror archlinux.mirror.rafal.ca with current score of 7.239178702158589
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror archlinux.mirror.rafal.ca with current score of 5.927517322047029
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.tuna.tsinghua.edu.cn with current score of 3.5031362386469174
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.tuna.tsinghua.edu.cn with current score of 3.8847716384149193
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.tuna.tsinghua.edu.cn with current score of 5.294609602950632
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.neusoft.edu.cn with current score of 2.9430293800054925
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.neusoft.edu.cn with current score of 5.6010397941899654
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.neusoft.edu.cn with current score of 6.177391515947038
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror www.mirrorservice.org with current score of 5.416697132700808
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror www.mirrorservice.org with current score of 3.7329556717032912
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror rsync.mirrorservice.org with current score of 6.9223804036938965
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.metrocast.net with current score of 7.668745996523319
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror ftp.snt.utwente.nl with current score of 2.3370583712799786
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror ftp.snt.utwente.nl with current score of 5.600444638962714
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.netcologne.de with current score of 2.4133839971722457
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.netcologne.de with current score of 3.2771047402495355
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.netcologne.de with current score of 3.9987153394676094
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.united-gameserver.de
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.united-gameserver.de
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror ftp.vectranet.pl
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror ftp.vectranet.pl
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror linux.rz.rub.de with current score of 7.8287069699899146
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror archlinux.mirrors.linux.ro with current score of 4.328773896975075
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror ftp.linux.ro with current score of 4.875434394716072
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.system.is
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.system.is
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.system.is
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror archlinux.cu.be with current score of 5.1050534566189505
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror dfw.mirror.rackspace.com with current score of 6.395449958168153
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror hkg.mirror.rackspace.com with current score of 6.547887865187016
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror iad.mirror.rackspace.com with current score of 6.644961975163609
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror lon.mirror.rackspace.com with current score of 5.919917310656004
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.rackspace.com with current score of 8.64813706452389
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror ord.mirror.rackspace.com with current score of 2.929409239050004
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror syd.mirror.rackspace.com with current score of 6.793664768158789
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror dfw.mirror.rackspace.com with current score of 6.014151876496131
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror hkg.mirror.rackspace.com with current score of 6.648267671129026
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror iad.mirror.rackspace.com with current score of 6.5492714177524265
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror lon.mirror.rackspace.com with current score of 5.836843602705028
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.rackspace.com with current score of 5.999808614642372
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror ord.mirror.rackspace.com with current score of 2.7849472193922655
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror syd.mirror.rackspace.com with current score of 6.784404160184308
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror dfw.mirror.rackspace.com with current score of 7.672123667617834
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror hkg.mirror.rackspace.com with current score of 9.461413224451746
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror iad.mirror.rackspace.com with current score of 8.339995464233096
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror lon.mirror.rackspace.com with current score of 7.30282224031793
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.rackspace.com with current score of 8.55911125319563
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror ord.mirror.rackspace.com with current score of 4.362205327976733
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror syd.mirror.rackspace.com with current score of 10.070709435411684
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror piotrkosoft.net
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror rsync.piotrkosoft.net
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.hust.edu.cn with current score of 6.365965045596005
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.hust.edu.cn with current score of 6.561430719286205
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.vtti.vt.edu with current score of 6.476310489946064
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror arch.mirror.constant.com with current score of 1.2869063690659623
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror arch.mirror.constant.com with current score of 2.6612356269531734
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror arch.mirror.constant.com with current score of 3.594433192964786
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.manchester.m247.com with current score of 20619.434554763873
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.manchester.m247.com
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror arch.serverspace.co.uk
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror arch.serverspace.co.uk
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror download.nus.edu.sg with current score of 15.503225648345781
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror arch.nimukaito.net with current score of 23362.06463063163
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror arch.nimukaito.net with current score of 23536.767058648955
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror arch.nimukaito.net with current score of 51012.40190615741
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.acm.wpi.edu with current score of 6.194164191062151
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.neuf.no with current score of 1.4021518232872414
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.neuf.no with current score of 1.140713679902232
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.neuf.no with current score of 3.0518302574939464
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror ftp.fau.de with current score of 2.085590556638464
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror ftp.fau.de with current score of 2.6817641954882205
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror ftp.fau.de with current score of 3.653163382836372
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.lagoon.nc with current score of 16.410845612738672
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.lagoon.nc with current score of 18.124384124996148
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.advancedhosters.com
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.advancedhosters.com with current score of 5.742459895509744
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror gluttony.sin.cvut.cz with current score of 1.5377709885638544
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror gluttony.sin.cvut.cz with current score of 4.342819261478556
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror gluttony.sin.cvut.cz with current score of 4.372756352483497
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror archlinux.iskon.hr with current score of 0.67279362268264
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.cedia.org.ec with current score of 7.28168014353332
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.cedia.org.ec with current score of 6.710567043493448
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.nic.cz with current score of 2.494010060273735
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.nic.cz with current score of 2.72155722641579
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.nic.cz with current score of 4.937290218556452
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.group.one with current score of 3.2099100128964904
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.group.one with current score of 4.334448239701153
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.group.one with current score of 4.185873246002664
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.23m.com with current score of 2.9705834317323294
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.23m.com with current score of 2.8126761125838695
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.23m.com with current score of 3.0465721825273753
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror tux.rainside.sk with current score of 3.777620760616866
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror tux.rainside.sk with current score of 5.323899358084649
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.t-home.mk with current score of 4.542916351920533
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.t-home.mk with current score of 4.349640477072614
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.t-home.mk with current score of 6.149226847443755
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror ftp.yzu.edu.tw
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror ftp.yzu.edu.tw
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror ftp.yzu.edu.tw
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.metalgamer.eu with current score of 4.1846654741625695
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.metalgamer.eu with current score of 2.287494691764735
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.niyawe.de with current score of 2.43874017444194
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.niyawe.de with current score of 2.8323079355655016
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror rsync.mirrors.niyawe.de with current score of 3.5180021012419935
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.atviras.lt with current score of 2.8199689385760633
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.atviras.lt with current score of 0.7290798502511819
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.atviras.lt with current score of 2.913815583180747
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror arch.yourlabs.org with current score of 2.9580463803372945
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror arch.yourlabs.org with current score of 1.2094497577936973
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror arch.midov.pl with current score of 2.1411679155750893
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror arch.midov.pl with current score of 0.8785013525307426
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.lastmikoi.net with current score of 5.06495360302151
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.lastmikoi.net with current score of 5.430661228361488
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror ftp.uni-hannover.de with current score of 3.547636288746392
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.zju.edu.cn with current score of 6.094430077650723
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.poliwangi.ac.id with current score of 18802.29916032578
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror archlinux.koyanet.lv with current score of 3.3076037069359128
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror archlinux.koyanet.lv with current score of 2.900882647436331
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror archlinux.koyanet.lv with current score of 6.166428066710109
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror ftp.myrveln.se with current score of 0.881205580814579
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror ftp.myrveln.se with current score of 3.7883309642960556
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror rsync.myrveln.se with current score of 2.9975875252417024
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror ftp.u-strasbg.fr with current score of 9.612516382135617
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.telepoint.bg with current score of 4.125552612178997
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.telepoint.bg with current score of 2.827345600622328
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.telepoint.bg with current score of 3.695620268886752
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror archlinux.mailtunnel.eu with current score of 3.8862545618794444
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror archlinux.mailtunnel.eu with current score of 3.2560845910319465
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror archlinux.mailtunnel.eu with current score of 2.2995340000499365
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.cqu.edu.cn with current score of 3.101361348815243
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.cqu.edu.cn with current score of 3.812432076935883
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.easyname.at with current score of 15.5320140433603
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.easyname.at with current score of 16.997253504142147
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror archlinux.mirror.digitalpacific.com.au with current score of 4.4570254972861045
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror archlinux.mirror.digitalpacific.com.au with current score of 3.873678953544076
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.digitalpacific.com.au with current score of 6.968962971707362
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.myaegean.gr
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror linorg.usp.br with current score of 746.4365984635501
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror linorg.usp.br with current score of 748.9404759176799
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.ocf.berkeley.edu with current score of 2.153107543318875
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.ocf.berkeley.edu with current score of 2.6377775104987498
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.ocf.berkeley.edu with current score of 5.176854501603731
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.accum.se with current score of 1.8422642519872219
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.accum.se with current score of 2.94284680563294
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.accum.se with current score of 4.34912820735229
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror archlinux.pop-es.rnp.br
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror archlinux.pop-es.rnp.br
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror www.gutscheindrache.com
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.uni-plovdiv.net with current score of 1.6669898106556436
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.uni-plovdiv.net with current score of 1.791328015195512
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.uni-plovdiv.net with current score of 3.569535445809552
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.digitalnova.at with current score of 7.210598164890654
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.pseudoform.org with current score of 2.6850832879092503
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.pseudoform.org with current score of 3.5408615068623943
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror arch.mirrors.pair.com
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.lty.me with current score of 7276.135394288362
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.lty.me with current score of 7277.559499366875
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.lty.me with current score of 7282.835494364618
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror arch.jensgutermuth.de with current score of 2.2369545409899168
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror arch.jensgutermuth.de with current score of 2.413502898947316
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror pkg.adfinis.com with current score of 3.7161097300423704
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror pkg.adfinis.com with current score of 5.224936204399649
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror pkg.adfinis.com with current score of 5.5946592641093105
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror ftp.sh.cvut.cz with current score of 1.843504761492167
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror ftp.sh.cvut.cz with current score of 3.4713323899440756
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror ftp.sh.cvut.cz with current score of 3.5101919217474373
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror arch-mirror.wtako.net with current score of 1.6334535553617362
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror muug.ca with current score of 1.3104486764011165
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror muug.ca with current score of 1.667876233217932
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.m247.ro with current score of 297.5045834354964
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.m247.ro with current score of 299.382250510147
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.wormhole.eu with current score of 5.806811136421035
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.kaminski.io
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.kaminski.io
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.is.co.za with current score of 5.688907006783275
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.is.co.za with current score of 8.304766571330262
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror arch.mirror.far.fi with current score of 2.24817456419287
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror arch.mirror.far.fi with current score of 4.03498489563225
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.lzu.edu.cn with current score of 5.349665874426458
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.ubrco.de with current score of 2.906381674148525
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.ubrco.de with current score of 1.8069100921034889
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.ubrco.de with current score of 4.115721573338953
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror archlinux.ip-connect.vn.ua with current score of 3.6651704376333467
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror archlinux.ip-connect.vn.ua with current score of 6.049675862447428
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror archlinux.ip-connect.vn.ua with current score of 5.79244513632414
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror ftp.fi.muni.cz with current score of 5.438603850888255
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror ftp.linux.cz with current score of 5.287029315520746
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror ftp.fi.muni.cz with current score of 6.0289754024263225
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror ftp.linux.cz with current score of 6.664667664260154
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror archlinux.mirror.iphh.net with current score of 3.7983423991863097
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror archlinux.mirror.iphh.net with current score of 4.705739767938957
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.xjtu.edu.cn with current score of 8.049936895891319
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror arlm.tyzoid.com with current score of 0.4817130707881776
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror arlm.tyzoid.com with current score of 1.8131700078778594
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror arlm.tyzoid.com with current score of 3.65759325387794
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror archlinux.thaller.ws with current score of 0.650749547402762
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror archlinux.thaller.ws with current score of 0.6881941746436971
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror archlinux.thaller.ws with current score of 2.593176747165207
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.math.princeton.edu with current score of 1.401501126982929
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.math.princeton.edu with current score of 3.3072428820529813
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror at.mirrors.cicku.me with current score of 0.8802161991376258
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror au.mirrors.cicku.me with current score of 3.3922366983086127
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror br.mirrors.cicku.me with current score of 1.233272796404301
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror ca.mirrors.cicku.me with current score of 1.177660524469476
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror ch.mirrors.cicku.me with current score of 1.5632930852286968
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror de.mirrors.cicku.me with current score of 1.0631244922880312
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror es.mirrors.cicku.me with current score of 1.7773225107732518
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror fr.mirrors.cicku.me with current score of 1.066052692023036
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror gb.mirrors.cicku.me with current score of 1.062456979390381
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror in.mirrors.cicku.me with current score of 1.4212486257472148
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror it.mirrors.cicku.me with current score of 0.8657176109173071
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror jp.mirrors.cicku.me with current score of 1.3813296779520892
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror kr.mirrors.cicku.me with current score of 2.243764328122198
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror nl.mirrors.cicku.me with current score of 1.1658880905958005
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror ru.mirrors.cicku.me with current score of 1.5593621283382781
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror sa.mirrors.cicku.me with current score of 1.748615393329983
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror sg.mirrors.cicku.me with current score of 1.5701763778436857
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror tw.mirrors.cicku.me with current score of 1.4013810546739818
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror us.mirrors.cicku.me with current score of 1.1727366755831963
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror za.mirrors.cicku.me with current score of 1.8534422789038871
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror at.mirrors.cicku.me with current score of 1.66485909940645
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror au.mirrors.cicku.me with current score of 3.6373701937472642
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror br.mirrors.cicku.me with current score of 1.6820758193465901
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror ca.mirrors.cicku.me with current score of 1.9564153239507958
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror ch.mirrors.cicku.me with current score of 1.5514279409354705
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror de.mirrors.cicku.me with current score of 1.542045125757159
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror es.mirrors.cicku.me with current score of 1.8368840652499274
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror fr.mirrors.cicku.me with current score of 1.265899554386506
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror gb.mirrors.cicku.me with current score of 1.6258843856207517
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror in.mirrors.cicku.me with current score of 1.582580944875801
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror it.mirrors.cicku.me with current score of 1.3758662782113056
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror jp.mirrors.cicku.me with current score of 2.2140278823450337
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror kr.mirrors.cicku.me with current score of 1.7295571515628312
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror nl.mirrors.cicku.me with current score of 1.2422462717737301
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror ru.mirrors.cicku.me with current score of 1.8304535510387252
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror sa.mirrors.cicku.me with current score of 2.001225216145173
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror sg.mirrors.cicku.me with current score of 2.103394474049228
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror tw.mirrors.cicku.me with current score of 1.7660328432516113
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror us.mirrors.cicku.me with current score of 1.2183142573990897
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror za.mirrors.cicku.me with current score of 2.7050718047648603
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror archlinux.mirror.ba
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror archlinux.mirror.ba
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.bethselamin.de with current score of 4.050529471771009
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.smith.geek.nz
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.smith.geek.nz
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.smith.geek.nz
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror archlinux.mirror.garr.it with current score of 7.123582284696962
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror archlinux.mirror.wearetriple.com with current score of 3.2181479215484616
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror archlinux.mirror.wearetriple.com with current score of 2.8826287412848264
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.wearetriple.com
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.kku.ac.th with current score of 3.2323512222323325
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.kku.ac.th with current score of 3.518510265956376
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.kku.ac.th with current score of 6.201600642871596
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror archmirror.hbit.sztaki.hu with current score of 3.1367432686397123
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.osbeck.com with current score of 1.9503048325560928
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror rsync.osbeck.com with current score of 2.4681119171781276
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.standaloneinstaller.com with current score of 151.53630875491928
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.standaloneinstaller.com
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.pidginhost.com with current score of 1.8572955786244352
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.pidginhost.com with current score of 2.9652639478730025
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.pidginhost.com with current score of 4.2245285740133305
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.host.ag with current score of 5.712526159782827
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.cs.vt.edu with current score of 8.91565159744983
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.cs.vt.edu with current score of 11.756836466633882
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror glua.ua.pt with current score of 3.422209032846493
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror glua.ua.pt with current score of 3.606678709145336
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror glua.ua.pt
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror repo.iut.ac.ir with current score of 14.79923956987283
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror ftp.lanet.kr with current score of 11.88767591856757
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror ftp.lanet.kr with current score of 11.718730602990947
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.sonic.net with current score of 3.368631730977753
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.sonic.net with current score of 3.554877722134111
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.sonic.net with current score of 5.27507944109428
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.celianvdb.fr
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.celianvdb.fr
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.celianvdb.fr
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror arch.mirror.square-r00t.net
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror arch.mirror.square-r00t.net
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror arch.mirror.square-r00t.net
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.xtom.com.hk with current score of 2.7066429983592246
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.xtom.com.hk with current score of 2.3615186590531057
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.xtom.com.hk with current score of 5.013537477045601
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.truenetwork.ru with current score of 5.696057682643061
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.truenetwork.ru with current score of 8.232523392211831
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.truenetwork.ru with current score of 9.1847778216561
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.nxthost.com with current score of 2.4396549728633836
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.nxthost.com with current score of 2.455483139633267
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.nxthost.com with current score of 4.233548819648346
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror-hk.koddos.net with current score of 4.488073010861934
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.koddos.net with current score of 3.9430741617990583
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror-hk.koddos.net with current score of 4.781159410661472
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.koddos.net with current score of 4.840091245964938
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror-hk.koddos.net with current score of 7.253443174804785
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.koddos.net with current score of 6.079628250974545
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror ftp.wrz.de
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror ftp.wrz.de
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror ftp.wrz.de
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.thekinrar.fr with current score of 2.5124156057684646
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.ufam.edu.br with current score of 3.39591100044841
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror archlinux.zepto.cloud
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror arch.petarmaric.com
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.neostrada.nl
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.neostrada.nl
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.neostrada.nl
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.xeonbd.com with current score of 3.1778358285741937
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.xeonbd.com with current score of 2.2524487698903295
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.ukfast.co.uk with current score of 4.185115525204969
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.ukfast.co.uk with current score of 5.3063469234726375
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.ukfast.co.uk with current score of 5.849424096749018
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.ungleich.ch with current score of 17.17866041826891
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.nav.ro with current score of 6.2793419577081
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.nav.ro with current score of 9.568026685258934
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror archlinux.mivzakim.net with current score of 3.162038592424378
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror2.totbb.net
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.srv.fail with current score of 3.9737744798985437
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.reisenbauer.ee
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.reisenbauer.ee
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.reisenbauer.ee
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.veriteknik.net.tr
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.veriteknik.net.tr
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror packages.oth-regensburg.de with current score of 1.4337699240330415
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror packages.oth-regensburg.de with current score of 2.763424868351936
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror packages.oth-regensburg.de
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.orbit-os.com
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.orbit-os.com
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.orbit-os.com
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror distro.ibiblio.org with current score of 12.612828206069851
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror distro.ibiblio.org with current score of 15.835733931973648
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.sjtug.sjtu.edu.cn with current score of 17.522652854569092
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror repo.miserver.it.umich.edu with current score of 9.68648551682191
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.cat.net with current score of 4.358014894204335
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.cat.net with current score of 4.679464127789986
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.terrahost.no with current score of 12.895619182667359
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.ufscar.br with current score of 1.7201500858731662
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.ufscar.br with current score of 2.8523293205450115
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.oldsql.cc with current score of 4.960579946880402
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.oldsql.cc with current score of 2.863856885515899
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror arch.mirrors.lavatech.top with current score of 2.1731683695802353
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror arch.mirrors.lavatech.top with current score of 3.011964115097383
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.xtom.com with current score of 2.413377411889606
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.xtom.com with current score of 3.3262426305760626
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror dist-mirror.fem.tu-ilmenau.de with current score of 2.499856819767201
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.fsmg.org.nz with current score of 3.4274576395600374
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.fsmg.org.nz with current score of 3.579572774382122
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.fsmg.org.nz with current score of 5.153088132924676
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror archlinux.mirror.py
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.udenar.edu.co with current score of 2.592039573704658
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.udenar.edu.co with current score of 5.013388996414751
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.siena.edu with current score of 44.08386315659856
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.siena.edu with current score of 45.916602402066154
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror archlinux.grena.ge with current score of 5.057255228678816
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror archlinux.grena.ge with current score of 4.9897022486803415
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.onevip.mk with current score of 35.05730489627095
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.onevip.mk with current score of 35.24313988968528
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.cyberbits.eu with current score of 1.558259121303979
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.cyberbits.eu with current score of 1.7912071148618924
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror rsync.cyberbits.eu with current score of 3.047818339549117
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror repo.ialab.dsu.edu with current score of 1.8721412469096577
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror repo.ialab.dsu.edu with current score of 1.7299322060100653
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror arch.unixpeople.org with current score of 0.8896322603769748
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror arch.unixpeople.org with current score of 2.5922456474976827
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.tiguinet.net with current score of 4.501974102253932
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.tiguinet.net with current score of 3.9268216798622286
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror archlinux.mirror.liquidtelecom.com with current score of 2.125618644197707
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror archlinux.mirror.liquidtelecom.com with current score of 2.3743576529938055
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror archlinux.mirror.liquidtelecom.com with current score of 5.030093424282119
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror nova.quantum-mirror.hu with current score of 2.2848417389230677
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror quantum-mirror.hu with current score of 1.2171988946016656
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror super.quantum-mirror.hu with current score of 2.299089716446193
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror nova.quantum-mirror.hu with current score of 1.4885577606467075
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror quantum-mirror.hu with current score of 1.432493405277248
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror super.quantum-mirror.hu with current score of 2.4864735969447596
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror nova.quantum-mirror.hu with current score of 2.7043833448236922
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror quantum-mirror.hu with current score of 2.8400279390011387
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror super.quantum-mirror.hu with current score of 3.2533419867222104
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror archlinux.uk.mirror.allworldit.com with current score of 1.4605382490879735
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror archlinux.za.mirror.allworldit.com with current score of 2.6260296652336947
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror archlinux.uk.mirror.allworldit.com with current score of 1.526484017982204
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror archlinux.za.mirror.allworldit.com with current score of 2.590074890876598
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror archlinux.uk.mirror.allworldit.com with current score of 5.168636450584563
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror archlinux.za.mirror.allworldit.com with current score of 3.394328367215461
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.librelabucm.org
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.librelabucm.org
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.librelabucm.org
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.librelabucm.org
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror-archlinux.webruimtehosting.nl
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror-archlinux.webruimtehosting.nl
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.netweaver.uk with current score of 3.327091061694329
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.netweaver.uk with current score of 4.345267285813971
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.wtnet.de with current score of 5.0149874472666065
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.wtnet.de with current score of 4.938755935322895
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.mirohost.net with current score of 3.1574292486860873
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.mirohost.net with current score of 3.307007531387339
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.mirohost.net with current score of 4.8188713509742005
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.ufro.cl with current score of 4.653806693310766
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.ufro.cl with current score of 4.5034553545866665
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.aktkn.sg with current score of 6.632588163537622
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.aktkn.sg with current score of 7.372048413320339
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.xtom.nl with current score of 2.431257975634684
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.xtom.nl with current score of 3.612391951685658
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.scd31.com with current score of 2.2193838516907114
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.scd31.com with current score of 1.5114917896604338
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror ftp.icm.edu.pl with current score of 3.820112596080868
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror ftp.icm.edu.pl with current score of 4.961514810719317
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror ftp.icm.edu.pl with current score of 5.7967435888485355
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.nak-mci.ir
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.mikrogravitation.org
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.mikrogravitation.org
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror iad.mirrors.misaka.one with current score of 2.0358107393463376
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror iad.mirrors.misaka.one with current score of 1.8764180519803082
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror iad.mirrors.misaka.one with current score of 2.64602181456606
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.pit.teraswitch.com with current score of 5.991008348306447
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.pit.teraswitch.com with current score of 7.309395946759912
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.pit.teraswitch.com with current score of 8.767279944488056
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.mijn.host with current score of 3.6421140016506732
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.mijn.host with current score of 3.5586583065851243
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.init7.net with current score of 4.445735734411631
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.init7.net with current score of 3.872550208235167
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.init7.net with current score of 6.987243101862777
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror archlinux.mirror.liteserver.nl with current score of 6.365257553560047
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror archlinux.mirror.liteserver.nl with current score of 5.573292635918602
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.liteserver.nl with current score of 7.643971169844917
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.labkom.id
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.labkom.id
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.eric.ovh with current score of 3.838800976448499
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.arizona.edu with current score of 2.9802832207292678
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.arizona.edu with current score of 2.5109749338736655
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.arizona.edu with current score of 4.688522074216016
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror2.evolution-host.com with current score of 6.326229639119787
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror2.evolution-host.com with current score of 6.807169577939944
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror2.evolution-host.com with current score of 7.908350013746223
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror ftpmirror.infania.net with current score of 3.374398771266769
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror ftpmirror.infania.net with current score of 2.9231645991988406
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror ftpmirror.infania.net with current score of 5.020339128523871
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.redrock.team
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.redrock.team
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror archmirror1.octyl.net with current score of 1.0547189422798864
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror archmirror1.octyl.net with current score of 1.2096352696122301
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.telkomuniversity.ac.id
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.telkomuniversity.ac.id
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.serverion.com with current score of 387.37186711586395
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.serverion.com with current score of 387.2357551290601
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.serverion.com with current score of 375.59040785307457
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror plug-mirror.rcac.purdue.edu with current score of 1.230561297441715
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror plug-mirror.rcac.purdue.edu with current score of 2.024036204759729
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror plug-mirror.rcac.purdue.edu with current score of 4.343310788504522
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.efect.ro with current score of 3.53289567058634
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.efect.ro with current score of 2.9025731368536087
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.efect.ro with current score of 4.285493087819177
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.undisclose.de
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.undisclose.de
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.undisclose.de
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.mit.edu with current score of 3.0497165265050254
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.mit.edu with current score of 2.507610180016099
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.mit.edu with current score of 5.104376660035538
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror arch.hu.fo with current score of 1.9542729816901725
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror arch.hu.fo with current score of 1.3870247854226676
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror arch.hu.fo with current score of 2.989890706810103
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.chroot.ro with current score of 7.980712526117335
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.chroot.ro with current score of 6.787134585325922
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.melbourne.co.uk with current score of 5.5678959130700285
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.melbourne.co.uk with current score of 2.0258953820540224
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.melbourne.co.uk with current score of 3.544735059618561
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.tarellia.net
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.tarellia.net
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.tarellia.net
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.piconets.webwerks.in with current score of 14836.924101237746
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.piconets.webwerks.in with current score of 15069.250975888008
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.urbanwave.co.za with current score of 4.549971228760169
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.urbanwave.co.za with current score of 3.483479808631302
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.sysa.tech
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.sysa.tech
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.wuki.li with current score of 2.5000567418972413
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.wuki.li with current score of 2.4004454932979584
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.wuki.li with current score of 4.634072331755293
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror ftp.sudhip.com
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror ftp.sudhip.com
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.bfsu.edu.cn with current score of 3.344916137936002
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.bfsu.edu.cn with current score of 3.316806171567864
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.bfsu.edu.cn with current score of 6.814144858570815
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.kumi.systems with current score of 1.7774026388755457
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.kumi.systems with current score of 1.733109211545444
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.kumi.systems with current score of 13.007136965479859
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.fsrv.services
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.fsrv.services
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.jtremesay.org with current score of 13.650000169122759
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.hosthink.net
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.nju.edu.cn with current score of 3.635392213341918
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.nju.edu.cn with current score of 4.21804791375386
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.nju.edu.cn with current score of 7.09786856138737
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror archlinux.ccns.ncku.edu.tw with current score of 2.6122983802202406
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror archlinux.ccns.ncku.edu.tw with current score of 3.7868438485716576
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror archlinux.ccns.ncku.edu.tw with current score of 6.533603707383322
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror arch.phinau.de with current score of 1.7784734934802997
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror arch.phinau.de with current score of 0.7892462862576977
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.anquan.cl with current score of 2.7460090799059946
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.anquan.cl with current score of 3.5425271953394866
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.anquan.cl with current score of 4.550964466377853
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror arch.jeweet.net
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.satis-faction.de
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.satis-faction.de
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.powernet.com.ru with current score of 6.872530266322377
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.powernet.com.ru with current score of 8.862694212432915
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.gi.co.id with current score of 4.246095756699754
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.gi.co.id with current score of 4.101201073473966
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.gi.co.id with current score of 6.278325417970041
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.papua.go.id with current score of 4.233105872365093
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.papua.go.id with current score of 3.4393036509656087
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.papua.go.id with current score of 6.873392643422211
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.lyrahosting.com with current score of 12.560505736844691
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.lyrahosting.com with current score of 12.762681282409632
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.hodgepodge.dev
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.hostico.ro with current score of 6.865956207614503
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.hostico.ro with current score of 8.298929771906455
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.dogado.de with current score of 1.530300077229338
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.clientvps.com with current score of 15.996190327059168
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.clientvps.com with current score of 15.735020347143745
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.clientvps.com with current score of 17.20604768190209
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror zxcvfdsa.com with current score of 1.6701360859465884
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror zxcvfdsa.com with current score of 3.6066197886578335
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.ihost.md with current score of 2.7575197483507123
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.ihost.md with current score of 2.716381755056066
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.ihost.md with current score of 4.2976972036062815
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror pkg.fef.moe with current score of 3.2549379777364775
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror pkg.fef.moe with current score of 4.585844812562577
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.ette.biz with current score of 353.57255644373936
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.ette.biz with current score of 353.7758985525666
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.ette.biz with current score of 354.7745021016069
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.bizflycloud.vn with current score of 2.3281377145371493
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror theswissbay.ch with current score of 0.8926205702736554
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.siwoo.org with current score of 1.7038442405469396
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.siwoo.org with current score of 2.2617589719176805
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.siwoo.org with current score of 6.053067865900344
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.hit.edu.cn with current score of 2.8959734992821633
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.hit.edu.cn with current score of 2.1055873003662797
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.hit.edu.cn
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.hoster.kz with current score of 193.06945375035315
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.hoster.kz with current score of 193.429491739283
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.hoster.kz with current score of 195.30623134975187
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror ftp.agdsn.de with current score of 6.867501986780383
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror ftp.agdsn.de with current score of 6.883598646682709
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.guillaumea.fr with current score of 3.1337969842401776
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.guillaumea.fr with current score of 2.4058393142901053
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.guillaumea.fr with current score of 7.722928868081321
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror vpsmurah.jagoanhosting.com with current score of 31.16860671298401
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror vpsmurah.jagoanhosting.com with current score of 30.50444598129209
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror vpsmurah.jagoanhosting.com
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.arctic.lol
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.arctic.lol
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror repository.su with current score of 0.7551965329863868
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror repository.su with current score of 1.1652495646939465
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror repository.su with current score of 3.0524960668292485
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.cspacehostings.com with current score of 1.7144308262347707
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.cspacehostings.com with current score of 1.7891219614050577
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.cspacehostings.com with current score of 3.2811782577626496
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror repo.greeklug.gr with current score of 5.09302278647624
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.faizuladib.com with current score of 30.065911909771298
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror arch.jsc.mx with current score of 2.855944808185641
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror free.nchc.org.tw with current score of 19.24238502758121
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror free.nchc.org.tw
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror archlinux.mirror.server24.net with current score of 3.0385387052472463
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror archlinux.mirror.server24.net with current score of 3.2206645192609744
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.juniorjpdj.pl with current score of 2.526591452516347
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.juniorjpdj.pl with current score of 2.5529726575415905
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.juniorjpdj.pl with current score of 4.567458837792777
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror archlinux.datagr.am with current score of 2.347658032855489
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror archlinux.datagr.am
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.nw-sys.ru with current score of 0.8701541261828696
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.nw-sys.ru with current score of 1.1275710416576536
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.nw-sys.ru with current score of 4.224728950954878
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror repo.skni.umcs.pl
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror repo.skni.umcs.pl
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror repo.skni.umcs.pl
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.0xem.ma with current score of 1.2753489487343763
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.0xem.ma with current score of 1.1960976165146384
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.0xem.ma with current score of 5.09238090908636
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.cj2.nl with current score of 3.485201856770063
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.cj2.nl with current score of 1.5685912259979917
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.cj2.nl with current score of 4.769767231291295
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.hostup.org
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.hostup.org
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.hostup.org
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.xtom.de with current score of 1.1079226895439445
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.xtom.de with current score of 0.9725480938481688
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.xtom.de with current score of 2.653121106403841
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.xtom.ee with current score of 2.17527025903025
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.xtom.ee with current score of 2.3125304843178345
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.xtom.ee with current score of 2.8456084601322065
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.cyberbits.asia with current score of 1.0720080017943732
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror rsync.cyberbits.asia with current score of 5.684356146971295
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.moson.org with current score of 0.40455585057532606
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.moson.org with current score of 1.5854565367019282
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.moson.org with current score of 2.402823771593905
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.phx1.us.spryservers.net
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.phx1.us.spryservers.net
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.phx1.us.spryservers.net
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror arch.yhtez.xyz with current score of 1.5834066058920215
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror arch.yhtez.xyz with current score of 2.6663755549867094
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror arch.yhtez.xyz with current score of 3.365501694826203
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.2degrees.nz with current score of 2.3300103787612976
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.2degrees.nz with current score of 2.5514680563491274
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.2degrees.nz with current score of 7.224466103861823
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.hostiran.ir
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.hostiran.ir
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.powerfly.ca
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.powerfly.ca
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.powerfly.ca
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror ftp.ludd.ltu.se with current score of 5.848867926918757
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror ftp.ludd.ltu.se with current score of 5.787614189899986
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror ftp.ludd.ltu.se with current score of 6.567117386573104
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror arch.mithril.re with current score of 5.893174537318075
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.jingk.ai with current score of 2.8457499330362324
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.jingk.ai with current score of 3.006940970303903
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.jingk.ai with current score of 5.748627004129954
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.wsyu.edu.cn with current score of 8.971412809852612
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.wsyu.edu.cn with current score of 10.250250701155766
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.wsyu.edu.cn with current score of 12.773452201623497
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.radwebhosting.com
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.radwebhosting.com
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.radwebhosting.com
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.theash.xyz with current score of 1.704427823471761
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.sabay.com.kh with current score of 16.12955816659302
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.sabay.com.kh with current score of 16.317941290949296
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.cov.ukservers.com with current score of 23364.898960031922
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.cov.ukservers.com with current score of 23364.768392627302
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror ftp.psnc.pl with current score of 2.270925070581473
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror ftp.psnc.pl with current score of 2.1726740506666027
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.clarkson.edu with current score of 21.145033098082873
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.clarkson.edu with current score of 20.675653230028402
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.clarkson.edu with current score of 24.223848611867943
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.repository.id with current score of 30.43261467816005
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.repository.id with current score of 30.606576955048357
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.repository.id
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror repo.hyron.dev with current score of 2.9547133283296803
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror repo.hyron.dev with current score of 3.240384900830498
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.viflcraft.top
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.viflcraft.top
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.iusearchbtw.nl with current score of 13.384247150693188
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.up.pt with current score of 7.084478452508897
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.up.pt with current score of 7.139476926559264
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.up.pt with current score of 10.090332611266206
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.pagenotfound.de with current score of 2.0515583622767215
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.pagenotfound.de with current score of 2.463275992782239
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.pagenotfound.de with current score of 3.6215841966728597
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror ossmirror.mycloud.services with current score of 1.49800066594347
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror ossmirror.mycloud.services with current score of 4.4263013686721875
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror at.arch.mirror.kescher.at with current score of 1.7452492439368923
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror de.arch.mirror.kescher.at with current score of 1.4827097228369936
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror at.arch.mirror.kescher.at with current score of 3.8069244926108183
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror de.arch.mirror.kescher.at with current score of 3.230010200850228
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror archlinux.homeinfo.de with current score of 3.809224222393257
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror archlinux.ourhome.kiwi with current score of 4.320242448370793
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror is.mirror.flokinet.net with current score of 3.8441710837629683
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror nl.mirror.flokinet.net with current score of 3.608372476124913
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror ro.mirror.flokinet.net with current score of 4.7813703931391025
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror is.mirror.flokinet.net with current score of 3.1831361538775345
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror nl.mirror.flokinet.net with current score of 3.348142541016329
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror ro.mirror.flokinet.net with current score of 4.565409728334831
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror is.mirror.flokinet.net with current score of 5.212335613516386
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror nl.mirror.flokinet.net with current score of 5.04910383857111
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror ro.mirror.flokinet.net with current score of 7.814345554445308
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.bakertelekom.fr with current score of 24.471931568345997
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.bakertelekom.fr with current score of 12.905842923955264
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.funami.tech with current score of 1.3623055695399493
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.funami.tech with current score of 0.9033421388906544
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.funami.tech with current score of 4.9297924590993745
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.aliyun.com with current score of 3.2204402668024756
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.aliyun.com with current score of 2.8205009280385953
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.safe-con.dk
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror rsync.mirror.safe-con.dk
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.sg.gs with current score of 12.380581389040778
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.sg.gs with current score of 11.8530985408633
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.gandi.net with current score of 3.3841620975563123
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.gandi.net with current score of 4.3316920560501
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror os.codefionn.eu with current score of 4.390935545080808
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror os.codefionn.eu with current score of 4.749247895121148
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror os.codefionn.eu with current score of 7.61244362557811
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.janbruckner.de with current score of 1.244010557481363
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.janbruckner.de with current score of 2.5073733004858507
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.janbruckner.de with current score of 4.017757482045376
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror arch.juline.tech
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror arch.juline.tech
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.archlinux.tw with current score of 2.4736407068143995
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.archlinux.tw with current score of 2.1262914664273644
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.archlinux.tw with current score of 5.206587071708543
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror archlinux.mirror.net.in
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror archlinux.mirror.net.in
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.arvancloud.ir with current score of 5.724677355978715
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.arvancloud.ir with current score of 5.685913939822964
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.alwyzon.net with current score of 2.565853800132573
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.alwyzon.net with current score of 1.3060374717252334
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.alwyzon.net with current score of 3.94561923572049
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror lysakermoen.com
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror lysakermoen.com
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.theo546.fr with current score of 3.421752504071509
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.theo546.fr with current score of 3.3484663824031626
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.theo546.fr with current score of 4.05633323855885
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror kebo.pens.ac.id with current score of 5.098637327075883
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.albony.in with current score of 4.226649262722541
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.del2.albony.in with current score of 2.4157627419238983
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.maa.albony.in with current score of 2.216297521244644
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.del2.albony.in with current score of 4.897771555311283
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.informatik.tu-freiberg.de with current score of 0.9390666566316255
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.informatik.tu-freiberg.de with current score of 1.3056185273952519
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror depo.turkiye.linux.web.tr
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror depo.turkiye.linux.web.tr
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror depo.turkiye.linux.web.tr
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirroir.labhouse.fr
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirroir.labhouse.fr
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror srv.labhouse.fr
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.bloomu.edu with current score of 6.712025055496888
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.bloomu.edu with current score of 6.461690688861677
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirrors.bloomu.edu with current score of 7.1112603077289975
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.tux.si with current score of 1.7404454231014637
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.tux.si with current score of 0.7690277192409081
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror mirror.tux.si with current score of 3.193430688589793
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror codingflyboy.mm.fcix.net with current score of 1.8419658899950848
+[2025-05-02 07:11:33] - DEBUG - Loaded mirror coresite.mm.fcix.net with current score of 1.7264470142277712
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror edgeuno-bog2.mm.fcix.net with current score of 2.050811607426134
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror forksystems.mm.fcix.net with current score of 1.2952268213602576
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror gsl-syd.mm.fcix.net with current score of 1.914296068291746
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror irltoolkit.mm.fcix.net with current score of 0.9864460805082975
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.fcix.net with current score of 2.8064927356911644
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mnvoip.mm.fcix.net with current score of 1.0421247633654023
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror nnenix.mm.fcix.net with current score of 2.1883173165684235
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror nocix.mm.fcix.net with current score of 1.644324914235193
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror ohioix.mm.fcix.net with current score of 2.793718551309822
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror opencolo.mm.fcix.net with current score of 1.847719160181589
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror ridgewireless.mm.fcix.net with current score of 2.5044676749180734
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror southfront.mm.fcix.net with current score of 1.9838357993004343
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror volico.mm.fcix.net with current score of 1.0046420632989792
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror ziply.mm.fcix.net with current score of 1.9126770198646872
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror codingflyboy.mm.fcix.net with current score of 1.9542315703883038
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror coresite.mm.fcix.net with current score of 1.1656121865929268
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror edgeuno-bog2.mm.fcix.net with current score of 3.2830993345140183
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror forksystems.mm.fcix.net with current score of 1.401411591775385
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror gsl-syd.mm.fcix.net with current score of 1.7560680207527648
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror irltoolkit.mm.fcix.net with current score of 1.1670243103511988
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.fcix.net with current score of 1.6444598978032032
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mnvoip.mm.fcix.net with current score of 1.8718711730570914
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror nnenix.mm.fcix.net with current score of 1.666390639000042
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror nocix.mm.fcix.net with current score of 1.4540527371152907
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror ohioix.mm.fcix.net with current score of 1.1481299770943019
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror opencolo.mm.fcix.net with current score of 1.915611788401209
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror ridgewireless.mm.fcix.net with current score of 1.9456789434505595
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror southfront.mm.fcix.net with current score of 1.833803247103537
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror volico.mm.fcix.net with current score of 1.1809899911503872
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror ziply.mm.fcix.net with current score of 1.14680713491951
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror codingflyboy.mm.fcix.net with current score of 2.9564223004561487
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror coresite.mm.fcix.net with current score of 3.0770410253288
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror edgeuno-bog2.mm.fcix.net with current score of 4.202681862823847
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror forksystems.mm.fcix.net with current score of 2.8515843992145373
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror gsl-syd.mm.fcix.net with current score of 4.698125708319702
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror irltoolkit.mm.fcix.net with current score of 3.3942007622708092
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mnvoip.mm.fcix.net with current score of 3.4113119892741963
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror nnenix.mm.fcix.net with current score of 3.3287817828510056
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror nocix.mm.fcix.net with current score of 3.002109344050051
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror ohioix.mm.fcix.net with current score of 2.816711538503472
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror opencolo.mm.fcix.net with current score of 3.404850525522128
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror ridgewireless.mm.fcix.net with current score of 3.511617096205794
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror southfront.mm.fcix.net with current score of 3.427439501561156
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror volico.mm.fcix.net with current score of 3.2121468624852567
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror ziply.mm.fcix.net with current score of 2.9546479946546804
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror america.mirror.pkgbuild.com with current score of 0.6959501239650303
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror asia.mirror.pkgbuild.com with current score of 0.8138208291828604
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror berlin.mirror.pkgbuild.com with current score of 0.7408757732594023
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror europe.mirror.pkgbuild.com with current score of 1.398563610805569
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror geo.mirror.pkgbuild.com with current score of 1.7212494520184127
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror johannesburg.mirror.pkgbuild.com with current score of 1.098603094984221
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror london.mirror.pkgbuild.com with current score of 0.6113877174545308
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror losangeles.mirror.pkgbuild.com with current score of 0.6840986897300276
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror singapore.mirror.pkgbuild.com with current score of 0.8488487385572143
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror sydney.mirror.pkgbuild.com with current score of 1.080797677546972
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror taipei.mirror.pkgbuild.com with current score of 0.8268946394243132
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirrors.njupt.edu.cn
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror in-mirror.garudalinux.org with current score of 1.0210552806599043
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror in-mirror.garudalinux.org with current score of 1.4211296211915816
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.kamtv.ru with current score of 9.18885686683586
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.kamtv.ru with current score of 11.7324749107936
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirrors.shanghaitech.edu.cn with current score of 8.200722789771216
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirrors.shanghaitech.edu.cn with current score of 9.154410231207255
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.sahil.world with current score of 0.5286332672372787
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.sahil.world with current score of 0.6140842459349161
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.xenyth.net with current score of 3.268369601070232
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.xenyth.net with current score of 2.755551536173742
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.xenyth.net with current score of 4.029562808499631
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.dc.uz with current score of 14.859901892086175
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.dc.uz with current score of 15.038801245394126
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.dc.uz with current score of 17.145845185993824
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirrors.vectair.net with current score of 2.9400896027469847
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirrors.vectair.net with current score of 1.896759866293854
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirrors.nxtgen.com with current score of 2.499744590669962
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirrors.nxtgen.com with current score of 2.111199480805004
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror arch.mirror.k0.ae with current score of 3.277451519196558
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.yuki.net.uk with current score of 4.11235435002776
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.yuki.net.uk with current score of 4.187187353444684
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror rsync.yuki.net.uk with current score of 1720.3275312268004
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror distrohub.kyiv.ua with current score of 3.5403038930649173
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror distrohub.kyiv.ua with current score of 2.899308487069746
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror distrohub.kyiv.ua with current score of 5.356807470214349
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.mangohost.net with current score of 4.539239194057936
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.mangohost.net with current score of 4.531853344811946
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.mangohost.net with current score of 5.501342377318761
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirrors.evoluso.com with current score of 14.53695148408162
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirrors.abhy.me with current score of 1.3175634857134464
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.zackmyers.io with current score of 1.1512989878515045
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.zackmyers.io
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.fossable.org with current score of 13.831088110220216
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.fossable.org with current score of 15.411048122949033
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.cmt.de with current score of 0.8620046600863501
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.cmt.de with current score of 0.8754308961317636
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror1.sl-chat.ru with current score of 2.0049129206364693
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror2.sl-chat.ru with current score of 1.8897607040831814
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror3.sl-chat.ru
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror1.sl-chat.ru with current score of 4.340766884679197
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror2.sl-chat.ru with current score of 3.852143593848972
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror3.sl-chat.ru
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror wcbmedia.io with current score of 28.149840861434374
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror wcbmedia.io with current score of 30.16710705537924
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror arch.sakamoto.pl with current score of 2.6223805385055137
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror arch.sakamoto.pl with current score of 2.9899251910251596
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.saebasol.org
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.saebasol.org
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.metanet.ch with current score of 3.2618108918449127
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.metanet.ch with current score of 3.0125308823497488
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.jordanrey.me
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.jordanrey.me
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.spaceint.fr
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.spaceint.fr
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.spaceint.fr
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror archlinux.interhost.co.il with current score of 2.0952855312536895
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror archlinux.interhost.co.il with current score of 2.4810607829196583
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror archlinux.interhost.co.il with current score of 3.925521620737914
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.it4i.cz with current score of 6.512607327414821
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.it4i.cz with current score of 6.414521234030152
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.it4i.cz with current score of 9.587924257032782
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror md.mirrors.hacktegic.com with current score of 0.37828360199104727
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror md.mirrors.hacktegic.com with current score of 0.5908986742838613
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.worldhotspot.org with current score of 2.999441588736623
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.stjschools.org
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.stjschools.org
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.sunred.org with current score of 2.6619133005644477
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.sunred.org with current score of 1.3754358578728332
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror sync.mirror.sunred.org with current score of 3.7746797124899807
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror m.lqy.me with current score of 1.6255014581073555
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.yer.az with current score of 6.1827481403067885
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.yer.az with current score of 6.5665690533805785
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror repo.slithery.uk with current score of 4.712830670245795
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.ditatompel.com with current score of 3.48405795088379
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.ditatompel.com with current score of 3.380798526135596
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.infernocomms.net
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.infernocomms.net
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.infernocomms.net
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror arch.mirror.winslow.cloud with current score of 4.214135357161108
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.lcarilla.de with current score of 1.3437706566483414
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.lcarilla.de with current score of 0.5775210162765456
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.lcarilla.de with current score of 3.0574340938119975
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.quantum5.ca with current score of 0.7592824575936925
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.quantum5.ca with current score of 1.8130514449173356
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.quantum5.ca with current score of 3.6247682938263877
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirrors.marquitos.space
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirrors.marquitos.space
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.5i.fi with current score of 3.181636514419605
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.5i.fi with current score of 5.0468923087053845
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.5i.fi with current score of 4.7531936765643055
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.hostart.az
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.hostart.az
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror archlinux-mirror.cloud.mu with current score of 2.379230151186258
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror archlinux-mirror.cloud.mu with current score of 2.6544068043577234
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror repo.br.ee with current score of 1.7399164975773063
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror repo.br.ee with current score of 2.0391106135211308
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror repo.br.ee with current score of 2.8560707792450333
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror archmirror.hogwarts.fr with current score of 2.8319081866301303
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror archmirror.hogwarts.fr with current score of 3.2999832215805647
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror archlinux.richard-neumann.de with current score of 1.6235811999998293
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.adectra.com with current score of 1.5519387109033749
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.adectra.com with current score of 1.9804493630429862
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.adectra.com with current score of 3.688073724089571
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.hnd.cl with current score of 8.797236979512325
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.hnd.cl with current score of 9.124592648979457
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.hnd.cl with current score of 11.73420092263259
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirrors.jlu.edu.cn with current score of 1.7958328955775396
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirrors.jlu.edu.cn with current score of 2.0725010033370297
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirrors.jlu.edu.cn with current score of 5.6460207121299
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.vinehost.net
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.vinehost.net
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.vinehost.net
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.bahnhof.net with current score of 1.757525942865532
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.bahnhof.net with current score of 1.9675339488136485
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.bahnhof.net with current score of 4.272221967051715
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror kacabenggala.uny.ac.id with current score of 1579.4320297615568
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.nishi.network with current score of 3.6538623643580816
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.nishi.network with current score of 3.082601783188228
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.kpfu.ru with current score of 3.382159031141537
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.kpfu.ru with current score of 3.8123806193301286
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.morgan.kr
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.morgan.kr
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.morgan.kr
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.nyist.edu.cn with current score of 6.977588092375372
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.nyist.edu.cn with current score of 6.827339097778086
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirrors.qlu.edu.cn with current score of 9.890957836555607
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.barata.pt
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.barata.pt
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.barata.pt with current score of 14.713564854922803
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror repo.jing.rocks with current score of 3.1248789561551615
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror repo.jing.rocks with current score of 4.081231145806826
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror repo.jing.rocks with current score of 5.511412779543781
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirrors.nguyenhoang.cloud with current score of 3.3497514269523174
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.citrahost.com with current score of 14.778002773174524
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.citrahost.com with current score of 14.856355466955366
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror1.sox.rs with current score of 13.010607212613387
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror1.sox.rs with current score of 12.760389952471378
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror1.sox.rs with current score of 14.525803357257661
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror nox.panibrez.com with current score of 79.18280205699112
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.hugo-betrugo.de with current score of 1.1894069725176766
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.hugo-betrugo.de with current score of 1.1151957077661716
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.hugo-betrugo.de with current score of 2.2862405904376293
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.its-tps.fr with current score of 5.296525878868563
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.its-tps.fr with current score of 4.123985998715813
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.its-tps.fr with current score of 6.3954635263743
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirrors.opensource.is
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirrors.opensource.is
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirrors.opensource.is
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror arch.kurdy.org with current score of 0.92930984740891
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror kurdy.org with current score of 4.180569024070737
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror arch.goober.cloud
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror arch.goober.cloud with current score of 23.854493745289798
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.bouwhuis.network with current score of 3.432229872167419
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.bouwhuis.network with current score of 3.933428933388508
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.bouwhuis.network with current score of 4.669468686283069
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirrors.bjg.at with current score of 2.4674337023091497
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirrors.bjg.at with current score of 2.2414238208253154
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirrors.hosterion.ro with current score of 3.10333455924875
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirrors.hosterion.ro with current score of 3.155488843334637
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror archlinux.macarne.com
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror archlinux.macarne.com
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.franscorack.com with current score of 0.7450853960028998
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror rsync.franscorack.com with current score of 2.656259593907176
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.cpsc.ucalgary.ca with current score of 1.6798534430256151
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.cpsc.ucalgary.ca with current score of 1.6611607664022592
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.cpsc.ucalgary.ca with current score of 3.2874015895304813
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirrors.jxust.edu.cn with current score of 24.167044080474067
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirrors.jxust.edu.cn with current score of 25.927151347848845
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirrors.atlas.net.co with current score of 10.206607380053404
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirrors.atlas.net.co with current score of 9.038340938404357
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.pilotfiber.com with current score of 12.567687928444744
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirrors.iu13.net with current score of 2.540098223922176
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirrors.iu13.net with current score of 2.7657834282429516
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirrors.iu13.net with current score of 5.0516965952813795
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.leitecastro.com with current score of 3.284300839034562
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.leitecastro.com with current score of 3.7134215419511882
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.leitecastro.com with current score of 4.821520008432877
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror elmirror.cl with current score of 3.1258795178210046
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror elmirror.cl with current score of 3.748020155415063
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror elmirror.cl with current score of 6.8100073439937585
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror ncuesaweb.ncue.edu.tw
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirrors.qvq.net.cn
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirrors.qvq.net.cn
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.twds.com.tw with current score of 0.9966996815588084
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.twds.com.tw with current score of 1.1239517434928599
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.twds.com.tw with current score of 3.9412559319964195
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.st2projects.com with current score of 3.232074383572926
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.colonelhosting.com with current score of 2.703701608373672
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.colonelhosting.com with current score of 2.6517113330062374
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror pkg.adfinis-on-exoscale.ch with current score of 4.427317794000287
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror pkg.adfinis-on-exoscale.ch with current score of 5.33295187987622
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror pkg.adfinis-on-exoscale.ch with current score of 4.115410787999643
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror pkg.adfinis-on-exoscale.ch with current score of 5.1792832988117885
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.rznet.fr with current score of 1.4745936872064769
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.rznet.fr with current score of 1.5719583090399438
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror www.miraa.jp with current score of 2.076515868971541
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror www.miraa.jp with current score of 2.1910432895369056
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror www.miraa.jp with current score of 5.666144430302324
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.eto.dev
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirrors.jcut.edu.cn with current score of 11.167790338575058
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirrors.jcut.edu.cn with current score of 11.696221989394617
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.timtal.com.tr with current score of 4.247743870213574
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.timtal.com.tr with current score of 4.394634240286838
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.timtal.com.tr with current score of 6.235274328505829
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror lidsol.fi-b.unam.mx with current score of 1.8235239313514362
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror lidsol.fi-b.unam.mx with current score of 2.8716180591229206
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror lidsol.fi-b.unam.mx with current score of 3.9276263199230312
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror al.arch.niranjan.co with current score of 0.3531838301912694
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror de.arch.niranjan.co with current score of 0.3458897368782328
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror in.arch.niranjan.co with current score of 0.719323497779524
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror ro.arch.niranjan.co with current score of 0.6772219326620674
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror sg.arch.niranjan.co with current score of 0.5814178382647827
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror us.arch.niranjan.co with current score of 0.44750652342002184
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror al.arch.niranjan.co with current score of 0.4826801645535842
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror at.arch.niranjan.co with current score of 0.9027697747099865
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror au.arch.niranjan.co with current score of 2.547286230866269
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror de.arch.niranjan.co with current score of 0.4704382620988257
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror fi.arch.niranjan.co with current score of 1.1073360696224142
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror in.arch.niranjan.co with current score of 0.9232670941418585
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror nl.arch.niranjan.co with current score of 1.2804738474366395
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror nz.arch.niranjan.co with current score of 1.7288029890997616
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror ro.arch.niranjan.co with current score of 0.7823605618147789
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror sg.arch.niranjan.co with current score of 0.974729341378155
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror tr.arch.niranjan.co with current score of 0.6437209641634727
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror us.arch.niranjan.co with current score of 0.5685492037445067
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror at.arch.niranjan.co with current score of 2.7400076193275713
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror au.arch.niranjan.co with current score of 5.691827580151969
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror de.arch.niranjan.co with current score of 2.565760226098696
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror in.arch.niranjan.co with current score of 4.725150962854328
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror nl.arch.niranjan.co with current score of 2.1962713766559157
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror ro.arch.niranjan.co with current score of 3.120900289024151
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror tr.arch.niranjan.co with current score of 3.3388806129797706
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirrors.pablonara.com with current score of 5.651201500309555
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirrors.pablonara.com with current score of 5.691897811497549
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror upstream-1.pablonara.com with current score of 1.7192252265840922
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror rsync.pablonara.com with current score of 4.779524619036062
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.raiolanetworks.com with current score of 0.9234644705116954
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.raiolanetworks.com with current score of 1.1310571940470235
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.raiolanetworks.com with current score of 3.7087324373873845
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirrors.huongnguyen.dev with current score of 3.270988744754108
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror files.hadiko.de with current score of 1.9200387028398191
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.braindrainlan.nu with current score of 1.764382040888761
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.braindrainlan.nu with current score of 3.5914020119369257
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirrors.reitarovskyi.tech with current score of 2.2919533505997456
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirrors.reitarovskyi.tech with current score of 2.4944749786928804
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror arch.syxpi.fr with current score of 3.2953736220469496
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror arch.syxpi.fr with current score of 2.8647939038273513
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror archlinux.doridian.net with current score of 1.849449802483413
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror archlinux.doridian.net with current score of 3.6803010201523496
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror elda.asgardius.company with current score of 8.553003765269736
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror elda.asgardius.company with current score of 10.611344665392602
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.hasphetica.win with current score of 1.8427206511293868
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.hasphetica.win with current score of 2.9858229962287544
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.hasphetica.win with current score of 3.557738505956949
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.server.net with current score of 2.166656894054228
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.server.net with current score of 2.664118413393336
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror arch-mirror.marcusspencer.xyz with current score of 1.7053646519637493
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror arch-mirror.marcusspencer.xyz with current score of 4.363807402559383
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirrors.xhosts.co.uk
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror at-vie.soulharsh007.dev with current score of 2.026281057161314
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror de-nue.soulharsh007.dev with current score of 2.4344400297040565
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror us-mnz.soulharsh007.dev with current score of 1.3616266547139764
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirrors.saswata.cc with current score of 3.498789793192156
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirrors.saswata.cc with current score of 1.4237408017402875
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirrors.saswata.cc with current score of 4.021702985581747
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror archlinux.gay with current score of 1.1836594723844085
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror archlinux.gay with current score of 2.679158959398805
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror de.repo.c48.uk with current score of 1.5615618426190645
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror repo.c48.uk with current score of 2.613183264484215
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror repo.c48.uk with current score of 3.62560651128694
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror f.matthieul.dev with current score of 3.1515266552973262
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirrors.nepalicloud.com with current score of 4.211550483081066
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirrors.nepalicloud.com with current score of 4.383387659520762
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.hakimi-soft.ir with current score of 6.835805155200652
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror arch.mirror.hyperbit.it with current score of 2.692635010152383
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirrors.twilight.fyi
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirrors.twilight.fyi
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirrors.twilight.fyi
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.jonas-prz.be with current score of 5.446964562777609
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.jonas-prz.be with current score of 5.2258990987929606
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.hostiko.network with current score of 1.7321033868802405
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.hostiko.network with current score of 2.120857148395323
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror us-1.arch-linux.mirror.shieldblaze.com
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror us-1.arch-linux.mirror.shieldblaze.com
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.hafeezh.com with current score of 2.5098522798000706
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.hafeezh.com with current score of 4.847216576521175
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror www.sooftware.com with current score of 2.8401142160369433
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.peeres-telecom.fr with current score of 3.2586813257916893
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.peeres-telecom.fr with current score of 2.6789911143300724
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.peeres-telecom.fr with current score of 2.814063838142361
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.aria-on-the-planet.es with current score of 3.8489025709722275
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.aria-on-the-planet.es with current score of 2.953544852282404
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.yuri.so
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.yuri.so
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.akane.network with current score of 1.1251915514550834
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.freedif.org with current score of 1.065387563163714
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.freedif.org with current score of 1.4694534669996928
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.freedif.org with current score of 3.737623124265256
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirrors.ic.unicamp.br with current score of 4.172635399098072
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirrors.ic.unicamp.br with current score of 3.2198393577578788
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirrors.ic.unicamp.br with current score of 5.507437013090811
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.hashy0917.net with current score of 2.836089725422885
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.hashy0917.net with current score of 3.082598298589379
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.hashy0917.net with current score of 6.088223361157283
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.ourhost.az with current score of 2.9961027712172124
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.ourhost.az with current score of 3.0364271446506024
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.ourhost.az with current score of 5.030686976349428
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.abderraziq.com with current score of 3.1984275470092127
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.abderraziq.com with current score of 1.5913072533624923
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.abderraziq.com with current score of 3.157368672130086
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.trap.moe with current score of 1.1981625118719863
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.trap.moe with current score of 0.5669027315817241
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.trap.moe with current score of 2.809666416144867
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror web.sketserv.ru with current score of 1.2959746808065933
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror web.sketserv.ru with current score of 1.3202162658289218
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.nl.cdn-perfprod.com with current score of 1.0333835470452917
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.ro.cdn-perfprod.com with current score of 1.907326996841
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.nl.cdn-perfprod.com with current score of 1.1537887746207158
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.ro.cdn-perfprod.com with current score of 2.01108549305584
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.nl.cdn-perfprod.com with current score of 3.1762269477596585
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.ro.cdn-perfprod.com with current score of 3.730707517664623
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.mobinhost.com with current score of 3.062607062209886
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.mobinhost.com with current score of 3.672949343454519
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.mobinhost.com with current score of 6.43251870811349
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mala-arch-server.eu
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mala-arch-server.eu
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.as20647.net with current score of 4.017043153654136
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.ipb.de with current score of 4.381981360840341
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.as20647.net with current score of 3.53411067057316
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.ipb.de with current score of 3.023340305523284
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.as20647.net with current score of 5.834354906477751
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.ipb.de with current score of 6.636759343154752
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirrors.aminvakil.com with current score of 3.491312740994525
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirrors.aminvakil.com with current score of 2.5702704038794266
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirrors.aminvakil.com with current score of 3.403783484948324
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirrors.purring.online with current score of 1.2579217954377968
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirrors.purring.online with current score of 1.020952969246938
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirrors.purring.online with current score of 2.4623810062410056
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.meowsmp.net with current score of 2.9868908944946355
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror rsync.meowsmp.net with current score of 5.760306787041656
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.ext4.xyz
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.acadielinux.ca
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror arch.miningtcup.me with current score of 5.237172742036245
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror arch.miningtcup.me with current score of 4.732864123688217
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror miningtcup.me with current score of 7.290885236399578
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirrors.smeal.xyz with current score of 13.535584620032589
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirrors.smeal.xyz with current score of 13.608768386081556
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror arch-mirror.brightlight.today with current score of 4.053249573671618
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.smayzy.ovh with current score of 3.933084849822224
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.smayzy.ovh with current score of 3.0570966596142766
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror arch-lux.spirex.me with current score of 6.811290831175278
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror arch-lux.spirex.me with current score of 6.129462211047544
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror cdnmirror.com with current score of 2.1273501102237473
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror cdnmirror.com with current score of 1.7357401738924578
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror archlinux.kushwanthreddy.com with current score of 3.0010900038687396
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror yonderly.org with current score of 3.8708131080884005
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirrors.lahansons.com with current score of 2.883564116576845
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.przekichane.pl with current score of 2.535118042736536
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.przekichane.pl with current score of 4.166997221236675
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.keiminem.com with current score of 2.9745795177482215
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.keiminem.com with current score of 5.46039168822091
+[2025-05-02 07:11:34] - DEBUG - Loaded mirror mirror.givebytes.net with current score of 1.735507363321395
+[2025-05-02 07:14:31] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/__init__.py
+[2025-05-02 07:14:31] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/custom.py
+[2025-05-02 07:14:31] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/desktop.py
+[2025-05-02 07:14:31] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/minimal.py
+[2025-05-02 07:14:31] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/server.py
+[2025-05-02 07:14:31] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/tailored.py
+[2025-05-02 07:14:31] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/xorg.py
+[2025-05-02 07:14:31] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/applications/__init__.py
+[2025-05-02 07:14:31] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/applications/pipewire.py
+[2025-05-02 07:14:31] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/desktops/__init__.py
+[2025-05-02 07:14:31] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/desktops/awesome.py
+[2025-05-02 07:14:31] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/desktops/bspwm.py
+[2025-05-02 07:14:31] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/desktops/budgie.py
+[2025-05-02 07:14:31] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/desktops/cinnamon.py
+[2025-05-02 07:14:31] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/desktops/cosmic.py
+[2025-05-02 07:14:31] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/desktops/cutefish.py
+[2025-05-02 07:14:31] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/desktops/deepin.py
+[2025-05-02 07:14:31] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/desktops/enlightenment.py
+[2025-05-02 07:14:31] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/desktops/gnome.py
+[2025-05-02 07:14:31] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/desktops/hyprland.py
+[2025-05-02 07:14:31] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/desktops/i3.py
+[2025-05-02 07:14:31] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/desktops/lxqt.py
+[2025-05-02 07:14:31] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/desktops/mate.py
+[2025-05-02 07:14:31] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/desktops/plasma.py
+[2025-05-02 07:14:31] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/desktops/qtile.py
+[2025-05-02 07:14:31] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/desktops/sway.py
+[2025-05-02 07:14:31] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/desktops/xfce4.py
+[2025-05-02 07:14:31] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/servers/__init__.py
+[2025-05-02 07:14:31] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/servers/cockpit.py
+[2025-05-02 07:14:31] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/servers/docker.py
+[2025-05-02 07:14:31] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/servers/httpd.py
+[2025-05-02 07:14:31] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/servers/lighttpd.py
+[2025-05-02 07:14:31] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/servers/mariadb.py
+[2025-05-02 07:14:31] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/servers/nginx.py
+[2025-05-02 07:14:31] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/servers/postgresql.py
+[2025-05-02 07:14:31] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/servers/sshd.py
+[2025-05-02 07:14:31] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/servers/tomcat.py
+[2025-05-02 07:17:11] - DEBUG -  -- Chosen configuration --
+[2025-05-02 07:17:11] - DEBUG - {
+    "archinstall-language": "English",
+    "audio_config": {
+        "audio": "pipewire"
+    },
+    "bootloader": "Systemd-boot",
+    "custom_commands": [],
+    "disk_config": {
+        "config_type": "default_layout",
+        "device_modifications": [
+            {
+                "device": "/dev/sda",
+                "partitions": [
+                    {
+                        "btrfs": [],
+                        "dev_path": null,
+                        "flags": [
+                            "boot",
+                            "esp"
+                        ],
+                        "fs_type": "fat32",
+                        "mount_options": [],
+                        "mountpoint": "/boot",
+                        "obj_id": "0e8aaa1d-6936-4348-9bb8-80ae60a96fb7",
+                        "size": {
+                            "sector_size": {
+                                "unit": "B",
+                                "value": 512
+                            },
+                            "unit": "GiB",
+                            "value": 1
+                        },
+                        "start": {
+                            "sector_size": {
+                                "unit": "B",
+                                "value": 512
+                            },
+                            "unit": "MiB",
+                            "value": 1
+                        },
+                        "status": "create",
+                        "type": "primary"
+                    },
+                    {
+                        "btrfs": [
+                            {
+                                "mountpoint": "/",
+                                "name": "@"
+                            },
+                            {
+                                "mountpoint": "/home",
+                                "name": "@home"
+                            },
+                            {
+                                "mountpoint": "/var/log",
+                                "name": "@log"
+                            },
+                            {
+                                "mountpoint": "/var/cache/pacman/pkg",
+                                "name": "@pkg"
+                            },
+                            {
+                                "mountpoint": "/.snapshots",
+                                "name": "@.snapshots"
+                            }
+                        ],
+                        "dev_path": null,
+                        "flags": [],
+                        "fs_type": "btrfs",
+                        "mount_options": [
+                            "compress=zstd"
+                        ],
+                        "mountpoint": null,
+                        "obj_id": "944ae402-36a3-4e68-a255-bd0d41b6330d",
+                        "size": {
+                            "sector_size": {
+                                "unit": "B",
+                                "value": 512
+                            },
+                            "unit": "B",
+                            "value": 126960533504
+                        },
+                        "start": {
+                            "sector_size": {
+                                "unit": "B",
+                                "value": 512
+                            },
+                            "unit": "B",
+                            "value": 1074790400
+                        },
+                        "status": "create",
+                        "type": "primary"
+                    }
+                ],
+                "wipe": true
+            }
+        ]
+    },
+    "hostname": "x",
+    "kernels": [
+        "linux"
+    ],
+    "locale_config": {
+        "kb_layout": "sv-latin1",
+        "sys_enc": "UTF-8",
+        "sys_lang": "en_US"
+    },
+    "mirror_config": {
+        "custom_repositories": [],
+        "custom_servers": [],
+        "mirror_regions": {
+            "Sweden": [
+                "http://ftp.lysator.liu.se/pub/archlinux/$repo/os/$arch",
+                "https://ftp.lysator.liu.se/pub/archlinux/$repo/os/$arch",
+                "http://ftp.myrveln.se/pub/linux/archlinux/$repo/os/$arch",
+                "https://ftp.myrveln.se/pub/linux/archlinux/$repo/os/$arch",
+                "http://mirror.accum.se/mirror/archlinux/$repo/os/$arch",
+                "https://mirror.accum.se/mirror/archlinux/$repo/os/$arch",
+                "https://mirror.osbeck.com/archlinux/$repo/os/$arch",
+                "http://ftpmirror.infania.net/mirror/archlinux/$repo/os/$arch",
+                "http://ftp.ludd.ltu.se/mirrors/archlinux/$repo/os/$arch",
+                "https://ftp.ludd.ltu.se/mirrors/archlinux/$repo/os/$arch",
+                "http://mirror.bahnhof.net/pub/archlinux/$repo/os/$arch",
+                "https://mirror.bahnhof.net/pub/archlinux/$repo/os/$arch",
+                "https://mirror.braindrainlan.nu/archlinux/$repo/os/$arch"
+            ]
+        },
+        "optional_repositories": []
+    },
+    "network_config": {
+        "type": "iso"
+    },
+    "ntp": true,
+    "packages": [
+        "git",
+        "vim"
+    ],
+    "parallel_downloads": 0,
+    "profile_config": {
+        "gfx_driver": "All open-source",
+        "greeter": null,
+        "profile": {
+            "custom_settings": {},
+            "details": [],
+            "main": "Xorg"
+        }
+    },
+    "services": [],
+    "swap": true,
+    "timezone": "Europe/Stockholm",
+    "version": null
+}
+[2025-05-02 07:17:18] - DEBUG - Unmounting all existing partitions: /dev/sda
+[2025-05-02 07:17:18] - DEBUG - Unmounting: /dev/sda1
+[2025-05-02 07:17:18] - DEBUG - Unmounting: /dev/sda2
+[2025-05-02 07:17:18] - INFO - Wiping partitions and metadata: /dev/sda
+[2025-05-02 07:17:18] - INFO - Creating partitions: /dev/sda
+[2025-05-02 07:17:18] - DEBUG - 	Type: primary
+[2025-05-02 07:17:18] - DEBUG - 	Filesystem: fat32
+[2025-05-02 07:17:18] - DEBUG - 	Geometry: 2048 start sector, 2097152 length
+[2025-05-02 07:17:18] - DEBUG - 	Type: primary
+[2025-05-02 07:17:18] - DEBUG - 	Filesystem: btrfs
+[2025-05-02 07:17:18] - DEBUG - 	Geometry: 2099200 start sector, 247969792 length
+[2025-05-02 07:17:18] - DEBUG - Formatting filesystem: mkfs.fat -F 32 /dev/sda1
+[2025-05-02 07:17:18] - DEBUG - partition information found: {"name":"sda1","path":"/dev/sda1","pkname":"sda","log_sec":512,"size":"1024 MiB","pttype":"gpt","ptuuid":"5d3ae477-c504-4085-b332-a4a27b9510f9","rota":false,"tran":null,"partn":1,"partuuid":"cb20685f-bca6-4c47-a6f1-4abe58cfabe3","parttype":"c12a7328-f81f-11d2-ba4b-00a0c93ec93b","uuid":"17EC-4461","fstype":"vfat","fsver":"FAT32","fsavail":null,"fsuse_percentage":null,"type":"part","mountpoint":null,"mountpoints":[],"fsroots":[],"children":[]}
+[2025-05-02 07:17:19] - DEBUG - Formatting filesystem: mkfs.btrfs -f /dev/sda2
+[2025-05-02 07:17:20] - DEBUG - partition information found: {"name":"sda2","path":"/dev/sda2","pkname":"sda","log_sec":512,"size":"121079 MiB","pttype":"gpt","ptuuid":"5d3ae477-c504-4085-b332-a4a27b9510f9","rota":false,"tran":null,"partn":2,"partuuid":"2b90ed20-5a37-412f-8447-01453906a1d2","parttype":"4f68bce3-e8cd-4db1-96e7-fbcaf984b709","uuid":"9bf8eb38-5388-479b-b5e8-d40158032e86","fstype":"btrfs","fsver":null,"fsavail":null,"fsuse_percentage":null,"type":"part","mountpoint":null,"mountpoints":[],"fsroots":[],"children":[]}
+[2025-05-02 07:17:20] - INFO - Creating subvolumes: /dev/sda2
+[2025-05-02 07:17:20] - DEBUG - Mounting /dev/sda2: mount -o compress=zstd /dev/sda2 /mnt/arch_btrfs
+[2025-05-02 07:17:20] - DEBUG - Creating subvolume: @
+[2025-05-02 07:17:20] - DEBUG - Creating subvolume: @.snapshots
+[2025-05-02 07:17:20] - DEBUG - Creating subvolume: @home
+[2025-05-02 07:17:20] - DEBUG - Creating subvolume: @log
+[2025-05-02 07:17:20] - DEBUG - Creating subvolume: @pkg
+[2025-05-02 07:17:20] - DEBUG - Partition /dev/sda2 is currently mounted at: ['/mnt/arch_btrfs']
+[2025-05-02 07:17:20] - DEBUG - Unmounting mountpoint: /mnt/arch_btrfs
+[2025-05-02 07:17:20] - INFO - Starting installation...
+[2025-05-02 07:17:20] - DEBUG - Mounting ordered layout
+[2025-05-02 07:17:20] - DEBUG - No lvm config defined to be mounted
+[2025-05-02 07:17:20] - DEBUG - Mounting partition layout
+[2025-05-02 07:17:20] - DEBUG - Mounting /dev/sda2: mount -o compress=zstd,subvol=@ /dev/sda2 /mnt
+[2025-05-02 07:17:20] - DEBUG - Mounting /dev/sda2: mount -o compress=zstd,subvol=@.snapshots /dev/sda2 /mnt/.snapshots
+[2025-05-02 07:17:20] - DEBUG - Mounting /dev/sda2: mount -o compress=zstd,subvol=@home /dev/sda2 /mnt/home
+[2025-05-02 07:17:20] - DEBUG - Mounting /dev/sda2: mount -o compress=zstd,subvol=@pkg /dev/sda2 /mnt/var/cache/pacman/pkg
+[2025-05-02 07:17:20] - DEBUG - Mounting /dev/sda2: mount -o compress=zstd,subvol=@log /dev/sda2 /mnt/var/log
+[2025-05-02 07:17:20] - DEBUG - Mounting /dev/sda1: mount /dev/sda1 /mnt/boot
+[2025-05-02 07:17:21] - INFO - Waiting for time sync (timedatectl show) to complete.
+[2025-05-02 07:17:21] - INFO - Waiting for automatic mirror selection (reflector) to complete.
+[2025-05-02 07:17:21] - INFO - Waiting for Arch Linux keyring sync (archlinux-keyring-wkd-sync) to complete.
+[2025-05-02 07:17:21] - DEBUG - Setting mirrors on live system
+[2025-05-02 07:17:21] - DEBUG - Checking download speed of ftp.lysator.liu.se[3.269796857935606] by fetching: http://ftp.lysator.liu.se/pub/archlinux/core/os/x86_64/core.db
+[2025-05-02 07:17:21] - DEBUG -     speed: 1006454.4829119846 (0.95MiB/s)
+[2025-05-02 07:17:21] - DEBUG - Checking download speed of ftp.lysator.liu.se[4.089936213690962] by fetching: https://ftp.lysator.liu.se/pub/archlinux/core/os/x86_64/core.db
+[2025-05-02 07:17:21] - DEBUG -     speed: 998657.705825289 (0.95MiB/s)
+[2025-05-02 07:17:21] - DEBUG - Checking download speed of ftp.myrveln.se[0.881205580814579] by fetching: http://ftp.myrveln.se/pub/linux/archlinux/core/os/x86_64/core.db
+[2025-05-02 07:17:22] - DEBUG -     speed: 1025434.6935776221 (0.97MiB/s)
+[2025-05-02 07:17:22] - DEBUG - Checking download speed of ftp.myrveln.se[3.7883309642960556] by fetching: https://ftp.myrveln.se/pub/linux/archlinux/core/os/x86_64/core.db
+[2025-05-02 07:17:22] - DEBUG -     speed: 1055351.7503319161 (1.0MiB/s)
+[2025-05-02 07:17:22] - DEBUG - Checking download speed of mirror.accum.se[1.8422642519872219] by fetching: http://mirror.accum.se/mirror/archlinux/core/os/x86_64/core.db
+[2025-05-02 07:17:22] - DEBUG -     speed: 880699.0605250471 (0.83MiB/s)
+[2025-05-02 07:17:22] - DEBUG - Checking download speed of mirror.accum.se[2.94284680563294] by fetching: https://mirror.accum.se/mirror/archlinux/core/os/x86_64/core.db
+[2025-05-02 07:17:22] - DEBUG -     speed: 1192298.9111138536 (1.13MiB/s)
+[2025-05-02 07:17:22] - DEBUG - Checking download speed of mirror.osbeck.com[1.9503048325560928] by fetching: https://mirror.osbeck.com/archlinux/core/os/x86_64/core.db
+[2025-05-02 07:17:23] - DEBUG -     speed: 1097873.7630221138 (1.04MiB/s)
+[2025-05-02 07:17:23] - DEBUG - Checking download speed of ftpmirror.infania.net[3.374398771266769] by fetching: http://ftpmirror.infania.net/mirror/archlinux/core/os/x86_64/core.db
+[2025-05-02 07:17:23] - DEBUG -     speed: 1269862.2933581388 (1.21MiB/s)
+[2025-05-02 07:17:23] - DEBUG - Checking download speed of ftp.ludd.ltu.se[5.848867926918757] by fetching: http://ftp.ludd.ltu.se/mirrors/archlinux/core/os/x86_64/core.db
+[2025-05-02 07:17:23] - DEBUG -     speed: 1409389.787542047 (1.34MiB/s)
+[2025-05-02 07:17:23] - DEBUG - Checking download speed of ftp.ludd.ltu.se[5.787614189899986] by fetching: https://ftp.ludd.ltu.se/mirrors/archlinux/core/os/x86_64/core.db
+[2025-05-02 07:17:23] - DEBUG -     speed: 1316500.8152579817 (1.25MiB/s)
+[2025-05-02 07:17:23] - DEBUG - Checking download speed of mirror.bahnhof.net[1.757525942865532] by fetching: http://mirror.bahnhof.net/pub/archlinux/core/os/x86_64/core.db
+[2025-05-02 07:17:23] - DEBUG -     speed: 2415962.188911171 (2.3MiB/s)
+[2025-05-02 07:17:23] - DEBUG - Checking download speed of mirror.bahnhof.net[1.9675339488136485] by fetching: https://mirror.bahnhof.net/pub/archlinux/core/os/x86_64/core.db
+[2025-05-02 07:17:23] - DEBUG -     speed: 3286661.3560830085 (3.13MiB/s)
+[2025-05-02 07:17:23] - DEBUG - Checking download speed of mirror.braindrainlan.nu[1.764382040888761] by fetching: https://mirror.braindrainlan.nu/archlinux/core/os/x86_64/core.db
+[2025-05-02 07:17:24] - DEBUG -     speed: 959933.8893761429 (0.91MiB/s)
+[2025-05-02 07:17:24] - DEBUG - Mirrorlist:
+
+
+## Sweden
+Server = http://ftp.myrveln.se/pub/linux/archlinux/$repo/os/$arch
+Server = http://mirror.bahnhof.net/pub/archlinux/$repo/os/$arch
+Server = https://mirror.braindrainlan.nu/archlinux/$repo/os/$arch
+Server = http://mirror.accum.se/mirror/archlinux/$repo/os/$arch
+Server = https://mirror.osbeck.com/archlinux/$repo/os/$arch
+Server = https://mirror.bahnhof.net/pub/archlinux/$repo/os/$arch
+Server = https://mirror.accum.se/mirror/archlinux/$repo/os/$arch
+Server = http://ftp.lysator.liu.se/pub/archlinux/$repo/os/$arch
+Server = http://ftpmirror.infania.net/mirror/archlinux/$repo/os/$arch
+Server = https://ftp.myrveln.se/pub/linux/archlinux/$repo/os/$arch
+Server = https://ftp.lysator.liu.se/pub/archlinux/$repo/os/$arch
+Server = https://ftp.ludd.ltu.se/mirrors/archlinux/$repo/os/$arch
+Server = http://ftp.ludd.ltu.se/mirrors/archlinux/$repo/os/$arch
+
+[2025-05-02 07:17:24] - DEBUG - Custom servers:
+## Custom Servers
+[2025-05-02 07:17:24] - DEBUG - System is not running in a VM: ['/usr/bin/systemd-detect-virt'] exited with abnormal exit code [1]: none
+
+[2025-05-02 07:17:24] - DEBUG - Optional repositories: []
+[2025-05-02 07:17:27] - INFO - Installing packages: ['base', 'base-devel', 'linux-firmware', 'linux', 'btrfs-progs', 'intel-ucode']
+[2025-05-02 07:23:11] - INFO - Setting keyboard language to sv-latin1
+[2025-05-02 07:23:16] - INFO - Keyboard language for this installation is now set to: sv-latin1
+[2025-05-02 07:24:53] - DEBUG - Setting mirrors on target
+[2025-05-02 07:24:53] - DEBUG - Mirrorlist:
+
+
+## Sweden
+Server = http://ftp.myrveln.se/pub/linux/archlinux/$repo/os/$arch
+Server = http://mirror.bahnhof.net/pub/archlinux/$repo/os/$arch
+Server = https://mirror.braindrainlan.nu/archlinux/$repo/os/$arch
+Server = http://mirror.accum.se/mirror/archlinux/$repo/os/$arch
+Server = https://mirror.osbeck.com/archlinux/$repo/os/$arch
+Server = https://mirror.bahnhof.net/pub/archlinux/$repo/os/$arch
+Server = https://mirror.accum.se/mirror/archlinux/$repo/os/$arch
+Server = http://ftp.lysator.liu.se/pub/archlinux/$repo/os/$arch
+Server = http://ftpmirror.infania.net/mirror/archlinux/$repo/os/$arch
+Server = https://ftp.myrveln.se/pub/linux/archlinux/$repo/os/$arch
+Server = https://ftp.lysator.liu.se/pub/archlinux/$repo/os/$arch
+Server = https://ftp.ludd.ltu.se/mirrors/archlinux/$repo/os/$arch
+Server = http://ftp.ludd.ltu.se/mirrors/archlinux/$repo/os/$arch
+
+[2025-05-02 07:24:53] - DEBUG - Custom servers:
+## Custom Servers
+[2025-05-02 07:24:53] - INFO - Setting up swap on zram
+[2025-05-02 07:24:53] - INFO - Installing packages: ['zram-generator']
+[2025-05-02 07:24:57] - INFO - Enabling service systemd-zram-setup@zram0.service
+[2025-05-02 07:24:57] - INFO - Adding bootloader Systemd-boot to /dev/sda1
+[2025-05-02 07:24:57] - DEBUG - Installing systemd bootloader
+[2025-05-02 07:24:57] - INFO - Installing packages: ['efibootmgr']
+[2025-05-02 07:24:58] - DEBUG - Identifying root partition by PARTUUID: 2b90ed20-5a37-412f-8447-01453906a1d2
+[2025-05-02 07:24:58] - DEBUG - kernel parameters: root=PARTUUID=2b90ed20-5a37-412f-8447-01453906a1d2 zswap.enabled=0 rootflags=subvol=@ rw rootfstype=btrfs
+[2025-05-02 07:24:58] - INFO - Installing packages: ['iwd']
+[2025-05-02 07:25:01] - INFO - Enabling service iwd
+[2025-05-02 07:25:01] - INFO - Enabling service systemd-networkd
+[2025-05-02 07:25:01] - INFO - Enabling service systemd-resolved
+[2025-05-02 07:25:01] - INFO - Creating user sa
+[2025-05-02 07:25:02] - INFO - Setting password for sa
+[2025-05-02 07:25:02] - INFO - Enabling sudo permissions for sa
+[2025-05-02 07:25:02] - INFO - Installing audio server: PIPEWIRE
+[2025-05-02 07:25:02] - INFO - Installing packages: ['pipewire', 'pipewire-alsa', 'pipewire-jack', 'pipewire-pulse', 'gst-plugin-pipewire', 'libpulse', 'wireplumber']
+[2025-05-02 07:25:33] - INFO - Installing packages: ['git', 'vim']
+[2025-05-02 07:25:41] - DEBUG - Installing GFX driver: All open-source
+[2025-05-02 07:25:41] - INFO - Installing packages: ['xorg-server', 'xorg-xinit', 'mesa', 'xf86-video-amdgpu', 'xf86-video-ati', 'xf86-video-nouveau', 'xf86-video-vmware', 'libva-mesa-driver', 'libva-intel-driver', 'intel-media-driver', 'vulkan-radeon', 'vulkan-intel', 'vulkan-nouveau']
+[2025-05-02 07:25:57] - INFO - Activating systemd-timesyncd for time synchronization using Arch Linux and ntp.org NTP servers
+[2025-05-02 07:25:57] - INFO - Enabling service systemd-timesyncd
+[2025-05-02 07:25:57] - INFO - Setting password for root
+[2025-05-02 07:25:57] - INFO - Updating /mnt/etc/fstab
+[2025-05-02 07:25:58] - INFO - For post-installation tips, see https://wiki.archlinux.org/index.php/Installation_guide#Post-installation
+[2025-05-02 07:26:51] - INFO - Installation completed without any errors.
+Log files temporarily available at /var/log/archinstall.
+You may reboot when ready.
+

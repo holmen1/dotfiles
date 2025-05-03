@@ -142,6 +142,12 @@ Having issues with language servers? Here's a step-by-step guide to diagnose and
 
 #### Language Server Not Installing
 
+First confirm unzip installed
+```
+yay -S unzip
+```
+luastyles: failed to install
+
 If Mason fails to install a language server:
 
 ```bash
@@ -168,64 +174,6 @@ sudo apt install clangd    # On Debian/Ubuntu
 :LspInstall <server>  " Install a specific server
 ```
 
-This structured approach should help resolve most LSP issues while keeping your slim-vim configuration clean and functional.-----
-
-
-
-
-
-
-I see you've configured HLS in your LSP setup, but it might not be loading properly. Here's how to test and fix it:
-
-## 1. Check if HLS is Installed
-
-First, verify HLS is properly installed via Mason:
-
-```
-:Mason
-```
-
-Look for `haskell-language-server` in the list:
-- If it's marked with ✓, it's installed
-- If not, press `i` on the entry to install it
-
-## 2. Check if HLS is Attaching to Your File
-
-Open your Haskell file and check which LSP servers are attached:
-
-```
-:LspInfo
-```
-
-This will show all active language servers for the current buffer. If HLS is missing, that's the issue.
-
-## 3. Test Common Issues
-
-### Filetype Recognition
-
-Make sure Neovim recognizes your file as Haskell:
-
-```
-:set filetype?
-```
-
-It should show `filetype=haskell`. If not, manually set it:
-
-```
-:set filetype=haskell
-```
-
-### File Extension
-
-Ensure your file has `.hs` extension. HLS typically only attaches to files with proper extensions.
-
-### Force LSP Attachment
-
-Try manually starting LSP for the current buffer:
-
-```
-:LspStart hls
-```
 
 ### Check Log for Errors
 

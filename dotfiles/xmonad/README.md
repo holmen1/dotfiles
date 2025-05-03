@@ -37,9 +37,14 @@ This repository contains a custom configuration for the [XMonad](https://xmonad.
 
 - [Xmobar](https://xmobar.org/)
 - [Kitty Terminal](https://sw.kovidgoyal.net/kitty/)
-- [xscreensaver](https://www.jwz.org/xscreensaver/)
-- [scrot](https://github.com/resurrecting-open-source-projects/scrot) (for screenshots)
 - [Brave](https://brave.com/linux/)
+- thunar fileexplorer
+- scrot for screenshots
+- xscreensaver
+- xcompmgr for opacity
+- trayer
+- feh wallpaper
+- xfce4-power-manager
 
 
 ## Post install

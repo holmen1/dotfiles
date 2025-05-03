@@ -26,6 +26,7 @@ fi
 # Compositor for opacity
 xcompmgr &
 
+# Needed for brightness keybinding
 export HOSTNAME="x"
 
 exec xmonad

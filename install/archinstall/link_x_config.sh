@@ -1,12 +1,6 @@
 #!/bin/bash
 
-# Check if the base directory is provided
-if [ -z "$1" ]; then
-  echo "Usage: $0 <base-directory>"
-  exit 1
-fi
-
-BASE_DIR="$1"
+BASE_DIR="~/repos/dotfiles"
 
 # Define an array of source and target directories
 links=(
