@@ -3,11 +3,11 @@
 Configuration files for various applications and tools
 
 Includes:
-- **Hyprland** - Modern Wayland compositor/window manager
-- **Xmonad** - Tiling window manager for X11
-- **Neovim** - Modal text editor with modern features
-- **Kitty** - Fast, feature-rich terminal emulator
-- **Bash** - GNU Bourne-Again SHell
+- [Hyprland](../dotfiles/dotfiles/hypr/README.md) Tiling window manager for Wayland
+- [Xmonad](../dotfiles/dotfiles/xmonad/README.md) Tiling window manager for X11
+- [Neovim](../dotfiles/dotfiles/slim-vim/README.md) hyperextensible Vim-based text editor
+- [Kitty](../dotfiles/dotfiles/kitty/README.md)  Fast, feature-rich terminal emulator
+
 
 
 ## Automation scripts
