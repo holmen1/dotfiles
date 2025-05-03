@@ -10,7 +10,7 @@ trayer --edge top --align right --SetDockType true --SetPartialStrut true \
 xsetroot -cursor_name left_ptr
 
 # Set a nice background
-feh --bg-fill --no-fehbg ~/repos/dotfiles/dotfiles/xmonad/haskell.png
+feh --bg-fill --no-fehbg ~/repos/dotfiles/wallpapers/haskell.png
 
 # Fire up screensaver
 xscreensaver -no-splash &

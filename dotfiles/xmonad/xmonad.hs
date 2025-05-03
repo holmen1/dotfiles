@@ -9,6 +9,7 @@ import System.Environment (lookupEnv, getExecutablePath)
 import System.FilePath (takeDirectory, (</>))
 
 myModMask       = mod4Mask -- Rebind Mod to the Super key
+myFileManager   = "thunar"
 myTerminal      = "kitty"
 myBrowser       = "brave"
 myAppLauncher   = "dmenu_run"
@@ -39,11 +40,12 @@ myConfig additionalKeys' = def
   `additionalKeys`
     [ ((myModMask, xK_a                   ), spawn myAppLauncher)
     , ((myModMask, xK_f                   ), spawn myBrowser)
+    , ((myModMask, xK_e                   ), spawn myFileManager)
     , ((myModMask .|. shiftMask, xK_Return), spawn myTerminal)
     , ((myModMask, xK_c                   ), kill)
     , ((myModMask .|. shiftMask, xK_z), spawn "xscreensaver-command -lock")
     , ((myModMask, xK_Tab), nextWS)  -- Cycle to the next workspace
-    -- TODO , ((myModMask .|. shiftMask, xK_s), unGrab *> spawn "scrot -s ~/Downloads/screenshot_%Y-%m-%d_%H-%M-%S.png")
+    , ((myModMask .|. shiftMask, xK_s), unGrab *> spawn "scrot -s ~/Downloads/screenshot_%Y-%m-%d_%H-%M-%S.png")
     ] ++ additionalKeys'
 
 -- Define machine-specific keybindings based on HOSTNAME
