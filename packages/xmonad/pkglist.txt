@@ -26,6 +26,7 @@ pipewire-pulse
 scrot
 thunar
 trayer
+unzip
 vim
 vulkan-intel
 vulkan-nouveau
