@@ -10,7 +10,7 @@ import System.FilePath (takeDirectory, (</>))
 
 myModMask       = mod4Mask -- Rebind Mod to the Super key
 myFileManager   = "thunar"
-myTerminal      = "kitty"
+myTerminal      = "st"
 myBrowser       = "brave"
 myAppLauncher   = "dmenu_run"
 myMagenta       = "#FF00FF"
@@ -19,7 +19,6 @@ myCyan          = "#00FFFF"
 main :: IO ()
 main = do 
     specificKeys <- machineSpecificKeys
-    print (map fst specificKeys) -- Debug: Print only the keybindings
     xmonad
       . ewmhFullscreen
       . ewmh
