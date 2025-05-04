@@ -3,23 +3,14 @@
 Configuration files for various applications and tools
 
 Includes:
-- [Hyprland](../dotfiles/dotfiles/hypr/README.md) Tiling window manager for Wayland
-- [Xmonad](../dotfiles/dotfiles/xmonad/README.md) Tiling window manager for X11
-- [Neovim](../dotfiles/dotfiles/slim-vim/README.md) hyperextensible Vim-based text editor
-- [Kitty](../dotfiles/dotfiles/kitty/README.md)  Fast, feature-rich terminal emulator
+- [Hyprland](https://github.com/holmen1/dotfiles/tree/master/dotfiles/hypr) a dynamic tiling Wayland compositor
+- [Xmonad](https://github.com/holmen1/dotfiles/tree/master/dotfiles/xmonad) a dynamic tiling X11 window manager
+- [Neovim](https://github.com/holmen1/dotfiles/tree/master/dotfiles/nvim) hyperextensible Vim-based text editor
 
-
+## Installation guides
+- [archinstall](https://github.com/holmen1/dotfiles/tree/master/install/archinstall)
 
 ## Automation scripts
 
-* configure Git
-```
-./gitconfig.sh
-```
-* Generate SSH key
-```
-./generate_key.sh
-```
-After you generate an SSH key pair, you must add the public key to GitHub.com to enable SSH access for your account
 * Export/import packages
 * Link configuration

@@ -1,165 +1,192 @@
-# neovim
+# slim-vim
 
-Windows
+A slim neovim configuration based on [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim)
 
-:vs [file_path] - split the screen vertically  
-:sp [file_path] - split the window horizontally  
-Ctrl + w and press h - move to the split window on the left  
-Ctrl + w and press j - move to the split window on the down  
-Ctrl + w and press k - move to the split window on the up  
-Ctrl + w and press l - move to the split window on the right
+## Features
 
-## Custom keymap
+- **Telescope-Powered Navigation**: Fast fuzzy finding for files, symbols, and help
+- **Syntax Highlighting**: Modern syntax highlighting via Treesitter
+- **Streamlined LSP Integration**: Core language server support for C and Haskell
+- **Which-Key Integration**: Popup help for keybindings as you type them
+- **Terminal Integration**: Built-in terminal with easy mode switching
 
-### neo-tree
-leader nt - open neotree  
-a - create a new file OR directory. Add a `/` to the end of the name to make a directory  
-d - delete a file or directory  
-i - show file details in popup window  
-r - rename a file or directory
-y - copy the selected file or directory  
-p - paste the selected file or directory  
-m - move the selected file or directory      
+## Key Plugins
 
-### gitsigns
-[c - Jump to previous git change  
-leader hs - stage hunk  
-leader hr - reset hunk  
-leader hS - stage buffer  
-leader hu - undo stage hunk  
-leader hR - reset buffer  
-leader hp - preview hunk  
-leader hb - blame line  
-leader hd - diff against index
+| Plugin | Purpose | Why It's Included |
+|--------|---------|-------------------|
+| **telescope.nvim** | Fuzzy finding | Essential navigation for files, symbols, and help |
+| **nvim-treesitter** | Syntax highlighting | Better code understanding with minimal overhead |
+| **lspconfig & mason.nvim** | Language server setup | Code intelligence |
+| **mini.nvim** | Statusline and text tools | Lightweight alternative to multiple separate plugins |
+| **which-key.nvim** | Keybinding help | Discoverability without memorization |
 
-### LSP
-K - vim.lsp.buf.hover  
-leader gd - vim.lsp.buf.definition  
-leader gr - vim.lsp.buf.references  
-leader ca - vim.lsp.buf.code_action  
+
+## Keymaps
+
+### Window Navigation
+| Mapping | Description |
+|---------|-------------|
+| `<C-h>` | Move focus to the left window |
+| `<C-j>` | Move focus to the lower window |
+| `<C-k>` | Move focus to the upper window |
+| `<C-l>` | Move focus to the right window |
+
+### Diagnostics
+| Mapping | Description |
+|---------|-------------|
+| `<leader>q` | Open diagnostic quickfix list |
 
 ### Telescope
-leader sf - builtin.find_files  
-leader ss - builtin.builtin  
-leader sw - builtin.grep_string  
-leader sg - builtin.live_grep
-
-### Small Terminal (Custom)
-leader st - open terminal
-C-\ C-n - exit terminal mode
-
-
-## vim-cheat
-
-w - jump forwards to the start of a word
-
-b - jump backwards to the start of a word
-
-e - jump forwards to the end of a word
-
-0 - jump to the start of the line
-
-$ - jump to the end of the line
-
-gg - go to the first line of the document
-
-G - go to the last line of the document
-
-5gg - go to line 5
-
-
-
-Search and replace
-
-/pattern - search for pattern
-
-n - repeat search in same direction
-
-N - repeat search in opposite direction
-
-Ctrl + o - go back to where you came from
-
-% - move cursor to matching character (default supported pairs: '()', '{}', '[]')
-
-:s/old/new - replace first occurrence of old
-
-:s/old/new/g - replace  substitute globally in the line
-
-:#,#s/old/new/g - where #,# are the line numbers of the range of lines
-
-:%s/old/new/g - replace all old with new throughout file
-
-:%s/old/new/gc - replace all old with new throughout file with confirmations
-
-
-
-I - insert at the beginning of the line
-
-a - insert (append) after the cursor
-
-A - insert (append) at the end of the line
-
-o - append (open) a new line below the current line
-
-O - append (open) a new line above the current line
-
-
-
-Editing
-
-r - replace a single character
-
-R - replace more than one character
-
-cc - change (replace) entire line
-
-ciw - change (replace) entire word
-
-cw or ce - change (replace) to the end of the word
-
-u - undo
-
-U - restore (undo) last changed line
-
-
-
-Cut and paste
-
-yy - yank (copy) a line
-
-2yy - yank (copy) 2 lines
-
-yw - yank (copy) the characters of the word from the cursor position to the start of the next word
-
-dd - delete (cut) a line
-
-2dd - delete (cut) 2 lines
-
-dw - delete (cut) the characters of the word from the cursor position to the start of the next word
-
-d$ or D - delete (cut) to the end of the line
-
-p - put (paste) the clipboard after cursor
-
-P - put (paste) before cursor
-
-
-
-Write and read files
-
-v motion :w FILENAME - saves the Visually selected lines in file FILENAME
-
-:r FILENAME - retrieves disk file FILENAME and puts it below the cursor position
-
-
-
-
-
-
-## Nerd-fonts
+| Mapping | Description | Function |
+|---------|-------------|----------|
+| `<leader>sf` | Search Files | Find files in current directory |
+| `<leader>sg` | Search by Grep | Search file contents (live grep) |
+| `<leader>sw` | Search current Word | Find occurrences of word under cursor |
+| `<leader>sr` | Search Resume | Resume previous search |
+| `<leader>ss` | Search Select Telescope | Show all available Telescope commands |
+| `<leader>sd` | Search Diagnostics | Show all diagnostics |
+| `<leader>s.` | Search Recent Files | Show recently opened files |
+| `<leader><leader>` | Find Buffers | Switch between open files/buffers |
+| `<leader>sc` | Search Commits | View git history for current file |
+
+| Mapping | Description | Details |
+|---------|-------------|---------|
+| `<leader>/` | Search in Current Buffer | Fuzzy find in current file with dropdown UI |
+| `<leader>s/` | Search in Open Files | Live grep limited to open files only |
+| `<leader>sn` | Search Neovim Config | Find files in your Neovim config directory |
+
+
+
+### LSP Navigation & Actions
+| Mapping | Description | When to Use |
+|---------|-------------|------------|
+| `grn` | Rename symbol | Rename variables/functions across files |
+| `gra` | Code action | Fix errors, organize imports |
+| `grr` | Find references | See all usages of a symbol |
+| `gri` | Go to implementation | Jump to implementation (vs declaration) |
+| `grd` | Go to definition | Jump to where a symbol is defined |
+| `grD` | Go to declaration | Jump to declaration (useful in C/C++ for headers) |
+| `grt` | Go to type definition | See a variable's type definition |
+| `gO` | Document symbols | Browse all symbols in current file |
+| `gW` | Workspace symbols | Browse all symbols in project |
+| `<leader>f` | Format code | Format current buffer or selection |
+| `<leader>th` | Toggle inlay hints | Show/hide inline type hints |
+
+
+## Terminal Integration
+
+Neovim's built-in terminal emulator lets you run shell commands without leaving the editor
+
+| Command | Action |
+|---------|--------|
+| `:terminal` | Open terminal in current window |
+| `:split \| terminal` | Open terminal in horizontal split |
+| `:vsplit \| terminal` | Open terminal in vertical split |
+| `:terminal [cmd]` | Run specific command (e.g., `:terminal python`) |
+
+### Terminal Mode Navigation
+
+| Mapping | Action |
+|---------|--------|
+| `<C-\\><C-n>` | Exit terminal mode (custom mapping) |
+| `i` or `a` | Enter terminal mode from normal mode |
+| `<C-h/j/k/l>` | Navigate between windows (in normal mode) |
+| `<C-u>` / `<C-d>`| Scroll up/down half-page |
+| `<C-b>` / `<C-f>`| Scroll up/down full-page |
+| `{` / `}`| Jump between paragraphs |
+| `:bd!` | Close a terminal buffer completely |
+
+
+####  Compare current buffer with saved file
+
+```vim
+:diffsplit %
 ```
-$ sudo pacman -S nerd-fonts
-```
-select 42) ttf-jetbrains-mono-nerd  
-Add font to terminal profile
 
+```vim
+:w !diff % -
+``
+Show changes with context
+```vim
+:w !diff -u % -
+```
+
+Colorized diff (if colordiff is installed)
+```vim
+:w !colordiff % -
+```
+Keyboard Navigation in Diff Mode
+
+| Mapping | Action |
+|---------|--------|
+| `]c` | Jump to next difference |
+| `[c` | Jump to previous difference |
+| `do` | Obtain changes (from other window) |
+| `dp` | Put changes (to other window) |
+| `zr` | Expand folds to see more context |
+
+
+## LSP Troubleshooting
+
+Having issues with language servers? Here's a step-by-step guide to diagnose and fix common problems:
+
+### Check Installation and Status
+
+```vim
+:Mason                " Check if language servers are installed
+:LspInfo              " View active language servers for current buffer
+:LspLog               " Check for errors in LSP log
+```
+
+### Common Issues and Fixes
+
+#### Language Server Not Installing
+
+First confirm unzip installed
+```
+yay -S unzip
+```
+luastyles: failed to install
+
+If Mason fails to install a language server:
+
+```bash
+# For Haskell Language Server, try direct installation
+ghcup install hls    # Install via GHCup
+
+# For C/C++, ensure clangd is available
+sudo apt install clangd    # On Debian/Ubuntu
+```
+
+#### Language Server Not Attaching
+
+**Force server start**
+```vim
+:LspStart hls      " For Haskell
+:LspStart clangd   " For C/C++
+```
+
+#### Advanced LSP Commands
+
+```vim
+:LspRestart           " Restart LSP servers
+:LspStop              " Stop LSP servers
+:LspInstall <server>  " Install a specific server
+```
+
+
+### Check Log for Errors
+
+Look for errors in the LSP log:
+
+```
+:LspLog
+```
+
+Then add this to your LSP configuration:
+
+```lua
+hls = {
+  cmd = { "haskell-language-server-wrapper", "--lsp" }
+}
+```

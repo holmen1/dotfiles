@@ -7,7 +7,7 @@ links=(
     "$BASE_DIR/dotfiles/kitty:~/.config/kitty"
     "$BASE_DIR/dotfiles/xmobar:~/.config/xmobar"
     "$BASE_DIR/dotfiles/xmonad:~/.config/xmonad"
-    "$BASE_DIR/dotfiles/slim-vim:~/.config/nvim"
+    "$BASE_DIR/dotfiles/nvim:~/.config/nvim"
     "$BASE_DIR/dotfiles/.bashrc:~/.bashrc"
     "$BASE_DIR/dotfiles/.xinitrc:~/.xinitrc"
 )
