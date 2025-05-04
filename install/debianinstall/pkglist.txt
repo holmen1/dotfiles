@@ -1,0 +1,16 @@
+brightnessctl
+code
+feh
+kitty
+less
+libghc-xmonad-contrib-dev
+libghc-xmonad-dev
+scrot
+suckless-tools
+trayer
+vim
+wget
+xscreensaver
+xcompmgr
+xmobar
+xmonad

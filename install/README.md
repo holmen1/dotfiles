@@ -4,9 +4,53 @@ Guides for setting up Linux environments quickly and consistently
 ## arch
 Go to [Arch Linux installation guide](./archinstall/README.md)
 
+## debian
+Go to [Debian installation guide](./debianinstall/README.md)
 
 
 ## Post-installation
+
+### Link dotfiles
+Edit and run
+[./link_x_config.sh](./link_x_config.sh)
+
+### startx
+Enter tty via C-A-F2 or disable display manager (lightdm)  
+```$ sudo systemctl disable lightdm```
+
+login, then startx  
+
+If fail, try
+```
+$ xmonad --recompile 
+```
+Start xmonad with: startx  
+start xfce: startx /usr/bin/startxfce4
+
+leave x session
+```
+$ pkill x 
+```
+
+### Display manager  
+
+To enable display manager, confirm ```.config/xmonad/xmonad-session-rc```linked   
+Edit xmonad-session like so
+```
+$ diff /usr/bin/xmonad-session /usr/bin/xmonad-session.bak 
+3c3
+< if [ -r ".config/xmonad/xmonad-session-rc" ]
+---
+> if [ -r ".xmonad/xmonad-session-rc" ]
+5c5
+<   . .config/xmonad/xmonad-session-rc
+---
+>   . .xmonad/xmonad-session-rc
+```
+
+
+
+
 
 ### Configure Git
 git config --global user.name "$git_username"

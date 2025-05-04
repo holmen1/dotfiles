@@ -36,7 +36,7 @@ This repository contains a custom configuration for the [XMonad](https://xmonad.
 ## Requirements
 
 - [Xmobar](https://xmobar.org/)
-- [Kitty Terminal](https://sw.kovidgoyal.net/kitty/)
+- [st - simple terminal](https://st.suckless.org/)
 - [Brave](https://brave.com/linux/)
 - thunar fileexplorer
 - scrot for screenshots

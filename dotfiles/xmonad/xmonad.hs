@@ -5,6 +5,7 @@ import XMonad.Hooks.StatusBar.PP
 import XMonad.Hooks.FadeWindows
 import XMonad.Actions.CycleWS
 import XMonad.Hooks.EwmhDesktops (ewmhFullscreen, ewmh)
+import XMonad.Util.Ungrab (unGrab) -- Add this import if xmonad 0.17.2
 import System.Environment (lookupEnv, getExecutablePath)
 import System.FilePath (takeDirectory, (</>))
 
