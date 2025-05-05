@@ -5,7 +5,6 @@ import XMonad.Hooks.StatusBar.PP
 import XMonad.Hooks.FadeWindows
 import XMonad.Actions.CycleWS
 import XMonad.Hooks.EwmhDesktops (ewmhFullscreen, ewmh)
--- import XMonad.Util.Ungrab (unGrab) --  0.17.2 in debian broken
 import System.Environment (lookupEnv, getExecutablePath)
 import System.FilePath (takeDirectory, (</>))
 
@@ -39,12 +38,14 @@ myConfig additionalKeys' = def
     }
   `additionalKeys`
     [ ((myModMask, xK_a                   ), spawn myAppLauncher)
-    , ((myModMask, xK_f                   ), spawn myBrowser)
+    , ((myModMask, xK_w                   ), spawn myBrowser)
+    , ((myModMask, xK_f                   ), spawn "firefox")
     , ((myModMask, xK_e                   ), spawn myFileManager)
     , ((myModMask .|. shiftMask, xK_Return), spawn myTerminal)
     , ((myModMask, xK_c                   ), kill)
-    , ((myModMask .|. shiftMask, xK_z), spawn "xscreensaver-command -lock")
-    , ((myModMask, xK_Tab), nextWS)  -- Cycle to the next workspace
+    , ((myModMask .|. shiftMask, xK_z     ), spawn "xscreensaver-command -lock")
+    , ((myModMask, xK_Tab                 ), nextWS)  -- Cycle to the next workspace
+    , ((myModMask, xK_s                   ), spawn "scrot ~/Downloads/screenshot_%Y-%m-%d_%H-%M-%S.png")
     -- , ((myModMask .|. shiftMask, xK_s), unGrab *> spawn "scrot -s ~/Downloads/screenshot_%Y-%m-%d_%H-%M-%S.png")
     ] ++ additionalKeys'
 

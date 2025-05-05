@@ -89,20 +89,6 @@ Link
 $ sudo ln -s /opt/VSCode-linux-x64/bin/code /usr/local/bin/code
 ```
 
-### VSCode navigation
-Focus the Terminal:
-
-Ctrl + ` (backtick): Toggles the terminal visibility and focuses on it  
-Ctrl + Shift + `: Creates a new terminal and focuses on it  
-
-Focus Back to the Editor:
-
-Ctrl + 1: Focus on the first editor group  
-Ctrl + 2, Ctrl + 3, etc., for other editor groups
-
-Explorer:  
-Ctrl + Shift + E: Focus on the Explorer view
-
 ### Useful Keyboard Shortcuts
 - `Ctrl+Alt+F2` - Switch to TTY2 console (F1-F6 for different TTY sessions)
 - `Ctrl+Alt+F7` - Return to GUI session

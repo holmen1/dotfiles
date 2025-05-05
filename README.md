@@ -8,7 +8,8 @@ Includes:
 - [Neovim](https://github.com/holmen1/dotfiles/tree/master/dotfiles/nvim) hyperextensible Vim-based text editor
 
 ## Installation guides
-- [archinstall](https://github.com/holmen1/dotfiles/tree/master/install/archinstall)
+- [arch](https://github.com/holmen1/dotfiles/tree/master/install/archinstall)
+- [debian](https://github.com/holmen1/dotfiles/tree/master/install/debianinstall)
 
 ## Automation scripts
 

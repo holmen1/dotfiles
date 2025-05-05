@@ -26,11 +26,8 @@ $ sudo apt install xmonad libghc-xmonad-dev  xmobar [libghc-xmonad-contrib-dev]
 ```
 Additional packages for wallpaper, system-tray, d-menu, screen
 ```
-$ sudo apt install suckless-tools trayer feh xscreensaver xcompmgr
+$ sudo apt install suckless-tools trayer feh xscreensaver xcompmgr scrot
 ```
-
-### VScode
-sudo apt install ./Downloads/code_1.92.0-1722473020_amd64.deb
 
 ### dconf
 sudo dconf-editor /
