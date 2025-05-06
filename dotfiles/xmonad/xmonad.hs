@@ -10,8 +10,6 @@ import System.FilePath (takeDirectory, (</>))
 import qualified XMonad.StackSet as W
 import XMonad.Prompt
 import XMonad.Prompt.Workspace
---import XMonad.Util.NamedWindows (getName)
---import XMonad.Util.WorkspaceCompare (getSortByIndex)
 
 myModMask       = mod4Mask -- Rebind Mod to the Super key
 myFileManager   = "thunar"
@@ -27,11 +25,7 @@ main = do
     xmonad
       . ewmhFullscreen
       . ewmh
-      . withEasySB (statusBarProp "xmobar" (pure myXmobarPP)) toggleStrutsKey
       $ myConfig specificKeys
-  where
-    toggleStrutsKey :: XConfig Layout -> (KeyMask, KeySym)
-    toggleStrutsKey XConfig{ modMask = m } = (m, xK_b)
 
 myConfig additionalKeys' = def
     { modMask    = myModMask,
@@ -108,12 +102,4 @@ showWorkspaceStatus = do
                  
     -- Use timeout (-t) of 1500ms and prevent title truncation with proper flags
         -- Use timeout (-t) of 1500ms and prevent title truncation with proper flags
-    spawn $ "notify-send -t 800 -u normal -h string:x-canonical-private-synchronous:ws 'WS' '" ++ status ++ "'"
-
-myXmobarPP :: PP
-myXmobarPP = def
-    { ppSep   = xmobarColor myMagenta "" $ ppSep def
-     , ppTitleSanitize   = xmobarStrip
-     , ppCurrent         = xmobarColor myCyan ""
-     , ppOrder = \[ws, l, wins] -> [l, ws, wins]
-    }
+    spawn $ "notify-send -t 800 -u normal -h string:x-canonical-private-synchronous:ws 'Workspaces' '" ++ status ++ "'"

@@ -4,29 +4,8 @@
 # Used by xmonad to add additional keys to make brightness work
 export HOSTNAME="xps"
 
-# Set up an icon tray
-trayer --edge top --align right --SetDockType true --SetPartialStrut true \
- --expand true --width 4 --transparent true --tint 0x5f5f5f --height 18 &
-
-# Set the default X cursor to the usual pointer
-xsetroot -cursor_name left_ptr
-
 # Set a nice background
 feh --bg-fill --no-fehbg ~/repos/dotfiles/wallpapers/haskell.png
-
-# Fire up screensaver
-xscreensaver -no-splash &
-
-# Start network manager applet
-if [ -x /usr/bin/nm-applet ] ; then
-   nm-applet --sm-disable &
-fi
-
-# Start Mullvad VPN
-if [ -x /usr/bin/mullvad-vpn ] ; then
-   mullvad-vpn &
-   sleep 5 && mullvad connect &
-fi
 
 # Compositor for opacity
 xcompmgr &
