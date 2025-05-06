@@ -1,10 +1,21 @@
 #!/bin/sh
 
-# [... default stuff that your distro may throw in here ...] #
+# Check for required applications
+check_command() {
+    command -v "$1" >/dev/null 2>&1 || { echo >&2 "Required program $1 not installed. Aborting."; exit 1; }
+}
 
-# Set up an icon tray
-trayer --edge top --align right --SetDockType true --SetPartialStrut true \
- --expand true --width 4 --transparent true --tint 0x5f5f5f --height 18 &
+# Essential applications
+check_command xmonad
+check_command feh
+check_command xcompmgr
+check_command brightnessctl
+check_command dunst
+check_command st
+check_command thunar
+#check_command iwctl
+
+# [... default stuff that your distro may throw in here ...] #
 
 # Set the default X cursor to the usual pointer
 xsetroot -cursor_name left_ptr
@@ -12,21 +23,21 @@ xsetroot -cursor_name left_ptr
 # Set a nice background
 feh --bg-fill --no-fehbg ~/repos/dotfiles/wallpapers/haskell.png
 
-# Fire up screensaver
-xscreensaver -no-splash &
+# Kill any existing notification daemons
+killall xfce4-notifyd dunst notify-osd 2>/dev/null || true
 
-# Power Management
-# xfce4-power-manager &
-# not needed if using xfce4-session
-
-if [ -x /usr/bin/nm-applet ] ; then
-   nm-applet --sm-disable &
-fi
+# Start dunst notification daemon
+dunst &
 
 # Compositor for opacity
 xcompmgr &
 
 # Needed for brightness keybinding
 export HOSTNAME="x"
+
+# Launch key binding daemon if installed (optional)
+# if command -v xbindkeys >/dev/null 2>&1; then
+#    xbindkeys &
+# fi
 
 exec xmonad

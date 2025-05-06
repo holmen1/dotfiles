@@ -37,3 +37,38 @@ sudo apt autoremove
 sudo apt clean  
 sudo flatpak uninstall --unused
 
+
+### wifi
+Show overall network status
+```
+nmcli general status
+```
+Show all network devices
+```
+nmcli device status
+```
+Show active connections
+```
+nmcli connection show --active
+```
+Scan for available WiFi networks
+```
+nmcli device wifi list
+```
+Connect to a WiFi network
+```
+nmcli device wifi connect SSID password PASSWORD
+```
+Connect to a saved network
+```
+nmcli connection up "Network Name"
+```
+Turn WiFi on/off
+```
+nmcli radio wifi on
+nmcli radio wifi off
+```
+```
+nmcli device wifi connect <SSID> password <password> ifname <ifname>
+```
+

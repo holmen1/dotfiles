@@ -1,12 +1,11 @@
 import XMonad
-import XMonad.Util.EZConfig (additionalKeys)
-import XMonad.Hooks.StatusBar
-import XMonad.Hooks.StatusBar.PP
-import XMonad.Hooks.FadeWindows
-import XMonad.Actions.CycleWS
-import XMonad.Hooks.EwmhDesktops (ewmhFullscreen, ewmh)
 import System.Environment (lookupEnv, getExecutablePath)
 import System.FilePath (takeDirectory, (</>))
+import XMonad.Util.EZConfig (additionalKeys)
+import XMonad.Hooks.FadeWindows
+import XMonad.Hooks.EwmhDesktops (ewmhFullscreen, ewmh)
+import XMonad.Actions.CycleWS
+import qualified XMonad.StackSet as W
 
 myModMask       = mod4Mask -- Rebind Mod to the Super key
 myFileManager   = "thunar"
@@ -22,11 +21,7 @@ main = do
     xmonad
       . ewmhFullscreen
       . ewmh
-      . withEasySB (statusBarProp "xmobar" (pure myXmobarPP)) toggleStrutsKey
       $ myConfig specificKeys
-  where
-    toggleStrutsKey :: XConfig Layout -> (KeyMask, KeySym)
-    toggleStrutsKey XConfig{ modMask = m } = (m, xK_b)
 
 myConfig additionalKeys' = def
     { modMask    = myModMask,
@@ -43,7 +38,6 @@ myConfig additionalKeys' = def
     , ((myModMask, xK_e                   ), spawn myFileManager)
     , ((myModMask .|. shiftMask, xK_Return), spawn myTerminal)
     , ((myModMask, xK_c                   ), kill)
-    , ((myModMask .|. shiftMask, xK_z     ), spawn "xscreensaver-command -lock")
     , ((myModMask, xK_Tab                 ), nextWS)  -- Cycle to the next workspace
     , ((myModMask, xK_s                   ), spawn "scrot ~/Downloads/screenshot_%Y-%m-%d_%H-%M-%S.png")
     -- , ((myModMask .|. shiftMask, xK_s), unGrab *> spawn "scrot -s ~/Downloads/screenshot_%Y-%m-%d_%H-%M-%S.png")
@@ -79,11 +73,3 @@ myLayoutHook = tiled ||| Mirror tiled ||| Full
     ratio    = 5/8    -- Default proportion of screen occupied by master pane
     delta    = 3/100  -- Percent of screen to increment by when resizing panes
 myFadeHook = composeAll [ opaque, isUnfocused --> transparency 0.8 ]
-
-myXmobarPP :: PP
-myXmobarPP = def
-    { ppSep   = xmobarColor myMagenta "" $ ppSep def
-     , ppTitleSanitize   = xmobarStrip
-     , ppCurrent         = xmobarColor myCyan ""
-     , ppOrder = \[ws, l, wins] -> [l, ws, wins]
-    }

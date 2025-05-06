@@ -10,6 +10,35 @@ Go to [Debian installation guide](./debianinstall/README.md)
 
 ## Post-installation
 
+### System Monitoring (Battery & WiFi) with Dunst Notifications
+
+```bash
+# Create symlinks
+ln -s ~/repos/dotfiles/scripts/system-monitor.service ~/.config/systemd/user/system-monitor.service
+ln -s ~/repos/dotfiles/scripts/system-monitor.timer ~/.config/systemd/user/system-monitor.timer
+
+# Enable and start
+systemctl --user daemon-reload
+systemctl --user enable system-monitor.timer
+systemctl --user start system-monitor.timer
+```
+
+To test without waiting for your battery to actually drain
+```bash
+# Force a low battery notification
+notify-send -u critical "Battery Critical" "Battery level is low!" -i battery-caution
+```
+
+Verify Status
+```bash
+# Check if timer is running
+systemctl --user status battery-monitor.timer
+```
+
+This setup will give you urgent notifications when your battery is critically low or wifi not connected
+
+
+
 ### Link dotfiles
 Edit and run
 [./link_x_config.sh](./link_x_config.sh)
@@ -122,5 +151,34 @@ Find and execute a command on each result:
 ```
 find /path/to/search -name "*.txt" -exec grep "search term" {} \;
 ```
+
+### Setting Brightness Keybindings with xbindkeys
+
+1. First, install xbindkeys:
+   ```bash
+   sudo apt install xbindkeys
+   ```
+
+2. Create a config file:
+   ```bash
+   touch ~/.xbindkeysrc
+   ```
+
+3. Add brightness controls to ~/.xbindkeysrc:
+   ```
+   # Decrease brightness
+   "brightnessctl set 10%-"
+     XF86MonBrightnessDown
+
+   # Increase brightness
+   "brightnessctl set +10%"
+     XF86MonBrightnessUp
+   ```
+
+4. Add xbindkeys to your .xinitrc:
+   ```bash
+   # Launch key binding daemon
+   xbindkeys &
+   ```
 
 
