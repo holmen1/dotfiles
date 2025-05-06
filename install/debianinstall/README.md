@@ -63,3 +63,177 @@ nmcli radio wifi off
 
 $ nmcli device wifi connect <SSID> password <password> ifname <ifname>
 
+
+# Battery Warning Script with Dunst Notifications
+
+Let's create a script that monitors your battery and sends urgent notifications when it's below 10%. This fits perfectly with your minimal setup and makes good use of dunst.
+
+## Create the Battery Monitor Script
+
+Create this script in your dotfiles repository:
+
+````bash
+#!/bin/bash
+# filepath: /home/holmen1/repos/dotfiles/scripts/battery-monitor.sh
+
+# Get battery percentage
+battery_level=$(cat /sys/class/power_supply/BAT*/capacity 2>/dev/null || echo "0")
+
+# Get charging status
+charging_status=$(cat /sys/class/power_supply/BAT*/status 2>/dev/null || echo "Unknown")
+
+# Check if battery level is below threshold and not charging
+if [ "$battery_level" -le 10 ] && [ "$charging_status" != "Charging" ]; then
+    notify-send -u critical "Battery Critical" "Battery level is ${battery_level}%. Connect charger now!" -i battery-caution
+fi
+
+# Optional: Medium warning
+if [ "$battery_level" -le 20 ] && [ "$charging_status" != "Charging" ] && [ "$battery_level" -gt 10 ]; then
+    notify-send -u normal "Battery Low" "Battery level is ${battery_level}%" -i battery-low
+fi
+````
+
+Make it executable:
+
+```bash
+chmod +x ~/repos/dotfiles/scripts/battery-monitor.sh
+```
+
+## Run Periodically with a Systemd User Timer
+
+Instead of cron, let's use systemd user timers which are more modern and don't require root:
+
+1. Create the service file:
+
+```bash
+mkdir -p ~/.config/systemd/user/
+```
+
+2. Create the service:
+
+````bash
+[Unit]
+Description=Check battery level and notify if low
+
+[Service]
+Type=oneshot
+ExecStart=/home/holmen1/repos/dotfiles/scripts/battery-monitor.sh
+
+[Install]
+WantedBy=default.target
+````
+
+3. Create the timer:
+
+````bash
+[Unit]
+Description=Run battery check every 2 minutes
+
+[Timer]
+OnBootSec=1min
+OnUnitActiveSec=2min
+Persistent=true
+
+[Install]
+WantedBy=timers.target
+````
+
+4. Enable and start the timer:
+
+```bash
+systemctl --user daemon-reload
+systemctl --user enable battery-monitor.timer
+systemctl --user start battery-monitor.timer
+```
+
+## Testing Your Setup
+
+To test without waiting for your battery to actually drain:
+
+```bash
+# Force a low battery notification
+notify-send -u critical "Battery Critical" "Battery level is low!" -i battery-caution
+```
+
+## Verify Status
+
+```bash
+# Check if timer is running
+systemctl --user status battery-monitor.timer
+```
+
+This setup will give you urgent notifications when your battery is critically low, completing your minimal but functional XMonad environment.
+
+
+
+--
+# Setting Up Automatic Battery Monitoring
+
+Your battery monitor script is created correctly, but it's not running automatically because we need to set up the systemd service and timer files. Here's how to set it up:
+
+## 1. Create the Service File
+
+```bash
+mkdir -p ~/.config/systemd/user/
+```
+
+Create the service file:
+
+```bash
+cat > ~/.config/systemd/user/battery-monitor.service << 'EOF'
+[Unit]
+Description=Check battery level and notify if low
+
+[Service]
+Type=oneshot
+ExecStart=/home/holmen1/repos/dotfiles/scripts/battery-monitor.sh
+
+[Install]
+WantedBy=default.target
+EOF
+```
+
+## 2. Create the Timer File
+
+```bash
+cat > ~/.config/systemd/user/battery-monitor.timer << 'EOF'
+[Unit]
+Description=Run battery check every 2 minutes
+
+[Timer]
+OnBootSec=1min
+OnUnitActiveSec=2min
+Persistent=true
+
+[Install]
+WantedBy=timers.target
+EOF
+```
+
+## 3. Enable and Start the Timer
+
+```bash
+systemctl --user daemon-reload
+systemctl --user enable battery-monitor.timer
+systemctl --user start battery-monitor.timer
+```
+
+## 4. Verify It's Running
+
+```bash
+systemctl --user status battery-monitor.timer
+```
+
+You should see output indicating that the timer is active (running).
+
+To check if the timer is properly activating the service:
+
+```bash
+systemctl --user list-timers
+```
+
+This will show all active timers and when they'll next trigger.
+
+Remember to remove the "Good status" notification from your script once you've confirmed everything is working, unless you want to keep getting battery status notifications.
+
+
