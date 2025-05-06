@@ -1,7 +1,5 @@
 import XMonad
 import XMonad.Util.EZConfig (additionalKeys)
-import XMonad.Hooks.StatusBar
-import XMonad.Hooks.StatusBar.PP
 import XMonad.Hooks.FadeWindows
 import XMonad.Actions.CycleWS
 import XMonad.Hooks.EwmhDesktops (ewmhFullscreen, ewmh)
@@ -100,6 +98,4 @@ showWorkspaceStatus = do
                      then "\nHidden: " ++ unwords hiddenOccupied
                      else "")
                  
-    -- Use timeout (-t) of 1500ms and prevent title truncation with proper flags
-        -- Use timeout (-t) of 1500ms and prevent title truncation with proper flags
-    spawn $ "notify-send -t 800 -u normal -h string:x-canonical-private-synchronous:ws 'Workspaces' '" ++ status ++ "'"
+    spawn $ "notify-send 'Workspaces' '" ++ status ++ "'"
