@@ -1,13 +1,11 @@
 import XMonad
-import XMonad.Util.EZConfig (additionalKeys)
-import XMonad.Hooks.FadeWindows
-import XMonad.Actions.CycleWS
-import XMonad.Hooks.EwmhDesktops (ewmhFullscreen, ewmh)
 import System.Environment (lookupEnv, getExecutablePath)
 import System.FilePath (takeDirectory, (</>))
+import XMonad.Util.EZConfig (additionalKeys)
+import XMonad.Hooks.FadeWindows
+import XMonad.Hooks.EwmhDesktops (ewmhFullscreen, ewmh)
+import XMonad.Actions.CycleWS
 import qualified XMonad.StackSet as W
-import XMonad.Prompt
-import XMonad.Prompt.Workspace
 
 myModMask       = mod4Mask -- Rebind Mod to the Super key
 myFileManager   = "thunar"
@@ -40,11 +38,9 @@ myConfig additionalKeys' = def
     , ((myModMask, xK_e                   ), spawn myFileManager)
     , ((myModMask .|. shiftMask, xK_Return), spawn myTerminal)
     , ((myModMask, xK_c                   ), kill)
-    , ((myModMask .|. shiftMask, xK_z     ), spawn "xscreensaver-command -lock")
     , ((myModMask, xK_Tab                 ), nextWS)  -- Cycle to the next workspace
     , ((myModMask, xK_s                   ), spawn "scrot ~/Downloads/screenshot_%Y-%m-%d_%H-%M-%S.png")
     -- , ((myModMask .|. shiftMask, xK_s), unGrab *> spawn "scrot -s ~/Downloads/screenshot_%Y-%m-%d_%H-%M-%S.png")
-    , ((myModMask, xK_BackSpace), showWorkspaceStatus)
     ] ++ additionalKeys'
 
 -- Define machine-specific keybindings based on HOSTNAME
@@ -77,25 +73,3 @@ myLayoutHook = tiled ||| Mirror tiled ||| Full
     ratio    = 5/8    -- Default proportion of screen occupied by master pane
     delta    = 3/100  -- Percent of screen to increment by when resizing panes
 myFadeHook = composeAll [ opaque, isUnfocused --> transparency 0.8 ]
-
-showWorkspaceStatus :: X ()
-showWorkspaceStatus = do
-    ws <- gets windowset
-    
-    let current = W.currentTag ws
-        -- Hidden workspaces WITH windows
-        hiddenOccupied = [W.tag w | w <- W.hidden ws, 
-                           maybe False (const True) (W.stack w)]
-        
-        -- Empty workspaces
-        emptyWs = [W.tag w | w <- W.workspaces ws, 
-                   maybe True (const False) (W.stack w),
-                   W.tag w /= current]
-        
-        -- Build status message (only show non-empty sections)
-        status = "Current: " ++ current ++ 
-                 (if not (null hiddenOccupied)
-                     then "\nHidden: " ++ unwords hiddenOccupied
-                     else "")
-                 
-    spawn $ "notify-send 'Workspaces' '" ++ status ++ "'"

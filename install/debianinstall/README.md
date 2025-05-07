@@ -237,3 +237,47 @@ This will show all active timers and when they'll next trigger.
 Remember to remove the "Good status" notification from your script once you've confirmed everything is working, unless you want to keep getting battery status notifications.
 
 
+
+----
+
+# Setting Brightness Keybindings in .xinitrc
+
+While you technically *can* set keybindings in your .xinitrc file, it's not the best approach. However, you can use a dedicated hotkey daemon that's launched from .xinitrc.
+
+## Best Solution: Add xbindkeys
+
+1. First, install xbindkeys:
+   ```bash
+   sudo apt install xbindkeys
+   ```
+
+2. Create a config file:
+   ```bash
+   touch ~/.xbindkeysrc
+   ```
+
+3. Add brightness controls to ~/.xbindkeysrc:
+   ```
+   # Decrease brightness
+   "brightnessctl set 10%-"
+     XF86MonBrightnessDown
+
+   # Increase brightness
+   "brightnessctl set +10%"
+     XF86MonBrightnessUp
+   ```
+
+4. Add xbindkeys to your .xinitrc:
+   ```bash
+   # Launch key binding daemon
+   xbindkeys &
+   ```
+
+## Why This Approach Is Better
+
+1. **Separation of concerns**: Window manager handles window management, xbindkeys handles global hotkeys
+2. **More reliable**: These hotkeys will work even if XMonad is unresponsive
+3. **Easy to maintain**: All global hotkeys in one config file
+
+This approach gives you brightness controls that work regardless of which window has focus, and are separate from your XMonad configuration.
+

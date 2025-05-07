@@ -8,13 +8,7 @@ xsetroot -cursor_name left_ptr
 # Set a nice background
 feh --bg-fill --no-fehbg ~/repos/dotfiles/wallpapers/haskell.png
 
-# Power Management
-# xfce4-power-manager &
-# not needed if using xfce4-session
 
-# if [ -x /usr/bin/nm-applet ] ; then
-#    nm-applet --sm-disable &
-# fi
 
 # Compositor for opacity
 xcompmgr &
