@@ -1,9 +1,0 @@
-[Unit]
-Description=Check battery level and notify if low
-
-[Service]
-Type=oneshot
-ExecStart=/home/holmen1/repos/dotfiles/scripts/battery-monitor.sh
-
-[Install]
-WantedBy=default.target

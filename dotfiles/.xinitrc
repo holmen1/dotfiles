@@ -13,6 +13,7 @@ check_command brightnessctl
 check_command dunst
 check_command st
 check_command thunar
+#check_command iwctl
 
 # [... default stuff that your distro may throw in here ...] #
 

@@ -10,25 +10,17 @@ Go to [Debian installation guide](./debianinstall/README.md)
 
 ## Post-installation
 
-### Battery Warning Script with Dunst Notifications
-Ensure ```scripts/battery-monitor.sh``` executable
-
-Using systemd user timers
+### System Monitoring (Battery & WiFi) with Dunst Notifications
 
 ```bash
-mkdir -p ~/.config/systemd/user/
-```
-Link
-```
-ln -s ~/dotfiles/scripts/battery-monitor-service ~/.config/systemd/user/battery-monitor-service
-ln -s ~/dotfiles/scripts/battery-monitor-timer ~/.config/systemd/user/battery-monitor-timer
-```
+# Create symlinks
+ln -s ~/repos/dotfiles/scripts/system-monitor.service ~/.config/systemd/user/system-monitor.service
+ln -s ~/repos/dotfiles/scripts/system-monitor.timer ~/.config/systemd/user/system-monitor.timer
 
-Enable and start the timer
-```bash
+# Enable and start
 systemctl --user daemon-reload
-systemctl --user enable battery-monitor.timer
-systemctl --user start battery-monitor.timer
+systemctl --user enable system-monitor.timer
+systemctl --user start system-monitor.timer
 ```
 
 To test without waiting for your battery to actually drain
@@ -43,7 +35,7 @@ Verify Status
 systemctl --user status battery-monitor.timer
 ```
 
-This setup will give you urgent notifications when your battery is critically low
+This setup will give you urgent notifications when your battery is critically low or wifi not connected
 
 
 
