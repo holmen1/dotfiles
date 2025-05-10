@@ -15,3 +15,10 @@ Includes:
 
 * Export/import packages
 * Link configuration
+
+## Build
+
+The `build` folder contains scripts and tools for building and managing components of this dotfiles setup.
+
+### Xmonad Build Script
+- The [Xmonad build script](https://github.com/holmen1/dotfiles/tree/master/build/xmonad) automates the process of cloning, building, and installing the Xmonad window manager and its `xmonad-contrib` library
