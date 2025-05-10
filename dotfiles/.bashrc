@@ -43,5 +43,6 @@ export PATH=$PATH:/usr/sbin
 
 # Add custom bin directory to PATH (used by xmonad build)
 export PATH=$HOME/.local/bin:$PATH
+export PATH=$HOME/.ghcup/bin:$PATH
 
-[ -f "/home/holmen1/.ghcup/env" ] && . "/home/holmen1/.ghcup/env" # ghcup-env
+[ -f "~/.ghcup/env" ] && . "~/.ghcup/env" # ghcup-env

@@ -1,6 +1,6 @@
 import XMonad
 import System.Environment (lookupEnv, getExecutablePath)
-import System.FilePath (takeDirectory, (</>))
+--import System.FilePath (takeDirectory, (</>))
 import XMonad.Util.EZConfig (additionalKeys)
 import XMonad.Hooks.FadeWindows
 import XMonad.Hooks.EwmhDesktops (ewmhFullscreen, ewmh)
@@ -47,12 +47,12 @@ myConfig additionalKeys' = def
 machineSpecificKeys :: IO [((KeyMask, KeySym), X ())]
 machineSpecificKeys = do
     exePath <- getExecutablePath
-    let logFilePath = takeDirectory exePath </> "xmonad-debug.log"
+    --let logFilePath = takeDirectory exePath </> "xmonad-debug.log"
     hostname <- lookupEnv "HOSTNAME"
     -- debug log ~/.cache/xmonad/xmonad-debug.log
-    appendFile logFilePath $ case hostname of
-        Nothing -> "Error: HOSTNAME not found\n"
-        Just h  -> "Hostname: " ++ h ++ "\n"
+   -- appendFile logFilePath $ case hostname of
+     --  Nothing -> "Error: HOSTNAME not found\n"
+       -- Just h  -> "Hostname: " ++ h ++ "\n"
     return $ case hostname of
         Just "xps" -> [ ((0, xK_F6), spawn "brightnessctl set 10%-")
                       , ((0, xK_F7), spawn "brightnessctl set +10%")
