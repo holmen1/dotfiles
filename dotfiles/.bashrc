@@ -9,10 +9,6 @@ alias grep='grep --color=auto'
 alias ..='cd ..'
 alias cdr='cd ~/repos'
 
-hh() {
-    echo ~
-}
-
 export HISTCONTROL=ignoreboth:erasedups
 
 # Git Aliases

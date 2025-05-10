@@ -3,7 +3,7 @@
 set -e  # Exit on error
 
 # Define directories
-BUILD_DIR=~/repos/xmonad-build
+BUILD_DIR=~/repos/dotfiles/build/xmonad
 INSTALL_DIR=$HOME/.local/bin
 
 # Create the build directory if it doesn't exist
@@ -36,7 +36,7 @@ cabal update
 # installs the libraries for recompilation
 cabal install --installdir=$INSTALL_DIR --package-env=$HOME/.config/xmonad --lib --force-reinstalls xmonad xmonad-contrib
 # installs the binary for execution
-cabal install --installdir=$INSTALL_DIR --package-env=$HOME/.config/xmonad xmonad
+cabal install --installdir=$INSTALL_DIR --overwrite-policy=always --package-env=$HOME/.config/xmonad xmonad
 
 # Ensure the install directory is in PATH
 if ! echo $PATH | grep -q "$INSTALL_DIR"; then
