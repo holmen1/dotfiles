@@ -18,10 +18,7 @@ Follow the steps below to get started with `xmonad`!
 ### Install dependencies
 
 ```
-$ yay -S \
-> xorg-server xorg-apps xorg-xinit xorg-xmessage \
-> libx11 libxft libxinerama libxrandr libxss \
-> pkgconf
+pacman -S xorg-apps xorg-xmessage libx11 libxft libxinerama libxrandr libxss pkgconf xterm
 ```
 
 Install Haskell via [ghcup](https://www.haskell.org/ghcup/#)
@@ -64,15 +61,8 @@ Create a file called xmonad.hs with the following content:
 ```haskell
 import XMonad
 
-myModMask       = mod4Mask -- Rebind Mod to the Super key
-myTerminal      = "kitty"
-
-
 main :: IO ()
-main = xmonad $ def
-    { modMask    = myModMask,
-      terminal   = myTerminal
-    }
+main = xmonad def
 ```
 Save to ```~/.config/xmonad/```
 
@@ -81,11 +71,10 @@ Save to ```~/.config/xmonad/```
 To start `xmonad` using `startx`, create a `.xinitrc` file in your home directory with the following content:
 
 ```bash
-#!/bin/bash
+#!/bin/sh
 exec xmonad
 ```
 Now you can run `startx` to launch `xmonad`.
-
 
 
 ### Recompilation

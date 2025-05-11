@@ -11,7 +11,7 @@ check_command feh
 check_command xcompmgr
 check_command brightnessctl
 check_command dunst
-check_command st
+#check_command st
 check_command thunar
 #check_command iwctl
 

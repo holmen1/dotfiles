@@ -36,6 +36,15 @@ otherwise my choice, see [install.log](../log/install.log)
 
 ## Post-installation
 
+* Install Haskell
+```
+curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
+```
+
+* Build XMonad
+
+
+
 * install packages
 ```
 ./scripts/pacman_install.sh ~/repos/dotfiles/packages/xmonad/pkglist.txt
