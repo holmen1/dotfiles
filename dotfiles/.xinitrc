@@ -11,7 +11,7 @@ check_command feh
 check_command xcompmgr
 check_command brightnessctl
 check_command dunst
-check_command st
+#check_command st
 check_command thunar
 #check_command iwctl
 
@@ -21,7 +21,7 @@ check_command thunar
 xsetroot -cursor_name left_ptr
 
 # Set a nice background
-feh --bg-fill --no-fehbg ~/repos/dotfiles/wallpapers/haskell.png
+feh --bg-fill --no-fehbg ~/repos/dotfiles/install/wallpapers/haskell.png
 
 # Kill any existing notification daemons
 killall xfce4-notifyd dunst notify-osd 2>/dev/null || true

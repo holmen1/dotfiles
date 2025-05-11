@@ -8,6 +8,8 @@ alias ll='ls -lat --color=auto'
 alias grep='grep --color=auto'
 alias ..='cd ..'
 alias cdr='cd ~/repos'
+alias reboot='sudo reboot'
+alias shutdown='sudo shutdown'
 
 export HISTCONTROL=ignoreboth:erasedups
 
@@ -45,4 +47,5 @@ export PATH=$PATH:/usr/sbin
 export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/.ghcup/bin:$PATH
 
-[ -f "~/.ghcup/env" ] && . "~/.ghcup/env" # ghcup-env
+
+[ -f "/home/holmen1/.ghcup/env" ] && . "/home/holmen1/.ghcup/env" # ghcup-env
