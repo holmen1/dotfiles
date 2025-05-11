@@ -45,4 +45,5 @@ export PATH=$PATH:/usr/sbin
 export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/.ghcup/bin:$PATH
 
-[ -f "~/.ghcup/env" ] && . "~/.ghcup/env" # ghcup-env
+
+[ -f "/home/holmen1/.ghcup/env" ] && . "/home/holmen1/.ghcup/env" # ghcup-env
