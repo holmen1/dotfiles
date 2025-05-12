@@ -3,7 +3,7 @@
 set -e  # Exit on error
 
 # Define directories
-BUILD_DIR=~/repos/dotfiles/build/xmonad
+BUILD_DIR=~/repos/dotfiles/install/build/xmonad
 INSTALL_DIR=$HOME/.local/bin
 
 # Create the build directory if it doesn't exist

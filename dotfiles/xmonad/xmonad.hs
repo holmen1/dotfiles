@@ -7,7 +7,7 @@ import qualified XMonad.StackSet as W
 
 myModMask       = mod4Mask -- Rebind Mod to the Super key
 myFileManager   = "thunar"
-myTerminal      = "xterm"
+myTerminal      = "kitty"
 myBrowser       = "brave"
 myAppLauncher   = "dmenu_run"
 myMagenta       = "#FF00FF"
