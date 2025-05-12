@@ -8,6 +8,7 @@ alias ll='ls -lat --color=auto'
 alias grep='grep --color=auto'
 alias ..='cd ..'
 alias cdr='cd ~/repos'
+alias reboot='sudo reboot'
 
 export HISTCONTROL=ignoreboth:erasedups
 
