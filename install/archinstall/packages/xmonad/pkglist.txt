@@ -11,6 +11,7 @@ git
 intel-media-driver
 intel-ucode
 iwd
+kitty
 less
 libva-intel-driver
 libxft
@@ -21,6 +22,7 @@ linux-firmware
 mesa
 openssh
 thunar
+tree
 vim
 vulkan-intel
 vulkan-nouveau

@@ -9,6 +9,7 @@ alias grep='grep --color=auto'
 alias ..='cd ..'
 alias cdr='cd ~/repos'
 alias reboot='sudo reboot'
+alias shutdown='sudo shutdown'
 
 export HISTCONTROL=ignoreboth:erasedups
 
