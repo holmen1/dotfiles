@@ -1,7 +1,18 @@
-   # Decrease brightness
-   "brightnessctl set 10%-"
-     XF86MonBrightnessDown
+# Decrease brightness
+"brightnessctl set 10%-"
+    XF86MonBrightnessDown
 
-   # Increase brightness
-   "brightnessctl set +10%"
-     XF86MonBrightnessUp
+# Increase brightness
+"brightnessctl set +10%"
+    XF86MonBrightnessUp
+
+
+# Simple ALSA Volume Controls
+"amixer -q set Master 5%+ unmute"
+    XF86AudioRaiseVolume
+
+"amixer -q set Master 5%- unmute"
+    XF86AudioLowerVolume
+
+"amixer -q set Master toggle"
+    XF86AudioMute

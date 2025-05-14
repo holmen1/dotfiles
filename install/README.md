@@ -37,7 +37,7 @@ systemctl --user status battery-monitor.timer
 
 This setup will give you urgent notifications when your battery is critically low or wifi not connected
 
-### Setting Brightness Keybindings with xbindkeys
+### Setting Brightness and Volume Keybindings with xbindkeys
 
 1. First, install xbindkeys
 2. Create a config file:
@@ -53,13 +53,22 @@ This setup will give you urgent notifications when your battery is critically lo
    # Increase brightness
    "brightnessctl set +10%"
      XF86MonBrightnessUp
+
+   # Simple ALSA Volume Controls
+   "amixer -q set Master 5%+ unmute"
+    XF86AudioRaiseVolume
+
+   "amixer -q set Master 5%- unmute"
+    XF86AudioLowerVolume
+
+   "amixer -q set Master toggle"
+    XF86AudioMute
    ```
 4. Add xbindkeys to your .xinitrc:
    ```bash
    # Launch key binding daemon
    xbindkeys &
    ```
-
 
 ### Link dotfiles
 Edit and run
