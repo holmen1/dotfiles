@@ -21,7 +21,7 @@ check_command thunar
 xsetroot -cursor_name left_ptr
 
 # Set a nice background
-feh --bg-fill --no-fehbg ~/repos/dotfiles/install/wallpapers/haskell.png
+feh --bg-fill --no-fehbg ~/repos/dotfiles/install/wallpapers/plasma_darkesthour1920x1200.jpg
 
 # Kill any existing notification daemons
 killall xfce4-notifyd dunst notify-osd 2>/dev/null || true
