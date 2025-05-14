@@ -1,5 +1,6 @@
 import XMonad
 import XMonad.Util.EZConfig (additionalKeys)
+import XMonad.Operations (unGrab)
 import XMonad.Hooks.FadeWindows
 import XMonad.Hooks.EwmhDesktops (ewmhFullscreen, ewmh)
 import XMonad.Actions.CycleWS
@@ -36,10 +37,10 @@ myConfig = def
     , ((myModMask, xK_c                   ), kill)
     , ((myModMask, xK_Tab                 ), nextWS)  -- Cycle to the next workspace
     , ((myModMask, xK_s                   ), spawn "scrot ~/Downloads/screenshot_%Y-%m-%d_%H-%M-%S.png")
-    -- , ((myModMask .|. shiftMask, xK_s), unGrab *> spawn "scrot -s ~/Downloads/screenshot_%Y-%m-%d_%H-%M-%S.png")
+    , ((myModMask .|. shiftMask, xK_s     ), unGrab >> spawn "scrot -s ~/Downloads/screenshot_%Y-%m-%d_%H-%M-%S.png")
     ]
 
-myWorkspaces = map show [1..5]
+myWorkspaces = map show [1..6]
 myLayoutHook = tiled ||| Mirror tiled ||| Full
   where
     tiled    = Tall nmaster delta ratio
