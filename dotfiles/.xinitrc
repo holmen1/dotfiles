@@ -13,7 +13,7 @@ check_command brightnessctl
 check_command dunst
 #check_command st
 check_command thunar
-#check_command iwctl
+check_command iwctl
 
 # [... default stuff that your distro may throw in here ...] #
 
@@ -32,12 +32,9 @@ dunst &
 # Compositor for opacity
 xcompmgr &
 
-# Needed for brightness keybinding
-export HOSTNAME="x"
-
 # Launch key binding daemon if installed (optional)
-# if command -v xbindkeys >/dev/null 2>&1; then
-#    xbindkeys &
-# fi
+if command -v xbindkeys >/dev/null 2>&1; then
+   xbindkeys &
+fi
 
 exec xmonad

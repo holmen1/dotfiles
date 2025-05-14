@@ -37,6 +37,28 @@ systemctl --user status battery-monitor.timer
 
 This setup will give you urgent notifications when your battery is critically low or wifi not connected
 
+### Setting Brightness Keybindings with xbindkeys
+
+1. First, install xbindkeys
+2. Create a config file:
+   ```bash
+   touch ~/.xbindkeysrc
+   ```
+3. Add brightness controls to ~/.xbindkeysrc:
+   ```
+   # Decrease brightness
+   "brightnessctl set 10%-"
+     XF86MonBrightnessDown
+
+   # Increase brightness
+   "brightnessctl set +10%"
+     XF86MonBrightnessUp
+   ```
+4. Add xbindkeys to your .xinitrc:
+   ```bash
+   # Launch key binding daemon
+   xbindkeys &
+   ```
 
 
 ### Link dotfiles
@@ -151,34 +173,4 @@ Find and execute a command on each result:
 ```
 find /path/to/search -name "*.txt" -exec grep "search term" {} \;
 ```
-
-### Setting Brightness Keybindings with xbindkeys
-
-1. First, install xbindkeys:
-   ```bash
-   sudo apt install xbindkeys
-   ```
-
-2. Create a config file:
-   ```bash
-   touch ~/.xbindkeysrc
-   ```
-
-3. Add brightness controls to ~/.xbindkeysrc:
-   ```
-   # Decrease brightness
-   "brightnessctl set 10%-"
-     XF86MonBrightnessDown
-
-   # Increase brightness
-   "brightnessctl set +10%"
-     XF86MonBrightnessUp
-   ```
-
-4. Add xbindkeys to your .xinitrc:
-   ```bash
-   # Launch key binding daemon
-   xbindkeys &
-   ```
-
 
