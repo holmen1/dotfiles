@@ -1,31 +1,38 @@
-# xmonad-build
+# XMonad Build Factory
 
-This repository provides a streamlined and automated way to set up and build the `xmonad` tiling window manager. It includes a custom script (`build-xmonad.sh`) to simplify the process of cloning, building, and installing `xmonad` and its companion library `xmonad-contrib`
+This repository provides a streamlined approach for building and distributing XMonad binaries. The core concept is to separate the build process from deployment, allowing you to compile XMonad once on a dedicated "build machine" and then distribute the binary to other systems.
 
-Whether you're a new user or an experienced Haskell developer, this setup ensures a clean, reproducible, and portable environment for running and customizing `xmonad`
+## Build Once, Deploy Anywhere
 
----
+This approach offers several advantages:
+- **Resource Efficiency**: Only one machine needs the full Haskell development environment
+- **Minimal Target Systems**: Target machines only need the binary (~2-4MB), not libraries (~100MB+)
+- **Consistent Experience**: Same XMonad version across all your machines
+- **Simple Updates**: Rebuild and redistribute only when needed (rarely)
+
 
 ### Features
 - **Automated Setup**: The `build-xmonad.sh` script handles cloning repositories, building binaries, and installing dependencies.
 - **Customizable Configuration**: Easily create and recompile your `xmonad.hs` configuration file.
-- **Lightweight and Portable**: Designed to minimize clutter and allow easy replication on other systems.
-- **Version Control Friendly**: Keeps `.git` directories intact for seamless updates.
-
-Follow the steps below to get started with `xmonad`!
 
 
-### Install dependencies
+---
 
-```
+## Build Machine Setup
+
+### Install Dependencies
+```bash
+# For Arch-based systems
 pacman -S xorg-apps xorg-xmessage libx11 libxft libxinerama libxrandr libxss pkgconf xterm
+
+# For Debian-based systems
+apt install libx11-dev libxft-dev libxinerama-dev libxrandr-dev libxss-dev pkg-config xterm
 ```
 
-Install Haskell via [ghcup](https://www.haskell.org/ghcup/#)
-
-simple, interactive, text-based user interface (TUI), run:
-```
-ghcup tui
+### Install Haskell
+```bash
+# Install GHCup
+curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
 ```
 
 ### Config cabal
@@ -56,46 +63,64 @@ The build-xmonad.sh script automates the process of setting up and building xmon
    - Checks if the installation directory (`$HOME/.local/bin`) is in the `PATH`.
    - Provides instructions to add it to the `PATH` if necessary.
 
-### Config xmonad
-Create a file called xmonad.hs with the following content:
-```haskell
-import XMonad
-
-main :: IO ()
-main = xmonad def
-```
-Save to ```~/.config/xmonad/```
-
-
-### Run
-To start `xmonad` using `startx`, create a `.xinitrc` file in your home directory with the following content:
+This creates a binary at `~/.local/bin/xmonad`
 
 ```bash
-#!/bin/sh
-exec xmonad
+# Create a distributable archive
+tar -czvf xmonad-binary.tar.gz -C ~/.local/bin xmonad
 ```
-Now you can run `startx` to launch `xmonad`.
 
+## Target Machine Setup
+
+Target machines only need X11 libraries, not Haskell:
+
+```bash
+# For Arch-based systems
+pacman -S libx11 libxft libxinerama libxrandr libxss xterm
+
+# For Debian-based systems
+apt install libx11-6 libxft2 libxinerama1 libxrandr2 libxss1 xterm
+```
+
+### Configuration on Target Machine
+
+1. Create configuration directory:
+```bash
+mkdir -p ~/.config/xmonad
+```
+
+2. Create a minimal xmonad.hs:
+```bash
+echo 'import XMonad
+
+main :: IO ()
+main = xmonad def' > ~/.config/xmonad/xmonad.hs
+```
+
+3. Set up .xinitrc:
+```bash
+echo 'exec xmonad' > ~/.xinitrc
+```
 
 ### Recompilation
 Whenever you update `xmonad.hs`, recompile it with:
 
 ```bash
 xmonad --recompile
+xmonad --restart
 ```
 
-Run it whenever you need a fresh build:
+## Important Note on Recompilation
 
-```bash
-~/xmonad-build/build-xmonad.sh
-```
+**The target machines cannot recompile your xmonad.hs without installing the libraries.**
 
+If you need to modify xmonad.hs on target machines:
+1. Copy it back to your build machine
+2. Make changes there
+3. Recompile
+4. Redistribute the binary
 
-### Benefits of This Approach
-1. **Clean and Lightweight**: The build directory is recreated fresh each time, avoiding clutter.
-2. **Version Control Flexibility**: Keeping .git directories allows you to pull updates without recloning.
-3. **Automation**: The script handles everything, reducing manual steps.
-4. **Portable**: The setup can be easily replicated on other systems.
+This trade-off of flexibility for size and simplicity is the core of the "build factory" approach.
 
 ---
 ## Lessons Learned
