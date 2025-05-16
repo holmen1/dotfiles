@@ -33,6 +33,7 @@ myConfig = def
     , ((myModMask, xK_w                   ), spawn myBrowser)
     , ((myModMask, xK_f                   ), spawn "firefox")
     , ((myModMask, xK_e                   ), spawn myFileManager)
+    , ((myModMask, xK_Return              ), windows W.swapMaster)
     , ((myModMask .|. shiftMask, xK_Return), spawn myTerminal)
     , ((myModMask, xK_c                   ), kill)
     , ((myModMask, xK_Tab                 ), nextWS)  -- Cycle to the next workspace
