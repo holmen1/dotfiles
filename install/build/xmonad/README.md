@@ -89,17 +89,18 @@ apt install libx11-6 libxft2 libxinerama1 libxrandr2 libxss1 xterm
 mkdir -p ~/.config/xmonad
 ```
 
-2. Create a minimal xmonad.hs:
+2. Create a minimal xmonad.hs for debugging:
 ```bash
 echo 'import XMonad
 
 main :: IO ()
 main = xmonad def' > ~/.config/xmonad/xmonad.hs
 ```
+When ok, switch to ```~/repos/dotfiles/dotfiles/xmonad/xmonad.hs```
 
 3. Set up .xinitrc:
 ```bash
-echo 'exec xmonad' > ~/.xinitrc
+echo 'exec xmonad' >> ~/.xinitrc
 ```
 
 ### Recompilation
@@ -109,6 +110,19 @@ Whenever you update `xmonad.hs`, recompile it with:
 xmonad --recompile
 xmonad --restart
 ```
+
+### Binary Installation on Target Machines
+
+Since we never recompile on target machines, installation is simple:
+
+```bash
+# Create directory and copy binary
+sudo mkdir -p /opt/xmonad
+sudo cp ~/Downloads/xmonad /opt/xmonad/
+sudo chmod +x /opt/xmonad/xmonad
+
+# Create symlink
+sudo ln -sf /opt/xmonad/xmonad /usr/local/bin/xmonad
 
 ## Important Note on Recompilation
 
@@ -144,3 +158,57 @@ XMonad automatically uses the newer cache version when available.
   - `Mod + Space`: Switches between layouts
   - `Mod + Tab`: Cycles through windows
   - `Mod + Q`: Restarts xmonad
+
+
+
+# Examining XMonad Binaries to Understand Size Differences
+
+
+## Basic Analysis
+
+```bash
+# Compare file types
+file ~/.local/bin/xmonad
+file ~/.cache/xmonad/xmonad-x86_64-linux
+
+# See what libraries they depend on
+ldd ~/.local/bin/xmonad
+ldd ~/.cache/xmonad/xmonad-x86_64-linux
+
+# Check section sizes
+size ~/.local/bin/xmonad
+size ~/.cache/xmonad/xmonad-x86_64-linux
+```
+
+## Looking at Debug Symbols
+
+```bash
+# Count symbols in each binary
+nm ~/.local/bin/xmonad | wc -l
+nm ~/.cache/xmonad/xmonad-x86_64-linux | wc -l
+
+# Create a stripped copy to see impact of debug symbols
+cp ~/.cache/xmonad/xmonad-x86_64-linux /tmp/xmonad-stripped
+strip /tmp/xmonad-stripped
+ls -la /tmp/xmonad-stripped
+```
+
+## Deeper Analysis
+
+```bash
+# Examine section headers
+readelf -S ~/.local/bin/xmonad | grep -A2 "\[.*\] \."
+readelf -S ~/.cache/xmonad/xmonad-x86_64-linux | grep -A2 "\[.*\] \."
+
+# Check compilation flags (might show optimization level)
+readelf -p .comment ~/.local/bin/xmonad
+readelf -p .comment ~/.cache/xmonad/xmonad-x86_64-linux
+```
+
+These commands will help you understand:
+1. Whether debug symbols are present (explaining larger size)
+2. Which optimization levels were used 
+3. Whether static vs dynamic linking differs
+4. Which sections contribute to size differences
+
+The cache binary is likely larger because it contains debug information to help with error reporting during development, whereas the installed binary may be optimized for size and performance.
