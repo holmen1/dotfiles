@@ -54,16 +54,14 @@ The build-xmonad.sh script automates the process of setting up and building xmon
    - Clones the xmonad and xmonad-contrib repositories from GitHub if they don't already exist.
    - Updates the repositories if they are already cloned.
 
-2. **Build and Install**:
-   - Runs `cabal update` to fetch the latest package information.
-   - Installs the xmonad and xmonad-contrib libraries for recompiling the `xmonad.hs` configuration.
-   - Installs the xmonad binary to a user-specific directory (`$HOME/.local/bin`).
+2. **Copies Your Configuration**:
+   - Takes your custom `xmonad.hs` from the specified location
+   - Creates a Cabal project that includes your configuration
 
-3. **Ensure PATH Configuration**:
-   - Checks if the installation directory (`$HOME/.local/bin`) is in the `PATH`.
-   - Provides instructions to add it to the `PATH` if necessary.
-
-This creates a binary at `~/.local/bin/xmonad`
+3. **Builds a Self-Contained Binary**:
+   - Compiles your configuration directly into the binary
+   - No need for a separate configuration file on target machines
+   - Creates a binary at `~/.local/bin/xmonad`
 
 ```bash
 # Create a distributable archive
@@ -82,7 +80,7 @@ pacman -S libx11 libxft libxinerama libxrandr libxss xterm
 apt install libx11-6 libxft2 libxinerama1 libxrandr2 libxss1 xterm
 ```
 
-### Configuration on Target Machine
+### Configuration on Build Machine
 
 1. Create configuration directory:
 ```bash
@@ -103,7 +101,7 @@ When ok, switch to ```~/repos/dotfiles/dotfiles/xmonad/xmonad.hs```
 echo 'exec xmonad' >> ~/.xinitrc
 ```
 
-### Recompilation
+### Recompilation when debugging
 Whenever you update `xmonad.hs`, recompile it with:
 
 ```bash

@@ -10,6 +10,30 @@ Go to [Debian installation guide](./debianinstall/README.md)
 
 ## Post-installation
 
+### Configure Git
+git config --global user.name "$git_username"
+git config --global user.email "$git_email"
+
+### SSH
+Generate SSH key
+```
+ssh-keygen -t ed25519 -C "$git_email" -f ~/.ssh/id_ed25519 -N ""
+```
+Start the ssh-agent in the background
+```
+eval "$(ssh-agent -s)"
+```
+Add the SSH key to the ssh-agent
+```
+ssh-add ~/.ssh/id_ed25519
+```
+
+If reusing copy, set correct permissions for your private key
+```
+chmod 600 ~/.ssh/id_ed25519
+```
+After you generate an SSH key pair, you must add the public key to GitHub.com to enable SSH access for your account
+
 ### System Monitoring (Battery & WiFi) with Dunst Notifications
 
 ```bash
@@ -108,28 +132,6 @@ $ diff /usr/bin/xmonad-session /usr/bin/xmonad-session.bak
 >   . .xmonad/xmonad-session-rc
 ```
 
-
-
-
-
-### Configure Git
-git config --global user.name "$git_username"
-git config --global user.email "$git_email"
-
-### SSH
-Generate SSH key
-```
-ssh-keygen -t ed25519 -C "$git_email" -f ~/.ssh/id_ed25519 -N ""
-```
-Start the ssh-agent in the background
-```
-eval "$(ssh-agent -s)"
-```
-Add the SSH key to the ssh-agent
-```
-ssh-add ~/.ssh/id_ed25519
-```
-After you generate an SSH key pair, you must add the public key to GitHub.com to enable SSH access for your account
 
 ## Nice to have
 

@@ -1,0 +1,9 @@
+cabal-version:      2.4
+name:               custom-xmonad
+version:            0.1.0.0
+build-type:         Simple
+
+executable xmonad
+  main-is:          xmonad.hs
+  build-depends:    base, xmonad, xmonad-contrib
+  default-language: Haskell2010
