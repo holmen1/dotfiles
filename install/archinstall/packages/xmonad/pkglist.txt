@@ -1,8 +1,10 @@
 base
 base-devel
 brightnessctl
+dmenu
 dunst
 feh
+firefox
 git
 grub
 gst-plugin-pipewire
@@ -20,6 +22,7 @@ pipewire
 pipewire-alsa
 pipewire-jack
 pipewire-pulse
+scrot
 thunar
 vim
 vulkan-intel
