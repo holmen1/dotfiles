@@ -1,23 +1,14 @@
 #!/bin/bash
 
-# Check if the base directory is provided
-if [ -z "$1" ]; then
-  echo "Usage: $0 <base-directory>"
-  exit 1
-fi
-
-BASE_DIR="$1"
+BASE_DIR="~/repos/dotfiles"
 
 # Define an array of source and target directories
 links=(
+    "$BASE_DIR/dotfiles/hypr:~/.config/hypr"
+    "$BASE_DIR/dotfiles/waybar:~/.config/waybar"
     "$BASE_DIR/dotfiles/kitty:~/.config/kitty"
-    "$BASE_DIR/dotfiles/xmobar:~/.config/xmobar"
-    "$BASE_DIR/dotfiles/xmonad:~/.config/xmonad"
-    #"$BASE_DIR/dotfiles/rofi:~/.config/rofi"
-    #"$BASE_DIR/dotfiles/nvim:~/.config/nvim"
-    "$BASE_DIR/dotfiles/slim-vim:~/.config/nvim"
+    "$BASE_DIR/dotfiles/nvim:~/.config/nvim"
     "$BASE_DIR/dotfiles/.bashrc:~/.bashrc"
-    "$BASE_DIR/dotfiles/.xinitrc:~/.xinitrc"
 )
 
 # Create the symbolic links

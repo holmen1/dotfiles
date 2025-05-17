@@ -36,7 +36,7 @@
     // Rofi Application Launcher
     "custom/appmenu": {
         "format": "\u677E", // matsu
-        "tooltip-format": "Left: Right: Show all keybindings",
+        "tooltip-format": "Left: Show all keybindings",
         "on-click": "~/.config/waybar/keybindings.sh",
         "return-type": "json",
         "interval": 600
