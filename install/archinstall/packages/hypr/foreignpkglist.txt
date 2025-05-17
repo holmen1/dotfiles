@@ -1,0 +1,3 @@
+brave-bin
+mullvad-vpn-bin
+yay
