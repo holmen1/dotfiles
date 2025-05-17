@@ -185,3 +185,10 @@ Find and execute a command on each result:
 find /path/to/search -name "*.txt" -exec grep "search term" {} \;
 ```
 
+### Repo behind remote
+
+```bash
+git stash [-u]
+git pull
+git stash apply
+```

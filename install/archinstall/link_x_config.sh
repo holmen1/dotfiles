@@ -5,11 +5,14 @@ BASE_DIR="~/repos/dotfiles"
 # Define an array of source and target directories
 links=(
     "$BASE_DIR/dotfiles/kitty:~/.config/kitty"
-    "$BASE_DIR/dotfiles/xmobar:~/.config/xmobar"
-    "$BASE_DIR/dotfiles/xmonad:~/.config/xmonad"
     "$BASE_DIR/dotfiles/nvim:~/.config/nvim"
     "$BASE_DIR/dotfiles/.bashrc:~/.bashrc"
+    "$BASE_DIR/dotfiles/.bash_profile:~/.bash_profile"
+    "$BASE_DIR/dotfiles/.vimrc:~/.vimrc"
+    "$BASE_DIR/dotfiles/.xbindkeysrc:~/.xbindkeysrc"
     "$BASE_DIR/dotfiles/.xinitrc:~/.xinitrc"
+    "$BASE_DIR/scripts/system-monitor.service:~/.config/systemd/user/system-monitor.service"
+    "$BASE_DIR/scripts/system-monitor.timer:~/.config/systemd/user/system-monitor.timer"
 )
 
 # Create the symbolic links
