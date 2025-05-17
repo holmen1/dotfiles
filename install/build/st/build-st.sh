@@ -23,6 +23,10 @@ curl -L "https://dl.suckless.org/st/st-${ST_VERSION}.tar.gz" | tar xz
 # Enter source directory
 cd "st-${ST_VERSION}"
 
+# Apply custom configuration
+echo "Applying custom config.h..."
+cp -f "${BUILD_DIR}/config.h" .
+
 # Build and install
 echo "Building st..."
 make clean

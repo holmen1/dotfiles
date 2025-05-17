@@ -5,7 +5,14 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Liberation Mono:pixelsize=12:antialias=true:autohint=true";
+static char *font = "JetBrainsMono Nerd Font:pixelsize=16:antialias=true:autohint=true"; /* Nerd font for icons */
+static char *font2[] = {
+	 "Liberation Mono:pixelsize=12:antialias=true:autohint=true",
+	 "DejaVu Sans Mono:pixelsize=12:antialias=true:autohint=true",
+	 "Symbola:pixelsize=12:antialias=true:autohint=true",    /* Fallback for Unicode symbols */
+	 "Monospace:pixelsize=12:antialias=true:autohint=true",  /* Generic fallback */
+	 "Noto Color Emoji:pixelsize=12:antialias=true:autohint=true", /* Emoji support */
+};
 static int borderpx = 2;
 
 /*
