@@ -1,7 +1,16 @@
 
-
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
+
+# Enable vi mode in bash
+set -o vi
+
+# Make Tab autocomplete regardless of filename case
+bind 'set completion-ignore-case on'
+
+# Make history searching work like vim
+bind '"\e[A": history-search-backward'
+bind '"\e[B": history-search-forward'
 
 alias ls='ls --color=auto'
 alias ll='ls -lat --color=auto'
