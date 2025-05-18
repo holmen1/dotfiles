@@ -18,8 +18,11 @@ This will:
 
 - Edit `config.h` to change appearance and behavior
 - Add `.diff` files to `patches/` for additional features
-```
+```bash
+# Download patches
+cd patches/
 curl -O https://st.suckless.org/patches/alpha/st-alpha-20220206-0.8.5.diff
+
 
 ```
 
@@ -27,6 +30,7 @@ curl -O https://st.suckless.org/patches/alpha/st-alpha-20220206-0.8.5.diff
 
 - JetBrainsMono Nerd Font with fallbacks
 - Background transparency (alpha = 0.85)
-- Visual indication when fallback fonts are used (size difference)
+
+
 
 Based on [st](https://st.suckless.org/) from the suckless.org team.
