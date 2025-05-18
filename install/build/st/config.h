@@ -5,14 +5,18 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "JetBrainsMono Nerd Font:pixelsize=14:antialias=true:autohint=true"; /* Nerd font for icons */
+/* Primary font - clean and reliable */
+static char *font = "Liberation Mono:pixelsize=14:antialias=true:autohint=true";
+
+/* Fallback fonts in order of preference */
 static char *font2[] = {
-	 "Liberation Mono:pixelsize=14:antialias=true:autohint=true",
-	 "DejaVu Sans Mono:pixelsize=14:antialias=true:autohint=true",
-	 "Symbola:pixelsize=14:antialias=true:autohint=true",    /* Fallback for Unicode symbols */
-	 "Monospace:pixelsize=14:antialias=true:autohint=true",  /* Generic fallback */
-	 "Noto Color Emoji:pixelsize=14:antialias=true:autohint=true", /* Emoji support */
+    "JetBrainsMono Nerd Font:pixelsize=14:antialias=true:autohint=true", /* Icons */
+    "DejaVu Sans Mono:pixelsize=14:antialias=true:autohint=true",       /* Good Unicode coverage */
+    "Noto Sans Mono:pixelsize=14:antialias=true:autohint=true",         /* Excellent consistency */
+    "Symbola:pixelsize=14:antialias=true:autohint=true",                /* Symbols */
+    "Noto Color Emoji:pixelsize=14:antialias=true:autohint=true",       /* Emoji */
 };
+
 static int borderpx = 2;
 
 /* Background opacity */

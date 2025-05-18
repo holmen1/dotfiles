@@ -6,6 +6,8 @@ ST_VERSION="0.9.2"
 BUILD_DIR="${HOME}/repos/dotfiles/install/build/st"
 INSTALL_DIR="${HOME}/.local/bin"
 PATCH_DIR="${BUILD_DIR}/patches"
+BUILD_DATE=$(date +"%Y%m%d")
+BUILD_TAG="st-${ST_VERSION}-${BUILD_DATE}"
 
 echo "=== Building st ${ST_VERSION} ==="
 
@@ -44,6 +46,7 @@ make
 
 # Create install directory and copy binary
 mkdir -p "${INSTALL_DIR}"
-cp st "${INSTALL_DIR}/"
+cp st "${INSTALL_DIR}/${BUILD_TAG}"
+chmod +x "${INSTALL_DIR}/${BUILD_TAG}"
 
-echo "st ${ST_VERSION} has been built and installed to ${INSTALL_DIR}/st"
+echo "st ${ST_VERSION} has been built and installed to ${INSTALL_DIR}/${BUILD_TAG}"
