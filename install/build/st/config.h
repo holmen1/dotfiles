@@ -15,6 +15,9 @@ static char *font2[] = {
 };
 static int borderpx = 2;
 
+/* Background opacity */
+float alpha = 0.85;
+
 /*
  * What program is execed by st depends of these precedence rules:
  * 1: program passed with -e

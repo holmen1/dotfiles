@@ -5,6 +5,7 @@ set -e
 ST_VERSION="0.9.2"
 BUILD_DIR="${HOME}/repos/dotfiles/install/build/st"
 INSTALL_DIR="${HOME}/.local/bin"
+PATCH_DIR="${BUILD_DIR}/patches"
 
 echo "=== Building st ${ST_VERSION} ==="
 
@@ -22,6 +23,15 @@ curl -L "https://dl.suckless.org/st/st-${ST_VERSION}.tar.gz" | tar xz
 
 # Enter source directory
 cd "st-${ST_VERSION}"
+
+# Apply patches
+echo "Applying patches..."
+for patch in "${PATCH_DIR}"/*.diff; do
+    if [ -f "$patch" ]; then
+        echo "Applying patch: $(basename "$patch")"
+        patch -p1 < "$patch" || echo "Warning: Patch $(basename "$patch") failed, continuing..."
+    fi
+done
 
 # Apply custom configuration
 echo "Applying custom config.h..."
