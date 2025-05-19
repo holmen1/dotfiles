@@ -37,4 +37,7 @@ if command -v xbindkeys >/dev/null 2>&1; then
    xbindkeys &
 fi
 
+export TERMINAL=kitty
+export BROWSER=firefox
+
 exec xmonad

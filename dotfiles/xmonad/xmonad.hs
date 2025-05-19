@@ -5,24 +5,28 @@ import XMonad.Hooks.FadeWindows
 import XMonad.Hooks.EwmhDesktops (ewmhFullscreen, ewmh)
 import XMonad.Actions.CycleWS
 import qualified XMonad.StackSet as W
+import System.Environment (lookupEnv)
+import Data.Maybe (fromMaybe)
 
 myModMask       = mod4Mask -- Rebind Mod to the Super key
 myFileManager   = "thunar"
-myTerminal      = "st"
-myBrowser       = "brave"
 myAppLauncher   = "dmenu_run"
 myMagenta       = "#FF00FF"
 myCyan          = "#00FFFF"
 
 main :: IO ()
-main = xmonad
-      . ewmhFullscreen
-      . ewmh
-      $ myConfig
+main = do
+  -- Read terminal and browser from environment variables with fallbacks
+  myTerminal <- fromMaybe "xterm" <$> lookupEnv "TERMINAL"
+  myBrowser  <- fromMaybe "firefox" <$> lookupEnv "BROWSER"
+  xmonad
+    . ewmhFullscreen
+    . ewmh
+    $ myConfig myTerminal myBrowser
 
-myConfig = def
+myConfig terminal browser = def
     { modMask    = myModMask,
-      terminal   = myTerminal,
+      terminal   = terminal,
       workspaces = myWorkspaces,
       layoutHook = myLayoutHook,
       logHook = fadeWindowsLogHook myFadeHook,
@@ -30,10 +34,9 @@ myConfig = def
     }
   `additionalKeys`
     ([((myModMask, xK_a                   ), spawn myAppLauncher)
-    , ((myModMask, xK_w                   ), spawn myBrowser)
-    , ((myModMask, xK_f                   ), spawn "firefox")
+    , ((myModMask, xK_w                   ), spawn browser)
     , ((myModMask, xK_e                   ), spawn myFileManager)
-    , ((myModMask, xK_Return              ), spawn myTerminal)
+    , ((myModMask, xK_Return              ), spawn terminal)
     , ((myModMask .|. shiftMask, xK_Return), windows W.swapMaster)
     , ((myModMask, xK_c                   ), kill)
     , ((myModMask, xK_Tab                 ), nextWS)  -- Cycle to the next workspace
