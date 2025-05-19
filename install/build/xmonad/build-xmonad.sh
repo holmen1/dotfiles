@@ -2,6 +2,9 @@
 
 set -e  # Exit on error
 
+XMONAD_TAG="v0.18.0"
+XMONAD_CONTRIB_TAG="v0.18.1" 
+
 # Define directories
 BUILD_DIR=~/repos/dotfiles/install/build/xmonad
 INSTALL_DIR=$HOME/.local/bin
@@ -12,24 +15,24 @@ mkdir -p $BUILD_DIR
 cd $BUILD_DIR
 
 # Function to clone or update a repository
-update_repo() {
+clone_repo() {
   local repo_name=$1
   local repo_url=$2
-
-  [ -d "$BUILD_DIR/$repo_name/.git" ] && {
-    echo "Updating $repo_name repository..."
-    git -C "$BUILD_DIR/$repo_name" reset --hard HEAD  # Clean up working directory
-    git -C "$BUILD_DIR/$repo_name" pull
-    return
-  }
-
-  echo "Cloning $repo_name repository..."
+  local tag=$3
+  
+  # Remove existing repo directory if it exists
+  rm -rf "$BUILD_DIR/$repo_name"
+  
+  echo "Cloning $repo_name repository at $tag..."
   git clone "$repo_url" "$BUILD_DIR/$repo_name"
+  cd "$BUILD_DIR/$repo_name"
+  git checkout $tag
+  cd "$BUILD_DIR"
 }
 
-# Update or clone xmonad and xmonad-contrib repositories
-update_repo "xmonad" "https://github.com/xmonad/xmonad"
-update_repo "xmonad-contrib" "https://github.com/xmonad/xmonad-contrib"
+# Always clone fresh xmonad and xmonad-contrib repositories
+clone_repo "xmonad" "https://github.com/xmonad/xmonad" "$XMONAD_TAG"
+clone_repo "xmonad-contrib" "https://github.com/xmonad/xmonad-contrib" "$XMONAD_CONTRIB_TAG"
 
 # Copy your configuration to build directory
 echo "Using custom configuration from $CONFIG_SOURCE"
