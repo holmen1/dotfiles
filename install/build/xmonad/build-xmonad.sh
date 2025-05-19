@@ -34,7 +34,7 @@ update_repo "xmonad-contrib" "https://github.com/xmonad/xmonad-contrib"
 # Copy your configuration to build directory
 echo "Using custom configuration from $CONFIG_SOURCE"
 mkdir -p "$BUILD_DIR/custom-xmonad"
-cp "$CONFIG_SOURCE" "$BUILD_DIR/custom-xmonad/xmonad.hs"
+ln -sf "$CONFIG_SOURCE" "$BUILD_DIR/custom-xmonad/xmonad.hs"
 
 # Build custom XMonad
 echo "Building custom XMonad binary..."
