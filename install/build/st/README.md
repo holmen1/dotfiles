@@ -10,29 +10,25 @@ A minimal build setup for st, the simple terminal from suckless.org.
 
 This will:
 - Download st source (version 0.9.2)
-- Apply patches from `patches/`
-- Apply custom configuration from `config.h`
-- Build and install to `~/.local/bin/st`
+- Download and apply patches directly
+- Build and install to ~/.local/bin/st with version tag
 
-## Customization
+## Features
+- **Background transparency** (alpha = 0.85)
+- **Scrollback** with keyboard and mouse
+- Version-tagged builds
 
-- Edit `config.h` to change appearance and behavior
-- Add `.diff` files to `patches/` for additional features
+## Configuration
+The build uses the default configuration with patches applied. To inspect or customize:
+
 ```bash
-# Download patches
-cd patches/
-curl -O https://st.suckless.org/patches/alpha/st-alpha-20220206-0.8.5.diff
+# View the current configuration
+less ~/repos/dotfiles/install/build/st/st-0.9.2/config.h
 
-
+# To customize for future builds, edit build-st.sh to modify config.h after patching
 ```
 
-## Current Features
-
-- JetBrainsMono Nerd Font with fallbacks
-- Background transparency (alpha = 0.85)
-
 ## st Keybindings
-
 
 | Function | Keybinding |
 |----------|------------|
@@ -43,14 +39,13 @@ curl -O https://st.suckless.org/patches/alpha/st-alpha-20220206-0.8.5.diff
 | Zoom in | `Ctrl+Shift+Page Up` |
 | Zoom out | `Ctrl+Shift+Page Down` |
 | Reset zoom | `Ctrl+Shift+Home` |
+| **Scrollback** |  |
+| Scroll up | `Shift+Page Up` |
+| Scroll down | `Shift+Page Down` |
 | **Special** |  |
 | Break (send SIGINT) | `Ctrl+C` |
 | Suspend process | `Ctrl+Z` |
 | End of file | `Ctrl+D` |
 | Clear screen | `Ctrl+L` |
-
-
-
-
 
 Based on [st](https://st.suckless.org/) from the suckless.org team.
