@@ -11,7 +11,7 @@ check_command feh
 check_command xcompmgr
 check_command brightnessctl
 check_command dunst
-#check_command st
+check_command xterm
 check_command thunar
 check_command iwctl
 
@@ -37,7 +37,7 @@ if command -v xbindkeys >/dev/null 2>&1; then
    xbindkeys &
 fi
 
-export TERMINAL=kitty
+export TERMINAL=st
 export BROWSER=firefox
 
 exec xmonad

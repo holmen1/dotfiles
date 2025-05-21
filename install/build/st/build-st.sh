@@ -3,6 +3,7 @@ set -e
 
 # Configuration
 ST_VERSION="0.9.2"
+PATCH_FONT2_VERSION="0.8.5"
 PATCH_ALPHA_VERSION="20220206-0.8.5"
 PATCH_SCROLLBACK_VERSION="0.9.2"
 BUILD_DIR="${HOME}/repos/dotfiles/install/build/st"
@@ -28,6 +29,10 @@ cd "st-${ST_VERSION}"
 
 # Download and apply patches
 echo "Downloading and applying patches..."
+
+# font2 allows to add spare font besides default
+echo "Applying font2 patch..."
+patch -p1 < "${BUILD_DIR}/patches/st-font2-0.8.5.diff" || echo "Warning: Font2 patch failed"
 
 # Alpha (transparency) patch
 echo "Applying alpha patch..."
