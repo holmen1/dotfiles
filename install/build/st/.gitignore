@@ -1,1 +1,3 @@
 st-*
+# keep patches
+!st-*-*.diff

@@ -3,19 +3,19 @@ set -e
 
 # Configuration
 ST_VERSION="0.9.2"
-PATCH_FONT2_VERSION="0.8.5"
-PATCH_ALPHA_VERSION="20220206-0.8.5"
-PATCH_SCROLLBACK_VERSION="0.9.2"
 BUILD_DIR="${HOME}/repos/dotfiles/install/build/st"
+PATCH_DIR="${BUILD_DIR}/patches"
 INSTALL_DIR="${HOME}/.local/bin"
 BUILD_DATE=$(date +"%Y%m%d")
 BUILD_TAG="st-${ST_VERSION}-${BUILD_DATE}"
 
-echo "=== Building st ${ST_VERSION} ==="
+PATCH_TYPES=(
+  "scrollback"
+  "font2"
+  "alpha"
+)
 
-# Create build directory
-mkdir -p "${BUILD_DIR}"
-cd "${BUILD_DIR}"
+echo "=== Building st ${ST_VERSION} ==="
 
 # Clean up any previous build
 rm -rf "st-${ST_VERSION}"
@@ -27,22 +27,13 @@ curl -L "https://dl.suckless.org/st/st-${ST_VERSION}.tar.gz" | tar xz
 # Enter source directory
 cd "st-${ST_VERSION}"
 
-# Download and apply patches
-echo "Downloading and applying patches..."
-
-# font2 allows to add spare font besides default
-echo "Applying font2 patch..."
-patch -p1 < "${BUILD_DIR}/patches/st-font2-0.8.5.diff" || echo "Warning: Font2 patch failed"
-
-# Alpha (transparency) patch
-echo "Applying alpha patch..."
-curl -O "https://st.suckless.org/patches/alpha/st-alpha-${PATCH_ALPHA_VERSION}.diff"
-patch -p1 < "st-alpha-${PATCH_ALPHA_VERSION}.diff" || echo "Warning: Alpha patch failed"
-
-# Scrollback patch
-echo "Applying scrollback patch..."
-curl -O "https://st.suckless.org/patches/scrollback/st-scrollback-${PATCH_SCROLLBACK_VERSION}.diff"
-patch -p1 < "st-scrollback-${PATCH_SCROLLBACK_VERSION}.diff" || echo "Warning: Scrollback patch failed"
+echo "Applying patches..."
+for type in "${PATCH_TYPES[@]}"; do
+  patch_file=$(find "${PATCH_DIR}" -name "st-${type}*.diff" -type f)
+  
+  echo "Applying ${type} patch: $(basename "$patch_file")"
+  patch -p1 < "$patch_file" || echo "Warning: Patch $(basename "$patch_file") failed, continuing..."
+done
 
 # Create config.h from patched config.def.h
 echo "Using patched default configuration..."
