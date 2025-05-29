@@ -11,6 +11,7 @@ TAR_FILE="$1"
 DEST_DIR="/opt/VSCode-linux-x64"
 LINK_PATH="/usr/local/bin/code"
 
+mkdir -p $DEST_DIR
 # Extract the tar.gz file
 tar -xvzf $TAR_FILE
 
