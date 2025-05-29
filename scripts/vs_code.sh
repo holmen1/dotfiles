@@ -8,7 +8,7 @@ fi
 
 # Define variables
 TAR_FILE="$1"
-DEST_DIR="/opt/VSCode-linux-x64"
+DEST_DIR="/opt/VSCode-linux-x64/"
 LINK_PATH="/usr/local/bin/code"
 
 mkdir -p $DEST_DIR
@@ -19,6 +19,6 @@ tar -xvzf $TAR_FILE
 mv VSCode-linux-x64/ $DEST_DIR
 
 # Create a symbolic link
-ln -s $DEST_DIR/bin/code $LINK_PATH
+ln -sf $DEST_DIR/bin/code $LINK_PATH
 
 echo "Visual Studio Code has been installed and linked successfully."
