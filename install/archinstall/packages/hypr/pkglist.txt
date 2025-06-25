@@ -2,6 +2,7 @@ amd-ucode
 ark
 base
 base-devel
+bluez-utils
 brightnessctl
 btrfs-progs
 dolphin
@@ -30,6 +31,7 @@ linux-headers
 linux-lts
 linux-lts-headers
 man-db
+man-pages
 neovim
 network-manager-applet
 networkmanager
