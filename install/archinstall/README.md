@@ -116,6 +116,41 @@ creates files pkglist.txt and foreignpkglist.txt in the packages directory
 
 # LESSONS LEARNED
 
+## Update linux-firmware
+### Manual Intervention Required (June 2025)
+
+**Important:**  
+Starting with `linux-firmware >= 20250613.12fe085f-5`, the package was split and the NVIDIA firmware layout changed. Upgrading from an earlier version may cause errors like:
+
+```
+linux-firmware-nvidia: /usr/lib/firmware/nvidia/ad103 exists in filesystem
+...
+```
+
+#### Solution
+
+1. **Download new firmware packages before removing the old one (to avoid losing WiFi):**
+    ```
+    sudo pacman -Sw linux-firmware linux-firmware-nvidia
+    ```
+
+2. **Remove the old package (this does NOT delete firmware files from disk):**
+    ```
+    sudo pacman -Rdd linux-firmware
+    ```
+
+3. **Upgrade and reinstall:**
+    ```
+    sudo pacman -Syu linux-firmware
+    ```
+
+> **Note:** Removing `linux-firmware` with `-Rdd` only removes the package from the database. The actual firmware files remain on disk, so your WiFi and other hardware should keep working during the upgrade.
+
+**References:**  
+- [Arch Linux News: linux-firmware upgrade requires manual intervention](https://archlinux.org/news/linux-firmware-20250613-12fe085f-5-upgrade-requires-manual-intervention/)
+
+
+
 ## Gotchas
 ```
 $ systemctl status NetworkManager
