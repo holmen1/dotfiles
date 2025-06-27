@@ -11,6 +11,7 @@ dunst
 efibootmgr
 firefox
 git
+gnu-netcat
 grub
 grub-btrfs
 gst-plugin-pipewire
@@ -45,6 +46,7 @@ plasma-workspace
 rofi
 smartmontools
 sof-firmware
+strace
 stylua
 timeshift
 ttf-jetbrains-mono-nerd
