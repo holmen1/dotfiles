@@ -48,6 +48,7 @@ smartmontools
 sof-firmware
 strace
 stylua
+swaylock
 timeshift
 ttf-jetbrains-mono-nerd
 unzip
