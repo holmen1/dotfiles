@@ -61,7 +61,7 @@ The build-xmonad.sh script automates the process of setting up and building xmon
 3. **Builds a Self-Contained Binary**:
    - Compiles your configuration directly into the binary
    - No need for a separate configuration file on target machines
-   - Creates a binary at `~/.local/bin/xmonad`
+   - Creates a binary at `$BUILD_DIR/bin/`
 
 ```bash
 # Create a distributable archive
@@ -114,13 +114,15 @@ xmonad --restart
 Since we never recompile on target machines, installation is simple:
 
 ```bash
-# Create directory and copy binary
+# Extract and install binary
+tar -xzf xmonad-v0.18.0.tar.gz
 sudo mkdir -p /opt/xmonad
-sudo cp ~/Downloads/xmonad /opt/xmonad/
-sudo chmod +x /opt/xmonad/xmonad
+sudo cp xmonad-v0.18.0 /opt/xmonad/
+sudo chmod +x /opt/xmonad/xmonad-v0.18.0
 
 # Create symlink
-sudo ln -sf /opt/xmonad/xmonad /usr/local/bin/xmonad
+sudo ln -sf /opt/xmonad/xmonad-v0.18.0 /usr/local/bin/xmonad
+``
 
 ## Important Note on Recompilation
 

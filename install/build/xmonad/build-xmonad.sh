@@ -7,12 +7,13 @@ XMONAD_CONTRIB_TAG="v0.18.1"
 
 # Define directories
 BUILD_DIR=~/repos/dotfiles/install/build/xmonad
-INSTALL_DIR=$HOME/.local/bin
+BIN_DIR=$BUILD_DIR/bin
 CONFIG_SOURCE=~/repos/dotfiles/dotfiles/xmonad/xmonad.hs
 
 # Create the build directory if it doesn't exist
 mkdir -p $BUILD_DIR
 cd $BUILD_DIR
+mkdir -p $BIN_DIR
 
 # Function to clone or update a repository
 clone_repo() {
@@ -72,9 +73,16 @@ cabal update
 echo "Building with cabal..."
 cabal build
 
-# Install the binary
-echo "Installing to $INSTALL_DIR"
-find dist-newstyle -name xmonad -type f -executable -exec cp {} "$INSTALL_DIR/xmonad" \;
-chmod +x "$INSTALL_DIR/xmonad"
+# Copy binary to BIN_DIR for manual handling
+echo "Installing to $BIN_DIR"
+find dist-newstyle -name xmonad -type f -executable -exec cp {} "$BIN_DIR/xmonad-$XMONAD_TAG" \;
+chmod +x "$BIN_DIR/xmonad-$XMONAD_TAG"
+
+# Create compressed binary archive
+echo "Creating compressed binary archive..."
+cd "$BIN_DIR"
+tar -czf "xmonad-$XMONAD_TAG.tar.gz" "xmonad-$XMONAD_TAG"
 
 echo "Build complete - your configuration is now baked into the XMonad binary"
+echo "Binary: $BIN_DIR/xmonad-$XMONAD_TAG"
+echo "Archive: $BIN_DIR/xmonad-$XMONAD_TAG.tar.gz"

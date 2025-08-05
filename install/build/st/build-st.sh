@@ -5,9 +5,7 @@ set -e
 ST_VERSION="0.9.2"
 BUILD_DIR="${HOME}/repos/dotfiles/install/build/st"
 PATCH_DIR="${BUILD_DIR}/patches"
-INSTALL_DIR="${HOME}/.local/bin"
-BUILD_DATE=$(date +"%Y%m%d")
-BUILD_TAG="st-${ST_VERSION}-${BUILD_DATE}"
+BIN_DIR="$BUILD_DIR//bin"
 
 PATCH_TYPES=(
   "scrollback"
@@ -29,7 +27,7 @@ cd "st-${ST_VERSION}"
 
 echo "Applying patches..."
 for type in "${PATCH_TYPES[@]}"; do
-  patch_file=$(find "${PATCH_DIR}" -name "st-${type}*.diff" -type f)
+  patch_file=$(find "${PATCH_DIR}" -name "st-${type}*.diff" -type f | head -n1)
   
   echo "Applying ${type} patch: $(basename "$patch_file")"
   patch -p1 < "$patch_file" || echo "Warning: Patch $(basename "$patch_file") failed, continuing..."
@@ -44,13 +42,16 @@ echo "Building st..."
 make clean
 make
 
-# Create install directory and copy binary
-mkdir -p "${INSTALL_DIR}"
-cp st "${INSTALL_DIR}/${BUILD_TAG}"
-chmod +x "${INSTALL_DIR}/${BUILD_TAG}"
+# Copy binary to BIN_DIR for manual handling
+echo "Installing to $BIN_DIR"
+cp st "$BIN_DIR/st-$ST_VERSION"
+chmod +x "$BIN_DIR/st-$ST_VERSION"
 
-# Create a symlink to the latest build
-ln -sf "${INSTALL_DIR}/${BUILD_TAG}" "${INSTALL_DIR}/st"
+# Create compressed binary archive
+echo "Creating compressed binary archive..."
+cd "$BIN_DIR"
+tar -czf "st-$ST_VERSION.tar.gz" "st-$ST_VERSION"
 
-echo "st ${ST_VERSION} has been built and installed to ${INSTALL_DIR}/st"
-echo "Tagged as: ${BUILD_TAG}"
+echo "Build complete - st binary ready for manual deployment"
+echo "Binary: $BIN_DIR/st-$ST_VERSION"
+echo "Archive: $BIN_DIR/st-$ST_VERSION.tar.gz"

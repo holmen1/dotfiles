@@ -3,7 +3,7 @@ Description=Check system status (battery and WiFi)
 
 [Service]
 Type=oneshot
-ExecStart=/bin/bash -c "/home/holmen1/repos/dotfiles/scripts/battery-monitor.sh; /home/holmen1/repos/dotfiles/scripts/wifi-monitor.sh"
+ExecStart=/bin/bash -c "~/repos/dotfiles/scripts/battery-monitor.sh; /home/holmen1/repos/dotfiles/scripts/wifi-monitor.sh"
 
 [Install]
 WantedBy=default.target

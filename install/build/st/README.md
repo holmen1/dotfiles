@@ -28,6 +28,24 @@ less ~/repos/dotfiles/install/build/st/st-0.9.2/config.h
 # To customize for future builds, edit build-st.sh to modify config.h after patching
 ```
 
+## Installation
+
+After building, install the binary to a system location:
+
+```bash
+# Create system directory
+sudo mkdir -p /opt/st
+
+# Copy binary to system location
+sudo cp bin/st-0.9.2 /opt/st/
+
+# Make it executable
+sudo chmod +x /opt/st/st-0.9.2
+
+# Create symlink in system PATH
+sudo ln -sf /opt/st/st-0.9.2 /usr/local/bin/st
+```
+
 ## st Keybindings
 
 | Function | Keybinding |

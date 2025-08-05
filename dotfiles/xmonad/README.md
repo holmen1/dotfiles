@@ -9,28 +9,25 @@ This repository contains a custom configuration for the [XMonad](https://xmonad.
 
 | Key Combination       | Action                                 |
 |------------------------|----------------------------------------|
-| `Mod + Shift + Enter`  | Launch terminal                       |
+| `Mod + Enter`          | Launch terminal                       |
 | `Mod + A`              | Launch dmenu                          |
 | `Mod + C`              | Close the focused window              |
 | `Mod + Space`          | Rotate through available layouts      |
 | `Mod + Shift + Space`  | Reset the layout to default           |
 | `Mod + N`              | Resize/refresh windows                |
-| `Mod + Tab`            | Move focus to the next window         |
-| `Mod + Shift + Tab`    | Move focus to the previous window      |
+| `Mod + Tab`            | Move to the next workspace            |
+| `Mod + Shift + Tab`    | Move focus to the previous window     |
 | `Mod + J`              | Move focus to the next window         |
 | `Mod + K`              | Move focus to the previous window     |
-| `Mod + M`              | Move focus to the master window       |
-| `Mod + Return`         | Swap the focused window with master   |
-| `Mod + H`              | Shrink the master area                |
-| `Mod + L`              | Expand the master area                |
-| `Mod + T`              | Push window back into tiling          |
+| `Mod + Shift + Return` | Swap the focused window with master   |
 | `Mod + ,`              | Increment master windows              |
 | `Mod + .`              | Decrement master windows              |
-| `Mod + Q`              | Restart XMonad                        |
-| `Mod + Shift + Q`      | Quit XMonad                           |
-| `Mod + Shift + Z`      | Lock the screen using `xscreensaver`  |
-| `Mod + Ctrl + S`       | Capture a selected area screenshot to `~/Downloads` |
-| `Mod + F`              | Launch browser                        |
+| `Mod + Q`              | Lock screen                           |
+| `Mod + Shift + Q`      | Shutdown                              |
+| `Mod + X`              | Lock the screen                       |
+| `Mod + S`              | Screenshot to `~/Downloads`           |
+| `Mod + Shift + S`      | Capture a selected area screenshot to `~/Downloads` |
+| `Mod + W`              | Launch browser                        |
 
 
 ## Requirements

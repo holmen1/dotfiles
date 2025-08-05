@@ -56,7 +56,7 @@ notify-send -u critical "Battery Critical" "Battery level is low!" -i battery-ca
 Verify Status
 ```bash
 # Check if timer is running
-systemctl --user status battery-monitor.timer
+systemctl --user status system-monitor.timer
 ```
 
 This setup will give you urgent notifications when your battery is critically low or wifi not connected
@@ -131,7 +131,18 @@ $ diff /usr/bin/xmonad-session /usr/bin/xmonad-session.bak
 ---
 >   . .xmonad/xmonad-session-rc
 ```
+## LESSONS LEARNED
+### ⚠️ NEVER Edit /etc/sudoers with vim (or any editor that isn't visudo)
 
+**What I did:** "I'm a rebel, I don't need `visudo`! I'll just vim that file real quick..."
+
+**What happened:** Created a rogue `/etc/sudoers.d/00_holmen1` file that overrode my carefully crafted NOPASSWD rules. Spent an embarrassing amount of time troubleshooting why `sudo poweroff` kept asking for passwords that didn't work.
+
+**The fix:** Had to `su -` to root, delete the terrorist file, reset my password, and remember that `visudo` exists for very good reasons.
+
+**The moral:** `visudo` checks syntax, handles file locking, and prevents you from accidentally becoming your own worst enemy. Use it. Always. Your future self will thank you instead of cursing your name.
+
+**Acceptable excuses for bypassing visudo:** None. Zero. Not even "but I'm in a hurry."
 
 ## Nice to have
 

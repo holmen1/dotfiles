@@ -1,3 +1,9 @@
-st-*
-# keep patches
-!st-*-*.diff
+# Exclude st source directories
+st-*/
+
+# Exclude built binaries and archives
+bin/
+
+# Keep patches directory and patch files
+!patches/
+!patches/*.diff

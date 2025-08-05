@@ -4,3 +4,6 @@ dist-newstyle/
 # Ignore all other files in build directories
 xmonad/
 xmonad-contrib/
+
+/# Ignore binary files
+/bin

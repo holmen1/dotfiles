@@ -36,6 +36,25 @@ otherwise my choice, see [install.log](../log/install.log)
 
 ## Post-installation
 
+### Sanity check
+Run the sanity check script to verify your installation:
+```bash
+~/repos/dotfiles/install/archinstall/sanity_check.sh
+```
+
+This script verifies:
+- Essential commands (git, ssh, xmonad, xterm)
+- XMonad custom binary and configuration
+- Screen locking (i3lock) functionality  
+- Power management (wheel group, passwordless shutdown)
+- System monitoring services
+- Key bindings and input controls
+- Screenshot functionality (scrot, Downloads directory)
+- Dotfile symlinks
+- Git and SSH configuration
+- Repository structure
+
+
 * Install Haskell
 ```
 curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh

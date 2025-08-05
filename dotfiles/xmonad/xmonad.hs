@@ -36,6 +36,8 @@ myConfig terminal browser = def
     , ((myModMask, xK_w                   ), spawn browser)
     , ((myModMask, xK_e                   ), spawn myFileManager)
     , ((myModMask, xK_Return              ), spawn terminal)
+    , ((myModMask, xK_q                   ), spawn "i3lock -c 000000") -- black
+    , ((myModMask .|. shiftMask, xK_q     ), spawn "sudo systemctl poweroff")
     , ((myModMask .|. shiftMask, xK_Return), windows W.swapMaster)
     , ((myModMask, xK_c                   ), kill)
     , ((myModMask, xK_Tab                 ), nextWS)  -- Cycle to the next workspace
