@@ -7,7 +7,8 @@ XMONAD_CONTRIB_TAG="v0.18.1"
 
 # Define directories
 BUILD_DIR=~/repos/dotfiles/install/build/xmonad
-INSTALL_DIR=$HOME/.local/bin
+#INSTALL_DIR=$HOME/.local/bin
+INSTALL_DIR=$HOME/tmp
 CONFIG_SOURCE=~/repos/dotfiles/dotfiles/xmonad/xmonad.hs
 
 # Create the build directory if it doesn't exist
@@ -74,7 +75,7 @@ cabal build
 
 # Install the binary
 echo "Installing to $INSTALL_DIR"
-find dist-newstyle -name xmonad -type f -executable -exec cp {} "$INSTALL_DIR/xmonad" \;
+find dist-newstyle -name xmonad -type f -executable -exec cp {} "$INSTALL_DIR/xmonad-$XMONAD_TAG" \;
 chmod +x "$INSTALL_DIR/xmonad"
 
 echo "Build complete - your configuration is now baked into the XMonad binary"

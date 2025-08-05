@@ -113,14 +113,13 @@ xmonad --restart
 
 Since we never recompile on target machines, installation is simple:
 
-```bash
 # Create directory and copy binary
 sudo mkdir -p /opt/xmonad
-sudo cp ~/Downloads/xmonad /opt/xmonad/
-sudo chmod +x /opt/xmonad/xmonad
+sudo cp ~/tmp/xmonad-v18.0 /opt/xmonad/
+sudo chmod +x /opt/xmonad/xmonad-v0.18.0
 
 # Create symlink
-sudo ln -sf /opt/xmonad/xmonad /usr/local/bin/xmonad
+sudo ln -sf /opt/xmonad/xmonad /usr/local/bin/xmonad-v0.18.0
 
 ## Important Note on Recompilation
 
