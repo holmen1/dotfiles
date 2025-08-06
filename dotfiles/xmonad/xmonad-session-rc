@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Set the HOSTNAME environment variable
-# Used by xmonad to add additional keys to make brightness work
-export HOSTNAME="xps"
 
 # Set a nice background
 feh --bg-fill --no-fehbg ~/repos/dotfiles/wallpapers/haskell.png
