@@ -27,8 +27,10 @@ man-pages
 mesa
 openssh
 scrot
+strace
 thunar
 tree
+ttf-jetbrains-mono-nerd
 vi
 vim
 vulkan-intel
