@@ -10,6 +10,7 @@ fastfetch
 feh
 firefox
 git
+i3lock
 intel-media-driver
 intel-ucode
 iwd
@@ -28,6 +29,7 @@ openssh
 scrot
 thunar
 tree
+vi
 vim
 vulkan-intel
 vulkan-nouveau
@@ -71,6 +73,5 @@ xorg-xvinfo
 xorg-xwd
 xorg-xwininfo
 xorg-xwud
-xscreensaver
 xterm
 zram-generator

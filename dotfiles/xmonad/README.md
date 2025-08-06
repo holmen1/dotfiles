@@ -22,8 +22,8 @@ This repository contains a custom configuration for the [XMonad](https://xmonad.
 | `Mod + Shift + Return` | Swap the focused window with master   |
 | `Mod + ,`              | Increment master windows              |
 | `Mod + .`              | Decrement master windows              |
-| `Mod + Q`              | Restart XMonad                        |
-| `Mod + Shift + Q`      | Quit XMonad                           |
+| `Mod + Q`              | Lock screen                           |
+| `Mod + Shift + Q`      | Shutdown                              |
 | `Mod + X`              | Lock the screen                       |
 | `Mod + S`              | Screenshot to `~/Downloads`           |
 | `Mod + Shift + S`      | Capture a selected area screenshot to `~/Downloads` |
