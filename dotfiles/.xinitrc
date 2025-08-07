@@ -38,6 +38,6 @@ if command -v xbindkeys >/dev/null 2>&1; then
 fi
 
 export TERMINAL=st
-export BROWSER=firefox
+export BROWSER=brave
 
 exec xmonad
