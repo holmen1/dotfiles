@@ -27,14 +27,76 @@ To start the installer, run
 root@archiso ~ # archinstall
 ```
 
-Note, set 
-"bootloader": "Systemd-boot" 
-"profile":    "Xorg"
+Set 
+"bootloader": "grub"   
+"profile":    "Xorg"  
+btrfs, pipewire
+
 
 otherwise my choice, see [install.log](../log/install.log)  
 
 
 ## Post-installation
+
+### SSH
+Reuse key already in Github
+
+```
+cp /mnt/usb/id_ed25519* ~/.ssh/
+```
+Start the ssh-agent in the background
+```
+chmod 600 ~/.ssh/id_ed25519
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
+```
+
+### Configure Git
+```
+git config --global user.name "$git_username"
+git config --global user.email "$git_email"
+```
+
+### Install packages
+
+First install yay
+```
+sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
+```
+then
+```
+./scripts/yay_install.sh ~/[path]/pkglist.txt
+```
+dont forget ```foreignpkglist.txt``` if any
+
+
+### Clone dotfiles
+```
+mkdir repos
+git clone git@github.com:holmen1/dotfiles.git
+```
+
+### Install binaries
+pre-built binaries from the [build factory](../build/):
+```
+cp /mnt/usb/st-0.9.2 /opt/st
+cp /mnt/usb/xmonad-v0.18.0 /opt/xmonad/
+```
+and link to ```/usr/local/bin```
+
+### Link dotfiles
+```
+link_x_config.sh
+```
+
+### Enable System Monitoring (Battery & WiFi)
+
+```bash
+systemctl --user daemon-reload
+systemctl --user enable system-monitor.timer
+systemctl --user start system-monitor.timer
+```
+
 
 ### Sanity check
 Run the sanity check script to verify your installation:
@@ -64,16 +126,6 @@ curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
 
 
 
-* install packages
-```
-./scripts/pacman_install.sh ~/repos/dotfiles/packages/xmonad/pkglist.txt
-./scripts/yay_install.sh ~/repos/dotfiles/packages/xmonad/foreignpkglist.txt
-```
-* link configuration dotfiles to ~/.config
-
-```
-./scripts/link_config.sh ~/repos/archinstall
-```
 
 
 ## REPAIR
@@ -112,17 +164,7 @@ chroot to user
 ```
 
 
-## Packages
 
-```
-sudo pacman -S <package>
-sudo pacman -Rs <package>
-```
-or
-```
-yay -S <package>
-yay -Rs <package>
-```
 
 
 ### Export installed packages
