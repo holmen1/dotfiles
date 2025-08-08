@@ -18,7 +18,7 @@ iwctl station wlan0 get-networks
 ```
 
 ```
-root@archiso ~ # iwctl --passphrase <passphrase> station wlan0 connect NetworkName
+root@archiso ~ # iwctl --passphrase <passphrase> station wlan0 connect <NetworkName>
 ```
 ## Guided installation
 Archinstall ships with a pre-programmed Guided Installer guiding you through the mandatory steps as well as some optional configurations that can be done.   

@@ -34,6 +34,23 @@ chmod 600 ~/.ssh/id_ed25519
 ```
 After you generate an SSH key pair, you must add the public key to GitHub.com to enable SSH access for your account
 
+### sudo without password
+
+To allow all members of the `wheel` group to use `sudo` without a password, edit `/etc/sudoers` using `visudo`:
+
+Uncomment this line:
+```
+%wheel ALL=(ALL:ALL) NOPASSWD: ALL
+```
+
+If your installer or manual setup created a user-specific file like `/etc/sudoers.d/00_user` with:
+```
+user ALL=(ALL) ALL
+```
+this can conflict with the wheel group NOPASSWD rule and override your intended permissions. If your user is in the `wheel` group and the group rule above is present, you should delete the user-specific file to avoid conflicts.
+
+Make sure your user is in the `wheel` group!
+
 ### System Monitoring (Battery & WiFi) with Dunst Notifications
 
 ```bash

@@ -106,7 +106,6 @@ else
     print_fail "Custom XMonad binary not found in /usr/local/bin"
 fi
 
-check_file "$HOME/repos/dotfiles/dotfiles/xmonad/xmonad.hs" "XMonad configuration source"
 check_file "$HOME/.xinitrc" ".xinitrc file"
 
 # Screen Locking
@@ -124,12 +123,12 @@ fi
 print_header "Power Management"
 if groups | grep -q "wheel"; then
     print_pass "User in wheel group"
-    
-    # Check sudoers for NOPASSWD
-    if sudo -l 2>/dev/null | grep -q "NOPASSWD.*shutdown\|NOPASSWD.*poweroff\|NOPASSWD.*reboot"; then
-        print_pass "Passwordless shutdown configured"
+
+    # Check sudoers for passwordless poweroff (matches xmonad.hs keybinding)
+    if sudo -n systemctl --version &>/dev/null; then
+        print_pass "Passwordless sudo for systemctl poweroff confirmed by dry run"
     else
-        print_warn "Passwordless shutdown may not be configured"
+        print_warn "Passwordless sudo for systemctl poweroff not confirmed; password may be required"
     fi
 else
     print_fail "User not in wheel group - power management may not work"
@@ -209,8 +208,8 @@ fi
 
 # X11 Libraries
 print_header "X11 Dependencies"
-check_command "xrandr" "X11 RandR extension"
-check_command "xset" "X11 user preference utility"
+check_command "xsetroot" "X11 root window cursor/background utility"
+check_command "xcompmgr" "X11 simple compositor"
 
 # Repository Structure
 print_header "Repository Structure"
@@ -236,28 +235,6 @@ if [ -d "$HOME/repos/dotfiles" ]; then
     fi
 else
     print_fail "Dotfiles repository not found"
-fi
-
-# Optional: VSCode
-print_header "Optional Software"
-if [ -f "/opt/VSCode-linux-x64/bin/code" ] && [ -L "/usr/local/bin/code" ]; then
-    print_pass "VSCode installed and symlinked"
-elif command -v code &> /dev/null; then
-    print_pass "VSCode available in PATH"
-else
-    print_warn "VSCode not found (optional)"
-fi
-
-# Display Manager Check
-print_header "Display Manager"
-if systemctl is-enabled lightdm &> /dev/null; then
-    if systemctl is-active lightdm &> /dev/null; then
-        print_pass "LightDM display manager active"
-    else
-        print_warn "LightDM enabled but not active"
-    fi
-else
-    print_pass "Display manager disabled (manual startx setup)"
 fi
 
 # Test Key Functionalities

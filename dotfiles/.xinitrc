@@ -1,19 +1,28 @@
 #!/bin/sh
 
-# Check for required applications
-check_command() {
+
+# --- Essential applications ---
+check_essential() {
     command -v "$1" >/dev/null 2>&1 || { echo >&2 "Required program $1 not installed. Aborting."; exit 1; }
 }
+check_essential xmonad
+check_essential st
+check_essential xterm
+check_essential iwctl
 
-# Essential applications
-check_command xmonad
-check_command feh
-check_command xcompmgr
-check_command brightnessctl
-check_command dunst
-check_command xterm
-check_command thunar
-check_command iwctl
+# --- Optional applications ---
+check_optional() {
+    command -v "$1" >/dev/null 2>&1 || echo "Warning: Optional program $1 not installed."
+}
+check_optional xbindkeys
+check_optional xsetroot
+check_optional feh
+check_optional dunst
+check_optional xcompmgr
+check_optional brightnessctl
+check_optional amixer
+check_optional thunar
+check_optional brave
 
 # [... default stuff that your distro may throw in here ...] #
 
