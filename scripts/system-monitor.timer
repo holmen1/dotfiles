@@ -3,7 +3,7 @@ Description=Run system monitoring checks
 
 [Timer]
 OnBootSec=1min
-OnUnitActiveSec=5min
+OnUnitActiveSec=2min
 Persistent=true
 
 [Install]

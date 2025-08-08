@@ -1,7 +1,7 @@
 #!/bin/bash
 
 THRESHOLD=5  # Set the threshold for critical battery level
-WARNING=25   # Set the threshold for warning level
+WARNING=20   # Set the threshold for warning level
 
 # Get battery percentage
 battery_level=$(cat /sys/class/power_supply/BAT*/capacity 2>/dev/null || echo "0")

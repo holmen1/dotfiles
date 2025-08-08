@@ -163,6 +163,18 @@ $ diff /usr/bin/xmonad-session /usr/bin/xmonad-session.bak
 
 ## Nice to have
 
+### VPN
+
+```
+mullvad status
+mullvad account login <your_account_number>
+mullvad relay list
+mullvad relay set location se sto
+mullvad connect
+mullvad disconnect
+```
+
+
 ### VSCode binary
 Download tar.gz
 

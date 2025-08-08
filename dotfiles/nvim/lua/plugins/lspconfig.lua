@@ -197,7 +197,7 @@ return {
         clangd = {
           cmd = { "clangd" },
           init_options = {
-            fallbackFlags = { "--std=c90" }
+            fallbackFlags = { "--std=c99" }
           }
         },
         hls = {},
