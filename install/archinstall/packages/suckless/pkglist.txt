@@ -1,5 +1,3 @@
-alsa-utils
-autossh
 base
 base-devel
 brightnessctl
@@ -19,9 +17,11 @@ less
 libpulse
 libva-intel-driver
 linux
+linux-firmware
 man-db
 man-pages
 neovim
+openssh
 pipewire
 pipewire-alsa
 pipewire-jack
@@ -39,7 +39,5 @@ xbindkeys
 xcompmgr
 xorg-server
 xorg-xinit
-xorg-xrandr
-xorg-xset
 xterm
 zram-generator
