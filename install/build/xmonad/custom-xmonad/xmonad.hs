@@ -1,1 +1,0 @@
-/home/holmen1/repos/dotfiles/dotfiles/xmonad/xmonad.hs
