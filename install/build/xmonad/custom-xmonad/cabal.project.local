@@ -1,5 +1,0 @@
-package xmonad
-  flags: +with-xft
-
-package xmonad-contrib
-  flags: +with-xft

@@ -52,8 +52,8 @@ export PS1="\[\e[32m\]\u@\h \[\e[33m\]\w\[\e[36m\] \$(parse_git_branch)\$(parse_
 # iw
 export PATH=$PATH:/usr/sbin
 
-# Add custom bin directory to PATH (used by xmonad build)
-export PATH=$HOME/.local/bin:$PATH
+# Add custom bin directory to PATH (used by ghcup)
+export PATH=$HOME/.ghcup/bin:$PATH
 
 
 [ -f "/home/holmen1/.ghcup/env" ] && . "/home/holmen1/.ghcup/env" # ghcup-env

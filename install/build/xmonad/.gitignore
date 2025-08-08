@@ -1,5 +1,5 @@
 # Ignore cabal build artifacts
-dist-newstyle/
+custom-xmonad/
 
 # Ignore all other files in build directories
 xmonad/
