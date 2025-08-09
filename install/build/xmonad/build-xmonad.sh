@@ -75,6 +75,7 @@ cabal build
 
 # Copy binary to BIN_DIR for manual handling
 echo "Installing to $BIN_DIR"
+rm -f "$BIN_DIR/xmonad-$XMONAD_TAG"
 find dist-newstyle -name xmonad -type f -executable -exec cp {} "$BIN_DIR/xmonad-$XMONAD_TAG" \;
 chmod +x "$BIN_DIR/xmonad-$XMONAD_TAG"
 
@@ -82,6 +83,10 @@ chmod +x "$BIN_DIR/xmonad-$XMONAD_TAG"
 echo "Creating compressed binary archive..."
 cd "$BIN_DIR"
 tar -czf "xmonad-$XMONAD_TAG.tar.gz" "xmonad-$XMONAD_TAG"
+
+echo "Cleaning up XMonad runtime/config/cache directories..."
+rm -rf ~/.local/share/xmonad ~/.cache/xmonad ~/.config/xmonad
+echo "Removed: ~/.local/share/xmonad ~/.cache/xmonad ~/.config/xmonad"
 
 echo "Build complete - your configuration is now baked into the XMonad binary"
 echo "Binary: $BIN_DIR/xmonad-$XMONAD_TAG"

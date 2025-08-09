@@ -36,10 +36,15 @@ myConfig terminal browser = def
     , ((myModMask, xK_w                   ), spawn browser)
     , ((myModMask, xK_e                   ), spawn myFileManager)
     , ((myModMask, xK_Return              ), spawn terminal)
-    , ((myModMask, xK_q                   ), spawn "~/repos/dotfiles/scripts/dmenu-logout.sh")
     , ((myModMask .|. shiftMask, xK_Return), windows W.swapMaster)
     , ((myModMask, xK_c                   ), kill)
+    -- resizing the master/slave ratio
+    , ((myModMask .|. shiftMask, xK_h     ), sendMessage Shrink) -- Shrink the master area
+    , ((myModMask .|. shiftMask, xK_l     ), sendMessage Expand) -- Expand the master area
     , ((myModMask, xK_Tab                 ), nextWS)  -- Cycle to the next workspace
+    , ((myModMask, xK_q                   ), spawn "~/repos/dotfiles/scripts/dmenu-logout.sh")
+    , ((myModMask, xK_m                   ), spawn "~/repos/dotfiles/scripts/dmenu-mullvad.sh")
+    , ((myModMask, xK_h                   ), spawn "~/repos/dotfiles/scripts/dmenu-help.sh")
     , ((myModMask, xK_s                   ), spawn "scrot ~/Downloads/screenshot_%Y-%m-%d_%H-%M-%S.png")
     , ((myModMask .|. shiftMask, xK_s     ), unGrab >> spawn "scrot -s ~/Downloads/screenshot_%Y-%m-%d_%H-%M-%S.png")
     ]
