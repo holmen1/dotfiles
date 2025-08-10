@@ -37,6 +37,7 @@ vi
 vulkan-intel
 wireplumber
 xbindkeys
+xclip
 xcompmgr
 xorg-server
 xorg-xinit
