@@ -7,9 +7,11 @@ btrfs-progs
 dmenu
 dunst
 efibootmgr
+fastfetch
 fd
 feh
 git
+gnu-netcat
 grub
 gst-plugin-pipewire
 i3lock

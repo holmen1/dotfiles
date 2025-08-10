@@ -57,6 +57,12 @@ git config --global user.name "$git_username"
 git config --global user.email "$git_email"
 ```
 
+### Clone dotfiles
+```
+mkdir repos
+git clone git@github.com:holmen1/dotfiles.git
+```
+
 ### Install packages
 
 First install yay
@@ -69,12 +75,6 @@ then
 ```
 dont forget ```foreignpkglist.txt``` if any
 
-
-### Clone dotfiles
-```
-mkdir repos
-git clone git@github.com:holmen1/dotfiles.git
-```
 
 ### Install binaries
 pre-built binaries from the [build factory](../build/):
