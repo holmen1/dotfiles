@@ -8,7 +8,7 @@ A slim neovim configuration based on [kickstart.nvim](https://github.com/nvim-lu
 - **Syntax Highlighting**: Modern syntax highlighting via Treesitter
 - **Streamlined LSP Integration**: Core language server support for C and Haskell
 - **Which-Key Integration**: Popup help for keybindings as you type them
-- **Terminal Integration**: Built-in terminal with easy mode switching
+- **Gitsigns in Gutter**: Instantly see added, changed, or deleted lines with minimal, colored indicators
 
 ## Key Plugins
 
@@ -19,17 +19,11 @@ A slim neovim configuration based on [kickstart.nvim](https://github.com/nvim-lu
 | **lspconfig & mason.nvim** | Language server setup | Code intelligence |
 | **mini.nvim** | Statusline and text tools | Lightweight alternative to multiple separate plugins |
 | **which-key.nvim** | Keybinding help | Discoverability without memorization |
+| **gitsigns.nvim** | Git change indicators in gutter | Minimal, fast, and visually clear git status |
 
 
 ## Keymaps
 
-### Window Navigation
-| Mapping | Description |
-|---------|-------------|
-| `<C-h>` | Move focus to the left window |
-| `<C-j>` | Move focus to the lower window |
-| `<C-k>` | Move focus to the upper window |
-| `<C-l>` | Move focus to the right window |
 
 ### Diagnostics
 | Mapping | Description |
@@ -72,29 +66,6 @@ A slim neovim configuration based on [kickstart.nvim](https://github.com/nvim-lu
 | `<leader>f` | Format code | Format current buffer or selection |
 | `<leader>th` | Toggle inlay hints | Show/hide inline type hints |
 
-
-## Terminal Integration
-
-Neovim's built-in terminal emulator lets you run shell commands without leaving the editor
-
-| Command | Action |
-|---------|--------|
-| `:terminal` | Open terminal in current window |
-| `:split \| terminal` | Open terminal in horizontal split |
-| `:vsplit \| terminal` | Open terminal in vertical split |
-| `:terminal [cmd]` | Run specific command (e.g., `:terminal python`) |
-
-### Terminal Mode Navigation
-
-| Mapping | Action |
-|---------|--------|
-| `<C-\\><C-n>` | Exit terminal mode (custom mapping) |
-| `i` or `a` | Enter terminal mode from normal mode |
-| `<C-h/j/k/l>` | Navigate between windows (in normal mode) |
-| `<C-u>` / `<C-d>`| Scroll up/down half-page |
-| `<C-b>` / `<C-f>`| Scroll up/down full-page |
-| `{` / `}`| Jump between paragraphs |
-| `:bd!` | Close a terminal buffer completely |
 
 
 ####  Compare current buffer with saved file
@@ -142,11 +113,6 @@ Having issues with language servers? Here's a step-by-step guide to diagnose and
 
 #### Language Server Not Installing
 
-First confirm unzip installed
-```
-yay -S unzip
-```
-luastyles: failed to install
 
 If Mason fails to install a language server:
 
@@ -157,6 +123,14 @@ ghcup install hls    # Install via GHCup
 # For C/C++, ensure clangd is available
 sudo apt install clangd    # On Debian/Ubuntu
 ```
+### C/C++: No LSP implementation found
+
+For full language server (LSP) support in C/C++, you need a `compile_commands.json` file in your project root. If your build system doesn't generate this automatically, use [`bear`](https://github.com/rizsotto/Bear):
+
+```sh
+bear -- make
+```
+
 
 #### Language Server Not Attaching
 
