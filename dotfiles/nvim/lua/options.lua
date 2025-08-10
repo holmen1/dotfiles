@@ -66,4 +66,18 @@ vim.opt.scrolloff = 10
 -- See `:help 'confirm'`
 vim.opt.confirm = true
 
+-- To enable automatic writing of modified buffers on most navigation and
+-- command actions, set
+vim.o.autowrite = true
+
+-- Autosave on leaving insert mode or after edits in normal mode
+vim.api.nvim_create_autocmd({ "InsertLeave", "TextChanged" }, {
+  pattern = "*",
+  callback = function()
+    if vim.bo.modifiable and vim.bo.modified and vim.bo.buftype == "" then
+      vim.cmd("silent! write")
+    end
+  end,
+})
+
 -- vim: ts=2 sts=2 sw=2 et
