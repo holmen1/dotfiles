@@ -12,7 +12,6 @@ myModMask       = mod4Mask -- Rebind Mod to the Super key
 myFileManager   = "thunar"
 myAppLauncher   = "dmenu_run"
 myMagenta       = "#FF00FF"
-myCyan          = "#00FFFF"
 
 main :: IO ()
 main = do
@@ -38,15 +37,16 @@ myConfig terminal browser = def
     , ((myModMask, xK_Return              ), spawn terminal)
     , ((myModMask .|. shiftMask, xK_Return), windows W.swapMaster)
     , ((myModMask, xK_c                   ), kill)
-    -- resizing the master/slave ratio
     , ((myModMask .|. shiftMask, xK_h     ), sendMessage Shrink) -- Shrink the master area
     , ((myModMask .|. shiftMask, xK_l     ), sendMessage Expand) -- Expand the master area
     , ((myModMask, xK_Tab                 ), nextWS)  -- Cycle to the next workspace
+    -- screenshots
+    , ((myModMask, xK_s                   ), spawn "scrot ~/Downloads/screenshot_%Y-%m-%d_%H-%M-%S.png")
+    , ((myModMask .|. shiftMask, xK_s     ), unGrab >> spawn "scrot -s ~/Downloads/screenshot_%Y-%m-%d_%H-%M-%S.png")
+    -- dmenu scripts
     , ((myModMask, xK_q                   ), spawn "~/repos/dotfiles/scripts/dmenu-logout.sh")
     , ((myModMask, xK_m                   ), spawn "~/repos/dotfiles/scripts/dmenu-mullvad.sh")
     , ((myModMask, xK_h                   ), spawn "~/repos/dotfiles/scripts/dmenu-help.sh")
-    , ((myModMask, xK_s                   ), spawn "scrot ~/Downloads/screenshot_%Y-%m-%d_%H-%M-%S.png")
-    , ((myModMask .|. shiftMask, xK_s     ), unGrab >> spawn "scrot -s ~/Downloads/screenshot_%Y-%m-%d_%H-%M-%S.png")
     ]
     ++
     -- mod-[1..9], Switch to workspace N
