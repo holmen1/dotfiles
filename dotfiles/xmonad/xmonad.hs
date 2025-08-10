@@ -7,6 +7,7 @@ import XMonad.Actions.CycleWS
 import qualified XMonad.StackSet as W
 import System.Environment (lookupEnv)
 import Data.Maybe (fromMaybe)
+import XMonad.Layout.NoBorders
 
 myModMask       = mod4Mask -- Rebind Mod to the Super key
 myFileManager   = "thunar"
@@ -28,7 +29,8 @@ myConfig terminal browser = def
       terminal   = terminal,
       workspaces = myWorkspaces,
       logHook = fadeWindowsLogHook myFadeHook,
-      focusedBorderColor = myMagenta
+      focusedBorderColor = myMagenta,
+      layoutHook = myLayout
     }
   `additionalKeys`
     ([((myModMask, xK_a                   ), spawn myAppLauncher)
@@ -58,3 +60,8 @@ myConfig terminal browser = def
 
 myWorkspaces = map show [1..6]
 myFadeHook = composeAll [ opaque, isUnfocused --> transparency 0.8 ]
+
+-- Removes the borders from a window under one of the following conditions:
+-- There is only one screen and only one window
+-- A floating window covers the entire screen
+myLayout = smartBorders $ layoutHook def

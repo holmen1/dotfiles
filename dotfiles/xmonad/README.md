@@ -22,9 +22,9 @@ This repository contains a custom configuration for the [XMonad](https://xmonad.
 | `Mod + Shift + Return` | Swap the focused window with master   |
 | `Mod + ,`              | Increment master windows              |
 | `Mod + .`              | Decrement master windows              |
-| `Mod + Q`              | Lock screen                           |
-| `Mod + Shift + Q`      | Shutdown                              |
-| `Mod + X`              | Lock the screen                       |
+| `Mod + Q`              | Logout menu                           |
+| `Mod + M`              | VPN menu                              |
+| `Mod + H`              | Help menu                             |
 | `Mod + S`              | Screenshot to `~/Downloads`           |
 | `Mod + Shift + S`      | Capture a selected area screenshot to `~/Downloads` |
 | `Mod + W`              | Launch browser                        |
@@ -39,9 +39,7 @@ This repository contains a custom configuration for the [XMonad](https://xmonad.
 - scrot for screenshots
 - xscreensaver
 - xcompmgr for opacity
-- trayer
 - feh wallpaper
-- xfce4-power-manager
 
 
 ## Post install
