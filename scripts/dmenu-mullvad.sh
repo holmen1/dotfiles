@@ -4,7 +4,7 @@
 # List of commands
 options="status\nconnect\ndisconnect\naccount login\relay set location"
 
-choice=$(echo -e "$options" | dmenu -i -p "Mullvad:")
+choice=$(echo -e "$options" | dmenu -i -p "Mullvad:" -nb "#222222" -nf "#ffffff" -sb "#A300A3" -sf "#ffffff")
 
 case "$choice" in
   "status")

@@ -1,6 +1,6 @@
 #!/bin/bash
 # Show xmonad keybindings in dmenu
-cat <<EOF | dmenu -l 10 -i -p "XMonad Help" -nb "#222222" -nf "#ffffff" -sb "#ff005f" -sf "#ffffff"
+cat <<EOF | dmenu -l 10 -i -p "XMonad Help" -nb "#222222" -nf "#ffffff" -sb "#A300A3" -sf "#ffffff"
 Mod+a           App launcher (dmenu_run)
 Mod+w           Browser
 Mod+e           File manager

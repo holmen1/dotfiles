@@ -12,7 +12,7 @@ import XMonad.Layout.NoBorders
 myModMask       = mod4Mask -- Rebind Mod to the Super key
 myFileManager   = "thunar"
 myAppLauncher   = "dmenu_run"
-myMagenta       = "#FF00FF"
+myMagenta       = "#A300A3"
 
 main :: IO ()
 main = do
