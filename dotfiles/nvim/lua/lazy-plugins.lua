@@ -36,6 +36,9 @@ require('lazy').setup({
       lazy = '💤 ',
     },
   },
+  rocks = {
+    enabled = false,
+  },
 })
   --
   -- For additional information with loading, sourcing and examples see `:help lazy.nvim-🔌-plugin-spec`

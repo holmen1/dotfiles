@@ -25,10 +25,7 @@ A slim neovim configuration based on [kickstart.nvim](https://github.com/nvim-lu
 ## Keymaps
 
 
-### Diagnostics
-| Mapping | Description |
-|---------|-------------|
-| `<leader>q` | Open diagnostic quickfix list |
+
 
 ### Telescope
 | Mapping | Description | Function |
@@ -48,6 +45,13 @@ A slim neovim configuration based on [kickstart.nvim](https://github.com/nvim-lu
 | `<leader>/` | Search in Current Buffer | Fuzzy find in current file with dropdown UI |
 | `<leader>s/` | Search in Open Files | Live grep limited to open files only |
 | `<leader>sn` | Search Neovim Config | Find files in your Neovim config directory |
+
+### Diagnostics
+| Mapping | Description |
+|---------|-------------|
+| `<leader>q` | Open diagnostic quickfix list |
+
+
 
 
 
