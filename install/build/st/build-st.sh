@@ -5,7 +5,7 @@ set -e
 ST_VERSION="0.9.2"
 BUILD_DIR="${HOME}/repos/dotfiles/install/build/st"
 PATCH_DIR="${BUILD_DIR}/patches"
-BIN_DIR="$BUILD_DIR//bin"
+BIN_DIR="$BUILD_DIR/bin"
 
 PATCH_TYPES=(
   "scrollback"
@@ -44,6 +44,7 @@ make
 
 # Copy binary to BIN_DIR for manual handling
 echo "Installing to $BIN_DIR"
+mkdir -p $BIN_DIR
 cp st "$BIN_DIR/st-$ST_VERSION"
 chmod +x "$BIN_DIR/st-$ST_VERSION"
 
