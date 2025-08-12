@@ -21,11 +21,19 @@ for link in "${links[@]}"; do
     target_expanded=$(eval echo $target)
    
     # Remove the target if it is an existing directory or symlink
-    if [ -d "$target_expanded" ] || [ -L "$target_expanded" ]; then
-        rm -rf "$target_expanded"
+    if [ -L "$target_expanded" ]; then
+        # It's a symlink, remove it
+        rm "$target_expanded"
+        echo "Removed existing symlink: $target_expanded"
+    elif [ -e "$target_expanded" ]; then
+        # It exists (file or directory), back it up first
+        backup="${target_expanded}.backup.$(date +%Y%m%d_%H%M%S)"
+        mv "$target_expanded" "$backup"
+        echo "Backed up existing file/directory: $target_expanded -> $backup"
     fi
 
     # Create the symbolic link
+    mkdir -p "$(dirname "$target_expanded")"
     ln -s "$source_expanded" "$target_expanded"
     if [ $? -eq 0 ]; then
         echo "Created symbolic link: $target_expanded -> $source_expanded"
@@ -33,3 +41,4 @@ for link in "${links[@]}"; do
         echo "Failed to create symbolic link: $target_expanded -> $source_expanded"
     fi
 done
+
