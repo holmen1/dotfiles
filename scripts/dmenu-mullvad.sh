@@ -2,9 +2,11 @@
 # dmenu-mullvad: Control Mullvad VPN via dmenu
 
 # List of commands
-options="status\nconnect\ndisconnect\naccount login\relay set location"
+options="status\nconnect\ndisconnect\naccount login\nrelay set location"
 
-choice=$(echo -e "$options" | dmenu -i -p "Mullvad:" -nb "#222222" -nf "#ffffff" -sb "#A300A3" -sf "#ffffff")
+choice=$(echo -e "$options" | dmenu -i -p "Mullvad:" \
+-nb "#222222" -nf "#ffffff" -sb "#A300A3" -sf "#ffffff" \
+-fn "JetBrainsMono Nerd Font Mono-14")
 
 case "$choice" in
   "status")

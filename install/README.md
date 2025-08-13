@@ -7,8 +7,9 @@ Go to [Arch Linux installation guide](./archinstall/README.md)
 ## debian
 Go to [Debian installation guide](./debianinstall/README.md)
 
-
 ## Post-installation
+
+[shortcut](../configure_build_install_link.sh)
 
 ### Configure Git
 git config --global user.name "$git_username"
@@ -34,7 +35,21 @@ chmod 600 ~/.ssh/id_ed25519
 ```
 After you generate an SSH key pair, you must add the public key to GitHub.com to enable SSH access for your account
 
+### Add user
+```
+useradd -m -g wheel username
+passwd username
+```
+The passwd -d command deletes (removes) a user's password, allowing passwordless login for that account. For example:
+
+```bash
+passwd -d username
+```
+This is generally not recommended for regular users due to security risks
+
+
 ### sudo without password
+
 
 To allow all members of the `wheel` group to use `sudo` without a password, edit `/etc/sudoers` using `visudo`:
 

@@ -36,6 +36,7 @@ for link in "${links[@]}"; do
     fi
 
     # Create the symbolic link
+    mkdir -p "$(dirname "$target_expanded")"
     ln -s "$source_expanded" "$target_expanded"
     if [ $? -eq 0 ]; then
         echo "Created symbolic link: $target_expanded -> $source_expanded"
@@ -43,3 +44,7 @@ for link in "${links[@]}"; do
         echo "Failed to create symbolic link: $target_expanded -> $source_expanded"
     fi
 done
+
+sudo ln -sf /opt/st/st-0.9.2 /usr/local/bin/st
+sudo ln -sf /opt/xmonad/xmonad-v0.18.0 /usr/local/bin/xmonad
+echo "Created symlinks for st and xmonad"

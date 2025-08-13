@@ -28,9 +28,10 @@ root@archiso ~ # archinstall
 ```
 
 Set 
-"bootloader": "grub"   
-"profile":    "Xorg"  
-btrfs, pipewire
+bootloader: grub   (fallback: systemd-boot)
+profile:    Xorg  
+Filesystem: btrfs  
+packages: git, openssh, vi
 
 
 otherwise my choice, see [install.log](../log/install.log)  
