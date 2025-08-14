@@ -1,23 +1,29 @@
 #!/bin/bash
 # dmenu-mullvad: Control Mullvad VPN via dmenu
 
+FONT="JetBrainsMono Nerd Font Mono-14"
+
 # List of commands
-options="status\nconnect\ndisconnect\naccount login\nrelay set location"
+options="status\nconnect\nreconnect\ndisconnect\nlocation\nhelp"
 
 choice=$(echo -e "$options" | dmenu -i -p "Mullvad:" \
 -nb "#222222" -nf "#ffffff" -sb "#A300A3" -sf "#ffffff" \
--fn "JetBrainsMono Nerd Font Mono-14")
+-fn "$FONT")
 
 case "$choice" in
   "status")
-    out=$(mullvad status)
-    notify-send "Mullvad status" "$out" ;;
-  "account login")
-    acc=$(echo | dmenu -p "Enter Mullvad account number:")
-    [ -n "$acc" ] && mullvad account login "$acc" ;;
-  "relay set location")
-  loc=$(echo | dmenu -p "Country code (e.g., se, us):")
-  city=$(echo | dmenu -p "City code (optional, Enter for none):")
+    mullvad status | dmenu -l 5 -fn "$FONT" ;;
+  "connect")
+    mullvad connect ;;
+  "reconnect")
+    mullvad reconnect ;;
+  "disconnect")
+    mullvad disconnect ;;
+  "help")
+    mullvad help | dmenu -l 26 -fn "$FONT" ;;
+  "location")
+  loc=$(echo | dmenu -p "Country code (e.g., se, us):" -fn "$FONT")
+  city=$(echo | dmenu -p "City code (optional, Enter for none):" -fn "$FONT")
     if [ -n "$loc" ]; then
       if [ -n "$city" ]; then
         mullvad relay set location "$loc" "$city"
@@ -27,10 +33,6 @@ case "$choice" in
     else
       notify-send "Mullvad" "No country entered."
     fi ;;
-  "connect")
-    mullvad connect ;;
-  "disconnect")
-    mullvad disconnect ;;
   *)
     notify-send "Mullvad" "No command selected or unknown option." ;;
 esac
