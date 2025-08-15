@@ -31,8 +31,8 @@ case "$choice" in
         mullvad relay set location "$loc"
       fi
     else
-      notify-send "Mullvad" "No country entered."
+      echo "No country entered." | dmenu -l 1 -fn "$FONT"
     fi ;;
   *)
-    notify-send "Mullvad" "No command selected or unknown option." ;;
+    echo "No command selected or unknown option." | dmenu -l 1 -fn "$FONT" ;;
 esac
