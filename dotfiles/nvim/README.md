@@ -71,6 +71,20 @@ A slim neovim configuration based on [kickstart.nvim](https://github.com/nvim-lu
 | `<leader>th` | Toggle inlay hints | Show/hide inline type hints |
 
 
+### Navigate Split Window
+
+| Mapping    | Action                        |
+|------------|-------------------------------|
+| Ctrl+h     | Move focus to left split      |
+| Ctrl+l     | Move focus to right split     |
+| Ctrl+j     | Move focus to lower split     |
+| Ctrl+k     | Move focus to upper split     |
+| Alt+h      | Resize split left             |
+| Alt+l      | Resize split right            |
+| Alt+j      | Resize split down             |
+| Alt+k      | Resize split up               |
+
+
 
 ####  Compare current buffer with saved file
 
