@@ -10,8 +10,8 @@ This repository contains a custom configuration for the [XMonad](https://xmonad.
 | Key Combination       | Action                                 |
 |------------------------|----------------------------------------|
 | `Mod + Enter`          | Launch terminal                       |
-| `Mod + A`              | Launch dmenu                          |
-| `Mod + C`              | Close the focused window              |
+| `Mod + H`              | Help menu                             |
+| `Mod + Q`              | Close the focused window              |
 | `Mod + Space`          | Rotate through available layouts      |
 | `Mod + Shift + Space`  | Reset the layout to default           |
 | `Mod + N`              | Resize/refresh windows                |
@@ -22,12 +22,12 @@ This repository contains a custom configuration for the [XMonad](https://xmonad.
 | `Mod + Shift + Return` | Swap the focused window with master   |
 | `Mod + ,`              | Increment master windows              |
 | `Mod + .`              | Decrement master windows              |
-| `Mod + Q`              | Logout menu                           |
+| `Mod + X`              | Logout menu                           |
 | `Mod + M`              | VPN menu                              |
-| `Mod + H`              | Help menu                             |
 | `Mod + S`              | Screenshot to `~/Downloads`           |
 | `Mod + Shift + S`      | Capture a selected area screenshot to `~/Downloads` |
 | `Mod + W`              | Launch browser                        |
+| `Mod + A`              | Launch dmenu                          |
 
 
 ## Requirements
