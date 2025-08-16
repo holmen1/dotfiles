@@ -8,6 +8,7 @@ links=(
     "$BASE_DIR/dotfiles/waybar:~/.config/waybar"
     "$BASE_DIR/dotfiles/kitty:~/.config/kitty"
     "$BASE_DIR/dotfiles/nvim:~/.config/nvim"
+    "$BASE_DIR/dotfiles/wofi:~/.config/wofi"
     "$BASE_DIR/dotfiles/.bashrc:~/.bashrc"
 )
 

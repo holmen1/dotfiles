@@ -14,11 +14,8 @@
         "hyprland/workspaces"
     ],
     "modules-right": [
-        //"cpu",
-        //"memory",
-        //"backlight",
         "network",
-	"battery",
+        "battery",
         "clock",
         "tray"
     ],
@@ -37,7 +34,7 @@
     "custom/appmenu": {
         "format": "\u677E", // matsu
         "tooltip-format": "Left: Show all keybindings",
-        "on-click": "~/.config/waybar/keybindings.sh",
+        "on-click": "~/repos/dotfiles/scripts/wofi-help.sh",
         "return-type": "json",
         "interval": 600
     },
