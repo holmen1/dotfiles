@@ -247,3 +247,8 @@ git stash [-u]
 git pull
 git stash apply
 ```
+
+### Restart Network Services
+```
+sudo systemctl restart systemd-networkd
+```
