@@ -92,8 +92,8 @@
         "format-plugged": "{capacity}% ",
         "format-alt": "{time} {icon}",
         "format-good": "{capacity}% {icon}",
-	"format-full": "",// An empty format will hide the module
-        "format-icons": ["", "", "", "", ""]
+	    "format-full": "",// An empty format will hide the module
+        "format-icons": ["\udb80\udc79", "\udb80\udc81", "\udb80\udc7f", "\udb80\udc7c"]
     },
     "network": {
         //"interface": "wlp2*", // (Optional) To force the use of this interface

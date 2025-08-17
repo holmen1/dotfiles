@@ -1,6 +1,6 @@
 * {
     /* `otf-font-awesome` is required to be installed for icons */
-    font-family: "JetBrainsMono Nerd Font", "Noto Sans CJK JP", FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+    font-family: "JetBrainsMono Nerd Font", "Noto Sans CJK JP", "Font Awesome 7 Free", Roboto, Helvetica, Arial, sans-serif;
     font-size: 11px;
 }
 

@@ -39,6 +39,7 @@ sof-firmware
 swaylock
 thunar
 tree
+ttf-jetbrains-mono-nerd
 uwsm
 vi
 vulkan-intel
@@ -48,6 +49,7 @@ waybar
 wget
 wireless_tools
 wireplumber
+woff2-font-awesome
 wofi
 wpa_supplicant
 xdg-desktop-portal-hyprland
