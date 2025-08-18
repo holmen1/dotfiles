@@ -1,6 +1,6 @@
 #!/bin/bash
 # Show xmonad keybindings in dmenu
-cat <<EOF | dmenu -l 17 -i -p "XMonad Help" \
+cat <<EOF | dmenu -l 18 -i -p "XMonad Help" \
 -nb "#222222" -nf "#ffffff" -sb "#222222" -sf "#ffffff" \
 -fn "JetBrainsMono Nerd Font Mono-16"
 Mod+Enter        Terminal
@@ -19,6 +19,6 @@ Mod+Shift+s      Area screenshot
 Mod+a            App launcher (dmenu_run)
 Mod+z            Browser scratchpad toggle
 - dmenus
-Mod+m            Mullvad VPN menu
+Mod+v            Mullvad VPN menu
 Mod+x            Logout menu
 EOF

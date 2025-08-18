@@ -56,8 +56,8 @@ myConfig terminal browser = def
     , ((myModMask .|. shiftMask, xK_s     ), unGrab >> spawn "scrot -s ~/Downloads/screenshot_%Y-%m-%d_%H-%M-%S.png")
     -- dmenu scripts
     , ((myModMask, xK_x                   ), spawn "~/repos/dotfiles/scripts/dmenu-logout.sh")
-    , ((myModMask, xK_m                   ), spawn "~/repos/dotfiles/scripts/dmenu-mullvad.sh")
-    , ((myModMask, xK_h                   ), spawn "~/repos/dotfiles/scripts/dmenu-help.sh")
+    , ((myModMask, xK_v                   ), spawn "~/repos/dotfiles/scripts/dmenu-mullvad.sh")
+    , ((myModMask, xK_m                   ), spawn "~/repos/dotfiles/scripts/dmenu-help.sh")
     , ((myModMask, xK_z                   ), namedScratchpadAction scratchpads "browser")
     ]
     ++
