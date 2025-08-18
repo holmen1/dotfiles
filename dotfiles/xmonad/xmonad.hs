@@ -8,6 +8,8 @@ import qualified XMonad.StackSet as W
 import System.Environment (lookupEnv)
 import Data.Maybe (fromMaybe)
 import XMonad.Layout.NoBorders
+import XMonad.ManageHook
+import XMonad.Util.NamedScratchpad
 
 myModMask       = mod4Mask -- Rebind Mod to the Super key
 myFileManager   = "thunar"
@@ -24,8 +26,15 @@ main = do
     . ewmh
     $ myConfig myTerminal myBrowser
 
+-- Scratchpads
+-- Note, find class name by running `xprop` in the terminal and clicking on the window
+-- WM_CLASS(STRING) = "brave-browser", "Brave-browser"
+myScratchpads browser= [NS "browser" browser (className =? "brave-browser") defaultFloating]
+
 myConfig terminal browser = def
-    { modMask    = myModMask,
+    { 
+      manageHook = namedScratchpadManageHook scratchpads,
+      modMask    = myModMask,
       terminal   = terminal,
       workspaces = myWorkspaces,
       logHook = fadeWindowsLogHook myFadeHook,
@@ -49,6 +58,7 @@ myConfig terminal browser = def
     , ((myModMask, xK_x                   ), spawn "~/repos/dotfiles/scripts/dmenu-logout.sh")
     , ((myModMask, xK_m                   ), spawn "~/repos/dotfiles/scripts/dmenu-mullvad.sh")
     , ((myModMask, xK_h                   ), spawn "~/repos/dotfiles/scripts/dmenu-help.sh")
+    , ((myModMask, xK_z                   ), namedScratchpadAction scratchpads "browser")
     ]
     ++
     -- mod-[1..9], Switch to workspace N
@@ -57,6 +67,8 @@ myConfig terminal browser = def
         | (i, k) <- zip myWorkspaces [xK_1 .. xK_9]
         , (f, m) <- [(W.greedyView, 0), (\i -> \w -> W.greedyView i (W.shift i w), shiftMask)]
     ])
+    where
+      scratchpads = myScratchpads browser
 
 myWorkspaces = map show [1..6]
 myFadeHook = composeAll [ opaque, isUnfocused --> transparency 0.8 ]

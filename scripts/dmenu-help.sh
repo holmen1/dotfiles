@@ -17,6 +17,7 @@ Mod+e            File manager
 Mod+s            Screenshot
 Mod+Shift+s      Area screenshot
 Mod+a            App launcher (dmenu_run)
+Mod+z            Browser scratchpad toggle
 - dmenus
 Mod+m            Mullvad VPN menu
 Mod+x            Logout menu
