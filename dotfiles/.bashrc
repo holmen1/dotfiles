@@ -12,15 +12,24 @@ bind 'set completion-ignore-case on'
 bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
 
+export HISTCONTROL=ignoreboth:erasedups
+
+
+# Keyboard shortcuts
+cdc() {
+	cd "$1" && code .
+}
+cdv() {
+	cd "$1" && nvim .
+}
+alias cdr='cd ~/repos'
+
 alias ls='ls --color=auto'
 alias ll='ls -lat --color=auto'
 alias grep='grep --color=auto'
 alias ..='cd ..'
-alias cdr='cd ~/repos'
 alias reboot='sudo reboot'
 alias shutdown='sudo shutdown'
-
-export HISTCONTROL=ignoreboth:erasedups
 
 # Git Aliases
 alias gs='git status'
