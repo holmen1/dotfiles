@@ -29,10 +29,16 @@ main = do
 -- Scratchpads
 -- Note, find class name by running `xprop` in the terminal and clicking on the window
 -- WM_CLASS(STRING) = "brave-browser", "Brave-browser"
-myScratchpads browser =
+myScratchpads terminal browser =
   [
-    NS "htop" "xterm -e htop" (title =? "htop") (customFloating $ W.RationalRect 0.5 0 1 0.4),
-    NS "browser" (browser ++ " --class=brave-browser") (className =? "brave-browser") (customFloating $ W.RationalRect 0 0 1 1)
+    NS "htop"
+       (terminal ++ " -e htop")
+       (title =? "htop")
+       (customFloating $ W.RationalRect 0.5 0 1 0.4),
+    NS "browser"
+       (browser ++ " --class=MyScratchpad")
+       (className =? "MyScratchpad")
+       (customFloating $ W.RationalRect 0 0 1 1)
   ]
 
 myConfig terminal browser = def
@@ -47,7 +53,6 @@ myConfig terminal browser = def
     }
   `additionalKeys`
     ([((myModMask, xK_a                   ), spawn myAppLauncher)
-    , ((myModMask, xK_w                   ), spawn browser)
     , ((myModMask, xK_e                   ), spawn myFileManager)
     , ((myModMask, xK_Return              ), spawn terminal)
     , ((myModMask .|. shiftMask, xK_Return), windows W.swapMaster)
@@ -62,7 +67,7 @@ myConfig terminal browser = def
     , ((myModMask, xK_x                   ), spawn "~/repos/dotfiles/scripts/dmenu-logout.sh")
     , ((myModMask, xK_v                   ), spawn "~/repos/dotfiles/scripts/dmenu-mullvad.sh")
     , ((myModMask, xK_m                   ), spawn "~/repos/dotfiles/scripts/dmenu-help.sh")
-    , ((myModMask, xK_z                   ), namedScratchpadAction scratchpads "browser")
+    , ((myModMask, xK_w                   ), namedScratchpadAction scratchpads "browser")
     , ((myModMask, xK_p                   ), namedScratchpadAction scratchpads "htop")
     ]
     ++
@@ -73,10 +78,14 @@ myConfig terminal browser = def
         , (f, m) <- [(W.greedyView, 0), (\i -> \w -> W.greedyView i (W.shift i w), shiftMask)]
     ])
     where
-      scratchpads = myScratchpads browser
+      scratchpads = myScratchpads terminal browser
 
-myWorkspaces = map show [1..6]
-myFadeHook = composeAll [ opaque, isUnfocused --> transparency 0.8 ]
+myWorkspaces = map show [1..4]
+myFadeHook = composeAll
+  [ opaque,
+    isUnfocused --> transparency 0.8,
+    className =? "brave-browser" --> transparency 0.15
+  ]
 
 -- Removes the borders from a window under one of the following conditions:
 -- There is only one screen and only one window
