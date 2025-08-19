@@ -1,0 +1,102 @@
+{
+   "checksum": "9e321c1d766c2d845f8f695b341c8d29",
+   "roots": {
+      "bookmark_bar": {
+         "children": [ {
+            "date_added": "13399412625538984",
+            "date_last_used": "13400080145900915",
+            "guid": "801bd0c0-a64d-4e2f-b63e-83f83307f0bd",
+            "id": "7",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "github",
+            "type": "url",
+            "url": "https://github.com/holmen1"
+         }, {
+            "date_added": "13399412429270451",
+            "date_last_used": "13400080143808046",
+            "guid": "7ccacf04-0720-4e88-9b58-dab97dcfbd67",
+            "id": "5",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "ArchWiki",
+            "type": "url",
+            "url": "https://wiki.archlinux.org/title/Main_page"
+         }, {
+            "date_added": "13399808995203608",
+            "date_last_used": "13400082076469390",
+            "guid": "9bf3801f-d317-41ae-9e2b-ab3bc1c98002",
+            "id": "13",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "Hoogle",
+            "type": "url",
+            "url": "https://hoogle.haskell.org/"
+         }, {
+            "date_added": "13399633834835128",
+            "date_last_used": "13400011818931771",
+            "guid": "1f6d5d7c-15e6-4e78-a3f4-d51ccd199ee7",
+            "id": "9",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "Hackage",
+            "type": "url",
+            "url": "https://hackage.haskell.org/"
+         }, {
+            "date_added": "13399807694370389",
+            "date_last_used": "13400080148049468",
+            "guid": "f75ec02a-7ede-410b-b26e-2e3b9ce75747",
+            "id": "12",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "Cabal User Guide",
+            "type": "url",
+            "url": "https://cabal.readthedocs.io/en/stable/index.html"
+         }, {
+            "date_added": "13399751241568995",
+            "date_last_used": "13399968310497830",
+            "guid": "dcc6a8ec-602e-4a17-bc68-3a4e4022c735",
+            "id": "11",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "Category Theory for Programmers",
+            "type": "url",
+            "url": "file:///home/holmen1/Downloads/Category%20Theory%20for%20Programmers.pdf"
+         } ],
+         "date_added": "13399375560088033",
+         "date_last_used": "0",
+         "date_modified": "13399809006864504",
+         "guid": "0bc5d13f-2cba-5d74-951f-3f233fe6c908",
+         "id": "1",
+         "name": "Bookmarks",
+         "type": "folder"
+      },
+      "other": {
+         "children": [  ],
+         "date_added": "13399375560088033",
+         "date_last_used": "0",
+         "date_modified": "0",
+         "guid": "82b081ec-3dd3-529c-8475-ab6c344590dd",
+         "id": "2",
+         "name": "Other bookmarks",
+         "type": "folder"
+      },
+      "synced": {
+         "children": [  ],
+         "date_added": "13399375560088033",
+         "date_last_used": "0",
+         "date_modified": "0",
+         "guid": "4cf2e351-0e85-532b-bb37-df045d8f8d0f",
+         "id": "3",
+         "name": "Mobile bookmarks",
+         "type": "folder"
+      }
+   },
+   "version": 1
+}
