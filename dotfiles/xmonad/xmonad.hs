@@ -29,7 +29,11 @@ main = do
 -- Scratchpads
 -- Note, find class name by running `xprop` in the terminal and clicking on the window
 -- WM_CLASS(STRING) = "brave-browser", "Brave-browser"
-myScratchpads browser= [NS "browser" browser (className =? "brave-browser") defaultFloating]
+myScratchpads browser =
+  [
+    NS "htop" "xterm -e htop" (title =? "htop") (customFloating $ W.RationalRect 0.5 0 1 0.4),
+    NS "browser" (browser ++ " --class=brave-browser") (className =? "brave-browser") (customFloating $ W.RationalRect 0 0 1 1)
+  ]
 
 myConfig terminal browser = def
     { 
@@ -59,6 +63,7 @@ myConfig terminal browser = def
     , ((myModMask, xK_v                   ), spawn "~/repos/dotfiles/scripts/dmenu-mullvad.sh")
     , ((myModMask, xK_m                   ), spawn "~/repos/dotfiles/scripts/dmenu-help.sh")
     , ((myModMask, xK_z                   ), namedScratchpadAction scratchpads "browser")
+    , ((myModMask, xK_p                   ), namedScratchpadAction scratchpads "htop")
     ]
     ++
     -- mod-[1..9], Switch to workspace N
