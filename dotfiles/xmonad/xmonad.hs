@@ -5,26 +5,17 @@ import XMonad.Hooks.FadeWindows
 import XMonad.Hooks.EwmhDesktops (ewmhFullscreen, ewmh)
 import XMonad.Actions.CycleWS
 import qualified XMonad.StackSet as W
-import System.Environment (lookupEnv)
-import Data.Maybe (fromMaybe)
 import XMonad.Layout.NoBorders
 import XMonad.ManageHook
 import XMonad.Util.NamedScratchpad
+import System.Environment (lookupEnv)
+import Data.Maybe (fromMaybe)
 
 myModMask       = mod4Mask -- Rebind Mod to the Super key
 myFileManager   = "thunar"
 myAppLauncher   = "dmenu_run"
 myMagenta       = "#A300A3"
-
-main :: IO ()
-main = do
-  -- Read terminal and browser from environment variables with fallbacks
-  myTerminal <- fromMaybe "xterm" <$> lookupEnv "TERMINAL"
-  myBrowser  <- fromMaybe "firefox" <$> lookupEnv "BROWSER"
-  xmonad
-    . ewmhFullscreen
-    . ewmh
-    $ myConfig myTerminal myBrowser
+myWorkspaces    = map show [1..4]
 
 -- Scratchpads
 -- Note, find class name by running `xprop` in the terminal and clicking on the window
@@ -41,18 +32,21 @@ myScratchpads terminal browser =
        (customFloating $ W.RationalRect 0 0 1 1)
   ]
 
-myConfig terminal browser = def
-    { 
-      manageHook = namedScratchpadManageHook scratchpads,
-      modMask    = myModMask,
-      terminal   = terminal,
-      workspaces = myWorkspaces,
-      logHook = fadeWindowsLogHook myFadeHook,
-      focusedBorderColor = myMagenta,
-      layoutHook = myLayout
-    }
-  `additionalKeys`
-    ([((myModMask, xK_a                   ), spawn myAppLauncher)
+-- Removes the borders from a window under one of the following conditions:
+-- There is only one screen and only one window
+-- A floating window covers the entire screen
+myLayout = smartBorders $ layoutHook def
+
+myManageHook terminal browser = namedScratchpadManageHook (myScratchpads terminal browser)
+
+myFadeHook = composeAll
+  [ opaque,
+    isUnfocused --> transparency 0.8,
+    className =? "brave-browser" --> transparency 0.15
+  ]
+
+myKeys terminal browser =
+  [((myModMask, xK_a                   ), spawn myAppLauncher)
     , ((myModMask, xK_e                   ), spawn myFileManager)
     , ((myModMask, xK_Return              ), spawn terminal)
     , ((myModMask .|. shiftMask, xK_Return), windows W.swapMaster)
@@ -67,8 +61,8 @@ myConfig terminal browser = def
     , ((myModMask, xK_x                   ), spawn "~/repos/dotfiles/scripts/dmenu-logout.sh")
     , ((myModMask, xK_v                   ), spawn "~/repos/dotfiles/scripts/dmenu-mullvad.sh")
     , ((myModMask, xK_m                   ), spawn "~/repos/dotfiles/scripts/dmenu-help.sh")
-    , ((myModMask, xK_w                   ), namedScratchpadAction scratchpads "browser")
-    , ((myModMask, xK_p                   ), namedScratchpadAction scratchpads "htop")
+    , ((myModMask, xK_w                   ), namedScratchpadAction (myScratchpads terminal browser) "browser")
+    , ((myModMask, xK_p                   ), namedScratchpadAction (myScratchpads terminal browser) "htop")
     ]
     ++
     -- mod-[1..9], Switch to workspace N
@@ -76,18 +70,27 @@ myConfig terminal browser = def
     [((m .|. myModMask, k), windows $ f i)
         | (i, k) <- zip myWorkspaces [xK_1 .. xK_9]
         , (f, m) <- [(W.greedyView, 0), (\i -> \w -> W.greedyView i (W.shift i w), shiftMask)]
-    ])
-    where
-      scratchpads = myScratchpads terminal browser
-
-myWorkspaces = map show [1..4]
-myFadeHook = composeAll
-  [ opaque,
-    isUnfocused --> transparency 0.8,
-    className =? "brave-browser" --> transparency 0.15
   ]
 
--- Removes the borders from a window under one of the following conditions:
--- There is only one screen and only one window
--- A floating window covers the entire screen
-myLayout = smartBorders $ layoutHook def
+myConfig terminal browser = def
+    { 
+      modMask    = myModMask,
+      terminal   = terminal,
+      workspaces = myWorkspaces,
+      focusedBorderColor = myMagenta,
+      layoutHook = myLayout,
+      manageHook = myManageHook terminal browser,
+      logHook = fadeWindowsLogHook myFadeHook
+    }
+  `additionalKeys` myKeys terminal browser
+
+
+main :: IO ()
+main = do
+  -- Read terminal and browser from environment variables with fallbacks
+  myTerminal <- fromMaybe "xterm" <$> lookupEnv "TERMINAL"
+  myBrowser  <- fromMaybe "firefox" <$> lookupEnv "BROWSER"
+  xmonad
+    . ewmhFullscreen
+    . ewmh
+    $ myConfig myTerminal myBrowser
