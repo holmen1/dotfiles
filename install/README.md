@@ -255,6 +255,8 @@ Running multiple network managers can cause conflicts, unpredictable behavior, o
    iwctl station wlan0 connect <NetworkName>
    ```
 
+5. or switch to NetworkManager...
+
 
 
 ### VPN

@@ -3,6 +3,7 @@ base
 base-devel
 brightnessctl
 btrfs-progs
+clang
 dunst
 efibootmgr
 fastfetch
@@ -24,6 +25,7 @@ ly
 man-db
 man-pages
 neovim
+network-manager-applet
 noto-fonts-cjk
 openssh
 pipewire
@@ -33,6 +35,7 @@ pipewire-pulse
 polkit-kde-agent
 qt5-wayland
 qt6-wayland
+ripgrep
 slurp
 smartmontools
 sof-firmware
@@ -40,6 +43,7 @@ swaylock
 thunar
 tree
 ttf-jetbrains-mono-nerd
+unzip
 uwsm
 vi
 vulkan-intel
@@ -49,6 +53,7 @@ waybar
 wget
 wireless_tools
 wireplumber
+wl-clipboard
 woff2-font-awesome
 wofi
 wpa_supplicant
