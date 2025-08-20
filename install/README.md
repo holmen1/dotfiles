@@ -148,6 +148,40 @@ leave x session
 $ pkill x 
 ```
 
+### Enable SSH Server (remote login)
+
+1. Install and start the SSH server:
+   ```bash
+   sudo pacman -S openssh
+   sudo systemctl enable sshd
+   sudo systemctl start sshd
+   ```
+
+2. Check SSH server status and logs:
+   ```bash
+   sudo systemctl status sshd
+   sudo journalctl -u sshd
+   # Or view recent connection attempts:
+   sudo grep sshd /var/log/auth.log
+   ```
+
+3. Allow SSH through the firewall (if using UFW):
+   ```bash
+   sudo pacman -S ufw
+   sudo ufw allow ssh
+   sudo ufw enable
+   sudo ufw status
+   ```
+   *(If using another firewall, open port 22/TCP.)*
+
+4. Connect from another machine:
+   ```bash
+   ssh username@<your_ip_address>
+   ```
+
+> Tip:* For extra security, use SSH keys and disable password login in `/etc/ssh/sshd_config`.
+
+
 ### Display manager  
 
 To enable display manager, confirm ```.config/xmonad/xmonad-session-rc```linked   
