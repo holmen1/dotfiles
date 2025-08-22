@@ -2,7 +2,7 @@
 
 Complete setup for Linux: configuration, installation, and build scripts
 
-## TLDR
+## TL;DR
 ```bash
 git clone https://github.com/holmen1/dotfiles.git ~/repos/dotfiles
 cd ~/repos/dotfiles
@@ -32,6 +32,7 @@ This setup is designed to run on low-spec hardware (tested on a 4GB RAM machine)
 ## Installation guides
 - [arch](https://github.com/holmen1/dotfiles/tree/master/install/archinstall)
 - [debian](https://github.com/holmen1/dotfiles/tree/master/install/debianinstall)
+- [macos](https://github.com/holmen1/dotfiles/tree/master/install/archinstall)
 
 ## Automation scripts
 
@@ -40,7 +41,8 @@ This setup is designed to run on low-spec hardware (tested on a 4GB RAM machine)
 
 ## Build
 
-The `build` folder contains scripts and tools for building and managing components of this dotfiles setup.
+The [build](https://github.com/holmen1/dotfiles/tree/master/install/build)
+folder contains scripts and tools for building and managing components of this dotfiles setup.
 
 
 
