@@ -32,7 +32,7 @@ This setup is designed to run on low-spec hardware (tested on a 4GB RAM machine)
 ## Installation guides
 - [arch](https://github.com/holmen1/dotfiles/tree/master/install/archinstall)
 - [debian](https://github.com/holmen1/dotfiles/tree/master/install/debianinstall)
-- [macos](https://github.com/holmen1/dotfiles/tree/master/install/archinstall)
+- [macos](https://github.com/holmen1/dotfiles/tree/master/install/macinstall)
 
 ## Automation scripts
 

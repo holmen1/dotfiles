@@ -15,7 +15,7 @@ brew bundle --file=~/repos/dotfiles/install/macinstall/Brewfile
 ```
 
 
-### Link dotfiles
+## Link dotfiles
 ```
-./repos/dotfiles/scripts/link_config.sh install/macinstall/macos_links.conf
+./scripts/link_config.sh install/macinstall/macos_links.conf
 ```
