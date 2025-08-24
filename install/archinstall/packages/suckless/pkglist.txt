@@ -1,4 +1,6 @@
 alsa-utils
+arm-none-eabi-gcc
+arm-none-eabi-gdb
 base
 base-devel
 bear
@@ -34,6 +36,7 @@ pipewire-alsa
 pipewire-jack
 pipewire-pulse
 python
+qemu-full
 ripgrep
 scrot
 sof-firmware
