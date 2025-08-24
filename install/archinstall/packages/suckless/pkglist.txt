@@ -27,6 +27,7 @@ linux-firmware
 man-db
 man-pages
 neovim
+noto-fonts-cjk
 openssh
 pipewire
 pipewire-alsa
