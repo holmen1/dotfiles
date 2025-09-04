@@ -1,6 +1,4 @@
 alsa-utils
-arm-none-eabi-gcc
-arm-none-eabi-gdb
 base
 base-devel
 bear
@@ -12,6 +10,7 @@ efibootmgr
 fastfetch
 fd
 feh
+gdb
 git
 gnu-netcat
 grub
@@ -36,7 +35,6 @@ pipewire-alsa
 pipewire-jack
 pipewire-pulse
 python
-qemu-full
 ripgrep
 scrot
 sof-firmware
