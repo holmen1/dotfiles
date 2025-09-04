@@ -35,6 +35,7 @@ pipewire-alsa
 pipewire-jack
 pipewire-pulse
 python
+reflector
 ripgrep
 scrot
 sof-firmware
