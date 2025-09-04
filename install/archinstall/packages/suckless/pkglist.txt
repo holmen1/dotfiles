@@ -21,6 +21,7 @@ intel-media-driver
 intel-ucode
 iwd
 less
+lf
 libpulse
 libva-intel-driver
 linux

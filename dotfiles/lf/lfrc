@@ -1,0 +1,14 @@
+# lf (list files) - minimal terminal file manager: https://github.com/gokcehan/lf
+# Docs and config examples: https://github.com/gokcehan/lf/wiki
+
+set hidden                # Show hidden files by default
+
+# Open files with vi using the 'o' key
+map o $vi $f              # Map 'o' to open current file with vi
+
+# Show the result of execution of previous commands
+map ` !true               # Map ` to show result of previous command (example)
+
+# Execute current file (must be executable)
+map x $$f                 # Map x to execute current file in a subshell
+map X !$f                 # Map X to execute current file in background

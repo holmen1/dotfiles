@@ -10,6 +10,7 @@ links=(
     "$BASE_DIR/dotfiles/.vimrc:~/.vimrc"
     "$BASE_DIR/dotfiles/.xbindkeysrc:~/.xbindkeysrc"
     "$BASE_DIR/dotfiles/.xinitrc:~/.xinitrc"
+    "$BASE_DIR/dotfiles/lf:~/.config/lf"
     "$BASE_DIR/scripts/system-monitor.service:~/.config/systemd/user/system-monitor.service"
     "$BASE_DIR/scripts/system-monitor.timer:~/.config/systemd/user/system-monitor.timer"
 )
