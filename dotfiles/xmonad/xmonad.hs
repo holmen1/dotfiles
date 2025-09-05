@@ -12,7 +12,6 @@ import XMonad.Util.EZConfig (additionalKeys)
 import XMonad.Util.NamedScratchpad
 
 myModMask = mod4Mask -- Rebind Mod to the Super key
-myFileManager = "thunar"
 myAppLauncher = "dmenu_run"
 myMagenta = "#A300A3"
 
@@ -50,7 +49,7 @@ myFadeHook =
 
 myKeys terminal browser =
   [ ((myModMask, xK_a), spawn myAppLauncher),
-    ((myModMask, xK_e), spawn myFileManager),
+    ((myModMask, xK_e), spawn $ terminal ++ " -e lf"),
     ((myModMask, xK_Return), spawn terminal),
     ((myModMask .|. shiftMask, xK_Return), windows W.swapMaster),
     ((myModMask, xK_q), kill),
