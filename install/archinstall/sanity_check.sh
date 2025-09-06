@@ -97,7 +97,7 @@ check_command "st" "Terminal emulator"
 print_header "XMonad Configuration"
 if [ -f "/usr/local/bin/xmonad" ]; then
     print_pass "Custom XMonad binary exists"
-    if [ -x "$HOME/tmp/xmonad-v0.18.0" ]; then
+    if [ -x "/usr/local/bin/xmonad" ]; then
         print_pass "XMonad binary is executable"
     else
         print_fail "XMonad binary is not executable"

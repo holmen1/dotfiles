@@ -41,7 +41,6 @@ ripgrep
 scrot
 sof-firmware
 strace
-thunar
 tree
 ttf-jetbrains-mono-nerd
 vi
