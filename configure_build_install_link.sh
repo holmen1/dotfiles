@@ -60,8 +60,8 @@ read -p "Install Haskell? [y/N] " ans
 if [[ $ans =~ ^[Yy]$ ]]; then
     # Install GHCup
     curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
+    echo "Installed Haskell, may need reboot"
 fi
-echo "Installed Haskell, may need reboot"
 
 read -p "Build xmonad? [y/N] " ans
 if [[ $ans =~ ^[Yy]$ ]]; then
