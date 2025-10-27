@@ -12,7 +12,15 @@ Run [configure_build_install_link.sh](configure_build_install_link.sh)
 ./configure_build_install_link.sh
 ```
 
-This will configure git, generate SSH keys, install yay, set up Haskell, build and install all required packages, link configuration files and executables
+This will configure git, generate SSH keys, install yay, set up Haskell, build and install all required packages, link configuration files and executables.
+
+* Window manager: Xmonad (tiling, minimal, highly configurable)
+* Terminal: st (simple terminal, patched for features)
+* File manager: lf (terminal-based, lightweight)
+* Web browser: Brave (privacy-focused, fast)
+* VPN: Mullvad CLI (secure, scriptable VPN control)
+* Editor: Neovim (modern Vim, extensible)
+* System monitoring: Custom scripts for battery and WiFi status
 
 ## Project Scope
 
