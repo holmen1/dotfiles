@@ -24,6 +24,24 @@ A slim neovim configuration based on [kickstart.nvim](https://github.com/nvim-lu
 
 ## Keymaps
 
+### vim
+
+Reminder
+| Mapping | Description |
+|---------|-------------|
+| `u` | Undo previous |
+| `U` | Undo all changes on line |
+| `<C-r>` | Redo undone |
+| `c [number] motion` | Change text specified by [number] and motion |
+| `R` | Enters Replace mode until `<Esc>`{normal} is pressed |
+| `v motion :w FILENAME` | Saves the Visually selected lines in file FILENAME |
+| `v motion :w >> FILENAME` | Appends the Visually selected lines to file FILENAME |
+| `:x,yw >> FILENAME` | Appends lines x-y to file FILENAME |
+| `:r FILENAME` | Retrieves disk file FILENAME and puts it below the cursor |
+| `:r !command`|	Insert output of shell command below cursor |
+| `:%s/old/new/gc`| Global find and replace with confirmation |
+| `:g/pattern/d` | Delete all lines matching pattern |
+| `:v/pattern/d` | Delete all lines NOT matching pattern |
 
 
 
