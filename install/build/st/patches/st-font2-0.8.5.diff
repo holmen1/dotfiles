@@ -12,17 +12,16 @@ diff --git a/config.def.h b/config.def.h
 index 91ab8ca..717b2f0 100644
 --- a/config.def.h
 +++ b/config.def.h
-@@ -5,6 +5,12 @@
+@@ -6,6 +6,12 @@
   * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
   */
--static char *font = "Liberation Mono:pixelsize=12:antialias=true:autohint=true";
-+static char *font = "JetBrainsMono Nerd Font Mono:pixelsize=14:antialias=true:autohint=true";
+ static char *font = "Liberation Mono:pixelsize=12:antialias=true:autohint=true";
 +/* Spare fonts */
 +static char *font2[] = {
-+	"Liberation Mono:pixelsize=14:antialias=true:autohint=true",
-+	"Inconsolata for Powerline:pixelsize=14:antialias=true:autohint=true",
-+   "Noto Color Emoji:pixelsize=14:antialias=true:autohint=true",
++/*	"Inconsolata for Powerline:pixelsize=12:antialias=true:autohint=true", */
++/*	"Hack Nerd Font Mono:pixelsize=11:antialias=true:autohint=true", */
 +};
++
  static int borderpx = 2;
 
  /*

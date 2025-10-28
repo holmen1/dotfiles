@@ -72,8 +72,8 @@ fi
 read -p "Install xmonad? [y/N] " ans
 if [[ $ans =~ ^[Yy]$ ]]; then
     sudo mkdir -p /opt/xmonad
-    sudo cp -f $XMONAD_DIR/bin/xmonad-v0.18.0 /opt/xmonad/
-    echo "Installed xmonad to /opt/xmonad/xmonad-v0.18.0"
+    sudo cp -f $XMONAD_DIR/bin/xmonad-v0.* /opt/xmonad/
+    echo "Installed xmonad to /opt/xmonad/"
 fi
 
 read -p "Build st? [y/N] " ans
@@ -85,8 +85,8 @@ fi
 read -p "Install st? [y/N] " ans
 if [[ $ans =~ ^[Yy]$ ]]; then
     sudo mkdir -p /opt/st
-    sudo cp -f $ST_DIR/bin/st-0.9.2 /opt/st/
-    echo "Installed st to /opt/st/st-0.9.2"
+    sudo cp -f $ST_DIR/bin/st-0.* /opt/st/
+    echo "Installed st to /opt/st/"
 fi
 
 read -p "Link dotfiles? [y/N] " ans

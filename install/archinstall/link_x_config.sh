@@ -46,6 +46,6 @@ for link in "${links[@]}"; do
     fi
 done
 
-sudo ln -sf /opt/st/st-0.9.2 /usr/local/bin/st
+sudo ln -sf /opt/st/st-0.9.3 /usr/local/bin/st
 sudo ln -sf /opt/xmonad/xmonad-v0.18.0 /usr/local/bin/xmonad
 echo "Created symlinks for st and xmonad"
