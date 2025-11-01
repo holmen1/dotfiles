@@ -46,6 +46,9 @@ if command -v xbindkeys >/dev/null 2>&1; then
    xbindkeys &
 fi
 
+# Set environment variables for applications
+export EDITOR=nvim
+export OPENER=feh
 export TERMINAL=st
 export BROWSER=brave
 
