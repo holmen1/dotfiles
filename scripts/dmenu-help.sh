@@ -1,10 +1,11 @@
 #!/bin/bash
 # Show xmonad keybindings in dmenu
-cat <<EOF | dmenu -l 19 -i -p "XMonad Help" \
+cat <<EOF | dmenu -l 20 -i -p "XMonad Help" \
 -nb "#222222" -nf "#ffffff" -sb "#222222" -sf "#ffffff" \
 -fn "JetBrainsMono Nerd Font Mono-16"
 Mod+Enter        Terminal
 Mod+q            Close window
+Mod+Shift+q      Quit xmonad
 Mod+[1..4]       Switch to workspace N
 Mod+Tab          Next workspace
 Mod+Shift+[1..4] Move window to workspace N and follow
