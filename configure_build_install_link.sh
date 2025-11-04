@@ -5,7 +5,8 @@ EMAIL=user@gmail.com
 
 DOTFILES_DIR=~/repos/dotfiles
 SCRIPTS_DIR=$DOTFILES_DIR/scripts
-LINK_SCRIPT=$DOTFILES_DIR/install/archinstall/link_x_config.sh
+LINK_SCRIPT=$SCRIPTS_DIR/link_config.sh
+LINKS=$DOTFILES_DIR/install/archinstall/links/suckless_links.config
 
 XMONAD_DIR=$DOTFILES_DIR/install/build/xmonad
 ST_DIR=$DOTFILES_DIR/install/build/st
@@ -74,6 +75,8 @@ if [[ $ans =~ ^[Yy]$ ]]; then
     sudo mkdir -p /opt/xmonad
     sudo cp -f $XMONAD_DIR/bin/xmonad-v0.* /opt/xmonad/
     echo "Installed xmonad to /opt/xmonad/"
+    sudo ln -sf /opt/xmonad/xmonad-v0.* /usr/local/bin/xmonad
+    echo "Created symlink for xmonad"
 fi
 
 read -p "Build st? [y/N] " ans
@@ -87,12 +90,14 @@ if [[ $ans =~ ^[Yy]$ ]]; then
     sudo mkdir -p /opt/st
     sudo cp -f $ST_DIR/bin/st-0.* /opt/st/
     echo "Installed st to /opt/st/"
+    sudo ln -sf /opt/st/st-0.* /usr/local/bin/st
+    echo "Created symlink for st"
 fi
 
 read -p "Link dotfiles? [y/N] " ans
 if [[ $ans =~ ^[Yy]$ ]]; then
     # Link dotfiles
-    $LINK_SCRIPT
+    $LINK_SCRIPT $LINKS
 fi
 
 read -p "Enable services? [y/N] " ans
