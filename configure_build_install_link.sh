@@ -73,9 +73,11 @@ fi
 read -p "Install xmonad? [y/N] " ans
 if [[ $ans =~ ^[Yy]$ ]]; then
     sudo mkdir -p /opt/xmonad
-    sudo cp -f $XMONAD_DIR/bin/xmonad-v0.* /opt/xmonad/
+    sudo rm -f /opt/xmonad/*
+
+    sudo cp -f $XMONAD_DIR/bin/xmonad-v0.18.[0-9] /opt/xmonad/
     echo "Installed xmonad to /opt/xmonad/"
-    sudo ln -sf /opt/xmonad/xmonad-v0.* /usr/local/bin/xmonad
+    sudo ln -sf /opt/xmonad/xmonad-v0.18.* /usr/local/bin/xmonad
     echo "Created symlink for xmonad"
 fi
 
@@ -88,9 +90,11 @@ fi
 read -p "Install st? [y/N] " ans
 if [[ $ans =~ ^[Yy]$ ]]; then
     sudo mkdir -p /opt/st
-    sudo cp -f $ST_DIR/bin/st-0.* /opt/st/
+    sudo rm -f /opt/st/*
+
+    sudo cp -f $ST_DIR/bin/st-0.9.[0-9] /opt/st/
     echo "Installed st to /opt/st/"
-    sudo ln -sf /opt/st/st-0.* /usr/local/bin/st
+    sudo ln -sf /opt/st/st-0.9.* /usr/local/bin/st
     echo "Created symlink for st"
 fi
 
