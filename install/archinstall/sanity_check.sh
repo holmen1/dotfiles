@@ -108,17 +108,6 @@ fi
 
 check_file "$HOME/.xinitrc" ".xinitrc file"
 
-# Screen Locking
-print_header "Screen Locking"
-check_command "i3lock" "i3lock screen locker"
-
-# Test i3lock with black screen
-if command -v i3lock &> /dev/null; then
-    print_pass "i3lock available for screen locking"
-else
-    print_fail "i3lock not available - screen locking won't work"
-fi
-
 # Power Management
 print_header "Power Management"
 if groups | grep -q "wheel"; then
@@ -240,12 +229,7 @@ fi
 # Test Key Functionalities
 print_header "Functional Tests"
 
-# Test if we can lock screen (don't actually lock)
-if command -v i3lock &> /dev/null; then
-    print_pass "Screen lock command available"
-else
-    print_fail "Screen lock not functional"
-fi
+check_command "i3lock" "Screen lock"
 
 # Test notification system
 if command -v notify-send &> /dev/null; then
@@ -266,7 +250,7 @@ echo -e "  ${RED}Failed: $FAILED${NC}"
 echo -e "  ${YELLOW}Warnings: $WARNINGS${NC}"
 
 if [ $FAILED -eq 0 ]; then
-    echo -e "\n${GREEN}🎉 Your installation looks good!${NC}"
+    echo -e "\n${GREEN}✓ Your installation looks good!\n${NC}"
     if [ $WARNINGS -gt 0 ]; then
         echo -e "${YELLOW}⚠️  Some warnings need attention${NC}"
     fi
