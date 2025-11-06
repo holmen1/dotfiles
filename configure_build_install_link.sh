@@ -1,7 +1,7 @@
 #!/bin/bash
 
 USER=$(whoami)
-EMAIL=user@gmail.com
+EMAIL=$USER@gmail.com
 
 DOTFILES_DIR=~/repos/dotfiles
 SCRIPTS_DIR=$DOTFILES_DIR/scripts
@@ -11,8 +11,9 @@ LINKS=$DOTFILES_DIR/install/archinstall/links/suckless_links.config
 XMONAD_DIR=$DOTFILES_DIR/install/build/xmonad
 ST_DIR=$DOTFILES_DIR/install/build/st
 
-PKGLIST=$DOTFILES_DIR/install/archinstall/packages/suckless/pkglist.txt
-FPKGLIST=$DOTFILES_DIR/install/archinstall/packages/suckless/foreignpkglist.txt
+PKGPROFILE=xlibre
+PKGLIST=$DOTFILES_DIR/install/archinstall/packages/$PKGPROFILE/pkglist.txt
+FPKGLIST=$DOTFILES_DIR/install/archinstall/packages/$PKGPROFILE/foreignpkglist.txt
 
 TEST=$DOTFILES_DIR/install/archinstall/sanity_check.sh
 
