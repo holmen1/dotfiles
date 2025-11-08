@@ -12,6 +12,7 @@ fd
 feh
 gdb
 git
+gnu-netcat
 grub
 gst-plugin-pipewire
 htop
@@ -27,11 +28,10 @@ linux
 linux-firmware
 man-db
 man-pages
-mesa
-meson
 neovim
 noto-fonts-cjk
 openssh
+pipewire
 pipewire-alsa
 pipewire-jack
 pipewire-pulse
@@ -43,9 +43,9 @@ sof-firmware
 strace
 tree
 ttf-jetbrains-mono-nerd
-unzip
 vi
 vulkan-intel
+wireplumber
 xbindkeys
 xclip
 xcompmgr
@@ -54,3 +54,4 @@ xorg-xinit
 xorg-xsetroot
 xterm
 zram-generator
+

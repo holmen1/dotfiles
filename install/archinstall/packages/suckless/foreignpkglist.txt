@@ -1,4 +1,5 @@
 brave-bin
-gnu-netcat
-xlibre-server-devel-bin
+mullvad-vpn-cli
+visual-studio-code-bin
 yay
+yay-debug
