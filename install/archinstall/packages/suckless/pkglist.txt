@@ -1,6 +1,4 @@
 alsa-utils
-arm-none-eabi-gcc
-arm-none-eabi-gdb
 base
 base-devel
 bear
@@ -12,6 +10,7 @@ efibootmgr
 fastfetch
 fd
 feh
+gdb
 git
 gnu-netcat
 grub
@@ -22,6 +21,7 @@ intel-media-driver
 intel-ucode
 iwd
 less
+lf
 libpulse
 libva-intel-driver
 linux
@@ -36,12 +36,11 @@ pipewire-alsa
 pipewire-jack
 pipewire-pulse
 python
-qemu-full
+reflector
 ripgrep
 scrot
 sof-firmware
 strace
-thunar
 tree
 ttf-jetbrains-mono-nerd
 vi

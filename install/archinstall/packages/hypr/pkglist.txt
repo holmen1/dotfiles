@@ -43,6 +43,7 @@ swaylock
 thunar
 tree
 ttf-jetbrains-mono-nerd
+ufw
 unzip
 uwsm
 vi

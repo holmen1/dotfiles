@@ -1,9 +1,5 @@
 # Exclude st source directories
-st-*/
+st-0.9.*/
 
 # Exclude built binaries and archives
 bin/
-
-# Keep patches directory and patch files
-!patches/
-!patches/*.diff

@@ -8,25 +8,31 @@ A minimal build setup for st, the simple terminal from suckless.org.
 ./build-st.sh
 ```
 
-This will:
-- Download st source (version 0.9.2)
-- Download and apply patches directly
-- Build and install to ~/.local/bin/st with version tag
+This will build and install to ```/bin``` with version tag
 
 ## Features
-- **Background transparency** (alpha = 0.85)
-- **Scrollback** with keyboard and mouse
-- Version-tagged builds
+- **alpha** Background transparency (alpha = 0.85)
+- **font2** Allows to add spare font besides default
+- **scrollback**
+
 
 ## Configuration
-The build uses the default configuration with patches applied. To inspect or customize:
+The build uses the default configuration with patches applied.
+
+## Patching
+When upgrading st, download the new source version and reapply your patches
 
 ```bash
-# View the current configuration
-less ~/repos/dotfiles/install/build/st/st-0.9.2/config.h
-
-# To customize for future builds, edit build-st.sh to modify config.h after patching
+./fetch-source.sh
 ```
+
+This will: Download st source and patches
+
+```bash
+patch -p1 < ../patches/st-xyz-n.n.n.diff
+```
+
+Some patches may fail if the source has changed, then review any .rej files and manually adjust the patch or source as needed.
 
 ## Installation
 
