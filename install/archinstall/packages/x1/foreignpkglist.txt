@@ -1,3 +1,4 @@
+xlibre-input-libinput
 xlibre-xserver-bootstrap
 yay
 yay-debug
