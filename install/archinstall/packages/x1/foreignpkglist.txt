@@ -1,4 +1,5 @@
+brave-bin
 xlibre-input-libinput
-xlibre-xserver-bootstrap
+xlibre-xserver
 yay
 yay-debug

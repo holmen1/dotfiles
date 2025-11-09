@@ -42,5 +42,6 @@ wireplumber
 xbindkeys
 xclip
 xcompmgr
+xorg-xinit
 xterm
 zram-generator
