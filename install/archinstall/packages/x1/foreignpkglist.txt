@@ -1,2 +1,3 @@
+xlibre-xserver-bootstrap
 yay
 yay-debug
