@@ -1,0 +1,13 @@
+brave-bin
+gnu-netcat
+xlibre-input-libinput
+xlibre-input-libinput-debug
+xlibre-server
+xlibre-server-common
+xlibre-server-debug
+xlibre-server-devel
+xlibre-server-xephyr
+xlibre-server-xnest
+xlibre-server-xvfb
+yay
+yay-debug
