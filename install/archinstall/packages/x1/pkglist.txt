@@ -1,3 +1,4 @@
+alsa-utils
 base
 base-devel
 bear
@@ -15,6 +16,7 @@ grub
 gst-plugin-pipewire
 htop
 i3lock
+intel-media-driver
 intel-ucode
 iwd
 less
@@ -26,6 +28,7 @@ man-db
 man-pages
 neovim
 noto-fonts-cjk
+openbsd-netcat
 openssh
 pipewire
 pipewire-alsa
@@ -37,11 +40,13 @@ sof-firmware
 strace
 tree
 ttf-jetbrains-mono-nerd
+unzip
 vi
 wireplumber
 xbindkeys
 xclip
 xcompmgr
 xorg-xinit
+xorg-xsetroot
 xterm
 zram-generator
