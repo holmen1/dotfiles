@@ -11,7 +11,7 @@ LINKS=$DOTFILES_DIR/install/archinstall/links/suckless_links.config
 XMONAD_DIR=$DOTFILES_DIR/install/build/xmonad
 ST_DIR=$DOTFILES_DIR/install/build/st
 
-PKGPROFILE=xlibre
+PKGPROFILE=x1
 PKGLIST=$DOTFILES_DIR/install/archinstall/packages/$PKGPROFILE/pkglist.txt
 FPKGLIST=$DOTFILES_DIR/install/archinstall/packages/$PKGPROFILE/foreignpkglist.txt
 

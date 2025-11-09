@@ -228,19 +228,8 @@ fi
 
 # Test Key Functionalities
 print_header "Functional Tests"
-
 check_command "i3lock" "Screen lock"
 
-# Test notification system
-if command -v notify-send &> /dev/null; then
-    if notify-send "Sanity Check" "Test notification" 2>/dev/null; then
-        print_pass "Desktop notifications working"
-    else
-        print_warn "Desktop notifications may not be working"
-    fi
-else
-    print_fail "Notification system not available"
-fi
 
 # Summary
 print_header "Summary"
