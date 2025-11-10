@@ -34,7 +34,7 @@ Filesystem: btrfs
 packages: git, openssh, vi
 
 
-otherwise my choice, see [user_configuration_x1.json](../log/user_configuration_x1.json)  
+otherwise my choice, see [user_configuration_x1.json](../archinstall/log/user_configuration_x1.json)  
 
 
 ## Post-installation
