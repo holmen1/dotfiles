@@ -29,15 +29,20 @@ root@archiso ~ # archinstall
 
 Set 
 bootloader: grub   (fallback: systemd-boot)
-profile:    Xorg  
+profile:    Minimal  
 Filesystem: btrfs  
 packages: git, openssh, vi
 
 
-otherwise my choice, see [install.log](../log/install.log)  
+otherwise my choice, see [user_configuration_x1.json](../log/user_configuration_x1.json)  
 
 
 ## Post-installation
+
+### XLibre
+X11 display server. Striving to improve the existing code base while maintaining backward compatibility to make X11 a viable choice for the future  
+
+Build and install from AUR, see [README](../build/xlibre/README.md)
 
 ### SSH
 Reuse key already in Github

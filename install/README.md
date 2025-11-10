@@ -12,7 +12,7 @@ Go to [Debian installation guide](./debianinstall/README.md)
 [shortcut](../configure_build_install_link.sh)
 
 ### Configure Git
-git config --global user.name "$git_username"
+git config --global user.name "$git_username"  
 git config --global user.email "$git_email"
 
 ### SSH
@@ -65,6 +65,10 @@ user ALL=(ALL) ALL
 this can conflict with the wheel group NOPASSWD rule and override your intended permissions. If your user is in the `wheel` group and the group rule above is present, you should delete the user-specific file to avoid conflicts.
 
 Make sure your user is in the `wheel` group!
+```bash
+$ groups
+holmen1 wheel
+```
 
 ### System Monitoring (Battery & WiFi) with Dunst Notifications
 
@@ -127,21 +131,20 @@ This setup will give you urgent notifications when your battery is critically lo
    ```
 
 ### Link dotfiles
-Edit and run
-[./link_x_config.sh](./link_x_config.sh)
+Edit a
+[links.config](./archinstall/links/suckless_links.config)
+and run
+```bash
+./scripts/link_config.sh links.config
+```
 
 ### startx
 Enter tty via C-A-F2 or disable display manager (lightdm)  
 ```$ sudo systemctl disable lightdm```
 
-login, then startx  
-
-If fail, try
-```
-$ xmonad --recompile 
-```
-Start xmonad with: startx  
-start xfce: startx /usr/bin/startxfce4
+Start xmonad with: ```startx```  
+or something else, like  
+start xfce: ```startx /usr/bin/startxfce4```
 
 leave x session
 ```
@@ -199,14 +202,6 @@ $ diff /usr/bin/xmonad-session /usr/bin/xmonad-session.bak
 ```
 ## LESSONS LEARNED
 ### ⚠️ NEVER Edit /etc/sudoers with vim (or any editor that isn't visudo)
-
-**What I did:** "I'm a rebel, I don't need `visudo`! I'll just vim that file real quick..."
-
-**What happened:** Created a rogue `/etc/sudoers.d/00_holmen1` file that overrode my carefully crafted NOPASSWD rules. Spent an embarrassing amount of time troubleshooting why `sudo poweroff` kept asking for passwords that didn't work.
-
-**The fix:** Had to `su -` to root, delete the terrorist file, reset my password, and remember that `visudo` exists for very good reasons.
-
-**The moral:** `visudo` checks syntax, handles file locking, and prevents you from accidentally becoming your own worst enemy. Use it. Always. Your future self will thank you instead of cursing your name.
 
 **Acceptable excuses for bypassing visudo:** None. Zero. Not even "but I'm in a hurry."
 
@@ -343,11 +338,6 @@ sudo mount /dev/sdX1 /mnt/usb
 Unmount when finished:
 ```
 sudo umount /mnt/usb
-```
-
-### Find files by name
-```
-find /path/to/search -name "filename.txt" 2> /dev/null
 ```
 
 Find and execute a command on each result:
