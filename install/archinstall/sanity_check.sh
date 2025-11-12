@@ -71,13 +71,32 @@ check_symlink() {
 check_service() {
     local service="$1"
     local desc="$2"
-    
+    local is_timer=false
+    if [[ "$service" == *.timer ]]; then
+        is_timer=true
+    fi
+
     if systemctl --user is-active "$service" &> /dev/null; then
-        print_pass "$desc (active)"
+        if $is_timer; then
+            print_pass "$desc (active and waiting)"
+        else
+            print_pass "$desc (active)"
+        fi
     elif systemctl --user is-enabled "$service" &> /dev/null; then
         print_warn "$desc (enabled but not active)"
     else
-        print_fail "$desc (not enabled)"
+        print_fail "$desc (not enabled or not active)"
+    fi
+}
+
+check_unit_loaded() {
+    local unit="$1"
+    local desc="$2"
+
+    if systemctl --user cat "$unit" &> /dev/null; then
+        print_pass "$desc (unit is loaded)"
+    else
+        print_fail "$desc (unit not found by systemd)"
     fi
 }
 
@@ -125,9 +144,11 @@ fi
 
 # System Monitoring
 print_header "System Monitoring"
-check_service "system-monitor.timer" "Battery/WiFi monitoring timer"
-check_service "system-monitor.timer" "Battery/WiFi monitoring timer"
-check_service "system-monitor.timer" "Battery/WiFi monitoring timer"
+check_service "system-monitor.timer" "System monitoring timer"
+check_unit_loaded "system-monitor.target" "System monitoring target"
+check_unit_loaded "wifi-monitor.service" "WiFi monitor service"
+check_unit_loaded "vpn-monitor.service" "VPN monitor service"
+check_unit_loaded "battery-monitor.service" "Battery monitor service"
 check_command "dunst" "Dunst notification daemon"
 check_command "notify-send" "Desktop notifications"
 

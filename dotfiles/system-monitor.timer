@@ -2,8 +2,7 @@
 Description=Run system monitoring checks
 
 [Timer]
-OnBootSec=1min
-OnUnitActiveSec=2min
+OnCalendar=*:0/2
 Persistent=true
 Unit=system-monitor.target
 
