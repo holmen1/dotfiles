@@ -1,3 +1,0 @@
-[Unit]
-Description=Aggregate system-monitor target
-Wants=battery-monitor.service wifi-monitor.service vpn-monitor.service

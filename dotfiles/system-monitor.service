@@ -1,0 +1,6 @@
+[Unit]
+Description=Combined System Status Monitor
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash -c "%h/repos/dotfiles/scripts/battery-monitor.sh; %h/repos/dotfiles/scripts/wifi-monitor.sh; %h/repos/dotfiles/scripts/vpn-monitor.sh"

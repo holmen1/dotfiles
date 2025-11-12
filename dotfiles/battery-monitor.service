@@ -1,8 +1,0 @@
-[Unit]
-Description=Battery monitor (oneshot)
-ConditionPathExists=!%h/.config/system-monitor/disable-battery
-
-[Service]
-Type=oneshot
-ExecStart=%h/repos/dotfiles/scripts/battery-monitor.sh
-

@@ -1,8 +1,0 @@
-[Unit]
-Description=WiFi monitor (oneshot)
-ConditionPathExists=!%h/.config/system-monitor/disable-wifi
-
-[Service]
-Type=oneshot
-ExecStart=%h/repos/dotfiles/scripts/wifi-monitor.sh
-

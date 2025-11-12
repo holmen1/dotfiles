@@ -89,17 +89,6 @@ check_service() {
     fi
 }
 
-check_unit_loaded() {
-    local unit="$1"
-    local desc="$2"
-
-    if systemctl --user cat "$unit" &> /dev/null; then
-        print_pass "$desc (unit is loaded)"
-    else
-        print_fail "$desc (unit not found by systemd)"
-    fi
-}
-
 echo -e "${BLUE}🔧 Dotfiles Installation Sanity Check${NC}"
 echo "Checking your custom Linux environment..."
 
@@ -145,10 +134,6 @@ fi
 # System Monitoring
 print_header "System Monitoring"
 check_service "system-monitor.timer" "System monitoring timer"
-check_unit_loaded "system-monitor.target" "System monitoring target"
-check_unit_loaded "wifi-monitor.service" "WiFi monitor service"
-check_unit_loaded "vpn-monitor.service" "VPN monitor service"
-check_unit_loaded "battery-monitor.service" "Battery monitor service"
 check_command "dunst" "Dunst notification daemon"
 check_command "notify-send" "Desktop notifications"
 

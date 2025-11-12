@@ -1,8 +1,0 @@
-[Unit]
-Description=VPN monitor (oneshot)
-ConditionPathExists=!%h/.config/system-monitor/disable-vpn
-
-[Service]
-Type=oneshot
-ExecStart=%h/repos/dotfiles/scripts/vpn-monitor.sh
-

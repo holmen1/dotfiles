@@ -109,8 +109,7 @@ read -p "Enable services? [y/N] " ans
 if [[ $ans =~ ^[Yy]$ ]]; then
     # Enable services
     systemctl --user daemon-reload
-    systemctl --user enable system-monitor.timer
-    systemctl --user start system-monitor.timer
+    systemctl --user enable --now system-monitor.timer
 fi
 
 read -p "Run tests? [y/N] " ans
