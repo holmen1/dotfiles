@@ -1,9 +1,0 @@
-[Unit]
-Description=Check system status (battery, VPN and WiFi)
-
-[Service]
-Type=oneshot
-ExecStart=/bin/bash -c "~/repos/dotfiles/scripts/battery-monitor.sh; ~/repos/dotfiles/scripts/wifi-monitor.sh; ~/repos/dotfiles/scripts/vpn-monitor.sh"
-
-[Install]
-WantedBy=default.target

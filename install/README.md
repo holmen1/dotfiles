@@ -93,6 +93,7 @@ Verify Status
 ```bash
 # Check if timer is running
 systemctl --user status system-monitor.timer
+journalctl --user -u system-monitor.timer -f
 ```
 
 This setup will give you urgent notifications when your battery is critically low or wifi not connected

@@ -126,6 +126,8 @@ fi
 # System Monitoring
 print_header "System Monitoring"
 check_service "system-monitor.timer" "Battery/WiFi monitoring timer"
+check_service "system-monitor.timer" "Battery/WiFi monitoring timer"
+check_service "system-monitor.timer" "Battery/WiFi monitoring timer"
 check_command "dunst" "Dunst notification daemon"
 check_command "notify-send" "Desktop notifications"
 
@@ -148,8 +150,14 @@ fi
 # Dotfiles Symlinks
 print_header "Dotfile Symlinks"
 # Add checks for your specific symlinked configurations
-if [ -L "$HOME/.config/systemd/user/system-monitor.service" ]; then
-    check_symlink "$HOME/.config/systemd/user/system-monitor.service" "System monitor service symlink"
+if [ -L "$HOME/.config/systemd/user/wifi-monitor.service" ]; then
+    check_symlink "$HOME/.config/systemd/user/wifi-monitor.service" "Wifi monitor service symlink"
+fi
+if [ -L "$HOME/.config/systemd/user/vpn-monitor.service" ]; then
+    check_symlink "$HOME/.config/systemd/user/vpn-monitor.service" "VPN monitor service symlink"
+fi
+if [ -L "$HOME/.config/systemd/user/battery-monitor.service" ]; then
+    check_symlink "$HOME/.config/systemd/user/battery-monitor.service" "Battery monitor service symlink"
 fi
 
 if [ -L "$HOME/.config/systemd/user/system-monitor.timer" ]; then

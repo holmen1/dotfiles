@@ -5,6 +5,7 @@ Description=Run system monitoring checks
 OnBootSec=1min
 OnUnitActiveSec=2min
 Persistent=true
+Unit=system-monitor.target
 
 [Install]
 WantedBy=timers.target
