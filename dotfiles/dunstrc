@@ -1,0 +1,20 @@
+# See dunst(5) for all configuration options
+
+[global]
+    ### Geometry ###
+
+    # The width of the window, excluding the frame.
+    # dynamic width from 0 to 700
+    width = (0, 700)
+    # constant width of 300
+    # width = 300
+
+    # The height of a single notification, excluding the frame.
+    # dynamic height from 0 to 300
+    height = (0, 300)
+    # constant height of 300
+    # height = 300
+
+    ### Text ###
+
+    font = JetBrainsMono Nerd Font 12
