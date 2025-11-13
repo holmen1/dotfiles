@@ -11,7 +11,8 @@ LINKS=$DOTFILES_DIR/install/archinstall/links/suckless_links.config
 XMONAD_DIR=$DOTFILES_DIR/install/build/xmonad
 ST_DIR=$DOTFILES_DIR/install/build/st
 
-PKGPROFILE=x1
+COMPUTERNAME=$(hostnamectl --static 2>/dev/null || hostname -s)
+PKGPROFILE=${COMPUTERNAME}
 PKGLIST=$DOTFILES_DIR/install/archinstall/packages/$PKGPROFILE/pkglist.txt
 FPKGLIST=$DOTFILES_DIR/install/archinstall/packages/$PKGPROFILE/foreignpkglist.txt
 
@@ -48,11 +49,13 @@ if [[ $ans =~ ^[Yy]$ ]]; then
 fi
 
 # Install packages
+echo "$PKGLIST"
 read -p "Install pkglist? [y/N] " ans
 if [[ $ans =~ ^[Yy]$ ]]; then
     $SCRIPTS_DIR/yay_install.sh $PKGLIST
 fi
 
+echo "$FPKGLIST"
 read -p "Install foreignpkglist? [y/N] " ans
 if [[ $ans =~ ^[Yy]$ ]]; then
     $SCRIPTS_DIR/yay_install.sh $FPKGLIST
