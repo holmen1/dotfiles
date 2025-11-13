@@ -12,7 +12,7 @@ import XMonad.Util.EZConfig (additionalKeys)
 import XMonad.Util.NamedScratchpad
 
 myModMask = mod4Mask -- Rebind Mod to the Super key
-myAppLauncher = "dmenu_run"
+myAppLauncher = "dmenu_run -fn 'JetBrainsMono Nerd Font:size=14' -nb '#222222' -nf '#bbbbbb' -sb '#A300A3' -sf '#eeeeee'"
 myMagenta = "#A300A3"
 
 myWorkspaces = map show [1 .. 4]
