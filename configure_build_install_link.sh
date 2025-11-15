@@ -52,13 +52,13 @@ fi
 echo "$PKGLIST"
 read -p "Install pkglist? [y/N] " ans
 if [[ $ans =~ ^[Yy]$ ]]; then
-    $SCRIPTS_DIR/yay_install.sh $PKGLIST
+    $SCRIPTS_DIR/install_packages.sh $PKGLIST
 fi
 
 echo "$FPKGLIST"
 read -p "Install foreignpkglist? [y/N] " ans
 if [[ $ans =~ ^[Yy]$ ]]; then
-    $SCRIPTS_DIR/yay_install.sh $FPKGLIST
+    $SCRIPTS_DIR/install_packages.sh $FPKGLIST
 fi
 
 read -p "Install Haskell? [y/N] " ans
