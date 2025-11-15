@@ -52,4 +52,6 @@ export OPENER=feh
 export TERMINAL=st
 export BROWSER=brave
 
+st &
+
 exec xmonad
