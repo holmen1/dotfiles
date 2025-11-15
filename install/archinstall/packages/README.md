@@ -1,6 +1,33 @@
 
 # PKGLIST
 
+## Usage
+```bash
+# Update all packages
+yay
+
+# Update Official Packages Only
+sudo pacman -Syu
+
+# Update AUR Packages Only
+yay -Sua
+
+# Install a new package
+yay -S
+
+# Remove a package
+yay -R
+
+# Remove a package and its dependencies that are no longer needed (recommended)
+yay -Rs
+
+# Remove a package, its dependencies, and all its configuration files
+yay -Rns
+
+# Clean unneeded dependencies (orphans)
+yay -Yc
+```
+
 ## Descriptions
 
 ### Core System
@@ -17,7 +44,7 @@
 - `wireplumber`: Pipewire session manager
 
 ### Xorg & GUI
-- `xorg-server`, `xorg-xinit`, `xorg-xsetroot`, `xterm`: Xorg display server and basic terminal
+- `xorg-xinit`, `xorg-xsetroot`, `xterm`: Xorg utils
 - `xcompmgr`: Simple X compositor
 - `xclip`: Clipboard integration for X
 - `feh`: Lightweight image viewer (wallpapers)
@@ -25,7 +52,7 @@
 
 ### Window Managers & Utilities
 - `dmenu`: Dynamic menu for X
-- `thunar`: Minimal file manager
+- `lf`: Minimal file manager
 - `i3lock`: Screen locker
 - `xbindkeys`: Keybinding daemon
 

@@ -1,11 +1,20 @@
 #!/bin/bash
 
+MANAGER=yay
+
+# Check for yay and set the package manager accordingly
+if ! command -v yay &> /dev/null; then
+  echo "Warning: $MANAGER not found. Defaulting to pacman. AUR packages will not be installed."
+  MANAGER="sudo pacman"
+fi
+
 # Function to install packages
 install_packages() {
   local pkglist=$1
   while IFS= read -r package; do
-    if ! pacman -Qi "$package" &> /dev/null; then
-      pacman -S --noconfirm "$package"
+    if ! pacman -Q "$package" &> /dev/null; then
+      echo "Installing $package..."
+      $MANAGER -S --noconfirm "$package"
     else
       echo "$package is already installed"
     fi

@@ -81,6 +81,8 @@ then
 ```
 dont forget ```foreignpkglist.txt``` if any
 
+See [packages](packages/README.md) for more
+
 
 ### Install binaries
 pre-built binaries from the [build factory](../build/):
