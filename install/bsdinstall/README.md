@@ -1,0 +1,173 @@
+# bsdinstall
+## Pre-installation
+
+* Collect Network Information
+
+## Guided installation
+Install FreeBSD using the text-based installation program named bsdinstall
+
+Add user to groups: wheel video
+
+otherwise my choice, see [user_configuration_x1.json](../archinstall/log/user_configuration_x1.json)  
+
+
+## Post-installation
+
+### Wireless Configuration
+
+Obtain the network device interface by using
+```bash
+sysctl net.wlan.devices
+````
+
+```bash
+ifconfig wlan0 create wlandev iwm0
+````
+
+To make the change persist across reboots execute the following command:
+```bash
+sysrc wlans_iwm0="wlan0"
+```
+
+To list the wireless networks execute the following command:
+```bash
+ifconfig wlan0 up list scan
+````
+
+Once the scanning of the wireless networks has been carried out, a network has been chosen and have the password (PSK), that information will be added to the file ```/etc/wpa_supplicant```
+
+```bash
+network={
+        scan_ssid=1 
+        ssid="FreeBSD" 
+        psk="12345678" 
+}
+```
+
+To use a dynamic address it will be necessary to execute the following command:
+```bash
+sysrc ifconfig_wlan0="WPA DHCP"
+````
+
+Then restart the network executing the following command:
+```bash
+service netif restart
+````
+
+
+### XLibre
+X11 display server. Striving to improve the existing code base while maintaining backward compatibility to make X11 a viable choice for the future  
+
+Build and install from AUR, see [README](../build/xlibre/README.md)
+
+### SSH
+Reuse key already in Github
+
+```
+cp /mnt/usb/id_ed25519* ~/.ssh/
+```
+Start the ssh-agent in the background
+```
+chmod 600 ~/.ssh/id_ed25519
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
+```
+
+### Configure Git
+```
+git config --global user.name "$git_username"
+git config --global user.email "$git_email"
+```
+
+### Clone dotfiles
+```
+mkdir repos
+git clone git@github.com:holmen1/dotfiles.git
+```
+
+### Install packages
+
+Restore from pkg list:
+```bash
+xargs sudo pkg install -y < pkglist.txt
+```
+
+See [packages](packages/README.md) for more
+
+
+### Install binaries
+pre-built binaries from the [build factory](../build/):
+```
+cp /mnt/usb/st-0.9.2 /opt/st
+cp /mnt/usb/xmonad-v0.18.0 /opt/xmonad/
+```
+and link to ```/usr/local/bin```
+
+### Link dotfiles
+```
+link_x_config.sh
+```
+
+### Enable System Monitoring (Battery & WiFi)
+
+```bash
+
+```
+
+
+### Sanity check
+Run the sanity check script to verify your installation:
+```bash
+~/repos/dotfiles/install/bsdinstall/sanity_check.sh
+```
+
+This script verifies:
+- Essential commands (git, ssh, xmonad, xterm)
+- XMonad custom binary and configuration
+- Screen locking (i3lock) functionality  
+- Power management (wheel group, passwordless shutdown)
+- System monitoring services
+- Key bindings and input controls
+- Screenshot functionality (scrot, Downloads directory)
+- Dotfile symlinks
+- Git and SSH configuration
+- Repository structure
+
+
+* Install Haskell
+```
+curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
+```
+
+* Build XMonad
+
+
+
+
+
+## REPAIR
+
+
+### Export installed packages
+Keeping a list of all explicitly installed packages can be useful to backup a system or quicken the installation of a new one
+
+```bash
+pkg info -q > pkglist.txt
+```
+
+creates files pkglist.txt
+
+
+# LESSONS LEARNED
+
+## Differences from Arch notes
+
+- No pacman / yay / AUR on FreeBSD — use `pkg` and `ports`.
+- No systemd — use rc(8) and rc.conf
+
+
+
+
+
+
+
