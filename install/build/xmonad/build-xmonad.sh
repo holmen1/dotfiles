@@ -76,7 +76,9 @@ cabal build
 # Copy binary to BIN_DIR for manual handling
 echo "Installing to $BIN_DIR"
 rm -f "$BIN_DIR/xmonad-$XMONAD_TAG"
-find dist-newstyle -name xmonad -type f -executable -exec cp {} "$BIN_DIR/xmonad-$XMONAD_TAG" \;
+BIN_PATH="$(cabal list-bin xmonad)"
+cp "$BIN_PATH" "$BIN_DIR/xmonad-$XMONAD_TAG"
+#find dist-newstyle -name xmonad -type f -executable -exec cp {} "$BIN_DIR/xmonad-$XMONAD_TAG" \;
 chmod +x "$BIN_DIR/xmonad-$XMONAD_TAG"
 
 # Create compressed binary archive
