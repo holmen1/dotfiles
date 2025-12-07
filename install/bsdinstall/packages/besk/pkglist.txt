@@ -315,10 +315,12 @@ aom-3.13.1
 appres-1.0.7
 at-spi2-core-2.56.4
 avahi-app-0.8_6
+bash-5.3.3_2
 binutils-2.44,1
 bitmap-1.1.1
 brotli-1.1.0,1
 bsdisks-0.38
+ca_root_nss-3.115_4
 cairo-1.18.2,3
 colord-1.4.8
 consolekit2-1.2.6_5
@@ -717,6 +719,7 @@ pinentry-1.3.2
 pinentry-curses-1.3.2
 pixman-0.46.2
 pkg-2.4.2
+pkgconf-2.4.3,1
 png-1.6.50
 polkit-125_1
 polkit-qt-1-qt6-0.200.0
