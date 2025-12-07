@@ -315,6 +315,7 @@ aom-3.13.1
 appres-1.0.7
 at-spi2-core-2.56.4
 avahi-app-0.8_6
+binutils-2.44,1
 bitmap-1.1.1
 brotli-1.1.0,1
 bsdisks-0.38
@@ -379,6 +380,8 @@ freetype2-2.13.3
 fribidi-1.0.16
 gamin-0.1.10_10
 garcon-4.20.0
+gcc-13_5
+gcc13-13.3.0_3
 gcr-4.4.0.1
 gdbm-1.26
 gdk-pixbuf-extra-0.1.0
@@ -388,6 +391,7 @@ giflib-5.2.2
 git-2.51.0
 glib-2.84.1_3,2
 glib-networking-2.80.1_1
+gmake-4.4.1
 gmp-6.3.0
 gnome_subr-1.0
 gnupg-2.4.8
@@ -680,7 +684,10 @@ mesa-dri-24.1.7_9
 mesa-libs-24.1.7_1
 mkfontscale-1.2.3
 mousepad-0.6.5_1
+mpc-1.3.1_1
 mpdecimal-4.0.1
+mpfr-4.2.2,1
+ncurses-6.5
 nettle-3.10.2
 npth-1.8
 nspr-4.38.2
