@@ -140,6 +140,46 @@ This script verifies:
 curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
 ```
 
+### Install Haskell
+If ghcup has issues on FreeBSD 15, use native packages:
+```bash
+sudo pkg update
+sudo pkg install ghc cabal-install haskell-language-server
+```
+
+Verify:
+```bash
+ghc --version
+cabal --version
+haskell-language-server --version
+```
+
+Add to your shell config:
+```bash
+export PATH="$HOME/.cabal/bin:$PATH"
+```
+
+
+If you need the absolute latest versions or ghcup works, you can try:
+```bash
+curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
+```
+
+### Building from Ports (For Custom/Latest Builds)
+When `pkg` doesn't have what you need (e.g., patched XMonad, Xlibre), build from ports. Use Git for the ports tree (faster than the old portsnap):
+
+```bash
+# Clone/update ports tree
+sudo git clone https://git.freebsd.org/ports.git /usr/ports
+cd /usr/ports && sudo git pull
+
+# Build XMonad (example)
+cd /usr/ports/x11-wm/xmonad && sudo make install clean
+
+# Build Xlibre (if available in ports)
+cd /usr/ports/x11/xorg && sudo make install clean  # Adjust path as needed
+```
+
 * Build XMonad
 
 
