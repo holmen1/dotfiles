@@ -9,8 +9,11 @@ drm-kmod
 en-freebsd-doc
 fastfetch
 gcc
+ghc
 git
 gmake
+hs-cabal-install
+hs-haskell-language-server
 librewolf
 ncurses
 pkg
