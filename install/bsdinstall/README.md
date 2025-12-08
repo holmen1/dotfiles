@@ -52,7 +52,7 @@ sysrc ifconfig_wlan0="WPA DHCP"
 Then restart the network executing the following command:
 ```bash
 service netif restart
-````
+```
 
 
 ### XLibre
@@ -63,24 +63,25 @@ Build and install from AUR, see [README](../build/xlibre/README.md)
 ### SSH
 Reuse key already in Github
 
-```
+```bash
 cp /mnt/usb/id_ed25519* ~/.ssh/
 ```
+
 Start the ssh-agent in the background
-```
+```bash
 chmod 600 ~/.ssh/id_ed25519
 eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_ed25519
 ```
 
 ### Configure Git
-```
+```bash
 git config --global user.name "$git_username"
 git config --global user.email "$git_email"
 ```
 
 ### Clone dotfiles
-```
+```bash
 mkdir repos
 git clone git@github.com:holmen1/dotfiles.git
 ```
@@ -151,11 +152,16 @@ curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
 ### Export installed packages
 Keeping a list of all explicitly installed packages can be useful to backup a system or quicken the installation of a new one
 
+Exports ONLY manually installed packages
 ```bash
-pkg info -q > pkglist.txt
+pkg query -e '%a = 0' %n > pkglist.txt
 ```
 
-creates files pkglist.txt
+If you want to include foreign packages (built from ports), add a separate export:
+```bash
+pkg query -e '%a = 0 && %o != ports' %n > foreignpkglist.txt
+````
+(though this is rare on FreeBSD)
 
 
 # LESSONS LEARNED
