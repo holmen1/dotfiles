@@ -5,6 +5,7 @@ FreeBSD-set-lib32
 FreeBSD-set-minimal
 bash
 ca_root_nss
+dmenu
 drm-kmod
 en-freebsd-doc
 fastfetch
