@@ -8,7 +8,6 @@ check_essential() {
 check_essential xmonad
 check_essential st
 check_essential xterm
-check_essential iwctl
 
 # --- Optional applications ---
 check_optional() {
@@ -25,6 +24,9 @@ check_optional thunar
 check_optional brave
 
 # [... default stuff that your distro may throw in here ...] #
+
+# Set keymap
+setxkbmap se
 
 # Set the default X cursor to the usual pointer
 xsetroot -cursor_name left_ptr
@@ -50,7 +52,7 @@ fi
 export EDITOR=nvim
 export OPENER=feh
 export TERMINAL=st
-export BROWSER=brave
+export BROWSER=librewolf
 
 st &
 
