@@ -28,5 +28,4 @@ tree
 wifi-firmware-iwlwifi-kmod-7000
 xcompmgr
 xf86-video-intel
-xfce
 xorg
