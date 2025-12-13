@@ -25,7 +25,9 @@ pkg
 pkgconf
 sudo
 tree
+unzip
 wifi-firmware-iwlwifi-kmod-7000
+xclip
 xcompmgr
 xf86-video-intel
 xorg
