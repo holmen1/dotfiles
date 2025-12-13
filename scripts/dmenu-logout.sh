@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/bin/sh
 # dmenu logout script
-choice=$(echo -e "Lock\nReboot\nPoweroff" | dmenu -i -p "Action:" -nb "#222222" -nf "#bbbbbb" -sb "#A300A3" -sf "#ffffff" \
+choice=$(printf "Lock\nReboot\nPoweroff" | dmenu -i -p "Action:" -nb "#222222" -nf "#bbbbbb" -sb "#A300A3" -sf "#ffffff" \
 -fn "JetBrainsMono Nerd Font Mono-14")
 
 case "$choice" in

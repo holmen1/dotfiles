@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Colors for output
 RED='\033[0;31m'
@@ -18,24 +18,24 @@ print_header() {
 
 print_pass() {
     echo -e "${GREEN}✓${NC} $1"
-    ((PASSED++))
+    PASSED=$((PASSED + 1))
 }
 
 print_fail() {
     echo -e "${RED}✗${NC} $1"
-    ((FAILED++))
+    FAILED=$((FAILED + 1))
 }
 
 print_warn() {
     echo -e "${YELLOW}!${NC} $1"
-    ((WARNINGS++))
+    WARNINGS=$((WARNINGS + 1))
 }
 
 check_command() {
     local cmd="$1"
     local desc="$2"
     
-    if command -v "$cmd" &> /dev/null; then
+    if command -v "$cmd" > /dev/null 2>&1; then
         print_pass "$desc"
     else
         print_fail "$desc - '$cmd' not found"
@@ -72,17 +72,17 @@ check_service() {
     local service="$1"
     local desc="$2"
     local is_timer=false
-    if [[ "$service" == *.timer ]]; then
-        is_timer=true
-    fi
+    case "$service" in
+        *.timer) is_timer=true ;;
+    esac
 
-    if systemctl --user is-active "$service" &> /dev/null; then
+    if systemctl --user is-active "$service" > /dev/null 2>&1; then
         if $is_timer; then
             print_pass "$desc (active and waiting)"
         else
             print_pass "$desc (active)"
         fi
-    elif systemctl --user is-enabled "$service" &> /dev/null; then
+    elif systemctl --user is-enabled "$service" > /dev/null 2>&1; then
         print_warn "$desc (enabled but not active)"
     else
         print_fail "$desc (not enabled or not active)"
@@ -122,7 +122,7 @@ if groups | grep -q "wheel"; then
     print_pass "User in wheel group"
 
     # Check sudoers for passwordless poweroff (matches xmonad.hs keybinding)
-    if sudo -n systemctl --version &>/dev/null; then
+    if sudo -n systemctl --version > /dev/null 2>&1; then
         print_pass "Passwordless sudo for systemctl poweroff confirmed by dry run"
     else
         print_warn "Passwordless sudo for systemctl poweroff not confirmed; password may be required"

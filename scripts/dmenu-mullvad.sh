@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # dmenu-mullvad: Control Mullvad VPN via dmenu
 
 FONT="JetBrainsMono Nerd Font Mono-14"
@@ -6,7 +6,7 @@ FONT="JetBrainsMono Nerd Font Mono-14"
 # List of commands
 options="status\nconnect\nreconnect\ndisconnect\nlocation\nhelp"
 
-choice=$(echo -e "$options" | dmenu -i -p "Mullvad:" \
+choice=$(printf "%s" "$options" | dmenu -i -p "Mullvad:" \
 -nb "#222222" -nf "#ffffff" -sb "#A300A3" -sf "#ffffff" \
 -fn "$FONT")
 

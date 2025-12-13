@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 USER=$(whoami)
 EMAIL=$USER@gmail.com
@@ -21,14 +21,17 @@ TEST=$DOTFILES_DIR/install/archinstall/sanity_check.sh
 sudo pacman -S --needed git base-devel openssh
 
 read -p "Configure git? [y/N] " ans
-if [[ $ans =~ ^[Yy]$ ]]; then
+case "$ans" in
+    [Yy]*)
     # Configure git
     git config --global user.name "$USER"
     git config --global user.email "$EMAIL"
-fi
+    ;;
+esac
 
 read -p "Generate SSH key? [y/N] " ans
-if [[ $ans =~ ^[Yy]$ ]]; then
+case "$ans" in
+    [Yy]*)
 # Generate ssh key
     cd ~
     mkdir -p .ssh
@@ -36,46 +39,58 @@ if [[ $ans =~ ^[Yy]$ ]]; then
     ssh-keygen -t ed25519 -C "$EMAIL" -f ~/.ssh/id_ed25519
     eval "$(ssh-agent -s)"
     ssh-add ~/.ssh/id_ed25519
-fi
+    ;;
+esac
 
 read -p "Install yay? [y/N] " ans
-if [[ $ans =~ ^[Yy]$ ]]; then
+case "$ans" in
+    [Yy]*)
     # Install yay
     mkdir -p tmp
     cd tmp
     sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
     sudo -k
     cd ..
-fi
+    ;;
+esac
 
 # Install packages
 echo "$PKGLIST"
 read -p "Install pkglist? [y/N] " ans
-if [[ $ans =~ ^[Yy]$ ]]; then
+case "$ans" in
+    [Yy]*)
     $SCRIPTS_DIR/install_packages.sh $PKGLIST
-fi
+    ;;
+esac
 
 echo "$FPKGLIST"
 read -p "Install foreignpkglist? [y/N] " ans
-if [[ $ans =~ ^[Yy]$ ]]; then
+case "$ans" in
+    [Yy]*)
     $SCRIPTS_DIR/install_packages.sh $FPKGLIST
-fi
+    ;;
+esac
 
 read -p "Install Haskell? [y/N] " ans
-if [[ $ans =~ ^[Yy]$ ]]; then
+case "$ans" in
+    [Yy]*)
     # Install GHCup
     curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
     echo "Installed Haskell, may need reboot"
-fi
+    ;;
+esac
 
 read -p "Build xmonad? [y/N] " ans
-if [[ $ans =~ ^[Yy]$ ]]; then
+case "$ans" in
+    [Yy]*)
     # Build Xmonad
     $XMONAD_DIR/build-xmonad.sh
-fi
+    ;;
+esac
 
 read -p "Install xmonad? [y/N] " ans
-if [[ $ans =~ ^[Yy]$ ]]; then
+case "$ans" in
+    [Yy]*)
     sudo mkdir -p /opt/xmonad
     sudo rm -f /opt/xmonad/*
 
@@ -83,16 +98,20 @@ if [[ $ans =~ ^[Yy]$ ]]; then
     echo "Installed xmonad to /opt/xmonad/"
     sudo ln -sf /opt/xmonad/xmonad-v0.18.* /usr/local/bin/xmonad
     echo "Created symlink for xmonad"
-fi
+    ;;
+esac
 
 read -p "Build st? [y/N] " ans
-if [[ $ans =~ ^[Yy]$ ]]; then
+case "$ans" in
+    [Yy]*)
     # Build st
     $ST_DIR/build-st.sh
-fi
+    ;;
+esac
 
 read -p "Install st? [y/N] " ans
-if [[ $ans =~ ^[Yy]$ ]]; then
+case "$ans" in
+    [Yy]*)
     sudo mkdir -p /opt/st
     sudo rm -f /opt/st/*
 
@@ -100,23 +119,30 @@ if [[ $ans =~ ^[Yy]$ ]]; then
     echo "Installed st to /opt/st/"
     sudo ln -sf /opt/st/st-0.9.* /usr/local/bin/st
     echo "Created symlink for st"
-fi
+    ;;
+esac
 
 read -p "Link dotfiles? [y/N] " ans
-if [[ $ans =~ ^[Yy]$ ]]; then
+case "$ans" in
+    [Yy]*)
     # Link dotfiles
     $LINK_SCRIPT $LINKS
-fi
+    ;;
+esac
 
 read -p "Enable services? [y/N] " ans
-if [[ $ans =~ ^[Yy]$ ]]; then
+case "$ans" in
+    [Yy]*)
     # Enable services
     systemctl --user daemon-reload
     systemctl --user enable --now system-monitor.timer
-fi
+    ;;
+esac
 
 read -p "Run tests? [y/N] " ans
-if [[ $ans =~ ^[Yy]$ ]]; then
+case "$ans" in
+    [Yy]*)
     # Test
     $TEST
-fi
+    ;;
+esac

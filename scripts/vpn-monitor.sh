@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Minimal Mullvad VPN monitor
 if mullvad status | grep -q "Disconnected"; then
