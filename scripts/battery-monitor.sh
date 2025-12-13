@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 THRESHOLD=5  # Set the threshold for critical battery level
 WARNING=20   # Set the threshold for warning level

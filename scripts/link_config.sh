@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Check if a config file is provided
 if [ -z "$1" ]; then
@@ -12,20 +12,20 @@ BASE_DIR="~/repos/dotfiles"
 
 # Source the configuration file if it exists
 if [ -f "$CONFIG_FILE" ]; then
-  source "$CONFIG_FILE"
+  . "$CONFIG_FILE"
 else
   echo "Error: Config file '$CONFIG_FILE' not found!"
   exit 1
 fi
 
-# Check if links array is defined in the config file
-if [ ${#links[@]} -eq 0 ]; then
+# Check if links variable is defined in the config file
+if [ -z "$links" ]; then
   echo "Error: No links defined in config file!"
   exit 1
 fi
 
 # Create the symbolic links
-for link in "${links[@]}"; do
+echo "$links" | while IFS= read -r link; do
     source="${link%%:*}"
     target="${link##*:}"
     

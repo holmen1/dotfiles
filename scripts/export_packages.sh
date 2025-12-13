@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Check if output directory is provided
 if [ -z "$1" ]; then

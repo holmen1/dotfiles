@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Determine wireless interface name
 IFACE=$(iwctl device list | grep 'station' | awk '{print $2}')

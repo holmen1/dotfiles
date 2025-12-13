@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # Show xmonad keybindings in dmenu
 cat <<EOF | dmenu -l 20 -i -p "XMonad Help" \
 -nb "#222222" -nf "#ffffff" -sb "#222222" -sf "#ffffff" \
