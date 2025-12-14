@@ -4,7 +4,8 @@
 
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
-if [[ -z $DISPLAY && $(tty) = /dev/tty1 ]]; then
+# Auto-startx on first tty (tty1 on Linux, ttyv0 on FreeBSD)
+if [[ -z $DISPLAY ]] && { [[ $(tty) = /dev/tty1 ]] || [[ $(tty) = /dev/ttyv0 ]]; }; then
     clear
     echo "" # Add a newline for spacing
     fastfetch
