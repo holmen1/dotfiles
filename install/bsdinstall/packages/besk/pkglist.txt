@@ -7,6 +7,7 @@ bash
 ca_root_nss
 dmenu
 drm-kmod
+dunst
 en-freebsd-doc
 fastfetch
 feh
@@ -23,10 +24,12 @@ neovim
 nerd-fonts
 pkg
 pkgconf
+scrot
 sudo
 tree
 unzip
 wifi-firmware-iwlwifi-kmod-7000
+xbindkeys
 xclip
 xcompmgr
 xf86-video-intel
