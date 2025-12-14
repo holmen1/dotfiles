@@ -9,9 +9,7 @@ else
 fi
 
 # List of commands
-options="status\nconnect\nreconnect\ndisconnect\nlocation\nhelp"
-
-choice=$(printf "%s" "$options" | dmenu -i -p "Mullvad:" \
+choice=$(printf "status\nconnect\nreconnect\ndisconnect\nlocation\nhelp" | dmenu -i -p "Mullvad:" \
 -nb "#222222" -nf "#ffffff" -sb "#A300A3" -sf "#ffffff" \
 -fn "$FONT")
 

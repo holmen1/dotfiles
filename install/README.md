@@ -353,3 +353,19 @@ git stash [-u]
 git pull
 git stash apply
 ```
+
+### X11
+
+Debug key bindings:
+```sh
+xbindkeys -k          # Press key to see keycode
+xev                   # Show all X events (key press, window focus, etc.)
+```
+
+Debug windows:
+```sh
+xprop                 # Click window to see properties
+xwininfo              # Click window to see geometry and ID
+xdotool search --name "window title"  # Find window by name
+```
+
