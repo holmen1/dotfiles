@@ -124,8 +124,8 @@ check_command "notify-send" "Desktop notifications"
 print_header "Key Bindings & Input"
 check_command "xbindkeys" "Key binding daemon"
 check_file "$HOME/.xbindkeysrc" "xbindkeys configuration"
-check_command "brightnessctl" "Brightness control"
-check_command "amixer" "Audio mixer (ALSA)"
+check_command "backlight" "Brightness control (FreeBSD)"
+check_command "mixer" "Audio mixer (OSS)"
 
 # Screenshot functionality
 print_header "Screenshots"
