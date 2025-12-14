@@ -1,18 +1,18 @@
 # Decrease brightness
-"brightnessctl set 10%-"
+"~/repos/dotfiles/scripts/brightness-down.sh"
     XF86MonBrightnessDown
 
 # Increase brightness
-"brightnessctl set +10%"
+"~/repos/dotfiles/scripts/brightness-up.sh"
     XF86MonBrightnessUp
 
 
 # Simple ALSA Volume Controls
-"amixer -q set Master 5%+ unmute"
+"~/repos/dotfiles/scripts/volume-up.sh"
     XF86AudioRaiseVolume
 
-"amixer -q set Master 5%- unmute"
+"~/repos/dotfiles/scripts/volume-down.sh"
     XF86AudioLowerVolume
 
-"amixer -q set Master toggle"
+"~/repos/dotfiles/scripts/volume-mute.sh"
     XF86AudioMute

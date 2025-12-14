@@ -13,6 +13,7 @@ check_essential xterm
 check_optional() {
     command -v "$1" >/dev/null 2>&1 || echo "Warning: Optional program $1 not installed."
 }
+check_optional iwctl
 check_optional xbindkeys
 check_optional xsetroot
 check_optional feh
