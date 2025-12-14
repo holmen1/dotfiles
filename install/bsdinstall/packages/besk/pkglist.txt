@@ -18,6 +18,7 @@ gmake
 hs-cabal-install
 hs-haskell-language-server
 i3lock
+lf
 librewolf
 ncurses
 neovim

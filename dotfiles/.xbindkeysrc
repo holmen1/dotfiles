@@ -1,11 +1,16 @@
-# Decrease brightness
-"~/repos/dotfiles/scripts/brightness-down.sh"
+# Decrease brightness (Arch: XF86, FreeBSD: F5
+"brightnessctl set 10%-"
     XF86MonBrightnessDown
 
-# Increase brightness
-"~/repos/dotfiles/scripts/brightness-up.sh"
-    XF86MonBrightnessUp
+"backlight decr 10"
+    F5
 
+# Increase brightness
+"brightnessctl set +10%"
+    XF86MonBrightnessDown
+
+"backlight incr 10"
+    F6
 
 # Simple ALSA Volume Controls
 "~/repos/dotfiles/scripts/volume-up.sh"
