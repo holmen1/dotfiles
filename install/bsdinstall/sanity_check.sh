@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Colors for output
 RED='\033[0;31m'
@@ -18,24 +18,24 @@ print_header() {
 
 print_pass() {
     echo -e "${GREEN}✓${NC} $1"
-    ((PASSED++))
+    PASSED=$((PASSED + 1))
 }
 
 print_fail() {
     echo -e "${RED}✗${NC} $1"
-    ((FAILED++))
+    FAILED=$((FAILED + 1))
 }
 
 print_warn() {
     echo -e "${YELLOW}!${NC} $1"
-    ((WARNINGS++))
+    WARNINGS=$((WARNINGS + 1))
 }
 
 check_command() {
     local cmd="$1"
     local desc="$2"
     
-    if command -v "$cmd" &> /dev/null; then
+    if command -v "$cmd" > /dev/null 2>&1; then
         print_pass "$desc"
     else
         print_fail "$desc - '$cmd' not found"
@@ -68,29 +68,8 @@ check_symlink() {
     fi
 }
 
-check_service() {
-    local service="$1"
-    local desc="$2"
-    local is_timer=false
-    if [[ "$service" == *.timer ]]; then
-        is_timer=true
-    fi
-
-    if systemctl --user is-active "$service" &> /dev/null; then
-        if $is_timer; then
-            print_pass "$desc (active and waiting)"
-        else
-            print_pass "$desc (active)"
-        fi
-    elif systemctl --user is-enabled "$service" &> /dev/null; then
-        print_warn "$desc (enabled but not active)"
-    else
-        print_fail "$desc (not enabled or not active)"
-    fi
-}
-
 echo -e "${BLUE}🔧 Dotfiles Installation Sanity Check${NC}"
-echo "Checking your custom Linux environment..."
+echo "Checking your custom FreeBSD environment..."
 
 # Essential Commands
 print_header "Essential Commands"
@@ -121,11 +100,11 @@ print_header "Power Management"
 if groups | grep -q "wheel"; then
     print_pass "User in wheel group"
 
-    # Check sudoers for passwordless poweroff (matches xmonad.hs keybinding)
-    if sudo -n systemctl --version &>/dev/null; then
-        print_pass "Passwordless sudo for systemctl poweroff confirmed by dry run"
+    # Check sudoers for passwordless shutdown (matches xmonad.hs keybinding)
+    if sudo -n true > /dev/null 2>&1; then
+        print_pass "Passwordless sudo configured"
     else
-        print_warn "Passwordless sudo for systemctl poweroff not confirmed; password may be required"
+        print_warn "Passwordless sudo not configured; password may be required"
     fi
 else
     print_fail "User not in wheel group - power management may not work"
@@ -133,7 +112,11 @@ fi
 
 # System Monitoring
 print_header "System Monitoring"
-check_service "system-monitor.timer" "System monitoring timer"
+if crontab -l 2>/dev/null | grep -q "battery-monitor.sh"; then
+    print_pass "System monitoring cron job configured"
+else
+    print_warn "System monitoring cron job not found"
+fi
 check_command "dunst" "Dunst notification daemon"
 check_command "notify-send" "Desktop notifications"
 
@@ -155,19 +138,12 @@ fi
 
 # Dotfiles Symlinks
 print_header "Dotfile Symlinks"
-# Add checks for your specific symlinked configurations
-if [ -L "$HOME/.config/systemd/user/wifi-monitor.service" ]; then
-    check_symlink "$HOME/.config/systemd/user/wifi-monitor.service" "Wifi monitor service symlink"
+# Check common dotfile symlinks
+if [ -L "$HOME/.xinitrc" ]; then
+    check_symlink "$HOME/.xinitrc" ".xinitrc symlink"
 fi
-if [ -L "$HOME/.config/systemd/user/vpn-monitor.service" ]; then
-    check_symlink "$HOME/.config/systemd/user/vpn-monitor.service" "VPN monitor service symlink"
-fi
-if [ -L "$HOME/.config/systemd/user/battery-monitor.service" ]; then
-    check_symlink "$HOME/.config/systemd/user/battery-monitor.service" "Battery monitor service symlink"
-fi
-
-if [ -L "$HOME/.config/systemd/user/system-monitor.timer" ]; then
-    check_symlink "$HOME/.config/systemd/user/system-monitor.timer" "System monitor timer symlink"
+if [ -L "$HOME/.bashrc" ]; then
+    check_symlink "$HOME/.bashrc" ".bashrc symlink"
 fi
 
 # Git Configuration
@@ -192,8 +168,8 @@ print_header "SSH Configuration"
 if [ -f "$HOME/.ssh/id_ed25519" ]; then
     print_pass "SSH private key exists"
     
-    # Check permissions
-    perms=$(stat -c %a "$HOME/.ssh/id_ed25519" 2>/dev/null)
+    # Check permissions (FreeBSD uses -f %Lp for octal permissions)
+    perms=$(stat -f %Lp "$HOME/.ssh/id_ed25519" 2>/dev/null)
     if [ "$perms" = "600" ]; then
         print_pass "SSH private key has correct permissions (600)"
     else

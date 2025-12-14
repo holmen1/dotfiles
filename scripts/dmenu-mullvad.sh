@@ -1,7 +1,12 @@
 #!/bin/sh
 # dmenu-mullvad: Control Mullvad VPN via dmenu
 
-FONT="JetBrainsMono Nerd Font Mono-14"
+# Use JetBrains Nerd Font if available, otherwise use a generic fallback
+if fc-list | grep -qi "JetBrainsMono Nerd Font"; then
+    FONT="JetBrainsMono Nerd Font Mono-14"
+else
+    FONT="monospace-14"
+fi
 
 # List of commands
 options="status\nconnect\nreconnect\ndisconnect\nlocation\nhelp"
