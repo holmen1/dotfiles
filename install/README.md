@@ -7,9 +7,13 @@ Go to [Arch Linux installation guide](./archinstall/README.md)
 ## debian
 Go to [Debian installation guide](./debianinstall/README.md)
 
-## Post-installation
+## bsd
+Go to [FreeBSD installation guide](./bsdinstall/README.md)
 
-[shortcut](../configure_build_install_link.sh)
+## mac
+Go to [MacOS config guide](./macinstall/README.md)
+
+## Post-installation
 
 ### Configure Git
 git config --global user.name "$git_username"  
@@ -69,67 +73,6 @@ Make sure your user is in the `wheel` group!
 $ groups
 holmen1 wheel
 ```
-
-### System Monitoring (Battery & WiFi) with Dunst Notifications
-
-```bash
-# Create symlinks
-ln -s ~/repos/dotfiles/scripts/system-monitor.service ~/.config/systemd/user/system-monitor.service
-ln -s ~/repos/dotfiles/scripts/system-monitor.timer ~/.config/systemd/user/system-monitor.timer
-
-# Enable and start
-systemctl --user daemon-reload
-systemctl --user enable system-monitor.timer
-systemctl --user start system-monitor.timer
-```
-
-To test without waiting for your battery to actually drain
-```bash
-# Force a low battery notification
-notify-send -u critical "Battery Critical" "Battery level is low!" -i battery-caution
-```
-
-Verify Status
-```bash
-# Check if timer is running
-systemctl --user status system-monitor.timer
-journalctl --user -u system-monitor.timer -f
-```
-
-This setup will give you urgent notifications when your battery is critically low or wifi not connected
-
-### Setting Brightness and Volume Keybindings with xbindkeys
-
-1. First, install xbindkeys
-2. Create a config file:
-   ```bash
-   touch ~/.xbindkeysrc
-   ```
-3. Add brightness controls to ~/.xbindkeysrc:
-   ```
-   # Decrease brightness
-   "brightnessctl set 10%-"
-     XF86MonBrightnessDown
-
-   # Increase brightness
-   "brightnessctl set +10%"
-     XF86MonBrightnessUp
-
-   # Simple ALSA Volume Controls
-   "amixer -q set Master 5%+ unmute"
-    XF86AudioRaiseVolume
-
-   "amixer -q set Master 5%- unmute"
-    XF86AudioLowerVolume
-
-   "amixer -q set Master toggle"
-    XF86AudioMute
-   ```
-4. Add xbindkeys to your .xinitrc:
-   ```bash
-   # Launch key binding daemon
-   xbindkeys &
-   ```
 
 ### Link dotfiles
 Edit a
