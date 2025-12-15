@@ -60,26 +60,6 @@ X11 display server. Striving to improve the existing code base while maintaining
 
 Build and install from AUR, see [README](../build/xlibre/README.md)
 
-### SSH
-Reuse key already in Github
-
-```bash
-cp /mnt/usb/id_ed25519* ~/.ssh/
-```
-
-Start the ssh-agent in the background
-```bash
-chmod 600 ~/.ssh/id_ed25519
-eval "$(ssh-agent -s)"
-ssh-add ~/.ssh/id_ed25519
-```
-
-### Configure Git
-```bash
-git config --global user.name "$git_username"
-git config --global user.email "$git_email"
-```
-
 ### Clone dotfiles
 ```bash
 mkdir repos
@@ -114,6 +94,29 @@ link_x_config.sh
 ```bash
 
 ```
+### Setting Brightness and Volume Keybindings with xbindkeys
+
+1. First, install backlight
+2. Create a config file:
+   ```bash
+   touch ~/.xbindkeysrc
+   ```
+3. Add brightness controls to ~/.xbindkeysrc:
+   ```
+   # Decrease brightness
+   "backlight decr 10"
+     F5
+
+   # Increase brightness
+   "backlight incr 10"
+     F6
+   ```
+4. Add xbindkeys to your .xinitrc:
+   ```bash
+   # Launch key binding daemon
+   xbindkeys &
+   ```
+
 
 
 ### Sanity check

@@ -44,25 +44,6 @@ X11 display server. Striving to improve the existing code base while maintaining
 
 Build and install from AUR, see [README](../build/xlibre/README.md)
 
-### SSH
-Reuse key already in Github
-
-```
-cp /mnt/usb/id_ed25519* ~/.ssh/
-```
-Start the ssh-agent in the background
-```
-chmod 600 ~/.ssh/id_ed25519
-eval "$(ssh-agent -s)"
-ssh-add ~/.ssh/id_ed25519
-```
-
-### Configure Git
-```
-git config --global user.name "$git_username"
-git config --global user.email "$git_email"
-```
-
 ### Clone dotfiles
 ```
 mkdir repos
@@ -104,6 +85,39 @@ systemctl --user daemon-reload
 systemctl --user enable system-monitor.timer
 systemctl --user start system-monitor.timer
 ```
+### Setting Brightness and Volume Keybindings with xbindkeys
+
+1. First, install xbindkeys
+2. Create a config file:
+   ```bash
+   touch ~/.xbindkeysrc
+   ```
+3. Add brightness controls to ~/.xbindkeysrc:
+   ```
+   # Decrease brightness
+   "brightnessctl set 10%-"
+     XF86MonBrightnessDown
+
+   # Increase brightness
+   "brightnessctl set +10%"
+     XF86MonBrightnessUp
+
+   # Simple ALSA Volume Controls
+   "amixer -q set Master 5%+ unmute"
+    XF86AudioRaiseVolume
+
+   "amixer -q set Master 5%- unmute"
+    XF86AudioLowerVolume
+
+   "amixer -q set Master toggle"
+    XF86AudioMute
+   ```
+4. Add xbindkeys to your .xinitrc:
+   ```bash
+   # Launch key binding daemon
+   xbindkeys &
+   ```
+
 
 
 ### Sanity check
