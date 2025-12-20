@@ -104,14 +104,14 @@ read -p "Enable system monitoring? [y/N] " ans
 case "$ans" in
     [Yy]*)
     # Add cron job for system monitoring (runs every 2 minutes)
-    CRON_LINE="*/2 * * * * $SCRIPTS_DIR/battery-monitor.sh >/dev/null 2>&1; $SCRIPTS_DIR/wifi-monitor.sh >/dev/null 2>&1"
+    CRON_LINE="DISPLAY=:0"$'\n'"*/2 * * * * $SCRIPTS_DIR/battery-monitor.sh >/dev/null 2>&1; $SCRIPTS_DIR/wifi-monitor.sh >/dev/null 2>&1"
     
     # Check if cron job already exists
     if crontab -l 2>/dev/null | grep -q "battery-monitor.sh"; then
         echo "Cron job already exists"
     else
         # Add to crontab
-        (crontab -l 2>/dev/null; echo "$CRON_LINE") | crontab -
+        (crontab -l 2>/dev/null; printf "%s\n" "$CRON_LINE") | crontab -
         echo "Added system monitoring to crontab (runs every 2 minutes)"
     fi
     ;;

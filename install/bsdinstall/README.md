@@ -88,10 +88,12 @@ and link to ```/usr/local/bin```
 
 
 ### Enable System Monitoring (Battery & WiFi)
-
+```crontab```
 ```bash
-
+DISPLAY=:0
+*/2 * * * * /home/holmen1/repos/dotfiles/scripts/battery-monitor.sh >/dev/null 2>&1; /home/holmen1/repos/dotfiles/scripts/wifi-monitor.sh >/dev/null 2>&1
 ```
+
 ### Setting Brightness and Volume Keybindings with xbindkeys
 
 1. First, install backlight
