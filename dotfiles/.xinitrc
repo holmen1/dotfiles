@@ -1,6 +1,5 @@
 #!/bin/sh
 
-
 # --- Essential applications ---
 check_essential() {
     command -v "$1" >/dev/null 2>&1 || { echo >&2 "Required program $1 not installed. Aborting."; exit 1; }
@@ -26,8 +25,6 @@ check_optional brave
 
 # [... default stuff that your distro may throw in here ...] #
 
-# Set keymap
-setxkbmap se
 
 # Set the default X cursor to the usual pointer
 xsetroot -cursor_name left_ptr
@@ -53,8 +50,12 @@ fi
 export EDITOR=nvim
 export OPENER=feh
 export TERMINAL=st
-export BROWSER=brave
+export BROWSER=librewolf
 
+# Set keymap
+setxkbmap se &
+
+# Start terminal
 st &
 
 exec xmonad

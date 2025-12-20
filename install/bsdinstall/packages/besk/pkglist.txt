@@ -1,8 +1,10 @@
 FreeBSD-kernel-generic
 FreeBSD-kernel-generic-dbg
 FreeBSD-set-base
+FreeBSD-set-devel
 FreeBSD-set-lib32
 FreeBSD-set-minimal
+FreeBSD-set-src
 bash
 ca_root_nss
 dmenu
@@ -14,7 +16,6 @@ feh
 gcc
 ghc
 git
-gmake
 hs-cabal-install
 hs-haskell-language-server
 i3lock
@@ -25,7 +26,9 @@ neovim
 nerd-fonts
 pkg
 pkgconf
+ripgrep
 scrot
+setxkbmap
 sudo
 tree
 unzip
@@ -34,4 +37,6 @@ xbindkeys
 xclip
 xcompmgr
 xf86-video-intel
-xorg
+xorg-minimal
+xsetroot
+xterm

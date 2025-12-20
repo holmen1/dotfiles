@@ -8,10 +8,18 @@ Install FreeBSD using the text-based installation program named bsdinstall
 
 Add user to groups: wheel video
 
+Wifi: ETSI
+
 otherwise my choice, see [user_configuration_x1.json](../archinstall/log/user_configuration_x1.json)  
 
 
 ## Post-installation
+### Shell, also need adding hostname if used in scripts
+```bash
+chsh -s /usr/local/bin/bash
+sysrc hostname="besk"
+service hostname restart
+```
 
 ### Wireless Configuration
 
@@ -54,12 +62,6 @@ Then restart the network executing the following command:
 service netif restart
 ```
 
-
-### XLibre
-X11 display server. Striving to improve the existing code base while maintaining backward compatibility to make X11 a viable choice for the future  
-
-Build and install from AUR, see [README](../build/xlibre/README.md)
-
 ### Clone dotfiles
 ```bash
 mkdir repos
@@ -84,10 +86,6 @@ cp /mnt/usb/xmonad-v0.18.0 /opt/xmonad/
 ```
 and link to ```/usr/local/bin```
 
-### Link dotfiles
-```
-link_x_config.sh
-```
 
 ### Enable System Monitoring (Battery & WiFi)
 
@@ -138,11 +136,6 @@ This script verifies:
 - Repository structure
 
 
-* Install Haskell
-```
-curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
-```
-
 ### Install Haskell
 If ghcup has issues on FreeBSD 15, use native packages:
 ```bash
@@ -163,11 +156,6 @@ export PATH="$HOME/.cabal/bin:$PATH"
 ```
 
 
-If you need the absolute latest versions or ghcup works, you can try:
-```bash
-curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
-```
-
 ### Building from Ports (For Custom/Latest Builds)
 When `pkg` doesn't have what you need (e.g., patched XMonad, Xlibre), build from ports. Use Git for the ports tree (faster than the old portsnap):
 
@@ -182,14 +170,6 @@ cd /usr/ports/x11-wm/xmonad && sudo make install clean
 # Build Xlibre (if available in ports)
 cd /usr/ports/x11/xorg && sudo make install clean  # Adjust path as needed
 ```
-
-* Build XMonad
-
-
-
-
-
-## REPAIR
 
 
 ### Export installed packages
@@ -213,6 +193,7 @@ pkg query -e '%a = 0 && %o != ports' %n > foreignpkglist.txt
 
 - No pacman / yay / AUR on FreeBSD — use `pkg` and `ports`.
 - No systemd — use rc(8) and rc.conf
+- mount -t msdosfs
 
 
 
