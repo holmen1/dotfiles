@@ -29,8 +29,8 @@ iwctl --passphrase pwd station wlan0 connect network" -i network-wireless-discon
     fi
 
 elif [ "$OS" = "FreeBSD" ]; then
-    # FreeBSD: Use ifconfig
-    IFACE=$(ifconfig -l 2>/dev/null | tr ' ' '\n' | grep -E '^(wlan|iwm)' | head -1)
+    # FreeBSD: Use ifconfig with wlan interface
+    IFACE=$(ifconfig -l 2>/dev/null | tr ' ' '\n' | grep '^wlan' | head -1)
     
     [ -z "$IFACE" ] && { notify-send -u normal "Network" "No wireless interface found" -i network-wireless-offline; exit 1; }
     
@@ -39,8 +39,16 @@ elif [ "$OS" = "FreeBSD" ]; then
     
     if [ "$CONNECTION_STATE" != "associated" ]; then
         notify-send -u normal -t 150000 "WiFi Help" "WiFi not connected
-sudo ifconfig $IFACE up
-sudo wpa_cli scan
-sudo wpa_cli scan_results" -i network-wireless-disconnected
+
+Scan for networks:
+sudo ifconfig $IFACE up list scan
+
+Connect to new network:
+sudo wpa_cli add_network
+sudo wpa_cli set_network 0 ssid \"CafeName\"
+sudo wpa_cli set_network 0 psk \"password\"
+sudo wpa_cli enable_network 0
+sudo wpa_cli save_config
+sudo service netif restart" -i network-wireless-disconnected
     fi
 fi
