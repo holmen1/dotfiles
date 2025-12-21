@@ -30,6 +30,7 @@ alias grep='grep --color=auto'
 alias ..='cd ..'
 alias reboot='sudo reboot'
 alias shutdown='sudo shutdown'
+alias v='nvim'
 
 # Git Aliases
 alias gs='git status'

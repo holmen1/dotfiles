@@ -3,7 +3,7 @@
 USER=$(whoami)
 EMAIL=$USER@gmail.com
 
-DOTFILES_DIR=~/repos/dotfiles
+DOTFILES_DIR=$HOME/repos/dotfiles
 SCRIPTS_DIR=$DOTFILES_DIR/scripts
 LINK_SCRIPT=$SCRIPTS_DIR/link_config.sh
 LINKS=$DOTFILES_DIR/install/bsdinstall/links/suckless_links.config
@@ -17,7 +17,6 @@ PKGLIST=$DOTFILES_DIR/install/bsdinstall/packages/$PKGPROFILE/pkglist.txt
 
 TEST=$DOTFILES_DIR/install/bsdinstall/sanity_check.sh
 
-sudo pkg install -y git
 
 read -p "Configure git? [y/N] " ans
 case "$ans" in
@@ -32,12 +31,12 @@ read -p "Generate SSH key? [y/N] " ans
 case "$ans" in
     [Yy]*)
 # Generate ssh key
-    cd ~
+    cd $HOME
     mkdir -p .ssh
     chmod 700 .ssh
-    ssh-keygen -t ed25519 -C "$EMAIL" -f ~/.ssh/id_ed25519
+    ssh-keygen -t ed25519 -C "$EMAIL" -f $HOME/.ssh/id_ed25519
     eval "$(ssh-agent -s)"
-    ssh-add ~/.ssh/id_ed25519
+    ssh-add $HOME/.ssh/id_ed25519
     ;;
 esac
 
@@ -46,7 +45,7 @@ echo "$PKGLIST"
 read -p "Install pkglist? [y/N] " ans
 case "$ans" in
     [Yy]*)
-    xargs sudo pkg install -y < $PKGLIST
+    $SCRIPTS_DIR/pkg-install.sh $PKGLIST
     ;;
 esac
 
@@ -70,6 +69,7 @@ case "$ans" in
     echo "Created symlink for xmonad"
     ;;
 esac
+sudo -k
 
 read -p "Build st? [y/N] " ans
 case "$ans" in
@@ -91,6 +91,7 @@ case "$ans" in
     echo "Created symlink for st"
     ;;
 esac
+sudo -k
 
 read -p "Link dotfiles? [y/N] " ans
 case "$ans" in

@@ -19,6 +19,7 @@ FPKGLIST=$DOTFILES_DIR/install/archinstall/packages/$PKGPROFILE/foreignpkglist.t
 TEST=$DOTFILES_DIR/install/archinstall/sanity_check.sh
 
 sudo pacman -S --needed git base-devel openssh
+sudo -k
 
 read -p "Configure git? [y/N] " ans
 case "$ans" in
@@ -97,6 +98,7 @@ case "$ans" in
     sudo cp -f $XMONAD_DIR/bin/xmonad-v0.18.[0-9] /opt/xmonad/
     echo "Installed xmonad to /opt/xmonad/"
     sudo ln -sf /opt/xmonad/xmonad-v0.18.* /usr/local/bin/xmonad
+    sudo -k
     echo "Created symlink for xmonad"
     ;;
 esac
@@ -118,6 +120,7 @@ case "$ans" in
     sudo cp -f $ST_DIR/bin/st-0.9.[0-9] /opt/st/
     echo "Installed st to /opt/st/"
     sudo ln -sf /opt/st/st-0.9.* /usr/local/bin/st
+    sudo -k
     echo "Created symlink for st"
     ;;
 esac
