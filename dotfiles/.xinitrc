@@ -50,7 +50,7 @@ fi
 export EDITOR=nvim
 export OPENER=feh
 export TERMINAL=st
-export BROWSER=brave
+export BROWSER=librewolf
 
 # Set keymap
 setxkbmap se &
