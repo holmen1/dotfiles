@@ -12,6 +12,7 @@ drm-kmod
 dunst
 en-freebsd-doc
 fastfetch
+fd
 feh
 gcc
 gdb
@@ -32,8 +33,10 @@ portconfig
 ripgrep
 scrot
 setxkbmap
+stylua
 sudo
 tree
+tree-sitter-cli
 unzip
 wifi-firmware-iwlwifi-kmod-7000
 xbindkeys
