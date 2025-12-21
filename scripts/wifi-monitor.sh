@@ -34,10 +34,11 @@ elif [ "$OS" = "FreeBSD" ]; then
     
     [ -z "$IFACE" ] && { notify-send -u normal "Network" "No wireless interface found" -i network-wireless-offline; exit 1; }
     
-    # Check if WiFi is connected
+    # Check if WiFi is connected (both associated and has IP)
     CONNECTION_STATE=$(ifconfig "$IFACE" 2>/dev/null | grep "status:" | awk '{print $2}')
+    HAS_IP=$(ifconfig "$IFACE" 2>/dev/null | grep 'inet ' | grep -v '169.254' | wc -l)
     
-    if [ "$CONNECTION_STATE" != "associated" ]; then
+    if [ "$CONNECTION_STATE" != "associated" ] || [ "$HAS_IP" -eq 0 ]; then
         notify-send -u normal -t 150000 "WiFi Help" "WiFi not connected
 
 Scan for networks:
