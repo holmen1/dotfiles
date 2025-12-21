@@ -36,9 +36,14 @@ Reminder
 | `R` | Enters Replace mode until `<Esc>`{normal} is pressed |
 | `v motion :w FILENAME` | Saves the Visually selected lines in file FILENAME |
 | `v motion :w >> FILENAME` | Appends the Visually selected lines to file FILENAME |
+| `<C-v>` | Visual block mode - select rectangular blocks of text |
+| `gv` | Reselect last visual selection |
+| `!nl` | Number selected lines (when in visual mode) |
 | `:x,yw >> FILENAME` | Appends lines x-y to file FILENAME |
 | `:r FILENAME` | Retrieves disk file FILENAME and puts it below the cursor |
-| `:r !command`|	Insert output of shell command below cursor |
+| `:r !command`|	Insert output of shell command below cursor (ex date)|
+| `!uniq` | Remove duplicate lines (from visual selection) |
+| `%!uniq` | Remove duplicate lines from entire file |
 | `:%s/old/new/gc`| Global find and replace with confirmation |
 | `:g/pattern/d` | Delete all lines matching pattern |
 | `:v/pattern/d` | Delete all lines NOT matching pattern |
