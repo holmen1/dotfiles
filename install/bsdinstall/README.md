@@ -75,8 +75,11 @@ Restore from pkg list:
 xargs sudo pkg install -y < pkglist.txt
 ```
 
-See [packages](packages/README.md) for more
-
+Build from ports (htop example):
+```bash
+cd /usr/ports/htop
+sudo make [install/deinstall/build/clean]
+```
 
 ### Install binaries
 pre-built binaries from the [build factory](../build/):

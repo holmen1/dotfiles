@@ -19,6 +19,7 @@ ghc
 git
 hs-cabal-install
 hs-haskell-language-server
+htop
 i3lock
 lf
 librewolf
@@ -27,6 +28,7 @@ neovim
 nerd-fonts
 pkg
 pkgconf
+portconfig
 ripgrep
 scrot
 setxkbmap
