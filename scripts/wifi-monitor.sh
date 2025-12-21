@@ -45,10 +45,11 @@ Scan for networks:
 sudo ifconfig $IFACE up list scan
 
 Connect to new network:
-sudo wpa_cli add_network
-sudo wpa_cli set_network 0 ssid \"CafeName\"
-sudo wpa_cli set_network 0 psk \"password\"
-sudo wpa_cli enable_network 0
+# Capture network ID
+NETID=\$(sudo wpa_cli add_network | tail -1)
+sudo wpa_cli set_network \$NETID ssid \"CafeName\"
+sudo wpa_cli set_network \$NETID psk \"password\"
+sudo wpa_cli enable_network \$NETID
 sudo wpa_cli save_config
 sudo service netif restart" -i network-wireless-disconnected
     fi
