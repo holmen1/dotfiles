@@ -81,6 +81,7 @@ Reminder
 ### LSP Navigation & Actions
 | Mapping | Description | When to Use |
 |---------|-------------|------------|
+| `K` | Hover documentation | Show docs for symbol under cursor |
 | `grn` | Rename symbol | Rename variables/functions across files |
 | `gra` | Code action | Fix errors, organize imports |
 | `grr` | Find references | See all usages of a symbol |
@@ -140,68 +141,44 @@ Keyboard Navigation in Diff Mode
 
 ## LSP Troubleshooting
 
-Having issues with language servers? Here's a step-by-step guide to diagnose and fix common problems:
+This config bypasses Mason entirely - LSP servers are installed via system package manager.
 
-### Check Installation and Status
+### Install LSP Servers
+
+| Server | Arch | FreeBSD |
+|--------|------|---------|
+| clangd | `pacman -S clang` | `pkg install llvm` |
+| lua_ls | `pacman -S lua-language-server` | Build from source |
+| hls | `ghcup install hls` | `pkg install hs-haskell-language-server` |
+
+### Check Status
 
 ```vim
-:Mason                " Check if language servers are installed
-:LspInfo              " View active language servers for current buffer
-:LspLog               " Check for errors in LSP log
+:LspInfo              " View attached servers
+:LspLog               " Check for errors
+:checkhealth lsp      " Full diagnostics
 ```
 
-### Common Issues and Fixes
+### Common Issues
 
-#### Language Server Not Installing
+**"No LSP implementation found"**
+- Server not installed: `which clangd haskell-language-server-wrapper`
+- Server not in PATH: Check shell profile
+- Not a project: HLS needs `*.cabal`, clangd needs `compile_commands.json`
 
-
-If Mason fails to install a language server:
-
+**Generate compile_commands.json for C/C++:**
 ```bash
-# For Haskell Language Server, try direct installation
-ghcup install hls    # Install via GHCup
-
-# For C/C++, ensure clangd is available
-sudo apt install clangd    # On Debian/Ubuntu
-```
-### C/C++: No LSP implementation found
-
-For full language server (LSP) support in C/C++, you need a `compile_commands.json` file in your project root. If your build system doesn't generate this automatically, use [`bear`](https://github.com/rizsotto/Bear):
-
-```sh
 bear -- make
 ```
 
+**"No information available" on hover (K)**
+- LSP still indexing - wait for it to finish
+- Standalone file without project structure
 
-#### Language Server Not Attaching
-
-**Force server start**
-```vim
-:LspStart hls      " For Haskell
-:LspStart clangd   " For C/C++
-```
-
-#### Advanced LSP Commands
+### Force Restart
 
 ```vim
-:LspRestart           " Restart LSP servers
-:LspStop              " Stop LSP servers
-:LspInstall <server>  " Install a specific server
-```
-
-
-### Check Log for Errors
-
-Look for errors in the LSP log:
-
-```
-:LspLog
-```
-
-Then add this to your LSP configuration:
-
-```lua
-hls = {
-  cmd = { "haskell-language-server-wrapper", "--lsp" }
-}
+:LspRestart
+:LspStop
+:LspStart
 ```

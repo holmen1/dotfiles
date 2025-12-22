@@ -24,6 +24,8 @@ htop
 i3lock
 lf
 librewolf
+llvm
+lua-language-server
 ncurses
 neovim
 nerd-fonts
