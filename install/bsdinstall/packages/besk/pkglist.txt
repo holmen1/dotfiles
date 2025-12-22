@@ -37,7 +37,7 @@ stylua
 sudo
 tree
 tree-sitter-cli
-unzip
+wget
 wifi-firmware-iwlwifi-kmod-7000
 xbindkeys
 xclip
