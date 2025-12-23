@@ -199,7 +199,8 @@ pkg query -e '%a = 0 && %o != ports' %n > foreignpkglist.txt
 - No pacman / yay / AUR on FreeBSD — use `pkg` and `ports`.
 - No systemd — use rc(8) and rc.conf
 - mount -t msdosfs
-
+- GNU make vs BSD make — Use `gmake` for GNU Makefiles; FreeBSD's default `make` is BSD make with different syntax
+- Header ordering in C network programming — On FreeBSD, include `<sys/types.h>` before `<sys/socket.h>` and other network headers to avoid compilation errors
 
 
 
