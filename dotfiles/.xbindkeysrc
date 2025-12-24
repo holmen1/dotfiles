@@ -1,4 +1,4 @@
-# Decrease brightness (Arch: XF86, FreeBSD: F5
+# Decrease brightness (Arch: XF86, FreeBSD: F5)
 "brightnessctl set 10%-"
     XF86MonBrightnessDown
 
@@ -7,7 +7,7 @@
 
 # Increase brightness
 "brightnessctl set +10%"
-    XF86MonBrightnessDown
+    XF86MonBrightnessUp
 
 "backlight incr 10"
     F6
