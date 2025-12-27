@@ -10,6 +10,7 @@ import XMonad.Operations (unGrab)
 import qualified XMonad.StackSet as W
 import XMonad.Util.EZConfig (additionalKeys)
 import XMonad.Util.NamedScratchpad
+import XMonad.Util.SpawnOnce
 
 myModMask = mod4Mask -- Rebind Mod to the Super key
 myAppLauncher = "dmenu_run -fn 'JetBrainsMono Nerd Font:size=14' -nb '#222222' -nf '#bbbbbb' -sb '#A300A3' -sf '#eeeeee'"
@@ -39,6 +40,9 @@ myScratchpads terminal browser =
 myLayout = smartBorders $ layoutHook def
 
 myManageHook terminal browser = namedScratchpadManageHook (myScratchpads terminal browser)
+
+myStartupHook terminal = do
+  spawnOnce terminal  -- Start terminal on first launch only
 
 myFadeHook =
   composeAll
@@ -82,6 +86,7 @@ myConfig terminal browser =
       focusedBorderColor = myMagenta,
       layoutHook = myLayout,
       manageHook = myManageHook terminal browser,
+      startupHook = myStartupHook terminal,
       logHook = fadeWindowsLogHook myFadeHook
     }
     `additionalKeys` myKeys terminal browser

@@ -12,11 +12,16 @@ if [[ -z $DISPLAY ]] && { [[ $(tty) = /dev/tty1 ]] || [[ $(tty) = /dev/ttyv0 ]];
     echo "" # Add a newline for spacing
 
     for i in {6..1}; do
-        # \r returns to the start of the line
-        printf "Starting X in %s Press Ctrl+C to abort \r" "$i"
+        # Force output flush and overwrite the same line
+        printf "\rStarting X in %s... Press Ctrl+C to abort" "$i"
         sleep 1
     done
 
-    echo "Starting X now...           " # The spaces clear the previous line
+    # Clear the countdown line and show final message
+    printf "\rStarting X now...                          \n"
+    sleep 0.5
+    
+    # Clear terminal completely before starting X to prevent artifacts
+    clear
     exec startx
 fi
