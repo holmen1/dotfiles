@@ -162,34 +162,126 @@ export PATH="$HOME/.cabal/bin:$PATH"
 
 
 ### Building from Ports (For Custom/Latest Builds)
-When `pkg` doesn't have what you need (e.g., patched XMonad, Xlibre), build from ports. Use Git for the ports tree (faster than the old portsnap):
 
+#### When to Use Ports vs Packages
+Use `pkg` for most software installations. Build from ports when you need:
+- Software not available as binary packages (e.g., xlibre)
+- Custom compilation options or patches
+- Latest development versions
+
+#### Setting Up the Ports Tree
 ```bash
-# Clone/update ports tree
-sudo git clone https://git.freebsd.org/ports.git /usr/ports
-cd /usr/ports && sudo git pull
+# Initial clone (if /usr/ports doesn't exist)
+sudo git clone --depth 1 https://git.freebsd.org/ports.git /usr/ports
 
-# Build XMonad (example)
-cd /usr/ports/x11-wm/xmonad && sudo make install clean
-
-# Build Xlibre (if available in ports)
-cd /usr/ports/x11/xorg && sudo make install clean  # Adjust path as needed
+# Update existing ports tree
+sudo git -C /usr/ports pull
 ```
+
+#### Building XLibre (X.Org Replacement)
+XLibre is a fork of X.Org that must be built from ports. This replaces the standard X11 implementation.
+
+**Important:** Remove conflicting X.Org packages before installing xlibre:
+```bash
+# Check for conflicts
+pkg info | grep -E 'xorg-server|xf86-'
+
+# Remove X.Org packages if present
+sudo pkg delete -f xorg-server xf86-input-libinput xf86-video-intel
+```
+
+**Build and install xlibre:**
+```bash
+# Install dependencies from binary packages (faster)
+cd /usr/ports/x11/xlibre-minimal
+make all-depends-list | cut -d/ -f5- | xargs sudo pkg install -y
+
+# Build xlibre server
+sudo make install clean
+
+# Install display driver (required for graphics to work)
+cd /usr/ports/x11-drivers/xlibre-xf86-video-intel  # or xf86-video-vesa for generic
+sudo make install clean
+```
+
+#### Resolving Package Conflicts
+If you encounter registration conflicts during installation:
+```bash
+# Force package registration (use cautiously)
+sudo make install clean FORCE_PKG_REGISTER=YES
+```
+
+**Warning:** Only use `FORCE_PKG_REGISTER` when you're certain the conflicting package has been properly removed and the conflict is a registration artifact.
+
+#### Port Build Options
+During port builds, you'll see configuration dialogs with checkboxes for features. Understanding these helps avoid build issues and unnecessary bloat.
+
+**Common options and recommendations:**
+
+| Option | Description | Recommendation |
+|--------|-------------|----------------|
+| `DOCS` | Install documentation | Disable to save space (~5-50MB per port) |
+| `EXAMPLES` | Install example files | Disable unless learning the software |
+| `NLS` | Native Language Support (translations) | Disable if you only use English (saves 10-50MB) |
+| `X11` | X Window System support | Keep enabled if using a GUI |
+| `WAYLAND` | Wayland support | Disable if using X11/xlibre only |
+| `DEBUG` | Debug symbols | Disable unless developing (adds significant size) |
+| `IPV6` | IPv6 protocol support | Keep enabled (modern standard) |
+| `TEST` | Build and run tests | Disable (only for development) |
+
+**Best practices for beginners:**
+1. **First build:** Accept all defaults - they're tested and safe
+2. **Rebuilding for optimization:** Disable `DOCS`, `EXAMPLES`, `NLS`, `DEBUG` to save ~20-30% space
+3. **Critical ports (xlibre, gcc, llvm):** Use defaults - wrong options can break your system
+4. **Desktop applications:** Verify `X11` is enabled
+
+**Configuration commands:**
+```bash
+# Configure build options interactively
+cd /usr/ports/category/portname
+sudo make config
+
+# Configure port and all its dependencies (careful - many dialogs)
+sudo make config-recursive
+
+# Reset to defaults if you made mistakes
+sudo make rmconfig
+
+# Show current configuration without dialog
+make showconfig
+```
+
+**Time/space tradeoffs:**
+- Disabling `DOCS`, `NLS`, `EXAMPLES`: Saves disk space, minimal impact on build time
+- Disabling optional features (e.g., `WAYLAND` when using X11): Reduces dependencies, faster builds
+- Enabling `DEBUG`: Significantly increases binary size (+50-200%) and build time (+10-30%)
+
 
 
 ### Export installed packages
-Keeping a list of all explicitly installed packages can be useful to backup a system or quicken the installation of a new one
+Keeping a list of all explicitly installed packages can be useful to backup a system or quicken the installation of a new one.
 
-Exports ONLY manually installed packages
+**Export manually installed packages:**
 ```bash
-pkg query -e '%a = 0' %n > pkglist.txt
+pkg query -e '%a = 0' %o > pkglist.txt
 ```
 
-If you want to include foreign packages (built from ports), add a separate export:
+**Distinguish between pkg-installed and port-built packages:**
 ```bash
-pkg query -e '%a = 0 && %o != ports' %n > foreignpkglist.txt
-````
-(though this is rare on FreeBSD)
+# List only packages installed from official repositories
+pkg query -e '%a = 0' '%R %o' | awk '$1 == "FreeBSD-ports" {print $2}' > pkg-installed.txt
+
+# List only packages built from ports (local builds)
+pkg query -e '%a = 0' '%R %o' | awk '$1 != "FreeBSD-ports" && $1 != "FreeBSD-base"  {print $2}' > port-built.txt
+```
+
+**Query field meanings:**
+- `%a` - Automatic flag (0 = manually installed, 1 = dependency)
+- `%o` - Origin (e.g., `x11/xlibre-minimal`)
+- `%R` - Repository name (e.g., `FreeBSD`, empty for local builds)
+- `%n` - Package name only
+
+**Note:** Packages built from ports typically have `%R` set to empty or "FreeBSD-ports" depending on your configuration. Use `pkg info -o packagename` to verify the origin of specific packages.
 
 
 # LESSONS LEARNED

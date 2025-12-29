@@ -1,0 +1,5 @@
+devel/lua-language-server
+ports-mgmt/portconfig
+net/wifi-firmware-iwlwifi-kmod
+x11/xlibre-minimal
+x11-drivers/xlibre-xf86-video-intel
