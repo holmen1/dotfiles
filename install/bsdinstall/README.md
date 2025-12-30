@@ -281,8 +281,6 @@ pkg query -e '%a = 0' '%R %o' | awk '$1 != "FreeBSD-ports" && $1 != "FreeBSD-bas
 - `%R` - Repository name (e.g., `FreeBSD`, empty for local builds)
 - `%n` - Package name only
 
-**Note:** Packages built from ports typically have `%R` set to empty or "FreeBSD-ports" depending on your configuration. Use `pkg info -o packagename` to verify the origin of specific packages.
-
 
 # LESSONS LEARNED
 

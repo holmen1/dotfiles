@@ -1,18 +1,18 @@
 # dotfiles
 
-Complete setup for Linux: configuration, installation, and build scripts
+Minimal configuration for Linux, BSD, and macOS: dotfiles, installation guides, and build scripts
 
 ## TL;DR
 ```bash
 git clone https://github.com/holmen1/dotfiles.git ~/repos/dotfiles
 cd ~/repos/dotfiles
 ```
-Run [configure_build_install_link.sh](configure_build_install_link.sh)
-```bash
-./configure_build_install_link.sh
-```
 
-This will configure git, generate SSH keys, install yay, set up Haskell, build and install all required packages, link configuration files and executables.
+**Arch Linux:** `./configure_build_install_link.sh`
+
+**FreeBSD:** `./install/bsdinstall/configure_build_install_link.sh`
+
+See [Installation guides](#installation-guides) for details.
 
 * Window manager: Xmonad (tiling, minimal, highly configurable)
 * Terminal: st (simple terminal, patched for features)
@@ -24,13 +24,16 @@ This will configure git, generate SSH keys, install yay, set up Haskell, build a
 
 ## Project Scope
 
-This project describes complete setup, including building installing and dotfiles. Aiming to be minimal, stable and maintainable
+Minimal, stable, and maintainable configuration across multiple operating systems. Emphasizes suckless tools and UNIX philosophy.
 
 ## Requirements
 
-This setup is designed to run on low-spec hardware (tested on a 4GB RAM machine) and has minimal requirements. It should work on most modern x86_64 Linux systems.
+Designed for low-spec hardware (tested on 4GB RAM). Minimal dependencies.
 
-**Note:** Scripts assume Arch Linux (using pacman), but can be adapted for other distributions with minor changes.
+**Supported systems:**
+- Linux (Arch, Debian)
+- FreeBSD
+- macOS
 
 ### Included Components
 - [Hyprland](https://github.com/holmen1/dotfiles/tree/master/dotfiles/hypr): a dynamic tiling Wayland compositor
@@ -38,9 +41,10 @@ This setup is designed to run on low-spec hardware (tested on a 4GB RAM machine)
 - [Neovim](https://github.com/holmen1/dotfiles/tree/master/dotfiles/nvim): hyperextensible Vim-based text editor
 
 ## Installation guides
-- [arch](https://github.com/holmen1/dotfiles/tree/master/install/archinstall)
-- [debian](https://github.com/holmen1/dotfiles/tree/master/install/debianinstall)
-- [macos](https://github.com/holmen1/dotfiles/tree/master/install/macinstall)
+- [Arch Linux](install/archinstall)
+- [Debian/Ubuntu](install/debianinstall)
+- [FreeBSD](install/bsdinstall)
+- [macOS](install/macinstall)
 
 ## Automation scripts
 

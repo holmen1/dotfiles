@@ -15,13 +15,27 @@ bind '"\e[B": history-search-forward'
 export HISTCONTROL=ignoreboth:erasedups
 
 
-# Keyboard shortcuts
+# Custom functions
+
+# Open current directory in VSCode or Neovim
 cdc() {
 	cd "$1" && code .
 }
 cdv() {
 	cd "$1" && nvim .
 }
+
+# Create and change into a new directory
+mkcd() {
+    mkdir -p "$1" && cd "$1"
+}
+
+# Quick file search function (rename from ff to avoid conflict)
+fnd() {
+    find "${2:-.}" -name "*$1*" 2>/dev/null
+}
+
+
 alias cdr='cd ~/repos'
 
 alias ls='ls --color=auto'
@@ -31,6 +45,9 @@ alias ..='cd ..'
 alias reboot='sudo reboot'
 alias shutdown='sudo shutdown'
 alias v='nvim'
+alias ff='fastfetch'
+alias diff='diff --color=auto'
+alias less='less -R'
 
 # Git Aliases
 alias gs='git status'
