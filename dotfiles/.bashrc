@@ -48,6 +48,7 @@ alias v='nvim'
 alias ff='fastfetch'
 alias diff='diff --color=auto'
 alias less='less -R'
+alias ret='echo $?'
 
 # Git Aliases
 alias gs='git status'
