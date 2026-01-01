@@ -1,0 +1,10 @@
+--- a/install/build/st/st-patched/config.h
++++ b/install/build/st/st-patched/config.h
+@@ -213,6 +213,7 @@ static Shortcut shortcuts[] = {
+        { TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
+        { ShiftMask,            XK_Page_Up,     kscrollup,      {.f = -0.1} },
+        { ShiftMask,            XK_Page_Down,   kscrolldown,    {.f = -0.1} },
++       { ShiftMask,            XK_G,           kscrolldown,    {.f = 2001} },
+ };
+ 
+ /*

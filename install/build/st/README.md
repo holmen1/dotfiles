@@ -34,6 +34,11 @@ patch -p1 < ../patches/st-xyz-n.n.n.diff
 
 Some patches may fail if the source has changed, then review any .rej files and manually adjust the patch or source as needed.
 
+### Custom Patches
+- **st-scrollback-vim-G-holmen1.diff** - Adds `Shift+G` keybinding to jump to bottom of scrollback (Vim-like behavior)
+
+
+
 ## Installation
 
 After building, install the binary to a system location:
@@ -66,6 +71,7 @@ sudo ln -sf /opt/st/st-0.9.2 /usr/local/bin/st
 | **Scrollback** |  |
 | Scroll up | `Shift+Page Up` |
 | Scroll down | `Shift+Page Down` |
+| Jump to bottom | `Shift+G` |
 | **Special** |  |
 | Break (send SIGINT) | `Ctrl+C` |
 | Suspend process | `Ctrl+Z` |
