@@ -4,6 +4,7 @@ base-devel
 bear
 brightnessctl
 btrfs-progs
+clang
 dmenu
 dunst
 efibootmgr
@@ -24,6 +25,7 @@ lf
 libpulse
 linux
 linux-firmware
+llvm
 man-db
 man-pages
 neovim
