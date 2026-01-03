@@ -12,6 +12,7 @@ lang/gcc
 devel/gdb
 lang/ghc
 devel/git
+devel/gmake
 devel/hs-cabal-install
 devel/hs-haskell-language-server
 sysutils/htop
