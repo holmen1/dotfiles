@@ -213,7 +213,7 @@ static Shortcut shortcuts[] = {
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
 	{ ShiftMask,            XK_Page_Up,     kscrollup,      {.f = -0.1} },
  	{ ShiftMask,            XK_Page_Down,   kscrolldown,    {.f = -0.1} },
-	{ ShiftMask,            XK_G,           kscrolldown,    {.f = 2001} },
+	{ XK_ANY_MOD,           XK_End,       	kscrolldown,   	{.f = 2001} },
 };
 
 /*
