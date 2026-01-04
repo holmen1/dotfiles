@@ -73,15 +73,6 @@ case "$ans" in
     ;;
 esac
 
-read -p "Install Haskell? [y/N] " ans
-case "$ans" in
-    [Yy]*)
-    # Install GHCup
-    curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
-    echo "Installed Haskell, may need reboot"
-    ;;
-esac
-
 read -p "Build xmonad? [y/N] " ans
 case "$ans" in
     [Yy]*)

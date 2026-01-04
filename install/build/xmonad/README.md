@@ -30,10 +30,30 @@ apt install libx11-dev libxft-dev libxinerama-dev libxrandr-dev libxss-dev pkg-c
 ```
 
 ### Install Haskell
+
 ```bash
 # Install GHCup
 curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
 ```
+
+#### Option: Arch Linux (Recommended for Arch systems)
+
+Note: [Static linking](https://wiki.archlinux.org/title/Haskell#Static_linking)
+
+Instead of GHCup, you can use Pacman to install pre-built Haskell tools:
+
+```bash
+# Install GHC and Cabal from official Arch repositories
+pacman -S ghc-static cabal-install
+```
+
+**Advantages:**
+- No need to manage a separate Haskell installer
+- XMonad builds fine without additional setup
+
+**Known Limitations:**
+- HLS (Haskell Language Server) may not align properly with LSP in Neovim
+- Confirm [version-support](https://haskell-language-server.readthedocs.io/en/latest/support/ghc-version-support.html)
 
 ### Config cabal
 Create cabal.project file

@@ -4,6 +4,7 @@ base-devel
 bear
 brightnessctl
 btrfs-progs
+cabal-install
 clang
 dmenu
 dunst
@@ -12,6 +13,7 @@ fastfetch
 fd
 feh
 gdb
+ghc-static
 git
 grub
 gst-plugin-pipewire
