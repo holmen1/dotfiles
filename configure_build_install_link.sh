@@ -5,6 +5,7 @@ EMAIL=$USER@gmail.com
 
 DOTFILES_DIR=~/repos/dotfiles
 SCRIPTS_DIR=$DOTFILES_DIR/scripts
+INSTALL_SCRIPT=$SCRIPTS_DIR/pacman-install.sh
 LINK_SCRIPT=$SCRIPTS_DIR/link_config.sh
 LINKS=$DOTFILES_DIR/install/archinstall/links/suckless_links.config
 
@@ -18,7 +19,7 @@ FPKGLIST=$DOTFILES_DIR/install/archinstall/packages/$PKGPROFILE/foreignpkglist.t
 
 TEST=$DOTFILES_DIR/install/archinstall/sanity_check.sh
 
-sudo pacman -S --needed git base-devel openssh
+sudo pacman -S --needed openssh
 sudo -k
 
 read -p "Configure git? [y/N] " ans
@@ -60,7 +61,7 @@ echo "$PKGLIST"
 read -p "Install pkglist? [y/N] " ans
 case "$ans" in
     [Yy]*)
-    $SCRIPTS_DIR/install_packages.sh $PKGLIST
+    $INSTALL_SCRIPT $PKGLIST
     ;;
 esac
 
@@ -68,7 +69,7 @@ echo "$FPKGLIST"
 read -p "Install foreignpkglist? [y/N] " ans
 case "$ans" in
     [Yy]*)
-    $SCRIPTS_DIR/install_packages.sh $FPKGLIST
+    $INSTALL_SCRIPT $FPKGLIST
     ;;
 esac
 

@@ -1,10 +1,8 @@
 #!/bin/sh
+# Arch Linux
 
 # Check if output directory is provided
-if [ -z "$1" ]; then
-  echo "Usage: $0 <output-directory>"
-  exit 1
-fi
+[ $# -eq 0 ] && { echo "Usage: $0 <output-directory>"; exit 1; }
 
 OUTPUT_DIR="$1"
 
