@@ -46,6 +46,7 @@ tree
 ttf-jetbrains-mono-nerd
 unzip
 vi
+viu
 wireplumber
 xbindkeys
 xclip

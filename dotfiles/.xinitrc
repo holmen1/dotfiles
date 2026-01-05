@@ -18,9 +18,8 @@ check_optional feh
 check_optional dunst
 check_optional xcompmgr
 
-# Set environment variables for applications (must be before any app starts)
+# Set environment variables for applications (must be before any app (lf, xmonad) starts)
 export EDITOR=nvim
-export OPENER=feh
 export TERMINAL=st
 
 # Set browser based on OS
