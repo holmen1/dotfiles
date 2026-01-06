@@ -23,18 +23,18 @@ set previewer ~/repos/dotfiles/dotfiles/lf/preview.sh
 # KEYBINDINGS
 # ====================
 
-# show the result of execution of previous commands
+# Backtick: Clear/refresh the output pane
+# Press this after running a command to view output
 map ` !true
 
 # execute current file (must be executable)
+# Run file in BACKGROUND - lf stays responsive, command runs asynchronously
 map x $$f
+# Run file in FOREGROUND - lf blocks/waits for command to complete
 map X !$f
 
 # Map Enter to open command
 map <enter> open
-
-# Map 'f' to open images with feh
-map f feh
 
 # mkdir command
 map a :push %mkdir<space>
@@ -53,8 +53,8 @@ map d trash
 cmd open &{{
     case $(file --mime-type -Lb $f) in
         text/*) lf -remote "send $id \$$EDITOR \$fx";;
-        image/*) echo "Press 'f' to open image with feh";;
-        *) echo "Use specific commands: 'f' for images, Enter for default";;
+        image/*) feh --scale-down "$f" & ;;
+        *) xdg-open "$f" & ;;
     esac
 }}
 
@@ -64,14 +64,6 @@ cmd rename %[ -e $1 ] && printf "file exists" || mv $f $1
 # make sure trash folder exists and move files to trash
 %mkdir -p $HOME/.trash
 cmd trash %set -f; mv $fx $HOME/.trash
-
-# Open image with feh
-cmd feh ${{
-    case $(file --mime-type -Lb $f) in
-        image/*) feh --scale-down "$f" & ;;
-        *) echo "Not an image file" ;;
-    esac
-}}
 
 # extract archives
 cmd untar ${{
