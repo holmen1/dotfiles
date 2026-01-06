@@ -20,7 +20,7 @@ case "$mimetype" in
             identify "$file" 2>/dev/null || file -b "$file"
             echo
             echo "Install 'viu' for terminal image preview"
-            echo "Or press 'f' to open with feh"
+            echo "Or press '<enter>' to open with feh"
         fi
         ;;
     text/*)
