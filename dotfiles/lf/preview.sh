@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 file="$1"
 w="$2"
@@ -32,3 +32,4 @@ case "$mimetype" in
         file -b "$file"
         ;;
 esac
+

@@ -286,6 +286,7 @@ pkg query -e '%a = 0' '%R %o' | awk '$1 != "FreeBSD-ports" && $1 != "FreeBSD-bas
 
 ## Differences from Arch notes
 
+- `bash` located in /usr/local/bin. So #!/bin/bash won't work.
 - No pacman / yay / AUR on FreeBSD — use `pkg` and `ports`.
 - No systemd — use rc(8) and rc.conf
 - mount -t msdosfs
