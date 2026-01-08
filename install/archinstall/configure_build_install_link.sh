@@ -7,7 +7,6 @@ DOTFILES_DIR=~/repos/dotfiles
 SCRIPTS_DIR=$DOTFILES_DIR/scripts
 INSTALL_SCRIPT=$SCRIPTS_DIR/pacman-install.sh
 LINK_SCRIPT=$SCRIPTS_DIR/link_config.sh
-LINKS=$DOTFILES_DIR/install/archinstall/links/suckless_links.config
 
 XMONAD_DIR=$DOTFILES_DIR/install/build/xmonad
 ST_DIR=$DOTFILES_DIR/install/build/st
@@ -16,8 +15,9 @@ COMPUTERNAME=$(hostnamectl --static 2>/dev/null || hostname -s)
 PKGPROFILE=${COMPUTERNAME}
 PKGLIST=$DOTFILES_DIR/install/archinstall/packages/$PKGPROFILE/pkglist.txt
 FPKGLIST=$DOTFILES_DIR/install/archinstall/packages/$PKGPROFILE/foreignpkglist.txt
+LINKS=$DOTFILES_DIR/install/archinstall/links/$PKGPROFILE/links.config
 
-TEST=$DOTFILES_DIR/install/archinstall/sanity_check.sh
+TEST=$DOTFILES_DIR/install/archinstall/tests/$PKGPROFILE/sanity_check.sh
 
 sudo pacman -S --needed openssh
 sudo -k
