@@ -1,0 +1,829 @@
+[2026-01-08 16:13:58] - DEBUG - Hardware model detected: LENOVO 21K9CTO1WW; UEFI mode: True
+[2026-01-08 16:13:58] - DEBUG - Processor model detected: AMD Ryzen 7 PRO 7840U w/ Radeon 780M Graphics
+[2026-01-08 16:13:58] - DEBUG - Memory statistics: 26553384 available out of 28362828 total installed
+[2026-01-08 16:13:58] - DEBUG - Could not detect virtual system: ['/usr/bin/systemd-detect-virt'] exited with abnormal exit code [1]: none
+
+[2026-01-08 16:13:58] - DEBUG - System is not running in a VM: ['/usr/bin/systemd-detect-virt'] exited with abnormal exit code [1]: none
+
+[2026-01-08 16:13:58] - DEBUG - Virtualization detected: None; is VM: False
+[2026-01-08 16:13:58] - DEBUG - Graphics devices detected: dict_keys(['Advanced Micro Devices, Inc. [AMD/ATI] Phoenix1 (rev dd)'])
+[2026-01-08 16:13:58] - DEBUG - Disk states before installing:
+{
+    "blockdevices": [
+        {
+            "name": "loop0",
+            "path": "/dev/loop0",
+            "pkname": null,
+            "log_sec": 512,
+            "size": "971 MiB",
+            "pttype": null,
+            "ptuuid": null,
+            "rota": false,
+            "tran": null,
+            "partn": null,
+            "partuuid": null,
+            "parttype": null,
+            "uuid": null,
+            "fstype": "squashfs",
+            "fsver": "4.0",
+            "fsavail": 0,
+            "fsuse_percentage": "100%",
+            "type": "loop",
+            "mountpoint": "/run/archiso/airootfs",
+            "mountpoints": [
+                "/run/archiso/airootfs"
+            ],
+            "fsroots": [
+                "/"
+            ],
+            "children": []
+        },
+        {
+            "name": "sda",
+            "path": "/dev/sda",
+            "pkname": null,
+            "log_sec": 512,
+            "size": "59040 MiB",
+            "pttype": "dos",
+            "ptuuid": "2822af79",
+            "rota": true,
+            "tran": "usb",
+            "partn": null,
+            "partuuid": null,
+            "parttype": null,
+            "uuid": "2026-01-01-11-33-55-00",
+            "fstype": "iso9660",
+            "fsver": "Joliet Extension",
+            "fsavail": null,
+            "fsuse_percentage": null,
+            "type": "disk",
+            "mountpoint": null,
+            "mountpoints": [],
+            "fsroots": [],
+            "children": [
+                {
+                    "name": "sda1",
+                    "path": "/dev/sda1",
+                    "pkname": "sda",
+                    "log_sec": 512,
+                    "size": "1216 MiB",
+                    "pttype": "dos",
+                    "ptuuid": "2822af79",
+                    "rota": true,
+                    "tran": null,
+                    "partn": 1,
+                    "partuuid": "2822af79-01",
+                    "parttype": "0x0",
+                    "uuid": "2026-01-01-11-33-55-00",
+                    "fstype": "iso9660",
+                    "fsver": "Joliet Extension",
+                    "fsavail": null,
+                    "fsuse_percentage": null,
+                    "type": "part",
+                    "mountpoint": null,
+                    "mountpoints": [],
+                    "fsroots": [],
+                    "children": []
+                },
+                {
+                    "name": "sda2",
+                    "path": "/dev/sda2",
+                    "pkname": "sda",
+                    "log_sec": 512,
+                    "size": "251 MiB",
+                    "pttype": "dos",
+                    "ptuuid": "2822af79",
+                    "rota": true,
+                    "tran": null,
+                    "partn": 2,
+                    "partuuid": "2822af79-02",
+                    "parttype": "0xef",
+                    "uuid": "6956-5BA3",
+                    "fstype": "vfat",
+                    "fsver": "FAT32",
+                    "fsavail": null,
+                    "fsuse_percentage": null,
+                    "type": "part",
+                    "mountpoint": null,
+                    "mountpoints": [],
+                    "fsroots": [],
+                    "children": []
+                }
+            ]
+        },
+        {
+            "name": "nvme0n1",
+            "path": "/dev/nvme0n1",
+            "pkname": null,
+            "log_sec": 512,
+            "size": "488386 MiB",
+            "pttype": "gpt",
+            "ptuuid": "92aba2bc-ebbe-47fa-8b44-074242e552b7",
+            "rota": false,
+            "tran": "nvme",
+            "partn": null,
+            "partuuid": null,
+            "parttype": null,
+            "uuid": null,
+            "fstype": null,
+            "fsver": null,
+            "fsavail": null,
+            "fsuse_percentage": null,
+            "type": "disk",
+            "mountpoint": null,
+            "mountpoints": [],
+            "fsroots": [],
+            "children": [
+                {
+                    "name": "nvme0n1p1",
+                    "path": "/dev/nvme0n1p1",
+                    "pkname": "nvme0n1",
+                    "log_sec": 512,
+                    "size": "1024 MiB",
+                    "pttype": "gpt",
+                    "ptuuid": "92aba2bc-ebbe-47fa-8b44-074242e552b7",
+                    "rota": false,
+                    "tran": "nvme",
+                    "partn": 1,
+                    "partuuid": "3e7f29c5-f954-4b3e-ae8c-5357bcaf189c",
+                    "parttype": "c12a7328-f81f-11d2-ba4b-00a0c93ec93b",
+                    "uuid": "3D18-1DF6",
+                    "fstype": "vfat",
+                    "fsver": "FAT32",
+                    "fsavail": null,
+                    "fsuse_percentage": null,
+                    "type": "part",
+                    "mountpoint": null,
+                    "mountpoints": [],
+                    "fsroots": [],
+                    "children": []
+                },
+                {
+                    "name": "nvme0n1p2",
+                    "path": "/dev/nvme0n1p2",
+                    "pkname": "nvme0n1",
+                    "log_sec": 512,
+                    "size": "487360 MiB",
+                    "pttype": "gpt",
+                    "ptuuid": "92aba2bc-ebbe-47fa-8b44-074242e552b7",
+                    "rota": false,
+                    "tran": "nvme",
+                    "partn": 2,
+                    "partuuid": "1c7c7f23-f848-4a05-bd9d-5eb0f3464584",
+                    "parttype": "4f68bce3-e8cd-4db1-96e7-fbcaf984b709",
+                    "uuid": "52f981a8-79f6-4a8f-9d81-cb0f61494fa6",
+                    "fstype": "btrfs",
+                    "fsver": null,
+                    "fsavail": null,
+                    "fsuse_percentage": null,
+                    "type": "part",
+                    "mountpoint": null,
+                    "mountpoints": [],
+                    "fsroots": [],
+                    "children": []
+                }
+            ]
+        }
+    ]
+}
+[2026-01-08 16:14:03] - INFO - Fetching Arch Linux package database...
+[2026-01-08 16:14:09] - INFO - Checking version...
+[2026-01-08 16:14:09] - DEBUG - Failed to check for package upgrades: archinstall
+[2026-01-08 16:14:09] - DEBUG - No archinstall upgrades found
+[2026-01-08 16:14:09] - DEBUG - Running from ISO (Live Mode)...
+[2026-01-08 16:14:10] - DEBUG - Mounting /dev/nvme0n1p2: mount /dev/nvme0n1p2 /mnt/arch_btrfs
+[2026-01-08 16:14:10] - DEBUG - Partition /dev/nvme0n1p2 is currently mounted at: ['/mnt/arch_btrfs']
+[2026-01-08 16:14:10] - DEBUG - Unmounting mountpoint: /mnt/arch_btrfs
+[2026-01-08 16:14:52] - DEBUG - load mirrors: True
+[2026-01-08 16:16:15] - DEBUG - Creating yescrypt hash with rounds 5
+[2026-01-08 16:18:17] - DEBUG - Creating yescrypt hash with rounds 5
+[2026-01-08 16:18:35] - DEBUG - Creating yescrypt hash with rounds 5
+[2026-01-08 16:18:53] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/__init__.py
+[2026-01-08 16:18:53] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/custom.py
+[2026-01-08 16:18:53] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/desktop.py
+[2026-01-08 16:18:53] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/minimal.py
+[2026-01-08 16:18:53] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/server.py
+[2026-01-08 16:18:53] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/tailored.py
+[2026-01-08 16:18:53] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/xorg.py
+[2026-01-08 16:18:53] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/desktops/__init__.py
+[2026-01-08 16:18:53] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/desktops/awesome.py
+[2026-01-08 16:18:53] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/desktops/bspwm.py
+[2026-01-08 16:18:53] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/desktops/budgie.py
+[2026-01-08 16:18:53] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/desktops/cinnamon.py
+[2026-01-08 16:18:53] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/desktops/cosmic.py
+[2026-01-08 16:18:53] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/desktops/cutefish.py
+[2026-01-08 16:18:53] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/desktops/deepin.py
+[2026-01-08 16:18:53] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/desktops/enlightenment.py
+[2026-01-08 16:18:53] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/desktops/gnome.py
+[2026-01-08 16:18:53] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/desktops/hyprland.py
+[2026-01-08 16:18:53] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/desktops/i3.py
+[2026-01-08 16:18:53] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/desktops/labwc.py
+[2026-01-08 16:18:53] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/desktops/lxqt.py
+[2026-01-08 16:18:53] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/desktops/mate.py
+[2026-01-08 16:18:53] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/desktops/niri.py
+[2026-01-08 16:18:53] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/desktops/plasma.py
+[2026-01-08 16:18:53] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/desktops/qtile.py
+[2026-01-08 16:18:53] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/desktops/river.py
+[2026-01-08 16:18:53] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/desktops/sway.py
+[2026-01-08 16:18:53] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/desktops/xfce4.py
+[2026-01-08 16:18:53] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/desktops/xmonad.py
+[2026-01-08 16:18:53] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/servers/__init__.py
+[2026-01-08 16:18:53] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/servers/cockpit.py
+[2026-01-08 16:18:53] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/servers/docker.py
+[2026-01-08 16:18:53] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/servers/httpd.py
+[2026-01-08 16:18:53] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/servers/lighttpd.py
+[2026-01-08 16:18:53] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/servers/mariadb.py
+[2026-01-08 16:18:53] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/servers/nginx.py
+[2026-01-08 16:18:53] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/servers/postgresql.py
+[2026-01-08 16:18:53] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/servers/sshd.py
+[2026-01-08 16:18:53] - DEBUG - Importing profile: /usr/lib/python3.13/site-packages/archinstall/default_profiles/servers/tomcat.py
+[2026-01-08 16:21:48] - DEBUG -  -- Chosen configuration --
+[2026-01-08 16:21:48] - DEBUG - {
+    "app_config": {
+        "audio_config": {
+            "audio": "pipewire"
+        },
+        "bluetooth_config": {
+            "enabled": true
+        }
+    },
+    "archinstall-language": "English",
+    "auth_config": {},
+    "bootloader_config": {
+        "bootloader": "Grub",
+        "removable": true,
+        "uki": false
+    },
+    "custom_commands": [],
+    "disk_config": {
+        "btrfs_options": {
+            "snapshot_config": null
+        },
+        "config_type": "default_layout",
+        "device_modifications": [
+            {
+                "device": "/dev/nvme0n1",
+                "partitions": [
+                    {
+                        "btrfs": [],
+                        "dev_path": null,
+                        "flags": [
+                            "boot",
+                            "esp"
+                        ],
+                        "fs_type": "fat32",
+                        "mount_options": [],
+                        "mountpoint": "/boot",
+                        "obj_id": "bec30c65-de54-41b5-b8da-bb6f0a09506c",
+                        "size": {
+                            "sector_size": {
+                                "unit": "B",
+                                "value": 512
+                            },
+                            "unit": "GiB",
+                            "value": 1
+                        },
+                        "start": {
+                            "sector_size": {
+                                "unit": "B",
+                                "value": 512
+                            },
+                            "unit": "MiB",
+                            "value": 1
+                        },
+                        "status": "create",
+                        "type": "primary"
+                    },
+                    {
+                        "btrfs": [
+                            {
+                                "mountpoint": "/",
+                                "name": "@"
+                            },
+                            {
+                                "mountpoint": "/home",
+                                "name": "@home"
+                            },
+                            {
+                                "mountpoint": "/var/log",
+                                "name": "@log"
+                            },
+                            {
+                                "mountpoint": "/var/cache/pacman/pkg",
+                                "name": "@pkg"
+                            }
+                        ],
+                        "dev_path": null,
+                        "flags": [],
+                        "fs_type": "btrfs",
+                        "mount_options": [
+                            "compress=zstd"
+                        ],
+                        "mountpoint": null,
+                        "obj_id": "4799a46e-1593-4ea9-b2d4-014a1ea4a2d1",
+                        "size": {
+                            "sector_size": {
+                                "unit": "B",
+                                "value": 512
+                            },
+                            "unit": "B",
+                            "value": 511033999360
+                        },
+                        "start": {
+                            "sector_size": {
+                                "unit": "B",
+                                "value": 512
+                            },
+                            "unit": "B",
+                            "value": 1074790400
+                        },
+                        "status": "create",
+                        "type": "primary"
+                    }
+                ],
+                "wipe": true
+            }
+        ],
+        "disk_encryption": {
+            "encryption_type": "luks",
+            "lvm_volumes": [],
+            "partitions": [
+                "4799a46e-1593-4ea9-b2d4-014a1ea4a2d1"
+            ]
+        }
+    },
+    "hostname": "gadsden",
+    "kernels": [
+        "linux"
+    ],
+    "locale_config": {
+        "kb_layout": "sv-latin1",
+        "sys_enc": "UTF-8",
+        "sys_lang": "en_US.UTF-8"
+    },
+    "mirror_config": {
+        "custom_repositories": [],
+        "custom_servers": [],
+        "mirror_regions": {
+            "Sweden": [
+                "http://ftp.lysator.liu.se/pub/archlinux/$repo/os/$arch",
+                "https://ftp.lysator.liu.se/pub/archlinux/$repo/os/$arch",
+                "http://ftp.myrveln.se/pub/linux/archlinux/$repo/os/$arch",
+                "https://ftp.myrveln.se/pub/linux/archlinux/$repo/os/$arch",
+                "http://mirror.accum.se/mirror/archlinux/$repo/os/$arch",
+                "https://mirror.accum.se/mirror/archlinux/$repo/os/$arch",
+                "https://mirror.osbeck.com/archlinux/$repo/os/$arch",
+                "http://ftpmirror.infania.net/mirror/archlinux/$repo/os/$arch",
+                "http://mirror.tedwall.se/archlinux/$repo/os/$arch",
+                "https://mirror.tedwall.se/archlinux/$repo/os/$arch",
+                "http://ftp.ludd.ltu.se/mirrors/archlinux/$repo/os/$arch",
+                "https://ftp.ludd.ltu.se/mirrors/archlinux/$repo/os/$arch",
+                "https://umea.mirror.pkgbuild.com/$repo/os/$arch",
+                "http://mirror.bahnhof.net/pub/archlinux/$repo/os/$arch",
+                "https://mirror.bahnhof.net/pub/archlinux/$repo/os/$arch",
+                "https://mirror.braindrainlan.nu/archlinux/$repo/os/$arch",
+                "http://mirror.retropc.se/archlinux/$repo/os/$arch",
+                "https://mirror.retropc.se/archlinux/$repo/os/$arch"
+            ]
+        },
+        "optional_repositories": []
+    },
+    "network_config": {
+        "type": "nm_iwd"
+    },
+    "ntp": true,
+    "packages": [
+        "git"
+    ],
+    "parallel_downloads": 0,
+    "profile_config": {
+        "gfx_driver": "AMD / ATI (open-source)",
+        "greeter": "ly",
+        "profile": {
+            "custom_settings": {
+                "Hyprland": {
+                    "seat_access": "polkit"
+                }
+            },
+            "details": [
+                "Hyprland"
+            ],
+            "main": "Desktop"
+        }
+    },
+    "script": null,
+    "services": [],
+    "swap": {
+        "algorithm": "zstd",
+        "enabled": true
+    },
+    "timezone": "Europe/Stockholm",
+    "version": "3.0.15"
+}
+[2026-01-08 16:21:57] - DEBUG - Unmounting all existing partitions: /dev/nvme0n1
+[2026-01-08 16:21:57] - DEBUG - Unmounting: /dev/nvme0n1p1
+[2026-01-08 16:21:57] - DEBUG - Unmounting: /dev/nvme0n1p2
+[2026-01-08 16:21:57] - INFO - Wiping partitions and metadata: /dev/nvme0n1
+[2026-01-08 16:21:57] - INFO - Creating partitions: /dev/nvme0n1
+[2026-01-08 16:21:57] - DEBUG - 	Type: primary
+[2026-01-08 16:21:57] - DEBUG - 	Filesystem: fat32
+[2026-01-08 16:21:57] - DEBUG - 	Geometry: 2048 start sector, 2097152 length
+[2026-01-08 16:21:57] - DEBUG - 	Type: primary
+[2026-01-08 16:21:57] - DEBUG - 	Filesystem: btrfs
+[2026-01-08 16:21:57] - DEBUG - 	Geometry: 2099200 start sector, 998113280 length
+[2026-01-08 16:21:57] - DEBUG - Wiping signatures from: /dev/nvme0n1p1
+[2026-01-08 16:21:57] - DEBUG - Wiping signatures from: /dev/nvme0n1p2
+[2026-01-08 16:21:57] - DEBUG - Formatting filesystem: mkfs.fat -F 32 /dev/nvme0n1p1
+[2026-01-08 16:21:57] - DEBUG - partition information found: {"name":"nvme0n1p1","path":"/dev/nvme0n1p1","pkname":"nvme0n1","log_sec":512,"size":"1024 MiB","pttype":"gpt","ptuuid":"7ac12a16-9c55-409b-af37-763917f08e70","rota":false,"tran":"nvme","partn":1,"partuuid":"f6e80c48-87cf-4fd5-b2bd-eba3ddbf4051","parttype":"c12a7328-f81f-11d2-ba4b-00a0c93ec93b","uuid":"9A56-E8C2","fstype":"vfat","fsver":"FAT32","fsavail":null,"fsuse_percentage":null,"type":"part","mountpoint":null,"mountpoints":[],"fsroots":[],"children":[]}
+[2026-01-08 16:21:57] - DEBUG - Luks2 encrypting: /dev/nvme0n1p2
+[2026-01-08 16:21:57] - DEBUG - cryptsetup format: cryptsetup --batch-mode --verbose --type luks2 --pbkdf argon2id --hash sha512 --key-size 512 --iter-time 10000 --use-urandom luksFormat /dev/nvme0n1p2
+[2026-01-08 16:22:34] - DEBUG - cryptsetup luksFormat output: Key slot 0 created.
+Command successful.
+[2026-01-08 16:22:34] - DEBUG - Unlocking luks2 device: /dev/nvme0n1p2
+[2026-01-08 16:22:44] - DEBUG - cryptsetup open output: 
+[2026-01-08 16:22:44] - INFO - luks2 formatting mapper dev: /dev/mapper/root
+[2026-01-08 16:22:44] - DEBUG - Formatting filesystem: mkfs.btrfs -f /dev/mapper/root
+[2026-01-08 16:22:44] - INFO - luks2 locking device: /dev/nvme0n1p2
+[2026-01-08 16:22:44] - DEBUG - Closing crypt device root
+[2026-01-08 16:22:44] - DEBUG - partition information found: {"name":"nvme0n1p2","path":"/dev/nvme0n1p2","pkname":"nvme0n1","log_sec":512,"size":"487360 MiB","pttype":"gpt","ptuuid":"7ac12a16-9c55-409b-af37-763917f08e70","rota":false,"tran":"nvme","partn":2,"partuuid":"a751ed6b-8c8d-4f5d-903e-efeaa2f3cce2","parttype":"4f68bce3-e8cd-4db1-96e7-fbcaf984b709","uuid":"a8411fa4-75b7-46d2-ae11-449d46bc4279","fstype":"crypto_LUKS","fsver":"2","fsavail":null,"fsuse_percentage":null,"type":"part","mountpoint":null,"mountpoints":[],"fsroots":[],"children":[]}
+[2026-01-08 16:22:44] - INFO - Creating subvolumes: /dev/nvme0n1p2
+[2026-01-08 16:22:44] - DEBUG - Unlocking luks2 device: /dev/nvme0n1p2
+[2026-01-08 16:22:55] - DEBUG - cryptsetup open output: 
+[2026-01-08 16:22:55] - DEBUG - Mounting /dev/mapper/root: mount -o compress=zstd /dev/mapper/root /mnt/arch_btrfs
+[2026-01-08 16:22:55] - DEBUG - Creating subvolume: @
+[2026-01-08 16:22:55] - DEBUG - Creating subvolume: @home
+[2026-01-08 16:22:55] - DEBUG - Creating subvolume: @log
+[2026-01-08 16:22:55] - DEBUG - Creating subvolume: @pkg
+[2026-01-08 16:22:55] - DEBUG - Partition /dev/mapper/root is currently mounted at: ['/mnt/arch_btrfs']
+[2026-01-08 16:22:55] - DEBUG - Unmounting mountpoint: /mnt/arch_btrfs
+[2026-01-08 16:22:55] - DEBUG - Closing crypt device root
+[2026-01-08 16:22:55] - INFO - Starting installation...
+[2026-01-08 16:22:55] - DEBUG - Mounting ordered layout
+[2026-01-08 16:22:55] - DEBUG - Unlocking luks2 device: /dev/nvme0n1p2
+[2026-01-08 16:23:06] - DEBUG - cryptsetup open output: 
+[2026-01-08 16:23:06] - DEBUG - Mounting partition layout
+[2026-01-08 16:23:06] - DEBUG - Mounting /dev/mapper/root: mount -o compress=zstd,subvol=@ /dev/mapper/root /mnt
+[2026-01-08 16:23:06] - DEBUG - Mounting /dev/mapper/root: mount -o compress=zstd,subvol=@home /dev/mapper/root /mnt/home
+[2026-01-08 16:23:06] - DEBUG - Mounting /dev/mapper/root: mount -o compress=zstd,subvol=@pkg /dev/mapper/root /mnt/var/cache/pacman/pkg
+[2026-01-08 16:23:06] - DEBUG - Mounting /dev/mapper/root: mount -o compress=zstd,subvol=@log /dev/mapper/root /mnt/var/log
+[2026-01-08 16:23:06] - DEBUG - Mounting /dev/nvme0n1p1: mount /dev/nvme0n1p1 /mnt/boot
+[2026-01-08 16:23:06] - INFO - Waiting for time sync (timedatectl show) to complete.
+[2026-01-08 16:23:06] - INFO - Waiting for automatic mirror selection (reflector) to complete.
+[2026-01-08 16:23:06] - INFO - Waiting for Arch Linux keyring sync (archlinux-keyring-wkd-sync) to complete.
+[2026-01-08 16:23:06] - DEBUG - Setting mirrors on live system
+[2026-01-08 16:23:06] - INFO - Sorting your selected mirror list based on the speed between you and the individual mirrors (this might take a while)
+[2026-01-08 16:23:06] - DEBUG - Checking download speed of ftp.lysator.liu.se[1.1695342513051161] by fetching: http://ftp.lysator.liu.se/pub/archlinux/core/os/x86_64/core.db
+[2026-01-08 16:23:06] - DEBUG -     speed: 4260277.903963478 (4.06MiB/s)
+[2026-01-08 16:23:06] - DEBUG - Checking download speed of ftp.lysator.liu.se[1.2943421579284662] by fetching: https://ftp.lysator.liu.se/pub/archlinux/core/os/x86_64/core.db
+[2026-01-08 16:23:06] - DEBUG -     speed: 3927676.4884409653 (3.74MiB/s)
+[2026-01-08 16:23:06] - DEBUG - Checking download speed of ftp.myrveln.se[0.30145800963753083] by fetching: http://ftp.myrveln.se/pub/linux/archlinux/core/os/x86_64/core.db
+[2026-01-08 16:23:07] - DEBUG -     speed: 1684035.529073621 (1.6MiB/s)
+[2026-01-08 16:23:07] - DEBUG - Checking download speed of ftp.myrveln.se[0.6077764790473894] by fetching: https://ftp.myrveln.se/pub/linux/archlinux/core/os/x86_64/core.db
+[2026-01-08 16:23:07] - DEBUG -     speed: 2442708.2900084713 (2.32MiB/s)
+[2026-01-08 16:23:07] - DEBUG - Checking download speed of mirror.accum.se[0.3637073153008393] by fetching: http://mirror.accum.se/mirror/archlinux/core/os/x86_64/core.db
+[2026-01-08 16:23:07] - DEBUG -     speed: 2452653.4672617624 (2.33MiB/s)
+[2026-01-08 16:23:07] - DEBUG - Checking download speed of mirror.accum.se[0.3063822793536367] by fetching: https://mirror.accum.se/mirror/archlinux/core/os/x86_64/core.db
+[2026-01-08 16:23:07] - DEBUG -     speed: 3040027.60408214 (2.89MiB/s)
+[2026-01-08 16:23:07] - DEBUG - Checking download speed of mirror.osbeck.com[0.10831139821503971] by fetching: https://mirror.osbeck.com/archlinux/core/os/x86_64/core.db
+[2026-01-08 16:23:07] - DEBUG -     speed: 17587533.1693109 (16.77MiB/s)
+[2026-01-08 16:23:07] - DEBUG - Checking download speed of ftpmirror.infania.net[1.5067988897976867] by fetching: http://ftpmirror.infania.net/mirror/archlinux/core/os/x86_64/core.db
+[2026-01-08 16:23:07] - DEBUG -     speed: 1993192.289392439 (1.9MiB/s)
+[2026-01-08 16:23:07] - DEBUG - Checking download speed of mirror.tedwall.se[0.6603735554715722] by fetching: http://mirror.tedwall.se/archlinux/core/os/x86_64/core.db
+[2026-01-08 16:23:07] - DEBUG -     speed: 3862967.0531211896 (3.68MiB/s)
+[2026-01-08 16:23:07] - DEBUG - Checking download speed of mirror.tedwall.se[0.630102471460608] by fetching: https://mirror.tedwall.se/archlinux/core/os/x86_64/core.db
+[2026-01-08 16:23:07] - DEBUG -     speed: 3189932.6936774002 (3.04MiB/s)
+[2026-01-08 16:23:07] - DEBUG - Checking download speed of ftp.ludd.ltu.se[2.558936327849811] by fetching: http://ftp.ludd.ltu.se/mirrors/archlinux/core/os/x86_64/core.db
+[2026-01-08 16:23:08] - DEBUG -     speed: 1684787.3257134603 (1.6MiB/s)
+[2026-01-08 16:23:08] - DEBUG - Checking download speed of ftp.ludd.ltu.se[2.710085830801753] by fetching: https://ftp.ludd.ltu.se/mirrors/archlinux/core/os/x86_64/core.db
+[2026-01-08 16:23:08] - DEBUG -     speed: 2495900.5080723595 (2.38MiB/s)
+[2026-01-08 16:23:08] - DEBUG - Checking download speed of umea.mirror.pkgbuild.com[0.16441443152083862] by fetching: https://umea.mirror.pkgbuild.com/core/os/x86_64/core.db
+[2026-01-08 16:23:08] - DEBUG -     speed: 5000457.7120477 (4.76MiB/s)
+[2026-01-08 16:23:08] - DEBUG - Checking download speed of mirror.bahnhof.net[0.7157084601120911] by fetching: http://mirror.bahnhof.net/pub/archlinux/core/os/x86_64/core.db
+[2026-01-08 16:23:08] - DEBUG -     speed: 6539888.3867432885 (6.23MiB/s)
+[2026-01-08 16:23:08] - DEBUG - Checking download speed of mirror.bahnhof.net[0.7813740307105421] by fetching: https://mirror.bahnhof.net/pub/archlinux/core/os/x86_64/core.db
+[2026-01-08 16:23:08] - DEBUG -     speed: 3842462.8896125774 (3.66MiB/s)
+[2026-01-08 16:23:08] - DEBUG - Checking download speed of mirror.braindrainlan.nu[0.9355077245127752] by fetching: https://mirror.braindrainlan.nu/archlinux/core/os/x86_64/core.db
+[2026-01-08 16:23:08] - DEBUG -     speed: 2138330.1898536417 (2.03MiB/s)
+[2026-01-08 16:23:08] - DEBUG - Checking download speed of mirror.retropc.se[0.7357887373906492] by fetching: http://mirror.retropc.se/archlinux/core/os/x86_64/core.db
+[2026-01-08 16:23:08] - DEBUG -     speed: 1784509.2465701033 (1.7MiB/s)
+[2026-01-08 16:23:08] - DEBUG - Checking download speed of mirror.retropc.se[0.7095253745613743] by fetching: https://mirror.retropc.se/archlinux/core/os/x86_64/core.db
+[2026-01-08 16:23:08] - DEBUG -     speed: 1923521.0937218925 (1.83MiB/s)
+[2026-01-08 16:23:08] - DEBUG - Mirrorlist:
+
+
+## Sweden
+Server = https://mirror.osbeck.com/archlinux/$repo/os/$arch
+Server = http://mirror.bahnhof.net/pub/archlinux/$repo/os/$arch
+Server = https://umea.mirror.pkgbuild.com/$repo/os/$arch
+Server = http://ftp.lysator.liu.se/pub/archlinux/$repo/os/$arch
+Server = https://ftp.lysator.liu.se/pub/archlinux/$repo/os/$arch
+Server = http://mirror.tedwall.se/archlinux/$repo/os/$arch
+Server = https://mirror.bahnhof.net/pub/archlinux/$repo/os/$arch
+Server = https://mirror.tedwall.se/archlinux/$repo/os/$arch
+Server = https://mirror.accum.se/mirror/archlinux/$repo/os/$arch
+Server = https://ftp.ludd.ltu.se/mirrors/archlinux/$repo/os/$arch
+Server = http://mirror.accum.se/mirror/archlinux/$repo/os/$arch
+Server = https://ftp.myrveln.se/pub/linux/archlinux/$repo/os/$arch
+Server = https://mirror.braindrainlan.nu/archlinux/$repo/os/$arch
+Server = http://ftpmirror.infania.net/mirror/archlinux/$repo/os/$arch
+Server = https://mirror.retropc.se/archlinux/$repo/os/$arch
+Server = http://mirror.retropc.se/archlinux/$repo/os/$arch
+Server = http://ftp.ludd.ltu.se/mirrors/archlinux/$repo/os/$arch
+Server = http://ftp.myrveln.se/pub/linux/archlinux/$repo/os/$arch
+
+[2026-01-08 16:23:08] - DEBUG - System is not running in a VM: ['/usr/bin/systemd-detect-virt'] exited with abnormal exit code [1]: none
+
+[2026-01-08 16:23:08] - DEBUG - Optional repositories: []
+[2026-01-08 16:23:08] - INFO - Wrote to /mnt/etc/vconsole.conf using sv-latin1 and default8x16
+[2026-01-08 16:23:09] - INFO - Installing packages: ['base', 'sudo', 'linux-firmware', 'linux', 'btrfs-progs', 'amd-ucode']
+[2026-01-08 16:23:58] - INFO - Setting keyboard language to sv-latin1
+[2026-01-08 16:24:02] - INFO - Keyboard language for this installation is now set to: sv-latin1
+[2026-01-08 16:24:10] - DEBUG - Setting mirrors on target
+[2026-01-08 16:24:10] - INFO - Sorting your selected mirror list based on the speed between you and the individual mirrors (this might take a while)
+[2026-01-08 16:24:10] - DEBUG - Mirrorlist:
+
+
+## Sweden
+Server = https://mirror.osbeck.com/archlinux/$repo/os/$arch
+Server = http://mirror.bahnhof.net/pub/archlinux/$repo/os/$arch
+Server = https://umea.mirror.pkgbuild.com/$repo/os/$arch
+Server = http://ftp.lysator.liu.se/pub/archlinux/$repo/os/$arch
+Server = https://ftp.lysator.liu.se/pub/archlinux/$repo/os/$arch
+Server = http://mirror.tedwall.se/archlinux/$repo/os/$arch
+Server = https://mirror.bahnhof.net/pub/archlinux/$repo/os/$arch
+Server = https://mirror.tedwall.se/archlinux/$repo/os/$arch
+Server = https://mirror.accum.se/mirror/archlinux/$repo/os/$arch
+Server = https://ftp.ludd.ltu.se/mirrors/archlinux/$repo/os/$arch
+Server = http://mirror.accum.se/mirror/archlinux/$repo/os/$arch
+Server = https://ftp.myrveln.se/pub/linux/archlinux/$repo/os/$arch
+Server = https://mirror.braindrainlan.nu/archlinux/$repo/os/$arch
+Server = http://ftpmirror.infania.net/mirror/archlinux/$repo/os/$arch
+Server = https://mirror.retropc.se/archlinux/$repo/os/$arch
+Server = http://mirror.retropc.se/archlinux/$repo/os/$arch
+Server = http://ftp.ludd.ltu.se/mirrors/archlinux/$repo/os/$arch
+Server = http://ftp.myrveln.se/pub/linux/archlinux/$repo/os/$arch
+
+[2026-01-08 16:24:10] - INFO - Setting up swap on zram
+[2026-01-08 16:24:10] - INFO - Installing packages: ['zram-generator']
+[2026-01-08 16:24:11] - INFO - Zram size: 13849 from RAM: 28362828
+[2026-01-08 16:24:11] - INFO - Zram compression algorithm: zstd
+[2026-01-08 16:24:11] - INFO - Enabling service systemd-zram-setup@zram0.service
+[2026-01-08 16:24:11] - INFO - Installing packages: ['grub']
+[2026-01-08 16:24:12] - INFO - Adding bootloader Grub to /dev/nvme0n1p1
+[2026-01-08 16:24:12] - DEBUG - Installing grub bootloader
+[2026-01-08 16:24:12] - INFO - Installing packages: ['grub']
+[2026-01-08 16:24:12] - DEBUG - Root partition is an encrypted device, identifying by UUID: a8411fa4-75b7-46d2-ae11-449d46bc4279
+[2026-01-08 16:24:12] - DEBUG - kernel parameters: cryptdevice=UUID=a8411fa4-75b7-46d2-ae11-449d46bc4279:root zswap.enabled=0 rootfstype=btrfs
+[2026-01-08 16:24:12] - INFO - GRUB boot partition: /dev/nvme0n1p1
+[2026-01-08 16:24:12] - INFO - GRUB EFI partition: /dev/nvme0n1p1
+[2026-01-08 16:24:12] - INFO - Installing packages: ['efibootmgr']
+[2026-01-08 16:24:14] - INFO - Installing packages: ['networkmanager']
+[2026-01-08 16:24:16] - INFO - Installing packages: ['network-manager-applet']
+[2026-01-08 16:24:30] - INFO - Enabling service NetworkManager.service
+[2026-01-08 16:24:30] - INFO - Disabling service iwd.service
+[2026-01-08 16:24:30] - INFO - Creating user holmen1
+[2026-01-08 16:24:30] - INFO - Setting password for holmen1
+[2026-01-08 16:24:30] - INFO - Enabling sudo permissions for holmen1
+[2026-01-08 16:24:30] - DEBUG - Installing Bluetooth
+[2026-01-08 16:24:30] - INFO - Installing packages: ['bluez', 'bluez-utils']
+[2026-01-08 16:24:31] - INFO - Enabling service bluetooth.service
+[2026-01-08 16:24:31] - DEBUG - Installing audio server: pipewire
+[2026-01-08 16:24:31] - INFO - Installing packages: ['sof-firmware']
+[2026-01-08 16:24:38] - INFO - Installing packages: ['pipewire', 'pipewire-alsa', 'pipewire-jack', 'pipewire-pulse', 'gst-plugin-pipewire', 'libpulse', 'wireplumber']
+[2026-01-08 16:24:42] - INFO - Installing packages: ['nano', 'vim', 'openssh', 'htop', 'wget', 'iwd', 'wireless_tools', 'smartmontools', 'xdg-utils']
+[2026-01-08 16:24:43] - INFO - Installing profile Hyprland...
+[2026-01-08 16:24:43] - INFO - Installing packages: ['hyprland', 'dunst', 'kitty', 'uwsm', 'dolphin', 'wofi', 'xdg-desktop-portal-hyprland', 'qt5-wayland', 'qt6-wayland', 'polkit-kde-agent', 'grim', 'slurp']
+[2026-01-08 16:25:08] - INFO - Enabling service polkit
+[2026-01-08 16:25:08] - DEBUG - Installing GFX driver: AMD / ATI (open-source)
+[2026-01-08 16:25:08] - INFO - Installing packages: ['xorg-server', 'xorg-xinit', 'mesa', 'xf86-video-amdgpu', 'xf86-video-ati', 'libva-mesa-driver', 'vulkan-radeon']
+[2026-01-08 16:25:09] - INFO - Installing packages: ['ly']
+[2026-01-08 16:25:09] - INFO - Enabling service ly@tty1
+[2026-01-08 16:25:09] - INFO - Disabling service getty@tty1
+[2026-01-08 16:25:09] - INFO - Installing packages: ['git']
+[2026-01-08 16:25:13] - INFO - Activating systemd-timesyncd for time synchronization using Arch Linux and ntp.org NTP servers
+[2026-01-08 16:25:13] - INFO - Enabling service systemd-timesyncd
+[2026-01-08 16:25:13] - INFO - Setting password for root
+[2026-01-08 16:25:13] - INFO - Updating /mnt/etc/fstab
+[2026-01-08 16:25:13] - DEBUG - Disk states after installing:
+{
+    "blockdevices": [
+        {
+            "name": "loop0",
+            "path": "/dev/loop0",
+            "pkname": null,
+            "log_sec": 512,
+            "size": "971 MiB",
+            "pttype": null,
+            "ptuuid": null,
+            "rota": false,
+            "tran": null,
+            "partn": null,
+            "partuuid": null,
+            "parttype": null,
+            "uuid": null,
+            "fstype": "squashfs",
+            "fsver": "4.0",
+            "fsavail": 0,
+            "fsuse_percentage": "100%",
+            "type": "loop",
+            "mountpoint": "/run/archiso/airootfs",
+            "mountpoints": [
+                "/run/archiso/airootfs"
+            ],
+            "fsroots": [
+                "/"
+            ],
+            "children": []
+        },
+        {
+            "name": "sda",
+            "path": "/dev/sda",
+            "pkname": null,
+            "log_sec": 512,
+            "size": "59040 MiB",
+            "pttype": "dos",
+            "ptuuid": "2822af79",
+            "rota": true,
+            "tran": "usb",
+            "partn": null,
+            "partuuid": null,
+            "parttype": null,
+            "uuid": "2026-01-01-11-33-55-00",
+            "fstype": "iso9660",
+            "fsver": "Joliet Extension",
+            "fsavail": null,
+            "fsuse_percentage": null,
+            "type": "disk",
+            "mountpoint": null,
+            "mountpoints": [],
+            "fsroots": [],
+            "children": [
+                {
+                    "name": "sda1",
+                    "path": "/dev/sda1",
+                    "pkname": "sda",
+                    "log_sec": 512,
+                    "size": "1216 MiB",
+                    "pttype": "dos",
+                    "ptuuid": "2822af79",
+                    "rota": true,
+                    "tran": null,
+                    "partn": 1,
+                    "partuuid": "2822af79-01",
+                    "parttype": "0x0",
+                    "uuid": "2026-01-01-11-33-55-00",
+                    "fstype": "iso9660",
+                    "fsver": "Joliet Extension",
+                    "fsavail": null,
+                    "fsuse_percentage": null,
+                    "type": "part",
+                    "mountpoint": null,
+                    "mountpoints": [],
+                    "fsroots": [],
+                    "children": []
+                },
+                {
+                    "name": "sda2",
+                    "path": "/dev/sda2",
+                    "pkname": "sda",
+                    "log_sec": 512,
+                    "size": "251 MiB",
+                    "pttype": "dos",
+                    "ptuuid": "2822af79",
+                    "rota": true,
+                    "tran": null,
+                    "partn": 2,
+                    "partuuid": "2822af79-02",
+                    "parttype": "0xef",
+                    "uuid": "6956-5BA3",
+                    "fstype": "vfat",
+                    "fsver": "FAT32",
+                    "fsavail": null,
+                    "fsuse_percentage": null,
+                    "type": "part",
+                    "mountpoint": null,
+                    "mountpoints": [],
+                    "fsroots": [],
+                    "children": []
+                }
+            ]
+        },
+        {
+            "name": "nvme0n1",
+            "path": "/dev/nvme0n1",
+            "pkname": null,
+            "log_sec": 512,
+            "size": "488386 MiB",
+            "pttype": "gpt",
+            "ptuuid": "7ac12a16-9c55-409b-af37-763917f08e70",
+            "rota": false,
+            "tran": "nvme",
+            "partn": null,
+            "partuuid": null,
+            "parttype": null,
+            "uuid": null,
+            "fstype": null,
+            "fsver": null,
+            "fsavail": null,
+            "fsuse_percentage": null,
+            "type": "disk",
+            "mountpoint": null,
+            "mountpoints": [],
+            "fsroots": [],
+            "children": [
+                {
+                    "name": "nvme0n1p1",
+                    "path": "/dev/nvme0n1p1",
+                    "pkname": "nvme0n1",
+                    "log_sec": 512,
+                    "size": "1024 MiB",
+                    "pttype": "gpt",
+                    "ptuuid": "7ac12a16-9c55-409b-af37-763917f08e70",
+                    "rota": false,
+                    "tran": "nvme",
+                    "partn": 1,
+                    "partuuid": "f6e80c48-87cf-4fd5-b2bd-eba3ddbf4051",
+                    "parttype": "c12a7328-f81f-11d2-ba4b-00a0c93ec93b",
+                    "uuid": "9A56-E8C2",
+                    "fstype": "vfat",
+                    "fsver": "FAT32",
+                    "fsavail": 991883264,
+                    "fsuse_percentage": "7%",
+                    "type": "part",
+                    "mountpoint": "/mnt/boot",
+                    "mountpoints": [
+                        "/mnt/boot"
+                    ],
+                    "fsroots": [
+                        "/"
+                    ],
+                    "children": []
+                },
+                {
+                    "name": "nvme0n1p2",
+                    "path": "/dev/nvme0n1p2",
+                    "pkname": "nvme0n1",
+                    "log_sec": 512,
+                    "size": "487360 MiB",
+                    "pttype": "gpt",
+                    "ptuuid": "7ac12a16-9c55-409b-af37-763917f08e70",
+                    "rota": false,
+                    "tran": "nvme",
+                    "partn": 2,
+                    "partuuid": "a751ed6b-8c8d-4f5d-903e-efeaa2f3cce2",
+                    "parttype": "4f68bce3-e8cd-4db1-96e7-fbcaf984b709",
+                    "uuid": "a8411fa4-75b7-46d2-ae11-449d46bc4279",
+                    "fstype": "crypto_LUKS",
+                    "fsver": "2",
+                    "fsavail": null,
+                    "fsuse_percentage": null,
+                    "type": "part",
+                    "mountpoint": null,
+                    "mountpoints": [],
+                    "fsroots": [],
+                    "children": [
+                        {
+                            "name": "root",
+                            "path": "/dev/mapper/root",
+                            "pkname": "nvme0n1p2",
+                            "log_sec": 512,
+                            "size": "487344 MiB",
+                            "pttype": null,
+                            "ptuuid": null,
+                            "rota": false,
+                            "tran": null,
+                            "partn": null,
+                            "partuuid": null,
+                            "parttype": null,
+                            "uuid": "9b0c4cf2-54b7-458e-a10d-a0594ef5a595",
+                            "fstype": "btrfs",
+                            "fsver": null,
+                            "fsavail": 506040029184,
+                            "fsuse_percentage": "1%",
+                            "type": "crypt",
+                            "mountpoint": "/mnt/var/log",
+                            "mountpoints": [
+                                "/mnt/var/log",
+                                "/mnt/var/cache/pacman/pkg",
+                                "/mnt/home",
+                                "/mnt"
+                            ],
+                            "fsroots": [
+                                "/@log",
+                                "/@pkg",
+                                "/@home",
+                                "/@"
+                            ],
+                            "children": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
+[2026-01-08 16:25:50] - INFO - Syncing the system...
+[2026-01-08 16:25:50] - INFO - Installation completed without any errors.
+Log files temporarily available at /var/log/archinstall.
+You may reboot when ready.
+

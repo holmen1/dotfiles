@@ -120,11 +120,33 @@ button:hover {
 }
 
 #custom-vpn.vpn-disconnected {
-    color: #FFBF00; /* orange */
+    color: #222222;
     background: rgba(151, 225, 173, 0.5);
     border-radius: 13px;
     padding: 0px 10px;
     font-weight: bold;
+}
+
+#custom-vpn.vpn-connected {
+    color: #222222;
+    background: rgba(151, 225, 173, 0.5);
+    border-radius: 13px;
+    padding: 0px 10px;
+    font-weight: bold;
+}
+
+/* Tooltip styling */
+tooltip {
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(151, 225, 173, 0.5);
+    border-radius: 5px;
+    color: #ffffff;
+    padding: 8px;
+    font-size: 11px;
+}
+
+tooltip label {
+    color: #ffffff;
 }
 
 label:focus {

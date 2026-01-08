@@ -27,14 +27,14 @@ scipts/link_config.sh
 - Power: Allows shutting down, restarting, or logging out of the system
 
 ### Key Bindings
-- Super + Shift + Q: Open terminal
+- Super + Enter: Open terminal
 - Super + E: Open file manager
-- Super + R: Open application launcher
+- Super + A: Open application launcher
 - Super + Shift + C: Close the focused window
 - Super + 1-6: Switch between workspaces
 - Super + Shift + 1-6: Move the focused window to the specified workspace
 - Super + Shift + B: Toggle the status bar
-- Super + Shift + M: Exit the window manager
+- Super + Shift + Q: Exit the window manager
 
 - Super + Left/Right: Move focus to the left/right window
 - Super + Up/Down: Move focus to the up/down window
