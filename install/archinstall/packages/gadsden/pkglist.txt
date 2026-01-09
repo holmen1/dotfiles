@@ -20,6 +20,7 @@ hyprland
 iwd
 kitty
 less
+lf
 libpulse
 linux
 linux-firmware
@@ -42,7 +43,6 @@ smartmontools
 sof-firmware
 sudo
 swaylock
-thunar
 tree
 tree-sitter-cli
 ttf-jetbrains-mono-nerd
