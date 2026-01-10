@@ -14,10 +14,10 @@
         "hyprland/workspaces"
     ],
     "modules-right": [
-        "custom/vpn",
+        "battery",
         "cpu",
         "network",
-        "battery",
+        "custom/vpn",
         "clock",
         "tray"
     ],
@@ -101,7 +101,7 @@
         "interface": "wlan0",
         "format-wifi": "󰖩 {essid}",
         "format-ethernet": "󰈁 {ifname}",
-        "tooltip-format": "🌐 {essid}\n📡 {frequency}MHz\n📍 {ipaddr}/{cidr}",
+        "tooltip-format": "{ipaddr}/{cidr}\n{frequency} MHz",
         "format-linked": "󰈁 {ifname} (No IP)",
         "format-disconnected": "󰖪 Disconnected",
         "tooltip-format-disconnected": "iwctl station wlan0\n scan\n get-networks\n connect SSID"
