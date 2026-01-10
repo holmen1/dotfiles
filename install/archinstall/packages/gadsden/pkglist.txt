@@ -21,6 +21,7 @@ iwd
 kitty
 less
 lf
+libnotify
 libpulse
 linux
 linux-firmware

@@ -96,9 +96,12 @@ echo "Checking your custom Linux environment..."
 print_header "Essential Commands"
 check_command "git" "Git version control"
 check_command "ssh" "SSH client"
-check_command "xterm" "Terminal emulator"
-check_command "st" "Terminal emulator"
 
+# Essential Config Files
+print_header "Essential Config"
+check_file "$HOME/.config/hypr/hyprland.conf" "Hyprland"
+check_file "$HOME/.config/waybar/config.jsonc" "Waybar"
+check_file "$HOME/.config/nvim/init.lua" "Neovim"
 
 # Power Management
 print_header "Power Management"
@@ -203,7 +206,6 @@ fi
 # Test Key Functionalities
 print_header "Functional Tests"
 check_command "swaylock" "Screen lock"
-
 
 # Summary
 print_header "Summary"
