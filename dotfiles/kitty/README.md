@@ -1,22 +1,19 @@
 # Kitty Configuration
 
+You can open the config file within kitty by pressing ctrl+shift+f2 (⌘+, on macOS). A kitty.conf with commented default configurations and descriptions will be created if the file does not exist. 
+
 This repository contains configuration files for the [Kitty terminal emulator](https://sw.kovidgoyal.net/kitty/).
 
 
-## Keymaps
-
-Here are some of the custom keybindings included in the configuration:
-
-- `F5`: Launch a new window with a horizontal split
-- `F6`: Launch a new window with a vertical split
-- `Ctrl+Shift+Left`: Resize the window narrower
-- `Ctrl+Shift+Right`: Resize the window wider
-- `Ctrl+Shift+Up`: Resize the window taller
-- `Ctrl+Shift+Down`: Resize the window shorter
-- `Ctrl+Left`: Switch focus to the window on the left
-- `Ctrl+Right`: Switch focus to the window on the right
-- `Ctrl+Up`: Switch focus to the window above
-- `Ctrl+Down`: Switch focus to the window below
-- `ctrl+shift+t` (also ⌘+t on macOS) : New tab
-- `ctrl+shift+q` (also ⌘+w on macOS): Close tab
+| Keymaps | description |
+|---|---|
+| `Ctrl + Shift + PgUp` |        Increase font size |
+| `Ctrl + Shift + PgDn` |        Decrease font size |
+| `Ctrl + Shift + Backspace` |   Reset font size |
+| `Shift + Up` |                 Scroll line up |
+| `Shift + Down` |               Scroll line down |
+| `Shift + PgUp` |               Scroll page up |
+| `Shift + PgDn` |               Scroll page down |
+| `Ctrl + Shift + Home` |        Scroll to top |  
+| `Ctrl + Shift + End` |         Scroll to bottom |
 
