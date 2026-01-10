@@ -81,6 +81,8 @@
         "on-click": "kitty -e htop"
     },
     "battery": {
+        "bat": "BAT0",
+        "adapter": "AC",
         "states": {
             "full": 95,
             "good": 60,
@@ -88,22 +90,20 @@
             "critical": 5
         },
         "format": "{capacity}% {icon}",
-        "format-charging": "{capacity}% ",
-        "format-plugged": "{capacity}% ",
+        "format-charging": "{capacity}% 󰂄",
+        "format-plugged": "{capacity}% 󰚥",
         "format-alt": "{time} {icon}",
         "format-good": "{capacity}% {icon}",
-	    "format-full": "",// An empty format will hide the module
-        "format-icons": ["\udb80\udc79", "\udb80\udc81", "\udb80\udc7f", "\udb80\udc7c"]
+        "format-full": "",// An empty format will hide the module
+        "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
     },
     "network": {
-        //"interface": "wlp2*", // (Optional) To force the use of this interface
-        //"format-wifi": "{signalStrength}% ",
-        "format-wifi": "",
-        "format-ethernet": "{ipaddr}/{cidr} ",
-        "tooltip-format": "{essid} {ifname} via {gwaddr} ",
-        "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠",
-        "tooltip-format-disconnected": "ip addr show \niwctl --passphrase pwd station interface connect networkname",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+        "interface": "wlan0",
+        "format-wifi": "󰖩 {essid}",
+        "format-ethernet": "󰈁 {ifname}",
+        "tooltip-format": "🌐 {essid}\n📡 {frequency}MHz\n📍 {ipaddr}/{cidr}",
+        "format-linked": "󰈁 {ifname} (No IP)",
+        "format-disconnected": "󰖪 Disconnected",
+        "tooltip-format-disconnected": "iwctl station wlan0\n scan\n get-networks\n connect SSID"
     }
 }
