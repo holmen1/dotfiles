@@ -68,7 +68,7 @@ alias gsta='git stash'
 alias gstp='git stash pop'
 
 # source git-prompt if available (tries common locations)
-for p in /usr/share/git/completion/git-prompt.sh /etc/bash_completion.d/git-prompt.sh /mingw64/share/git/completion/git-prompt.sh; do
+for p in $HOME/repos/dotfiles/scripts/git-prompt.sh /usr/share/git/completion/git-prompt.sh /etc/bash_completion.d/git-prompt.sh /mingw64/share/git/completion/git-prompt.sh; do
   [ -f "$p" ] && source "$p" && break
 done
 export GIT_PS1_SHOWDIRTYSTATE=1
