@@ -2,6 +2,17 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+# Color definitions
+export COLOR_RESET='\[\e[0m\]'           # Proper ANSI reset
+export COLOR_USER='\[\e[38;5;24m\]'      # Steel blue
+export COLOR_PATH='\[\e[38;5;33m\]'      # Electric blue
+export COLOR_GIT='\[\e[38;5;60m\]'       # Dark slate
+export COLOR_PROMPT='\[\e[38;5;40m\]'    # Forest green
+
+export LS_COLORS='di=38;5;32:fi=38;5;244:ln=38;5;60:ex=38;5;40:*.sh=38;5;40:*.py=38;5;24:*.js=38;5;60'
+export GREP_COLORS='ms=38;5;33:fn=38;5;60:ln=38;5;24'
+
+
 # Enable vi mode in bash
 set -o vi
 
@@ -13,7 +24,6 @@ bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
 
 export HISTCONTROL=ignoreboth:erasedups
-
 
 # Custom functions
 
@@ -72,7 +82,7 @@ for p in $HOME/repos/dotfiles/scripts/git-prompt.sh /usr/share/git/completion/gi
   [ -f "$p" ] && source "$p" && break
 done
 export GIT_PS1_SHOWDIRTYSTATE=1
-export PS1="\[\e[32m\]\u@\h \[\e[36m\]\W\[\e[31m\]\$(__git_ps1 ' (%s)')\[\e[32m\]\$ "
+export PS1="${COLOR_USER}\u@\h ${COLOR_PATH}\W${COLOR_GIT}\$(__git_ps1 ' (%s)')${COLOR_PROMPT}\$ ${COLOR_RESET}"
 
 # iw
 export PATH=$PATH:/usr/sbin
