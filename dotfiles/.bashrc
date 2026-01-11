@@ -67,16 +67,12 @@ alias gcl='git clone'
 alias gsta='git stash'
 alias gstp='git stash pop'
 
-# Git branch and status in the prompt
-parse_git_branch() {
-    git branch 2>/dev/null | grep '^*' | colrm 1 2
-}
-
-parse_git_dirty() {
-    [[ $(git status --porcelain 2>/dev/null) ]] && echo "*"
-}
-
-export PS1="\[\e[32m\]\u@\h \[\e[33m\]\w\[\e[36m\] \$(parse_git_branch)\$(parse_git_dirty) \[\e[0m\]\$ "
+# source git-prompt if available (tries common locations)
+for p in /usr/share/git/completion/git-prompt.sh /etc/bash_completion.d/git-prompt.sh /mingw64/share/git/completion/git-prompt.sh; do
+  [ -f "$p" ] && source "$p" && break
+done
+export GIT_PS1_SHOWDIRTYSTATE=1
+export PS1="\[\e[32m\]\u@\h \[\e[36m\]\W\[\e[31m\]\$(__git_ps1 ' (%s)')\[\e[32m\]\$ "
 
 # iw
 export PATH=$PATH:/usr/sbin
