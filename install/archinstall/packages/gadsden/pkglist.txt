@@ -11,6 +11,7 @@ efibootmgr
 fastfetch
 fd
 gcc
+gdb
 git
 grim
 grub
