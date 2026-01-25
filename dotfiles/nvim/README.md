@@ -23,7 +23,7 @@ A slim neovim configuration based on [kickstart.nvim](https://github.com/nvim-lu
 | **nvim-lspconfig** | Language server setup | Code intelligence via system-installed LSP servers |
 | **mini.nvim** | Statusline and text tools | Lightweight alternative to multiple separate plugins |
 | **which-key.nvim** | Keybinding help | Discoverability without memorization |
-| **gitsigns.nvim** | Git change indicators in gutter | Minimal, fast, and visually clear git status |
+| **gitsigns.nvim** | Git change indicators in gutter | Minimal, fast, and visually clear git status; includes interactive diff mode |
 
 
 ## Keymaps
@@ -52,9 +52,25 @@ A slim neovim configuration based on [kickstart.nvim](https://github.com/nvim-lu
 |---------|-------------|
 | `<leader>q` | Open diagnostic quickfix list |
 
+### Git
 
+| Mapping | Description | Details |
+|---------|-------------|---------|
+| `<leader>gd` | Git Diff | Open diff view of current file vs HEAD to review/undo changes |
+| `<leader>sc` | Search Commits | View git history for current file (Telescope) |
 
+**Gitsigns** provides visual indicators in the gutter:
+- `+` Added lines
+- `~` Changed lines  
+- `_` Deleted lines
 
+**Git diff workflow** (after `<leader>gd`):
+1. Review changes: `]c` / `[c` to jump between hunks
+2. Keep change: just move to next hunk
+3. Undo change: `do` to revert hunk to git version
+4. Exit: `:diffoff` or close the split
+
+Note: Work in your file window (right side). The git version (left) is read-only reference.
 
 ### LSP Navigation & Actions
 | Mapping | Description | When to Use |
