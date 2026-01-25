@@ -16,7 +16,7 @@ A slim neovim configuration based on [kickstart.nvim](https://github.com/nvim-lu
 |--------|---------|-------------------|
 | **telescope.nvim** | Fuzzy finding | Essential navigation for files, symbols, and help |
 | **nvim-treesitter** | Syntax highlighting | Better code understanding with minimal overhead |
-| **lspconfig & mason.nvim** | Language server setup | Code intelligence |
+| **nvim-lspconfig** | Language server setup | Code intelligence via system-installed LSP servers |
 | **mini.nvim** | Statusline and text tools | Lightweight alternative to multiple separate plugins |
 | **which-key.nvim** | Keybinding help | Discoverability without memorization |
 | **gitsigns.nvim** | Git change indicators in gutter | Minimal, fast, and visually clear git status |

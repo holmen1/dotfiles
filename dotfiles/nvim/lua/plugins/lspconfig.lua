@@ -153,11 +153,12 @@ return {
       }
 
       -- LSP servers - install via system package manager:
-      --   Arch:    pacman -S clang haskell-language-server lua-language-server
+      --   Arch:    clang haskell-language-server lua-language-server asm-lsp (AUR)
       --   FreeBSD: pkg install llvm (lua-language-server not in pkg, build from source)
       --
       -- Map server name to executable name (some differ)
       local servers = {
+        asm_lsp = 'asm-lsp',
         clangd = 'clangd',
         hls = 'haskell-language-server-wrapper',
         lua_ls = 'lua-language-server',

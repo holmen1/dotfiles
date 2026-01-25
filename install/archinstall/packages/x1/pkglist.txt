@@ -38,6 +38,7 @@ pipewire
 pipewire-alsa
 pipewire-jack
 pipewire-pulse
+reflector
 ripgrep
 scrot
 sof-firmware
