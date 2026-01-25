@@ -10,6 +10,10 @@ A slim neovim configuration based on [kickstart.nvim](https://github.com/nvim-lu
 - **Which-Key Integration**: Popup help for keybindings as you type them
 - **Gitsigns in Gutter**: Instantly see added, changed, or deleted lines with minimal, colored indicators
 
+## Behavior
+
+**Autosave**: Files are automatically saved when you leave insert mode or make changes in normal mode
+
 ## Key Plugins
 
 | Plugin | Purpose | Why It's Included |
@@ -23,32 +27,6 @@ A slim neovim configuration based on [kickstart.nvim](https://github.com/nvim-lu
 
 
 ## Keymaps
-
-### vim
-
-Reminder
-| Mapping | Description |
-|---------|-------------|
-| `u` | Undo previous |
-| `U` | Undo all changes on line |
-| `<C-r>` | Redo undone |
-| `c [number] motion` | Change text specified by [number] and motion |
-| `R` | Enters Replace mode until `<Esc>`{normal} is pressed |
-| `v motion :w FILENAME` | Saves the Visually selected lines in file FILENAME |
-| `v motion :w >> FILENAME` | Appends the Visually selected lines to file FILENAME |
-| `<C-v>` | Visual block mode - select rectangular blocks of text |
-| `gv` | Reselect last visual selection |
-| `!nl` | Number selected lines (when in visual mode) |
-| `:x,yw >> FILENAME` | Appends lines x-y to file FILENAME |
-| `:r FILENAME` | Retrieves disk file FILENAME and puts it below the cursor |
-| `:r !command`|	Insert output of shell command below cursor (ex date)|
-| `!uniq` | Remove duplicate lines (from visual selection) |
-| `%!uniq` | Remove duplicate lines from entire file |
-| `:%s/old/new/gc`| Global find and replace with confirmation |
-| `:g/pattern/d` | Delete all lines matching pattern |
-| `:v/pattern/d` | Delete all lines NOT matching pattern |
-
-
 
 ### Telescope
 | Mapping | Description | Function |
@@ -94,41 +72,109 @@ Reminder
 | `<leader>f` | Format code | Format current buffer or selection |
 | `<leader>th` | Toggle inlay hints | Show/hide inline type hints |
 
+## Appendix: Vim Basics
 
-### Navigate Split Window
+### Editing
+
+| Mapping | Description |
+|---------|-------------|
+| `.` | Repeat last change |
+| `u` | Undo previous |
+| `U` | Undo all changes on line |
+| `<C-r>` | Redo undone |
+| `c [number] motion` | Change text specified by [number] and motion |
+| `R` | Enters Replace mode until `<Esc>` is pressed |
+
+### Text Manipulation
+
+| Mapping | Description |
+|---------|-------------|
+| `guu` | Lowercase entire line |
+| `gUU` | Uppercase entire line |
+| `guw` | Lowercase word |
+| `gUw` | Uppercase word |
+| `gJ` | Join lines without adding space |
+| `gq` | Format/wrap text (motion) |
+
+### Visual Mode
+
+| Mapping | Description |
+|---------|-------------|
+| `<C-v>` | Visual block mode - select rectangular blocks of text |
+| `gv` | Reselect last visual selection |
+| `!nl` | Number selected lines (when in visual mode) |
+| `!uniq` | Remove duplicate lines (from visual selection) |
+| `v motion :w FILENAME` | Save the Visually selected lines in file FILENAME |
+| `v motion :w >> FILENAME` | Append the Visually selected lines to file FILENAME |
+
+### Search & Replace
+
+| Mapping | Description |
+|---------|-------------|
+| `:%s/old/new/gc` | Global find and replace with confirmation |
+| `:g/pattern/d` | Delete all lines matching pattern |
+| `:v/pattern/d` | Delete all lines NOT matching pattern |
+| `%!uniq` | Remove duplicate lines from entire file |
+
+### File Operations
+
+| Mapping | Description |
+|---------|-------------|
+| `:r FILENAME` | Retrieves disk file and puts it below the cursor |
+| `:r !command` | Insert output of shell command below cursor (ex: date) |
+| `:x,yw >> FILENAME` | Appends lines x-y to file FILENAME |
+| `gf` | Go to file under cursor |
+| `gx` | Open URL under cursor |
+
+### Navigation
+
+**Jump List** - Tracks significant cursor movements (searches, go to definition, file jumps):
+
+| Mapping | Description |
+|---------|-------------|
+| `<C-o>` | Jump to older position (back) |
+| `<C-i>` or `<Tab>` | Jump to newer position (forward) |
+| `<C-6>` | Toggle between last two files (use `6` on non-US keyboards) |
+| `:jumps` | View full jump list |
+
+**Change List**:
+
+| Mapping | Description |
+|---------|-------------|
+| `g;` | Jump to last change position |
+| `g,` | Jump to newer change position |
+
+**Other**:
+
+| Mapping | Description |
+|---------|-------------|
+| `gi` | Insert at last insert position |
+
+**Split Windows**:
 
 | Mapping    | Action                        |
 |------------|-------------------------------|
-| Ctrl+h     | Move focus to left split      |
-| Ctrl+l     | Move focus to right split     |
-| Ctrl+j     | Move focus to lower split     |
-| Ctrl+k     | Move focus to upper split     |
-| Alt+h      | Resize split left             |
-| Alt+l      | Resize split right            |
-| Alt+j      | Resize split down             |
-| Alt+k      | Resize split up               |
+| `<C-h>`    | Move focus to left split      |
+| `<C-l>`    | Move focus to right split     |
+| `<C-j>`    | Move focus to lower split     |
+| `<C-k>`    | Move focus to upper split     |
+| `<A-h>`    | Resize split left             |
+| `<A-l>`    | Resize split right            |
+| `<A-j>`    | Resize split down             |
+| `<A-k>`    | Resize split up               |
 
+### Diff Mode
 
-
-####  Compare current buffer with saved file
+**Commands**:
 
 ```vim
-:diffsplit %
+:diffsplit %              " Compare with saved file
+:w !diff % -              " Show changes
+:w !diff -u % -           " Show changes with context
+:w !colordiff % -         " Colorized diff (if colordiff installed)
 ```
 
-```vim
-:w !diff % -
-``
-Show changes with context
-```vim
-:w !diff -u % -
-```
-
-Colorized diff (if colordiff is installed)
-```vim
-:w !colordiff % -
-```
-Keyboard Navigation in Diff Mode
+**Navigation**:
 
 | Mapping | Action |
 |---------|--------|
