@@ -54,23 +54,25 @@ A slim neovim configuration based on [kickstart.nvim](https://github.com/nvim-lu
 
 ### Git
 
-| Mapping | Description | Details |
-|---------|-------------|---------|
-| `<leader>gd` | Git Diff | Open diff view of current file vs HEAD to review/undo changes |
-| `<leader>sc` | Search Commits | View git history for current file (Telescope) |
+| Mapping | Description |
+|---------|-------------|
+| `]c` / `[c` | Next/previous hunk (works in diff mode or normal editing) |
+| `<leader>gd` | Preview hunk diff inline |
+| `<leader>gr` | Reset hunk (undo changes in current hunk) |
+| `<leader>gR` | Reset buffer (undo all changes in file) |
+| `<leader>sc` | Search commits (view git history - Telescope) |
 
 **Gitsigns** provides visual indicators in the gutter:
-- `+` Added lines
-- `~` Changed lines  
-- `_` Deleted lines
+- `+` Added lines (opulent olive)
+- `~` Changed lines (ambiguous amber)
+- `_` Deleted lines (bold bordeaux)
 
-**Git diff workflow** (after `<leader>gd`):
-1. Review changes: `]c` / `[c` to jump between hunks
-2. Keep change: just move to next hunk
-3. Undo change: `do` to revert hunk to git version
-4. Exit: `:diffoff` or close the split
-
-Note: Work in your file window (right side). The git version (left) is read-only reference.
+**Git workflow**:
+1. See changes: Gutter signs show what's modified
+2. Review hunk: `<leader>gd` shows inline diff
+3. Navigate: `]c` / `[c` to jump between hunks
+4. Undo hunk: `<leader>gr` to reset current hunk
+5. Undo all: `<leader>gR` to reset entire file
 
 ### LSP Navigation & Actions
 | Mapping | Description | When to Use |

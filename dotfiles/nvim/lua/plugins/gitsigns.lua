@@ -1,4 +1,4 @@
--- Minimal gitsigns.nvim config: gutter signs only, no keymaps
+-- Minimal gitsigns.nvim config
 return {
   'lewis6991/gitsigns.nvim',
   opts = {
@@ -10,9 +10,29 @@ return {
       changedelete = { text = '~' },
     },
     on_attach = function(bufnr)
+      local gitsigns = require('gitsigns')
+
+      -- Navigation
+      vim.keymap.set('n', ']c', function()
+        if vim.wo.diff then
+          vim.cmd.normal({ ']c', bang = true })
+        else
+          gitsigns.nav_hunk('next')
+        end
+      end)
+
+      vim.keymap.set('n', '[c', function()
+        if vim.wo.diff then
+          vim.cmd.normal({ '[c', bang = true })
+        else
+          gitsigns.nav_hunk('prev')
+        end
+      end)
+
       -- Keymaps
-      local gs = package.loaded.gitsigns
-      vim.keymap.set('n', '<leader>gd', gs.diffthis, { buffer = bufnr, desc = '[G]it [D]iff this file' })
+      vim.keymap.set('n', '<leader>gd', gitsigns.preview_hunk_inline, { buffer = bufnr, desc = '[G]it [D]iff inline' })
+      vim.keymap.set('n', '<leader>gr', gitsigns.reset_hunk, { buffer = bufnr, desc = '[G]it [r]eset hunk' })
+      vim.keymap.set('n', '<leader>gR', gitsigns.reset_buffer, { buffer = bufnr, desc = '[G]it [R]eset buffer' })
 
       -- Custom highlight colors
       local hl = vim.api.nvim_set_hl
