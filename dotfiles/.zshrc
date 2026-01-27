@@ -43,6 +43,7 @@ RPROMPT='${vcs_info_msg_0_}'
 # Essential aliases
 alias ls='ls -G'
 alias ll='ls -lah'
+alias v='nvim'
 
 # Git Aliases
 alias gs='git status'
