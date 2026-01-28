@@ -9,6 +9,7 @@ clang
 dmenu
 dunst
 efibootmgr
+ex-vi-compat
 fastfetch
 fd
 feh
@@ -28,6 +29,7 @@ libpulse
 linux
 linux-firmware
 llvm
+lua-language-server
 man-db
 man-pages
 neovim
@@ -42,11 +44,11 @@ reflector
 ripgrep
 scrot
 sof-firmware
+stow
 strace
 tree
 ttf-jetbrains-mono-nerd
 unzip
-vi
 viu
 wireplumber
 xbindkeys

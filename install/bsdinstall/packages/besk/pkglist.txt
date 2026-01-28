@@ -15,6 +15,8 @@ devel/git
 devel/gmake
 devel/hs-cabal-install
 devel/hs-haskell-language-server
+devel/hs-haskell-language-server
+devel/hs-haskell-language-server
 sysutils/htop
 deskutils/i3lock
 misc/lf
@@ -23,15 +25,18 @@ devel/llvm
 devel/ncurses
 editors/neovim
 x11-fonts/nerd-fonts
+ports-mgmt/pkg
 devel/pkgconf
 lang/python
 textproc/ripgrep
 graphics/scrot
 x11/setxkbmap
+sysutils/stow
 devel/stylua
 security/sudo
 sysutils/tree
 devel/tree-sitter-cli
+graphics/viu
 ftp/wget
 x11/xbindkeys
 x11/xclip
