@@ -5,7 +5,7 @@ return {
     build = ':TSUpdate',
     config = function()
       -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
-      require('nvim-treesitter.configs').setup {
+      require('nvim-treesitter.config').setup {
         ensure_installed = { 'c', 'lua', 'haskell', 'asm' },
         auto_install = true,
         highlight = { enable = true },
