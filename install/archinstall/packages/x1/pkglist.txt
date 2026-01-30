@@ -9,6 +9,7 @@ clang
 dmenu
 dunst
 efibootmgr
+ex-vi-compat
 fastfetch
 fd
 feh
