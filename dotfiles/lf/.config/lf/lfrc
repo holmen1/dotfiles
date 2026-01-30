@@ -17,7 +17,7 @@ set scrolloff 10
 set cursorpreviewfmt "\033[7;2m"
 
 # Set previewer
-set previewer ~/repos/dotfiles/dotfiles/lf/preview.sh
+set previewer ~/repos/dotfiles/dotfiles/lf/.config/lf/preview.sh
 
 # ====================
 # KEYBINDINGS
