@@ -90,6 +90,18 @@ A slim neovim configuration based on [kickstart.nvim](https://github.com/nvim-lu
 | `<leader>f` | Format code | Format current buffer or selection |
 | `<leader>th` | Toggle inlay hints | Show/hide inline type hints |
 
+### Completions
+
+This config uses manual completions for a minimal experience. Press `<C-x>` followed by another key to trigger different completion modes:
+
+| Mapping | Description | Example |
+|---------|-------------|---------|
+| `<C-x><C-o>` | LSP/Omni completion | Functions, variables from language server |
+| `<C-x><C-n>` | Current buffer keywords | Words in the current file |
+| `<C-x><C-l>` | Line completion | Entire lines from file |
+
+**Navigation**: `<C-n>` next, `<C-p>` previous, `<C-y>` accept, `<C-e>` cancel.
+
 ## Appendix: Vim Basics
 
 ### Editing
@@ -114,12 +126,28 @@ A slim neovim configuration based on [kickstart.nvim](https://github.com/nvim-lu
 | `gJ` | Join lines without adding space |
 | `gq` | Format/wrap text (motion) |
 
+### Text Objects
+
+Text objects allow operations (change, delete, yank, visual select) on structured text like words, sentences, or delimited blocks.
+
+| Mapping | Description |
+|---------|-------------|
+| `ci"` | Change inside double quotes |
+| `di(` | Delete inside parentheses |
+| `vi[` | Visual select inside brackets |
+| `caw` | Change around word (includes whitespace) |
+| `diw` | Delete inner word |
+| `vip` | Visual select inner paragraph |
+| `cis` | Change inside sentence |
+
 ### Visual Mode
 
 | Mapping | Description |
 |---------|-------------|
 | `<C-v>` | Visual block mode - select rectangular blocks of text |
 | `gv` | Reselect last visual selection |
+| `vey` | Yank from cursor to end of word |
+| `vep` | Paste over from cursor to end of word |
 | `!nl` | Number selected lines (when in visual mode) |
 | `!uniq` | Remove duplicate lines (from visual selection) |
 | `v motion :w FILENAME` | Save the Visually selected lines in file FILENAME |
@@ -133,6 +161,28 @@ A slim neovim configuration based on [kickstart.nvim](https://github.com/nvim-lu
 | `:g/pattern/d` | Delete all lines matching pattern |
 | `:v/pattern/d` | Delete all lines NOT matching pattern |
 | `%!uniq` | Remove duplicate lines from entire file |
+| `*` | Search forward for word under cursor |
+| `#` | Search backward for word under cursor |
+
+### Macros
+
+Macros allow recording and replaying sequences of commands.
+
+| Mapping | Description |
+|---------|-------------|
+| `q<register>` | Start recording macro to a register (e.g., `qa`) |
+| `q` | Stop recording macro |
+| `@<register>` | Replay macro from register (e.g., `@a`) |
+| `@@` | Replay the last executed macro |
+
+### Registers
+
+Registers store text for yanking, deleting, or pasting (like multiple clipboards).
+
+| Mapping | Description |
+|---------|-------------|
+| `"a` | Use register 'a' for yank/delete/paste (replace 'a' with any letter) |
+| `:reg` | View contents of all registers |
 
 ### File Operations
 
@@ -161,6 +211,13 @@ A slim neovim configuration based on [kickstart.nvim](https://github.com/nvim-lu
 |---------|-------------|
 | `g;` | Jump to last change position |
 | `g,` | Jump to newer change position |
+
+**Scrolling**:
+
+| Mapping | Description |
+|---------|-------------|
+| `<C-d>` | Scroll down half a page |
+| `<C-u>` | Scroll up half a page |
 
 **Other**:
 
