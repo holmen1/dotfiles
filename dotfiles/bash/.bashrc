@@ -87,3 +87,4 @@ export PS1="${COLOR_USER}\u@\h ${COLOR_PATH}\W${COLOR_GIT}\$(__git_ps1 ' (%s)')$
 # iw
 export PATH=$PATH:/usr/sbin
 
+export PATH="/usr/lib/ghc-9.6.6/bin:$PATH"
