@@ -40,6 +40,11 @@ mkcd() {
     mkdir -p "$1" && cd "$1"
 }
 
+# Create backup file
+bak() {
+    cp "$1" "$1.bak"
+}
+
 # Quick file search function (rename from ff to avoid conflict)
 fnd() {
     find "${2:-.}" -name "*$1*" 2>/dev/null
