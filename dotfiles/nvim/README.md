@@ -2,6 +2,18 @@
 
 A slim neovim configuration based on [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim)
 
+## Top 7 "Chad" Vim Commands (For High-Speed Dev)
+
+For blazing fast code development—especially if you manipulate and copy/paste blocks of code often—burn these into your muscle memory:
+
+1. **`gv`**: Reselect your previous visual selection. An absolute lifesaver if you clicked away and lost your highlight right before you wanted to yank or change it.
+2. **`ciw` (Change Inner Word)**: Deletes the word under your cursor and drops you into Insert mode instantly. Stop relying on `dw` and `i`.
+3. **`.` (Dot Command)**: Repeats your last change. The quintessential Vim power-user tool.
+4. **`*` then `cgn`**: Rename variables like a pro. Press `*` over a word to search it, type `cgn` to change it, type your new name, press `<Esc>`, and hit `.` to replace subsequent matches one by one!
+5. **`vip`**: Visually select the inner paragraph (code block). Follow up immediately with `y` (yank) or `c` (change) to manipulate entire chunks of code effortlessly.
+6. **`<C-v>` (Visual Block)**: Select columns of text. Press `I` (Shift+i) to insert text on multiple lines sequentially, type your text, and press `<Esc>` to apply to all lines.
+7. **`<C-o>` and `<C-i>`**: Time-travel your cursor. Jump back to where you previously were (`<C-o>`) and forward again (`<C-i>`), even spanning across different files.
+
 ## Features
 
 - **Telescope-Powered Navigation**: Fast fuzzy finding for files, symbols, and help
@@ -151,6 +163,7 @@ Text objects allow operations (change, delete, yank, visual select) on structure
 | Mapping | Description |
 |---------|-------------|
 | `<C-v>` | Visual block mode - select rectangular blocks of text |
+| `o` / `O` | Swap cursor to the other end of the visual selection |
 | `gv` | Reselect last visual selection |
 | `vey` | Yank from cursor to end of word |
 | `vep` | Paste over from cursor to end of word |
@@ -332,3 +345,55 @@ bear -- make
 :LspStop
 :LspStart
 ```
+
+## TODO: Home-Row Digits (Linux & FreeBSD)
+
+Explore setting up a "Num Layer" to type digits without reaching for the top row on a standard Swedish layout. The goal is to use the Spacebar as a dual-function "Tap-Hold" key: tap it for a normal `Space`, but hold it down with the thumb to activate a temporary number layer (e.g., mapping `j, k, l` to `4, 5, 6` like a physical numpad).
+
+**For Linux (`keyd` or `kmonad`)**
+- Use software that intercepts input at the kernel level (`evdev`).
+- Configure the Spacebar to act as a layer-toggle when held.
+- Example `keyd` configuration (`/etc/keyd/default.conf`):
+  ```ini
+  [ids]
+  *
+
+  [main]
+  # Tap space for space, hold space to activate the 'num_layer'
+  space = overload(num_layer, space)
+
+  # Define what happens when 'num_layer' is held
+  [num_layer]
+  u = 7
+  i = 8
+  o = 9
+  j = 4
+  k = 5
+  l = 6
+  m = 1
+  , = 2
+  . = 3
+  n = 0
+  ```
+
+**For FreeBSD (X11 + `xcape`)**
+- Use X11 tools (`setxkbmap` / `xmodmap`) to remap the physical Spacebar to a modifier key (like `Mode_switch` or `Hyper_L`).
+- Use `xmodmap` to redefine keys when that modifier is held (`~/.Xmodmap`):
+  ```text
+  ! Syntax is: keycode = normal shifted Mode_switch Mode_switch+shifted
+  keysym j = j J 4 4
+  keysym k = k K 5 5
+  keysym l = l L 6 6
+  keysym u = u U 7 7
+  keysym i = i I 8 8
+  keysym o = o O 9 9
+  keysym m = m M 1 1
+  keysym comma = comma semicolon 2 2
+  keysym period = period colon 3 3
+  keysym n = n N 0 0
+  ```
+- Run `xcape` to handle the quick-tap behavior:
+  ```bash
+  xcape -e 'Mode_switch=space'
+  ```
+- This ensures holding the Spacebar shifts layers, but tapping it outputs a standard space.
