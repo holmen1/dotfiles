@@ -114,6 +114,9 @@ This config uses manual completions for a minimal experience. Press `<C-x>` foll
 | `<C-r>` | Redo undone |
 | `c [number] motion` | Change text specified by [number] and motion |
 | `R` | Enters Replace mode until `<Esc>` is pressed |
+| `D` | Delete remainder of line |
+| `I` | Insert at first non-blank character of line |
+| `gI` | Insert at column 1 of line |
 
 ### Text Manipulation
 
@@ -136,9 +139,12 @@ Text objects allow operations (change, delete, yank, visual select) on structure
 | `di(` | Delete inside parentheses |
 | `vi[` | Visual select inside brackets |
 | `caw` | Change around word (includes whitespace) |
+| `vaw` | Visual select around word |
 | `diw` | Delete inner word |
 | `vip` | Visual select inner paragraph |
+| `vap` | Visual select around paragraph |
 | `cis` | Change inside sentence |
+| `vas` | Visual select around sentence |
 
 ### Visual Mode
 
@@ -184,10 +190,14 @@ Registers store text for yanking, deleting, or pasting (like multiple clipboards
 | `"a` | Use register 'a' for yank/delete/paste (replace 'a' with any letter) |
 | `:reg` | View contents of all registers |
 
-### File Operations
+### File Operations & Buffers
 
 | Mapping | Description |
 |---------|-------------|
+| `:b[uffer] [name/number]` | Switch to a buffer |
+| `:bn[ext]` | Switch to the next buffer |
+| `:bp[revious]` | Switch to the previous buffer |
+| `:bd[elete]` | Unload buffer and remove it from list |
 | `:r FILENAME` | Retrieves disk file and puts it below the cursor |
 | `:r !command` | Insert output of shell command below cursor (ex: date) |
 | `:x,yw >> FILENAME` | Appends lines x-y to file FILENAME |
@@ -218,6 +228,25 @@ Registers store text for yanking, deleting, or pasting (like multiple clipboards
 |---------|-------------|
 | `<C-d>` | Scroll down half a page |
 | `<C-u>` | Scroll up half a page |
+| `zt` | Scroll screen to put cursor at top |
+| `zz` | Scroll screen to put cursor at middle |
+| `zb` | Scroll screen to put cursor at bottom |
+
+**Screen Movement**:
+
+| Mapping | Description |
+|---------|-------------|
+| `H` | Move cursor to Highest line on screen |
+| `M` | Move cursor to Middle line on screen |
+| `L` | Move cursor to Lowest line on screen |
+
+**Line & Word Navigation**:
+
+| Mapping | Description |
+|---------|-------------|
+| `f{char}` / `F{char}` | Find character forward/backward in current line |
+| `;` | Repeat last `f` or `F` in the same direction |
+| `,` | Repeat last `f` or `F` in the opposite direction |
 
 **Other**:
 
