@@ -90,15 +90,15 @@ For blazing fast code development—especially if you manipulate and copy/paste 
 | Mapping | Description | When to Use |
 |---------|-------------|------------|
 | `K` | Hover documentation | Show docs for symbol under cursor |
-| `grn` | Rename symbol | Rename variables/functions across files |
-| `gra` | Code action | Fix errors, organize imports |
-| `grr` | Find references | See all usages of a symbol |
-| `gri` | Go to implementation | Jump to implementation (vs declaration) |
-| `grd` | Go to definition | Jump to where a symbol is defined |
-| `grD` | Go to declaration | Jump to declaration (useful in C/C++ for headers) |
-| `grt` | Go to type definition | See a variable's type definition |
-| `gO` | Document symbols | Browse all symbols in current file |
-| `gW` | Workspace symbols | Browse all symbols in project |
+| `gd` | Go to definition | Jump to where a symbol is defined |
+| `gD` | Go to declaration | Jump to declaration (useful in C/C++ for headers) |
+| `gr` | Find references | See all usages of a symbol |
+| `gI` | Go to implementation | Jump to implementation (vs declaration) |
+| `<leader>D` | Go to type definition | See a variable's type definition |
+| `<leader>rn` | Rename symbol | Rename variables/functions across files |
+| `<leader>ca` | Code action | Fix errors, organize imports |
+| `<leader>ds` | Document symbols | Browse all symbols in current file |
+| `<leader>ws` | Workspace symbols | Browse all symbols in project |
 | `<leader>f` | Format code | Format current buffer or selection |
 | `<leader>th` | Toggle inlay hints | Show/hide inline type hints |
 
@@ -129,6 +129,9 @@ This config uses manual completions for a minimal experience. Press `<C-x>` foll
 | `D` | Delete remainder of line |
 | `I` | Insert at first non-blank character of line |
 | `gI` | Insert at column 1 of line |
+| `<C-t>` | Shift indent right (Insert mode) |
+| `<C-d>` | Shift indent left (Insert mode) |
+| `<C-f>` | Force re-evaluate auto-indentation, e.g. for C brackets (Insert mode) |
 
 ### Text Manipulation
 

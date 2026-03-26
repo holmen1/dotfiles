@@ -24,34 +24,36 @@ vim.api.nvim_create_autocmd('LspAttach', {
       vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
     end
 
+    -- Jump to the definition of the word under your cursor.
+    --  This is the most common way to navigate code.
+    map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
+
+    -- Find references for the word under your cursor.
+    map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
+
+    -- Jump to the implementation of the word under your cursor.
+    map('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
+
+    -- Jump to the type of the word under your cursor.
+    map('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
+
+    -- WARN: This is not Goto Definition, this is Goto Declaration.
+    --  For example, in C this would take you to the header.
+    map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+
     -- Rename the variable under your cursor.
     --  Most Language Servers support renaming across files, etc.
-    map('grn', vim.lsp.buf.rename, '[R]e[n]ame')
+    map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
 
     -- Execute a code action, usually your cursor needs to be on top of an error
     -- or a suggestion from your LSP for this to activate.
-    map('gra', vim.lsp.buf.code_action, '[G]oto Code [A]ction', { 'n', 'x' })
-
-    -- Find references for the word under your cursor.
-    map('grr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
-
-    -- Jump to the implementation of the word under your cursor.
-    map('gri', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
-
-    -- Jump to the definition of the word under your cursor.
-    map('grd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
-
-    -- WARN: This is not Goto Definition, this is Goto Declaration.
-    map('grD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+    map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction', { 'n', 'x' })
 
     -- Fuzzy find all the symbols in your current document.
-    map('gO', require('telescope.builtin').lsp_document_symbols, 'Open Document Symbols')
+    map('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
 
     -- Fuzzy find all the symbols in your current workspace.
-    map('gW', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Open Workspace Symbols')
-
-    -- Jump to the type of the word under your cursor.
-    map('grt', require('telescope.builtin').lsp_type_definitions, '[G]oto [T]ype Definition')
+    map('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
     
     -- Format current buffer or visual selection
     map('<leader>f', function()
@@ -62,7 +64,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     -- word under your cursor when your cursor rests there for a little while.
     -- When you move your cursor, the highlights will be cleared.
     local client = vim.lsp.get_client_by_id(event.data.client_id)
-    if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf) then
+    if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight, event.buf) then
       local highlight_augroup = vim.api.nvim_create_augroup('kickstart-lsp-highlight', { clear = false })
       vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
         buffer = event.buf,

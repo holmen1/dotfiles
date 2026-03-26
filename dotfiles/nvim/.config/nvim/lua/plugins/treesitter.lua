@@ -12,7 +12,8 @@ configs.setup {
   ensure_installed = { 'c', 'lua', 'haskell', 'asm' },
   auto_install = true,
   highlight = { enable = true },
-  indent = { enable = true },
+  -- Disable treesitter indenting for C because it conflicts with Neovim's robust native cindent
+  indent = { enable = true, disable = { 'c', 'cpp' } },
 }
 
 -- You can manually run `:TSUpdate` after initial installation

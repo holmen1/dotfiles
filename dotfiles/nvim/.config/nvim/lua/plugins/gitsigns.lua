@@ -23,7 +23,7 @@ gitsigns.setup({
       else
         gitsigns.nav_hunk('next')
       end
-    end, { buffer = bufnr, desc = 'Next [c]hange (git hunk)' })
+    end, { buffer = bufnr, desc = 'Next hunk' })
 
     vim.keymap.set('n', '[c', function()
       if vim.wo.diff then
@@ -31,7 +31,7 @@ gitsigns.setup({
       else
         gitsigns.nav_hunk('prev')
       end
-    end, { buffer = bufnr, desc = 'Previous [c]hange (git hunk)' })
+    end, { buffer = bufnr, desc = 'Previous hunk' })
 
     -- Keymaps
     vim.keymap.set('n', '<leader>gd', gitsigns.preview_hunk_inline, { buffer = bufnr, desc = '[G]it [D]iff inline' })
