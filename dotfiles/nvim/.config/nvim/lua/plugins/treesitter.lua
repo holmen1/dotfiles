@@ -1,24 +1,19 @@
-return {
-  { -- Highlight, edit, and navigate code
-    'nvim-treesitter/nvim-treesitter',
-    lazy = false,
-    build = ':TSUpdate',
-    config = function()
-      -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
-      require('nvim-treesitter.configs').setup {
-        ensure_installed = { 'c', 'lua', 'haskell', 'asm' },
-        auto_install = true,
-        highlight = { enable = true },
-        indent = { enable = true },
-      }
+-- ~/.config/nvim/lua/plugins/treesitter.lua
+-- Native configuration for nvim-treesitter
 
-      -- There are additional nvim-treesitter modules that you can use to interact
-      -- with nvim-treesitter. You should go explore a few and see what interests you:
-      --
-      --    - Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
-      --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
-      --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
-    end,
-  },
+local status_ok, configs = pcall(require, "nvim-treesitter")
+if not status_ok then
+  vim.notify("nvim-treesitter not found! Ensure `vim.pack.add` worked.", vim.log.levels.WARN)
+  return
+end
+
+-- [[ Configure Treesitter ]] See `:help nvim-treesitter`
+configs.setup {
+  ensure_installed = { 'c', 'lua', 'haskell', 'asm' },
+  auto_install = true,
+  highlight = { enable = true },
+  indent = { enable = true },
 }
+
+-- You can manually run `:TSUpdate` after initial installation
 -- vim: ts=2 sts=2 sw=2 et
