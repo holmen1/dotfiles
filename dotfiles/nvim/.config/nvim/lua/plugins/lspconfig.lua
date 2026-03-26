@@ -1,198 +1,168 @@
--- LSP Plugins
-return {
-  {
-    -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
-    -- used for completion, annotations and signatures of Neovim apis
-    'folke/lazydev.nvim',
-    ft = 'lua',
-    opts = {},
-  },
-  {
-    -- Main LSP Configuration
-    'neovim/nvim-lspconfig',
-    dependencies = {
-      -- Useful status updates for LSP.
-      { 'j-hui/fidget.nvim', opts = {} },
-    },
-    config = function()
-      --
-      -- LSP provides Neovim with features like:
-      --  - Go to definition
-      --  - Find references
-      --  - Autocompletion
-      --  - Symbol Search
-      --  - and more!
-      --
-      -- If you're wondering about lsp vs treesitter, you can check out the wonderfully
-      -- and elegantly composed help section, `:help lsp-vs-treesitter`
+-- ~/.config/nvim/lua/plugins/lspconfig.lua
+-- Native configuration for LSP, Lazydev and Fidget
 
-      vim.api.nvim_create_autocmd('LspAttach', {
-        group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
-        callback = function(event)
-          -- We create a function that lets us more easily define mappings specific
-          -- for LSP related items. It sets the mode, buffer and description for us each time.
-          local map = function(keys, func, desc, mode)
-            mode = mode or 'n'
-            vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
-          end
+-- Setup lazydev for Lua completion and neovim APIs
+local has_lazydev, lazydev = pcall(require, "lazydev")
+if has_lazydev then
+  lazydev.setup({})
+end
 
-          -- Rename the variable under your cursor.
-          --  Most Language Servers support renaming across files, etc.
-          map('grn', vim.lsp.buf.rename, '[R]e[n]ame')
+-- Setup fidget for LSP status updates
+local has_fidget, fidget = pcall(require, "fidget")
+if has_fidget then
+  fidget.setup({})
+end
 
-          -- Execute a code action, usually your cursor needs to be on top of an error
-          -- or a suggestion from your LSP for this to activate.
-          map('gra', vim.lsp.buf.code_action, '[G]oto Code [A]ction', { 'n', 'x' })
+-- LSP attach autocommand to bind keymaps and highlights when a server attaches
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
+  callback = function(event)
+    -- We create a function that lets us more easily define mappings specific
+    -- for LSP related items. It sets the mode, buffer and description for us each time.
+    local map = function(keys, func, desc, mode)
+      mode = mode or 'n'
+      vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
+    end
 
-          -- Find references for the word under your cursor.
-          map('grr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
+    -- Rename the variable under your cursor.
+    --  Most Language Servers support renaming across files, etc.
+    map('grn', vim.lsp.buf.rename, '[R]e[n]ame')
 
-          -- Jump to the implementation of the word under your cursor.
-          --  Useful when your language has ways of declaring types without an actual implementation.
-          map('gri', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
+    -- Execute a code action, usually your cursor needs to be on top of an error
+    -- or a suggestion from your LSP for this to activate.
+    map('gra', vim.lsp.buf.code_action, '[G]oto Code [A]ction', { 'n', 'x' })
 
-          -- Jump to the definition of the word under your cursor.
-          --  To jump back, press <C-t>.
-          map('grd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
+    -- Find references for the word under your cursor.
+    map('grr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
 
-          -- WARN: This is not Goto Definition, this is Goto Declaration.
-          --  For example, in C this would take you to the header.
-          map('grD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+    -- Jump to the implementation of the word under your cursor.
+    map('gri', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
 
-          -- Fuzzy find all the symbols in your current document.
-          --  Symbols are things like variables, functions, types, etc.
-          map('gO', require('telescope.builtin').lsp_document_symbols, 'Open Document Symbols')
+    -- Jump to the definition of the word under your cursor.
+    map('grd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
 
-          -- Fuzzy find all the symbols in your current workspace.
-          --  Similar to document symbols, except searches over your entire project.
-          map('gW', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Open Workspace Symbols')
+    -- WARN: This is not Goto Definition, this is Goto Declaration.
+    map('grD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
-          -- Jump to the type of the word under your cursor.
-          --  Useful when you're not sure what type a variable is and you want to see
-          --  the definition of its *type*, not where it was *defined*.
-          map('grt', require('telescope.builtin').lsp_type_definitions, '[G]oto [T]ype Definition')
-          
-          -- Format current buffer or visual selection
-          map('<leader>f', function()
-            vim.lsp.buf.format { async = true }
-          end, 'Format code', { 'n', 'v' })
+    -- Fuzzy find all the symbols in your current document.
+    map('gO', require('telescope.builtin').lsp_document_symbols, 'Open Document Symbols')
 
-          -- The following two autocommands are used to highlight references of the
-          -- word under your cursor when your cursor rests there for a little while.
-          --    See `:help CursorHold` for information about when this is executed
-          --
-          -- When you move your cursor, the highlights will be cleared (the second autocommand).
-          local client = vim.lsp.get_client_by_id(event.data.client_id)
-            if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf) then
-            local highlight_augroup = vim.api.nvim_create_augroup('kickstart-lsp-highlight', { clear = false })
-            vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
-              buffer = event.buf,
-              group = highlight_augroup,
-              callback = vim.lsp.buf.document_highlight,
-            })
+    -- Fuzzy find all the symbols in your current workspace.
+    map('gW', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Open Workspace Symbols')
 
-            vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
-              buffer = event.buf,
-              group = highlight_augroup,
-              callback = vim.lsp.buf.clear_references,
-            })
+    -- Jump to the type of the word under your cursor.
+    map('grt', require('telescope.builtin').lsp_type_definitions, '[G]oto [T]ype Definition')
+    
+    -- Format current buffer or visual selection
+    map('<leader>f', function()
+      vim.lsp.buf.format { async = true }
+    end, 'Format code', { 'n', 'v' })
 
-            vim.api.nvim_create_autocmd('LspDetach', {
-              group = vim.api.nvim_create_augroup('kickstart-lsp-detach', { clear = true }),
-              callback = function(event2)
-                vim.lsp.buf.clear_references()
-                vim.api.nvim_clear_autocmds { group = 'kickstart-lsp-highlight', buffer = event2.buf }
-              end,
-            })
-          end
+    -- The following two autocommands are used to highlight references of the
+    -- word under your cursor when your cursor rests there for a little while.
+    -- When you move your cursor, the highlights will be cleared.
+    local client = vim.lsp.get_client_by_id(event.data.client_id)
+    if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf) then
+      local highlight_augroup = vim.api.nvim_create_augroup('kickstart-lsp-highlight', { clear = false })
+      vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
+        buffer = event.buf,
+        group = highlight_augroup,
+        callback = vim.lsp.buf.document_highlight,
+      })
 
-          -- The following code creates a keymap to toggle inlay hints in your
-          -- code, if the language server you are using supports them
-          --
-          -- This may be unwanted, since they displace some of your code
-          if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf) then
-            map('<leader>th', function()
-              vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
-            end, '[T]oggle Inlay [H]ints')
-          end
+      vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
+        buffer = event.buf,
+        group = highlight_augroup,
+        callback = vim.lsp.buf.clear_references,
+      })
+
+      vim.api.nvim_create_autocmd('LspDetach', {
+        group = vim.api.nvim_create_augroup('kickstart-lsp-detach', { clear = true }),
+        callback = function(event2)
+          vim.lsp.buf.clear_references()
+          vim.api.nvim_clear_autocmds { group = 'kickstart-lsp-highlight', buffer = event2.buf }
         end,
       })
+    end
 
-      -- Diagnostic Config
-      -- See :help vim.diagnostic.Opts
-      vim.diagnostic.config {
-        severity_sort = true,
-        float = { border = 'rounded', source = 'if_many' },
-        underline = { severity = vim.diagnostic.severity.ERROR },
-        signs = vim.g.have_nerd_font and {
-          text = {
-            [vim.diagnostic.severity.ERROR] = '󰅚 ',
-            [vim.diagnostic.severity.WARN] = '󰀪 ',
-            [vim.diagnostic.severity.INFO] = '󰋽 ',
-            [vim.diagnostic.severity.HINT] = '󰌶 ',
-          },
-        } or {},
-        virtual_text = {
-          source = 'if_many',
-          spacing = 2,
-          format = function(diagnostic)
-            local diagnostic_message = {
-              [vim.diagnostic.severity.ERROR] = diagnostic.message,
-              [vim.diagnostic.severity.WARN] = diagnostic.message,
-              [vim.diagnostic.severity.INFO] = diagnostic.message,
-              [vim.diagnostic.severity.HINT] = diagnostic.message,
-            }
-            return diagnostic_message[diagnostic.severity]
-          end,
-        },
+    -- Toggle inlay hints keymap
+    if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf) then
+      map('<leader>th', function()
+        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
+      end, '[T]oggle Inlay [H]ints')
+    end
+  end,
+})
+
+-- Diagnostic Config
+vim.diagnostic.config {
+  severity_sort = true,
+  float = { border = 'rounded', source = 'if_many' },
+  underline = { severity = vim.diagnostic.severity.ERROR },
+  signs = vim.g.have_nerd_font and {
+    text = {
+      [vim.diagnostic.severity.ERROR] = '󰅚 ',
+      [vim.diagnostic.severity.WARN] = '󰀪 ',
+      [vim.diagnostic.severity.INFO] = '󰋽 ',
+      [vim.diagnostic.severity.HINT] = '󰌶 ',
+    },
+  } or {},
+  virtual_text = {
+    source = 'if_many',
+    spacing = 2,
+    format = function(diagnostic)
+      local diagnostic_message = {
+        [vim.diagnostic.severity.ERROR] = diagnostic.message,
+        [vim.diagnostic.severity.WARN] = diagnostic.message,
+        [vim.diagnostic.severity.INFO] = diagnostic.message,
+        [vim.diagnostic.severity.HINT] = diagnostic.message,
       }
-
-      -- LSP servers - install via system package manager:
-      --   Arch:    clang haskell-language-server lua-language-server asm-lsp (AUR)
-      --   FreeBSD: pkg install llvm (lua-language-server not in pkg, build from source)
-      --
-      -- Map server name to executable name (some differ)
-      local servers = {
-        asm_lsp = 'asm-lsp',
-        clangd = 'clangd',
-        hls = 'haskell-language-server-wrapper',
-        lua_ls = 'lua-language-server',
-      }
-
-      -- Only enable servers that are installed
-      local available = {}
-      for server, cmd in pairs(servers) do
-        if vim.fn.executable(cmd) == 1 then
-          table.insert(available, server)
-        end
-      end
-
-      -- Configure servers using Neovim 0.11+ native API
-      vim.lsp.config('clangd', {
-        init_options = {
-          fallbackFlags = { '--std=c99' },
-        },
-      })
-
-      vim.lsp.config('lua_ls', {
-        settings = {
-          Lua = {
-            completion = {
-              callSnippet = 'Replace',
-            },
-            diagnostics = {
-              globals = { 'vim' },
-            },
-            workspace = {
-              checkThirdParty = false,
-            },
-          },
-        },
-      })
-
-      -- Enable only available servers
-      vim.lsp.enable(available)
+      return diagnostic_message[diagnostic.severity]
     end,
   },
 }
+
+-- LSP servers - install via system package manager:
+local servers = {
+  asm_lsp = 'asm-lsp',
+  clangd = 'clangd',
+  hls = 'haskell-language-server-wrapper',
+  lua_ls = 'lua-language-server',
+}
+
+-- Only enable servers that are installed on the OS
+local available = {}
+for server, cmd in pairs(servers) do
+  if vim.fn.executable(cmd) == 1 then
+    table.insert(available, server)
+  end
+end
+
+-- Configure servers using Neovim 0.12+ native API!
+-- (nvim-lspconfig simply provides the default backend data for these)
+vim.lsp.config('clangd', {
+  init_options = {
+    fallbackFlags = { '--std=c99' },
+  },
+})
+
+vim.lsp.config('lua_ls', {
+  settings = {
+    Lua = {
+      completion = {
+        callSnippet = 'Replace',
+      },
+      diagnostics = {
+        globals = { 'vim' },
+      },
+      workspace = {
+        checkThirdParty = false,
+      },
+    },
+  },
+})
+
+-- Enable only available servers natively
+vim.lsp.enable(available)
+
 -- vim: ts=2 sts=2 sw=2 et

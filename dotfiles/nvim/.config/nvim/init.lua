@@ -41,6 +41,10 @@ vim.pack.add({
   'https://github.com/nvim-telescope/telescope-fzf-native.nvim',
   'https://github.com/nvim-telescope/telescope-ui-select.nvim',
   'https://github.com/nvim-tree/nvim-web-devicons',
+  'https://github.com/folke/lazydev.nvim',
+  'https://github.com/neovim/nvim-lspconfig',
+  'https://github.com/j-hui/fidget.nvim',
+  'https://github.com/folke/which-key.nvim',
 })
 
 -- [[ Initialize Plugins ]]
@@ -48,6 +52,10 @@ vim.pack.add({
 -- Set Colorscheme
 vim.cmd('packadd tokyonight.nvim')
 require('plugins.theme')
+
+-- Which Key (Load early to bind leader keys correctly)
+vim.cmd('packadd which-key.nvim')
+require('plugins.which-key')
 
 -- Treesitter
 vim.cmd('packadd nvim-treesitter')
@@ -60,6 +68,12 @@ vim.cmd('packadd telescope-fzf-native.nvim')
 vim.cmd('packadd telescope-ui-select.nvim')
 vim.cmd('packadd nvim-web-devicons')
 require('plugins.telescope')
+
+-- LSP Config
+vim.cmd('packadd lazydev.nvim')
+vim.cmd('packadd fidget.nvim')
+vim.cmd('packadd nvim-lspconfig')
+require('plugins.lspconfig')
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
