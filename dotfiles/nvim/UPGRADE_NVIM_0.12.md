@@ -18,6 +18,7 @@ This document tracks the steps, changes, and configurations modified during the 
     * *Note*: `:TSUpdate` will need to be run manually the very first time. 
     * *Dependency Check*: Ensure `tree-sitter` (version > 26.1) and a C compiler like `gcc` are installed on the host OS. Note that native package managers (like `pacman` on Arch) might lag (e.g., version 25). To get `> 26.1`, it is recommended to install the CLI via `npm install -g tree-sitter-cli` or `cargo install --locked tree-sitter-cli` or fetching a binary directly. Without an external plugin manager handling build hooks in the background, missing OS dependencies when compiling parsers become more apparent.
     * *Breaking API Change*: The newest main branch of `nvim-treesitter` (which `vim.pack` fetches by default) removed `require('nvim-treesitter.configs')`. You must now use `require('nvim-treesitter').setup{}` instead.
+* **Step 3 - Telescope Migration**: Removed lazy dependency structures in `lua/plugins/telescope.lua`. Converted `telescope-fzf-native` pre-build hooks to the new native `vim.api.nvim_create_autocmd('PackChanged')` firing heavily optimized background `vim.system({ 'make' })` execution loops in `init.lua`. Added `plenary` and all extensions separately to `init.lua` list.
 
 ## Helpful Commands
 * **Run Headless Checkhealth**: If debugging an environment purely from the terminal without opening UI, run `nvim --headless -c "checkhealth" -c "w! health.log" -c "qa"` to pipe output to `health.log`.

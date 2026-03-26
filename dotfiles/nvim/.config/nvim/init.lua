@@ -17,8 +17,17 @@ require 'keymaps'
 -- Handle post-install/update build scripts natively
 vim.api.nvim_create_autocmd('PackChanged', {
   callback = function(ev)
-    if ev.data.spec.name == 'nvim-treesitter' and (ev.data.kind == 'install' or ev.data.kind == 'update') then
-      vim.cmd('TSUpdateSync')
+    local name = ev.data.spec.name
+    local kind = ev.data.kind
+    if (kind == 'install' or kind == 'update') then
+      -- Treesitter Parser Compilation
+      if name == 'nvim-treesitter' then
+        vim.cmd('TSUpdateSync')
+      end
+      -- Telescope FZF Native C-Extension Compilation
+      if name == 'telescope-fzf-native.nvim' then
+        vim.system({ 'make' }, { cwd = ev.data.path }):wait()
+      end
     end
   end
 })
@@ -27,6 +36,11 @@ vim.api.nvim_create_autocmd('PackChanged', {
 vim.pack.add({
   'https://github.com/folke/tokyonight.nvim',
   'https://github.com/nvim-treesitter/nvim-treesitter',
+  'https://github.com/nvim-lua/plenary.nvim',
+  'https://github.com/nvim-telescope/telescope.nvim',
+  'https://github.com/nvim-telescope/telescope-fzf-native.nvim',
+  'https://github.com/nvim-telescope/telescope-ui-select.nvim',
+  'https://github.com/nvim-tree/nvim-web-devicons',
 })
 
 -- [[ Initialize Plugins ]]
@@ -38,6 +52,14 @@ require('plugins.theme')
 -- Treesitter
 vim.cmd('packadd nvim-treesitter')
 require('plugins.treesitter')
+
+-- Telescope
+vim.cmd('packadd plenary.nvim')
+vim.cmd('packadd telescope.nvim')
+vim.cmd('packadd telescope-fzf-native.nvim')
+vim.cmd('packadd telescope-ui-select.nvim')
+vim.cmd('packadd nvim-web-devicons')
+require('plugins.telescope')
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
