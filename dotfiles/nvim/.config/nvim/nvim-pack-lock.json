@@ -4,9 +4,17 @@
       "rev": "7fa433a83118a70fe24c1ce88d5f0bd3453c0970",
       "src": "https://github.com/j-hui/fidget.nvim"
     },
+    "gitsigns.nvim": {
+      "rev": "a462f416e2ce4744531c6256252dee99a7d34a83",
+      "src": "https://github.com/lewis6991/gitsigns.nvim"
+    },
     "lazydev.nvim": {
       "rev": "ff2cbcba459b637ec3fd165a2be59b7bbaeedf0d",
       "src": "https://github.com/folke/lazydev.nvim"
+    },
+    "mini.nvim": {
+      "rev": "439cdcd6992bc9012efd7d8ed7a7b7a0f1fac32a",
+      "src": "https://github.com/echasnovski/mini.nvim"
     },
     "nvim-lspconfig": {
       "rev": "1a6d69206749a646ef28bfb39460610b14baff40",

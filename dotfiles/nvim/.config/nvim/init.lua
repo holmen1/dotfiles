@@ -45,6 +45,8 @@ vim.pack.add({
   'https://github.com/neovim/nvim-lspconfig',
   'https://github.com/j-hui/fidget.nvim',
   'https://github.com/folke/which-key.nvim',
+  'https://github.com/echasnovski/mini.nvim',
+  'https://github.com/lewis6991/gitsigns.nvim',
 })
 
 -- [[ Initialize Plugins ]]
@@ -74,6 +76,14 @@ vim.cmd('packadd lazydev.nvim')
 vim.cmd('packadd fidget.nvim')
 vim.cmd('packadd nvim-lspconfig')
 require('plugins.lspconfig')
+
+-- Mini Plugins
+vim.cmd('packadd mini.nvim')
+require('plugins.mini')
+
+-- Gitsigns
+vim.cmd('packadd gitsigns.nvim')
+require('plugins.gitsigns')
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
