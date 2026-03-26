@@ -26,7 +26,9 @@ vim.api.nvim_create_autocmd('PackChanged', {
       end
       -- Telescope FZF Native C-Extension Compilation
       if name == 'telescope-fzf-native.nvim' then
-        vim.system({ 'make' }, { cwd = ev.data.path }):wait()
+        -- FreeBSD requires GNU Make (gmake) to build this extension instead of BSD make
+        local make_cmd = vim.fn.executable('gmake') == 1 and 'gmake' or 'make'
+        vim.system({ make_cmd }, { cwd = ev.data.path }):wait()
       end
     end
   end
