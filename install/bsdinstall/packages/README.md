@@ -6,6 +6,9 @@
 # Update all packages
 sudo pkg upgrade
 
+# Upgrade pkg packages AND rebuild port-built packages (run after pkg upgrade)
+sudo pkg upgrade && for port in $(pkg query -e '%a = 0' '%R %o' | awk '$1 != "FreeBSD-ports" && $1 != "FreeBSD-base" {print $2}'); do sudo make -C /usr/ports/$port deinstall clean install; done
+
 # Install a new package
 sudo pkg install <package-name>
 
@@ -54,7 +57,7 @@ pkg audit -F
 - `wifi-firmware-iwlwifi-kmod-7000`: Intel WiFi firmware (for Intel wireless cards)
 
 ### Display Server & Graphics
-- `xlibre-minimal`: XLibre server (X.Org fork, built from ports)
+- `xlibre-minimal`: XLibre server (X.Org fork, now available as binary package)
 - `xlibre-xf86-video-intel`: Intel graphics driver for XLibre
 - `xsetroot`: Set X root window properties
 - `xterm`: Terminal emulator for X
@@ -113,6 +116,25 @@ Each machine has its own package list in `besk/pkglist.txt` (or other profile na
 
 ## Missing from Binary Packages
 Some software must be built from ports:
-- **XLibre**: X.Org replacement (see main README)
 - **Custom XMonad**: Built with specific configuration
 - **Patched st terminal**: Custom patches applied
+
+> **Note:** XLibre was previously ports-only but is now available as a binary package. Always check `pkg search <name>` before resorting to ports — the situation changes as the ports tree matures.
+
+## Migrating a Port to a Binary Package
+When a previously ports-only package becomes available via `pkg`:
+
+1. **Verify it's available:**
+   ```bash
+   pkg search <name>
+   ```
+2. **Deinstall the port-built version:**
+   ```bash
+   sudo pkg delete -f <portname>
+   sudo pkg autoremove
+   ```
+3. **Install the binary package:**
+   ```bash
+   sudo pkg install <name>
+   ```
+4. **Update tracking files:** Move the entry from `foreignpkglist.txt` to `pkglist.txt`.

@@ -284,6 +284,21 @@ pkg query -e '%a = 0' '%R %o' | awk '$1 != "FreeBSD-ports" && $1 != "FreeBSD-bas
 
 # LESSONS LEARNED
 
+## XLibre is Now Available as a Binary Package
+
+XLibre landed in the FreeBSD ports tree in December 2025 and binary packages are now available. **Prefer `pkg` over ports** — it keeps everything consistently versioned and `pkg upgrade` handles it automatically.
+
+**Install via pkg (recommended):**
+```bash
+sudo pkg install xlibre-minimal xlibre-xf86-video-intel
+```
+
+**Why ports caused breakage:** When XLibre was port-built but its dependencies (e.g., `xlibre-xf86-video-vesa`, `xlibre-xf86-input-libinput`) were upgraded as binary packages via `pkg upgrade`, the version skew between the port-built server and the upgraded binary dependencies caused X to fail with `signal 11 (segmentation fault)` or fall back to `scfb`. Switching fully to `pkg` resolved it immediately.
+
+**General rule:** Never mix port-built and pkg-installed versions of tightly coupled packages (server + drivers). Use one or the other consistently.
+
+---
+
 ## Differences from Arch notes
 
 - `bash` located in /usr/local/bin. So #!/bin/bash won't work.

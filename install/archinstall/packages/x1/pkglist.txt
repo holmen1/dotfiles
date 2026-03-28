@@ -35,7 +35,6 @@ llvm
 lua-language-server
 man-db
 man-pages
-neovim
 noto-fonts-cjk
 openbsd-netcat
 openssh

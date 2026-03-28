@@ -63,3 +63,5 @@ alias gstp='git stash pop'
 
 # Path settings
 export PATH="/opt/homebrew/bin:$PATH"
+export PATH="~/.cargo/bin:$PATH"
+
