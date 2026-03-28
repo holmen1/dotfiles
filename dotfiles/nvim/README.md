@@ -353,50 +353,50 @@ bear -- make
 
 Explore setting up a "Num Layer" to type digits without reaching for the top row on a standard Swedish layout. The goal is to use the Spacebar as a dual-function "Tap-Hold" key: tap it for a normal `Space`, but hold it down with the thumb to activate a temporary number layer (e.g., mapping `j, k, l` to `4, 5, 6` like a physical numpad).
 
-**For Linux (`keyd` or `kmonad`)**
-- Use software that intercepts input at the kernel level (`evdev`).
-- Configure the Spacebar to act as a layer-toggle when held.
-- Example `keyd` configuration (`/etc/keyd/default.conf`):
-  ```ini
-  [ids]
-  *
+**Using `keyd` (Linux & FreeBSD)**
 
-  [main]
-  # Tap space for space, hold space to activate the 'num_layer'
-  space = overload(num_layer, space)
+`keyd` intercepts input at the kernel level (`evdev`) and works identically on both platforms with the same config file.
 
-  # Define what happens when 'num_layer' is held
-  [num_layer]
-  u = 7
-  i = 8
-  o = 9
-  j = 4
-  k = 5
-  l = 6
-  m = 1
-  , = 2
-  . = 3
-  n = 0
-  ```
+Install:
+```bash
+# Arch
+sudo pacman -S keyd
+sudo systemctl enable --now keyd
 
-**For FreeBSD (X11 + `xcape`)**
-- Use X11 tools (`setxkbmap` / `xmodmap`) to remap the physical Spacebar to a modifier key (like `Mode_switch` or `Hyper_L`).
-- Use `xmodmap` to redefine keys when that modifier is held (`~/.Xmodmap`):
-  ```text
-  ! Syntax is: keycode = normal shifted Mode_switch Mode_switch+shifted
-  keysym j = j J 4 4
-  keysym k = k K 5 5
-  keysym l = l L 6 6
-  keysym u = u U 7 7
-  keysym i = i I 8 8
-  keysym o = o O 9 9
-  keysym m = m M 1 1
-  keysym comma = comma semicolon 2 2
-  keysym period = period colon 3 3
-  keysym n = n N 0 0
-  ```
-- Run `xcape` to handle the quick-tap behavior:
-  ```bash
-  xcape -e 'Mode_switch=space'
-  ```
-- This ensures holding the Spacebar shifts layers, but tapping it outputs a standard space.
+# FreeBSD
+sudo pkg install keyd
+sudo sysrc keyd_enable=YES
+sudo service keyd start
+```
+
+Config file:
+- Linux: `/etc/keyd/default.conf`
+- FreeBSD: `/usr/local/etc/keyd/default.conf`
+
+```ini
+[ids]
+*
+
+[main]
+# Tap space for space, hold space to activate the 'num_layer'
+space = overload(num_layer, space)
+
+[num_layer]
+u = 7
+i = 8
+o = 9
+j = 4
+k = 5
+l = 6
+m = 1
+, = 2
+. = 3
+n = 0
+```
+
+Reload after editing:
+```bash
+sudo keyd reload
+```
+
+> Note: VT switching is not supported on FreeBSD with `keyd`.
