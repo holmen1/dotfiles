@@ -400,3 +400,34 @@ sudo keyd reload
 ```
 
 > Note: VT switching is not supported on FreeBSD with `keyd`.
+
+---
+
+## FreeBSD Keyboard Recovery (if you lose input at login)
+
+If you cannot type at the FreeBSD login prompt (before X11), you may have a misconfigured keyboard layout or key remapping daemon (e.g., keyd). To recover:
+
+1. **Reboot and enter single-user mode** from the boot menu.
+2. At the prompt, remount filesystems:
+	```
+	mount -u /
+	mount -a
+	```
+3. Check `/etc/rc.conf` for any `keymap` lines. Comment them out or set to a known working value (e.g., `keymap="us"`).
+4. Check for recent changes to `/etc/sysctl.conf` or `/etc/ttys` that might affect keyboard input.
+5. If you enabled keyd at the system level, disable it:
+	```
+	service keyd stop
+	sysrc keyd_enable=NO
+	```
+6. Reboot and test keyboard input at the login prompt.
+
+Once you regain access, reapply changes one at a time to identify the cause. If you use a non-US layout, set it only after confirming basic input works.
+
+**How to proceed after recovery:**
+
+1. Confirm you can log in and type at the console.
+2. Re-enable your desired keyboard layout (e.g., Swedish) in X11 only (e.g., via `setxkbmap se` in `.xinitrc`).
+3. If using keyd, test its config with the default US layout first, then add custom mappings for your layout as needed.
+4. Make incremental changes and reboot or restart X to test each step.
+5. Document any changes that cause issues for future reference.
