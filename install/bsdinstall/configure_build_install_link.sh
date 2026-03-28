@@ -101,6 +101,18 @@ case "$ans" in
     ;;
 esac
 
+read -p "Enable keyd num layer? [y/N] " ans
+case "$ans" in
+    [Yy]*)
+    sudo mkdir -p /usr/local/etc/keyd
+    sudo ln -sf $DOTFILES_DIR/dotfiles/keyd/default.conf /usr/local/etc/keyd/default.conf
+    sudo sysrc keyd_enable=YES
+    sudo service keyd onerestart
+    echo "keyd num layer enabled"
+    ;;
+esac
+sudo -k
+
 read -p "Enable system monitoring? [y/N] " ans
 case "$ans" in
     [Yy]*)

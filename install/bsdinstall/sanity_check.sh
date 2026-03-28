@@ -127,6 +127,15 @@ check_file "$HOME/.xbindkeysrc" "xbindkeys configuration"
 check_command "backlight" "Brightness control (FreeBSD)"
 check_command "mixer" "Audio mixer (OSS)"
 
+# keyd num layer (optional, warn only)
+if ! service keyd status >/dev/null 2>&1; then
+    print_warn "keyd not running - num layer inactive (run: sudo service keyd start)"
+elif [ ! -L /usr/local/etc/keyd/default.conf ]; then
+    print_warn "keyd running but config not symlinked from dotfiles"
+else
+    print_pass "keyd num layer active"
+fi
+
 # Screenshot functionality
 print_header "Screenshots"
 check_command "scrot" "Screenshot utility"
