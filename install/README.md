@@ -1,5 +1,5 @@
 # install
-Guides for setting up Linux environments quickly and consistently
+Guides for setting up environments quickly and consistently — Arch Linux, FreeBSD, Debian, macOS
 
 ## arch
 Go to [Arch Linux installation guide](./archinstall/README.md)
@@ -14,6 +14,36 @@ Go to [FreeBSD installation guide](./bsdinstall/README.md)
 Go to [MacOS config guide](./macinstall/README.md)
 
 ## Post-installation
+
+### Build from Source
+For software not available via package managers (see [`install/build/`](./build/README.md)):
+```bash
+git clone <repo> && cd <repo>
+./configure && make && sudo make install   # autotools
+cmake -B build && cmake --build build && sudo cmake --install build  # cmake
+```
+
+### Install with Cargo
+For Rust tools (e.g., `tree-sitter-cli`, `ripgrep`):
+```bash
+# Install Rust toolchain if missing
+curl https://sh.rustup.rs -sSf | sh
+source "$HOME/.cargo/env"
+
+cargo install <crate>               # latest version
+cargo install --locked <crate>      # reproducible, recommended for CLI tools
+```
+Binaries land in `~/.cargo/bin` — ensure it's on your `PATH`:
+```bash
+export PATH="$HOME/.cargo/bin:$PATH"
+```
+
+Manage installed crates:
+```bash
+cargo install --list                # show installed crates and versions
+cargo install <crate>               # upgrade to latest
+cargo uninstall <crate>             # remove
+```
 
 ### Configure Git
 git config --global user.name "$git_username"  
@@ -76,15 +106,15 @@ holmen1 wheel
 
 ### Link dotfiles
 Edit a
-[links.config](./archinstall/links/suckless_links.config)
+[links.config](./archinstall/links/suckless_links.config) (Arch) or [macos_links.conf](./macinstall/macos_links.conf) (macOS)
 and run
 ```bash
 ./scripts/link_config.sh links.config
 ```
 
 ### startx
-Enter tty via C-A-F2 or disable display manager (lightdm)  
-```$ sudo systemctl disable lightdm```
+Enter tty via C-A-F2 or disable display manager (Arch: lightdm, FreeBSD: not applicable)  
+```$ sudo systemctl disable lightdm```  *(Arch only)*
 
 Start xmonad with: ```startx```  
 or something else, like  
@@ -99,9 +129,11 @@ $ pkill x
 
 1. Install and start the SSH server:
    ```bash
+   # Arch
    sudo pacman -S openssh
-   sudo systemctl enable sshd
-   sudo systemctl start sshd
+   sudo systemctl enable sshd && sudo systemctl start sshd
+   # FreeBSD
+   sudo sysrc sshd_enable=YES && sudo service sshd start
    ```
 
 2. Check SSH server status and logs:
@@ -144,7 +176,7 @@ $ diff /usr/bin/xmonad-session /usr/bin/xmonad-session.bak
 ---
 >   . .xmonad/xmonad-session-rc
 ```
-## LESSONS LEARNED
+## LESSONS LEARNED *(Arch Linux)*
 ### ⚠️ NEVER Edit /etc/sudoers with vim (or any editor that isn't visudo)
 
 ### NetworkManager
@@ -182,7 +214,7 @@ sudo systemctl start NetworkManager
 
 
 
-## Nice to have
+## Nice to have *(Arch Linux)*
 
 ### WiFi not found
 Brave and VS Code are leaking file descriptors, causing system-wide issues
