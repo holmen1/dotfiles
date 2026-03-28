@@ -1,8 +1,8 @@
 #!/bin/sh
 set -e
 
-NVIM_TAG="v0.12.0"
-NV_DIR="${HOME}/repos/dotfiles/install/build/neovim"
+NVIM_TAG="nightly"
+NV_DIR="${HOME}/repos/dotfiles/install/build/neovim/neovim"
 
 git clone https://github.com/neovim/neovim $NV_DIR
 cd $NV_DIR
