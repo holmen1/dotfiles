@@ -51,6 +51,10 @@ vim.pack.add({
   'https://github.com/lewis6991/gitsigns.nvim',
 })
 
+-- [[ Package Management Commands ]]
+vim.api.nvim_create_user_command("PackUpdate", function() vim.pack.update() end, { desc = "Update native vim.pack plugins" })
+vim.api.nvim_create_user_command("PackList", function() vim.notify(vim.inspect(vim.pack.get())) end, { desc = "List installed native packages" })
+
 -- [[ Initialize Plugins ]]
 
 -- Set Colorscheme
