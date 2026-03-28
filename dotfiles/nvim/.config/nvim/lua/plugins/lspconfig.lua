@@ -10,7 +10,11 @@ end
 -- Setup fidget for LSP status updates
 local has_fidget, fidget = pcall(require, "fidget")
 if has_fidget then
-  fidget.setup({})
+  fidget.setup({
+    notification = {
+      override_vim_notify = true,
+    },
+  })
 end
 
 -- LSP attach autocommand to bind keymaps and highlights when a server attaches
