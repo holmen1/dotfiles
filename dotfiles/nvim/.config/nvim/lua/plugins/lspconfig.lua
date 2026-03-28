@@ -134,10 +134,19 @@ local servers = {
 
 -- Only enable servers that are installed on the OS
 local available = {}
+local missing = {}
 for server, cmd in pairs(servers) do
   if vim.fn.executable(cmd) == 1 then
     table.insert(available, server)
+  else
+    table.insert(missing, cmd .. ' (' .. server .. ')')
   end
+end
+
+if #missing > 0 then
+  vim.defer_fn(function()
+    vim.notify('LSP: not found: ' .. table.concat(missing, ', '), vim.log.levels.WARN)
+  end, 500)
 end
 
 -- Configure servers using Neovim 0.12+ native API!
