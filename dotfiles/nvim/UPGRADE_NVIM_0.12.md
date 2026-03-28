@@ -25,3 +25,8 @@ This document tracks the steps, changes, and configurations modified during the 
 
 ## Helpful Commands
 * **Run Headless Checkhealth**: If debugging an environment purely from the terminal without opening UI, run `nvim --headless -c "checkhealth" -c "w! health.log" -c "qa"` to pipe output to `health.log`.
+
+## Platform Notes
+* **macOS**: `brew install neovim` delivers 0.12 stable.
+* **Arch Linux**: `pacman -S neovim` delivers 0.12 stable.
+* **FreeBSD**: Neither `pkg` nor ports have 0.12 yet (ports only at 0.11.6 as of March 2026). Must build from source — see [`install/build/neovim/build-neovim.sh`](../../install/build/neovim/build-neovim.sh).
