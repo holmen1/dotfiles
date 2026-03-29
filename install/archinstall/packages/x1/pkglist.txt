@@ -26,6 +26,7 @@ i3lock
 intel-media-driver
 intel-ucode
 iwd
+keyd
 less
 lf
 libpulse
