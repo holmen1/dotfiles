@@ -1,4 +1,5 @@
 brave-bin
 mullvad-vpn-cli
+neovim-git
 visual-studio-code-bin
 yay

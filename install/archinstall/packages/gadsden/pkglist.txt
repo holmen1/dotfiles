@@ -8,6 +8,7 @@ btrfs-progs
 clang
 dunst
 efibootmgr
+ex-vi-compat
 fastfetch
 fd
 gcc
@@ -26,10 +27,11 @@ libnotify
 libpulse
 linux
 linux-firmware
+llvm
+lua-language-server
 ly
 man-db
 man-pages
-neovim
 network-manager-applet
 networkmanager
 noto-fonts-cjk
@@ -44,6 +46,7 @@ ripgrep
 slurp
 smartmontools
 sof-firmware
+stow
 sudo
 swaylock
 tree
@@ -51,7 +54,6 @@ tree-sitter-cli
 ttf-jetbrains-mono-nerd
 unzip
 uwsm
-vi
 vulkan-radeon
 waybar
 wget
