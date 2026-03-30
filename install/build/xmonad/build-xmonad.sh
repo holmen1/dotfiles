@@ -2,8 +2,8 @@
 
 set -e  # Exit on error
 
-XMONAD_TAG="v0.18.0"
-XMONAD_CONTRIB_TAG="v0.18.1" 
+XMONAD_TAG="v0.18.1"
+XMONAD_CONTRIB_TAG="v0.18.2" 
 
 # Define directories
 BUILD_DIR=~/repos/dotfiles/install/build/xmonad
