@@ -12,6 +12,7 @@ import XMonad.Util.EZConfig (additionalKeys)
 import XMonad.Util.NamedScratchpad
 import XMonad.Util.SpawnOnce
 
+myModMask = mod1Mask
 myAppLauncher = "dmenu_run -fn 'JetBrainsMono Nerd Font:size=14' -nb '#222222' -nf '#bbbbbb' -sb '#A300A3' -sf '#eeeeee'"
 myMagenta = "#A300A3"
 
@@ -51,20 +52,20 @@ myFadeHook =
     ]
 
 myKeys terminal browser =
-  [ ((modMask, xK_a), spawn myAppLauncher),
-    ((modMask, xK_e), spawn $ terminal ++ " -e lf"),
-    ((modMask, xK_Return), spawn terminal),
-    ((modMask .|. shiftMask, xK_Return), windows W.swapMaster),
-    ((modMask, xK_q), kill),
+  [ ((myModMask, xK_a), spawn myAppLauncher),
+    ((myModMask, xK_e), spawn $ terminal ++ " -e lf"),
+    ((myModMask, xK_Return), spawn terminal),
+    ((myModMask .|. shiftMask, xK_Return), windows W.swapMaster),
+    ((myModMask, xK_q), kill),
     -- screenshots
-    ((modMask, xK_s), spawn "scrot ~/Downloads/screenshot_%Y-%m-%d_%H-%M-%S.png"),
-    ((modMask .|. shiftMask, xK_s), unGrab >> spawn "scrot -s ~/Downloads/screenshot_%Y-%m-%d_%H-%M-%S.png"),
+    ((myModMask, xK_s), spawn "scrot ~/Downloads/screenshot_%Y-%m-%d_%H-%M-%S.png"),
+    ((myModMask .|. shiftMask, xK_s), unGrab >> spawn "scrot -s ~/Downloads/screenshot_%Y-%m-%d_%H-%M-%S.png"),
     -- dmenu scripts
-    ((modMask, xK_x), spawn "~/repos/dotfiles/scripts/dmenu-logout.sh"),
-    ((modMask, xK_v), spawn "~/repos/dotfiles/scripts/dmenu-mullvad.sh"),
-    ((modMask, xK_m), spawn "~/repos/dotfiles/scripts/dmenu-help.sh"),
-    ((modMask, xK_w), namedScratchpadAction (myScratchpads terminal browser) "browser"),
-    ((modMask, xK_p), namedScratchpadAction (myScratchpads terminal browser) "htop")
+    ((myModMask, xK_x), spawn "~/repos/dotfiles/scripts/dmenu-logout.sh"),
+    ((myModMask, xK_v), spawn "~/repos/dotfiles/scripts/dmenu-mullvad.sh"),
+    ((myModMask, xK_m), spawn "~/repos/dotfiles/scripts/dmenu-help.sh"),
+    ((myModMask, xK_w), namedScratchpadAction (myScratchpads terminal browser) "browser"),
+    ((myModMask, xK_p), namedScratchpadAction (myScratchpads terminal browser) "htop")
   ]
 
 myConfig terminal browser =
