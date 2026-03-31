@@ -10,20 +10,22 @@ This repository contains a custom configuration for the [XMonad](https://xmonad.
 | Key Combination       | Action                                 |
 |------------------------|----------------------------------------|
 | `Mod + Enter`          | Launch terminal                       |
-| `Mod + H`              | Help menu                             |
+| `Mod + M`              | Help menu                             |
 | `Mod + Q`              | Close the focused window              |
 | `Mod + Space`          | Rotate through available layouts      |
 | `Mod + Shift + Space`  | Reset the layout to default           |
 | `Mod + N`              | Resize/refresh windows                |
-| `Mod + Tab`            | Move to the next workspace            |
+| `Mod + Tab`            | Move to the next workspace TODO       |
 | `Mod + Shift + Tab`    | Move focus to the previous window     |
+| `Mod + H`              | Shrink the master area                |
 | `Mod + J`              | Move focus to the next window         |
 | `Mod + K`              | Move focus to the previous window     |
+| `Mod + L`              | Expand the master area                |
 | `Mod + Shift + Return` | Swap the focused window with master   |
 | `Mod + ,`              | Increment master windows              |
 | `Mod + .`              | Decrement master windows              |
 | `Mod + X`              | Logout menu                           |
-| `Mod + M`              | VPN menu                              |
+| `Mod + V`              | VPN menu                              |
 | `Mod + S`              | Screenshot to `~/Downloads`           |
 | `Mod + Shift + S`      | Capture a selected area screenshot to `~/Downloads` |
 | `Mod + W`              | Launch browser                        |
@@ -32,7 +34,7 @@ This repository contains a custom configuration for the [XMonad](https://xmonad.
 
 ## Requirements
 
-- [Xmobar](https://xmobar.org/)
+- [Xmobar](https://xmobar.org/) NOT USING
 - [st - simple terminal](https://st.suckless.org/)
 - [Brave](https://brave.com/linux/)
 - thunar fileexplorer
