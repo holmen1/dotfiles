@@ -1,6 +1,11 @@
 # keyd Setup and Usage Guide
 
-## What is keyd?
+> **Note:** keyd is Linux-only and does not work on FreeBSD.  
+> This repo now uses **XKB + xcape** for portable, daemon-free key remapping.  
+> See [`dotfiles/x/README.md`](../x/README.md) for the current setup.
+
+The configuration in `default.conf` is kept for reference (Arch Linux only).
+
 keyd is a key remapping daemon for Linux, allowing you to configure custom keyboard layouts, remap keys, and create advanced input workflows.
 
 ## Installation

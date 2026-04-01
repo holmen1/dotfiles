@@ -35,8 +35,13 @@ case "$(uname -s)" in
         ;;
 esac
 
-# Set keymap (don't background - fast and should complete before apps start)
-setxkbmap se
+# Apply keyboard customisations: XKB (layout + num-layer) + xcape (tap events)
+# See dotfiles/x/README.md for full documentation.
+if [ -x "$HOME/.local/bin/apply-keys.sh" ]; then
+    "$HOME/.local/bin/apply-keys.sh"
+else
+    setxkbmap se
+fi
 
 # Set the default X cursor to the usual pointer
 xsetroot -cursor_name left_ptr &
