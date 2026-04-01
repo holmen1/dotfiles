@@ -10,6 +10,7 @@ LINK_SCRIPT=$SCRIPTS_DIR/link_config.sh
 
 XMONAD_DIR=$DOTFILES_DIR/install/build/xmonad
 ST_DIR=$DOTFILES_DIR/install/build/st
+XKB_DIR=$DOTFILES_DIR/install/build/xkb
 
 COMPUTERNAME=$(hostnamectl --static 2>/dev/null || hostname -s)
 PKGPROFILE=${COMPUTERNAME}
@@ -114,6 +115,14 @@ case "$ans" in
     sudo ln -sf /opt/st/st-0.9.* /usr/local/bin/st
     sudo -k
     echo "Created symlink for st"
+    ;;
+esac
+
+read -p "Build xkb keymap? [y/N] " ans
+case "$ans" in
+    [Yy]*)
+    $XKB_DIR/build-xkb.sh
+    echo "Built xkb keymap"
     ;;
 esac
 
