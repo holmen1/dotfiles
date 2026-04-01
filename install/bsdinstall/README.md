@@ -12,6 +12,21 @@ Wifi: ETSI
 
 otherwise my choice, see [user_configuration_x1.json](../archinstall/log/user_configuration_x1.json)  
 
+## Diaster recovery
+
+1. **Reboot and enter single-user mode** from the boot menu.
+2. At the prompt, remount filesystems:
+	```
+	mount -u /
+	mount -a
+	```
+3. Check `/etc/rc.conf`
+4. Check for recent changes to `/etc/sysctl.conf` or `/etc/ttys`
+5. If you enabled xxx at the system level, disable it:
+	```
+	service xxx stop
+	sysrc xxx_enable=NO
+	```
 
 ## Post-installation
 ### Shell, also need adding hostname if used in scripts
@@ -307,9 +322,4 @@ sudo pkg install xlibre-minimal xlibre-xf86-video-intel
 - mount -t msdosfs
 - GNU make vs BSD make — Use `gmake` for GNU Makefiles; FreeBSD's default `make` is BSD make with different syntax
 - Header ordering in C network programming — On FreeBSD, include `<sys/types.h>` before `<sys/socket.h>` and other network headers to avoid compilation errors
-
-
-
-
-
 
