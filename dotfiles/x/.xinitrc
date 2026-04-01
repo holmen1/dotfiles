@@ -35,13 +35,9 @@ case "$(uname -s)" in
         ;;
 esac
 
-# Apply keyboard customisations: XKB (layout + num-layer) + xcape (tap events)
-# See dotfiles/x/README.md for full documentation.
-if [ -x "$HOME/.local/bin/apply-keys.sh" ]; then
-    "$HOME/.local/bin/apply-keys.sh"
-else
-    setxkbmap se
-fi
+# Apply basic keyboard layout. For full XKB + xcape customisation run
+# ~/.local/bin/apply-keys.sh manually (see dotfiles/xkb/README.md).
+setxkbmap se
 
 # Set the default X cursor to the usual pointer
 xsetroot -cursor_name left_ptr &

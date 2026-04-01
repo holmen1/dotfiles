@@ -24,7 +24,6 @@ i3lock
 intel-media-driver
 intel-ucode
 iwd
-keyd
 less
 lf
 libpulse
@@ -55,8 +54,10 @@ unzip
 viu
 wireplumber
 xbindkeys
+xcape
 xclip
 xcompmgr
+xorg-xev
 xorg-xinit
 xorg-xsetroot
 xterm
