@@ -1,5 +1,5 @@
 #!/bin/sh
-# apply-keys.sh — X11 keyboard customisation (XKB + xcape)
+# apply-keys.sh — load compiled XKB keymap + start xcape
 #
 #   CapsLock : hold = Control, tap = Escape
 #   Super    : hold = num-layer
@@ -8,14 +8,11 @@
 #     m , .  →  1 2 3
 #       n    →  0
 #
-# Deps: setxkbmap, xkbcomp, xcape
+# Deps: xkbcomp, xcape
+# To rebuild keymap.xkb: install/build/xkb/build-xkb.sh
 
-# Apply layout: Swedish + ctrl:nocaps + lv3:lwin_switch (Super = level-3)
-# Merge user symbol file local(numpad) for the digit layer.
-setxkbmap se -option ctrl:nocaps,lv3:lwin_switch -print \
-    | sed '/xkb_symbols/s|include "\(.*\)"|include "\1+local(numpad)"|' \
-    | xkbcomp -w0 -I"$HOME/.config/xkb" - "$DISPLAY"
+KEYMAP="$HOME/.config/xkb/keymap.xkb"
 
-# xcape: synthesise Escape when CapsLock (Control_L) is tapped alone
+xkbcomp -w0 "$KEYMAP" "$DISPLAY"
 pkill -x xcape 2>/dev/null || true
 xcape -e 'Control_L=Escape' &
