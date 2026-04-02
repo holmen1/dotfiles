@@ -7,11 +7,16 @@
 #
 # Build the keymap first with: install/build/xkb/build-xkb.sh
 
-if [ -f "$HOME/.config/xkb/keymap.xkb" ]; then
-    xkbcomp -w0 "$HOME/.config/xkb/keymap.xkb" "$DISPLAY"
+case "$(uname -s)" in
+    FreeBSD*) KEYMAP="$HOME/.config/xkb/keymap-bsd.xkb" ;;
+    *)        KEYMAP="$HOME/.config/xkb/keymap-linux.xkb" ;;
+esac
+
+if [ -f "$KEYMAP" ]; then
+    xkbcomp -w0 "$KEYMAP" "$DISPLAY"
     pkill -x xcape 2>/dev/null || true
     xcape -e 'Control_L=Escape' &
     echo "custom" > "$HOME/.cache/xkb-layout"
 else
-    echo "Warning: $HOME/.config/xkb/keymap.xkb not found. Run install/build/xkb/build-xkb.sh first." >&2
+    echo "Warning: $KEYMAP not found. Run install/build/xkb/build-xkb.sh first." >&2
 fi

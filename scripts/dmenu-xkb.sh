@@ -1,5 +1,8 @@
 #!/bin/sh
-KEYMAP="$HOME/.config/xkb/keymap.xkb"
+case "$(uname -s)" in
+    FreeBSD*) KEYMAP="$HOME/.config/xkb/keymap-bsd.xkb" ;;
+    *)        KEYMAP="$HOME/.config/xkb/keymap-linux.xkb" ;;
+esac
 STATE="$HOME/.cache/xkb-layout"
 
 if fc-list | grep -qi "JetBrainsMono Nerd Font"; then
