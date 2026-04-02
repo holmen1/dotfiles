@@ -124,7 +124,7 @@ check_command "notify-send" "Desktop notifications"
 print_header "Key Bindings & Input"
 check_command "xbindkeys" "Key binding daemon"
 check_file "$HOME/.xbindkeysrc" "xbindkeys configuration"
-check_file "$HOME/.config/xkb/keymap.xkb" "XKB configuration"
+check_file "$HOME/.config/xkb/keymap-bsd.xkb" "XKB configuration"
 check_command "backlight" "Brightness control (FreeBSD)"
 check_command "mixer" "Audio mixer (OSS)"
 
