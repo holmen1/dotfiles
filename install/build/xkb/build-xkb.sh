@@ -16,7 +16,7 @@ KEYMAP="${DOTFILES}/dotfiles/xkb/.config/xkb/keymap.xkb"
 mkdir -p "$(dirname "$KEYMAP")"
 
 setxkbmap se -option ctrl:nocaps,lv3:lwin_switch -print \
-    | sed '/xkb_symbols/s|include "\(.*\)"|include "\1+local(numpad)"|' \
+    | sed '/xkb_symbols/s|include "\(.*\)"|include "\1+local(numpad)+local(remaps)"|' \
     | xkbcomp -w0 -I"${SYMBOLS_DIR}" - -o "${KEYMAP}"
 
 echo "Keymap written to ${KEYMAP}"

@@ -20,6 +20,16 @@ X11 keyboard customisation using **XKB** and **xcape**.
      n     →  0
 ```
 
+### Persistent remaps (Swedish keys)
+
+| Key | Unshifted | Shifted |
+|-----|-----------|---------|
+| å   | `=`       | `~`     |
+| ö   | `:`       | `;`     |
+| ä   | `/`       | `\|`    |
+| `,` | `,`       | `<`     |
+| `.` | `.`       | `>`     |
+
 ---
 
 ## Files

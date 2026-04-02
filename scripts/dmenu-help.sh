@@ -1,6 +1,6 @@
 #!/bin/sh
 # Show xmonad keybindings in dmenu
-cat <<EOF | dmenu -l 24 -i -p "XMonad Help" \
+cat <<EOF | dmenu -l 27 -i -p "XMonad Help" \
 -nb "#222222" -nf "#ffffff" -sb "#222222" -sf "#ffffff" \
 -fn "JetBrainsMono Nerd Font Mono-16"
 Mod+Enter        Terminal

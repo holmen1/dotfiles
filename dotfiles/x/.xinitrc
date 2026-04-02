@@ -35,17 +35,7 @@ case "$(uname -s)" in
         ;;
 esac
 
-# Apply keyboard customisations: compiled XKB keymap + xcape (tap events).
-# CapsLock: hold = Control, tap = Escape
-# Super: hold = num-layer (u/i/o=7/8/9, j/k/l=4/5/6, m/,/.=1/2/3, n=0)
-# Build the keymap first with: install/build/xkb/build-xkb.sh
-if [ -f "$HOME/.config/xkb/keymap.xkb" ]; then
-    xkbcomp -w0 "$HOME/.config/xkb/keymap.xkb" "$DISPLAY"
-    pkill -x xcape 2>/dev/null || true
-    xcape -e 'Control_L=Escape' &
-else
-    setxkbmap se
-fi
+setxkbmap se
 
 # Set the default X cursor to the usual pointer
 xsetroot -cursor_name left_ptr &
