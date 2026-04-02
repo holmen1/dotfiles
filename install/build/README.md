@@ -12,3 +12,6 @@ Fork of X.Org that must be built from AUR on Arch (available via `pkg` on FreeBS
 
 [neovim](https://github.com/holmen1/dotfiles/tree/master/install/build/neovim)
 Neovim 0.12 - built from source on FreeBSD (not yet available via `pkg` or ports as of March 2026)
+
+[xkb](https://github.com/holmen1/dotfiles/tree/master/install/build/xkb)
+Custom XKB keymap for X11 — Swedish layout with programmer remaps and Super num-layer. Built with `build-xkb.sh`, applied via `scripts/apply-xkb.sh`
