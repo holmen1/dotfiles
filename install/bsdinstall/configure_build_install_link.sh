@@ -10,6 +10,7 @@ LINKS=$DOTFILES_DIR/install/bsdinstall/links/suckless_links.config
 
 XMONAD_DIR=$DOTFILES_DIR/install/build/xmonad
 ST_DIR=$DOTFILES_DIR/install/build/st
+XKB_DIR=$DOTFILES_DIR/install/build/xkb
 
 COMPUTERNAME=$(hostname -s)
 PKGPROFILE=${COMPUTERNAME}
