@@ -16,6 +16,8 @@ This repository contains a custom configuration for the [XMonad](https://xmonad.
 | `Mod + Space`          | Rotate through available layouts      |
 | `Mod + Tab`            | Next workspace                        |
 | `Mod + Shift + Tab`    | Previous workspace                    |
+| `Mod + [1..4]`         | Switch to workspace N                 |
+| `Mod + Shift + [1..4]` | Move window to workspace N and follow |
 | `Mod + H`              | Shrink the master area                |
 | `Mod + J`              | Move focus to the next window         |
 | `Mod + K`              | Move focus to the previous window     |

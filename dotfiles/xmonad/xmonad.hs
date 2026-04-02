@@ -69,6 +69,13 @@ myKeys terminal browser =
     ((myModMask, xK_w), namedScratchpadAction (myScratchpads terminal browser) "browser"),
     ((myModMask, xK_p), namedScratchpadAction (myScratchpads terminal browser) "htop")
   ]
+  ++
+  -- mod-[1..9], Switch to workspace N
+  -- mod-shift-[1..9], Move client to workspace N and follow it
+  [ ((m .|. myModMask, k), windows $ f i)
+    | (i, k) <- zip myWorkspaces [xK_1 .. xK_9],
+      (f, m) <- [(W.greedyView, 0), (\i -> \w -> W.greedyView i (W.shift i w), shiftMask)]
+  ]
 
 myConfig terminal browser =
   def
