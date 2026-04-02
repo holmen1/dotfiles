@@ -1,21 +1,28 @@
 #!/bin/sh
 # Show xmonad keybindings in dmenu
-cat <<EOF | dmenu -l 20 -i -p "XMonad Help" \
+cat <<EOF | dmenu -l 24 -i -p "XMonad Help" \
 -nb "#222222" -nf "#ffffff" -sb "#222222" -sf "#ffffff" \
 -fn "JetBrainsMono Nerd Font Mono-16"
 Mod+Enter        Terminal
+Mod+Shift+Enter  Swap master window
 Mod+q            Close window
 Mod+Shift+q      Quit xmonad
 Mod+[1..4]       Switch to workspace N
-Mod+Tab          Next workspace
 Mod+Shift+[1..4] Move window to workspace N and follow
-Mod+Shift+Enter  Swap master window
-Mod+Shift+h      Shrink master area
-Mod+Shift+l      Expand master area
+Mod+Tab          Next workspace
+Mod+Shift+Tab    Previous workspace
+Mod+j            Focus next window
+Mod+k            Focus previous window
+Mod+h            Shrink master area
+Mod+l            Expand master area
+Mod+,            Increment master windows
+Mod+.            Decrement master windows
+Mod+Space        Rotate through available layouts
 - Scratchpads
 Mod+w            Browser toggle
 Mod+p            htop toggle
 - Applications
+Mod+b            Browser
 Mod+e            File manager
 Mod+s            Screenshot
 Mod+Shift+s      Area screenshot

@@ -5,7 +5,6 @@ import XMonad.Actions.CycleWS
 import XMonad.Hooks.EwmhDesktops (ewmh, ewmhFullscreen)
 import XMonad.Hooks.FadeWindows
 import XMonad.Layout.NoBorders
-import XMonad.ManageHook
 import XMonad.Operations (unGrab)
 import qualified XMonad.StackSet as W
 import XMonad.Util.EZConfig (additionalKeys)
@@ -55,7 +54,10 @@ myKeys terminal browser =
   [ ((myModMask, xK_a), spawn myAppLauncher),
     ((myModMask, xK_e), spawn $ terminal ++ " -e lf"),
     ((myModMask, xK_Return), spawn terminal),
+    ((myModMask, xK_b), spawn browser),
     ((myModMask .|. shiftMask, xK_Return), windows W.swapMaster),
+    ((myModMask, xK_Tab), nextWS),
+    ((myModMask .|. shiftMask, xK_Tab), prevWS),
     ((myModMask, xK_q), kill),
     -- screenshots
     ((myModMask, xK_s), spawn "scrot ~/Downloads/screenshot_%Y-%m-%d_%H-%M-%S.png"),

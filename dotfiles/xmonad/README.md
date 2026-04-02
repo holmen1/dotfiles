@@ -12,11 +12,10 @@ This repository contains a custom configuration for the [XMonad](https://xmonad.
 | `Mod + Enter`          | Launch terminal                       |
 | `Mod + M`              | Help menu                             |
 | `Mod + Q`              | Close the focused window              |
+| `Mod + Shift + Q`      | Quit xmonad                           |
 | `Mod + Space`          | Rotate through available layouts      |
-| `Mod + Shift + Space`  | Reset the layout to default           |
-| `Mod + N`              | Resize/refresh windows                |
-| `Mod + Tab`            | Move to the next workspace TODO       |
-| `Mod + Shift + Tab`    | Move focus to the previous window     |
+| `Mod + Tab`            | Next workspace                        |
+| `Mod + Shift + Tab`    | Previous workspace                    |
 | `Mod + H`              | Shrink the master area                |
 | `Mod + J`              | Move focus to the next window         |
 | `Mod + K`              | Move focus to the previous window     |
@@ -28,7 +27,10 @@ This repository contains a custom configuration for the [XMonad](https://xmonad.
 | `Mod + V`              | VPN menu                              |
 | `Mod + S`              | Screenshot to `~/Downloads`           |
 | `Mod + Shift + S`      | Capture a selected area screenshot to `~/Downloads` |
-| `Mod + W`              | Launch browser                        |
+| `Mod + W`              | Browser scratchpad toggle             |
+| `Mod + P`              | htop scratchpad toggle                |
+| `Mod + B`              | Launch browser                        |
+| `Mod + E`              | Launch file manager (lf)              |
 | `Mod + A`              | Launch dmenu                          |
 
 
