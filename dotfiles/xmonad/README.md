@@ -34,6 +34,7 @@ This repository contains a custom configuration for the [XMonad](https://xmonad.
 | `Mod + B`              | Launch browser                        |
 | `Mod + E`              | Launch file manager (lf)              |
 | `Mod + A`              | Launch dmenu                          |
+| `Mod + Z`              | XKB layout menu                       |
 
 
 ## Requirements

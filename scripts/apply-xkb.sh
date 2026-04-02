@@ -11,6 +11,7 @@ if [ -f "$HOME/.config/xkb/keymap.xkb" ]; then
     xkbcomp -w0 "$HOME/.config/xkb/keymap.xkb" "$DISPLAY"
     pkill -x xcape 2>/dev/null || true
     xcape -e 'Control_L=Escape' &
+    echo "custom" > "$HOME/.cache/xkb-layout"
 else
     echo "Warning: $HOME/.config/xkb/keymap.xkb not found. Run install/build/xkb/build-xkb.sh first." >&2
 fi
