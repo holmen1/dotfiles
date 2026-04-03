@@ -16,17 +16,17 @@ X11 keyboard customisation using **XKB** and **xcape**.
 | u   | u   | U   | 7   | —  |
 | i   | i   | I   | 8   | —  |
 | o   | o   | O   | 9   | —  |
+| å   | [   | ]   | —   | —  |
+| s   | s   | S   | $   | —  |
 | j   | j   | J   | 4   | (  |
 | k   | k   | K   | 5   | )  |
 | l   | l   | L   | 6   | —  |
-| m   | m   | M   | 1   | —  |
+| ö   | ⌫   | :   | =   | —  |
+| ä   | ↑   | \|  | /   | —  |
 | n   | n   | N   | 0   | —  |
+| m   | m   | M   | 1   | —  |
 | ,   | ,   | ;   | 2   | —  |
 | .   | .   | :   | 3   | —  |
-| å   | [   | ]   | —   | —  |
-| ö   | ⌫   | ↑   | =   | —  |
-| ä   | :   | \|  | /   | —  |
-| s   | s   | S   | $   | —  |
 
 ### Num-layer
 
@@ -112,6 +112,14 @@ Run on every X startup via `.xinitrc`:
 
 1. `xkbcomp keymap.xkb $DISPLAY` loads the pre-compiled keymap — no setxkbmap, no sed
 2. `xcape` is restarted to synthesise Escape on CapsLock tap
+
+---
+
+## Lessons learned
+
+**Shift modifier stays active in apps**: If a key at level 2 (Shift+key) produces a keysym like `Up`, the app still sees `Shift+Up` instead of bare `Up`. Put frequently-used, modifier-sensitive keys at level 1.
+
+Example: `ö → Up` at L1 scrolls fine; at L2 it would send `Shift+Up`, which most apps don't recognize as scroll.
 
 ---
 

@@ -19,7 +19,7 @@ xkb_symbols "local" {
     key <AB08> { [ comma, semicolon, 2 ] };
     key <AB09> { [ period, colon, 3 ] };
     key <AD11> { [ bracketleft, bracketright ] };
-    key <AC10> { [ BackSpace, Up, equal ] };
-    key <AC11> { [ colon, bar, slash ] };
+    key <AC10> { [ BackSpace, colon, equal ] };
+    key <AC11> { [ Up, bar, slash ] };
     key <AC02> { [ s, S, dollar ] };
 };
