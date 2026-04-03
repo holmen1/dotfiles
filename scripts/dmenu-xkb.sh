@@ -29,12 +29,12 @@ case "$choice" in
         xkbcomp -w0 "$KEYMAP" "$DISPLAY"
         pkill -x xcape 2>/dev/null || true
         xcape -e 'Control_L=Escape' &
-	echo "$choice" > "$STATE"
+	    echo "$choice" > "$STATE"
         ;;
     se)
         pkill -x xcape 2>/dev/null || true
         setxkbmap se
-	echo "$choice" > "$STATE"
+	    echo "$choice" > "$STATE"
         ;;
 esac
 
