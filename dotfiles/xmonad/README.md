@@ -7,34 +7,34 @@ This repository contains a custom configuration for the [XMonad](https://xmonad.
 
 ## Shortcuts
 
-| Key Combination       | Action                                 |
-|------------------------|----------------------------------------|
+| Key Combination        | Action                                |
+|------------------------|---------------------------------------|
 | `Mod + Enter`          | Launch terminal                       |
-| `Mod + M`              | Help menu                             |
 | `Mod + Q`              | Close the focused window              |
-| `Mod + Shift + Q`      | Quit xmonad                           |
-| `Mod + Space`          | Rotate through available layouts      |
+| `Mod + J`              | Move focus to the next window         |
+| `Mod + K`              | Move focus to the previous window     |
 | `Mod + Tab`            | Next workspace                        |
 | `Mod + Shift + Tab`    | Previous workspace                    |
 | `Mod + [1..4]`         | Switch to workspace N                 |
 | `Mod + Shift + [1..4]` | Move window to workspace N and follow |
+| `Mod + E`              | Launch file manager (lf)              |
+| `Mod + B`              | Launch browser                        |
+| `Mod + Space`          | Rotate through available layouts      |
 | `Mod + H`              | Shrink the master area                |
-| `Mod + J`              | Move focus to the next window         |
-| `Mod + K`              | Move focus to the previous window     |
 | `Mod + L`              | Expand the master area                |
-| `Mod + Shift + Return` | Swap the focused window with master   |
 | `Mod + ,`              | Increment master windows              |
 | `Mod + .`              | Decrement master windows              |
-| `Mod + X`              | Logout menu                           |
-| `Mod + V`              | VPN menu                              |
+| `Mod + Shift + Return` | Swap the focused window with master   |
 | `Mod + S`              | Screenshot to `~/Downloads`           |
-| `Mod + Shift + S`      | Capture a selected area screenshot to `~/Downloads` |
+| `Mod + Shift + S`      | Screenshot selected area              |
 | `Mod + W`              | Browser scratchpad toggle             |
 | `Mod + P`              | htop scratchpad toggle                |
-| `Mod + B`              | Launch browser                        |
-| `Mod + E`              | Launch file manager (lf)              |
-| `Mod + A`              | Launch dmenu                          |
+| `Mod + V`              | VPN menu                              |
 | `Mod + Z`              | XKB layout menu                       |
+| `Mod + X`              | Logout menu                           |
+| `Mod + A`              | Launch dmenu                          |
+| `Mod + Shift + Q`      | Quit xmonad                           |
+| `Mod + M`              | Help menu                             |
 
 
 ## Requirements
