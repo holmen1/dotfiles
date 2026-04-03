@@ -20,15 +20,28 @@ X11 keyboard customisation using **XKB** and **xcape**.
      n     →  0
 ```
 
-### Persistent remaps (Swedish keys)
+### XKB Levels
 
-| Key | Unshifted | Shifted |
-|-----|-----------|---------|
-| å   | `=`       | `~`     |
-| ö   | `:`       | `;`     |
-| ä   | `/`       | `\|`    |
-| `,` | `,`       | `<`     |
-| `.` | `.`       | `>`     |
+Each key can have up to 8 levels, defined as `[ level1, level2, level3, level4, ... ]`:
+- **Level 1**: normal tap
+- **Level 2**: Shift+key
+- **Level 3**: Super+key (via `lv3:lwin_switch`)
+- **Level 4**: Super+Shift+key
+
+Example: `key <AD07> { [ u, U, 7 ] };` means: normal=`u`, Shift=`U`, Super=`7`.
+
+### Custom symbol mappings
+
+| Key | L1 | L2 | L3 | L4 |
+|-----|----|----|----|----|
+| å   | `[` | `]` | — | — |
+| ö   | ⌫  | ↑  | `=` | — |
+| ä   | `:` | `\|` | `/` | — |
+| s   | `s` | `S` | `$` | — |
+| j   | `j` | `J` | `4` | `(` |
+| k   | `k` | `K` | `5` | `)` |
+| `,` | `,` | `;` | `2` | — |
+| `.` | `.` | `:` | `3` | — |
 
 ---
 
@@ -77,6 +90,16 @@ xcape -e 'Control_L=Escape'
 `lv3:lwin_switch` (built-in XKB option) makes the left Super key the
 **level-3 activator** — the same mechanism as AltGr.  
 `~/.config/xkb/symbols/local` assigns digits at level 3 for the numpad cluster.
+
+### XKB Levels
+
+Each key has multiple levels — outputs defined as `[ level1, level2, level3, ... ]`:
+- **Level 1**: unshifted (normal tap)
+- **Level 2**: Shift+key
+- **Level 3**: level-3 activator held (AltGr by default, Super in this config)
+- **Level 4**: level-3 + Shift
+
+Example: `key <AD07> { [ u, U, 7 ] };` means: normal=`u`, Shift=`U`, Super=`7`.
 
 ### Load (`apply-keys.sh`)
 
