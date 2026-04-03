@@ -11,13 +11,33 @@ X11 keyboard customisation using **XKB** and **xcape**.
 | CapsLock | Escape  | Control     |
 | Super    | —       | Num-layer   |
 
-### Num-layer (Super held)
+## Custom symbol mappings
 
+| Key | L1  | L2  | L3  | L4 |
+|-----|-----|-----|-----|----|
+| u   | u   | U   | 7   | —  |
+| i   | i   | I   | 8   | —  |
+| o   | o   | O   | 9   | —  |
+| j   | j   | J   | 4   | (  |
+| k   | k   | K   | 5   | )  |
+| l   | l   | L   | 6   | —  |
+| m   | m   | M   | 1   | —  |
+| n   | n   | N   | 0   | —  |
+| ,   | ,   | ;   | 2   | —  |
+| .   | .   | :   | 3   | —  |
+| å   | [   | ]   | —   | —  |
+| ö   | ⌫   | ↑   | =   | —  |
+| ä   | :   | \|  | /   | —  |
+| s   | s   | S   | $   | —  |
+
+### Num-layer
+
+Level 3 (Super held) maps row keys to numpad grid:
 ```
-  u  i  o  →  7  8  9
-  j  k  l  →  4  5  6
-  m  ,  .  →  1  2  3
-     n     →  0
+u i o  →  7 8 9
+j k l  →  4 5 6
+m , .  →  1 2 3
+  n    →  0
 ```
 
 ### XKB Levels
@@ -29,19 +49,6 @@ Each key can have up to 8 levels, defined as `[ level1, level2, level3, level4, 
 - **Level 4**: Super+Shift+key
 
 Example: `key <AD07> { [ u, U, 7 ] };` means: normal=`u`, Shift=`U`, Super=`7`.
-
-### Custom symbol mappings
-
-| Key | L1 | L2 | L3 | L4 |
-|-----|----|----|----|----|
-| å   | `[` | `]` | — | — |
-| ö   | ⌫  | ↑  | `=` | — |
-| ä   | `:` | `\|` | `/` | — |
-| s   | `s` | `S` | `$` | — |
-| j   | `j` | `J` | `4` | `(` |
-| k   | `k` | `K` | `5` | `)` |
-| `,` | `,` | `;` | `2` | — |
-| `.` | `.` | `:` | `3` | — |
 
 ---
 

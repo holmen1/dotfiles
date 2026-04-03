@@ -4,6 +4,7 @@ case "$(uname -s)" in
     *)        KEYMAP="$HOME/.config/xkb/keymap-linux.xkb" ;;
 esac
 STATE="$HOME/.cache/xkb-layout"
+README="$HOME/repos/dotfiles/dotfiles/xkb/README.md"
 
 if fc-list | grep -qi "JetBrainsMono Nerd Font"; then
     FONT="JetBrainsMono Nerd Font Mono-14"
@@ -13,12 +14,17 @@ fi
 
 current=$(cat "$STATE" 2>/dev/null || echo "se")
 
-choice=$(printf "custom\nse" | dmenu -p "xkb[$current]" -nb "#222222" -nf "#ffffff" -sb "#A300A3" -sf "#ffffff" \
+choice=$(printf "help\ncustom\nse" | dmenu -p "xkb[$current]" -nb "#222222" -nf "#ffffff" -sb "#A300A3" -sf "#ffffff" \
     -fn "$FONT")
 
 [ -z "$choice" ] && exit 0
 
 case "$choice" in
+    help)
+        head -50 "$README" | dmenu -l 32 -i -p "XKB Help" \
+-nb "#222222" -nf "#ffffff" -sb "#222222" -sf "#ffffff" \
+-fn "JetBrainsMono Nerd Font Mono-14"
+        ;;
     custom)
         xkbcomp -w0 "$KEYMAP" "$DISPLAY"
         pkill -x xcape 2>/dev/null || true
