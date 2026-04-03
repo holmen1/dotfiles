@@ -2,8 +2,6 @@
 
 X11 keyboard customisation using **XKB** and **xcape**.
 
----
-
 ## Key behaviour
 
 | Key      | Tap     | Hold        |

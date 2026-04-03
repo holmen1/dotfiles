@@ -21,7 +21,7 @@ choice=$(printf "help\ncustom\nse" | dmenu -p "xkb[$current]" -nb "#222222" -nf 
 
 case "$choice" in
     help)
-        head -50 "$README" | dmenu -l 32 -i -p "XKB Help" \
+        sed -n 7,30p "$README" | dmenu -l 24 -i -p "XKB Help" \
 -nb "#222222" -nf "#ffffff" -sb "#222222" -sf "#ffffff" \
 -fn "JetBrainsMono Nerd Font Mono-14"
         ;;
@@ -29,11 +29,12 @@ case "$choice" in
         xkbcomp -w0 "$KEYMAP" "$DISPLAY"
         pkill -x xcape 2>/dev/null || true
         xcape -e 'Control_L=Escape' &
+	echo "$choice" > "$STATE"
         ;;
     se)
         pkill -x xcape 2>/dev/null || true
         setxkbmap se
+	echo "$choice" > "$STATE"
         ;;
 esac
 
-echo "$choice" > "$STATE"
