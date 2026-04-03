@@ -143,10 +143,14 @@ case "$ans" in
     ;;
 esac
 
-read -p "Run tests? [y/N] " ans
+read -p "Run tests? [Y/n] " ans
 case "$ans" in
-    [Yy]*)
-    # Test
+    [Nn])
+    # Skip tests
+    ;;
+    *)
+    # Test (default)
     $TEST
     ;;
 esac
+
