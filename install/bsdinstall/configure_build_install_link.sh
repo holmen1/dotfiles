@@ -10,6 +10,7 @@ LINKS=$DOTFILES_DIR/install/bsdinstall/links/suckless_links.config
 
 XMONAD_DIR=$DOTFILES_DIR/install/build/xmonad
 ST_DIR=$DOTFILES_DIR/install/build/st
+XKB_DIR=$DOTFILES_DIR/install/build/xkb
 
 COMPUTERNAME=$(hostname -s)
 PKGPROFILE=${COMPUTERNAME}
@@ -88,10 +89,19 @@ case "$ans" in
     sudo cp -f $ST_DIR/bin/st-0.9.[0-9] /opt/st/
     echo "Installed st to /opt/st/"
     sudo ln -sf /opt/st/st-0.9.* /usr/local/bin/st
+    sudo -k
     echo "Created symlink for st"
     ;;
 esac
 sudo -k
+
+read -p "Build xkb keymap? [y/N] " ans
+case "$ans" in
+    [Yy]*)
+    $XKB_DIR/build-xkb.sh
+    echo "Built xkb keymap"
+    ;;
+esac
 
 read -p "Link dotfiles? [y/N] " ans
 case "$ans" in
@@ -100,18 +110,6 @@ case "$ans" in
     $LINK_SCRIPT $LINKS
     ;;
 esac
-
-read -p "Enable keyd num layer? [y/N] " ans
-case "$ans" in
-    [Yy]*)
-    sudo mkdir -p /usr/local/etc/keyd
-    sudo ln -sf $DOTFILES_DIR/dotfiles/keyd/default.conf /usr/local/etc/keyd/default.conf
-    sudo sysrc keyd_enable=YES
-    sudo service keyd onerestart
-    echo "keyd num layer enabled"
-    ;;
-esac
-sudo -k
 
 read -p "Enable system monitoring? [y/N] " ans
 case "$ans" in
@@ -130,10 +128,13 @@ case "$ans" in
     ;;
 esac
 
-read -p "Run tests? [y/N] " ans
+read -p "Run tests? [Y/n] " ans
 case "$ans" in
-    [Yy]*)
-    # Test
+    [Nn])
+    # Skip tests
+    ;;
+    *)
+    # Test (default)
     $TEST
     ;;
 esac

@@ -37,6 +37,7 @@ esac
 
 # Set keymap (don't background - fast and should complete before apps start)
 setxkbmap se
+echo "se" > "$HOME/.cache/xkb-layout" # Cache current layout for dmenu status script
 
 # Set the default X cursor to the usual pointer
 xsetroot -cursor_name left_ptr &

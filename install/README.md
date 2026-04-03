@@ -356,6 +356,35 @@ find /path/to/search -name "*.txt" -exec grep "search term" {} \;
 
 ### Repo behind remote
 
+**If you've committed locally but remote also has new commits:**
+
+Git will refuse to pull and ask you to specify a reconciliation strategy:
+
+```
+fatal: Need to specify how to reconcile divergent branches.
+```
+
+**Best option (recommended):**
+```bash
+git pull --rebase
+```
+Replays your local commits on top of remote changes. Linear history, cleaner.
+
+**Alternative (preserves merge history):**
+```bash
+git pull --no-rebase
+```
+or set default:
+```bash
+git config pull.rebase false
+```
+
+**Or fast-forward only (fails if diverged):**
+```bash
+git pull --ff-only
+```
+
+**Legacy workaround (not recommended):**
 ```bash
 git stash [-u]
 git pull

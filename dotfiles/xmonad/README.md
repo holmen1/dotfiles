@@ -7,32 +7,39 @@ This repository contains a custom configuration for the [XMonad](https://xmonad.
 
 ## Shortcuts
 
-| Key Combination       | Action                                 |
-|------------------------|----------------------------------------|
+| Key Combination        | Action                                |
+|------------------------|---------------------------------------|
 | `Mod + Enter`          | Launch terminal                       |
-| `Mod + H`              | Help menu                             |
 | `Mod + Q`              | Close the focused window              |
-| `Mod + Space`          | Rotate through available layouts      |
-| `Mod + Shift + Space`  | Reset the layout to default           |
-| `Mod + N`              | Resize/refresh windows                |
-| `Mod + Tab`            | Move to the next workspace            |
-| `Mod + Shift + Tab`    | Move focus to the previous window     |
 | `Mod + J`              | Move focus to the next window         |
 | `Mod + K`              | Move focus to the previous window     |
-| `Mod + Shift + Return` | Swap the focused window with master   |
+| `Mod + Tab`            | Next workspace                        |
+| `Mod + Shift + Tab`    | Previous workspace                    |
+| `Mod + [1..4]`         | Switch to workspace N                 |
+| `Mod + Shift + [1..4]` | Move window to workspace N and follow |
+| `Mod + E`              | Launch file manager (lf)              |
+| `Mod + B`              | Launch browser                        |
+| `Mod + Space`          | Rotate through available layouts      |
+| `Mod + H`              | Shrink the master area                |
+| `Mod + L`              | Expand the master area                |
 | `Mod + ,`              | Increment master windows              |
 | `Mod + .`              | Decrement master windows              |
-| `Mod + X`              | Logout menu                           |
-| `Mod + M`              | VPN menu                              |
+| `Mod + Shift + Return` | Swap the focused window with master   |
 | `Mod + S`              | Screenshot to `~/Downloads`           |
-| `Mod + Shift + S`      | Capture a selected area screenshot to `~/Downloads` |
-| `Mod + W`              | Launch browser                        |
+| `Mod + Shift + S`      | Screenshot selected area              |
+| `Mod + W`              | Browser scratchpad toggle             |
+| `Mod + P`              | htop scratchpad toggle                |
+| `Mod + V`              | VPN menu                              |
+| `Mod + Z`              | XKB layout menu                       |
+| `Mod + X`              | Logout menu                           |
 | `Mod + A`              | Launch dmenu                          |
+| `Mod + Shift + Q`      | Quit xmonad                           |
+| `Mod + M`              | Help menu                             |
 
 
 ## Requirements
 
-- [Xmobar](https://xmobar.org/)
+- [Xmobar](https://xmobar.org/) NOT USING
 - [st - simple terminal](https://st.suckless.org/)
 - [Brave](https://brave.com/linux/)
 - thunar fileexplorer

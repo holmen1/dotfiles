@@ -31,15 +31,19 @@ Then follow prompts:
 ```
 Configure git? [y/N]
 Generate SSH key? [y/N]
-/home/holmen1/repos/dotfiles/install/bsdinstall/packages/besk/pkglist.txt
+Install yay? [y/N]
+/home/holmen1/repos/dotfiles/install/archinstall/packages/x1/pkglist.txt
 Install pkglist? [y/N]
+/home/holmen1/repos/dotfiles/install/archinstall/packages/x1/foreignpkglist.txt
+Install foreignpkglist? [y/N]
 Build xmonad? [y/N]
 Install xmonad? [y/N]
 Build st? [y/N]
 Install st? [y/N]
+Build xkb keymap? [y/N]
 Link dotfiles? [y/N]
-Enable system monitoring? [y/N]
-Run tests? [y/N]
+Enable services? [y/N]
+Run tests? [Y/n]
 ```
 
 

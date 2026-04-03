@@ -10,6 +10,7 @@ LINK_SCRIPT=$SCRIPTS_DIR/link_config.sh
 
 XMONAD_DIR=$DOTFILES_DIR/install/build/xmonad
 ST_DIR=$DOTFILES_DIR/install/build/st
+XKB_DIR=$DOTFILES_DIR/install/build/xkb
 
 COMPUTERNAME=$(hostnamectl --static 2>/dev/null || hostname -s)
 PKGPROFILE=${COMPUTERNAME}
@@ -117,6 +118,14 @@ case "$ans" in
     ;;
 esac
 
+read -p "Build xkb keymap? [y/N] " ans
+case "$ans" in
+    [Yy]*)
+    $XKB_DIR/build-xkb.sh
+    echo "Built xkb keymap"
+    ;;
+esac
+
 read -p "Link dotfiles? [y/N] " ans
 case "$ans" in
     [Yy]*)
@@ -134,10 +143,14 @@ case "$ans" in
     ;;
 esac
 
-read -p "Run tests? [y/N] " ans
+read -p "Run tests? [Y/n] " ans
 case "$ans" in
-    [Yy]*)
-    # Test
+    [Nn])
+    # Skip tests
+    ;;
+    *)
+    # Test (default)
     $TEST
     ;;
 esac
+

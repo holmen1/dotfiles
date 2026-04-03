@@ -16,11 +16,9 @@ fastfetch
 fd
 feh
 gdb
-ghc-static
 git
 grub
 gst-plugin-pipewire
-haskell-language-server
 htop
 i3lock
 intel-media-driver
@@ -56,8 +54,10 @@ unzip
 viu
 wireplumber
 xbindkeys
+xcape
 xclip
 xcompmgr
+xorg-xev
 xorg-xinit
 xorg-xsetroot
 xterm

@@ -1,0 +1,25 @@
+// ~/.config/xkb/symbols/local
+//
+// Custom XKB symbol definitions for Swedish layout.
+// See ../../../dotfiles/xkb/README.md for complete mappings.
+//
+// Format: key <KEYCODE> { [ level1, level2, level3, level4 ] };
+// Example: key <AD07> { [ u, U, 7 ] };   // u, Shift+u→U, Super+u→7
+
+partial alphanumeric_keys
+xkb_symbols "local" {
+    key <AD07> { [ u, U, 7 ] };
+    key <AD08> { [ i, I, 8 ] };
+    key <AD09> { [ o, O, 9 ] };
+    key <AC07> { [ j, J, 4, parenleft ] };
+    key <AC08> { [ k, K, 5, parenright ] };
+    key <AC09> { [ l, L, 6 ] };
+    key <AB07> { [ m, M, 1 ] };
+    key <AB06> { [ n, N, 0 ] };
+    key <AB08> { [ comma, semicolon, 2 ] };
+    key <AB09> { [ period, colon, 3 ] };
+    key <AD11> { [ bracketleft, bracketright ] };
+    key <AC10> { [ BackSpace, colon, equal ] };
+    key <AC11> { [ Up, bar, slash ] };
+    key <AC02> { [ s, S, dollar ] };
+};

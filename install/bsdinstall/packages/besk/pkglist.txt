@@ -41,6 +41,7 @@ sysutils/tree
 graphics/viu
 ftp/wget
 x11/xbindkeys
+x11/xcape
 x11/xclip
 x11-wm/xcompmgr
 x11/xlibre-minimal
