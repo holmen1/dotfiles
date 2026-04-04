@@ -36,42 +36,19 @@ apt install libx11-dev libxft-dev libxinerama-dev libxrandr-dev libxss-dev pkg-c
 curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
 ```
 
-#### Option: Arch Linux (Recommended for Arch systems)
+#### Arch Linux (Recommended for Arch systems)
 
 Note: [Static linking](https://wiki.archlinux.org/title/Haskell#Static_linking)
 
-Instead of GHCup, you can use Pacman to install pre-built Haskell tools:
+Instead of GHCup, you can use Pacman to install pre-built Haskell tools.
 
+If pacman behind, see how to build from
+[source](../ghc/README.md).
 
+#### Install on FreeBSD
 ```bash
-# Install GHC and Cabal from official Arch repositories
-pacman -S ghc-static cabal-install
+pkg install ghc hs-cabal-install [hs-haskell-language-server]
 ```
-
-**Troubleshooting: Could not find module ‘System.Random’**
-
-After a system upgrade, you may encounter the following error when building:
-
-   Could not find module ‘System.Random’
-   There are files missing in the ‘random-1.2.1.3’ package
-
-This can be resolved by installing the official binary GHC package. For example:
-
-```bash
-wget https://downloads.haskell.org/~ghc/9.12.4/ghc-9.12.4-x86_64-alpine3_12-linux-static-int_native.tar.gz
-tar -xvf ghc-9.12.4-x86_64-alpine3_12-linux-static-int_native.tar.gz
-# Follow the README or INSTALL instructions in the extracted directory to install GHC
-```
-
-This provides a complete set of libraries and resolves missing module errors.
-
-**Advantages:**
-- No need to manage a separate Haskell installer
-- XMonad builds fine without additional setup
-
-**Known Limitations:**
-- HLS (Haskell Language Server) may not align properly with LSP in Neovim
-- Confirm [version-support](https://haskell-language-server.readthedocs.io/en/latest/support/ghc-version-support.html)
 
 ### Config cabal
 Create cabal.project file
