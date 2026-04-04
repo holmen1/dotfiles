@@ -67,17 +67,27 @@ connect_network() {
         linux)
             IFACE=$(iwctl device list 2>/dev/null | grep 'station' | awk '{print $2}')
             if [ -n "$passwd" ]; then
-                iwctl --passphrase "$passwd" station "$IFACE" connect "$ssid"
+                iwctl --passphrase "$passwd" station "$IFACE" connect "$ssid" 2>&1
             else
-                iwctl station "$IFACE" connect "$ssid"
+                iwctl station "$IFACE" connect "$ssid" 2>&1
+            fi
+            sleep 1
+            STATE=$(iwctl station "$IFACE" show 2>/dev/null | grep "State" | awk '{print $2}')
+            if [ "$STATE" = "connected" ]; then
+                notify-send "WiFi" "Connected to $ssid"
             fi
             ;;
         freebsd)
             IFACE=$(ifconfig -l 2>/dev/null | tr ' ' '\n' | grep '^wlan' | head -1)
             if [ -n "$passwd" ]; then
-                sudo iwctl --passphrase "$passwd" station "$IFACE" connect "$ssid"
+                sudo iwctl --passphrase "$passwd" station "$IFACE" connect "$ssid" 2>&1
             else
-                sudo iwctl station "$IFACE" connect "$ssid"
+                sudo iwctl station "$IFACE" connect "$ssid" 2>&1
+            fi
+            sleep 1
+            STATE=$(ifconfig "$IFACE" 2>/dev/null | grep "status:" | awk '{print $2}')
+            if [ "$STATE" = "associated" ]; then
+                notify-send "WiFi" "Connected to $ssid"
             fi
             ;;
     esac
@@ -109,8 +119,7 @@ if echo "$status" | grep -q "^connected:"; then
         Disconnect) disconnect_network ;;
         Scan) selected=$(scan_networks | dmenu -p "Networks:" -nb "#222222" -nf "#ffffff" -sb "#A300A3" -sf "#ffffff" -fn "$FONT")
               if [ -n "$selected" ]; then
-                  passwd=$(echo "" | dmenu -p "Password for $selected:" -nb "#222222" -nf "#ffffff" -sb "#A300A3" -sf "#ffffff" -fn "$FONT" -mask '*')
-                  connect_network "$selected" "$passwd"
+                  connect_network "$selected" ""
               fi ;;
     esac
 else
@@ -118,12 +127,11 @@ else
     case "$action" in
         Scan) selected=$(scan_networks | dmenu -p "Networks:" -nb "#222222" -nf "#ffffff" -sb "#A300A3" -sf "#ffffff" -fn "$FONT")
               if [ -n "$selected" ]; then
-                  passwd=$(echo "" | dmenu -p "Password for $selected:" -nb "#222222" -nf "#ffffff" -sb "#A300A3" -sf "#ffffff" -fn "$FONT" -mask '*')
-                  connect_network "$selected" "$passwd"
+                  connect_network "$selected" ""
               fi ;;
         Manual) ssid=$(echo "" | dmenu -p "SSID:" -nb "#222222" -nf "#ffffff" -sb "#A300A3" -sf "#ffffff" -fn "$FONT")
                 if [ -n "$ssid" ]; then
-                    passwd=$(echo "" | dmenu -p "Password:" -nb "#222222" -nf "#ffffff" -sb "#A300A3" -sf "#ffffff" -fn "$FONT" -mask '*')
+                    passwd=$(dmenu -p "Password for $ssid:" -nb "#222222" -nf "#ffffff" -sb "#A300A3" -sf "#ffffff" -fn "$FONT" < /dev/null)
                     connect_network "$ssid" "$passwd"
                 fi ;;
     esac
