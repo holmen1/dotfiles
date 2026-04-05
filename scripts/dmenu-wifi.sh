@@ -37,17 +37,23 @@ connect_network() {
                 && notify-send "WiFi" "Connected to $1"
             ;;
         freebsd)
-            NET_ID=$(wpa_cli list_networks 2>/dev/null | awk -F'\t' -v s="$1" '$2==s{print $1}')
+            NET_ID=$(wpa_cli -i "$IFACE" list_networks 2>/dev/null | awk -F'\t' -v s="$1" '$2==s{print $1}')
             if [ -n "$NET_ID" ]; then
-                wpa_cli select_network "$NET_ID" >/dev/null
+                wpa_cli -i "$IFACE" select_network "$NET_ID" >/dev/null
             else
-                NET_ID=$(wpa_cli add_network | tail -1)
-                wpa_cli set_network "$NET_ID" ssid "\"$1\"" >/dev/null
-                wpa_cli set_network "$NET_ID" psk "\"$2\"" >/dev/null
-                wpa_cli enable_network "$NET_ID" >/dev/null
-                wpa_cli save_config >/dev/null
+                NET_ID=$(wpa_cli -i "$IFACE" add_network | tail -1)
+                wpa_cli -i "$IFACE" set_network "$NET_ID" ssid "\"$1\"" >/dev/null
+                wpa_cli -i "$IFACE" set_network "$NET_ID" psk "\"$2\"" >/dev/null
+                wpa_cli -i "$IFACE" enable_network "$NET_ID" >/dev/null
+                wpa_cli -i "$IFACE" save_config >/dev/null
             fi
-            sleep 2
+            wpa_cli -i "$IFACE" reassociate >/dev/null
+            i=0; while [ $i -lt 10 ]; do
+                ifconfig "$IFACE" 2>/dev/null | awk '/status:/{print $2}' | grep -q associated && break
+                sleep 1; i=$((i+1))
+            done
+            sudo kill $(cat /var/run/dhclient."$IFACE".pid 2>/dev/null) 2>/dev/null
+            sudo dhclient "$IFACE" >/dev/null 2>&1
             ifconfig "$IFACE" 2>/dev/null | awk '/status:/{print $2}' | grep -q associated \
                 && notify-send "WiFi" "Connected to $1"
             ;;
