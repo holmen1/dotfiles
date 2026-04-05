@@ -134,7 +134,7 @@ if echo "$status" | grep -q "^connected:"; then
         Scan) scan_and_connect ;;
     esac
 else
-    action=$(printf "Scan\nManual" | dmenu -p "WiFi:" -nb "#222222" -nf "#ffffff" -sb "#A300A3" -sf "#ffffff" -fn "$FONT")
+    action=$(printf "Scan\nManual\nHelp" | dmenu -p "WiFi:" -nb "#222222" -nf "#ffffff" -sb "#A300A3" -sf "#ffffff" -fn "$FONT")
     case "$action" in
         Scan) scan_and_connect ;;
         Manual) ssid=$(echo "" | dmenu -p "SSID:" -nb "#222222" -nf "#ffffff" -sb "#A300A3" -sf "#ffffff" -fn "$FONT")
@@ -142,6 +142,16 @@ else
                     passwd=$(dmenu -p "Password for $ssid:" -nb "#222222" -nf "#ffffff" -sb "#A300A3" -sf "#ffffff" -fn "$FONT" < /dev/null)
                     connect_network "$ssid" "$passwd"
                 fi ;;
+        Help)
+            case "$OS" in
+                linux)
+                    printf "iwctl station wlan0 scan\niwctl station wlan0 get-networks\niwctl --passphrase pwd station wlan0 connect network" | dmenu -l 3 -p "WiFi Help" -nb "#222222" -nf "#ffffff" -sb "#222222" -sf "#ffffff" -fn "$FONT"
+                    ;;
+                freebsd)
+                    printf "Scan:\nsudo ifconfig wlan0 up list scan\n\nConnect:\nNETID=\$(sudo wpa_cli add_network | tail -1)\nsudo wpa_cli set_network \$NETID ssid \"SSID\"\nsudo wpa_cli set_network \$NETID psk \"password\"\nsudo wpa_cli enable_network \$NETID\nsudo wpa_cli save_config\nsudo service netif restart" | dmenu -l 10 -p "WiFi Help" -nb "#222222" -nf "#ffffff" -sb "#222222" -sf "#ffffff" -fn "$FONT"
+                    ;;
+            esac
+            ;;
     esac
 fi
 
