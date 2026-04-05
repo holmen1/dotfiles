@@ -2,25 +2,13 @@
 
 Run on FreeBSD and paste output:
 
-```sh
-IFACE=wlan0
-holmen1@besk ~$ INFO=$(ifconfig $IFACE 2>/dev/null)
-holmen1@besk ~$ printf '%s' "$INFO" | awk '/status:/{print $2}'
-associated
-holmen1@besk ~$ printf '%s' "$INFO" | awk '/ssid/{print $2}'
-a46
-```
-
-holmen1@besk ~$ sudo ifconfig wlan0 up list scan
-holmen1@besk ~$ sudo ifconfig wlan0 ssid AA46
-holmen1@besk ~$ sudo dhclient wlan0
-wlan0: no link .............. giving up
+holmen1@besk ~$ wpa_cli list_networks | awk -F'\t' -v s="AA46" '$2==s{print $1}'
+0
+holmen1@besk ~$ wpa_cli select_network 0
+Selected interface 'wlan0'
+OK
 holmen1@besk ~$ ping dn.se
 ping: cannot resolve dn.se: Name could not be resolved at this time
----
-$ sudo service netif restart
-
-
 
 $ sudo cat /etc/wpa_supplicant.conf
 ctrl_interface=/var/run/wpa_supplicant
