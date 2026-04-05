@@ -1,42 +1,23 @@
-# Debug dmenu-wifi FreeBSD status detection
+# dmenu-wifi FreeBSD connect_network — status
 
-Run on FreeBSD and paste output:
+## What works
+- `IFACE`, `STATE`, `SSID` detection via `ifconfig` — confirmed working
+- `wpa_cli -i wlan0 list_networks` finds known SSIDs correctly
+- `wpa_cli -i wlan0 select_network <id>` returns OK
 
-holmen1@besk ~$ wpa_cli list_networks | awk -F'\t' -v s="AA46" '$2==s{print $1}'
-0
-holmen1@besk ~$ wpa_cli select_network 0
-Selected interface 'wlan0'
-OK
-holmen1@besk ~$ ping dn.se
-ping: cannot resolve dn.se: Name could not be resolved at this time
+## Problem
+Switching networks via `wpa_cli select_network` + `reassociate` leaves `status: no carrier`.
+`dhclient` subsequently fails or reports "no link".
+Root cause not identified — wpa_supplicant does not complete reassociation.
 
-$ sudo cat /etc/wpa_supplicant.conf
-ctrl_interface=/var/run/wpa_supplicant
-eapol_version=2
-ap_scan=1
-fast_reauth=1
+## Attempted
+- `wpa_cli select_network` alone → no carrier
+- `wpa_cli select_network` + `wpa_cli reassociate` → no carrier
+- kill dhclient pid + restart dhclient → no link
+- adding `-i "$IFACE"` to all wpa_cli calls → no carrier
 
-network={
-        ssid="AA46"
-        scan_ssid=0
-        psk="xx"
-        priority=4
-}
-network={
-        ssid="BB46"
-        scan_ssid=0
-        psk="xx"
-        priority=5
-}
-network={
-        ssid="a46"
-        scan_ssid=0
-        psk="xx"
-        priority=6
-}
-network={
-        ssid="b46"
-        scan_ssid=0
-        psk="xx"
-        priority=5
-}
+## TODO
+- Check wpa_supplicant log: `sudo wpa_cli -i wlan0 log_level DEBUG`
+- Try `sudo service netif restart wlan0` as an alternative to dhclient
+- Consider `ifconfig wlan0 down && ifconfig wlan0 up` before reassociate
+- May need `wpa_supplicant` restarted via rc.d rather than wpa_cli alone

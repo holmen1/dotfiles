@@ -146,8 +146,8 @@ case "$status" in
                             | menu "WiFi Help" 3
                         ;;
                     freebsd)
-                        printf "Scan:\nsudo ifconfig wlan0 up list scan\n\nConnect:\nNETID=\$(sudo wpa_cli add_network | tail -1)\nsudo wpa_cli set_network \$NETID ssid \"SSID\"\nsudo wpa_cli set_network \$NETID psk \"password\"\nsudo wpa_cli enable_network \$NETID\nsudo wpa_cli save_config\nsudo service netif restart" \
-                            | menu "WiFi Help" 10
+                        printf "See: ~/repos/dotfiles/install/bsdinstall/README.md\n#Wireless Configuration" \
+                            | menu "WiFi Help" 2
                         ;;
                 esac
                 ;;
