@@ -63,6 +63,7 @@ myKeys terminal browser =
     ((myModMask, xK_s), spawn "scrot ~/Downloads/screenshot_%Y-%m-%d_%H-%M-%S.png"),
     ((myModMask .|. shiftMask, xK_s), unGrab >> spawn "scrot -s ~/Downloads/screenshot_%Y-%m-%d_%H-%M-%S.png"),
     -- dmenu scripts
+    ((myModMask, xK_x), spawn "~/repos/dotfiles/scripts/dmenu-logout.sh"),
     ((myModMask, xK_m), spawn "~/repos/dotfiles/scripts/dmenu-menu.sh"),
     ((myModMask, xK_w), namedScratchpadAction (myScratchpads terminal browser) "browser"),
     ((myModMask, xK_p), namedScratchpadAction (myScratchpads terminal browser) "htop")
