@@ -1,19 +1,19 @@
 #!/bin/sh
 # dmenu-wifi: Minimal WiFi manager
 
-# Detect OS
-case "$(uname -s)" in
-    FreeBSD*) OS="freebsd" ;;
-    Linux*)   OS="linux" ;;
-    *)        OS="unknown" ;;
-esac
-
 # Font
 if fc-list | grep -qi "JetBrainsMono Nerd Font"; then
     FONT="JetBrainsMono Nerd Font Mono-14"
 else
     FONT="monospace-14"
 fi
+
+# Detect OS
+case "$(uname -s)" in
+    FreeBSD*) OS="freebsd" ;;
+    Linux*)   OS="linux" ;;
+    *)        OS="unknown" ;;
+esac
 
 # Get interface
 get_iface() {
@@ -27,11 +27,10 @@ get_iface() {
     esac
 }
 
+
 # Get current status
 get_status() {
-    IFACE=$(get_iface)
     [ -z "$IFACE" ] && echo "no-interface" && return
-    
     case "$OS" in
         linux)
             STATE=$(iwctl station "$IFACE" show 2>/dev/null | grep "State" | awk '{print $2}')
@@ -56,7 +55,6 @@ get_status() {
 
 # Scan networks
 scan_networks() {
-    IFACE=$(get_iface)
     case "$OS" in
         linux)
             iwctl station "$IFACE" scan >/dev/null 2>&1
@@ -73,7 +71,6 @@ scan_networks() {
 connect_network() {
     local ssid="$1"
     local passwd="$2"
-    IFACE=$(get_iface)
     case "$OS" in
         linux)
             if [ -n "$passwd" ]; then
@@ -104,7 +101,6 @@ connect_network() {
 
 # Disconnect
 disconnect_network() {
-    IFACE=$(get_iface)
     case "$OS" in
         linux)
             iwctl station "$IFACE" disconnect
@@ -117,6 +113,32 @@ disconnect_network() {
     esac
 }
 
+# Monitor mode (daemon use): notify based on pre-computed $status
+monitor_mode() {
+    case "$status" in
+        no-interface)
+            notify-send -u normal "Network" "No wireless interface found" -i network-wireless-offline
+            ;;
+        connected:*)
+            ;; # all good, stay silent
+        disconnected)
+            case "$OS" in
+                linux)
+                    RADIO=$(iwctl device list 2>/dev/null | grep "$IFACE" | awk '{print $4}')
+                    if [ "$RADIO" = "on" ]; then
+                        notify-send -u normal -t 150000 "WiFi Help" "WiFi enabled but not connected" -i network-wireless-disconnected
+                    else
+                        notify-send -u critical "Network" "WiFi is disabled" -i network-wireless-offline
+                    fi
+                    ;;
+                freebsd)
+                    # TODO
+                    ;;
+            esac
+            ;;
+    esac
+}
+
 # Scan and connect workflow
 scan_and_connect() {
     selected=$(scan_networks | dmenu -p "Networks:" -nb "#222222" -nf "#ffffff" -sb "#A300A3" -sf "#ffffff" -fn "$FONT")
@@ -124,7 +146,13 @@ scan_and_connect() {
 }
 
 # Main flow
+IFACE=$(get_iface)
 status=$(get_status)
+
+if [ "$1" = "--monitor" ]; then
+    monitor_mode
+    exit 0
+fi
 
 if echo "$status" | grep -q "^connected:"; then
     SSID=$(echo "$status" | cut -d: -f2)
