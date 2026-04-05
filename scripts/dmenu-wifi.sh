@@ -91,7 +91,7 @@ else
         freebsd)
             INFO=$(ifconfig "$IFACE" 2>/dev/null)
             STATE=$(printf '%s' "$INFO" | awk '/status:/{print $2}')
-            SSID=$(printf '%s' "$INFO" | awk -F'"' '/ssid/{print $2}')
+            SSID=$(printf '%s' "$INFO" | awk '/ssid/{print $2}')
             [ "$STATE" = "associated" ] && [ -n "$SSID" ] && status="connected:$SSID" || status="disconnected"
             ;;
     esac

@@ -1,3 +1,16 @@
+# Debug dmenu-wifi FreeBSD status detection
+
+Run on FreeBSD and paste output:
+
+```sh
+IFACE=wlan0
+INFO=$(ifconfig $IFACE 2>/dev/null)
+printf '%s' "$INFO" | awk '/status:/{print $2}'
+printf '%s' "$INFO" | awk '/ssid/{print $2}'
+```
+
+---
+
 holmen1@besk dotfiles (dmenu)$ ifconfig wlan0
 wlan0: flags=8843<UP,BROADCAST,RUNNING,SIMPLEX,MULTICAST> metric 0 mtu 1500
         options=0
