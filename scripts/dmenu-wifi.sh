@@ -36,14 +36,28 @@ connect_network() {
             iwctl station "$IFACE" show 2>/dev/null | awk '/State/{print $2}' | grep -q connected \
                 && notify-send "WiFi" "Connected to $1"
             ;;
-        freebsd) ;; # TODO
+        freebsd)
+            NET_ID=$(wpa_cli list_networks 2>/dev/null | awk -F'\t' -v s="$1" '$2==s{print $1}')
+            if [ -n "$NET_ID" ]; then
+                wpa_cli select_network "$NET_ID" >/dev/null
+            else
+                NET_ID=$(wpa_cli add_network | tail -1)
+                wpa_cli set_network "$NET_ID" ssid "\"$1\"" >/dev/null
+                wpa_cli set_network "$NET_ID" psk "\"$2\"" >/dev/null
+                wpa_cli enable_network "$NET_ID" >/dev/null
+                wpa_cli save_config >/dev/null
+            fi
+            sleep 2
+            ifconfig "$IFACE" 2>/dev/null | awk '/status:/{print $2}' | grep -q associated \
+                && notify-send "WiFi" "Connected to $1"
+            ;;
     esac
 }
 
 disconnect_network() {
     case "$OS" in
         linux)   iwctl station "$IFACE" disconnect ;;
-        freebsd) sudo ifconfig "$IFACE" down ;;
+        freebsd) wpa_cli disconnect >/dev/null ;;
     esac
     notify-send "WiFi" "Disconnected"
 }
