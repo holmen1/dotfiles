@@ -28,6 +28,13 @@ otherwise my choice, see [user_configuration_x1.json](../archinstall/log/user_co
 	sysrc xxx_enable=NO
 	```
 
+### Logs
+`/var/log/daemon.log` is the primary log for system services — wpa_supplicant, dhclient, and other rc.d daemons write here.
+
+```bash
+tail -f /var/log/daemon.log          # live view
+```
+
 ## Post-installation
 ### Shell, also need adding hostname if used in scripts
 ```bash
