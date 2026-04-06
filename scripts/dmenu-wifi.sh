@@ -73,14 +73,19 @@ monitor_mode() {
     [ "$status" = "disconnected" ] || return
     case "$OS" in
         linux)
-            RADIO=$(iwctl device list 2>/dev/null | grep "$IFACE" | awk '{print $4}')
-            if [ "$RADIO" = "on" ]; then
+            if printf '%s' "$INFO" | awk '/Powered/{print $2}' | grep -q yes; then
                 notify-send -u normal -t 150000 "WiFi Help" "WiFi enabled but not connected" -i network-wireless-disconnected
             else
                 notify-send -u critical "Network" "WiFi is disabled" -i network-wireless-offline
             fi
             ;;
-        freebsd) ;; # TODO
+        freebsd)
+            if printf '%s' "$INFO" | grep -q 'flags=.*\bUP\b'; then
+                notify-send -u normal -t 150000 "WiFi Help" "WiFi enabled but not connected" -i network-wireless-disconnected
+            else
+                notify-send -u critical "Network" "WiFi is disabled" -i network-wireless-offline
+            fi
+            ;;
     esac
 }
 

@@ -77,6 +77,16 @@ Then restart the network executing the following command:
 service netif restart
 ```
 
+#### Switching networks (dmenu-wifi)
+
+`wpa_cli select_network <id>` disables all other networks atomically — no need to call `enable_network` separately on the next switch.
+
+Switching via wpa_cli alone (`disconnect`/`reconnect`) leaves the wpa_supplicant instance with stale BSSID blacklists and auth failure counters, causing repeated auth timeouts. Fix: follow `select_network` with `ifconfig wlan0 down && ifconfig wlan0 up` to reset radio state while keeping wpa_supplicant's in-memory selection intact.
+
+DFS channels (e.g. 5600 MHz, ch 120) will auth-timeout reliably on this hardware. Non-DFS 5 GHz (e.g. 5240 MHz, ch 48) and 2.4 GHz work fine.
+
+`service netif restart wlan0` also works (clean wpa_supplicant restart) but picks the network from the config file — not suitable for scripted switching.
+
 ### Clone dotfiles
 ```bash
 mkdir repos
