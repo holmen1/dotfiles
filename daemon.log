@@ -1,0 +1,70 @@
+Apr  6 11:20:22 besk dhclient[14445]: bound to 192.168.1.85 -- renewal in 43199 seconds.
+Apr  6 11:23:08 besk dhclient[14445]: DHCPDISCOVER on wlan0 to 255.255.255.255 port 67 interval 5
+Apr  6 11:23:08 besk dhclient[14445]: DHCPOFFER from 192.168.1.1
+Apr  6 11:23:09 besk dhclient[14445]: DHCPREQUEST on wlan0 to 255.255.255.255 port 67
+Apr  6 11:23:09 besk dhclient[14445]: DHCPACK from 192.168.1.1
+Apr  6 11:23:09 besk dhclient[14445]: bound to 192.168.1.85 -- renewal in 43200 seconds.
+Apr  6 11:27:13 besk dhclient[14445]: My address (192.168.1.85) was deleted, dhclient exiting
+Apr  6 11:27:14 besk wpa_supplicant[14389]: wlan0: CTRL-EVENT-DISCONNECTED bssid=32:20:9f:2e:f6:62 reason=3 locally_generated=1
+Apr  6 11:27:14 besk wpa_supplicant[14389]: wlan0: CTRL-EVENT-DSCP-POLICY clear_all
+Apr  6 11:27:14 besk syslogd: last message repeated 1 times
+Apr  6 11:27:14 besk dhclient[14445]: connection closed
+Apr  6 11:27:14 besk dhclient[14445]: exiting.
+Apr  6 11:27:14 besk wpa_supplicant[14389]: wlan0: CTRL-EVENT-TERMINATING 
+Apr  6 11:27:14 besk wpa_supplicant[16288]: Successfully initialized wpa_supplicant
+Apr  6 11:27:14 besk wpa_supplicant[16288]: ioctl[SIOCS80211, op=20, val=0, arg_len=7]: Invalid argument
+Apr  6 11:27:14 besk syslogd: last message repeated 1 times
+Apr  6 11:27:17 besk wpa_supplicant[16289]: MBO: Disable MBO/OCE due to misbehaving AP not having enabled PMF
+Apr  6 11:27:17 besk wpa_supplicant[16289]: wlan0: Trying to associate with 32:20:9f:2e:f6:65 (SSID='a46' freq=5240 MHz)
+Apr  6 11:27:17 besk wpa_supplicant[16289]: wlan0: Associated with 32:20:9f:2e:f6:65
+Apr  6 11:27:17 besk wpa_supplicant[16289]: MBO: Disable MBO/OCE due to misbehaving AP not having enabled PMF
+Apr  6 11:27:17 besk wpa_supplicant[16289]: wlan0: WPA: Key negotiation completed with 32:20:9f:2e:f6:65 [PTK=CCMP GTK=CCMP]
+Apr  6 11:27:17 besk wpa_supplicant[16289]: wlan0: CTRL-EVENT-CONNECTED - Connection to 32:20:9f:2e:f6:65 completed [id=2 id_str=]
+Apr  6 11:27:18 besk dhclient[16345]: DHCPREQUEST on wlan0 to 255.255.255.255 port 67
+Apr  6 11:27:18 besk dhclient[16345]: DHCPACK from 192.168.1.1
+Apr  6 11:27:18 besk dhclient[16345]: bound to 192.168.1.85 -- renewal in 43200 seconds.
+Apr  6 11:28:00 besk wpa_supplicant[16289]: wlan0: CTRL-EVENT-DISCONNECTED bssid=32:20:9f:2e:f6:65 reason=3 locally_generated=1
+Apr  6 11:28:00 besk wpa_supplicant[16289]: wlan0: CTRL-EVENT-DSCP-POLICY clear_all
+Apr  6 11:28:01 besk wpa_supplicant[16289]: MBO: Disable MBO/OCE due to misbehaving AP not having enabled PMF
+Apr  6 11:28:01 besk wpa_supplicant[16289]: wlan0: Trying to associate with 32:20:9f:2e:f6:62 (SSID='b46' freq=2412 MHz)
+Apr  6 11:28:11 besk wpa_supplicant[16289]: wlan0: Authentication with 32:20:9f:2e:f6:62 timed out.
+Apr  6 11:28:11 besk wpa_supplicant[16289]: wlan0: Added BSSID 32:20:9f:2e:f6:62 into ignore list, ignoring for 10 seconds
+Apr  6 11:28:11 besk wpa_supplicant[16289]: wlan0: CTRL-EVENT-DISCONNECTED bssid=32:20:9f:2e:f6:62 reason=3 locally_generated=1
+Apr  6 11:28:11 besk wpa_supplicant[16289]: wlan0: BSSID 32:20:9f:2e:f6:62 ignore list count incremented to 2, ignoring for 10 seconds
+Apr  6 11:28:11 besk wpa_supplicant[16289]: wlan0: CTRL-EVENT-DSCP-POLICY clear_all
+Apr  6 11:28:12 besk wpa_supplicant[16289]: wlan0: Removed BSSID 32:20:9f:2e:f6:62 from ignore list (clear)
+Apr  6 11:28:12 besk wpa_supplicant[16289]: MBO: Disable MBO/OCE due to misbehaving AP not having enabled PMF
+Apr  6 11:28:12 besk wpa_supplicant[16289]: wlan0: Trying to associate with 32:20:9f:2e:f6:62 (SSID='b46' freq=2412 MHz)
+Apr  6 11:28:12 besk wpa_supplicant[16289]: wlan0: Associated with 32:20:9f:2e:f6:62
+Apr  6 11:28:12 besk wpa_supplicant[16289]: MBO: Disable MBO/OCE due to misbehaving AP not having enabled PMF
+Apr  6 11:28:12 besk wpa_supplicant[16289]: wlan0: WPA: Key negotiation completed with 32:20:9f:2e:f6:62 [PTK=CCMP GTK=CCMP]
+Apr  6 11:28:12 besk wpa_supplicant[16289]: wlan0: CTRL-EVENT-CONNECTED - Connection to 32:20:9f:2e:f6:62 completed [id=3 id_str=]
+Apr  6 11:28:12 besk dhclient[16345]: DHCPREQUEST on wlan0 to 255.255.255.255 port 67
+Apr  6 11:28:12 besk syslogd: last message repeated 1 times
+Apr  6 11:28:12 besk dhclient[16345]: DHCPACK from 192.168.1.1
+Apr  6 11:28:13 besk dhclient[16345]: bound to 192.168.1.85 -- renewal in 43199 seconds.
+Apr  6 11:28:56 besk wpa_supplicant[16289]: wlan0: CTRL-EVENT-DISCONNECTED bssid=32:20:9f:2e:f6:62 reason=3 locally_generated=1
+Apr  6 11:28:56 besk wpa_supplicant[16289]: wlan0: CTRL-EVENT-DSCP-POLICY clear_all
+Apr  6 11:28:57 besk wpa_supplicant[16289]: MBO: Disable MBO/OCE due to misbehaving AP not having enabled PMF
+Apr  6 11:28:57 besk wpa_supplicant[16289]: wlan0: Trying to associate with 32:20:9f:2e:f6:65 (SSID='a46' freq=5240 MHz)
+Apr  6 11:28:57 besk wpa_supplicant[16289]: wlan0: Associated with 32:20:9f:2e:f6:65
+Apr  6 11:28:57 besk wpa_supplicant[16289]: MBO: Disable MBO/OCE due to misbehaving AP not having enabled PMF
+Apr  6 11:28:57 besk wpa_supplicant[16289]: wlan0: WPA: Key negotiation completed with 32:20:9f:2e:f6:65 [PTK=CCMP GTK=CCMP]
+Apr  6 11:28:57 besk wpa_supplicant[16289]: wlan0: CTRL-EVENT-CONNECTED - Connection to 32:20:9f:2e:f6:65 completed [id=2 id_str=]
+Apr  6 11:28:57 besk dhclient[16345]: DHCPREQUEST on wlan0 to 255.255.255.255 port 67
+Apr  6 11:29:01 besk syslogd: last message repeated 2 times
+Apr  6 11:29:12 besk dhclient[16345]: DHCPDISCOVER on wlan0 to 255.255.255.255 port 67 interval 8
+Apr  6 11:29:20 besk dhclient[16345]: DHCPDISCOVER on wlan0 to 255.255.255.255 port 67 interval 11
+Apr  6 11:29:21 besk dhclient[16345]: DHCPOFFER from 192.168.1.1
+Apr  6 11:29:21 besk dhclient[16345]: DHCPREQUEST on wlan0 to 255.255.255.255 port 67
+Apr  6 11:29:26 besk syslogd: last message repeated 1 times
+Apr  6 11:29:35 besk dhclient[16345]: DHCPDISCOVER on wlan0 to 255.255.255.255 port 67 interval 6
+Apr  6 11:29:41 besk dhclient[16345]: DHCPDISCOVER on wlan0 to 255.255.255.255 port 67 interval 10
+Apr  6 11:29:51 besk dhclient[16345]: DHCPDISCOVER on wlan0 to 255.255.255.255 port 67 interval 11
+Apr  6 11:30:02 besk dhclient[16345]: DHCPDISCOVER on wlan0 to 255.255.255.255 port 67 interval 19
+Apr  6 11:30:21 besk dhclient[16345]: DHCPDISCOVER on wlan0 to 255.255.255.255 port 67 interval 8
+Apr  6 11:30:29 besk dhclient[16345]: DHCPDISCOVER on wlan0 to 255.255.255.255 port 67 interval 7
+Apr  6 11:30:36 besk dhclient[16345]: No DHCPOFFERS received.
+Apr  6 11:30:36 besk dhclient[16345]: Trying recorded lease 192.168.1.85
+Apr  6 11:30:38 besk dhclient[16345]: Trying recorded lease 192.168.1.114
+Apr  6 11:30:40 besk dhclient[16345]: No working leases in persistent database - sleeping.
