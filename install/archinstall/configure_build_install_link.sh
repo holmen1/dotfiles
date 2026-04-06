@@ -5,7 +5,7 @@ EMAIL=$USER@gmail.com
 
 DOTFILES_DIR=~/repos/dotfiles
 SCRIPTS_DIR=$DOTFILES_DIR/scripts
-INSTALL_SCRIPT=$SCRIPTS_DIR/pacman-install.sh
+INSTALL_SCRIPT=$SCRIPTS_DIR/install-pacman.sh
 LINK_SCRIPT=$SCRIPTS_DIR/link_config.sh
 
 XMONAD_DIR=$DOTFILES_DIR/install/build/xmonad

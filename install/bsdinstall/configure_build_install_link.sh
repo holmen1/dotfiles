@@ -46,7 +46,7 @@ echo "$PKGLIST"
 read -p "Install pkglist? [y/N] " ans
 case "$ans" in
     [Yy]*)
-    $SCRIPTS_DIR/pkg-install.sh $PKGLIST
+    $SCRIPTS_DIR/install-pkg.sh $PKGLIST
     ;;
 esac
 
