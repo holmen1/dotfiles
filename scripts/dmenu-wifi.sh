@@ -39,11 +39,19 @@ connect_network() {
         freebsd)
             NET_ID=$(wpa_cli list_networks 2>/dev/null | awk -F'\t' -v s="$1" '$2==s{print $1}')
             if [ -n "$NET_ID" ]; then
-                wpa_cli disconnect "$NET_ID" >/dev/null
+                wpa_cli disconnect >/dev/null
                 wpa_cli enable_network "$NET_ID" >/dev/null
                 wpa_cli select_network "$NET_ID" >/dev/null
                 wpa_cli reconnect >/dev/null
-		sleep 10
+                i=0
+                while [ $i -lt 10 ]; do
+                    wpa_cli status | grep -q 'wpa_state=COMPLETED' && break
+                    sleep 1
+                    i=$((i + 1))
+                done
+                sudo pkill dhclient 2>/dev/null
+                sudo dhclient "$IFACE" >/dev/null 2>&1 &
+                sleep 3
             else
                 NET_ID=$(wpa_cli -i "$IFACE" add_network | tail -1)
                 wpa_cli -i "$IFACE" set_network "$NET_ID" ssid "\"$1\"" >/dev/null
