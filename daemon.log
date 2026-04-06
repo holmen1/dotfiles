@@ -1,105 +1,200 @@
-Apr  6 12:57:24 besk power_profile[19038]: changed to 'economy'
-Apr  6 12:58:31 besk wpa_supplicant[17627]: wlan0: CTRL-EVENT-DISCONNECTED bssid=32:20:9f:2e:f6:65 reason=3 locally_generated=1
-Apr  6 12:58:31 besk wpa_supplicant[17627]: wlan0: CTRL-EVENT-DSCP-POLICY clear_all
-Apr  6 12:58:32 besk wpa_supplicant[17627]: MBO: Disable MBO/OCE due to misbehaving AP not having enabled PMF
-Apr  6 12:58:32 besk wpa_supplicant[17627]: wlan0: Trying to associate with 32:20:9f:2e:f6:62 (SSID='b46' freq=2412 MHz)
-Apr  6 12:58:32 besk wpa_supplicant[17627]: wlan0: Associated with 32:20:9f:2e:f6:62
-Apr  6 12:58:32 besk wpa_supplicant[17627]: MBO: Disable MBO/OCE due to misbehaving AP not having enabled PMF
-Apr  6 12:58:32 besk wpa_supplicant[17627]: wlan0: WPA: Key negotiation completed with 32:20:9f:2e:f6:62 [PTK=CCMP GTK=CCMP]
-Apr  6 12:58:32 besk wpa_supplicant[17627]: wlan0: CTRL-EVENT-CONNECTED - Connection to 32:20:9f:2e:f6:62 completed [id=3 id_str=]
-Apr  6 12:58:33 besk dhclient[17683]: DHCPREQUEST on wlan0 to 255.255.255.255 port 67
-Apr  6 12:58:33 besk syslogd: last message repeated 1 times
-Apr  6 12:58:33 besk dhclient[17683]: DHCPACK from 192.168.1.1
-Apr  6 12:58:33 besk dhclient[17683]: bound to 192.168.1.85 -- renewal in 43200 seconds.
-Apr  6 12:58:33 besk dhclient[19395]: DHCPREQUEST on wlan0 to 255.255.255.255 port 67
-Apr  6 12:58:33 besk dhclient[19395]: DHCPACK from 192.168.1.1
-Apr  6 12:58:34 besk dhclient[19395]: bound to 192.168.1.85 -- renewal in 43199 seconds.
-Apr  6 12:59:11 besk wpa_supplicant[17627]: wlan0: CTRL-EVENT-DISCONNECTED bssid=32:20:9f:2e:f6:62 reason=3 locally_generated=1
-Apr  6 12:59:11 besk wpa_supplicant[17627]: wlan0: CTRL-EVENT-DSCP-POLICY clear_all
-Apr  6 12:59:12 besk wpa_supplicant[17627]: MBO: Disable MBO/OCE due to misbehaving AP not having enabled PMF
-Apr  6 12:59:12 besk wpa_supplicant[17627]: wlan0: Trying to associate with 32:20:9f:31:10:0d (SSID='AA46' freq=5600 MHz)
-Apr  6 12:59:22 besk wpa_supplicant[17627]: wlan0: Authentication with 32:20:9f:31:10:0d timed out.
-Apr  6 12:59:22 besk wpa_supplicant[17627]: wlan0: Added BSSID 32:20:9f:31:10:0d into ignore list, ignoring for 10 seconds
-Apr  6 12:59:22 besk wpa_supplicant[17627]: wlan0: CTRL-EVENT-DISCONNECTED bssid=32:20:9f:31:10:0d reason=3 locally_generated=1
-Apr  6 12:59:22 besk wpa_supplicant[17627]: wlan0: BSSID 32:20:9f:31:10:0d ignore list count incremented to 2, ignoring for 10 seconds
-Apr  6 12:59:22 besk wpa_supplicant[17627]: wlan0: CTRL-EVENT-DSCP-POLICY clear_all
-Apr  6 12:59:23 besk wpa_supplicant[17627]: wlan0: Removed BSSID 32:20:9f:31:10:0d from ignore list (clear)
-Apr  6 12:59:23 besk wpa_supplicant[17627]: MBO: Disable MBO/OCE due to misbehaving AP not having enabled PMF
-Apr  6 12:59:23 besk wpa_supplicant[17627]: wlan0: Trying to associate with 32:20:9f:31:10:0d (SSID='AA46' freq=5600 MHz)
-Apr  6 12:59:33 besk wpa_supplicant[17627]: wlan0: Authentication with 32:20:9f:31:10:0d timed out.
-Apr  6 12:59:33 besk wpa_supplicant[17627]: wlan0: Added BSSID 32:20:9f:31:10:0d into ignore list, ignoring for 10 seconds
-Apr  6 12:59:33 besk wpa_supplicant[17627]: wlan0: CTRL-EVENT-DISCONNECTED bssid=32:20:9f:31:10:0d reason=3 locally_generated=1
-Apr  6 12:59:33 besk wpa_supplicant[17627]: wlan0: BSSID 32:20:9f:31:10:0d ignore list count incremented to 2, ignoring for 10 seconds
-Apr  6 12:59:33 besk wpa_supplicant[17627]: wlan0: CTRL-EVENT-DSCP-POLICY clear_all
-Apr  6 12:59:34 besk wpa_supplicant[17627]: wlan0: Removed BSSID 32:20:9f:31:10:0d from ignore list (clear)
-Apr  6 12:59:34 besk wpa_supplicant[17627]: MBO: Disable MBO/OCE due to misbehaving AP not having enabled PMF
-Apr  6 12:59:34 besk wpa_supplicant[17627]: wlan0: Trying to associate with 32:20:9f:31:10:0d (SSID='AA46' freq=5600 MHz)
-Apr  6 12:59:44 besk wpa_supplicant[17627]: wlan0: Authentication with 32:20:9f:31:10:0d timed out.
-Apr  6 12:59:44 besk wpa_supplicant[17627]: wlan0: Added BSSID 32:20:9f:31:10:0d into ignore list, ignoring for 10 seconds
-Apr  6 12:59:44 besk wpa_supplicant[17627]: wlan0: CTRL-EVENT-DISCONNECTED bssid=32:20:9f:31:10:0d reason=3 locally_generated=1
-Apr  6 12:59:44 besk wpa_supplicant[17627]: wlan0: BSSID 32:20:9f:31:10:0d ignore list count incremented to 2, ignoring for 10 seconds
-Apr  6 12:59:44 besk wpa_supplicant[17627]: wlan0: CTRL-EVENT-DSCP-POLICY clear_all
-Apr  6 12:59:47 besk wpa_supplicant[17627]: wlan0: Removed BSSID 32:20:9f:31:10:0d from ignore list (clear)
-Apr  6 12:59:47 besk wpa_supplicant[17627]: MBO: Disable MBO/OCE due to misbehaving AP not having enabled PMF
-Apr  6 12:59:47 besk wpa_supplicant[17627]: wlan0: Trying to associate with 32:20:9f:31:10:0d (SSID='AA46' freq=5600 MHz)
-Apr  6 12:59:57 besk wpa_supplicant[17627]: wlan0: Authentication with 32:20:9f:31:10:0d timed out.
-Apr  6 12:59:57 besk wpa_supplicant[17627]: wlan0: Added BSSID 32:20:9f:31:10:0d into ignore list, ignoring for 10 seconds
-Apr  6 12:59:57 besk wpa_supplicant[17627]: wlan0: CTRL-EVENT-DISCONNECTED bssid=32:20:9f:31:10:0d reason=3 locally_generated=1
-Apr  6 12:59:57 besk wpa_supplicant[17627]: wlan0: BSSID 32:20:9f:31:10:0d ignore list count incremented to 2, ignoring for 10 seconds
-Apr  6 12:59:57 besk wpa_supplicant[17627]: wlan0: CTRL-EVENT-SSID-TEMP-DISABLED id=0 ssid="AA46" auth_failures=1 duration=10 reason=CONN_FAILED
-Apr  6 12:59:57 besk wpa_supplicant[17627]: wlan0: CTRL-EVENT-DSCP-POLICY clear_all
-Apr  6 13:00:08 besk wpa_supplicant[17627]: wlan0: CTRL-EVENT-SSID-REENABLED id=0 ssid="AA46"
-Apr  6 13:00:08 besk wpa_supplicant[17627]: wlan0: BSSID 32:20:9f:31:10:0d ignore list count incremented to 3, ignoring for 60 seconds
-Apr  6 13:00:08 besk wpa_supplicant[17627]: wlan0: Removed BSSID 32:20:9f:31:10:0d from ignore list (clear)
-Apr  6 13:00:08 besk wpa_supplicant[17627]: MBO: Disable MBO/OCE due to misbehaving AP not having enabled PMF
-Apr  6 13:00:08 besk wpa_supplicant[17627]: wlan0: Trying to associate with 32:20:9f:31:10:0d (SSID='AA46' freq=5600 MHz)
-Apr  6 13:00:18 besk wpa_supplicant[17627]: wlan0: Authentication with 32:20:9f:31:10:0d timed out.
-Apr  6 13:00:18 besk wpa_supplicant[17627]: wlan0: Added BSSID 32:20:9f:31:10:0d into ignore list, ignoring for 10 seconds
-Apr  6 13:00:18 besk wpa_supplicant[17627]: wlan0: CTRL-EVENT-DISCONNECTED bssid=32:20:9f:31:10:0d reason=3 locally_generated=1
-Apr  6 13:00:18 besk wpa_supplicant[17627]: wlan0: BSSID 32:20:9f:31:10:0d ignore list count incremented to 2, ignoring for 10 seconds
-Apr  6 13:00:18 besk wpa_supplicant[17627]: wlan0: CTRL-EVENT-SSID-TEMP-DISABLED id=0 ssid="AA46" auth_failures=2 duration=31 reason=CONN_FAILED
-Apr  6 13:00:18 besk wpa_supplicant[17627]: wlan0: CTRL-EVENT-DSCP-POLICY clear_all
-Apr  6 13:00:51 besk wpa_supplicant[17627]: wlan0: CTRL-EVENT-SSID-REENABLED id=0 ssid="AA46"
-Apr  6 13:00:51 besk wpa_supplicant[17627]: wlan0: BSSID 32:20:9f:31:10:0d ignore list count incremented to 3, ignoring for 60 seconds
-Apr  6 13:00:51 besk wpa_supplicant[17627]: wlan0: Removed BSSID 32:20:9f:31:10:0d from ignore list (clear)
-Apr  6 13:00:51 besk wpa_supplicant[17627]: MBO: Disable MBO/OCE due to misbehaving AP not having enabled PMF
-Apr  6 13:00:51 besk wpa_supplicant[17627]: wlan0: Trying to associate with 32:20:9f:31:10:0d (SSID='AA46' freq=5600 MHz)
-Apr  6 13:01:01 besk wpa_supplicant[17627]: wlan0: Authentication with 32:20:9f:31:10:0d timed out.
-Apr  6 13:01:01 besk wpa_supplicant[17627]: wlan0: Added BSSID 32:20:9f:31:10:0d into ignore list, ignoring for 10 seconds
-Apr  6 13:01:01 besk wpa_supplicant[17627]: wlan0: CTRL-EVENT-DISCONNECTED bssid=32:20:9f:31:10:0d reason=3 locally_generated=1
-Apr  6 13:01:01 besk wpa_supplicant[17627]: wlan0: BSSID 32:20:9f:31:10:0d ignore list count incremented to 2, ignoring for 10 seconds
-Apr  6 13:01:01 besk wpa_supplicant[17627]: wlan0: CTRL-EVENT-SSID-TEMP-DISABLED id=0 ssid="AA46" auth_failures=3 duration=37 reason=CONN_FAILED
-Apr  6 13:01:01 besk wpa_supplicant[17627]: wlan0: CTRL-EVENT-DSCP-POLICY clear_all
-Apr  6 13:01:39 besk wpa_supplicant[17627]: wlan0: CTRL-EVENT-SSID-REENABLED id=0 ssid="AA46"
-Apr  6 13:01:39 besk wpa_supplicant[17627]: wlan0: BSSID 32:20:9f:31:10:0d ignore list count incremented to 3, ignoring for 60 seconds
-Apr  6 13:01:39 besk wpa_supplicant[17627]: wlan0: Removed BSSID 32:20:9f:31:10:0d from ignore list (clear)
-Apr  6 13:01:39 besk wpa_supplicant[17627]: MBO: Disable MBO/OCE due to misbehaving AP not having enabled PMF
-Apr  6 13:01:39 besk wpa_supplicant[17627]: wlan0: Trying to associate with 32:20:9f:31:10:0d (SSID='AA46' freq=5600 MHz)
-Apr  6 13:01:49 besk wpa_supplicant[17627]: wlan0: Authentication with 32:20:9f:31:10:0d timed out.
-Apr  6 13:01:49 besk wpa_supplicant[17627]: wlan0: Added BSSID 32:20:9f:31:10:0d into ignore list, ignoring for 10 seconds
-Apr  6 13:01:49 besk wpa_supplicant[17627]: wlan0: CTRL-EVENT-DISCONNECTED bssid=32:20:9f:31:10:0d reason=3 locally_generated=1
-Apr  6 13:01:49 besk wpa_supplicant[17627]: wlan0: BSSID 32:20:9f:31:10:0d ignore list count incremented to 2, ignoring for 10 seconds
-Apr  6 13:01:49 besk wpa_supplicant[17627]: wlan0: CTRL-EVENT-SSID-TEMP-DISABLED id=0 ssid="AA46" auth_failures=4 duration=69 reason=CONN_FAILED
-Apr  6 13:01:49 besk wpa_supplicant[17627]: wlan0: CTRL-EVENT-DSCP-POLICY clear_all
-Apr  6 13:02:58 besk wpa_supplicant[17627]: wlan0: CTRL-EVENT-SSID-REENABLED id=0 ssid="AA46"
-Apr  6 13:02:58 besk wpa_supplicant[17627]: wlan0: BSSID 32:20:9f:31:10:0d ignore list count incremented to 3, ignoring for 60 seconds
-Apr  6 13:02:58 besk wpa_supplicant[17627]: wlan0: Removed BSSID 32:20:9f:31:10:0d from ignore list (clear)
-Apr  6 13:02:58 besk wpa_supplicant[17627]: MBO: Disable MBO/OCE due to misbehaving AP not having enabled PMF
-Apr  6 13:02:58 besk wpa_supplicant[17627]: wlan0: Trying to associate with 32:20:9f:31:10:0d (SSID='AA46' freq=5600 MHz)
-Apr  6 13:03:08 besk wpa_supplicant[17627]: wlan0: Authentication with 32:20:9f:31:10:0d timed out.
-Apr  6 13:03:08 besk wpa_supplicant[17627]: wlan0: Added BSSID 32:20:9f:31:10:0d into ignore list, ignoring for 10 seconds
-Apr  6 13:03:08 besk wpa_supplicant[17627]: wlan0: CTRL-EVENT-DISCONNECTED bssid=32:20:9f:31:10:0d reason=3 locally_generated=1
-Apr  6 13:03:08 besk wpa_supplicant[17627]: wlan0: BSSID 32:20:9f:31:10:0d ignore list count incremented to 2, ignoring for 10 seconds
-Apr  6 13:03:08 besk wpa_supplicant[17627]: wlan0: CTRL-EVENT-SSID-TEMP-DISABLED id=0 ssid="AA46" auth_failures=5 duration=105 reason=CONN_FAILED
-Apr  6 13:03:08 besk wpa_supplicant[17627]: wlan0: CTRL-EVENT-DSCP-POLICY clear_all
-Apr  6 13:04:57 besk wpa_supplicant[17627]: wlan0: CTRL-EVENT-SSID-REENABLED id=0 ssid="AA46"
-Apr  6 13:04:57 besk wpa_supplicant[17627]: wlan0: BSSID 32:20:9f:31:10:0d ignore list count incremented to 3, ignoring for 60 seconds
-Apr  6 13:04:57 besk wpa_supplicant[17627]: wlan0: Removed BSSID 32:20:9f:31:10:0d from ignore list (clear)
-Apr  6 13:04:57 besk wpa_supplicant[17627]: MBO: Disable MBO/OCE due to misbehaving AP not having enabled PMF
-Apr  6 13:04:57 besk wpa_supplicant[17627]: wlan0: Trying to associate with 32:20:9f:31:10:0d (SSID='AA46' freq=5600 MHz)
-Apr  6 13:05:07 besk wpa_supplicant[17627]: wlan0: Authentication with 32:20:9f:31:10:0d timed out.
-Apr  6 13:05:07 besk wpa_supplicant[17627]: wlan0: Added BSSID 32:20:9f:31:10:0d into ignore list, ignoring for 10 seconds
-Apr  6 13:05:07 besk wpa_supplicant[17627]: wlan0: CTRL-EVENT-DISCONNECTED bssid=32:20:9f:31:10:0d reason=3 locally_generated=1
-Apr  6 13:05:07 besk wpa_supplicant[17627]: wlan0: BSSID 32:20:9f:31:10:0d ignore list count incremented to 2, ignoring for 10 seconds
-Apr  6 13:05:07 besk wpa_supplicant[17627]: wlan0: CTRL-EVENT-SSID-TEMP-DISABLED id=0 ssid="AA46" auth_failures=6 duration=118 reason=CONN_FAILED
-Apr  6 13:05:07 besk wpa_supplicant[17627]: wlan0: CTRL-EVENT-DSCP-POLICY clear_all
+Apr  6 13:08:05 besk wpa_supplicant[20020]: wlan0: WPA: Key negotiation completed with 32:20:9f:2e:f6:65 [PTK=CCMP GTK=CCMP]
+Apr  6 13:08:05 besk wpa_supplicant[20020]: wlan0: CTRL-EVENT-CONNECTED - Connection to 32:20:9f:2e:f6:65 completed [id=2 id_str=]
+Apr  6 13:08:05 besk dhclient[20078]: DHCPREQUEST on wlan0 to 255.255.255.255 port 67
+Apr  6 13:08:05 besk dhclient[20078]: DHCPACK from 192.168.1.1
+Apr  6 13:08:05 besk dhclient[20078]: bound to 192.168.1.85 -- renewal in 43200 seconds.
+Apr  6 13:09:00 besk power_profile[20284]: changed to 'performance'
+Apr  6 13:10:08 besk wpa_supplicant[20020]: wlan0: RSN: Group rekeying completed with 32:20:9f:2e:f6:65 [GTK=CCMP]
+Apr  6 13:31:25 besk power_profile[20620]: changed to 'economy'
+Apr  6 13:32:29 besk wpa_supplicant[20020]: wlan0: CTRL-EVENT-DISCONNECTED bssid=32:20:9f:2e:f6:65 reason=3 locally_generated=1
+Apr  6 13:32:29 besk wpa_supplicant[20020]: wlan0: CTRL-EVENT-DSCP-POLICY clear_all
+Apr  6 13:32:29 besk dhclient[20078]: My address (192.168.1.85) was deleted, dhclient exiting
+Apr  6 13:32:29 besk dhclient[20078]: connection closed
+Apr  6 13:32:29 besk dhclient[20078]: exiting.
+Apr  6 13:32:33 besk wpa_supplicant[20020]: MBO: Disable MBO/OCE due to misbehaving AP not having enabled PMF
+Apr  6 13:32:33 besk wpa_supplicant[20020]: wlan0: Trying to associate with 32:20:9f:31:10:0d (SSID='AA46' freq=5600 MHz)
+Apr  6 13:32:43 besk wpa_supplicant[20020]: wlan0: Authentication with 32:20:9f:31:10:0d timed out.
+Apr  6 13:32:43 besk wpa_supplicant[20020]: wlan0: Added BSSID 32:20:9f:31:10:0d into ignore list, ignoring for 10 seconds
+Apr  6 13:32:43 besk wpa_supplicant[20020]: wlan0: CTRL-EVENT-DISCONNECTED bssid=32:20:9f:31:10:0d reason=3 locally_generated=1
+Apr  6 13:32:43 besk wpa_supplicant[20020]: wlan0: BSSID 32:20:9f:31:10:0d ignore list count incremented to 2, ignoring for 10 seconds
+Apr  6 13:32:43 besk wpa_supplicant[20020]: wlan0: CTRL-EVENT-DSCP-POLICY clear_all
+Apr  6 13:32:44 besk wpa_supplicant[20020]: wlan0: Removed BSSID 32:20:9f:31:10:0d from ignore list (clear)
+Apr  6 13:32:44 besk wpa_supplicant[20020]: MBO: Disable MBO/OCE due to misbehaving AP not having enabled PMF
+Apr  6 13:32:44 besk wpa_supplicant[20020]: wlan0: Trying to associate with 32:20:9f:31:10:0d (SSID='AA46' freq=5600 MHz)
+Apr  6 13:32:54 besk wpa_supplicant[20020]: wlan0: Authentication with 32:20:9f:31:10:0d timed out.
+Apr  6 13:32:54 besk wpa_supplicant[20020]: wlan0: Added BSSID 32:20:9f:31:10:0d into ignore list, ignoring for 10 seconds
+Apr  6 13:32:54 besk wpa_supplicant[20020]: wlan0: CTRL-EVENT-DISCONNECTED bssid=32:20:9f:31:10:0d reason=3 locally_generated=1
+Apr  6 13:32:54 besk wpa_supplicant[20020]: wlan0: BSSID 32:20:9f:31:10:0d ignore list count incremented to 2, ignoring for 10 seconds
+Apr  6 13:32:54 besk wpa_supplicant[20020]: wlan0: CTRL-EVENT-DSCP-POLICY clear_all
+Apr  6 13:32:56 besk wpa_supplicant[20020]: wlan0: Removed BSSID 32:20:9f:31:10:0d from ignore list (clear)
+Apr  6 13:32:56 besk wpa_supplicant[20020]: MBO: Disable MBO/OCE due to misbehaving AP not having enabled PMF
+Apr  6 13:32:56 besk wpa_supplicant[20020]: wlan0: Trying to associate with 32:20:9f:31:10:0d (SSID='AA46' freq=5600 MHz)
+Apr  6 13:33:06 besk wpa_supplicant[20020]: wlan0: Authentication with 32:20:9f:31:10:0d timed out.
+Apr  6 13:33:06 besk wpa_supplicant[20020]: wlan0: Added BSSID 32:20:9f:31:10:0d into ignore list, ignoring for 10 seconds
+Apr  6 13:33:06 besk wpa_supplicant[20020]: wlan0: CTRL-EVENT-DISCONNECTED bssid=32:20:9f:31:10:0d reason=3 locally_generated=1
+Apr  6 13:33:06 besk wpa_supplicant[20020]: wlan0: BSSID 32:20:9f:31:10:0d ignore list count incremented to 2, ignoring for 10 seconds
+Apr  6 13:33:06 besk wpa_supplicant[20020]: wlan0: CTRL-EVENT-DSCP-POLICY clear_all
+Apr  6 13:33:07 besk wpa_supplicant[20020]: wlan0: Removed BSSID 32:20:9f:31:10:0d from ignore list (clear)
+Apr  6 13:33:07 besk wpa_supplicant[20020]: MBO: Disable MBO/OCE due to misbehaving AP not having enabled PMF
+Apr  6 13:33:07 besk wpa_supplicant[20020]: wlan0: Trying to associate with 32:20:9f:31:10:0d (SSID='AA46' freq=5600 MHz)
+Apr  6 13:33:07 besk wpa_supplicant[20020]: wlan0: CTRL-EVENT-DISCONNECTED bssid=32:20:9f:31:10:0d reason=3 locally_generated=1
+Apr  6 13:33:07 besk wpa_supplicant[20020]: wlan0: CTRL-EVENT-DSCP-POLICY clear_all
+Apr  6 13:33:07 besk wpa_supplicant[20020]: MBO: Disable MBO/OCE due to misbehaving AP not having enabled PMF
+Apr  6 13:33:07 besk wpa_supplicant[20020]: wlan0: Trying to associate with 32:20:9f:2e:f6:62 (SSID='b46' freq=2412 MHz)
+Apr  6 13:33:07 besk wpa_supplicant[20020]: wlan0: CTRL-EVENT-DISCONNECTED bssid=32:20:9f:2e:f6:62 reason=3 locally_generated=1
+Apr  6 13:33:11 besk wpa_supplicant[20020]: MBO: Disable MBO/OCE due to misbehaving AP not having enabled PMF
+Apr  6 13:33:11 besk wpa_supplicant[20020]: wlan0: Trying to associate with 32:20:9f:2e:f6:62 (SSID='b46' freq=2412 MHz)
+Apr  6 13:33:11 besk wpa_supplicant[20020]: wlan0: Associated with 32:20:9f:2e:f6:62
+Apr  6 13:33:11 besk wpa_supplicant[20020]: MBO: Disable MBO/OCE due to misbehaving AP not having enabled PMF
+Apr  6 13:33:11 besk wpa_supplicant[20020]: wlan0: WPA: Key negotiation completed with 32:20:9f:2e:f6:62 [PTK=CCMP GTK=CCMP]
+Apr  6 13:33:11 besk wpa_supplicant[20020]: wlan0: CTRL-EVENT-CONNECTED - Connection to 32:20:9f:2e:f6:62 completed [id=3 id_str=]
+Apr  6 13:33:11 besk dhclient[20953]: DHCPREQUEST on wlan0 to 255.255.255.255 port 67
+Apr  6 13:33:11 besk dhclient[20953]: DHCPACK from 192.168.1.1
+Apr  6 13:33:11 besk dhclient[20953]: bound to 192.168.1.85 -- renewal in 43200 seconds.
+Apr  6 13:33:58 besk wpa_supplicant[20020]: wlan0: CTRL-EVENT-DISCONNECTED bssid=32:20:9f:2e:f6:62 reason=3 locally_generated=1
+Apr  6 13:33:58 besk wpa_supplicant[20020]: wlan0: CTRL-EVENT-DSCP-POLICY clear_all
+Apr  6 13:33:58 besk dhclient[20953]: My address (192.168.1.85) was deleted, dhclient exiting
+Apr  6 13:33:58 besk dhclient[20953]: connection closed
+Apr  6 13:33:58 besk dhclient[20953]: exiting.
+Apr  6 13:34:02 besk wpa_supplicant[20020]: MBO: Disable MBO/OCE due to misbehaving AP not having enabled PMF
+Apr  6 13:34:02 besk wpa_supplicant[20020]: wlan0: Trying to associate with 32:20:9f:31:10:0a (SSID='BB46' freq=2452 MHz)
+Apr  6 13:34:02 besk wpa_supplicant[20020]: wlan0: Associated with 32:20:9f:31:10:0a
+Apr  6 13:34:02 besk wpa_supplicant[20020]: MBO: Disable MBO/OCE due to misbehaving AP not having enabled PMF
+Apr  6 13:34:02 besk wpa_supplicant[20020]: wlan0: WPA: Key negotiation completed with 32:20:9f:31:10:0a [PTK=CCMP GTK=CCMP]
+Apr  6 13:34:02 besk wpa_supplicant[20020]: wlan0: CTRL-EVENT-CONNECTED - Connection to 32:20:9f:31:10:0a completed [id=1 id_str=]
+Apr  6 13:34:02 besk dhclient[21296]: DHCPREQUEST on wlan0 to 255.255.255.255 port 67
+Apr  6 13:34:07 besk syslogd: last message repeated 1 times
+Apr  6 13:34:13 besk dhclient[21296]: DHCPDISCOVER on wlan0 to 255.255.255.255 port 67 interval 6
+Apr  6 13:34:13 besk dhclient[21296]: DHCPOFFER from 192.168.1.1
+Apr  6 13:34:14 besk dhclient[21296]: DHCPREQUEST on wlan0 to 255.255.255.255 port 67
+Apr  6 13:34:14 besk dhclient[21296]: DHCPACK from 192.168.1.1
+Apr  6 13:34:14 besk dhclient[21296]: bound to 192.168.1.114 -- renewal in 432000 seconds.
+Apr  6 13:34:42 besk wpa_supplicant[20020]: wlan0: CTRL-EVENT-DISCONNECTED bssid=32:20:9f:31:10:0a reason=3 locally_generated=1
+Apr  6 13:34:42 besk dhclient[21296]: My address (192.168.1.114) was deleted, dhclient exiting
+Apr  6 13:34:43 besk dhclient[21296]: connection closed
+Apr  6 13:34:43 besk dhclient[21296]: exiting.
+Apr  6 13:34:53 besk wpa_supplicant[20020]: MBO: Disable MBO/OCE due to misbehaving AP not having enabled PMF
+Apr  6 13:34:53 besk wpa_supplicant[20020]: wlan0: Trying to associate with 32:20:9f:31:10:0a (SSID='BB46' freq=2452 MHz)
+Apr  6 13:34:53 besk wpa_supplicant[20020]: ioctl[SIOCS80211, op=20, val=0, arg_len=7]: Can't assign requested address
+Apr  6 13:35:03 besk wpa_supplicant[20020]: wlan0: Authentication with 32:20:9f:31:10:0a timed out.
+Apr  6 13:35:03 besk wpa_supplicant[20020]: wlan0: Added BSSID 32:20:9f:31:10:0a into ignore list, ignoring for 10 seconds
+Apr  6 13:35:03 besk wpa_supplicant[20020]: wlan0: CTRL-EVENT-DISCONNECTED bssid=32:20:9f:31:10:0a reason=3 locally_generated=1
+Apr  6 13:35:03 besk wpa_supplicant[20020]: wlan0: BSSID 32:20:9f:31:10:0a ignore list count incremented to 2, ignoring for 10 seconds
+Apr  6 13:35:03 besk wpa_supplicant[20020]: wlan0: CTRL-EVENT-DSCP-POLICY clear_all
+Apr  6 13:35:04 besk wpa_supplicant[20020]: wlan0: Removed BSSID 32:20:9f:31:10:0a from ignore list (clear)
+Apr  6 13:35:04 besk wpa_supplicant[20020]: MBO: Disable MBO/OCE due to misbehaving AP not having enabled PMF
+Apr  6 13:35:04 besk wpa_supplicant[20020]: wlan0: Trying to associate with 32:20:9f:31:10:0a (SSID='BB46' freq=2452 MHz)
+Apr  6 13:35:04 besk wpa_supplicant[20020]: wlan0: CTRL-EVENT-DISCONNECTED bssid=32:20:9f:31:10:0a reason=3 locally_generated=1
+Apr  6 13:35:09 besk wpa_supplicant[20020]: MBO: Disable MBO/OCE due to misbehaving AP not having enabled PMF
+Apr  6 13:35:09 besk wpa_supplicant[20020]: wlan0: Trying to associate with 32:20:9f:31:10:0a (SSID='BB46' freq=2452 MHz)
+Apr  6 13:35:09 besk wpa_supplicant[20020]: wlan0: Associated with 32:20:9f:31:10:0a
+Apr  6 13:35:09 besk wpa_supplicant[20020]: MBO: Disable MBO/OCE due to misbehaving AP not having enabled PMF
+Apr  6 13:35:09 besk wpa_supplicant[20020]: wlan0: WPA: Key negotiation completed with 32:20:9f:31:10:0a [PTK=CCMP GTK=CCMP]
+Apr  6 13:35:09 besk wpa_supplicant[20020]: wlan0: CTRL-EVENT-CONNECTED - Connection to 32:20:9f:31:10:0a completed [id=1 id_str=]
+Apr  6 13:35:09 besk dhclient[21676]: DHCPREQUEST on wlan0 to 255.255.255.255 port 67
+Apr  6 13:35:09 besk dhclient[21676]: DHCPACK from 192.168.1.1
+Apr  6 13:35:09 besk dhclient[21676]: bound to 192.168.1.114 -- renewal in 432000 seconds.
+Apr  6 13:35:28 besk wpa_supplicant[20020]: wlan0: CTRL-EVENT-DISCONNECTED bssid=32:20:9f:31:10:0a reason=3 locally_generated=1
+Apr  6 13:35:28 besk dhclient[21676]: My address (192.168.1.114) was deleted, dhclient exiting
+Apr  6 13:35:28 besk dhclient[21676]: connection closed
+Apr  6 13:35:28 besk dhclient[21676]: exiting.
+Apr  6 13:35:32 besk wpa_supplicant[20020]: MBO: Disable MBO/OCE due to misbehaving AP not having enabled PMF
+Apr  6 13:35:32 besk wpa_supplicant[20020]: wlan0: Trying to associate with 32:20:9f:31:10:0a (SSID='BB46' freq=2452 MHz)
+Apr  6 13:35:32 besk wpa_supplicant[20020]: ioctl[SIOCS80211, op=20, val=0, arg_len=7]: Can't assign requested address
+Apr  6 13:35:32 besk wpa_supplicant[20020]: wlan0: Associated with 32:20:9f:31:10:0a
+Apr  6 13:35:32 besk wpa_supplicant[20020]: MBO: Disable MBO/OCE due to misbehaving AP not having enabled PMF
+Apr  6 13:35:32 besk wpa_supplicant[20020]: wlan0: WPA: Key negotiation completed with 32:20:9f:31:10:0a [PTK=CCMP GTK=CCMP]
+Apr  6 13:35:32 besk wpa_supplicant[20020]: wlan0: CTRL-EVENT-CONNECTED - Connection to 32:20:9f:31:10:0a completed [id=1 id_str=]
+Apr  6 13:35:32 besk dhclient[21975]: DHCPREQUEST on wlan0 to 255.255.255.255 port 67
+Apr  6 13:35:32 besk dhclient[21975]: DHCPACK from 192.168.1.1
+Apr  6 13:35:33 besk dhclient[21975]: bound to 192.168.1.114 -- renewal in 431999 seconds.
+Apr  6 13:36:15 besk wpa_supplicant[20020]: wlan0: CTRL-EVENT-DISCONNECTED bssid=32:20:9f:31:10:0a reason=3 locally_generated=1
+Apr  6 13:36:15 besk wpa_supplicant[20020]: wlan0: CTRL-EVENT-DSCP-POLICY clear_all
+Apr  6 13:36:15 besk dhclient[21975]: My address (192.168.1.114) was deleted, dhclient exiting
+Apr  6 13:36:16 besk dhclient[21975]: connection closed
+Apr  6 13:36:16 besk dhclient[21975]: exiting.
+Apr  6 13:36:20 besk wpa_supplicant[20020]: MBO: Disable MBO/OCE due to misbehaving AP not having enabled PMF
+Apr  6 13:36:20 besk wpa_supplicant[20020]: wlan0: Trying to associate with 32:20:9f:31:10:0d (SSID='AA46' freq=5600 MHz)
+Apr  6 13:36:30 besk wpa_supplicant[20020]: wlan0: Authentication with 32:20:9f:31:10:0d timed out.
+Apr  6 13:36:30 besk wpa_supplicant[20020]: wlan0: Added BSSID 32:20:9f:31:10:0d into ignore list, ignoring for 10 seconds
+Apr  6 13:36:30 besk wpa_supplicant[20020]: wlan0: CTRL-EVENT-DISCONNECTED bssid=32:20:9f:31:10:0d reason=3 locally_generated=1
+Apr  6 13:36:30 besk wpa_supplicant[20020]: wlan0: BSSID 32:20:9f:31:10:0d ignore list count incremented to 2, ignoring for 10 seconds
+Apr  6 13:36:30 besk wpa_supplicant[20020]: wlan0: CTRL-EVENT-DSCP-POLICY clear_all
+Apr  6 13:36:31 besk wpa_supplicant[20020]: wlan0: Removed BSSID 32:20:9f:31:10:0d from ignore list (clear)
+Apr  6 13:36:31 besk wpa_supplicant[20020]: MBO: Disable MBO/OCE due to misbehaving AP not having enabled PMF
+Apr  6 13:36:31 besk wpa_supplicant[20020]: wlan0: Trying to associate with 32:20:9f:31:10:0d (SSID='AA46' freq=5600 MHz)
+Apr  6 13:36:41 besk wpa_supplicant[20020]: wlan0: Authentication with 32:20:9f:31:10:0d timed out.
+Apr  6 13:36:41 besk wpa_supplicant[20020]: wlan0: Added BSSID 32:20:9f:31:10:0d into ignore list, ignoring for 10 seconds
+Apr  6 13:36:41 besk wpa_supplicant[20020]: wlan0: CTRL-EVENT-DISCONNECTED bssid=32:20:9f:31:10:0d reason=3 locally_generated=1
+Apr  6 13:36:41 besk wpa_supplicant[20020]: wlan0: BSSID 32:20:9f:31:10:0d ignore list count incremented to 2, ignoring for 10 seconds
+Apr  6 13:36:41 besk wpa_supplicant[20020]: wlan0: CTRL-EVENT-DSCP-POLICY clear_all
+Apr  6 13:36:42 besk wpa_supplicant[20020]: wlan0: Removed BSSID 32:20:9f:31:10:0d from ignore list (clear)
+Apr  6 13:36:42 besk wpa_supplicant[20020]: MBO: Disable MBO/OCE due to misbehaving AP not having enabled PMF
+Apr  6 13:36:42 besk wpa_supplicant[20020]: wlan0: Trying to associate with 32:20:9f:31:10:0d (SSID='AA46' freq=5600 MHz)
+Apr  6 13:36:52 besk wpa_supplicant[20020]: wlan0: Authentication with 32:20:9f:31:10:0d timed out.
+Apr  6 13:36:52 besk wpa_supplicant[20020]: wlan0: Added BSSID 32:20:9f:31:10:0d into ignore list, ignoring for 10 seconds
+Apr  6 13:36:52 besk wpa_supplicant[20020]: wlan0: CTRL-EVENT-DISCONNECTED bssid=32:20:9f:31:10:0d reason=3 locally_generated=1
+Apr  6 13:36:52 besk wpa_supplicant[20020]: wlan0: BSSID 32:20:9f:31:10:0d ignore list count incremented to 2, ignoring for 10 seconds
+Apr  6 13:36:52 besk wpa_supplicant[20020]: wlan0: CTRL-EVENT-DSCP-POLICY clear_all
+Apr  6 13:36:57 besk wpa_supplicant[20020]: wlan0: Removed BSSID 32:20:9f:31:10:0d from ignore list (clear)
+Apr  6 13:36:57 besk wpa_supplicant[20020]: MBO: Disable MBO/OCE due to misbehaving AP not having enabled PMF
+Apr  6 13:36:57 besk wpa_supplicant[20020]: wlan0: Trying to associate with 32:20:9f:31:10:0d (SSID='AA46' freq=5600 MHz)
+Apr  6 13:37:07 besk wpa_supplicant[20020]: wlan0: Authentication with 32:20:9f:31:10:0d timed out.
+Apr  6 13:37:07 besk wpa_supplicant[20020]: wlan0: Added BSSID 32:20:9f:31:10:0d into ignore list, ignoring for 10 seconds
+Apr  6 13:37:07 besk wpa_supplicant[20020]: wlan0: CTRL-EVENT-DISCONNECTED bssid=32:20:9f:31:10:0d reason=3 locally_generated=1
+Apr  6 13:37:07 besk wpa_supplicant[20020]: wlan0: BSSID 32:20:9f:31:10:0d ignore list count incremented to 2, ignoring for 10 seconds
+Apr  6 13:37:07 besk wpa_supplicant[20020]: wlan0: CTRL-EVENT-SSID-TEMP-DISABLED id=0 ssid="AA46" auth_failures=1 duration=10 reason=CONN_FAILED
+Apr  6 13:37:07 besk wpa_supplicant[20020]: wlan0: CTRL-EVENT-DSCP-POLICY clear_all
+Apr  6 13:37:19 besk wpa_supplicant[20020]: wlan0: CTRL-EVENT-SSID-REENABLED id=0 ssid="AA46"
+Apr  6 13:37:19 besk wpa_supplicant[20020]: wlan0: BSSID 32:20:9f:31:10:0d ignore list count incremented to 3, ignoring for 60 seconds
+Apr  6 13:37:19 besk wpa_supplicant[20020]: wlan0: Removed BSSID 32:20:9f:31:10:0d from ignore list (clear)
+Apr  6 13:37:19 besk wpa_supplicant[20020]: MBO: Disable MBO/OCE due to misbehaving AP not having enabled PMF
+Apr  6 13:37:19 besk wpa_supplicant[20020]: wlan0: Trying to associate with 32:20:9f:31:10:0d (SSID='AA46' freq=5600 MHz)
+Apr  6 13:37:29 besk wpa_supplicant[20020]: wlan0: Authentication with 32:20:9f:31:10:0d timed out.
+Apr  6 13:37:29 besk wpa_supplicant[20020]: wlan0: Added BSSID 32:20:9f:31:10:0d into ignore list, ignoring for 10 seconds
+Apr  6 13:37:29 besk wpa_supplicant[20020]: wlan0: CTRL-EVENT-DISCONNECTED bssid=32:20:9f:31:10:0d reason=3 locally_generated=1
+Apr  6 13:37:29 besk wpa_supplicant[20020]: wlan0: BSSID 32:20:9f:31:10:0d ignore list count incremented to 2, ignoring for 10 seconds
+Apr  6 13:37:29 besk wpa_supplicant[20020]: wlan0: CTRL-EVENT-SSID-TEMP-DISABLED id=0 ssid="AA46" auth_failures=2 duration=32 reason=CONN_FAILED
+Apr  6 13:37:29 besk wpa_supplicant[20020]: wlan0: CTRL-EVENT-DSCP-POLICY clear_all
+Apr  6 13:38:02 besk wpa_supplicant[20020]: wlan0: CTRL-EVENT-SSID-REENABLED id=0 ssid="AA46"
+Apr  6 13:38:02 besk wpa_supplicant[20020]: wlan0: BSSID 32:20:9f:31:10:0d ignore list count incremented to 3, ignoring for 60 seconds
+Apr  6 13:38:02 besk wpa_supplicant[20020]: wlan0: Removed BSSID 32:20:9f:31:10:0d from ignore list (clear)
+Apr  6 13:38:02 besk wpa_supplicant[20020]: MBO: Disable MBO/OCE due to misbehaving AP not having enabled PMF
+Apr  6 13:38:02 besk wpa_supplicant[20020]: wlan0: Trying to associate with 32:20:9f:31:10:0d (SSID='AA46' freq=5600 MHz)
+Apr  6 13:38:12 besk wpa_supplicant[20020]: wlan0: Authentication with 32:20:9f:31:10:0d timed out.
+Apr  6 13:38:12 besk wpa_supplicant[20020]: wlan0: Added BSSID 32:20:9f:31:10:0d into ignore list, ignoring for 10 seconds
+Apr  6 13:38:12 besk wpa_supplicant[20020]: wlan0: CTRL-EVENT-DISCONNECTED bssid=32:20:9f:31:10:0d reason=3 locally_generated=1
+Apr  6 13:38:12 besk wpa_supplicant[20020]: wlan0: BSSID 32:20:9f:31:10:0d ignore list count incremented to 2, ignoring for 10 seconds
+Apr  6 13:38:12 besk wpa_supplicant[20020]: wlan0: CTRL-EVENT-SSID-TEMP-DISABLED id=0 ssid="AA46" auth_failures=3 duration=33 reason=CONN_FAILED
+Apr  6 13:38:12 besk wpa_supplicant[20020]: wlan0: CTRL-EVENT-DSCP-POLICY clear_all
+Apr  6 13:38:47 besk wpa_supplicant[20020]: wlan0: CTRL-EVENT-SSID-REENABLED id=0 ssid="AA46"
+Apr  6 13:38:47 besk wpa_supplicant[20020]: wlan0: BSSID 32:20:9f:31:10:0d ignore list count incremented to 3, ignoring for 60 seconds
+Apr  6 13:38:47 besk wpa_supplicant[20020]: wlan0: Removed BSSID 32:20:9f:31:10:0d from ignore list (clear)
+Apr  6 13:38:47 besk wpa_supplicant[20020]: MBO: Disable MBO/OCE due to misbehaving AP not having enabled PMF
+Apr  6 13:38:47 besk wpa_supplicant[20020]: wlan0: Trying to associate with 32:20:9f:31:10:0d (SSID='AA46' freq=5600 MHz)
+Apr  6 13:38:57 besk wpa_supplicant[20020]: wlan0: Authentication with 32:20:9f:31:10:0d timed out.
+Apr  6 13:38:57 besk wpa_supplicant[20020]: wlan0: Added BSSID 32:20:9f:31:10:0d into ignore list, ignoring for 10 seconds
+Apr  6 13:38:57 besk wpa_supplicant[20020]: wlan0: CTRL-EVENT-DISCONNECTED bssid=32:20:9f:31:10:0d reason=3 locally_generated=1
+Apr  6 13:38:57 besk wpa_supplicant[20020]: wlan0: BSSID 32:20:9f:31:10:0d ignore list count incremented to 2, ignoring for 10 seconds
+Apr  6 13:38:57 besk wpa_supplicant[20020]: wlan0: CTRL-EVENT-SSID-TEMP-DISABLED id=0 ssid="AA46" auth_failures=4 duration=80 reason=CONN_FAILED
+Apr  6 13:38:57 besk wpa_supplicant[20020]: wlan0: CTRL-EVENT-DSCP-POLICY clear_all
+Apr  6 13:39:18 besk wpa_supplicant[20020]: wlan0: CTRL-EVENT-SSID-REENABLED id=0 ssid="AA46"
+Apr  6 13:39:22 besk wpa_supplicant[20020]: MBO: Disable MBO/OCE due to misbehaving AP not having enabled PMF
+Apr  6 13:39:22 besk wpa_supplicant[20020]: wlan0: Trying to associate with 32:20:9f:31:10:0d (SSID='AA46' freq=5600 MHz)
+Apr  6 13:39:32 besk wpa_supplicant[20020]: wlan0: Authentication with 32:20:9f:31:10:0d timed out.
+Apr  6 13:39:32 besk wpa_supplicant[20020]: wlan0: BSSID 32:20:9f:31:10:0d ignore list count incremented to 3, ignoring for 60 seconds
+Apr  6 13:39:32 besk wpa_supplicant[20020]: wlan0: CTRL-EVENT-DISCONNECTED bssid=32:20:9f:31:10:0d reason=3 locally_generated=1
+Apr  6 13:39:32 besk wpa_supplicant[20020]: wlan0: BSSID 32:20:9f:31:10:0d ignore list count incremented to 4, ignoring for 120 seconds
+Apr  6 13:39:32 besk wpa_supplicant[20020]: wlan0: CTRL-EVENT-SSID-TEMP-DISABLED id=0 ssid="AA46" auth_failures=1 duration=10 reason=CONN_FAILED
+Apr  6 13:39:32 besk wpa_supplicant[20020]: wlan0: CTRL-EVENT-DSCP-POLICY clear_all
+Apr  6 13:39:44 besk wpa_supplicant[20020]: wlan0: CTRL-EVENT-SSID-REENABLED id=0 ssid="AA46"
+Apr  6 13:39:44 besk wpa_supplicant[20020]: wlan0: BSSID 32:20:9f:31:10:0d ignore list count incremented to 5, ignoring for 600 seconds
+Apr  6 13:39:44 besk wpa_supplicant[20020]: wlan0: Removed BSSID 32:20:9f:31:10:0d from ignore list (clear)
+Apr  6 13:39:44 besk wpa_supplicant[20020]: MBO: Disable MBO/OCE due to misbehaving AP not having enabled PMF
+Apr  6 13:39:44 besk wpa_supplicant[20020]: wlan0: Trying to associate with 32:20:9f:31:10:0d (SSID='AA46' freq=5600 MHz)
+Apr  6 13:39:54 besk wpa_supplicant[20020]: wlan0: Authentication with 32:20:9f:31:10:0d timed out.
+Apr  6 13:39:54 besk wpa_supplicant[20020]: wlan0: Added BSSID 32:20:9f:31:10:0d into ignore list, ignoring for 10 seconds
+Apr  6 13:39:54 besk wpa_supplicant[20020]: wlan0: CTRL-EVENT-DISCONNECTED bssid=32:20:9f:31:10:0d reason=3 locally_generated=1
+Apr  6 13:39:54 besk wpa_supplicant[20020]: wlan0: BSSID 32:20:9f:31:10:0d ignore list count incremented to 2, ignoring for 10 seconds
+Apr  6 13:39:54 besk wpa_supplicant[20020]: wlan0: CTRL-EVENT-SSID-TEMP-DISABLED id=0 ssid="AA46" auth_failures=2 duration=38 reason=CONN_FAILED
+Apr  6 13:39:54 besk wpa_supplicant[20020]: wlan0: CTRL-EVENT-DSCP-POLICY clear_all
