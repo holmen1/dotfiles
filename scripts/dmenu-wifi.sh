@@ -20,7 +20,7 @@ scan_networks() {
             iwctl station "$IFACE" get-networks 2>/dev/null \
                 | sed 's/\x1b\[[0-9;]*m//g' | tail -n +3 | grep -v '^ *-' | grep -v '^$' | awk '{print $1}'
             ;;
-        freebsd) sudo ifconfig "$IFACE" up list scan 2>/dev/null | awk 'NR>1{print $1}' | sort -u ;;
+        freebsd) sudo ifconfig "$IFACE" up list scan 2>/dev/null | awk 'NR>1 && $1 != "" && $1 !~ /^0x0+$/ {print $1}' | sort -u ;;
     esac
 }
 
@@ -149,8 +149,8 @@ case "$status" in
                             | menu "WiFi Help" 3
                         ;;
                     freebsd)
-                        printf "See: ~/repos/dotfiles/install/bsdinstall/README.md\n#Wireless Configuration" \
-                            | menu "WiFi Help" 2
+                        printf "ifconfig wlan0 up list scan\nwpa_cli add_network\nwpa_cli set_network <id> ssid \"name\"\nwpa_cli set_network <id> psk \"pass\"\nwpa_cli select_network <id>\n\nservice netif restart wlan0" \
+                            | menu "WiFi Help" 7
                         ;;
                 esac
                 ;;
