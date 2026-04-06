@@ -44,21 +44,28 @@ connect_network() {
                 sleep 1
                 sudo ifconfig "$IFACE" up
                 i=0
-                while [ $i -lt 15 ]; do
-                    wpa_cli status | grep -q 'wpa_state=COMPLETED' && break
+                while [ $i -lt 5 ]; do
+                    wpa_cli status | grep -q 'wpa_state=COMPLETED' \
+
                     sleep 1
                     i=$((i + 1))
                 done
             else
-                NET_ID=$(wpa_cli -i "$IFACE" add_network | tail -1)
-                wpa_cli -i "$IFACE" set_network "$NET_ID" ssid "\"$1\"" >/dev/null
-                wpa_cli -i "$IFACE" set_network "$NET_ID" psk "\"$2\"" >/dev/null
-                wpa_cli -i "$IFACE" enable_network "$NET_ID" >/dev/null
-                wpa_cli -i "$IFACE" save_config >/dev/null
+                NET_ID=$(wpa_cli add_network | tail -1)
+                wpa_cli set_network "$NET_ID" ssid "\"$1\"" >/dev/null
+                wpa_cli set_network "$NET_ID" psk "\"$2\"" >/dev/null
+                wpa_cli select_network "$NET_ID" >/dev/null
+                sudo ifconfig "$IFACE" down
+                sleep 1
+                sudo ifconfig "$IFACE" up
+                i=0
+                while [ $i -lt 5 ]; do
+                    wpa_cli status | grep -q 'wpa_state=COMPLETED' \
+                        && notify-send "WiFi" "Connected to $1" && break
+                    sleep 1
+                    i=$((i + 1))
+                done
             fi
-            wpa_cli status | awk -F'=' '/^ssid/{print $2}' | grep -q $1 \
-		&& notify-send "WiFi" "Connected to $1" \
-		|| notify-send "WiFi" "Failed connect to $1"
             ;;
     esac
 }
