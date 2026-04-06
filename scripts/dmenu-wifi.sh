@@ -20,7 +20,8 @@ scan_networks() {
             iwctl station "$IFACE" get-networks 2>/dev/null \
                 | sed 's/\x1b\[[0-9;]*m//g' | tail -n +3 | grep -v '^ *-' | grep -v '^$' | awk '{print $1}'
             ;;
-        freebsd) sudo ifconfig "$IFACE" up list scan 2>/dev/null | awk 'NR>1 && $1 != "" && $1 !~ /^0x0+$/ {print $1}' | sort -u ;;
+        freebsd) sudo ifconfig "$IFACE" up list scan 2>/dev/null | awk 'NR>1 && $1 !~ /^0x/ {print $1}' | sort -u
+	    ;;
     esac
 }
 
