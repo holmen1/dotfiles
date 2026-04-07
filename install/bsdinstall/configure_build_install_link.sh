@@ -4,6 +4,7 @@ USER=$(whoami)
 EMAIL=$USER@gmail.com
 
 DOTFILES_DIR=$HOME/repos/dotfiles
+DSCRIPTS_DIR=$HOME/.dmenu
 SCRIPTS_DIR=$DOTFILES_DIR/scripts
 LINK_SCRIPT=$SCRIPTS_DIR/link_config.sh
 LINKS=$DOTFILES_DIR/install/bsdinstall/links/suckless_links.config
@@ -112,13 +113,15 @@ case "$ans" in
 esac
 
 read -p "Enable system monitoring? [y/N] " ans
+BAT=battery-monitor.sh
+WIFI=dmenu-wifi.sh
 case "$ans" in
     [Yy]*)
     # Add cron job for system monitoring (runs every 2 minutes)
-    CRON_LINE="DISPLAY=:0"$'\n'"*/2 * * * * $SCRIPTS_DIR/battery-monitor.sh >/dev/null 2>&1; $SCRIPTS_DIR/dmenu-wifi.sh --monitor >/dev/null 2>&1"
+    CRON_LINE="DISPLAY=:0"$'\n'"*/2 * * * * $SCRIPTS_DIR/$BAT >/dev/null 2>&1; $DSCRIPTS_DIR/$WIFI --monitor >/dev/null 2>&1"
     
     # Check if cron job already exists
-    if crontab -l 2>/dev/null | grep -q "battery-monitor.sh"; then
+    if crontab -l 2>/dev/null | grep -q $BAT && crontab -l 2>/dev/null | grep -q $WIFI; then
         echo "Cron job already exists"
     else
         # Add to crontab
