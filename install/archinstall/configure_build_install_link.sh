@@ -86,13 +86,22 @@ read -p "Install xmonad? [y/N] " ans
 case "$ans" in
     [Yy]*)
     sudo mkdir -p /opt/xmonad
-    sudo rm -f /opt/xmonad/*
+    # Backup existing files instead of removing
+    for file in /opt/xmonad/*; do
+        if [ -e "$file" ] && [[ ! "$file" == *.bak ]]; then
+            sudo mv "$file" "${file}.bak"
+        fi
+    done
 
     sudo cp -f $XMONAD_DIR/bin/xmonad-v0.18.[0-9] /opt/xmonad/
     echo "Installed xmonad to /opt/xmonad/"
-    sudo ln -sf /opt/xmonad/xmonad-v0.18.* /usr/local/bin/xmonad
+    # Link to the latest installed version, ignoring .bak files
+    LATEST_XMONAD=$(ls -v /opt/xmonad/xmonad-v0.18.[0-9] | grep -v "\.bak$" | tail -n 1)
+    if [ -n "$LATEST_XMONAD" ]; then
+        sudo ln -sf "$LATEST_XMONAD" /usr/local/bin/xmonad
+        echo "Created symlink for xmonad pointing to $LATEST_XMONAD"
+    fi
     sudo -k
-    echo "Created symlink for xmonad"
     ;;
 esac
 
