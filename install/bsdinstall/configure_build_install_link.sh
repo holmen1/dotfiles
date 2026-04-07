@@ -113,7 +113,7 @@ case "$ans" in
 esac
 
 read -p "Enable system monitoring? [y/N] " ans
-BAT=battery-monitor.sh
+BAT=monitor-battery.sh
 WIFI=dmenu-wifi.sh
 case "$ans" in
     [Yy]*)
