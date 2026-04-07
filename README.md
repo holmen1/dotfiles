@@ -4,12 +4,13 @@ Minimal configuration for Linux, BSD, and macOS<sup>*</sup> : dotfiles, installa
 
 * Display server: XLibre (X11 protocol implementation)
 * Window manager: Xmonad (tiling, minimal, highly configurable)
+* Menus: dmenu (dynamic menu for X)
 * Editor: Neovim (Telescope, LSP, gitsigns)
 * Terminal: st (simple terminal, patched for features)
 * File manager: lf (terminal-based, lightweight)
-* Web browser: Brave (privacy-focused, fast)
-* VPN: Mullvad CLI (secure, scriptable VPN control)
-* System monitoring: Custom scripts for battery and WiFi status
+* Dotfiles: Stow (symlink farm manager)
+* Keymaps: setxkbmap (keymaps and layouts via the X Keyboard Extension)
+* Network: Portable shell scripts
 
 ---
 <sup>*</sup> macOS config is limited to basic functionality
@@ -49,7 +50,10 @@ Run tests? [Y/n]
 
 See [Installation guides](#installation-guides) for details
 
+## Build
 
+The [build](https://github.com/holmen1/dotfiles/tree/master/install/build)
+folder contains scripts and tools for building and managing components (ghc, neovim, st, xkb, xmonad, xlibre) of this dotfiles setup.
 
 ## Project Scope
 
@@ -68,6 +72,8 @@ Designed for low-spec hardware (tested on 4GB RAM). Minimal dependencies.
 - [Hyprland](https://github.com/holmen1/dotfiles/tree/master/dotfiles/hypr): a dynamic tiling Wayland compositor
 - [Xmonad](https://github.com/holmen1/dotfiles/tree/master/dotfiles/xmonad): a dynamic tiling X11 window manager
 - [Neovim](https://github.com/holmen1/dotfiles/tree/master/dotfiles/nvim): hyperextensible Vim-based text editor
+- [XKB](https://github.com/holmen1/dotfiles/tree/master/dotfiles/xkb): keymaps
+- [dmenu](https://github.com/holmen1/dotfiles/tree/master/dotfiles/dmenu): menu scripts
 
 ## Installation guides
 - [Arch Linux](install/archinstall)
@@ -78,14 +84,5 @@ Designed for low-spec hardware (tested on 4GB RAM). Minimal dependencies.
 ## Automation scripts
 
 * Export/import packages
-* Link configuration
 * System monitoring
 
-## Build
-
-The [build](https://github.com/holmen1/dotfiles/tree/master/install/build)
-folder contains scripts and tools for building and managing components (xmonad, st, xlibre) of this dotfiles setup.
-
-
-
- 
