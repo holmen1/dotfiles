@@ -13,7 +13,7 @@ X11 keyboard customisation using **XKB** and **xcape**.
 
 | Key | L1  | L2  | L3  | L4 |
 |-----|-----|-----|-----|----|
-| ´   | ´   | `   | #   | na |
+| ´   | "   | `   | #   | na |
 | u   | u   | U   | 7   | na |
 | i   | i   | I   | 8   | na |
 | o   | o   | O   | 9   | na |
