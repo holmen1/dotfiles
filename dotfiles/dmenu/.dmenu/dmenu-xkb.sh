@@ -21,7 +21,7 @@ choice=$(printf "help\ncustom\nse" | dmenu -p "xkb[$current]" -nb "#222222" -nf 
 
 case "$choice" in
     help)
-        sed -n 7,30p "$README" | dmenu -l 24 -i -p "XKB Help" \
+        sed -n 9,34p "$README" | dmenu -l 26 -i -p "XKB Help" \
 -nb "#222222" -nf "#ffffff" -sb "#222222" -sf "#ffffff" \
 -fn "JetBrainsMono Nerd Font Mono-14"
         ;;

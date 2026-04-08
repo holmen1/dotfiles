@@ -13,6 +13,7 @@ X11 keyboard customisation using **XKB** and **xcape**.
 
 | Key | L1  | L2  | L3  | L4 |
 |-----|-----|-----|-----|----|
+| ´   | ´   | `   | #   | na |
 | u   | u   | U   | 7   | na |
 | i   | i   | I   | 8   | na |
 | o   | o   | O   | 9   | na |
@@ -22,14 +23,13 @@ X11 keyboard customisation using **XKB** and **xcape**.
 | j   | j   | J   | 4   | (  |
 | k   | k   | K   | 5   | )  |
 | l   | l   | L   | 6   | na |
-| ö   | ⌫   | #   | +   | na |
+| ö   | ⌫   | :   | +   | na |
 | ä   | ↑   | \|  | /   | \  |
 | n   | n   | N   | 0   | (  |
 | m   | m   | M   | 1   | )  |
 | ,   | ,   | ;   | 2   | <  |
 | .   | .   | :   | 3   | >  |
 | '   | '   | *   | =   | na |
-| ´   | ´   | `   | na  | na |
 | -   | -   | _   | ?   | !  |
 
 ### Num-layer
