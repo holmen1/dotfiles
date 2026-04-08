@@ -18,12 +18,12 @@ xkb_symbols "local" {
     key <AC07> { [ j, J, 4, parenleft ] };
     key <AC08> { [ k, K, 5, parenright ] };
     key <AC09> { [ l, L, 6 ] };
-    key <AC10> { [ BackSpace, colon, plus ] };
-    key <AC11> { [ Up, bar, slash, backslash ] };
+    key <AC10> { [ colon, slash, exclam ] };
+    key <AC11> { [ BackSpace, bar, plus, backslash ] };
     key <BKSL> { [ apostrophe, asterisk, equal ] };
     key <AB06> { [ n, N, 0, parenleft ] };
     key <AB07> { [ m, M, 1, parenright ] };
     key <AB08> { [ comma, semicolon, 2, less ] };
     key <AB09> { [ period, colon, 3, greater ] };
-    key <AB10> { [ minus, underscore, question, exclam ] };
+    key <AB10> { [ minus, underscore, question ] };
 };
