@@ -11,7 +11,7 @@ else
 fi
 
 # Main categories
-category=$(printf "Help\nVPN\nWiFi\nXKB" | dmenu -i -p "Menu:" \
+category=$(printf "Help\nNetwork\nXKB" | dmenu -i -p "Menu:" \
 -nb "#222222" -nf "#ffffff" -sb "#A300A3" -sf "#ffffff" \
 -fn "$FONT")
 
@@ -25,10 +25,15 @@ case "$category" in
         $DSCRIPT/dmenu-help-lf.sh ;;
     esac
     ;;
-  "VPN")
-    $DSCRIPT/dmenu-mullvad.sh ;;
-  "WiFi")
-    $DSCRIPT/dmenu-wifi.sh ;;
+  "Network")
+    net=$(printf "WiFi\nVPN" | dmenu -i -p "Net:" -nb "#222222" -nf "#ffffff" -sb "#A300A3" -sf "#ffffff" -fn "$FONT")
+    case "$net" in
+      "WiFi")
+        $DSCRIPT/dmenu-wifi.sh ;;
+      "VPN")
+        $DSCRIPT/dmenu-mullvad.sh ;;
+    esac
+    ;;
   "XKB")
     $DSCRIPT/dmenu-xkb.sh ;;
 esac
