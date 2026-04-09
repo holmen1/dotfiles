@@ -16,6 +16,12 @@ else
     battery_level=0
 fi
 
+# If called with --get-level flag, output the battery level and exit
+if [ "$1" = "--get-level" ]; then
+    echo $battery_level
+    exit 0
+fi
+
 # Check if battery level is below threshold
 if [ "$battery_level" -le $THRESHOLD ]; then
     notify-send -u critical "Battery Critical" "Battery level is ${battery_level}%. Connect charger now!" -i battery-caution

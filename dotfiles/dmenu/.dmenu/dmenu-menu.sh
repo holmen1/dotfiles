@@ -3,7 +3,7 @@
 
 DSCRIPT=$HOME/.dmenu
 XKB_STATE="$HOME/.cache/xkb-layout"
-CURRENT_XKB=$(cat "$XKB_STATE" 2>/dev/null || echo "se")
+MONITOR_SCRIPTS=$HOME/repos/dotfiles/scripts
 
 # Font detection
 if fc-list | grep -qi "JetBrainsMono Nerd Font"; then
@@ -12,8 +12,11 @@ else
     FONT="monospace-14"
 fi
 
+current_xkb=$(cat "$XKB_STATE" 2>/dev/null || echo "se")
+battery_level=$($MONITOR_SCRIPTS/monitor-battery.sh --get-level)
+
 # Main categories
-category=$(printf "Help\nNetwork\nXKB" | dmenu -i -p "xkb[$CURRENT_XKB]" \
+category=$(printf "Help\nNetwork\nXKB" | dmenu -i -p "xkb[$current_xkb]:bat[$battery_level%]" \
 -nb "#222222" -nf "#ffffff" -sb "#A300A3" -sf "#ffffff" \
 -fn "$FONT")
 
