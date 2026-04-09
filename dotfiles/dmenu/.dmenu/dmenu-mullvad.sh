@@ -1,6 +1,17 @@
 #!/bin/sh
 # dmenu-mullvad: Control Mullvad VPN via dmenu
 
+# Check for --get-location flag
+if [ "$1" = "--get-location" ]; then
+    status=$(mullvad status)
+    if echo "$status" | grep -q "Connected"; then
+        echo "$status" | grep "Relay:" | awk '{print $2}' | cut -d'-' -f1
+    else
+        echo ""
+    fi
+    exit 0
+fi
+
 # Use JetBrains Nerd Font if available, otherwise use a generic fallback
 if fc-list | grep -qi "JetBrainsMono Nerd Font"; then
     FONT="JetBrainsMono Nerd Font Mono-14"
