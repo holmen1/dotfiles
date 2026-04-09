@@ -1,9 +1,12 @@
 #!/bin/sh
 # dmenu-menu: Unified menu for system
 
+DOTFILES=$HOME/repos/dotfiles
 DSCRIPT=$HOME/.dmenu
 XKB_STATE="$HOME/.cache/xkb-layout"
-MONITOR_SCRIPTS=$HOME/repos/dotfiles/scripts
+XKB_README="$DOTFILES/dotfiles/xkb/README.md"
+MONITOR_SCRIPTS=$DOTFILES/scripts
+
 
 # Font detection
 if fc-list | grep -qi "JetBrainsMono Nerd Font"; then
@@ -24,8 +27,10 @@ category=$(printf "Help\nNetwork\nXKB" | dmenu -i -p "xkb[$current_xkb]:wifi[$ss
 
 case "$category" in
   "Help")
-    app=$(printf "Xmonad\nlf" | dmenu -i -p "App:" -nb "#222222" -nf "#ffffff" -sb "#A300A3" -sf "#ffffff" -fn "$FONT")
+    app=$(printf "XKB\nlf\nXmonad" | dmenu -i -p "App:" -nb "#222222" -nf "#ffffff" -sb "#A300A3" -sf "#ffffff" -fn "$FONT")
     case "$app" in
+      "XKB")
+        sed -n 9,34p "$XKB_README" | dmenu -l 26 -p "XKB Help" -nb "#222222" -nf "#ffffff" -sb "#222222" -sf "#ffffff" -fn "$FONT" ;;
       "Xmonad")
         $DSCRIPT/dmenu-help-xmonad.sh ;;
       "lf")
