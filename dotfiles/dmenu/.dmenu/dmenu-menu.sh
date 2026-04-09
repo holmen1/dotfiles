@@ -5,6 +5,8 @@ DOTFILES=$HOME/repos/dotfiles
 DSCRIPT=$HOME/.dmenu
 XKB_STATE="$HOME/.cache/xkb-layout"
 XKB_README="$DOTFILES/dotfiles/xkb/README.md"
+XMONAD_README="$DOTFILES/dotfiles/xmonad/README.md"
+LF_README="$DOTFILES/dotfiles/lf/README.md"
 BASH_README="$DOTFILES/dotfiles/bash/README.md"
 MONITOR_SCRIPTS=$DOTFILES/scripts
 
@@ -31,19 +33,18 @@ case "$category" in
     app=$(printf "XKB\nlf\nbash\nXmonad" | dmenu -i -p "App:" -nb "#222222" -nf "#ffffff" -sb "#A300A3" -sf "#ffffff" -fn "$FONT")
     case "$app" in
       "XKB")
-        sed -n 9,34p "$XKB_README" | \
-		dmenu -l 26 -p "XKB Help" -nb "#222222" -nf "#ffffff" -sb "#222222" -sf "#ffffff" \
-		-fn "$FONT" ;;
+        sed -n 9,34p "$XKB_README" | dmenu -l 26 -p "XKB Help" \
+		-nb "#222222" -nf "#ffffff" -sb "#222222" -sf "#ffffff" -fn "$FONT" ;;
       "bash")
-        sed -n 16,26p "$BASH_README" | \
-		dmenu -l 11 -p "bash Help" -nb "#222222" -nf "#ffffff" -sb "#222222" -sf "#ffffff" \
-		-fn "$FONT" ;;
+        sed -n 16,26p "$BASH_README" | dmenu -l 11 -p "bash Help" \
+		-nb "#222222" -nf "#ffffff" -sb "#222222" -sf "#ffffff" -fn "$FONT" ;;
       "Xmonad")
-        $DSCRIPT/dmenu-help-xmonad.sh ;;
+        sed -n 12,40p "$XMONAD_README" | dmenu -l 24 -i -p "XMonad Help" \
+		-nb "#222222" -nf "#ffffff" -sb "#222222" -sf "#ffffff" -fn "$FONT" ;;
       "lf")
-        $DSCRIPT/dmenu-help-lf.sh ;;
-    esac
-    ;;
+        sed -n 14,40p "$LF_README" | dmenu -l 23 -i -p "lf Help" \
+                -nb "#222222" -nf "#ffffff" -sb "#222222" -sf "#ffffff" -fn "$FONT" ;;
+    esac ;;
   "Network")
     net=$(printf "WiFi\nVPN" | dmenu -i -p "Net:" -nb "#222222" -nf "#ffffff" -sb "#A300A3" -sf "#ffffff" -fn "$FONT")
     case "$net" in
@@ -51,8 +52,7 @@ case "$category" in
         $DSCRIPT/dmenu-wifi.sh ;;
       "VPN")
         $DSCRIPT/dmenu-mullvad.sh ;;
-    esac
-    ;;
+    esac ;;
   "XKB")
     $DSCRIPT/dmenu-xkb.sh ;;
 esac
