@@ -123,10 +123,17 @@ fi
 
 [ "$1" = "--monitor" ] && { monitor_mode; exit 0; }
 
+if [ "$1" = "--get-ssid" ]; then
+    case "$status" in
+        connected:*) echo "${status#connected:}" ;;
+        *) echo "" ;;
+    esac
+    exit 0
+fi
+
 case "$status" in
     connected:*)
-        SSID=${status#connected:}
-        action=$(printf "Disconnect\nScan" | menu "WiFi [$SSID]:")
+        action=$(printf "Disconnect\nScan" | menu "WiFi:")
         case "$action" in
             Disconnect) disconnect_network ;;
             Scan)       scan_and_connect ;;

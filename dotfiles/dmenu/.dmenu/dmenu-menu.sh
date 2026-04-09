@@ -14,9 +14,10 @@ fi
 
 current_xkb=$(cat "$XKB_STATE" 2>/dev/null || echo "se")
 battery_level=$($MONITOR_SCRIPTS/monitor-battery.sh --get-level)
+ssid=$($DSCRIPT/dmenu-wifi.sh --get-ssid)
 
 # Main categories
-category=$(printf "Help\nNetwork\nXKB" | dmenu -i -p "xkb[$current_xkb]:bat[$battery_level%]" \
+category=$(printf "Help\nNetwork\nXKB" | dmenu -i -p "xkb[$current_xkb]:wifi[$ssid]:bat[$battery_level%]" \
 -nb "#222222" -nf "#ffffff" -sb "#A300A3" -sf "#ffffff" \
 -fn "$FONT")
 
