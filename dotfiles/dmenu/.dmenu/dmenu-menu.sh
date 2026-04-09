@@ -2,6 +2,8 @@
 # dmenu-menu: Unified menu for system
 
 DSCRIPT=$HOME/.dmenu
+XKB_STATE="$HOME/.cache/xkb-layout"
+CURRENT_XKB=$(cat "$XKB_STATE" 2>/dev/null || echo "se")
 
 # Font detection
 if fc-list | grep -qi "JetBrainsMono Nerd Font"; then
@@ -11,7 +13,7 @@ else
 fi
 
 # Main categories
-category=$(printf "Help\nNetwork\nXKB" | dmenu -i -p "Menu:" \
+category=$(printf "Help\nNetwork\nXKB" | dmenu -i -p "xkb[$CURRENT_XKB]" \
 -nb "#222222" -nf "#ffffff" -sb "#A300A3" -sf "#ffffff" \
 -fn "$FONT")
 
