@@ -31,7 +31,8 @@ This repository contains a custom configuration for the [XMonad](https://xmonad.
 | `Mod + P`              | htop scratchpad toggle                |
 | `Mod + A`              | Launch dmenu                          |
 | `Mod + Shift + Q`      | Quit xmonad                           |
-| `Mod + M`              | dmenu: VPN XKB keymaps                |
+| `Mod + M`              | dmenu: Help Network Exit              |
+| `Mod + X`              | XKB: toggle keyboard layout           |
 
 
 ## Requirements

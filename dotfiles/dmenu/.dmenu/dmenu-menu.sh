@@ -39,7 +39,7 @@ case "$category" in
         sed -n 16,26p "$BASH_README" | dmenu -l 11 -p "bash Help" \
 		-nb "#222222" -nf "#ffffff" -sb "#222222" -sf "#ffffff" -fn "$FONT" ;;
       "Xmonad")
-        sed -n 12,40p "$XMONAD_README" | dmenu -l 24 -i -p "XMonad Help" \
+        sed -n 12,41p "$XMONAD_README" | dmenu -l 25 -i -p "XMonad Help" \
 		-nb "#222222" -nf "#ffffff" -sb "#222222" -sf "#ffffff" -fn "$FONT" ;;
       "lf")
         sed -n 14,40p "$LF_README" | dmenu -l 23 -i -p "lf Help" \
