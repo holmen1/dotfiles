@@ -24,7 +24,7 @@ ssid=$($DSCRIPT/dmenu-wifi.sh --get-ssid)
 vpn=$($DSCRIPT/dmenu-mullvad.sh --get-location)
 
 # Main categories
-category=$(printf "Help\nNetwork\nXKB" | dmenu -i -p "x[$current_xkb] w[$ssid] v[$vpn] b[$battery_level%]" \
+category=$(printf "Help\nNetwork\nExit" | dmenu -i -p "x[$current_xkb] w[$ssid] v[$vpn] b[$battery_level%]" \
 -nb "#222222" -nf "#ffffff" -sb "#A300A3" -sf "#ffffff" \
 -fn "$FONT")
 
@@ -53,6 +53,6 @@ case "$category" in
       "VPN")
         $DSCRIPT/dmenu-mullvad.sh ;;
     esac ;;
-  "XKB")
-    $DSCRIPT/dmenu-xkb.sh ;;
+  "Exit")
+    $DSCRIPT/dmenu-logout.sh ;;
 esac
