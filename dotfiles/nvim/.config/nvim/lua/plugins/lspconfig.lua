@@ -1,12 +1,6 @@
 -- ~/.config/nvim/lua/plugins/lspconfig.lua
 -- Native configuration for LSP, Lazydev and Fidget
 
--- Setup lazydev for Lua completion and neovim APIs
-local has_lazydev, lazydev = pcall(require, "lazydev")
-if has_lazydev then
-  lazydev.setup({})
-end
-
 -- Setup fidget for LSP status updates
 local has_fidget, fidget = pcall(require, "fidget")
 if has_fidget then
