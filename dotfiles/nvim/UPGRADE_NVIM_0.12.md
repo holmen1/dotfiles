@@ -23,6 +23,20 @@ This document tracks the steps, changes, and configurations modified during the 
 * **Step 4 - LSP Migration**: Fully maintained the "half-manual" approach without Mason. Converted `lspconfig.lua` to remove the lazy wrapper. Explicitly added `fidget.nvim` and `lazydev.nvim` to `vim.pack.add` alongside `nvim-lspconfig`. Confirmed that Neovim 0.12 officially uses `nvim-lspconfig` under the hood strictly as a *default configurations source* for the builtin `vim.lsp.config('server')` and `vim.lsp.enable()` functions.
 * **Step 5 - Gitsigns Migration & Lazy Cleanup**: Completely transitioned `gitsigns.nvim` off of `lazy.nvim`, validating the final port. Cleaned up all leftover lazy plugin cache directories (`~/.local/share/nvim/lazy`) and removed any remaining `lazy.nvim` dependencies scattered in the config since the native 0.12 package manager seamlessly replaced it all.
 
+## Reversion: Back to lazy.nvim
+After using vim.pack for some time, reverted back to lazy.nvim due to friction points discovered:
+* **vim.pack Command Issues**: The `PackUpdate` and `PackList` commands had poor UX—PackList flashed results without persistence, PackUpdate showed pending updates but didn't actually apply them reliably.
+* **Lazy Loading Complexity**: vim.pack lacks automatic lazy loading. Manually wiring every plugin to load eagerly negated performance benefits and added boilerplate.
+* **Build Hook Instability**: The `PackChanged` autocmd for `telescope-fzf-native` build required platform-specific logic (gmake vs make on FreeBSD), adding fragility.
+* **lazy.nvim Pragmatism**: Lazy.nvim's `:Lazy` UI, `:Lazy sync`, and `:Lazy update` commands offer solid UX. Its event system (VeryLazy, FileType, etc.) and dependency resolution are battle-tested.
+
+### Key Lessons from vim.pack→lazy Transition
+* **Bootstrap Function**: Use `vim.fn.isdirectory()` for directory checks, not `vim.loop.fs_stat()` (deprecated) or `vim.fs.stat()` (doesn't exist in 0.12).
+* **Explicit Lazy Configuration**: When using lazy.nvim, be explicit: set `lazy = false` for plugins that must load immediately (tokyonight, treesitter, lspconfig, which-key, mini.nvim), set `event = 'VeryLazy'` for plugins that benefit from deferral (telescope, gitsigns).
+* **Avoid `defaults = { lazy = true }`**: This global default breaks eager plugins with no explicit event/command trigger. Better to use lazy.nvim's default (lazy = true only for plugins without priority or immediate config needs) and explicitly opt out on critical plugins.
+* **Lockfile Cleanup**: Remove old vim.pack lockfile (`nvim-pack-lock.json`) before switching to prevent conflicts. Lazy manages its own `lazy-lock.json`.
+* **Minimal Is Not Always Simplest**: While vim.pack is native and dependency-free, lazy.nvim's ergonomic advantages (especially for updates and plugin discovery) make it the pragmatic choice for development velocity, even in a "minimal" setup.
+
 ## Helpful Commands
 * **Run Headless Checkhealth**: If debugging an environment purely from the terminal without opening UI, run `nvim --headless -c "checkhealth" -c "w! health.log" -c "qa"` to pipe output to `health.log`.
 
