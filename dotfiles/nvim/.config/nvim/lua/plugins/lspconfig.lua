@@ -130,12 +130,16 @@ vim.diagnostic.config {
 
 -- LSP servers - install via system package manager:
 local servers = {
-  asm_lsp = 'asm-lsp',
   clangd = 'clangd',
   hls = 'haskell-language-server-wrapper',
-  lua_ls = 'lua-language-server',
-  bashls = 'bash-language-server',
 }
+
+-- asm_lsp, lua_ls, bashls disabled on BSD
+if jit.os ~= 'BSD' then
+  servers.asm_lsp = 'asm-lsp'
+  servers.lua_ls = 'lua-language-server'
+  servers.bashls = 'bash-language-server'
+end
 
 -- Only enable servers that are installed on the OS
 local available = {}

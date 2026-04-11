@@ -9,7 +9,7 @@ end
 
 -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
 configs.setup {
-  ensure_installed = { 'c', 'lua', 'haskell', 'asm' },
+  ensure_installed = { 'c', 'lua', 'haskell' },
   auto_install = true,
   highlight = { enable = true },
   -- Disable treesitter indenting for C because it conflicts with Neovim's robust native cindent
