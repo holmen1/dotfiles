@@ -134,6 +134,7 @@ local servers = {
   clangd = 'clangd',
   hls = 'haskell-language-server-wrapper',
   lua_ls = 'lua-language-server',
+  bashls = 'bash-language-server',
 }
 
 -- Only enable servers that are installed on the OS
