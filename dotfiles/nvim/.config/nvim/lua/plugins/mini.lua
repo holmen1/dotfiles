@@ -31,6 +31,13 @@ statusline.section_location = function()
   return '%2l:%-2v'
 end
 
+-- Buffer tabline at the top
+require('mini.tabline').setup()
+
+-- Navigate buffers: Ctrl+h (next), Ctrl+l (previous)
+vim.keymap.set('n', '<C-h>', '<Cmd>bnext<CR>', { noremap = true, silent = true, desc = 'Next buffer' })
+vim.keymap.set('n', '<C-l>', '<Cmd>bprevious<CR>', { noremap = true, silent = true, desc = 'Previous buffer' })
+
 -- ... and there is more!
 --  Check out: https://github.com/echasnovski/mini.nvim
 
