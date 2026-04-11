@@ -111,8 +111,10 @@ else
 fi
 
 # System Monitoring
+BAT=monitor-battery.sh
+WIFI=monitor-wifi.sh
 print_header "System Monitoring"
-if crontab -l 2>/dev/null | grep -q "battery-monitor.sh"; then
+if crontab -l 2>/dev/null | grep -q $BAT && crontab -l 2>/dev/null | grep -q $WIFI; then
     print_pass "System monitoring cron job configured"
 else
     print_warn "System monitoring cron job not found"
@@ -242,3 +244,4 @@ else
     echo -e "Check the failed items above and refer to your installation guide."
     exit 1
 fi
+
