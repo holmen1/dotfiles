@@ -64,7 +64,9 @@ scan() {
                 | sed 's/\x1b\[[0-9;]*m//g' | tail -n +3 | grep -v '^ *-' | grep -v '^$' | awk '{print $1}'
             ;;
         FreeBSD)
-            sudo ifconfig "$IFACE" up list scan 2>/dev/null | awk 'NR>1 && $1 !~ /^0x/ {print $1}' | sort -u
+            sudo ifconfig "$IFACE" up >/dev/null 2>&1
+            sleep 1
+            sudo ifconfig "$IFACE" scan 2>/dev/null | awk 'NR>1 && $1 !~ /^0x/ {print $1}' | sort -u
             ;;
     esac
 }
