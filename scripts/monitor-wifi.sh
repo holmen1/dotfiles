@@ -9,8 +9,8 @@ case "$OS" in
     FreeBSD) IFACE=$(ifconfig -l 2>/dev/null | tr ' ' '\n' | grep '^wlan' | head -1) ;;
 esac
 
-# --- Functions ---
-monitor() {
+# Monitor WiFi if no argument provided
+if [ -z "$1" ]; then
     if [ -z "$IFACE" ]; then
         notify-send -u normal "Network" "No wireless interface found" -i network-wireless-offline
         exit 0
@@ -40,8 +40,10 @@ monitor() {
             fi
             ;;
     esac
-}
+    exit 0
+fi
 
+# --- Functions for dmenu ---
 get_ssid() {
     if [ -z "$IFACE" ]; then echo ""; exit 1; fi
     case "$OS" in
@@ -127,9 +129,6 @@ help() {
 
 # --- Main ---
 case "$1" in
-    --monitor)
-        monitor
-        ;;
     --get-ssid)
         get_ssid
         ;;
@@ -145,10 +144,5 @@ case "$1" in
     --help)
         help
         ;;
-    *)
-        while true; do
-            monitor
-            sleep 30
-        done
-        ;;
 esac
+

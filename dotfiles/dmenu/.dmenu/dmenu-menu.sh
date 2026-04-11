@@ -12,15 +12,13 @@ MONITOR_SCRIPTS=$DOTFILES/scripts
 
 
 # Font detection
-if fc-list | grep -qi "JetBrainsMono Nerd Font"; then
-    FONT="JetBrainsMono Nerd Font Mono-14"
-else
-    FONT="monospace-14"
-fi
+fc-list | grep -qi "JetBrainsMono Nerd Font" \
+    && FONT="JetBrainsMono Nerd Font Mono-14" \
+    || FONT="monospace-14"
 
 current_xkb=$(cat "$XKB_STATE" 2>/dev/null || echo "se")
 battery_level=$($MONITOR_SCRIPTS/monitor-battery.sh --get-level)
-ssid=$($DSCRIPT/dmenu-wifi.sh --get-ssid)
+ssid=$($MONITOR_SCRIPTS/monitor-wifi.sh --get-ssid)
 vpn=$($DSCRIPT/dmenu-mullvad.sh --get-location)
 
 # Main categories
@@ -30,7 +28,7 @@ category=$(printf "Help\nNetwork\nExit" | dmenu -i -p "x[$current_xkb] w[$ssid] 
 
 case "$category" in
   "Help")
-    app=$(printf "XKB\nlf\nbash\nXmonad" | dmenu -i -p "App:" -nb "#222222" -nf "#ffffff" -sb "#A300A3" -sf "#ffffff" -fn "$FONT")
+    app=$(printf "XKB\nlf\nbash\nXmonad\nwifi" | dmenu -i -p "App:" -nb "#222222" -nf "#ffffff" -sb "#A300A3" -sf "#ffffff" -fn "$FONT")
     case "$app" in
       "XKB")
         sed -n 9,34p "$XKB_README" | dmenu -l 26 -p "XKB Help" \
@@ -44,6 +42,9 @@ case "$category" in
       "lf")
         sed -n 14,40p "$LF_README" | dmenu -l 23 -i -p "lf Help" \
                 -nb "#222222" -nf "#ffffff" -sb "#222222" -sf "#ffffff" -fn "$FONT" ;;
+      "wifi")
+        $MONITOR_SCRIPTS/monitor-wifi.sh --help | dmenu -l 7 -p "wifi Help" \
+                -nb "#222222" -nf "#ffffff" -sb "#222222" -sf "#ffffff" -fn "$FONT" ;;
     esac ;;
   "Network")
     net=$(printf "WiFi\nVPN" | dmenu -i -p "Net:" -nb "#222222" -nf "#ffffff" -sb "#A300A3" -sf "#ffffff" -fn "$FONT")
@@ -56,3 +57,4 @@ case "$category" in
   "Exit")
     $DSCRIPT/dmenu-logout.sh ;;
 esac
+
