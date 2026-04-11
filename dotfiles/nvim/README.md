@@ -104,7 +104,7 @@ Use `:bd` to close a buffer. Use `<leader><leader>` to search and switch buffers
 | `K` | Hover documentation | Show docs for symbol under cursor |
 | `gd` | Go to definition | Jump to where a symbol is defined |
 | `gD` | Go to declaration | Jump to declaration (e.g., .h file in C) |
-| `gr` | Find references | See all usages of a symbol |
+| `gr` | Find references | See all usages of a symbol[^1] |
 | `gI` | Go to implementation | In Haskell: type class instances; in Go/C#: interface implementations |
 | `<leader>rn` | Rename symbol | Rename variables/functions across files |
 | `<leader>ca` | Code action | Fix errors, organize imports |
@@ -114,6 +114,8 @@ Use `:bd` to close a buffer. Use `<leader><leader>` to search and switch buffers
 **Supported servers:**
 - **Arch Linux**: clangd, haskell-language-server, asm-lsp, lua-language-server, bash-language-server
 - **FreeBSD**: clangd, haskell-language-server (no bash-language-server, asm-lsp, or lua-language-server)
+
+[^1]: Requires quick typing to work properly.
 
 ### Terminal Navigation
 | Mapping | Description |
