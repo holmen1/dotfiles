@@ -19,7 +19,7 @@ fc-list | grep -qi "JetBrainsMono Nerd Font" \
 current_xkb=$(cat "$XKB_STATE" 2>/dev/null || echo "se")
 battery_level=$($MONITOR_SCRIPTS/monitor-battery.sh --get-level)
 ssid=$($MONITOR_SCRIPTS/monitor-wifi.sh --get-ssid)
-vpn=$($DSCRIPT/dmenu-mullvad.sh --get-location)
+vpn=$($MONITOR_SCRIPTS/monitor-vpn.sh --get-location)
 
 # Main categories
 category=$(printf "Help\nNetwork\nExit" | dmenu -i -p "x[$current_xkb] w[$ssid] v[$vpn] b[$battery_level%]" \
@@ -52,7 +52,7 @@ case "$category" in
       "WiFi")
         $DSCRIPT/dmenu-wifi.sh ;;
       "VPN")
-        $DSCRIPT/dmenu-mullvad.sh ;;
+        $DSCRIPT/dmenu-vpn.sh ;;
     esac ;;
   "Exit")
     $DSCRIPT/dmenu-logout.sh ;;
