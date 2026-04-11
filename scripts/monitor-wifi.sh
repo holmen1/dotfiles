@@ -9,6 +9,20 @@ case "$OS" in
     FreeBSD) IFACE=$(ifconfig -l 2>/dev/null | tr ' ' '\n' | grep '^wlan' | head -1) ;;
 esac
 
+# Set WiFi info and state
+case "$OS" in
+    Linux)
+        INFO=$(iwctl station "$IFACE" show 2>/dev/null)
+        STATE=$(printf '%s' "$INFO" | awk '/State/{print $2}')
+        POWERED=$(printf '%s' "$INFO" | awk '/Powered/{print $2}')
+        ;;
+    FreeBSD)
+        INFO=$(ifconfig "$IFACE" 2>/dev/null)
+        STATE=$(printf '%s' "$INFO" | awk '/status:/{print $2}' | sed 's/associated/connected/')
+        POWERED=$(printf '%s' "$INFO" | grep -q 'flags=.*\bUP\b' && echo "on" || echo "off")
+        ;;
+esac
+
 # Monitor WiFi if no argument provided
 if [ -z "$1" ]; then
     if [ -z "$IFACE" ]; then
@@ -16,42 +30,26 @@ if [ -z "$1" ]; then
         exit 0
     fi
 
-    case "$OS" in
-        Linux)
-            INFO=$(iwctl station "$IFACE" show 2>/dev/null)
-            STATE=$(printf '%s' "$INFO" | awk '/State/{print $2}')
-            if [ "$STATE" != "connected" ]; then
-                if printf '%s' "$INFO" | awk '/Powered/{print $2}' | grep -q "on"; then
-                    notify-send -u normal -t 150000 "WiFi Help" "WiFi enabled but not connected" -i network-wireless-disconnected
-                else
-                    notify-send -u critical "Network" "WiFi is disabled" -i network-wireless-offline
-                fi
-            fi
-            ;;
-        FreeBSD)
-            INFO=$(ifconfig "$IFACE" 2>/dev/null)
-            STATUS=$(printf '%s' "$INFO" | awk '/status:/{print $2}')
-            if [ "$STATUS" != "associated" ]; then
-                if printf '%s' "$INFO" | grep -q 'flags=.*\bUP\b'; then
-                    notify-send -u normal -t 150000 "WiFi Help" "WiFi enabled but not connected" -i network-wireless-disconnected
-                else
-                    notify-send -u critical "Network" "WiFi is disabled" -i network-wireless-offline
-                fi
-            fi
-            ;;
-    esac
+    if [ "$STATE" != "connected" ]; then
+        if [ "$POWERED" = "on" ]; then
+            notify-send -u normal -t 150000 "WiFi Help" "WiFi enabled but not connected" -i network-wireless-disconnected
+        else
+            notify-send -u critical "Network" "WiFi is disabled" -i network-wireless-offline
+        fi
+    fi
     exit 0
 fi
 
 # --- Functions for dmenu ---
 get_ssid() {
     if [ -z "$IFACE" ]; then echo ""; exit 1; fi
+    if [ "$STATE" != "connected" ]; then echo ""; exit 1; fi
     case "$OS" in
         Linux)
-            iwctl station "$IFACE" show 2>/dev/null | awk '/Connected network/{print $3}'
+            printf '%s' "$INFO" | awk '/Connected network/{print $3}'
             ;;
         FreeBSD)
-            ifconfig "$IFACE" | awk '/ssid/{print $2}'
+            printf '%s' "$INFO" | awk '/ssid/{print $2}' | tr -d '"'
             ;;
     esac
 }
@@ -116,6 +114,15 @@ disconnect() {
     notify-send "WiFi" "Disconnected"
 }
 
+restart() {
+    if [ -z "$IFACE" ]; then exit 1; fi
+    case "$OS" in
+        Linux)   sudo systemctl restart iwd ;;
+        FreeBSD) sudo service netif restart "$IFACE" ;;
+    esac
+    notify-send "WiFi" "Restarting"
+}
+
 help() {
     case "$OS" in
         Linux)
@@ -140,6 +147,9 @@ case "$1" in
         ;;
     --disconnect)
         disconnect
+        ;;
+    --restart)
+        restart
         ;;
     --help)
         help

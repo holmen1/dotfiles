@@ -10,20 +10,21 @@ fc-list | grep -qi "JetBrainsMono Nerd Font" \
 menu() { dmenu -i -p "$1" ${2:+-l "$2"} -nb "#222222" -nf "#ffffff" -sb "#A300A3" -sf "#ffffff" -fn "$FONT"; }
 
 
-action=$(printf "Scan\nManual\nDisconnect" | menu "WiFi:")
+action=$(printf "Scan\nManual\nDisconnect\nRestart" | menu "WiFi:")
 case "$action" in
   Disconnect) "$MONITOR_WIFI_SCRIPT" --disconnect ;;
   Scan)
     selected=$("$MONITOR_WIFI_SCRIPT" --scan | menu "Networks:")
       [ -n "$selected" ] && "$MONITOR_WIFI_SCRIPT" --connect "$selected"
     ;;
-    Manual)
-      ssid=$(echo "" | menu "SSID:")
-        if [ -n "$ssid" ]; then
-          passwd=$(menu "Password for $ssid:")
-            "$MONITOR_WIFI_SCRIPT" --connect "$ssid" "$passwd"
-        fi
+  Manual)
+    ssid=$(echo "" | menu "SSID:")
+      if [ -n "$ssid" ]; then
+        passwd=$(menu "Password for $ssid:")
+          "$MONITOR_WIFI_SCRIPT" --connect "$ssid" "$passwd"
+      fi
     ;;
+  Restart) "$MONITOR_WIFI_SCRIPT" --restart ;;
 esac
 
 
