@@ -12,6 +12,8 @@ export COLOR_PROMPT='\[\e[38;5;40m\]'    # Forest green
 export LS_COLORS='di=38;5;32:fi=38;5;244:ln=38;5;60:ex=38;5;40:*.sh=38;5;40:*.py=38;5;24:*.js=38;5;60'
 export GREP_COLORS='ms=38;5;33:fn=38;5;60:ln=38;5;24'
 
+# Auto  cd
+shopt -s autocd
 
 # Make Tab autocomplete regardless of filename case
 bind 'set completion-ignore-case on'
