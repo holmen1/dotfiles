@@ -1,7 +1,6 @@
 asm-lsp
 brave-bin
 mullvad-vpn-cli
-neovim-git
 visual-studio-code-bin
 xlibre-input-libinput
 xlibre-xserver

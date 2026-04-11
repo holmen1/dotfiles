@@ -3,6 +3,7 @@ arm-none-eabi-binutils
 arm-none-eabi-gcc
 base
 base-devel
+bash-language-server
 bear
 brightnessctl
 btrfs-progs
@@ -33,6 +34,7 @@ llvm
 lua-language-server
 man-db
 man-pages
+neovim
 noto-fonts-cjk
 openbsd-netcat
 openssh
@@ -45,6 +47,8 @@ qemu-user-static
 reflector
 ripgrep
 scrot
+shellcheck
+shfmt
 sof-firmware
 stow
 strace

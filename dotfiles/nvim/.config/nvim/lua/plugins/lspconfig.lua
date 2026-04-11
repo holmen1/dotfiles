@@ -161,7 +161,10 @@ vim.lsp.config('clangd', {
     fallbackFlags = { '--std=c99' },
   },
 })
-
+vim.lsp.config('bashls', {
+  cmd = { 'bash-language-server', 'start' },
+  filetypes = { 'bash', 'sh' }
+})
 vim.lsp.config('lua_ls', {
   settings = {
     Lua = {
