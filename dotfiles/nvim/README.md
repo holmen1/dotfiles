@@ -115,6 +115,18 @@ Use `:bd` to close a buffer. Use `<leader><leader>` to search and switch buffers
 - **Arch Linux**: clangd, haskell-language-server, asm-lsp, lua-language-server, bash-language-server
 - **FreeBSD**: clangd, haskell-language-server (no bash-language-server, asm-lsp, or lua-language-server)
 
+### Terminal Navigation
+| Mapping | Description |
+|---------|-------------|
+| `<leader>tt` | Toggle terminal | Opens/closes bottom split terminal (15 lines) |
+
+**Terminal workflow:**
+- `<leader>tt` — Open terminal at bottom, drop into insert mode
+- `Esc` — Exit insert mode, enter normal mode in terminal
+- `<C-k>` — Exit terminal, navigate to upper window
+- `<C-j>` — Navigate down into terminal
+- `i` — Return to insert mode and type commands
+
 ### Completions
 
 This config uses manual completions for a minimal experience. Press `<C-x>` followed by another key to trigger different completion modes:
