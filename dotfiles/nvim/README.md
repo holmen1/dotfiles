@@ -1,6 +1,6 @@
 # slim-vim
 
-A slim neovim configuration based on [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim)
+A lean Neovim configuration originally based on [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim) but refactored a lot, managed by **lazy.nvim** with essential plugins for code navigation and LSP integration. Optimized for C, Haskell, and cross-platform development (Arch Linux, FreeBSD).
 
 ## Top 7 "Chad" Vim Commands (For High-Speed Dev)
 
@@ -16,11 +16,14 @@ For blazing fast code development—especially if you manipulate and copy/paste 
 
 ## Features
 
-- **Telescope-Powered Navigation**: Fast fuzzy finding for files, symbols, and help
-- **Syntax Highlighting**: Modern syntax highlighting via Treesitter
-- **Streamlined LSP Integration**: Core language server support for C and Haskell
-- **Which-Key Integration**: Popup help for keybindings as you type them
-- **Gitsigns in Gutter**: Instantly see added, changed, or deleted lines with minimal, colored indicators
+- **Fast Fuzzy Navigation**: Telescope for files, grep, buffers, and keymaps
+- **Modern Syntax Highlighting**: Treesitter for accurate, efficient code understanding
+- **Streamlined LSP Support**: Native Neovim LSP with manual server configuration (no Mason)
+- **Buffer Tabs**: Quick visual buffer management with tab bar at top
+- **Git Integration**: Gitsigns for inline diffs and status indicators
+- **Smart Keybinding Help**: Which-key popup (1-second delay to avoid intrusion)
+- **Lightweight Toolkit**: Mini.nvim for statusline, buffer tabs, and text object improvements
+- **Cross-Platform**: Works on Arch Linux and FreeBSD with server auto-detection
 
 ## Behavior
 
@@ -30,12 +33,14 @@ For blazing fast code development—especially if you manipulate and copy/paste 
 
 | Plugin | Purpose | Why It's Included |
 |--------|---------|-------------------|
+| **lazy.nvim** | Plugin manager | Handles lazy loading and updates cleanly |
 | **telescope.nvim** | Fuzzy finding | Essential navigation for files, symbols, and help |
 | **nvim-treesitter** | Syntax highlighting | Better code understanding with minimal overhead |
 | **nvim-lspconfig** | Language server setup | Code intelligence via system-installed LSP servers |
-| **mini.nvim** | Statusline and text tools | Lightweight alternative to multiple separate plugins |
+| **mini.nvim** | Statusline, tabline, textobjects | Lightweight, composable toolkit; replaces multiple plugins |
 | **which-key.nvim** | Keybinding help | Discoverability without memorization |
-| **gitsigns.nvim** | Git change indicators in gutter | Minimal, fast, and visually clear git status; includes interactive diff mode |
+| **gitsigns.nvim** | Git change indicators in gutter | Minimal, fast, and visually clear git status |
+| **fidget.nvim** | LSP status notifications | Non-intrusive progress spinners for long operations |
 
 
 ## Keymaps
@@ -47,17 +52,23 @@ For blazing fast code development—especially if you manipulate and copy/paste 
 | `<leader>sg` | Search by Grep | Search file contents (live grep) |
 | `<leader>sw` | Search current Word | Find occurrences of word under cursor |
 | `<leader>sr` | Search Resume | Resume previous search |
-| `<leader>ss` | Search Select Telescope | Show all available Telescope commands |
-| `<leader>sd` | Search Diagnostics | Show all diagnostics |
-| `<leader>s.` | Search Recent Files | Show recently opened files |
+| `<leader>sk` | Search Keymaps | Browse all keybindings |
 | `<leader><leader>` | Find Buffers | Switch between open files/buffers |
-| `<leader>sc` | Search Commits | View git history for current file |
+| `<leader>sc` | Search Commits | View git history for current buffer |
 
-| Mapping | Description | Details |
-|---------|-------------|---------|
-| `<leader>/` | Search in Current Buffer | Fuzzy find in current file with dropdown UI |
-| `<leader>s/` | Search in Open Files | Live grep limited to open files only |
-| `<leader>sn` | Search Neovim Config | Find files in your Neovim config directory |
+### Buffer Navigation
+| Mapping | Description |
+|---------|-------------|
+| `<C-h>` | Next buffer |
+| `<C-l>` | Previous buffer |
+
+Use `:bd` to close a buffer. Use `<leader><leader>` to search and switch buffers via Telescope.
+
+### Window Navigation
+| Mapping | Description |
+|---------|-------------|
+| `<C-j>` | Move focus to lower window |
+| `<C-k>` | Move focus to upper window |
 
 ### Diagnostics
 | Mapping | Description |
@@ -72,12 +83,11 @@ For blazing fast code development—especially if you manipulate and copy/paste 
 | `<leader>gd` | Preview hunk diff inline |
 | `<leader>gr` | Reset hunk (undo changes in current hunk) |
 | `<leader>gR` | Reset buffer (undo all changes in file) |
-| `<leader>sc` | Search commits (view git history - Telescope) |
 
 **Gitsigns** provides visual indicators in the gutter:
-- `+` Added lines (opulent olive)
-- `~` Changed lines (ambiguous amber)
-- `_` Deleted lines (bold bordeaux)
+- `+` Added lines
+- `~` Changed lines
+- `_` Deleted lines
 
 **Git workflow**:
 1. See changes: Gutter signs show what's modified
@@ -86,21 +96,24 @@ For blazing fast code development—especially if you manipulate and copy/paste 
 4. Undo hunk: `<leader>gr` to reset current hunk
 5. Undo all: `<leader>gR` to reset entire file
 
+*See `<leader>sc` under Telescope section for commit history search.*
+
 ### LSP Navigation & Actions
-| Mapping | Description | When to Use |
-|---------|-------------|------------|
+| Mapping | Description | Notes |
+|---------|-------------|-------|
 | `K` | Hover documentation | Show docs for symbol under cursor |
 | `gd` | Go to definition | Jump to where a symbol is defined |
-| `gD` | Go to declaration | Jump to declaration (useful in C/C++ for headers) |
+| `gD` | Go to declaration | Jump to declaration (e.g., .h file in C) |
 | `gr` | Find references | See all usages of a symbol |
-| `gI` | Go to implementation | Jump to implementation (vs declaration) |
-| `<leader>D` | Go to type definition | See a variable's type definition |
+| `gI` | Go to implementation | In Haskell: type class instances; in Go/C#: interface implementations |
 | `<leader>rn` | Rename symbol | Rename variables/functions across files |
 | `<leader>ca` | Code action | Fix errors, organize imports |
-| `<leader>ds` | Document symbols | Browse all symbols in current file |
-| `<leader>ws` | Workspace symbols | Browse all symbols in project |
 | `<leader>f` | Format code | Format current buffer or selection |
-| `<leader>th` | Toggle inlay hints | Show/hide inline type hints |
+| `<leader>th` | Toggle inlay hints | Show/hide inline type information |
+
+**Supported servers:**
+- **Arch Linux**: clangd, haskell-language-server, asm-lsp, lua-language-server, bash-language-server
+- **FreeBSD**: clangd, haskell-language-server (no bash-language-server, asm-lsp, or lua-language-server)
 
 ### Completions
 
