@@ -32,18 +32,17 @@ vim.api.nvim_create_autocmd('LspAttach', {
     --  This is the most common way to navigate code.
     map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
 
+    -- WARN: This is not Goto Definition, this is Goto Declaration.
+    --  For example, in C this would take you to the header.
+    map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+
     -- Find references for the word under your cursor.
     map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
 
     -- Jump to the implementation of the word under your cursor.
+    -- In Haskell, finds all instances of a type class.
+    -- In interface-based languages (Go, C#), finds all implementations of an interface.
     map('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
-
-    -- Jump to the type of the word under your cursor.
-    map('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
-
-    -- WARN: This is not Goto Definition, this is Goto Declaration.
-    --  For example, in C this would take you to the header.
-    map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
     -- Rename the variable under your cursor.
     --  Most Language Servers support renaming across files, etc.
@@ -52,46 +51,14 @@ vim.api.nvim_create_autocmd('LspAttach', {
     -- Execute a code action, usually your cursor needs to be on top of an error
     -- or a suggestion from your LSP for this to activate.
     map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction', { 'n', 'x' })
-
-    -- Fuzzy find all the symbols in your current document.
-    map('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
-
-    -- Fuzzy find all the symbols in your current workspace.
-    map('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
     
     -- Format current buffer or visual selection
     map('<leader>f', function()
       vim.lsp.buf.format { async = true }
     end, 'Format code', { 'n', 'v' })
 
-    -- The following two autocommands are used to highlight references of the
-    -- word under your cursor when your cursor rests there for a little while.
-    -- When you move your cursor, the highlights will be cleared.
-    local client = vim.lsp.get_client_by_id(event.data.client_id)
-    if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight, event.buf) then
-      local highlight_augroup = vim.api.nvim_create_augroup('kickstart-lsp-highlight', { clear = false })
-      vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
-        buffer = event.buf,
-        group = highlight_augroup,
-        callback = vim.lsp.buf.document_highlight,
-      })
-
-      vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
-        buffer = event.buf,
-        group = highlight_augroup,
-        callback = vim.lsp.buf.clear_references,
-      })
-
-      vim.api.nvim_create_autocmd('LspDetach', {
-        group = vim.api.nvim_create_augroup('kickstart-lsp-detach', { clear = true }),
-        callback = function(event2)
-          vim.lsp.buf.clear_references()
-          vim.api.nvim_clear_autocmds { group = 'kickstart-lsp-highlight', buffer = event2.buf }
-        end,
-      })
-    end
-
     -- Toggle inlay hints keymap
+    local client = vim.lsp.get_client_by_id(event.data.client_id)
     if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf) then
       map('<leader>th', function()
         vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
@@ -113,79 +80,38 @@ vim.diagnostic.config {
       [vim.diagnostic.severity.HINT] = '󰌶 ',
     },
   } or {},
-  virtual_text = {
-    source = 'if_many',
-    spacing = 2,
-    format = function(diagnostic)
-      local diagnostic_message = {
-        [vim.diagnostic.severity.ERROR] = diagnostic.message,
-        [vim.diagnostic.severity.WARN] = diagnostic.message,
-        [vim.diagnostic.severity.INFO] = diagnostic.message,
-        [vim.diagnostic.severity.HINT] = diagnostic.message,
-      }
-      return diagnostic_message[diagnostic.severity]
-    end,
-  },
+  virtual_text = { source = 'if_many', spacing = 2 },
 }
 
--- LSP servers - install via system package manager:
-local servers = {
-  clangd = 'clangd',
-  hls = 'haskell-language-server-wrapper',
-}
+-- LSP servers - define all, Neovim will silently skip unavailable ones
+local servers = { 'clangd', 'hls' }
 
--- asm_lsp, lua_ls, bashls disabled on BSD
+-- Add servers only available on non-BSD systems
 if jit.os ~= 'BSD' then
-  servers.asm_lsp = 'asm-lsp'
-  servers.lua_ls = 'lua-language-server'
-  servers.bashls = 'bash-language-server'
+  table.insert(servers, 'asm_lsp')
+  table.insert(servers, 'lua_ls')
+  table.insert(servers, 'bashls')
 end
 
--- Only enable servers that are installed on the OS
-local available = {}
-local missing = {}
-for server, cmd in pairs(servers) do
-  if vim.fn.executable(cmd) == 1 then
-    table.insert(available, server)
-  else
-    table.insert(missing, cmd .. ' (' .. server .. ')')
-  end
-end
-
-if #missing > 0 then
-  vim.defer_fn(function()
-    vim.notify('LSP: not found: ' .. table.concat(missing, ', '), vim.log.levels.WARN)
-  end, 500)
-end
-
--- Configure servers using Neovim 0.12+ native API!
--- (nvim-lspconfig simply provides the default backend data for these)
+-- Configure servers using Neovim 0.12+ native API
 vim.lsp.config('clangd', {
-  init_options = {
-    fallbackFlags = { '--std=c99' },
-  },
+  init_options = { fallbackFlags = { '--std=c99' } },
 })
-vim.lsp.config('bashls', {
-  cmd = { 'bash-language-server', 'start' },
-  filetypes = { 'bash', 'sh' }
-})
-vim.lsp.config('lua_ls', {
-  settings = {
-    Lua = {
-      completion = {
-        callSnippet = 'Replace',
-      },
-      diagnostics = {
-        globals = { 'vim' },
-      },
-      workspace = {
-        checkThirdParty = false,
+
+-- Configure servers only available on non-BSD systems
+if jit.os ~= 'BSD' then
+  vim.lsp.config('lua_ls', {
+    settings = {
+      Lua = {
+        completion = { callSnippet = 'Replace' },
+        diagnostics = { globals = { 'vim' } },
+        workspace = { checkThirdParty = false },
       },
     },
-  },
-})
+  })
+end
 
--- Enable only available servers natively
-vim.lsp.enable(available)
+-- Enable all configured servers
+vim.lsp.enable(servers)
 
 -- vim: ts=2 sts=2 sw=2 et
