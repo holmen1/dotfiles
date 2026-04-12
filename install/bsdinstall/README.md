@@ -103,6 +103,13 @@ cd /usr/ports/htop
 sudo make [install/deinstall/build/clean]
 ```
 
+### X11 Configuration
+Deploy the modesetting driver config (required — see LESSONS LEARNED):
+```bash
+sudo mkdir -p /usr/local/etc/X11/xorg.conf.d
+sudo cp ~/repos/dotfiles/install/bsdinstall/20-modesetting.conf /usr/local/etc/X11/xorg.conf.d/
+```
+
 ### Install binaries
 pre-built binaries from the [build factory](../build/):
 ```
