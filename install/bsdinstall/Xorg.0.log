@@ -1,399 +1,238 @@
-[2026-04-12 15:33:26] 
+[2026-04-12 18:48:49] 
 XLibre X Server 1.25.1.2
 X Protocol Version 11, Revision 0
-[2026-04-12 15:33:26] Current Operating System: FreeBSD besk 15.0-RELEASE-p5 FreeBSD 15.0-RELEASE-p5 releng/15.0-n281018-0730d5233286 GENERIC amd64
-[2026-04-12 15:33:26] Current version of pixman: 0.46.2
-[2026-04-12 15:33:26] Markers: (--) probed, (**) from config file, (==) default setting,
+[2026-04-12 18:48:49] Current Operating System: FreeBSD besk 15.0-RELEASE-p5 FreeBSD 15.0-RELEASE-p5 releng/15.0-n281018-0730d5233286 GENERIC amd64
+[2026-04-12 18:48:49] Current version of pixman: 0.46.2
+[2026-04-12 18:48:49] Markers: (--) probed, (**) from config file, (==) default setting,
 	(++) from command line, (!!) notice, (II) informational,
 	(WW) warning, (EE) error, (NI) not implemented, (??) unknown.
-[2026-04-12 15:33:26] (==) Log file: "/var/log/Xorg.0.log", Time: Sun Apr 12 15:33:26 2026
-[2026-04-12 15:33:26] (==) Using system config directory "/usr/local/share/X11/xorg.conf.d"
-[2026-04-12 15:33:26] (==) Automatically adding devices
-[2026-04-12 15:33:26] (==) Automatically enabling devices
-[2026-04-12 15:33:26] (==) Automatically adding GPU devices
-[2026-04-12 15:33:26] (==) Automatically binding GPU devices
-[2026-04-12 15:33:26] (==) Max clients allowed: 256, resource mask: 0x1fffff
-[2026-04-12 15:33:26] (==) No Layout section.  Using the first Screen section.
-[2026-04-12 15:33:26] (==) No screen section available. Using defaults.
-[2026-04-12 15:33:26] (**) |-->Screen "Default Screen Section" (0)
-[2026-04-12 15:33:26] (**) |   |-->Monitor "<default monitor>"
-[2026-04-12 15:33:26] (==) No monitor specified for screen "Default Screen Section".
+[2026-04-12 18:48:49] (==) Log file: "/var/log/Xorg.0.log", Time: Sun Apr 12 18:48:49 2026
+[2026-04-12 18:48:49] (==) Using system config directory "/usr/local/share/X11/xorg.conf.d"
+[2026-04-12 18:48:49] (==) Automatically adding devices
+[2026-04-12 18:48:49] (==) Automatically enabling devices
+[2026-04-12 18:48:49] (==) Automatically adding GPU devices
+[2026-04-12 18:48:49] (==) Automatically binding GPU devices
+[2026-04-12 18:48:49] (==) Max clients allowed: 256, resource mask: 0x1fffff
+[2026-04-12 18:48:49] (==) No Layout section.  Using the first Screen section.
+[2026-04-12 18:48:49] (==) No screen section available. Using defaults.
+[2026-04-12 18:48:49] (**) |-->Screen "Default Screen Section" (0)
+[2026-04-12 18:48:49] (**) |   |-->Monitor "<default monitor>"
+[2026-04-12 18:48:49] (==) No device specified for screen "Default Screen Section".
+	Using the first device section listed.
+[2026-04-12 18:48:49] (**) |   |-->Device "Intel Graphics"
+[2026-04-12 18:48:49] (==) No monitor specified for screen "Default Screen Section".
 	Using a default monitor configuration.
-[2026-04-12 15:33:26] (WW) The directory "/usr/local/share/fonts/misc/" does not exist.
-[2026-04-12 15:33:26] 	Entry deleted from font path.
-[2026-04-12 15:33:26] (WW) The directory "/usr/local/share/fonts/TTF/" does not exist.
-[2026-04-12 15:33:26] 	Entry deleted from font path.
-[2026-04-12 15:33:26] (WW) The directory "/usr/local/share/fonts/OTF/" does not exist.
-[2026-04-12 15:33:26] 	Entry deleted from font path.
-[2026-04-12 15:33:26] (WW) The directory "/usr/local/share/fonts/Type1/" does not exist.
-[2026-04-12 15:33:26] 	Entry deleted from font path.
-[2026-04-12 15:33:26] (WW) The directory "/usr/local/share/fonts/100dpi/" does not exist.
-[2026-04-12 15:33:26] 	Entry deleted from font path.
-[2026-04-12 15:33:26] (WW) The directory "/usr/local/share/fonts/75dpi/" does not exist.
-[2026-04-12 15:33:26] 	Entry deleted from font path.
-[2026-04-12 15:33:26] (==) FontPath set to:
+[2026-04-12 18:48:49] (==) FontPath set to:
+	/usr/local/share/fonts/misc/,
+	/usr/local/share/fonts/TTF/,
+	/usr/local/share/fonts/OTF/,
+	/usr/local/share/fonts/Type1/,
+	/usr/local/share/fonts/100dpi/,
+	/usr/local/share/fonts/75dpi/,
 	catalogue:/usr/local/etc/X11/fontpath.d
-[2026-04-12 15:33:26] (==) ModulePath set to "/usr/local/lib/xorg/modules"
-[2026-04-12 15:33:26] (II) The server relies on udev to provide the list of input devices.
+[2026-04-12 18:48:49] (==) ModulePath set to "/usr/local/lib/xorg/modules"
+[2026-04-12 18:48:49] (II) The server relies on udev to provide the list of input devices.
 	If no devices become available, reconfigure udev or disable AutoAddDevices.
-[2026-04-12 15:33:26] (II) Module ABI versions:
-[2026-04-12 15:33:26] 	X.Org ANSI C Emulation: 1.4
-[2026-04-12 15:33:26] 	X.Org Video Driver: 28.1
-[2026-04-12 15:33:26] 	X.Org XInput driver : 26.0
-[2026-04-12 15:33:26] 	X.Org Server Extension : 11.0
-[2026-04-12 15:33:26] (WW) seat-libseat: libseat integration requires -keeptty which was not provided, disabling
-[2026-04-12 15:33:26] (II) xfree86: Adding drm device (/dev/dri/card0)
-[2026-04-12 15:33:26] (II) Platform probe for /dev/dri/card0
-[2026-04-12 15:33:26] (--) PCI:*(0@0:2:0) 8086:22b1:17aa:5057 rev 33, Mem @ 0x90000000/16777216, 0x80000000/268435456, I/O @ 0x2000/64, BIOS @ 0x????????/65536
-[2026-04-12 15:33:26] (II) LoadModule: "glx"
-[2026-04-12 15:33:26] (II) Loading /usr/local/lib/xorg/modules/xlibre-25/extensions/libglx.so
-[2026-04-12 15:33:26] (II) Module glx: vendor="X.Org Foundation"
-[2026-04-12 15:33:26] 	compiled for 1.25.1.2, module version = 1.0.0
-[2026-04-12 15:33:26] 	ABI class: X.Org Server Extension, version 11.0
-[2026-04-12 15:33:26] (==) Matched intel as autoconfigured driver 0
-[2026-04-12 15:33:26] (==) Matched modesetting as autoconfigured driver 1
-[2026-04-12 15:33:26] (==) Matched scfb as autoconfigured driver 2
-[2026-04-12 15:33:26] (==) Matched vesa as autoconfigured driver 3
-[2026-04-12 15:33:26] (==) Assigned the driver to the xf86ConfigLayout
-[2026-04-12 15:33:26] (II) LoadModule: "intel"
-[2026-04-12 15:33:26] (II) Loading /usr/local/lib/xorg/modules/xlibre-25/drivers/intel_drv.so
-[2026-04-12 15:33:26] (II) Module intel: vendor="X.Org Foundation"
-[2026-04-12 15:33:26] 	compiled for 1.25.1.2, module version = 25.0.1
-[2026-04-12 15:33:26] 	Module class: X.Org Video Driver
-[2026-04-12 15:33:26] 	ABI class: X.Org Video Driver, version 28.1
-[2026-04-12 15:33:26] (II) LoadModule: "modesetting"
-[2026-04-12 15:33:26] (II) Loading /usr/local/lib/xorg/modules/xlibre-25/drivers/modesetting_drv.so
-[2026-04-12 15:33:26] (II) Module modesetting: vendor="X.Org Foundation"
-[2026-04-12 15:33:26] 	compiled for 1.25.1.2, module version = 1.25.1
-[2026-04-12 15:33:26] 	Module class: X.Org Video Driver
-[2026-04-12 15:33:26] 	ABI class: X.Org Video Driver, version 28.1
-[2026-04-12 15:33:26] (II) LoadModule: "scfb"
-[2026-04-12 15:33:26] (II) Loading /usr/local/lib/xorg/modules/xlibre-25/drivers/scfb_drv.so
-[2026-04-12 15:33:26] (II) Module scfb: vendor="X.Org Foundation"
-[2026-04-12 15:33:26] 	compiled for 1.25.1.2, module version = 25.0.0
-[2026-04-12 15:33:26] 	ABI class: X.Org Video Driver, version 28.1
-[2026-04-12 15:33:26] (II) LoadModule: "vesa"
-[2026-04-12 15:33:26] (II) Loading /usr/local/lib/xorg/modules/xlibre-25/drivers/vesa_drv.so
-[2026-04-12 15:33:26] (II) Module vesa: vendor="X.Org Foundation"
-[2026-04-12 15:33:26] 	compiled for 1.25.1.2, module version = 25.0.0
-[2026-04-12 15:33:26] 	Module class: X.Org Video Driver
-[2026-04-12 15:33:26] 	ABI class: X.Org Video Driver, version 28.1
-[2026-04-12 15:33:26] (II) intel: Driver for Intel(R) Integrated Graphics Chipsets:
-	i810, i810-dc100, i810e, i815, i830M, 845G, 854, 852GM/855GM, 865G,
-	915G, E7221 (i915), 915GM, 945G, 945GM, 945GME, Pineview GM,
-	Pineview G, 965G, G35, 965Q, 946GZ, 965GM, 965GME/GLE, G33, Q35, Q33,
-	GM45, 4 Series, G45/G43, Q45/Q43, G41, B43
-[2026-04-12 15:33:26] (II) intel: Driver for Intel(R) HD Graphics
-[2026-04-12 15:33:26] (II) intel: Driver for Intel(R) Iris(TM) Graphics
-[2026-04-12 15:33:26] (II) intel: Driver for Intel(R) Iris(TM) Pro Graphics
-[2026-04-12 15:33:26] (II) modesetting: Driver for Modesetting Kernel Drivers: kms
-[2026-04-12 15:33:26] (II) scfb: driver for wsdisplay framebuffer: scfb
-[2026-04-12 15:33:26] (II) VESA: driver for VESA chipsets: vesa
-[2026-04-12 15:33:26] (--) Using pcvt driver
-[2026-04-12 15:33:26] (II)  Platform device "/dev/dri/card0" at 0@0:2:0 can be claimed.
-[2026-04-12 15:33:26] (II)  Platform device "/dev/dri/card0" skipped because
-[2026-04-12 15:33:26] (II)   PCI bus id 0@0:2:0 has already been claimed by "Autoconfigured Video Device".
-[2026-04-12 15:33:26] (II)  PCI device skipped because
-[2026-04-12 15:33:26] (II)   PCI bus id 0@0:2:0 has already been claimed by "Autoconfigured Video Device".
-[2026-04-12 15:33:26] (WW) Falling back to old probe method for modesetting
-[2026-04-12 15:33:26] (II)  DRI device "/dev/dri/card0" has already been claimed by "Autoconfigured Video Device".
-[2026-04-12 15:33:26] (WW) Falling back to old probe method for scfb
-[2026-04-12 15:33:26] scfb trace: probe start
-[2026-04-12 15:33:26] (II) "Autoconfigured Video Device scfb" can be claimed.
-[2026-04-12 15:33:26] (II) scfb(1): using default device
-[2026-04-12 15:33:26] scfb trace: probe done
-[2026-04-12 15:33:26] (II)  PCI device skipped because
-[2026-04-12 15:33:26] (II)   PCI bus id 0@0:2:0 has already been claimed by "Autoconfigured Video Device".
-[2026-04-12 15:33:26] (II)  Platform device "/dev/dri/card0" skipped because
-[2026-04-12 15:33:26] (II)   PCI bus id 0@0:2:0 has already been claimed by "Autoconfigured Video Device".
-[2026-04-12 15:33:26] (II)  Platform device "/dev/dri/card0" skipped because
-[2026-04-12 15:33:26] (II)   PCI bus id 0@0:2:0 has already been claimed by "Autoconfigured Video Device".
-[2026-04-12 15:33:26] (II)  Platform device "/dev/dri/card0" skipped because
-[2026-04-12 15:33:26] (II)   PCI bus id 0@0:2:0 has already been claimed by "Autoconfigured Video Device".
-[2026-04-12 15:33:26] (WW) VGA arbiter: cannot open kernel arbiter, no multi-card support
-[2026-04-12 15:33:26] (II) intel(0): Creating default Display subsection in Screen section
+[2026-04-12 18:48:49] (II) Module ABI versions:
+[2026-04-12 18:48:49] 	X.Org ANSI C Emulation: 1.4
+[2026-04-12 18:48:49] 	X.Org Video Driver: 28.1
+[2026-04-12 18:48:49] 	X.Org XInput driver : 26.0
+[2026-04-12 18:48:49] 	X.Org Server Extension : 11.0
+[2026-04-12 18:48:49] (WW) seat-libseat: libseat integration requires -keeptty which was not provided, disabling
+[2026-04-12 18:48:49] (II) xfree86: Adding drm device (/dev/dri/card0)
+[2026-04-12 18:48:49] (II) Platform probe for /dev/dri/card0
+[2026-04-12 18:48:49] (--) PCI:*(0@0:2:0) 8086:22b1:17aa:5057 rev 33, Mem @ 0x90000000/16777216, 0x80000000/268435456, I/O @ 0x2000/64, BIOS @ 0x????????/65536
+[2026-04-12 18:48:49] (II) LoadModule: "glx"
+[2026-04-12 18:48:49] (II) Loading /usr/local/lib/xorg/modules/xlibre-25/extensions/libglx.so
+[2026-04-12 18:48:49] (II) Module glx: vendor="X.Org Foundation"
+[2026-04-12 18:48:49] 	compiled for 1.25.1.2, module version = 1.0.0
+[2026-04-12 18:48:49] 	ABI class: X.Org Server Extension, version 11.0
+[2026-04-12 18:48:49] (II) LoadModule: "modesetting"
+[2026-04-12 18:48:49] (II) Loading /usr/local/lib/xorg/modules/xlibre-25/drivers/modesetting_drv.so
+[2026-04-12 18:48:49] (II) Module modesetting: vendor="X.Org Foundation"
+[2026-04-12 18:48:49] 	compiled for 1.25.1.2, module version = 1.25.1
+[2026-04-12 18:48:49] 	Module class: X.Org Video Driver
+[2026-04-12 18:48:49] 	ABI class: X.Org Video Driver, version 28.1
+[2026-04-12 18:48:49] (II) modesetting: Driver for Modesetting Kernel Drivers: kms
+[2026-04-12 18:48:49] (--) Using pcvt driver
+[2026-04-12 18:48:49] (II)  Platform device "/dev/dri/card0" at 0@0:2:0 can be claimed.
+[2026-04-12 18:48:49] (II) modeset(0): using drv /dev/dri/card0
+[2026-04-12 18:48:49] (II)  Platform device "/dev/dri/card0" skipped because
+[2026-04-12 18:48:49] (II)   PCI bus id 0@0:2:0 has already been claimed by "Intel Graphics".
+[2026-04-12 18:48:49] (WW) VGA arbiter: cannot open kernel arbiter, no multi-card support
+[2026-04-12 18:48:49] (II) modeset(0): Creating default Display subsection in Screen section
 	"Default Screen Section" for depth/fbbpp 24/32
-[2026-04-12 15:33:26] (==) intel(0): Depth 24, (--) framebuffer bpp 32
-[2026-04-12 15:33:26] (==) intel(0): RGB weight 888
-[2026-04-12 15:33:26] (==) intel(0): Default visual is TrueColor
-[2026-04-12 15:33:26] (--) intel(0): Integrated Graphics Chipset: Intel(R) HD Graphics
-[2026-04-12 15:33:26] (**) intel(0): Relaxed fencing enabled
-[2026-04-12 15:33:26] (**) intel(0): Wait on SwapBuffers? enabled
-[2026-04-12 15:33:26] (**) intel(0): Triple buffering? enabled
-[2026-04-12 15:33:26] (**) intel(0): Framebuffer tiled
-[2026-04-12 15:33:26] (**) intel(0): Pixmaps tiled
-[2026-04-12 15:33:26] (**) intel(0): 3D buffers tiled
-[2026-04-12 15:33:26] (**) intel(0): SwapBuffers wait enabled
-[2026-04-12 15:33:26] (==) intel(0): video overlay key set to 0x101fe
-[2026-04-12 15:33:26] (II) intel(0): Output eDP-1 has no monitor section
-[2026-04-12 15:33:26] (II) intel(0): Output DP-1 has no monitor section
-[2026-04-12 15:33:26] (II) intel(0): Output HDMI-1 has no monitor section
-[2026-04-12 15:33:26] (II) intel(0): Output DP-2 has no monitor section
-[2026-04-12 15:33:26] (II) intel(0): Output HDMI-2 has no monitor section
-[2026-04-12 15:33:26] (II) intel(0): EDID for output eDP-1
-[2026-04-12 15:33:26] (II) intel(0): Manufacturer: BOE  Model: 608  Serial#: 0
-[2026-04-12 15:33:26] (II) intel(0): Year: 2014  Week: 1
-[2026-04-12 15:33:26] (II) intel(0): EDID Version: 1.4
-[2026-04-12 15:33:26] (II) intel(0): Digital Display Input
-[2026-04-12 15:33:26] (II) intel(0): 6 bits per channel
-[2026-04-12 15:33:26] (II) intel(0): Digital interface is DisplayPort
-[2026-04-12 15:33:26] (II) intel(0): Max Image Size [cm]: horiz.: 26  vert.: 15
-[2026-04-12 15:33:26] (II) intel(0): Gamma: 2.20
-[2026-04-12 15:33:26] (II) intel(0): No DPMS capabilities specified
-[2026-04-12 15:33:26] (II) intel(0): Supported color encodings: RGB 4:4:4 
-[2026-04-12 15:33:26] (II) intel(0): First detailed timing is preferred mode
-[2026-04-12 15:33:26] (II) intel(0): Preferred mode is native pixel format and refresh rate
-[2026-04-12 15:33:26] (II) intel(0): redX: 0.58 redY: 0.36   greenX: 0.34 greenY: 0.58
-[2026-04-12 15:33:26] (II) intel(0): blueX: 0.16 blueY: 0.11   whiteX: 0.31 whiteY: 0.33
-[2026-04-12 15:33:26] (II) intel(0): Manufacturer's mask: 0
-[2026-04-12 15:33:26] (II) intel(0): Supported detailed timing:
-[2026-04-12 15:33:26] (II) intel(0): clock: 72.30 MHz   Image Size:  256 x 144 mm
-[2026-04-12 15:33:26] (II) intel(0): h_active: 1366  h_sync: 1414  h_sync_end 1446 h_blank_end 1526 h_border: 0
-[2026-04-12 15:33:26] (II) intel(0): v_active: 768  v_sync: 771  v_sync_end 777 v_blanking: 790 v_border: 0
-[2026-04-12 15:33:26] (II) intel(0): Unknown vendor-specific block 0
-[2026-04-12 15:33:26] (II) intel(0):  BOE DT
-[2026-04-12 15:33:26] (II) intel(0):  NT116WHM-N11
-[2026-04-12 15:33:26] (II) intel(0): EDID (in hex):
-[2026-04-12 15:33:26] (II) intel(0): 	00ffffffffffff0009e5080600000000
-[2026-04-12 15:33:26] (II) intel(0): 	01180104951a0f78025d40945b579429
-[2026-04-12 15:33:26] (II) intel(0): 	1c505400000001010101010101010101
-[2026-04-12 15:33:26] (II) intel(0): 	0101010101013e1c56a0500016303020
-[2026-04-12 15:33:26] (II) intel(0): 	360000901000001a0000000000000000
-[2026-04-12 15:33:26] (II) intel(0): 	0000000000000000001a000000fe0042
-[2026-04-12 15:33:26] (II) intel(0): 	4f452044540a202020202020000000fe
-[2026-04-12 15:33:26] (II) intel(0): 	004e5431313657484d2d4e31310a00a3
-[2026-04-12 15:33:26] (II) intel(0): Not using default mode "320x240" (doublescan mode not supported)
-[2026-04-12 15:33:26] (II) intel(0): Not using default mode "400x300" (doublescan mode not supported)
-[2026-04-12 15:33:26] (II) intel(0): Not using default mode "400x300" (doublescan mode not supported)
-[2026-04-12 15:33:26] (II) intel(0): Not using default mode "512x384" (doublescan mode not supported)
-[2026-04-12 15:33:26] (II) intel(0): Not using default mode "640x480" (doublescan mode not supported)
-[2026-04-12 15:33:26] (II) intel(0): Not using default mode "640x512" (doublescan mode not supported)
-[2026-04-12 15:33:26] (II) intel(0): Not using default mode "800x600" (doublescan mode not supported)
-[2026-04-12 15:33:26] (II) intel(0): Not using default mode "896x672" (doublescan mode not supported)
-[2026-04-12 15:33:26] (II) intel(0): Not using default mode "928x696" (doublescan mode not supported)
-[2026-04-12 15:33:26] (II) intel(0): Not using default mode "960x720" (doublescan mode not supported)
-[2026-04-12 15:33:26] (II) intel(0): Not using default mode "700x525" (doublescan mode not supported)
-[2026-04-12 15:33:26] (II) intel(0): Not using default mode "1024x768" (doublescan mode not supported)
-[2026-04-12 15:33:26] (II) intel(0): Not using default mode "320x180" (doublescan mode not supported)
-[2026-04-12 15:33:26] (II) intel(0): Not using default mode "320x180" (doublescan mode not supported)
-[2026-04-12 15:33:26] (II) intel(0): Not using default mode "360x202" (doublescan mode not supported)
-[2026-04-12 15:33:26] (II) intel(0): Not using default mode "360x202" (doublescan mode not supported)
-[2026-04-12 15:33:26] (II) intel(0): Not using default mode "432x243" (doublescan mode not supported)
-[2026-04-12 15:33:26] (II) intel(0): Not using default mode "432x243" (doublescan mode not supported)
-[2026-04-12 15:33:26] (II) intel(0): Not using default mode "480x270" (doublescan mode not supported)
-[2026-04-12 15:33:26] (II) intel(0): Not using default mode "480x270" (doublescan mode not supported)
-[2026-04-12 15:33:26] (II) intel(0): Not using default mode "512x288" (doublescan mode not supported)
-[2026-04-12 15:33:26] (II) intel(0): Not using default mode "512x288" (doublescan mode not supported)
-[2026-04-12 15:33:26] (II) intel(0): Not using default mode "640x360" (doublescan mode not supported)
-[2026-04-12 15:33:26] (II) intel(0): Not using default mode "640x360" (doublescan mode not supported)
-[2026-04-12 15:33:26] (II) intel(0): Not using default mode "684x384" (doublescan mode not supported)
-[2026-04-12 15:33:26] (II) intel(0): Not using default mode "684x384" (doublescan mode not supported)
-[2026-04-12 15:33:26] (II) intel(0): Not using default mode "800x450" (doublescan mode not supported)
-[2026-04-12 15:33:26] (II) intel(0): Not using default mode "800x450" (doublescan mode not supported)
-[2026-04-12 15:33:26] (II) intel(0): Not using default mode "960x540" (doublescan mode not supported)
-[2026-04-12 15:33:26] (II) intel(0): Not using default mode "960x540" (doublescan mode not supported)
-[2026-04-12 15:33:26] (II) intel(0): Not using default mode "1024x576" (doublescan mode not supported)
-[2026-04-12 15:33:26] (II) intel(0): Not using default mode "1024x576" (doublescan mode not supported)
-[2026-04-12 15:33:26] (II) intel(0): Not using default mode "1280x720" (doublescan mode not supported)
-[2026-04-12 15:33:26] (II) intel(0): Not using default mode "1280x720" (doublescan mode not supported)
-[2026-04-12 15:33:26] (II) intel(0): Not using default mode "640x400" (doublescan mode not supported)
-[2026-04-12 15:33:26] (II) intel(0): Not using default mode "640x400" (doublescan mode not supported)
-[2026-04-12 15:33:26] (II) intel(0): Not using default mode "700x450" (doublescan mode not supported)
-[2026-04-12 15:33:26] (II) intel(0): Not using default mode "700x450" (doublescan mode not supported)
-[2026-04-12 15:33:26] (II) intel(0): Not using default mode "840x525" (doublescan mode not supported)
-[2026-04-12 15:33:26] (II) intel(0): Not using default mode "840x525" (doublescan mode not supported)
-[2026-04-12 15:33:26] (II) intel(0): Not using default mode "960x600" (doublescan mode not supported)
-[2026-04-12 15:33:26] (II) intel(0): Not using default mode "960x600" (doublescan mode not supported)
-[2026-04-12 15:33:26] (II) intel(0): Printing probed modes for output eDP-1
-[2026-04-12 15:33:26] (II) intel(0): Modeline "1366x768"x59.97  72.30  1366 1414 1446 1526  768 771 777 790 +hsync -vsync (47.38 kHz eP)
-[2026-04-12 15:33:26] (II) intel(0): Modeline "1280x720"x59.86  74.50  1280 1344 1472 1664  720 723 728 748 -hsync +vsync (44.77 kHz d)
-[2026-04-12 15:33:26] (II) intel(0): Modeline "1280x720"x59.74  63.75  1280 1328 1360 1440  720 723 728 741 +hsync -vsync (44.27 kHz d)
-[2026-04-12 15:33:26] (II) intel(0): Modeline "1024x768"x60.00  65.00  1024 1048 1184 1344  768 771 777 806 -hsync -vsync (48.36 kHz d)
-[2026-04-12 15:33:26] (II) intel(0): Modeline "1024x576"x59.90  46.50  1024 1064 1160 1296  576 579 584 599 -hsync +vsync (35.88 kHz d)
-[2026-04-12 15:33:26] (II) intel(0): Modeline "1024x576"x59.82  42.00  1024 1072 1104 1184  576 579 584 593 +hsync -vsync (35.47 kHz d)
-[2026-04-12 15:33:26] (II) intel(0): Modeline "960x540"x59.63  40.75  960 992 1088 1216  540 543 548 562 -hsync +vsync (33.51 kHz d)
-[2026-04-12 15:33:26] (II) intel(0): Modeline "960x540"x59.82  37.25  960 1008 1040 1120  540 543 548 556 +hsync -vsync (33.26 kHz d)
-[2026-04-12 15:33:26] (II) intel(0): Modeline "800x600"x60.32  40.00  800 840 968 1056  600 601 605 628 +hsync +vsync (37.88 kHz d)
-[2026-04-12 15:33:26] (II) intel(0): Modeline "800x600"x56.25  36.00  800 824 896 1024  600 601 603 625 +hsync +vsync (35.16 kHz d)
-[2026-04-12 15:33:26] (II) intel(0): Modeline "864x486"x59.92  32.50  864 888 968 1072  486 489 494 506 -hsync +vsync (30.32 kHz d)
-[2026-04-12 15:33:26] (II) intel(0): Modeline "864x486"x59.57  30.50  864 912 944 1024  486 489 494 500 +hsync -vsync (29.79 kHz d)
-[2026-04-12 15:33:26] (II) intel(0): Modeline "640x480"x59.94  25.18  640 656 752 800  480 490 492 525 -hsync -vsync (31.47 kHz d)
-[2026-04-12 15:33:26] (II) intel(0): Modeline "720x405"x59.51  22.50  720 744 808 896  405 408 413 422 -hsync +vsync (25.11 kHz d)
-[2026-04-12 15:33:26] (II) intel(0): Modeline "720x405"x58.99  21.75  720 768 800 880  405 408 413 419 +hsync -vsync (24.72 kHz d)
-[2026-04-12 15:33:26] (II) intel(0): Modeline "640x360"x59.84  18.00  640 664 720 800  360 363 368 376 -hsync +vsync (22.50 kHz d)
-[2026-04-12 15:33:26] (II) intel(0): Modeline "640x360"x59.32  17.75  640 688 720 800  360 363 368 374 +hsync -vsync (22.19 kHz d)
-[2026-04-12 15:33:26] (II) intel(0): EDID for output DP-1
-[2026-04-12 15:33:26] (II) intel(0): EDID for output HDMI-1
-[2026-04-12 15:33:27] (II) intel(0): EDID for output DP-2
-[2026-04-12 15:33:27] (II) intel(0): EDID for output HDMI-2
-[2026-04-12 15:33:27] (II) intel(0): Output eDP-1 connected
-[2026-04-12 15:33:27] (II) intel(0): Output DP-1 disconnected
-[2026-04-12 15:33:27] (II) intel(0): Output HDMI-1 disconnected
-[2026-04-12 15:33:27] (II) intel(0): Output DP-2 disconnected
-[2026-04-12 15:33:27] (II) intel(0): Output HDMI-2 disconnected
-[2026-04-12 15:33:27] (II) intel(0): Using exact sizes for initial modes
-[2026-04-12 15:33:27] (II) intel(0): Output eDP-1 using initial mode 1366x768 +0+0
-[2026-04-12 15:33:27] (II) intel(0): Kernel page flipping support detected, enabling
-[2026-04-12 15:33:27] (==) intel(0): Using gamma correction (1.00, 1.00, 1.00)
-[2026-04-12 15:33:27] (==) intel(0): DPI set to (96, 96)
-[2026-04-12 15:33:27] (II) Loading sub module "fb"
-[2026-04-12 15:33:27] (II) LoadModule: "fb"
-[2026-04-12 15:33:27] (II) Module "fb" already built-in
-[2026-04-12 15:33:27] (II) Loading sub module "dri2"
-[2026-04-12 15:33:27] (II) LoadModule: "dri2"
-[2026-04-12 15:33:27] (II) Module "dri2" already built-in
-[2026-04-12 15:33:27] scfb: PreInit 1
-[2026-04-12 15:33:27] (II) scfb(1): Using: depth (32),	width (1366),	 height (768)
-[2026-04-12 15:33:27] (II) scfb(1): Creating default Display subsection in Screen section
-	"Default Screen Section" for depth/fbbpp 24/32
-[2026-04-12 15:33:27] (==) scfb(1): Depth 24, (==) framebuffer bpp 32
-[2026-04-12 15:33:27] (==) scfb(1): RGB weight 888
-[2026-04-12 15:33:27] (==) scfb(1): Default visual is TrueColor
-[2026-04-12 15:33:27] (==) scfb(1): Using gamma correction (1.00, 1.00, 1.00)
-[2026-04-12 15:33:27] (II) scfb(1): Vidmem: 4128k
-[2026-04-12 15:33:27] (DB) xf86MergeOutputClassOptions unsupported bus type 0
-[2026-04-12 15:33:27] (==) scfb(1): DPI set to (96, 96)
-[2026-04-12 15:33:27] (**) scfb(1): Using "Shadow Framebuffer"
-[2026-04-12 15:33:27] (II) Loading sub module "shadow"
-[2026-04-12 15:33:27] (II) LoadModule: "shadow"
-[2026-04-12 15:33:27] (II) Loading /usr/local/lib/xorg/modules/xlibre-25/libshadow.so
-[2026-04-12 15:33:27] (II) Module shadow: vendor="X.Org Foundation"
-[2026-04-12 15:33:27] 	compiled for 1.25.1.2, module version = 1.1.0
-[2026-04-12 15:33:27] 	ABI class: X.Org ANSI C Emulation, version 1.4
-[2026-04-12 15:33:27] (II) Loading sub module "fb"
-[2026-04-12 15:33:27] (II) LoadModule: "fb"
-[2026-04-12 15:33:27] (II) Module "fb" already built-in
-[2026-04-12 15:33:27] scfb: PreInit done
-[2026-04-12 15:33:27] (II) UnloadModule: "modesetting"
-[2026-04-12 15:33:27] (II) Unloading modesetting
-[2026-04-12 15:33:27] (II) UnloadModule: "vesa"
-[2026-04-12 15:33:27] (II) Unloading vesa
-[2026-04-12 15:33:27] (II) intel(0): Allocated new frame buffer 1366x768 stride 5632, tiled
-[2026-04-12 15:33:27] (II) UXA(0): Driver registered support for the following operations:
-[2026-04-12 15:33:27] (II)         solid
-[2026-04-12 15:33:27] (II)         copy
-[2026-04-12 15:33:27] (II)         put_image
-[2026-04-12 15:33:27] (II)         get_image
-[2026-04-12 15:33:27] (WW) intel(0): cannot enable DRI2 whilst forcing software fallbacks
-[2026-04-12 15:33:27] (==) intel(0): Backing store enabled
-[2026-04-12 15:33:27] (==) intel(0): Silken mouse enabled
-[2026-04-12 15:33:27] (II) intel(0): Initializing HW Cursor
-[2026-04-12 15:33:27] (==) intel(0): DPMS enabled
-[2026-04-12 15:33:27] (==) intel(0): Intel XvMC decoder enabled
-[2026-04-12 15:33:27] (WW) intel(0): Disabling Xv because no adaptors could be initialized.
-[2026-04-12 15:33:27] (II) intel(0): DRI2: Failed
-[2026-04-12 15:33:27] (II) intel(0): DRI3: Disabled
-[2026-04-12 15:33:27] (==) intel(0): hotplug detection: "enabled"
-[2026-04-12 15:33:27] 
-[2026-04-12 15:33:27] Backtrace:
-[2026-04-12 15:33:27] unw_get_proc_name failed: no unwind info found [-10]
-[2026-04-12 15:33:27] 0: /usr/local/libexec/Xorg (?+0x0) [0x39e1ca]
-[2026-04-12 15:33:27] unw_get_proc_name failed: no unwind info found [-10]
-[2026-04-12 15:33:27] 1: /lib/libthr.so.3 (?+0x0) [0x828d1b2ea]
-[2026-04-12 15:33:27] unw_get_proc_name failed: no unwind info found [-10]
-[2026-04-12 15:33:27] 2: /lib/libthr.so.3 (?+0x0) [0x828d1a8eb]
-[2026-04-12 15:33:27] 3: <signal handler called>
-[2026-04-12 15:33:27] unw_get_proc_name failed: no unwind info found [-10]
-[2026-04-12 15:33:27] 4: /usr/local/lib/xorg/modules/xlibre-25/drivers/intel_drv.so (?+0x0) [0x838910bca]
-[2026-04-12 15:33:27] unw_get_proc_name failed: no unwind info found [-10]
-[2026-04-12 15:33:27] 5: /usr/local/lib/xorg/modules/xlibre-25/drivers/intel_drv.so (?+0x0) [0x838910b92]
-[2026-04-12 15:33:27] unw_get_proc_name failed: no unwind info found [-10]
-[2026-04-12 15:33:27] 6: /usr/local/libexec/Xorg (?+0x0) [0x2b7200]
-[2026-04-12 15:33:27] unw_get_proc_name failed: no unwind info found [-10]
-[2026-04-12 15:33:27] 7: /usr/local/libexec/Xorg (?+0x0) [0x3bc3b3]
-[2026-04-12 15:33:27] unw_get_proc_name failed: no unwind info found [-10]
-[2026-04-12 15:33:27] 8: /usr/local/libexec/Xorg (?+0x0) [0x2baec0]
-[2026-04-12 15:33:27] 9: /lib/libc.so.7 (__libc_start1+0x12f) [0x82b5ab37f]
-[2026-04-12 15:33:27] 10: /usr/local/libexec/Xorg (_start+0x24) [0x27c8e4]
-[2026-04-12 15:33:27] 
-[2026-04-12 15:33:27] Registers at frame #4:
-[2026-04-12 15:33:27]   rax: 0x6ce539b09ee98eb4
-[2026-04-12 15:33:27]   rbx: 0x0
-[2026-04-12 15:33:27]   rcx: 0x0
-[2026-04-12 15:33:27]   rdx: 0x1
-[2026-04-12 15:33:27]   rsi: 0x6
-[2026-04-12 15:33:27]   rdi: 0x0
-[2026-04-12 15:33:27]   rbp: 0x8207cf040
-[2026-04-12 15:33:27]   rsp: 0x8207cf030
-[2026-04-12 15:33:27]    r8: 0x2
-[2026-04-12 15:33:27]    r9: 0x2
-[2026-04-12 15:33:27]   r10: 0x0
-[2026-04-12 15:33:27]   r11: 0x3202
-[2026-04-12 15:33:27]   r12: 0x32a3ef147a5c
-[2026-04-12 15:33:27]   r13: 0x82b720e20
-[2026-04-12 15:33:27]   r14: 0x32a3ef13b740
-[2026-04-12 15:33:27]   r15: 0x32a3ef108800
-[2026-04-12 15:33:27] 
-[2026-04-12 15:33:27] Segmentation fault at address 0x118
-[2026-04-12 15:33:27] 
+[2026-04-12 18:48:49] (==) modeset(0): Depth 24, (==) framebuffer bpp 32
+[2026-04-12 18:48:49] (==) modeset(0): RGB weight 888
+[2026-04-12 18:48:49] (==) modeset(0): Default visual is TrueColor
+[2026-04-12 18:48:49] (II) Loading sub module "glamoregl"
+[2026-04-12 18:48:49] (II) LoadModule: "glamoregl"
+[2026-04-12 18:48:49] (II) Loading /usr/local/lib/xorg/modules/xlibre-25/libglamoregl.so
+[2026-04-12 18:48:49] (II) Module glamoregl: vendor="X.Org Foundation"
+[2026-04-12 18:48:49] 	compiled for 1.25.1.2, module version = 1.0.1
+[2026-04-12 18:48:49] 	ABI class: X.Org ANSI C Emulation, version 1.4
+[2026-04-12 18:48:49] (II) modeset(0): glamor: Using OpenGL 4.6 context.
+[2026-04-12 18:48:49] (II) modeset(0): glamor X acceleration enabled on Mesa Intel(R) HD Graphics 400 (BSW)
+[2026-04-12 18:48:49] (II) modeset(0): glamor initialized
+[2026-04-12 18:48:49] (==) modeset(0): VariableRefresh: disabled
+[2026-04-12 18:48:49] (==) modeset(0): AsyncFlipSecondaries: disabled
+[2026-04-12 18:48:49] (II) modeset(0): Atomic modesetting disabled
+[2026-04-12 18:48:49] (II) modeset(0): TearFree: enabled
+[2026-04-12 18:48:49] (II) modeset(0): Output eDP-1 has no monitor section
+[2026-04-12 18:48:49] (II) modeset(0): Output DP-1 has no monitor section
+[2026-04-12 18:48:49] (II) modeset(0): Output HDMI-1 has no monitor section
+[2026-04-12 18:48:49] (II) modeset(0): Output DP-2 has no monitor section
+[2026-04-12 18:48:49] (II) modeset(0): Output HDMI-2 has no monitor section
+[2026-04-12 18:48:49] (II) modeset(0): EDID for output eDP-1
+[2026-04-12 18:48:49] (II) modeset(0): Manufacturer: BOE  Model: 608  Serial#: 0
+[2026-04-12 18:48:49] (II) modeset(0): Year: 2014  Week: 1
+[2026-04-12 18:48:49] (II) modeset(0): EDID Version: 1.4
+[2026-04-12 18:48:49] (II) modeset(0): Digital Display Input
+[2026-04-12 18:48:49] (II) modeset(0): 6 bits per channel
+[2026-04-12 18:48:49] (II) modeset(0): Digital interface is DisplayPort
+[2026-04-12 18:48:49] (II) modeset(0): Max Image Size [cm]: horiz.: 26  vert.: 15
+[2026-04-12 18:48:49] (II) modeset(0): Gamma: 2.20
+[2026-04-12 18:48:49] (II) modeset(0): No DPMS capabilities specified
+[2026-04-12 18:48:49] (II) modeset(0): Supported color encodings: RGB 4:4:4 
+[2026-04-12 18:48:49] (II) modeset(0): First detailed timing is preferred mode
+[2026-04-12 18:48:49] (II) modeset(0): Preferred mode is native pixel format and refresh rate
+[2026-04-12 18:48:49] (II) modeset(0): redX: 0.58 redY: 0.36   greenX: 0.34 greenY: 0.58
+[2026-04-12 18:48:49] (II) modeset(0): blueX: 0.16 blueY: 0.11   whiteX: 0.31 whiteY: 0.33
+[2026-04-12 18:48:49] (II) modeset(0): Manufacturer's mask: 0
+[2026-04-12 18:48:49] (II) modeset(0): Supported detailed timing:
+[2026-04-12 18:48:49] (II) modeset(0): clock: 72.30 MHz   Image Size:  256 x 144 mm
+[2026-04-12 18:48:49] (II) modeset(0): h_active: 1366  h_sync: 1414  h_sync_end 1446 h_blank_end 1526 h_border: 0
+[2026-04-12 18:48:49] (II) modeset(0): v_active: 768  v_sync: 771  v_sync_end 777 v_blanking: 790 v_border: 0
+[2026-04-12 18:48:49] (II) modeset(0): Unknown vendor-specific block 0
+[2026-04-12 18:48:49] (II) modeset(0):  BOE DT
+[2026-04-12 18:48:49] (II) modeset(0):  NT116WHM-N11
+[2026-04-12 18:48:49] (II) modeset(0): EDID (in hex):
+[2026-04-12 18:48:49] (II) modeset(0): 	00ffffffffffff0009e5080600000000
+[2026-04-12 18:48:49] (II) modeset(0): 	01180104951a0f78025d40945b579429
+[2026-04-12 18:48:49] (II) modeset(0): 	1c505400000001010101010101010101
+[2026-04-12 18:48:49] (II) modeset(0): 	0101010101013e1c56a0500016303020
+[2026-04-12 18:48:49] (II) modeset(0): 	360000901000001a0000000000000000
+[2026-04-12 18:48:49] (II) modeset(0): 	0000000000000000001a000000fe0042
+[2026-04-12 18:48:49] (II) modeset(0): 	4f452044540a202020202020000000fe
+[2026-04-12 18:48:49] (II) modeset(0): 	004e5431313657484d2d4e31310a00a3
+[2026-04-12 18:48:49] (II) modeset(0): Printing probed modes for output eDP-1
+[2026-04-12 18:48:49] (II) modeset(0): Modeline "1366x768"x59.97  72.30  1366 1414 1446 1526  768 771 777 790 +hsync -vsync (47.38 kHz eP)
+[2026-04-12 18:48:49] (II) modeset(0): Modeline "1280x720"x59.97  63.99  1280 1328 1360 1440  720 723 728 741 +hsync -vsync (44.44 kHz d)
+[2026-04-12 18:48:49] (II) modeset(0): Modeline "1024x768"x59.97  64.97  1024 1048 1184 1344  768 771 777 806 -hsync -vsync (48.34 kHz d)
+[2026-04-12 18:48:49] (II) modeset(0): Modeline "960x720"x59.97  116.95  960 1024 1128 1300  720 720 722 750 doublescan -hsync +vsync (89.96 kHz d)
+[2026-04-12 18:48:49] (II) modeset(0): Modeline "928x696"x59.97  109.01  928 976 1088 1264  696 696 698 719 doublescan -hsync +vsync (86.24 kHz d)
+[2026-04-12 18:48:49] (II) modeset(0): Modeline "896x672"x59.97  102.33  896 960 1060 1224  672 672 674 697 doublescan -hsync +vsync (83.60 kHz d)
+[2026-04-12 18:48:49] (II) modeset(0): Modeline "1024x576"x59.97  42.11  1024 1072 1104 1184  576 579 584 593 +hsync -vsync (35.56 kHz d)
+[2026-04-12 18:48:49] (II) modeset(0): Modeline "960x600"x59.97  76.97  960 984 1000 1040  600 601 604 617 doublescan +hsync -vsync (74.01 kHz d)
+[2026-04-12 18:48:49] (II) modeset(0): Modeline "960x540"x59.97  37.35  960 1008 1040 1120  540 543 548 556 +hsync -vsync (33.34 kHz d)
+[2026-04-12 18:48:49] (II) modeset(0): Modeline "800x600"x59.97  38.38  800 824 896 1024  600 601 603 625 +hsync +vsync (37.48 kHz d)
+[2026-04-12 18:48:49] (II) modeset(0): Modeline "840x525"x59.97  59.59  840 864 880 920  525 526 529 540 doublescan +hsync -vsync (64.77 kHz d)
+[2026-04-12 18:48:49] (II) modeset(0): Modeline "864x486"x59.97  30.71  864 912 944 1024  486 489 494 500 +hsync -vsync (29.99 kHz d)
+[2026-04-12 18:48:49] (II) modeset(0): Modeline "700x525"x59.97  60.00  700 744 820 940  525 526 532 541 doublescan +hsync +vsync (64.89 kHz d)
+[2026-04-12 18:48:49] (II) modeset(0): Modeline "800x450"x59.97  48.87  800 824 840 880  450 451 454 463 doublescan +hsync -vsync (55.53 kHz d)
+[2026-04-12 18:48:49] (II) modeset(0): Modeline "640x512"x59.97  53.96  640 664 720 844  512 512 514 533 doublescan +hsync +vsync (63.93 kHz d)
+[2026-04-12 18:48:49] (II) modeset(0): Modeline "700x450"x59.97  43.32  700 724 740 780  450 451 456 463 doublescan +hsync -vsync (55.53 kHz d)
+[2026-04-12 18:48:49] (II) modeset(0): Modeline "640x480"x59.97  25.19  640 656 752 800  480 490 492 525 -hsync -vsync (31.49 kHz d)
+[2026-04-12 18:48:49] (II) modeset(0): Modeline "720x405"x59.97  22.11  720 768 800 880  405 408 413 419 +hsync -vsync (25.13 kHz d)
+[2026-04-12 18:48:49] (II) modeset(0): Modeline "684x384"x59.97  36.20  684 708 724 764  384 385 390 395 doublescan +hsync -vsync (47.38 kHz d)
+[2026-04-12 18:48:49] (II) modeset(0): Modeline "640x360"x59.97  17.94  640 688 720 800  360 363 368 374 +hsync -vsync (22.43 kHz d)
+[2026-04-12 18:48:49] (II) modeset(0): Modeline "512x384"x59.97  32.48  512 524 592 672  384 385 388 403 doublescan -hsync -vsync (48.34 kHz d)
+[2026-04-12 18:48:49] (II) modeset(0): Modeline "512x288"x59.97  21.02  512 536 552 592  288 289 292 296 doublescan +hsync -vsync (35.50 kHz d)
+[2026-04-12 18:48:49] (II) modeset(0): Modeline "480x270"x59.97  18.67  480 504 520 560  270 271 274 278 doublescan +hsync -vsync (33.34 kHz d)
+[2026-04-12 18:48:49] (II) modeset(0): Modeline "400x300"x59.97  19.16  400 412 448 512  300 300 301 312 doublescan +hsync +vsync (37.42 kHz d)
+[2026-04-12 18:48:49] (II) modeset(0): Modeline "432x243"x59.97  15.35  432 456 472 512  243 244 247 250 doublescan +hsync -vsync (29.99 kHz d)
+[2026-04-12 18:48:49] (II) modeset(0): Modeline "320x240"x59.97  12.57  320 328 376 400  240 245 246 262 doublescan -hsync -vsync (31.42 kHz d)
+[2026-04-12 18:48:49] (II) modeset(0): Modeline "360x202"x59.97  11.03  360 384 400 440  202 204 206 209 doublescan +hsync -vsync (25.07 kHz d)
+[2026-04-12 18:48:49] (II) modeset(0): Modeline "320x180"x59.97  8.97  320 344 360 400  180 181 184 187 doublescan +hsync -vsync (22.43 kHz d)
+[2026-04-12 18:48:49] (II) modeset(0): EDID for output DP-1
+[2026-04-12 18:48:49] (II) modeset(0): EDID for output HDMI-1
+[2026-04-12 18:48:49] (II) modeset(0): EDID for output DP-2
+[2026-04-12 18:48:49] (II) modeset(0): EDID for output HDMI-2
+[2026-04-12 18:48:49] (II) modeset(0): Output eDP-1 connected
+[2026-04-12 18:48:49] (II) modeset(0): Output DP-1 disconnected
+[2026-04-12 18:48:49] (II) modeset(0): Output HDMI-1 disconnected
+[2026-04-12 18:48:49] (II) modeset(0): Output DP-2 disconnected
+[2026-04-12 18:48:49] (II) modeset(0): Output HDMI-2 disconnected
+[2026-04-12 18:48:49] (II) modeset(0): Using exact sizes for initial modes
+[2026-04-12 18:48:49] (II) modeset(0): Output eDP-1 using initial mode 1366x768 +0+0
+[2026-04-12 18:48:49] (==) modeset(0): Using gamma correction (1.00, 1.00, 1.00)
+[2026-04-12 18:48:49] (==) modeset(0): DPI set to (96, 96)
+[2026-04-12 18:48:49] (II) Loading sub module "fb"
+[2026-04-12 18:48:49] (II) LoadModule: "fb"
+[2026-04-12 18:48:49] (II) Module "fb" already built-in
+[2026-04-12 18:48:49] 
+[2026-04-12 18:48:49] Backtrace:
+[2026-04-12 18:48:49] unw_get_proc_name failed: no unwind info found [-10]
+[2026-04-12 18:48:49] 0: /usr/local/libexec/Xorg (?+0x0) [0x39e1ca]
+[2026-04-12 18:48:49] unw_get_proc_name failed: no unwind info found [-10]
+[2026-04-12 18:48:49] 1: /lib/libthr.so.3 (?+0x0) [0x828ff32ea]
+[2026-04-12 18:48:49] unw_get_proc_name failed: no unwind info found [-10]
+[2026-04-12 18:48:49] 2: /lib/libthr.so.3 (?+0x0) [0x828ff28eb]
+[2026-04-12 18:48:49] 3: <signal handler called>
+[2026-04-12 18:48:49] 4: /lib/libsys.so.7 (_thr_kill+0xa) [0x82ee349ea]
+[2026-04-12 18:48:49] 5: /lib/libc.so.7 (_raise+0x34) [0x82a15a894]
+[2026-04-12 18:48:49] 6: /lib/libc.so.7 (abort+0x49) [0x82a20c6f9]
+[2026-04-12 18:48:49] unw_get_proc_name failed: no unwind info found [-10]
+[2026-04-12 18:48:49] 7: /usr/local/lib/dri/crocus_dri.so (?+0x0) [0x8405b0809]
+[2026-04-12 18:48:49] unw_get_proc_name failed: no unwind info found [-10]
+[2026-04-12 18:48:49] 8: /usr/local/lib/dri/crocus_dri.so (?+0x0) [0x8405ae600]
+[2026-04-12 18:48:49] unw_get_proc_name failed: no unwind info found [-10]
+[2026-04-12 18:48:49] 9: /usr/local/lib/dri/crocus_dri.so (?+0x0) [0x83fa11d3f]
+[2026-04-12 18:48:49] unw_get_proc_name failed: no unwind info found [-10]
+[2026-04-12 18:48:49] 10: /usr/local/lib/dri/crocus_dri.so (?+0x0) [0x83f69807e]
+[2026-04-12 18:48:50] unw_get_proc_name failed: no unwind info found [-10]
+[2026-04-12 18:48:50] 11: /usr/local/lib/dri/crocus_dri.so (?+0x0) [0x83f43a60e]
+[2026-04-12 18:48:50] unw_get_proc_name failed: no unwind info found [-10]
+[2026-04-12 18:48:50] 12: /usr/local/lib/dri/crocus_dri.so (?+0x0) [0x83f6c2371]
+[2026-04-12 18:48:50] unw_get_proc_name failed: no unwind info found [-10]
+[2026-04-12 18:48:50] 13: /usr/local/lib/dri/crocus_dri.so (?+0x0) [0x83f37f9ad]
+[2026-04-12 18:48:50] unw_get_proc_name failed: no unwind info found [-10]
+[2026-04-12 18:48:50] 14: /usr/local/lib/dri/crocus_dri.so (?+0x0) [0x83f381dae]
+[2026-04-12 18:48:50] unw_get_proc_name failed: no unwind info found [-10]
+[2026-04-12 18:48:50] 15: /usr/local/lib/libEGL_mesa.so.0 (?+0x0) [0x84d4f4418]
+[2026-04-12 18:48:50] unw_get_proc_name failed: no unwind info found [-10]
+[2026-04-12 18:48:50] 16: /usr/local/lib/libEGL_mesa.so.0 (?+0x0) [0x84d4e5f30]
+[2026-04-12 18:48:50] 17: /usr/local/lib/libEGL.so.1 (eglMakeCurrent+0x311) [0x84d0b7311]
+[2026-04-12 18:48:50] unw_get_proc_name failed: no unwind info found [-10]
+[2026-04-12 18:48:50] 18: /usr/local/lib/xorg/modules/xlibre-25/libglamoregl.so (?+0x0) [0x83c4ed68d]
+[2026-04-12 18:48:50] 19: /usr/local/lib/xorg/modules/xlibre-25/libglamoregl.so (glamor_init+0x133) [0x83c4ef163]
+[2026-04-12 18:48:50] unw_get_proc_name failed: no unwind info found [-10]
+[2026-04-12 18:48:50] 20: /usr/local/lib/xorg/modules/xlibre-25/drivers/modesetting_drv.so (?+0x0) [0x8387b046d]
+[2026-04-12 18:48:50] unw_get_proc_name failed: no unwind info found [-10]
+[2026-04-12 18:48:50] 21: /usr/local/lib/xorg/modules/xlibre-25/drivers/modesetting_drv.so (?+0x0) [0x8387aa5df]
+[2026-04-12 18:48:50] unw_get_proc_name failed: no unwind info found [-10]
+[2026-04-12 18:48:50] 22: /usr/local/libexec/Xorg (?+0x0) [0x2b7200]
+[2026-04-12 18:48:50] unw_get_proc_name failed: no unwind info found [-10]
+[2026-04-12 18:48:50] 23: /usr/local/libexec/Xorg (?+0x0) [0x3bc3b3]
+[2026-04-12 18:48:50] unw_get_proc_name failed: no unwind info found [-10]
+[2026-04-12 18:48:50] 24: /usr/local/libexec/Xorg (?+0x0) [0x2baec0]
+[2026-04-12 18:48:50] 25: /lib/libc.so.7 (__libc_start1+0x12f) [0x82a12f37f]
+[2026-04-12 18:48:50] 26: /usr/local/libexec/Xorg (_start+0x24) [0x27c8e4]
+[2026-04-12 18:48:50] 
+[2026-04-12 18:48:50] Registers at frame #4:
+[2026-04-12 18:48:50]   rax: 0x0
+[2026-04-12 18:48:50]   rbx: 0x6
+[2026-04-12 18:48:50]   rcx: 0x82ee349ca
+[2026-04-12 18:48:50]   rdx: 0x0
+[2026-04-12 18:48:50]   rsi: 0x6
+[2026-04-12 18:48:50]   rdi: 0x18a62
+[2026-04-12 18:48:50]   rbp: 0x8214172c0
+[2026-04-12 18:48:50]   rsp: 0x821417298
+[2026-04-12 18:48:50]    r8: 0x0
+[2026-04-12 18:48:50]    r9: 0x0
+[2026-04-12 18:48:50]   r10: 0x0
+[2026-04-12 18:48:50]   r11: 0x246
+[2026-04-12 18:48:50]   r12: 0x82a2a4e20
+[2026-04-12 18:48:50]   r13: 0x29dc27a55030
+[2026-04-12 18:48:50]   r14: 0x82a2a4e20
+[2026-04-12 18:48:50]   r15: 0x8408ede98
+[2026-04-12 18:48:50] 
+[2026-04-12 18:48:50] 
 Fatal server error:
-[2026-04-12 15:33:27] Caught signal 11 (Segmentation fault). Server aborting
-[2026-04-12 15:33:27] 
-[2026-04-12 15:33:27] 
+[2026-04-12 18:48:50] Caught signal 6 (Abort trap). Server aborting
+[2026-04-12 18:48:50] 
+[2026-04-12 18:48:50] 
 Please consult the XLibre support: https://www.xlibre.net/
-[2026-04-12 15:33:27] Please also check the log file at "/var/log/Xorg.0.log" for additional information.
-[2026-04-12 15:33:27] 
-[2026-04-12 15:33:27] 
-[2026-04-12 15:33:27] Backtrace:
-[2026-04-12 15:33:27] unw_get_proc_name failed: no unwind info found [-10]
-[2026-04-12 15:33:27] 0: /usr/local/libexec/Xorg (?+0x0) [0x39e1ca]
-[2026-04-12 15:33:27] unw_get_proc_name failed: no unwind info found [-10]
-[2026-04-12 15:33:27] 1: /lib/libthr.so.3 (?+0x0) [0x828d1b2ea]
-[2026-04-12 15:33:27] unw_get_proc_name failed: no unwind info found [-10]
-[2026-04-12 15:33:27] 2: /lib/libthr.so.3 (?+0x0) [0x828d1a8eb]
-[2026-04-12 15:33:27] 3: <signal handler called>
-[2026-04-12 15:33:27] 4: /lib/libsys.so.7 (_thr_kill+0xa) [0x82ffc29ea]
-[2026-04-12 15:33:27] 5: /lib/libc.so.7 (_raise+0x34) [0x82b5d6894]
-[2026-04-12 15:33:27] 6: /lib/libc.so.7 (abort+0x49) [0x82b6886f9]
-[2026-04-12 15:33:27] 7: /lib/libc.so.7 (__assert+0x51) [0x82b5b95a1]
-[2026-04-12 15:33:27] unw_get_proc_name failed: no unwind info found [-10]
-[2026-04-12 15:33:27] 8: /usr/local/lib/xorg/modules/xlibre-25/drivers/intel_drv.so (?+0x0) [0x8387ab224]
-[2026-04-12 15:33:27] unw_get_proc_name failed: no unwind info found [-10]
-[2026-04-12 15:33:27] 9: /usr/local/lib/xorg/modules/xlibre-25/drivers/intel_drv.so (?+0x0) [0x838910c57]
-[2026-04-12 15:33:27] unw_get_proc_name failed: no unwind info found [-10]
-[2026-04-12 15:33:27] 10: /usr/local/libexec/Xorg (?+0x0) [0x3bd47a]
-[2026-04-12 15:33:27] unw_get_proc_name failed: no unwind info found [-10]
-[2026-04-12 15:33:27] 11: /usr/local/libexec/Xorg (?+0x0) [0x3a416d]
-[2026-04-12 15:33:27] 12: /usr/local/libexec/Xorg (FatalError+0x13c) [0x3a511c]
-[2026-04-12 15:33:27] unw_get_proc_name failed: no unwind info found [-10]
-[2026-04-12 15:33:27] 13: /usr/local/libexec/Xorg (?+0x0) [0x39e245]
-[2026-04-12 15:33:27] unw_get_proc_name failed: no unwind info found [-10]
-[2026-04-12 15:33:27] 14: /lib/libthr.so.3 (?+0x0) [0x828d1b2ea]
-[2026-04-12 15:33:27] unw_get_proc_name failed: no unwind info found [-10]
-[2026-04-12 15:33:27] 15: /lib/libthr.so.3 (?+0x0) [0x828d1a8eb]
-[2026-04-12 15:33:27] 16: <signal handler called>
-[2026-04-12 15:33:27] unw_get_proc_name failed: no unwind info found [-10]
-[2026-04-12 15:33:27] 17: /usr/local/lib/xorg/modules/xlibre-25/drivers/intel_drv.so (?+0x0) [0x838910bca]
-[2026-04-12 15:33:27] unw_get_proc_name failed: no unwind info found [-10]
-[2026-04-12 15:33:27] 18: /usr/local/lib/xorg/modules/xlibre-25/drivers/intel_drv.so (?+0x0) [0x838910b92]
-[2026-04-12 15:33:27] unw_get_proc_name failed: no unwind info found [-10]
-[2026-04-12 15:33:27] 19: /usr/local/libexec/Xorg (?+0x0) [0x2b7200]
-[2026-04-12 15:33:27] unw_get_proc_name failed: no unwind info found [-10]
-[2026-04-12 15:33:27] 20: /usr/local/libexec/Xorg (?+0x0) [0x3bc3b3]
-[2026-04-12 15:33:27] unw_get_proc_name failed: no unwind info found [-10]
-[2026-04-12 15:33:27] 21: /usr/local/libexec/Xorg (?+0x0) [0x2baec0]
-[2026-04-12 15:33:27] 22: /lib/libc.so.7 (__libc_start1+0x12f) [0x82b5ab37f]
-[2026-04-12 15:33:27] 23: /usr/local/libexec/Xorg (_start+0x24) [0x27c8e4]
-[2026-04-12 15:33:27] 
-[2026-04-12 15:33:27] Registers at frame #17:
-[2026-04-12 15:33:27]   rax: 0x6ce539b09ee98eb4
-[2026-04-12 15:33:27]   rbx: 0x0
-[2026-04-12 15:33:27]   rcx: 0x0
-[2026-04-12 15:33:27]   rdx: 0x1
-[2026-04-12 15:33:27]   rsi: 0x6
-[2026-04-12 15:33:27]   rdi: 0x0
-[2026-04-12 15:33:27]   rbp: 0x8207cf040
-[2026-04-12 15:33:27]   rsp: 0x8207cf030
-[2026-04-12 15:33:27]    r8: 0x2
-[2026-04-12 15:33:27]    r9: 0x2
-[2026-04-12 15:33:27]   r10: 0x0
-[2026-04-12 15:33:27]   r11: 0x3202
-[2026-04-12 15:33:27]   r12: 0x32a3ef147a5c
-[2026-04-12 15:33:27]   r13: 0x82b720e20
-[2026-04-12 15:33:27]   r14: 0x32a3ef13b740
-[2026-04-12 15:33:27]   r15: 0x32a3ef108800
-[2026-04-12 15:33:27] 
-[2026-04-12 15:33:27] 
-FatalError re-entered, aborting
-[2026-04-12 15:33:27] Caught signal 6 (Abort trap). Server aborting
-[2026-04-12 15:33:27] 
+[2026-04-12 18:48:50] Please also check the log file at "/var/log/Xorg.0.log" for additional information.
+[2026-04-12 18:48:50] 
+[2026-04-12 18:48:50] (EE) Server terminated with error (1). Closing log file.

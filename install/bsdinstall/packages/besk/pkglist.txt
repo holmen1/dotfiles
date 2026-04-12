@@ -46,7 +46,5 @@ x11/xcape
 x11/xclip
 x11-wm/xcompmgr
 x11/xlibre-minimal
-x11-drivers/xlibre-xf86-video-intel
-x11-drivers/xlibre-xf86-video-scfb
 x11/xsetroot
 x11/xterm
