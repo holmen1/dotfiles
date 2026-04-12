@@ -321,6 +321,45 @@ sudo pkg install xlibre-minimal xlibre-xf86-video-intel
 
 ---
 
+## pkg upgrade Can Break Mesa (crocus_dri / glamor crash)
+
+**Symptom:** After `pkg upgrade`, `startx` freezes. `Xorg.0.log` shows a crash inside `crocus_dri.so` during `glamor_init`:
+
+```
+7: /usr/local/lib/dri/crocus_dri.so
+...
+19: glamor_init
+20: modesetting_drv.so
+Fatal server error: Caught signal 6 (Abort trap). Server aborting
+```
+
+**Cause:** A regression in the `mesa-dri` package for Braswell/Gen8 Intel GPUs (device `8086:22b1`). The `modesetting` driver's default acceleration method (`glamor`) uses OpenGL/EGL via Mesa, and the upgraded `crocus_dri.so` crashes on initialization.
+
+**Workaround (immediate):** Disable glamor acceleration in `/usr/local/etc/X11/xorg.conf.d/20-modesetting.conf`:
+
+```
+Section "Device"
+    Identifier  "Intel Graphics"
+    Driver      "modesetting"
+    Option      "AccelMethod" "none"
+EndSection
+```
+
+This bypasses the Mesa/OpenGL stack entirely. Software rendering is slower but perfectly usable for XMonad with terminals.
+
+**Proper fix:** Wait for a Mesa package update in the FreeBSD repo, then remove the `AccelMethod` line to re-enable hardware acceleration. Check with:
+
+```bash
+pkg info mesa-dri
+```
+
+**Diagnosis steps used:**
+1. `X -probeonly` — safe way to test X without launching a window manager
+2. `startx ~/.xinitrc.test` (containing only `exec xterm`) — isolates X from XMonad
+3. `grep -E 'modesetting|signal|EE|Fatal' /var/log/Xorg.0.log` — quick log scan
+
+---
+
 ## Differences from Arch notes
 
 - `bash` located in /usr/local/bin. So #!/bin/bash won't work.
