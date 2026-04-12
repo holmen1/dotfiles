@@ -25,6 +25,7 @@ www/librewolf
 devel/llvm
 devel/lua-language-server
 devel/ncurses
+editors/neovim
 x11-fonts/nerd-fonts
 ports-mgmt/pkg
 devel/pkgconf
