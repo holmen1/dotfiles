@@ -18,11 +18,11 @@ function M.toggle()
     vim.cmd('resize 15')
     terminal_buf = vim.api.nvim_get_current_buf()
     terminal_win = vim.api.nvim_get_current_win()
-    
+
     -- Exit terminal mode with Esc or <C-\><C-n>
     vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', { buffer = terminal_buf, noremap = true })
 
-    
+
     vim.cmd('startinsert')
   end
 end
