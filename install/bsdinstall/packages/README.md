@@ -107,7 +107,7 @@ pkg audit -F
 - `librewolf`: Privacy-focused Firefox fork
 - `python`: Python interpreter
 - `en-freebsd-doc`: FreeBSD documentation
-- `nerd-fonts`: Patched fonts for terminals and editors
+- `jetbrains-mono-nerd-font`: JetBrains Mono Nerd Font (individual package, much faster to upgrade than full nerd-fonts collection)
 
 ---
 

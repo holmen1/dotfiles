@@ -315,6 +315,8 @@ pkg query -e '%a = 0' '%R %o' | awk '$1 != "FreeBSD-ports" && $1 != "FreeBSD-bas
 
 See [install/build/xlibre/LESSONS_LEARNED.md](../build/xlibre/LESSONS_LEARNED.md) for XLibre-specific lessons learned.
 
+See [LESSONS_LEARNED.md](LESSONS_LEARNED.md) for general FreeBSD installation lessons learned.
+
 ---
 
 ## Differences from Arch notes
