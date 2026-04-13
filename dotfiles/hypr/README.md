@@ -56,6 +56,4 @@ $ sudo cp wall1.png /usr/share/hypr
 this will replace the default wallpaper wall0.png  
 hypr uses 3 default wallpapers wall0.png, wall1.png, wall2.png
 
-## Lessons Learned
-
-brightnessctl needed for backlight keys
+See [LESSONS_LEARNED.md](LESSONS_LEARNED.md) for lessons learned.
