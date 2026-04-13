@@ -22,4 +22,19 @@ Only occurred when navigating to README.md files.
 
 ---
 
+## Leader Key Timing Issues (April 2026)
+
+**Issue:** `<leader>sf` (telescope find files) only worked when typed very quickly, otherwise did nothing.
+
+**Root Cause:** `timeoutlen` was set to 300ms, which was too fast for comfortable human typing of multi-key sequences.
+
+**Resolution:** Increase `timeoutlen` to 700ms in options.lua:
+```lua
+vim.opt.timeoutlen = 700
+```
+
+**Key Takeaway:** When leader key sequences feel "laggy" or require fast typing, increase `timeoutlen` in options.lua. No need for which-key just to manage timing—Neovim's built-in timeout works fine.
+
+---
+
 ## [Add future lessons here]

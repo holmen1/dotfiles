@@ -33,7 +33,6 @@ local plugins = {
   { 'nvim-tree/nvim-web-devicons', lazy = true },
   { 'neovim/nvim-lspconfig', lazy = false, config = function() require('plugins.lspconfig') end, dependencies = { 'j-hui/fidget.nvim' } },
   { 'j-hui/fidget.nvim', lazy = true },
-  { 'folke/which-key.nvim', lazy = false, config = function() require('plugins.which-key') end },
   { 'echasnovski/mini.nvim', lazy = false, config = function() require('plugins.mini') end },
   { 'lewis6991/gitsigns.nvim', event = 'VeryLazy', config = function() require('plugins.gitsigns') end },
 }
