@@ -2,7 +2,7 @@
 
 A lean Neovim configuration originally based on [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim) but refactored a lot, managed by **lazy.nvim** with essential plugins for code navigation and LSP integration. Optimized for C, Haskell, and cross-platform development (Arch Linux, FreeBSD).
 
-## Top 7 "Chad" Vim Commands (For High-Speed Dev)
+## Top 7 Vim Commands (For High-Speed Dev)
 
 For blazing fast code development—especially if you manipulate and copy/paste blocks of code often—burn these into your muscle memory:
 
@@ -21,7 +21,7 @@ For blazing fast code development—especially if you manipulate and copy/paste 
 - **Streamlined LSP Support**: Native Neovim LSP with manual server configuration (no Mason)
 - **Buffer Tabs**: Quick visual buffer management with tab bar at top
 - **Git Integration**: Gitsigns for inline diffs and status indicators
-- **Smart Keybinding Help**: Which-key popup (1-second delay to avoid intrusion)
+- **Smart Keybinding Help**: `<leader>sk` from Telescope for keybinding discovery
 - **Lightweight Toolkit**: Mini.nvim for statusline, buffer tabs, and text object improvements
 - **Cross-Platform**: Works on Arch Linux and FreeBSD with server auto-detection
 
@@ -38,7 +38,6 @@ For blazing fast code development—especially if you manipulate and copy/paste 
 | **nvim-treesitter** | Syntax highlighting | Better code understanding with minimal overhead |
 | **nvim-lspconfig** | Language server setup | Code intelligence via system-installed LSP servers |
 | **mini.nvim** | Statusline, tabline, textobjects | Lightweight, composable toolkit; replaces multiple plugins |
-| **which-key.nvim** | Keybinding help | Discoverability without memorization |
 | **gitsigns.nvim** | Git change indicators in gutter | Minimal, fast, and visually clear git status |
 | **fidget.nvim** | LSP status notifications | Non-intrusive progress spinners for long operations |
 
