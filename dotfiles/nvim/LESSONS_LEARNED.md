@@ -37,4 +37,19 @@ vim.opt.timeoutlen = 700
 
 ---
 
+## Plugin Manager Choice: lazy.nvim vs vim.pack (April 2026)
+
+**Issue:** Experimented with Neovim 0.12's native `vim.pack` system but reverted to lazy.nvim.
+
+**Root Cause:** vim.pack had UX issues (poor update/list commands) and complexity (manual lazy loading, platform-specific build hooks).
+
+**Resolution:** Stick with lazy.nvim for its battle-tested event system, dependency resolution, and ergonomic `:Lazy` commands.
+
+**Key Takeaways:**
+- Use `vim.fn.isdirectory()` for directory checks (not deprecated `vim.loop.fs_stat()`)
+- Be explicit with lazy loading: `lazy = false` for essential plugins, `event = 'VeryLazy'` for deferrable ones
+- Avoid global `defaults = { lazy = true }`—it breaks plugins needing immediate loading
+
+---
+
 ## [Add future lessons here]

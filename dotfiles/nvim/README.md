@@ -331,6 +331,13 @@ Registers store text for yanking, deleting, or pasting (like multiple clipboards
 | `dp` | Put changes (to other window) |
 | `zr` | Expand folds to see more context |
 
+## Checkhealth
+
+Headless Checkhealth: If debugging an environment purely from the terminal without opening UI, run
+```bash
+nvim --headless -c "checkhealth" -c "w! health.log" -c "qa"
+```
+to pipe output to `health.log`
 
 ## LSP Troubleshooting
 
