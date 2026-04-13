@@ -27,7 +27,7 @@ vim.opt.rtp:prepend(lazypath)
 -- [[ Plugin Specs ]]
 local plugins = {
   { 'folke/tokyonight.nvim', priority = 1000, lazy = false, config = function() require('plugins.theme') end },
-  { 'nvim-treesitter/nvim-treesitter', lazy = false, build = ':TSUpdate', config = function() require('plugins.treesitter') end },
+  { 'nvim-treesitter/nvim-treesitter', branch = 'main', lazy = false, build = ':TSUpdate', config = function() require('plugins.treesitter') end },
   { 'nvim-lua/plenary.nvim', lazy = true },
   { 'nvim-telescope/telescope.nvim', event = 'VeryLazy', config = function() require('plugins.telescope') end, dependencies = { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' } },
   { 'nvim-tree/nvim-web-devicons', lazy = true },
