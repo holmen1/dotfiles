@@ -59,9 +59,9 @@ if command -v dunst >/dev/null 2>&1; then
 fi
 
 # Start compositor for transparency/shadows
-#if command -v xcompmgr >/dev/null 2>&1; then
-#    xcompmgr &
-#fi
+if command -v xcompmgr >/dev/null 2>&1; then
+    xcompmgr &
+fi
 
 # Launch key binding daemon if available
 if command -v xbindkeys >/dev/null 2>&1; then

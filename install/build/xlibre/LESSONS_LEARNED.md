@@ -41,11 +41,15 @@ EndSection
 
 This bypasses the Mesa/OpenGL stack entirely. Software rendering is slower but perfectly usable for XMonad with terminals.
 
-**Proper fix:** Wait for a Mesa package update in the FreeBSD repo, then remove the `AccelMethod` line to re-enable hardware acceleration. Check with:
+**Alternative fix (tested working):** If the above config causes issues, remove the entire `/usr/local/share/X11/xorg.conf.d/` directory (or move to .bak). This forces X to autoconfigure without any device-specific configs, allowing `modesetting` with glamor to work properly on Braswell GPUs. However, `startx` with the built-in config still crashes due to the Mesa regression— the built-in includes intel in the ServerLayout, which triggers the bug even though intel is removed. Workaround: Create `/usr/local/etc/X11/xorg.conf` with a minimal modesetting config to override the built-in.
+
+**Proper fix:** Wait for a Mesa package update in the FreeBSD repo, then remove the `AccelMethod` line or re-enable configs to re-enable hardware acceleration. Check with:
 
 ```bash
 pkg info mesa-dri
 ```
+
+**Diagnosis steps used:**
 
 **Diagnosis steps used:**
 1. `X -probeonly` — safe way to test X without launching a window manager
