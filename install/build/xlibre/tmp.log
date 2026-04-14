@@ -1,0 +1,91 @@
+xauth:  file /home/holmen1/.serverauth.3658 does not exist
+
+
+XLibre X Server 1.25.1.2
+X Protocol Version 11, Revision 0
+Current Operating System: FreeBSD besk 15.0-RELEASE-p5 FreeBSD 15.0-RELEASE-p5 releng/15.0-n281018-0730d5233286 GENERIC amd64
+Current version of pixman: 0.46.2
+Markers: (--) probed, (**) from config file, (==) default setting,
+	(++) from command line, (!!) notice, (II) informational,
+	(WW) warning, (EE) error, (NI) not implemented, (??) unknown.
+(==) Log file: "/var/log/Xorg.0.log", Time: Tue Apr 14 19:33:19 2026
+(==) Using default built-in configuration (39 lines)
+
+Backtrace:
+unw_get_proc_name failed: no unwind info found [-10]
+0: /usr/local/libexec/Xorg (?+0x0) [0x39e1ca]
+unw_get_proc_name failed: no unwind info found [-10]
+1: /lib/libthr.so.3 (?+0x0) [0x828b562ea]
+unw_get_proc_name failed: no unwind info found [-10]
+2: /lib/libthr.so.3 (?+0x0) [0x828b558eb]
+3: <signal handler called>
+4: /lib/libsys.so.7 (_thr_kill+0xa) [0x82cc4f9ea]
+5: /lib/libc.so.7 (_raise+0x34) [0x829425894]
+6: /lib/libc.so.7 (abort+0x49) [0x8294d76f9]
+unw_get_proc_name failed: no unwind info found [-10]
+7: /usr/local/lib/dri/crocus_dri.so (?+0x0) [0x83b3b0809]
+unw_get_proc_name failed: no unwind info found [-10]
+8: /usr/local/lib/dri/crocus_dri.so (?+0x0) [0x83b3ae600]
+unw_get_proc_name failed: no unwind info found [-10]
+9: /usr/local/lib/dri/crocus_dri.so (?+0x0) [0x83a811d3f]
+unw_get_proc_name failed: no unwind info found [-10]
+10: /usr/local/lib/dri/crocus_dri.so (?+0x0) [0x83a49807e]
+unw_get_proc_name failed: no unwind info found [-10]
+11: /usr/local/lib/dri/crocus_dri.so (?+0x0) [0x83a23a60e]
+unw_get_proc_name failed: no unwind info found [-10]
+12: /usr/local/lib/dri/crocus_dri.so (?+0x0) [0x83a4c2371]
+unw_get_proc_name failed: no unwind info found [-10]
+13: /usr/local/lib/dri/crocus_dri.so (?+0x0) [0x83a17f9ad]
+unw_get_proc_name failed: no unwind info found [-10]
+14: /usr/local/lib/dri/crocus_dri.so (?+0x0) [0x83a181dae]
+unw_get_proc_name failed: no unwind info found [-10]
+15: /usr/local/lib/libEGL_mesa.so.0 (?+0x0) [0x84a3e7418]
+unw_get_proc_name failed: no unwind info found [-10]
+16: /usr/local/lib/libEGL_mesa.so.0 (?+0x0) [0x84a3d8f30]
+17: /usr/local/lib/libEGL.so.1 (eglMakeCurrent+0x311) [0x8499f5311]
+unw_get_proc_name failed: no unwind info found [-10]
+18: /usr/local/lib/xorg/modules/xlibre-25/libglamoregl.so (?+0x0) [0x83848e68d]
+19: /usr/local/lib/xorg/modules/xlibre-25/libglamoregl.so (glamor_init+0x133) [0x838490163]
+unw_get_proc_name failed: no unwind info found [-10]
+20: /usr/local/lib/xorg/modules/xlibre-25/drivers/modesetting_drv.so (?+0x0) [0x834c5646d]
+unw_get_proc_name failed: no unwind info found [-10]
+21: /usr/local/lib/xorg/modules/xlibre-25/drivers/modesetting_drv.so (?+0x0) [0x834c505df]
+unw_get_proc_name failed: no unwind info found [-10]
+22: /usr/local/libexec/Xorg (?+0x0) [0x2b7200]
+unw_get_proc_name failed: no unwind info found [-10]
+23: /usr/local/libexec/Xorg (?+0x0) [0x3bc3b3]
+unw_get_proc_name failed: no unwind info found [-10]
+24: /usr/local/libexec/Xorg (?+0x0) [0x2baec0]
+25: /lib/libc.so.7 (__libc_start1+0x12f) [0x8293fa37f]
+26: /usr/local/libexec/Xorg (_start+0x24) [0x27c8e4]
+
+Registers at frame #4:
+  rax: 0x0
+  rbx: 0x6
+  rcx: 0x82cc4f9ca
+  rdx: 0x0
+  rsi: 0x6
+  rdi: 0x18a82
+  rbp: 0x8205f62a0
+  rsp: 0x8205f6278
+   r8: 0x0
+   r9: 0x0
+  r10: 0x0
+  r11: 0x3246
+  r12: 0x82956fe20
+  r13: 0x34b057455030
+  r14: 0x82956fe20
+  r15: 0x83b6ede98
+
+
+Fatal server error:
+Caught signal 6 (Abort trap). Server aborting
+
+
+Please consult the XLibre support: https://www.xlibre.net/
+Please also check the log file at "/var/log/Xorg.0.log" for additional information.
+
+(EE) Server terminated with error (1). Closing log file.
+xinit: giving up
+xinit: unable to connect to X server: Connection refused
+xinit: server error
