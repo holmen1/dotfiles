@@ -1,0 +1,14 @@
+Section "Device"
+    Identifier  "modesetting_card"
+    Driver      "modesetting"
+EndSection
+
+Section "Screen"
+    Identifier  "modesetting_screen"
+    Device      "modesetting_card"
+EndSection
+
+Section "ServerLayout"
+    Identifier  "Default Layout"
+    Screen      "modesetting_screen"
+EndSection
