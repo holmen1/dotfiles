@@ -1,25 +1,90 @@
-[2026-04-14 18:26:32] 
+[2026-04-15 08:00:03] 
 XLibre X Server 1.25.1.2
 X Protocol Version 11, Revision 0
-[2026-04-14 18:26:32] Current Operating System: FreeBSD besk 15.0-RELEASE-p5 FreeBSD 15.0-RELEASE-p5 releng/15.0-n281018-0730d5233286 GENERIC amd64
-[2026-04-14 18:26:32] Current version of pixman: 0.46.2
-[2026-04-14 18:26:32] Markers: (--) probed, (**) from config file, (==) default setting,
+[2026-04-15 08:00:03] Current Operating System: FreeBSD besk 15.0-RELEASE-p5 FreeBSD 15.0-RELEASE-p5 releng/15.0-n281018-0730d5233286 GENERIC amd64
+[2026-04-15 08:00:03] Current version of pixman: 0.46.2
+[2026-04-15 08:00:03] Markers: (--) probed, (**) from config file, (==) default setting,
 	(++) from command line, (!!) notice, (II) informational,
 	(WW) warning, (EE) error, (NI) not implemented, (??) unknown.
-[2026-04-14 18:26:32] (==) Log file: "/var/log/Xorg.1.log", Time: Tue Apr 14 18:26:32 2026
-[2026-04-14 18:26:32] (==) Using system config directory "/usr/local/share/X11/xorg.conf.d"
-[2026-04-14 18:26:32] (==) Automatically adding devices
-[2026-04-14 18:26:32] (==) Automatically enabling devices
-[2026-04-14 18:26:32] (==) Automatically adding GPU devices
-[2026-04-14 18:26:32] (==) Automatically binding GPU devices
-[2026-04-14 18:26:32] (==) Max clients allowed: 256, resource mask: 0x1fffff
-[2026-04-14 18:26:32] (==) No Layout section.  Using the first Screen section.
-[2026-04-14 18:26:32] (==) No screen section available. Using defaults.
-[2026-04-14 18:26:32] (**) |-->Screen "Default Screen Section" (0)
-[2026-04-14 18:26:32] (**) |   |-->Monitor "<default monitor>"
-[2026-04-14 18:26:32] (==) No monitor specified for screen "Default Screen Section".
+[2026-04-15 08:00:03] (==) Log file: "/var/log/Xorg.1.log", Time: Wed Apr 15 08:00:03 2026
+[2026-04-15 08:00:03] (II) Module ABI versions:
+[2026-04-15 08:00:03] 	X.Org ANSI C Emulation: 1.4
+[2026-04-15 08:00:03] 	X.Org Video Driver: 28.1
+[2026-04-15 08:00:03] 	X.Org XInput driver : 26.0
+[2026-04-15 08:00:03] 	X.Org Server Extension : 11.0
+[2026-04-15 08:00:03] (WW) seat-libseat: libseat integration requires -keeptty which was not provided, disabling
+[2026-04-15 08:00:03] (II) xfree86: Adding drm device (/dev/dri/card0)
+[2026-04-15 08:00:03] (II) Platform probe for /dev/dri/card0
+[2026-04-15 08:00:03] (--) PCI:*(0@0:2:0) 8086:22b1:17aa:5057 rev 33, Mem @ 0x90000000/16777216, 0x80000000/268435456, I/O @ 0x2000/64, BIOS @ 0x????????/65536
+[2026-04-15 08:00:03] (==) Using default built-in configuration (39 lines)
+[2026-04-15 08:00:03] (==) --- Start of built-in configuration ---
+[2026-04-15 08:00:03] 	Section "Device"
+[2026-04-15 08:00:03] 		Identifier	"Builtin Default intel Device 0"
+[2026-04-15 08:00:03] 		Driver	"intel"
+[2026-04-15 08:00:03] 	EndSection
+[2026-04-15 08:00:03] 	Section "Screen"
+[2026-04-15 08:00:03] 		Identifier	"Builtin Default intel Screen 0"
+[2026-04-15 08:00:03] 		Device	"Builtin Default intel Device 0"
+[2026-04-15 08:00:03] 	EndSection
+[2026-04-15 08:00:03] 	Section "Device"
+[2026-04-15 08:00:03] 		Identifier	"Builtin Default modesetting Device 0"
+[2026-04-15 08:00:03] 		Driver	"modesetting"
+[2026-04-15 08:00:03] 	EndSection
+[2026-04-15 08:00:03] 	Section "Screen"
+[2026-04-15 08:00:03] 		Identifier	"Builtin Default modesetting Screen 0"
+[2026-04-15 08:00:03] 		Device	"Builtin Default modesetting Device 0"
+[2026-04-15 08:00:03] 	EndSection
+[2026-04-15 08:00:03] 	Section "Device"
+[2026-04-15 08:00:03] 		Identifier	"Builtin Default scfb Device 0"
+[2026-04-15 08:00:03] 		Driver	"scfb"
+[2026-04-15 08:00:03] 	EndSection
+[2026-04-15 08:00:03] 	Section "Screen"
+[2026-04-15 08:00:03] 		Identifier	"Builtin Default scfb Screen 0"
+[2026-04-15 08:00:03] 		Device	"Builtin Default scfb Device 0"
+[2026-04-15 08:00:03] 	EndSection
+[2026-04-15 08:00:03] 	Section "Device"
+[2026-04-15 08:00:03] 		Identifier	"Builtin Default vesa Device 0"
+[2026-04-15 08:00:03] 		Driver	"vesa"
+[2026-04-15 08:00:03] 	EndSection
+[2026-04-15 08:00:03] 	Section "Screen"
+[2026-04-15 08:00:03] 		Identifier	"Builtin Default vesa Screen 0"
+[2026-04-15 08:00:03] 		Device	"Builtin Default vesa Device 0"
+[2026-04-15 08:00:03] 	EndSection
+[2026-04-15 08:00:03] 	Section "ServerLayout"
+[2026-04-15 08:00:03] 		Identifier	"Builtin Default Layout"
+[2026-04-15 08:00:03] 		Screen	"Builtin Default intel Screen 0"
+[2026-04-15 08:00:03] 		Screen	"Builtin Default modesetting Screen 0"
+[2026-04-15 08:00:03] 		Screen	"Builtin Default scfb Screen 0"
+[2026-04-15 08:00:03] 		Screen	"Builtin Default vesa Screen 0"
+[2026-04-15 08:00:03] 	EndSection
+[2026-04-15 08:00:03] (==) --- End of built-in configuration ---
+[2026-04-15 08:00:03] (==) Automatically adding devices
+[2026-04-15 08:00:03] (==) Automatically enabling devices
+[2026-04-15 08:00:03] (==) Automatically adding GPU devices
+[2026-04-15 08:00:03] (==) Automatically binding GPU devices
+[2026-04-15 08:00:03] (==) Max clients allowed: 256, resource mask: 0x1fffff
+[2026-04-15 08:00:03] (==) ServerLayout "Builtin Default Layout"
+[2026-04-15 08:00:03] (**) |-->Screen "Builtin Default intel Screen 0" (0)
+[2026-04-15 08:00:03] (**) |   |-->Monitor "<default monitor>"
+[2026-04-15 08:00:03] (**) |   |-->Device "Builtin Default intel Device 0"
+[2026-04-15 08:00:03] (==) No monitor specified for screen "Builtin Default intel Screen 0".
 	Using a default monitor configuration.
-[2026-04-14 18:26:32] (==) FontPath set to:
+[2026-04-15 08:00:03] (**) |-->Screen "Builtin Default modesetting Screen 0" (1)
+[2026-04-15 08:00:03] (**) |   |-->Monitor "<default monitor>"
+[2026-04-15 08:00:03] (**) |   |-->Device "Builtin Default modesetting Device 0"
+[2026-04-15 08:00:03] (==) No monitor specified for screen "Builtin Default modesetting Screen 0".
+	Using a default monitor configuration.
+[2026-04-15 08:00:03] (**) |-->Screen "Builtin Default scfb Screen 0" (2)
+[2026-04-15 08:00:03] (**) |   |-->Monitor "<default monitor>"
+[2026-04-15 08:00:03] (**) |   |-->Device "Builtin Default scfb Device 0"
+[2026-04-15 08:00:03] (==) No monitor specified for screen "Builtin Default scfb Screen 0".
+	Using a default monitor configuration.
+[2026-04-15 08:00:03] (**) |-->Screen "Builtin Default vesa Screen 0" (3)
+[2026-04-15 08:00:03] (**) |   |-->Monitor "<default monitor>"
+[2026-04-15 08:00:03] (**) |   |-->Device "Builtin Default vesa Device 0"
+[2026-04-15 08:00:03] (==) No monitor specified for screen "Builtin Default vesa Screen 0".
+	Using a default monitor configuration.
+[2026-04-15 08:00:03] (==) FontPath set to:
 	/usr/local/share/fonts/misc/,
 	/usr/local/share/fonts/TTF/,
 	/usr/local/share/fonts/OTF/,
@@ -27,231 +92,217 @@ X Protocol Version 11, Revision 0
 	/usr/local/share/fonts/100dpi/,
 	/usr/local/share/fonts/75dpi/,
 	catalogue:/usr/local/etc/X11/fontpath.d
-[2026-04-14 18:26:32] (==) ModulePath set to "/usr/local/lib/xorg/modules"
-[2026-04-14 18:26:32] (II) The server relies on udev to provide the list of input devices.
+[2026-04-15 08:00:03] (==) ModulePath set to "/usr/local/lib/xorg/modules"
+[2026-04-15 08:00:03] (II) The server relies on udev to provide the list of input devices.
 	If no devices become available, reconfigure udev or disable AutoAddDevices.
-[2026-04-14 18:26:32] (II) Module ABI versions:
-[2026-04-14 18:26:32] 	X.Org ANSI C Emulation: 1.4
-[2026-04-14 18:26:32] 	X.Org Video Driver: 28.1
-[2026-04-14 18:26:32] 	X.Org XInput driver : 26.0
-[2026-04-14 18:26:32] 	X.Org Server Extension : 11.0
-[2026-04-14 18:26:32] (WW) seat-libseat: libseat integration requires -keeptty which was not provided, disabling
-[2026-04-14 18:26:32] (II) xfree86: Adding drm device (/dev/dri/card0)
-[2026-04-14 18:26:32] (II) Platform probe for /dev/dri/card0
-[2026-04-14 18:26:32] (--) PCI:*(0@0:2:0) 8086:22b1:17aa:5057 rev 33, Mem @ 0x90000000/16777216, 0x80000000/268435456, I/O @ 0x2000/64, BIOS @ 0x????????/65536
-[2026-04-14 18:26:32] (II) LoadModule: "glx"
-[2026-04-14 18:26:32] (II) Loading /usr/local/lib/xorg/modules/xlibre-25/extensions/libglx.so
-[2026-04-14 18:26:32] (II) Module glx: vendor="X.Org Foundation"
-[2026-04-14 18:26:32] 	compiled for 1.25.1.2, module version = 1.0.0
-[2026-04-14 18:26:32] 	ABI class: X.Org Server Extension, version 11.0
-[2026-04-14 18:26:32] (==) Matched intel as autoconfigured driver 0
-[2026-04-14 18:26:32] (==) Matched modesetting as autoconfigured driver 1
-[2026-04-14 18:26:32] (==) Matched scfb as autoconfigured driver 2
-[2026-04-14 18:26:32] (==) Matched vesa as autoconfigured driver 3
-[2026-04-14 18:26:32] (==) Assigned the driver to the xf86ConfigLayout
-[2026-04-14 18:26:32] (II) LoadModule: "intel"
-[2026-04-14 18:26:32] (WW) Warning, couldn't open module intel
-[2026-04-14 18:26:32] (EE) Failed to load module "intel" (module does not exist, 0)
-[2026-04-14 18:26:32] (II) LoadModule: "modesetting"
-[2026-04-14 18:26:32] (II) Loading /usr/local/lib/xorg/modules/xlibre-25/drivers/modesetting_drv.so
-[2026-04-14 18:26:32] (II) Module modesetting: vendor="X.Org Foundation"
-[2026-04-14 18:26:32] 	compiled for 1.25.1.2, module version = 1.25.1
-[2026-04-14 18:26:32] 	Module class: X.Org Video Driver
-[2026-04-14 18:26:32] 	ABI class: X.Org Video Driver, version 28.1
-[2026-04-14 18:26:32] (II) LoadModule: "scfb"
-[2026-04-14 18:26:32] (WW) Warning, couldn't open module scfb
-[2026-04-14 18:26:32] (EE) Failed to load module "scfb" (module does not exist, 0)
-[2026-04-14 18:26:32] (II) LoadModule: "vesa"
-[2026-04-14 18:26:32] (II) Loading /usr/local/lib/xorg/modules/xlibre-25/drivers/vesa_drv.so
-[2026-04-14 18:26:32] (II) Module vesa: vendor="X.Org Foundation"
-[2026-04-14 18:26:32] 	compiled for 1.25.1.2, module version = 25.0.0
-[2026-04-14 18:26:32] 	Module class: X.Org Video Driver
-[2026-04-14 18:26:32] 	ABI class: X.Org Video Driver, version 28.1
-[2026-04-14 18:26:32] (II) modesetting: Driver for Modesetting Kernel Drivers: kms
-[2026-04-14 18:26:32] (II) VESA: driver for VESA chipsets: vesa
-[2026-04-14 18:26:32] (--) Using pcvt driver
-[2026-04-14 18:26:32] (II)  Platform device "/dev/dri/card0" at 0@0:2:0 can be claimed.
-[2026-04-14 18:26:32] (II) modeset(0): using drv /dev/dri/card0
-[2026-04-14 18:26:32] (II)  PCI device skipped because
-[2026-04-14 18:26:32] (II)   PCI bus id 0@0:2:0 has already been claimed by "Autoconfigured Video Device modesetting".
-[2026-04-14 18:26:32] (II)  Platform device "/dev/dri/card0" skipped because
-[2026-04-14 18:26:32] (II)   PCI bus id 0@0:2:0 has already been claimed by "Autoconfigured Video Device modesetting".
-[2026-04-14 18:26:32] (WW) VGA arbiter: cannot open kernel arbiter, no multi-card support
-[2026-04-14 18:26:32] (II) modeset(0): Creating default Display subsection in Screen section
-	"Default Screen Section" for depth/fbbpp 24/32
-[2026-04-14 18:26:32] (==) modeset(0): Depth 24, (==) framebuffer bpp 32
-[2026-04-14 18:26:32] (==) modeset(0): RGB weight 888
-[2026-04-14 18:26:32] (==) modeset(0): Default visual is TrueColor
-[2026-04-14 18:26:32] (II) Loading sub module "glamoregl"
-[2026-04-14 18:26:32] (II) LoadModule: "glamoregl"
-[2026-04-14 18:26:32] (II) Loading /usr/local/lib/xorg/modules/xlibre-25/libglamoregl.so
-[2026-04-14 18:26:32] (II) Module glamoregl: vendor="X.Org Foundation"
-[2026-04-14 18:26:32] 	compiled for 1.25.1.2, module version = 1.0.1
-[2026-04-14 18:26:32] 	ABI class: X.Org ANSI C Emulation, version 1.4
-[2026-04-14 18:26:32] (II) modeset(0): glamor: Using OpenGL 4.6 context.
-[2026-04-14 18:26:32] (II) modeset(0): glamor X acceleration enabled on Mesa Intel(R) HD Graphics 400 (BSW)
-[2026-04-14 18:26:32] (II) modeset(0): glamor initialized
-[2026-04-14 18:26:32] (==) modeset(0): VariableRefresh: disabled
-[2026-04-14 18:26:32] (==) modeset(0): AsyncFlipSecondaries: disabled
-[2026-04-14 18:26:32] (II) modeset(0): Atomic modesetting disabled
-[2026-04-14 18:26:32] (II) modeset(0): TearFree: enabled
-[2026-04-14 18:26:32] (II) modeset(0): Output eDP-1 has no monitor section
-[2026-04-14 18:26:32] (II) modeset(0): Output DP-1 has no monitor section
-[2026-04-14 18:26:32] (II) modeset(0): Output HDMI-1 has no monitor section
-[2026-04-14 18:26:32] (II) modeset(0): Output DP-2 has no monitor section
-[2026-04-14 18:26:32] (II) modeset(0): Output HDMI-2 has no monitor section
-[2026-04-14 18:26:32] (II) modeset(0): EDID for output eDP-1
-[2026-04-14 18:26:32] (II) modeset(0): Manufacturer: BOE  Model: 608  Serial#: 0
-[2026-04-14 18:26:32] (II) modeset(0): Year: 2014  Week: 1
-[2026-04-14 18:26:32] (II) modeset(0): EDID Version: 1.4
-[2026-04-14 18:26:32] (II) modeset(0): Digital Display Input
-[2026-04-14 18:26:32] (II) modeset(0): 6 bits per channel
-[2026-04-14 18:26:32] (II) modeset(0): Digital interface is DisplayPort
-[2026-04-14 18:26:32] (II) modeset(0): Max Image Size [cm]: horiz.: 26  vert.: 15
-[2026-04-14 18:26:32] (II) modeset(0): Gamma: 2.20
-[2026-04-14 18:26:32] (II) modeset(0): No DPMS capabilities specified
-[2026-04-14 18:26:32] (II) modeset(0): Supported color encodings: RGB 4:4:4 
-[2026-04-14 18:26:32] (II) modeset(0): First detailed timing is preferred mode
-[2026-04-14 18:26:32] (II) modeset(0): Preferred mode is native pixel format and refresh rate
-[2026-04-14 18:26:32] (II) modeset(0): redX: 0.58 redY: 0.36   greenX: 0.34 greenY: 0.58
-[2026-04-14 18:26:32] (II) modeset(0): blueX: 0.16 blueY: 0.11   whiteX: 0.31 whiteY: 0.33
-[2026-04-14 18:26:32] (II) modeset(0): Manufacturer's mask: 0
-[2026-04-14 18:26:32] (II) modeset(0): Supported detailed timing:
-[2026-04-14 18:26:32] (II) modeset(0): clock: 72.30 MHz   Image Size:  256 x 144 mm
-[2026-04-14 18:26:32] (II) modeset(0): h_active: 1366  h_sync: 1414  h_sync_end 1446 h_blank_end 1526 h_border: 0
-[2026-04-14 18:26:32] (II) modeset(0): v_active: 768  v_sync: 771  v_sync_end 777 v_blanking: 790 v_border: 0
-[2026-04-14 18:26:32] (II) modeset(0): Unknown vendor-specific block 0
-[2026-04-14 18:26:32] (II) modeset(0):  BOE DT
-[2026-04-14 18:26:32] (II) modeset(0):  NT116WHM-N11
-[2026-04-14 18:26:32] (II) modeset(0): EDID (in hex):
-[2026-04-14 18:26:32] (II) modeset(0): 	00ffffffffffff0009e5080600000000
-[2026-04-14 18:26:32] (II) modeset(0): 	01180104951a0f78025d40945b579429
-[2026-04-14 18:26:32] (II) modeset(0): 	1c505400000001010101010101010101
-[2026-04-14 18:26:32] (II) modeset(0): 	0101010101013e1c56a0500016303020
-[2026-04-14 18:26:32] (II) modeset(0): 	360000901000001a0000000000000000
-[2026-04-14 18:26:32] (II) modeset(0): 	0000000000000000001a000000fe0042
-[2026-04-14 18:26:32] (II) modeset(0): 	4f452044540a202020202020000000fe
-[2026-04-14 18:26:32] (II) modeset(0): 	004e5431313657484d2d4e31310a00a3
-[2026-04-14 18:26:32] (II) modeset(0): Printing probed modes for output eDP-1
-[2026-04-14 18:26:32] (II) modeset(0): Modeline "1366x768"x59.97  72.30  1366 1414 1446 1526  768 771 777 790 +hsync -vsync (47.38 kHz eP)
-[2026-04-14 18:26:32] (II) modeset(0): Modeline "1280x720"x59.97  63.99  1280 1328 1360 1440  720 723 728 741 +hsync -vsync (44.44 kHz d)
-[2026-04-14 18:26:32] (II) modeset(0): Modeline "1024x768"x59.97  64.97  1024 1048 1184 1344  768 771 777 806 -hsync -vsync (48.34 kHz d)
-[2026-04-14 18:26:32] (II) modeset(0): Modeline "960x720"x59.97  116.95  960 1024 1128 1300  720 720 722 750 doublescan -hsync +vsync (89.96 kHz d)
-[2026-04-14 18:26:32] (II) modeset(0): Modeline "928x696"x59.97  109.01  928 976 1088 1264  696 696 698 719 doublescan -hsync +vsync (86.24 kHz d)
-[2026-04-14 18:26:32] (II) modeset(0): Modeline "896x672"x59.97  102.33  896 960 1060 1224  672 672 674 697 doublescan -hsync +vsync (83.60 kHz d)
-[2026-04-14 18:26:32] (II) modeset(0): Modeline "1024x576"x59.97  42.11  1024 1072 1104 1184  576 579 584 593 +hsync -vsync (35.56 kHz d)
-[2026-04-14 18:26:32] (II) modeset(0): Modeline "960x600"x59.97  76.97  960 984 1000 1040  600 601 604 617 doublescan +hsync -vsync (74.01 kHz d)
-[2026-04-14 18:26:32] (II) modeset(0): Modeline "960x540"x59.97  37.35  960 1008 1040 1120  540 543 548 556 +hsync -vsync (33.34 kHz d)
-[2026-04-14 18:26:32] (II) modeset(0): Modeline "800x600"x59.97  38.38  800 824 896 1024  600 601 603 625 +hsync +vsync (37.48 kHz d)
-[2026-04-14 18:26:32] (II) modeset(0): Modeline "840x525"x59.97  59.59  840 864 880 920  525 526 529 540 doublescan +hsync -vsync (64.77 kHz d)
-[2026-04-14 18:26:32] (II) modeset(0): Modeline "864x486"x59.97  30.71  864 912 944 1024  486 489 494 500 +hsync -vsync (29.99 kHz d)
-[2026-04-14 18:26:32] (II) modeset(0): Modeline "700x525"x59.97  60.00  700 744 820 940  525 526 532 541 doublescan +hsync +vsync (64.89 kHz d)
-[2026-04-14 18:26:32] (II) modeset(0): Modeline "800x450"x59.97  48.87  800 824 840 880  450 451 454 463 doublescan +hsync -vsync (55.53 kHz d)
-[2026-04-14 18:26:32] (II) modeset(0): Modeline "640x512"x59.97  53.96  640 664 720 844  512 512 514 533 doublescan +hsync +vsync (63.93 kHz d)
-[2026-04-14 18:26:32] (II) modeset(0): Modeline "700x450"x59.97  43.32  700 724 740 780  450 451 456 463 doublescan +hsync -vsync (55.53 kHz d)
-[2026-04-14 18:26:32] (II) modeset(0): Modeline "640x480"x59.97  25.19  640 656 752 800  480 490 492 525 -hsync -vsync (31.49 kHz d)
-[2026-04-14 18:26:32] (II) modeset(0): Modeline "720x405"x59.97  22.11  720 768 800 880  405 408 413 419 +hsync -vsync (25.13 kHz d)
-[2026-04-14 18:26:32] (II) modeset(0): Modeline "684x384"x59.97  36.20  684 708 724 764  384 385 390 395 doublescan +hsync -vsync (47.38 kHz d)
-[2026-04-14 18:26:32] (II) modeset(0): Modeline "640x360"x59.97  17.94  640 688 720 800  360 363 368 374 +hsync -vsync (22.43 kHz d)
-[2026-04-14 18:26:32] (II) modeset(0): Modeline "512x384"x59.97  32.48  512 524 592 672  384 385 388 403 doublescan -hsync -vsync (48.34 kHz d)
-[2026-04-14 18:26:32] (II) modeset(0): Modeline "512x288"x59.97  21.02  512 536 552 592  288 289 292 296 doublescan +hsync -vsync (35.50 kHz d)
-[2026-04-14 18:26:32] (II) modeset(0): Modeline "480x270"x59.97  18.67  480 504 520 560  270 271 274 278 doublescan +hsync -vsync (33.34 kHz d)
-[2026-04-14 18:26:32] (II) modeset(0): Modeline "400x300"x59.97  19.16  400 412 448 512  300 300 301 312 doublescan +hsync +vsync (37.42 kHz d)
-[2026-04-14 18:26:32] (II) modeset(0): Modeline "432x243"x59.97  15.35  432 456 472 512  243 244 247 250 doublescan +hsync -vsync (29.99 kHz d)
-[2026-04-14 18:26:32] (II) modeset(0): Modeline "320x240"x59.97  12.57  320 328 376 400  240 245 246 262 doublescan -hsync -vsync (31.42 kHz d)
-[2026-04-14 18:26:32] (II) modeset(0): Modeline "360x202"x59.97  11.03  360 384 400 440  202 204 206 209 doublescan +hsync -vsync (25.07 kHz d)
-[2026-04-14 18:26:32] (II) modeset(0): Modeline "320x180"x59.97  8.97  320 344 360 400  180 181 184 187 doublescan +hsync -vsync (22.43 kHz d)
-[2026-04-14 18:26:32] (II) modeset(0): EDID for output DP-1
-[2026-04-14 18:26:32] (II) modeset(0): EDID for output HDMI-1
-[2026-04-14 18:26:33] (II) modeset(0): EDID for output DP-2
-[2026-04-14 18:26:33] (II) modeset(0): EDID for output HDMI-2
-[2026-04-14 18:26:33] (II) modeset(0): Output eDP-1 connected
-[2026-04-14 18:26:33] (II) modeset(0): Output DP-1 disconnected
-[2026-04-14 18:26:33] (II) modeset(0): Output HDMI-1 disconnected
-[2026-04-14 18:26:33] (II) modeset(0): Output DP-2 disconnected
-[2026-04-14 18:26:33] (II) modeset(0): Output HDMI-2 disconnected
-[2026-04-14 18:26:33] (II) modeset(0): Using exact sizes for initial modes
-[2026-04-14 18:26:33] (II) modeset(0): Output eDP-1 using initial mode 1366x768 +0+0
-[2026-04-14 18:26:33] (==) modeset(0): Using gamma correction (1.00, 1.00, 1.00)
-[2026-04-14 18:26:33] (==) modeset(0): DPI set to (96, 96)
-[2026-04-14 18:26:33] (II) Loading sub module "fb"
-[2026-04-14 18:26:33] (II) LoadModule: "fb"
-[2026-04-14 18:26:33] (II) Module "fb" already built-in
-[2026-04-14 18:26:33] (II) UnloadModule: "vesa"
-[2026-04-14 18:26:33] (II) Unloading vesa
-[2026-04-14 18:26:33] 
-[2026-04-14 18:26:33] Backtrace:
-[2026-04-14 18:26:33] unw_get_proc_name failed: no unwind info found [-10]
-[2026-04-14 18:26:33] 0: /usr/local/libexec/Xorg (?+0x0) [0x39e1ca]
-[2026-04-14 18:26:33] unw_get_proc_name failed: no unwind info found [-10]
-[2026-04-14 18:26:33] 1: /lib/libthr.so.3 (?+0x0) [0x8273742ea]
-[2026-04-14 18:26:33] unw_get_proc_name failed: no unwind info found [-10]
-[2026-04-14 18:26:33] 2: /lib/libthr.so.3 (?+0x0) [0x8273738eb]
-[2026-04-14 18:26:33] 3: <signal handler called>
-[2026-04-14 18:26:33] 4: /lib/libsys.so.7 (_thr_kill+0xa) [0x82c4d69ea]
-[2026-04-14 18:26:33] 5: /lib/libc.so.7 (_raise+0x34) [0x828a71894]
-[2026-04-14 18:26:33] 6: /lib/libc.so.7 (abort+0x49) [0x828b236f9]
-[2026-04-14 18:26:33] unw_get_proc_name failed: no unwind info found [-10]
-[2026-04-14 18:26:33] 7: /usr/local/lib/dri/crocus_dri.so (?+0x0) [0x83efb0809]
-[2026-04-14 18:26:33] unw_get_proc_name failed: no unwind info found [-10]
-[2026-04-14 18:26:33] 8: /usr/local/lib/dri/crocus_dri.so (?+0x0) [0x83efae600]
-[2026-04-14 18:26:33] unw_get_proc_name failed: no unwind info found [-10]
-[2026-04-14 18:26:33] 9: /usr/local/lib/dri/crocus_dri.so (?+0x0) [0x83e411d3f]
-[2026-04-14 18:26:33] unw_get_proc_name failed: no unwind info found [-10]
-[2026-04-14 18:26:33] 10: /usr/local/lib/dri/crocus_dri.so (?+0x0) [0x83e09807e]
-[2026-04-14 18:26:33] unw_get_proc_name failed: no unwind info found [-10]
-[2026-04-14 18:26:33] 11: /usr/local/lib/dri/crocus_dri.so (?+0x0) [0x83de3a60e]
-[2026-04-14 18:26:33] unw_get_proc_name failed: no unwind info found [-10]
-[2026-04-14 18:26:33] 12: /usr/local/lib/dri/crocus_dri.so (?+0x0) [0x83e0c2371]
-[2026-04-14 18:26:33] unw_get_proc_name failed: no unwind info found [-10]
-[2026-04-14 18:26:33] 13: /usr/local/lib/dri/crocus_dri.so (?+0x0) [0x83dd7f9ad]
-[2026-04-14 18:26:33] unw_get_proc_name failed: no unwind info found [-10]
-[2026-04-14 18:26:33] 14: /usr/local/lib/dri/crocus_dri.so (?+0x0) [0x83dd81dae]
-[2026-04-14 18:26:33] unw_get_proc_name failed: no unwind info found [-10]
-[2026-04-14 18:26:33] 15: /usr/local/lib/libEGL_mesa.so.0 (?+0x0) [0x84f6d9418]
-[2026-04-14 18:26:33] unw_get_proc_name failed: no unwind info found [-10]
-[2026-04-14 18:26:33] 16: /usr/local/lib/libEGL_mesa.so.0 (?+0x0) [0x84f6caf30]
-[2026-04-14 18:26:33] 17: /usr/local/lib/libEGL.so.1 (eglMakeCurrent+0x311) [0x84ed53311]
-[2026-04-14 18:26:33] unw_get_proc_name failed: no unwind info found [-10]
-[2026-04-14 18:26:33] 18: /usr/local/lib/xorg/modules/xlibre-25/libglamoregl.so (?+0x0) [0x83cc2f68d]
-[2026-04-14 18:26:33] 19: /usr/local/lib/xorg/modules/xlibre-25/libglamoregl.so (glamor_init+0x133) [0x83cc31163]
-[2026-04-14 18:26:33] unw_get_proc_name failed: no unwind info found [-10]
-[2026-04-14 18:26:33] 20: /usr/local/lib/xorg/modules/xlibre-25/drivers/modesetting_drv.so (?+0x0) [0x83821146d]
-[2026-04-14 18:26:33] unw_get_proc_name failed: no unwind info found [-10]
-[2026-04-14 18:26:33] 21: /usr/local/lib/xorg/modules/xlibre-25/drivers/modesetting_drv.so (?+0x0) [0x83820b5df]
-[2026-04-14 18:26:33] unw_get_proc_name failed: no unwind info found [-10]
-[2026-04-14 18:26:33] 22: /usr/local/libexec/Xorg (?+0x0) [0x2b7200]
-[2026-04-14 18:26:33] unw_get_proc_name failed: no unwind info found [-10]
-[2026-04-14 18:26:33] 23: /usr/local/libexec/Xorg (?+0x0) [0x3bc3b3]
-[2026-04-14 18:26:33] unw_get_proc_name failed: no unwind info found [-10]
-[2026-04-14 18:26:33] 24: /usr/local/libexec/Xorg (?+0x0) [0x2baec0]
-[2026-04-14 18:26:33] 25: /lib/libc.so.7 (__libc_start1+0x12f) [0x828a4637f]
-[2026-04-14 18:26:33] 26: /usr/local/libexec/Xorg (_start+0x24) [0x27c8e4]
-[2026-04-14 18:26:33] 
-[2026-04-14 18:26:33] Registers at frame #4:
-[2026-04-14 18:26:33]   rax: 0x0
-[2026-04-14 18:26:33]   rbx: 0x6
-[2026-04-14 18:26:33]   rcx: 0x82c4d69ca
-[2026-04-14 18:26:33]   rdx: 0x0
-[2026-04-14 18:26:33]   rsi: 0x6
-[2026-04-14 18:26:33]   rdi: 0x18a6c
-[2026-04-14 18:26:33]   rbp: 0x820f9fb30
-[2026-04-14 18:26:33]   rsp: 0x820f9fb08
-[2026-04-14 18:26:33]    r8: 0x0
-[2026-04-14 18:26:33]    r9: 0x0
-[2026-04-14 18:26:33]   r10: 0x0
-[2026-04-14 18:26:33]   r11: 0x3246
-[2026-04-14 18:26:33]   r12: 0x828bbbe20
-[2026-04-14 18:26:33]   r13: 0x22f686655030
-[2026-04-14 18:26:33]   r14: 0x828bbbe20
-[2026-04-14 18:26:33]   r15: 0x83f2ede98
-[2026-04-14 18:26:33] 
-[2026-04-14 18:26:33] 
+[2026-04-15 08:00:03] (II) LoadModule: "glx"
+[2026-04-15 08:00:03] (II) Loading /usr/local/lib/xorg/modules/xlibre-25/extensions/libglx.so
+[2026-04-15 08:00:03] (II) Module glx: vendor="X.Org Foundation"
+[2026-04-15 08:00:03] 	compiled for 1.25.1.2, module version = 1.0.0
+[2026-04-15 08:00:03] 	ABI class: X.Org Server Extension, version 11.0
+[2026-04-15 08:00:03] (II) LoadModule: "intel"
+[2026-04-15 08:00:03] (WW) Warning, couldn't open module intel
+[2026-04-15 08:00:03] (EE) Failed to load module "intel" (module does not exist, 0)
+[2026-04-15 08:00:03] (II) LoadModule: "modesetting"
+[2026-04-15 08:00:03] (II) Loading /usr/local/lib/xorg/modules/xlibre-25/drivers/modesetting_drv.so
+[2026-04-15 08:00:03] (II) Module modesetting: vendor="X.Org Foundation"
+[2026-04-15 08:00:03] 	compiled for 1.25.1.2, module version = 1.25.1
+[2026-04-15 08:00:03] 	Module class: X.Org Video Driver
+[2026-04-15 08:00:03] 	ABI class: X.Org Video Driver, version 28.1
+[2026-04-15 08:00:03] (II) LoadModule: "scfb"
+[2026-04-15 08:00:03] (WW) Warning, couldn't open module scfb
+[2026-04-15 08:00:03] (EE) Failed to load module "scfb" (module does not exist, 0)
+[2026-04-15 08:00:03] (II) LoadModule: "vesa"
+[2026-04-15 08:00:03] (II) Loading /usr/local/lib/xorg/modules/xlibre-25/drivers/vesa_drv.so
+[2026-04-15 08:00:03] (II) Module vesa: vendor="X.Org Foundation"
+[2026-04-15 08:00:03] 	compiled for 1.25.1.2, module version = 25.0.0
+[2026-04-15 08:00:03] 	Module class: X.Org Video Driver
+[2026-04-15 08:00:03] 	ABI class: X.Org Video Driver, version 28.1
+[2026-04-15 08:00:03] (II) modesetting: Driver for Modesetting Kernel Drivers: kms
+[2026-04-15 08:00:03] (II) VESA: driver for VESA chipsets: vesa
+[2026-04-15 08:00:03] (--) Using pcvt driver
+[2026-04-15 08:00:03] (II)  Platform device "/dev/dri/card0" at 0@0:2:0 can be claimed.
+[2026-04-15 08:00:03] (II) modeset(0): using drv /dev/dri/card0
+[2026-04-15 08:00:03] (II)  PCI device skipped because
+[2026-04-15 08:00:03] (II)   PCI bus id 0@0:2:0 has already been claimed by "Builtin Default modesetting Device 0".
+[2026-04-15 08:00:03] (II)  Platform device "/dev/dri/card0" skipped because
+[2026-04-15 08:00:03] (II)   PCI bus id 0@0:2:0 has already been claimed by "Builtin Default modesetting Device 0".
+[2026-04-15 08:00:03] (WW) VGA arbiter: cannot open kernel arbiter, no multi-card support
+[2026-04-15 08:00:03] (II) modeset(0): Creating default Display subsection in Screen section
+	"Builtin Default modesetting Screen 0" for depth/fbbpp 24/32
+[2026-04-15 08:00:03] (==) modeset(0): Depth 24, (==) framebuffer bpp 32
+[2026-04-15 08:00:03] (==) modeset(0): RGB weight 888
+[2026-04-15 08:00:03] (==) modeset(0): Default visual is TrueColor
+[2026-04-15 08:00:03] (II) Loading sub module "glamoregl"
+[2026-04-15 08:00:03] (II) LoadModule: "glamoregl"
+[2026-04-15 08:00:03] (II) Loading /usr/local/lib/xorg/modules/xlibre-25/libglamoregl.so
+[2026-04-15 08:00:03] (II) Module glamoregl: vendor="X.Org Foundation"
+[2026-04-15 08:00:03] 	compiled for 1.25.1.2, module version = 1.0.1
+[2026-04-15 08:00:03] 	ABI class: X.Org ANSI C Emulation, version 1.4
+[2026-04-15 08:00:03] (II) modeset(0): glamor: Using OpenGL 4.6 context.
+[2026-04-15 08:00:03] (II) modeset(0): glamor X acceleration enabled on Mesa Intel(R) HD Graphics 400 (BSW)
+[2026-04-15 08:00:03] (II) modeset(0): glamor initialized
+[2026-04-15 08:00:03] (==) modeset(0): VariableRefresh: disabled
+[2026-04-15 08:00:03] (==) modeset(0): AsyncFlipSecondaries: disabled
+[2026-04-15 08:00:03] (II) modeset(0): Atomic modesetting disabled
+[2026-04-15 08:00:03] (II) modeset(0): TearFree: enabled
+[2026-04-15 08:00:03] (II) modeset(0): Output eDP-1 has no monitor section
+[2026-04-15 08:00:03] (II) modeset(0): Output DP-1 has no monitor section
+[2026-04-15 08:00:03] (II) modeset(0): Output HDMI-1 has no monitor section
+[2026-04-15 08:00:03] (II) modeset(0): Output DP-2 has no monitor section
+[2026-04-15 08:00:03] (II) modeset(0): Output HDMI-2 has no monitor section
+[2026-04-15 08:00:03] (II) modeset(0): EDID for output eDP-1
+[2026-04-15 08:00:03] (II) modeset(0): Manufacturer: BOE  Model: 608  Serial#: 0
+[2026-04-15 08:00:03] (II) modeset(0): Year: 2014  Week: 1
+[2026-04-15 08:00:03] (II) modeset(0): EDID Version: 1.4
+[2026-04-15 08:00:03] (II) modeset(0): Digital Display Input
+[2026-04-15 08:00:03] (II) modeset(0): 6 bits per channel
+[2026-04-15 08:00:03] (II) modeset(0): Digital interface is DisplayPort
+[2026-04-15 08:00:03] (II) modeset(0): Max Image Size [cm]: horiz.: 26  vert.: 15
+[2026-04-15 08:00:03] (II) modeset(0): Gamma: 2.20
+[2026-04-15 08:00:03] (II) modeset(0): No DPMS capabilities specified
+[2026-04-15 08:00:03] (II) modeset(0): Supported color encodings: RGB 4:4:4 
+[2026-04-15 08:00:03] (II) modeset(0): First detailed timing is preferred mode
+[2026-04-15 08:00:03] (II) modeset(0): Preferred mode is native pixel format and refresh rate
+[2026-04-15 08:00:03] (II) modeset(0): redX: 0.58 redY: 0.36   greenX: 0.34 greenY: 0.58
+[2026-04-15 08:00:03] (II) modeset(0): blueX: 0.16 blueY: 0.11   whiteX: 0.31 whiteY: 0.33
+[2026-04-15 08:00:03] (II) modeset(0): Manufacturer's mask: 0
+[2026-04-15 08:00:03] (II) modeset(0): Supported detailed timing:
+[2026-04-15 08:00:03] (II) modeset(0): clock: 72.30 MHz   Image Size:  256 x 144 mm
+[2026-04-15 08:00:03] (II) modeset(0): h_active: 1366  h_sync: 1414  h_sync_end 1446 h_blank_end 1526 h_border: 0
+[2026-04-15 08:00:03] (II) modeset(0): v_active: 768  v_sync: 771  v_sync_end 777 v_blanking: 790 v_border: 0
+[2026-04-15 08:00:03] (II) modeset(0): Unknown vendor-specific block 0
+[2026-04-15 08:00:03] (II) modeset(0):  BOE DT
+[2026-04-15 08:00:03] (II) modeset(0):  NT116WHM-N11
+[2026-04-15 08:00:03] (II) modeset(0): EDID (in hex):
+[2026-04-15 08:00:03] (II) modeset(0): 	00ffffffffffff0009e5080600000000
+[2026-04-15 08:00:03] (II) modeset(0): 	01180104951a0f78025d40945b579429
+[2026-04-15 08:00:03] (II) modeset(0): 	1c505400000001010101010101010101
+[2026-04-15 08:00:03] (II) modeset(0): 	0101010101013e1c56a0500016303020
+[2026-04-15 08:00:03] (II) modeset(0): 	360000901000001a0000000000000000
+[2026-04-15 08:00:03] (II) modeset(0): 	0000000000000000001a000000fe0042
+[2026-04-15 08:00:03] (II) modeset(0): 	4f452044540a202020202020000000fe
+[2026-04-15 08:00:03] (II) modeset(0): 	004e5431313657484d2d4e31310a00a3
+[2026-04-15 08:00:03] (II) modeset(0): Printing probed modes for output eDP-1
+[2026-04-15 08:00:03] (II) modeset(0): Modeline "1366x768"x59.97  72.30  1366 1414 1446 1526  768 771 777 790 +hsync -vsync (47.38 kHz eP)
+[2026-04-15 08:00:03] (II) modeset(0): Modeline "1280x720"x59.97  63.99  1280 1328 1360 1440  720 723 728 741 +hsync -vsync (44.44 kHz d)
+[2026-04-15 08:00:03] (II) modeset(0): Modeline "1024x768"x59.97  64.97  1024 1048 1184 1344  768 771 777 806 -hsync -vsync (48.34 kHz d)
+[2026-04-15 08:00:03] (II) modeset(0): Modeline "960x720"x59.97  116.95  960 1024 1128 1300  720 720 722 750 doublescan -hsync +vsync (89.96 kHz d)
+[2026-04-15 08:00:03] (II) modeset(0): Modeline "928x696"x59.97  109.01  928 976 1088 1264  696 696 698 719 doublescan -hsync +vsync (86.24 kHz d)
+[2026-04-15 08:00:03] (II) modeset(0): Modeline "896x672"x59.97  102.33  896 960 1060 1224  672 672 674 697 doublescan -hsync +vsync (83.60 kHz d)
+[2026-04-15 08:00:03] (II) modeset(0): Modeline "1024x576"x59.97  42.11  1024 1072 1104 1184  576 579 584 593 +hsync -vsync (35.56 kHz d)
+[2026-04-15 08:00:03] (II) modeset(0): Modeline "960x600"x59.97  76.97  960 984 1000 1040  600 601 604 617 doublescan +hsync -vsync (74.01 kHz d)
+[2026-04-15 08:00:03] (II) modeset(0): Modeline "960x540"x59.97  37.35  960 1008 1040 1120  540 543 548 556 +hsync -vsync (33.34 kHz d)
+[2026-04-15 08:00:03] (II) modeset(0): Modeline "800x600"x59.97  38.38  800 824 896 1024  600 601 603 625 +hsync +vsync (37.48 kHz d)
+[2026-04-15 08:00:03] (II) modeset(0): Modeline "840x525"x59.97  59.59  840 864 880 920  525 526 529 540 doublescan +hsync -vsync (64.77 kHz d)
+[2026-04-15 08:00:03] (II) modeset(0): Modeline "864x486"x59.97  30.71  864 912 944 1024  486 489 494 500 +hsync -vsync (29.99 kHz d)
+[2026-04-15 08:00:03] (II) modeset(0): Modeline "700x525"x59.97  60.00  700 744 820 940  525 526 532 541 doublescan +hsync +vsync (64.89 kHz d)
+[2026-04-15 08:00:03] (II) modeset(0): Modeline "800x450"x59.97  48.87  800 824 840 880  450 451 454 463 doublescan +hsync -vsync (55.53 kHz d)
+[2026-04-15 08:00:03] (II) modeset(0): Modeline "640x512"x59.97  53.96  640 664 720 844  512 512 514 533 doublescan +hsync +vsync (63.93 kHz d)
+[2026-04-15 08:00:03] (II) modeset(0): Modeline "700x450"x59.97  43.32  700 724 740 780  450 451 456 463 doublescan +hsync -vsync (55.53 kHz d)
+[2026-04-15 08:00:03] (II) modeset(0): Modeline "640x480"x59.97  25.19  640 656 752 800  480 490 492 525 -hsync -vsync (31.49 kHz d)
+[2026-04-15 08:00:03] (II) modeset(0): Modeline "720x405"x59.97  22.11  720 768 800 880  405 408 413 419 +hsync -vsync (25.13 kHz d)
+[2026-04-15 08:00:03] (II) modeset(0): Modeline "684x384"x59.97  36.20  684 708 724 764  384 385 390 395 doublescan +hsync -vsync (47.38 kHz d)
+[2026-04-15 08:00:03] (II) modeset(0): Modeline "640x360"x59.97  17.94  640 688 720 800  360 363 368 374 +hsync -vsync (22.43 kHz d)
+[2026-04-15 08:00:03] (II) modeset(0): Modeline "512x384"x59.97  32.48  512 524 592 672  384 385 388 403 doublescan -hsync -vsync (48.34 kHz d)
+[2026-04-15 08:00:03] (II) modeset(0): Modeline "512x288"x59.97  21.02  512 536 552 592  288 289 292 296 doublescan +hsync -vsync (35.50 kHz d)
+[2026-04-15 08:00:03] (II) modeset(0): Modeline "480x270"x59.97  18.67  480 504 520 560  270 271 274 278 doublescan +hsync -vsync (33.34 kHz d)
+[2026-04-15 08:00:03] (II) modeset(0): Modeline "400x300"x59.97  19.16  400 412 448 512  300 300 301 312 doublescan +hsync +vsync (37.42 kHz d)
+[2026-04-15 08:00:03] (II) modeset(0): Modeline "432x243"x59.97  15.35  432 456 472 512  243 244 247 250 doublescan +hsync -vsync (29.99 kHz d)
+[2026-04-15 08:00:03] (II) modeset(0): Modeline "320x240"x59.97  12.57  320 328 376 400  240 245 246 262 doublescan -hsync -vsync (31.42 kHz d)
+[2026-04-15 08:00:03] (II) modeset(0): Modeline "360x202"x59.97  11.03  360 384 400 440  202 204 206 209 doublescan +hsync -vsync (25.07 kHz d)
+[2026-04-15 08:00:03] (II) modeset(0): Modeline "320x180"x59.97  8.97  320 344 360 400  180 181 184 187 doublescan +hsync -vsync (22.43 kHz d)
+[2026-04-15 08:00:03] (II) modeset(0): EDID for output DP-1
+[2026-04-15 08:00:03] (II) modeset(0): EDID for output HDMI-1
+[2026-04-15 08:00:03] (II) modeset(0): EDID for output DP-2
+[2026-04-15 08:00:03] (II) modeset(0): EDID for output HDMI-2
+[2026-04-15 08:00:03] (II) modeset(0): Output eDP-1 connected
+[2026-04-15 08:00:03] (II) modeset(0): Output DP-1 disconnected
+[2026-04-15 08:00:03] (II) modeset(0): Output HDMI-1 disconnected
+[2026-04-15 08:00:03] (II) modeset(0): Output DP-2 disconnected
+[2026-04-15 08:00:03] (II) modeset(0): Output HDMI-2 disconnected
+[2026-04-15 08:00:03] (II) modeset(0): Using exact sizes for initial modes
+[2026-04-15 08:00:03] (II) modeset(0): Output eDP-1 using initial mode 1366x768 +0+0
+[2026-04-15 08:00:03] (==) modeset(0): Using gamma correction (1.00, 1.00, 1.00)
+[2026-04-15 08:00:03] (==) modeset(0): DPI set to (96, 96)
+[2026-04-15 08:00:03] (II) Loading sub module "fb"
+[2026-04-15 08:00:03] (II) LoadModule: "fb"
+[2026-04-15 08:00:03] (II) Module "fb" already built-in
+[2026-04-15 08:00:03] (II) UnloadModule: "vesa"
+[2026-04-15 08:00:03] (II) Unloading vesa
+[2026-04-15 08:00:03] 
+[2026-04-15 08:00:03] Backtrace:
+[2026-04-15 08:00:03] unw_get_proc_name failed: no unwind info found [-10]
+[2026-04-15 08:00:03] 0: /usr/local/libexec/Xorg (?+0x0) [0x39e1ca]
+[2026-04-15 08:00:03] unw_get_proc_name failed: no unwind info found [-10]
+[2026-04-15 08:00:03] 1: /lib/libthr.so.3 (?+0x0) [0x828cad2ea]
+[2026-04-15 08:00:03] unw_get_proc_name failed: no unwind info found [-10]
+[2026-04-15 08:00:03] 2: /lib/libthr.so.3 (?+0x0) [0x828cac8eb]
+[2026-04-15 08:00:03] 3: <signal handler called>
+[2026-04-15 08:00:03] 4: /lib/libsys.so.7 (_thr_kill+0xa) [0x82e7c09ea]
+[2026-04-15 08:00:03] 5: /lib/libc.so.7 (_raise+0x34) [0x82a6d7894]
+[2026-04-15 08:00:03] 6: /lib/libc.so.7 (abort+0x49) [0x82a7896f9]
+[2026-04-15 08:00:03] unw_get_proc_name failed: no unwind info found [-10]
+[2026-04-15 08:00:03] 7: /usr/local/lib/dri/crocus_dri.so (?+0x0) [0x83f5b0809]
+[2026-04-15 08:00:03] unw_get_proc_name failed: no unwind info found [-10]
+[2026-04-15 08:00:03] 8: /usr/local/lib/dri/crocus_dri.so (?+0x0) [0x83f5ae600]
+[2026-04-15 08:00:03] unw_get_proc_name failed: no unwind info found [-10]
+[2026-04-15 08:00:03] 9: /usr/local/lib/dri/crocus_dri.so (?+0x0) [0x83ea11d3f]
+[2026-04-15 08:00:03] unw_get_proc_name failed: no unwind info found [-10]
+[2026-04-15 08:00:03] 10: /usr/local/lib/dri/crocus_dri.so (?+0x0) [0x83e69807e]
+[2026-04-15 08:00:03] unw_get_proc_name failed: no unwind info found [-10]
+[2026-04-15 08:00:03] 11: /usr/local/lib/dri/crocus_dri.so (?+0x0) [0x83e43a60e]
+[2026-04-15 08:00:03] unw_get_proc_name failed: no unwind info found [-10]
+[2026-04-15 08:00:03] 12: /usr/local/lib/dri/crocus_dri.so (?+0x0) [0x83e6c2371]
+[2026-04-15 08:00:03] unw_get_proc_name failed: no unwind info found [-10]
+[2026-04-15 08:00:03] 13: /usr/local/lib/dri/crocus_dri.so (?+0x0) [0x83e37f9ad]
+[2026-04-15 08:00:03] unw_get_proc_name failed: no unwind info found [-10]
+[2026-04-15 08:00:03] 14: /usr/local/lib/dri/crocus_dri.so (?+0x0) [0x83e381dae]
+[2026-04-15 08:00:03] unw_get_proc_name failed: no unwind info found [-10]
+[2026-04-15 08:00:03] 15: /usr/local/lib/libEGL_mesa.so.0 (?+0x0) [0x84cf88418]
+[2026-04-15 08:00:03] unw_get_proc_name failed: no unwind info found [-10]
+[2026-04-15 08:00:03] 16: /usr/local/lib/libEGL_mesa.so.0 (?+0x0) [0x84cf79f30]
+[2026-04-15 08:00:03] 17: /usr/local/lib/libEGL.so.1 (eglMakeCurrent+0x311) [0x84dcbc311]
+[2026-04-15 08:00:03] unw_get_proc_name failed: no unwind info found [-10]
+[2026-04-15 08:00:03] 18: /usr/local/lib/xorg/modules/xlibre-25/libglamoregl.so (?+0x0) [0x83ac9368d]
+[2026-04-15 08:00:03] 19: /usr/local/lib/xorg/modules/xlibre-25/libglamoregl.so (glamor_init+0x133) [0x83ac95163]
+[2026-04-15 08:00:03] unw_get_proc_name failed: no unwind info found [-10]
+[2026-04-15 08:00:03] 20: /usr/local/lib/xorg/modules/xlibre-25/drivers/modesetting_drv.so (?+0x0) [0x83749f46d]
+[2026-04-15 08:00:03] unw_get_proc_name failed: no unwind info found [-10]
+[2026-04-15 08:00:03] 21: /usr/local/lib/xorg/modules/xlibre-25/drivers/modesetting_drv.so (?+0x0) [0x8374995df]
+[2026-04-15 08:00:03] unw_get_proc_name failed: no unwind info found [-10]
+[2026-04-15 08:00:03] 22: /usr/local/libexec/Xorg (?+0x0) [0x2b7200]
+[2026-04-15 08:00:03] unw_get_proc_name failed: no unwind info found [-10]
+[2026-04-15 08:00:03] 23: /usr/local/libexec/Xorg (?+0x0) [0x3bc3b3]
+[2026-04-15 08:00:03] unw_get_proc_name failed: no unwind info found [-10]
+[2026-04-15 08:00:03] 24: /usr/local/libexec/Xorg (?+0x0) [0x2baec0]
+[2026-04-15 08:00:03] 25: /lib/libc.so.7 (__libc_start1+0x12f) [0x82a6ac37f]
+[2026-04-15 08:00:03] 26: /usr/local/libexec/Xorg (_start+0x24) [0x27c8e4]
+[2026-04-15 08:00:03] 
+[2026-04-15 08:00:03] Registers at frame #4:
+[2026-04-15 08:00:03]   rax: 0x0
+[2026-04-15 08:00:03]   rbx: 0x6
+[2026-04-15 08:00:03]   rcx: 0x82e7c09ca
+[2026-04-15 08:00:03]   rdx: 0x0
+[2026-04-15 08:00:03]   rsi: 0x6
+[2026-04-15 08:00:03]   rdi: 0x18a2b
+[2026-04-15 08:00:03]   rbp: 0x820a7bf30
+[2026-04-15 08:00:03]   rsp: 0x820a7bf08
+[2026-04-15 08:00:03]    r8: 0x0
+[2026-04-15 08:00:03]    r9: 0x0
+[2026-04-15 08:00:03]   r10: 0x0
+[2026-04-15 08:00:03]   r11: 0x3246
+[2026-04-15 08:00:03]   r12: 0x82a821e20
+[2026-04-15 08:00:03]   r13: 0x341d3f255030
+[2026-04-15 08:00:03]   r14: 0x82a821e20
+[2026-04-15 08:00:03]   r15: 0x83f8ede98
+[2026-04-15 08:00:03] 
+[2026-04-15 08:00:03] 
 Fatal server error:
-[2026-04-14 18:26:33] Caught signal 6 (Abort trap). Server aborting
-[2026-04-14 18:26:33] 
-[2026-04-14 18:26:33] 
+[2026-04-15 08:00:03] Caught signal 6 (Abort trap). Server aborting
+[2026-04-15 08:00:03] 
+[2026-04-15 08:00:03] 
 Please consult the XLibre support: https://www.xlibre.net/
-[2026-04-14 18:26:33] Please also check the log file at "/var/log/Xorg.1.log" for additional information.
-[2026-04-14 18:26:33] 
-[2026-04-14 18:26:33] (EE) Server terminated with error (1). Closing log file.
+[2026-04-15 08:00:03] Please also check the log file at "/var/log/Xorg.1.log" for additional information.
+[2026-04-15 08:00:03] 
+[2026-04-15 08:00:03] (EE) Server terminated with error (1). Closing log file.
