@@ -1,3 +1,4 @@
+#!/bin/sh
 set -e
 
 export XLIBRE_SRC="$(pwd)"
