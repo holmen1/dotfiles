@@ -6,15 +6,13 @@ This guide provides a brief, general procedure for building XLibre from source. 
 ## Get the Source
 
 
-Download the latest release tarball from the [GitHub releases page](https://github.com/X11Libre/xserver/releases) and extract it:
+Download and extract the latest release tarball using the provided build script:
 
 ```sh
-wget https://github.com/X11Libre/xserver/releases/download/<version>/xserver-<version>.tar.gz
-mkdir -p "$XLIBRE_SRC/xserver"
-tar -xzf xserver-<version>.tar.gz -C "$XLIBRE_SRC/xserver" --strip-components=1
+./build-xlibre.sh --get
 ```
 
-Replace `<version>` with the desired release tag (e.g., `25.1`).
+This will fetch and extract the source into the correct directory for building.
 
 ## Install Dependencies
 
@@ -43,7 +41,15 @@ Build and install input/video drivers as needed. See [wiki section](https://gith
 
 ## Testing
 
-Create a test script:
+You can now run the built X server for a quick test using the build script:
+
+```sh
+./build-xlibre.sh --test
+```
+
+This will launch the X server for 10 seconds and then terminate it automatically.
+
+Alternatively, you can create and run a test script manually:
 ```sh
 #!/bin/sh
 ./bin/X :1 vt8 &

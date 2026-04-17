@@ -1,4 +1,9 @@
-xlibre-server/
+xserver/
+build/
+image/
 xserver-xlibre-xserver*/
 xlibre-input-libinput/
+
+*.gz
+*.tar
 
