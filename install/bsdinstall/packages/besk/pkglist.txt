@@ -24,6 +24,7 @@ misc/lf
 www/librewolf
 devel/llvm
 devel/lua-language-server
+devel/meson
 devel/ncurses
 editors/neovim
 ports-mgmt/pkg
@@ -44,6 +45,5 @@ x11/xbindkeys
 x11/xcape
 x11/xclip
 x11-wm/xcompmgr
-x11/xlibre-minimal
 x11/xsetroot
 x11/xterm
