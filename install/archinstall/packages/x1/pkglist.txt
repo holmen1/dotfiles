@@ -65,4 +65,5 @@ xorg-xev
 xorg-xinit
 xorg-xsetroot
 xterm
+xwallpaper
 zram-generator

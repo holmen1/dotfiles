@@ -42,9 +42,11 @@ echo "se" > "$HOME/.cache/xkb-layout" # Cache current layout for dmenu status sc
 # Set the default X cursor to the usual pointer
 xsetroot -cursor_name left_ptr &
 
-# Set a nice background if feh is available
-if command -v feh >/dev/null 2>&1; then
-    feh --bg-fill --no-fehbg ~/repos/dotfiles/install/wallpapers/plasma_darkesthour1920x1200.jpg &
+# Set a nice background using xwallpaper if available
+if command -v xwallpaper >/dev/null 2>&1; then
+    xwallpaper --zoom ~/repos/dotfiles/install/wallpapers/plasma_darkesthour1920x1200.jpg &
+else
+    echo "Warning: xwallpaper not installed, wallpaper not set by .xinitrc"
 fi
 
 # Kill any existing notification daemons and wait briefly
