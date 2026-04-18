@@ -9,8 +9,20 @@ export XLIBRE_PREFIX="${XLIBRE_SRC}/image"
 export VERSION="25.1.3"
 export XSERVER="xserver-${VERSION}.tar.gz"
 
+
+# Check for --test flag
+if [ "$1" = "--test" ]; then
+    echo "Running X server test (10 seconds)..."
+    "$XLIBRE_PREFIX/bin/X" :1 vt8 &
+    _pid=$!
+    sleep 10 && kill $_pid
+    wait $_pid 2>/dev/null || true
+    echo "Test complete."
+    exit 0
+fi
+
 # Check for --get flag
-if [[ "$1" == "--get" ]]; then
+if [ "$1" = "--get" ]; then
     curl -L -o "$XSERVER" "https://github.com/X11Libre/xserver/archive/refs/tags/xlibre-xserver-${VERSION}.tar.gz"
     mkdir -p "$XLIBRE_SRC/xserver"
     if ! tar -xzf "$XSERVER" -C "$XLIBRE_SRC/xserver" --strip-components=1; then
@@ -20,7 +32,7 @@ if [[ "$1" == "--get" ]]; then
     exit 0
 fi
 
-if [[ ! -d "$XLIBRE_SRC/xserver" ]]; then
+if [ ! -d "$XLIBRE_SRC/xserver" ]; then
     echo "Source directory not found. Run with --get first."
     exit 1
 fi
@@ -28,14 +40,6 @@ fi
 cd "$XLIBRE_SRC/xserver"
 meson setup --prefix "$XLIBRE_PREFIX" "$XLIBRE_BUILD"
 ninja -C "$XLIBRE_BUILD"
+echo "Installing to $XLIBRE_PREFIX ..."
 sudo ninja -C "$XLIBRE_BUILD" install
 
-# Check for --test flag
-if [[ "$1" == "--test" ]]; then
-    echo "Running X server test (10 seconds)..."
-    "$XLIBRE_PREFIX/bin/X" :1 vt8 &
-    _pid=$!
-    sleep 10 && kill $_pid
-    wait $_pid 2>/dev/null || true
-    echo "Test complete."
-fi
