@@ -1,1 +1,2 @@
 net/wifi-firmware-iwlwifi-kmod
+x11/xlibre-minimal

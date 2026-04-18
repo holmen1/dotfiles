@@ -3,7 +3,8 @@ set -e
 
 export XLIBRE_SRC="$(pwd)"
 export XLIBRE_BUILD="${XLIBRE_SRC}/build"
-export XLIBRE_PREFIX="${XLIBRE_SRC}/image"
+#export XLIBRE_PREFIX="${XLIBRE_SRC}/image"
+export XLIBRE_PREFIX="/usr/local"
 
 # Set version and xserver variables
 export VERSION="25.1.3"
