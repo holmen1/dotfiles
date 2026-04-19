@@ -20,10 +20,6 @@ PKGLIST=$DOTFILES_DIR/install/debianinstall/packages/$PKGPROFILE/pkglist.txt
 LINKS=$DOTFILES_DIR/install/debianinstall/links/$PKGPROFILE/links.config
 TEST=$DOTFILES_DIR/install/debianinstall/tests/$PKGPROFILE/sanity_check.sh
 
-sudo apt update
-sudo apt install -y openssh-client
-sudo -k
-
 read -p "Configure git? [y/N] " ans
 case "$ans" in
     [Yy]*)
@@ -55,7 +51,7 @@ esac
 read -p "Build xmonad? [y/N] " ans
 case "$ans" in
     [Yy]*)
-    # Build Xmonad
+    $XMONAD_DIR/build-xmonad.sh
     ;;
 esac
 
@@ -127,7 +123,12 @@ case "$ans" in
     [Nn])
     ;;
     *)
-    $TEST
+    # Run the Debian sanity check for this profile
+    if [ -x "$TEST" ]; then
+        "$TEST"
+    else
+        echo "Sanity check script not found or not executable: $TEST"
+    fi
     ;;
 esac
 
