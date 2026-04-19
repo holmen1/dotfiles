@@ -13,6 +13,8 @@ htop
 i3lock
 libx11-dev
 libxft-dev
+libxrandr-dev
+libxss-dev
 llvm
 make
 neovim
