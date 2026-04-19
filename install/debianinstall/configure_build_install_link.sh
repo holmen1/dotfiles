@@ -59,7 +59,6 @@ case "$ans" in
     ;;
 esac
 
-read -p "Build xkb keymap? [y/N] " ans
 read -p "Install xmonad? [y/N] " ans
 case "$ans" in
     [Yy]*)
