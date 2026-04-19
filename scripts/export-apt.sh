@@ -10,10 +10,17 @@ fi
 OUTDIR="$1"
 mkdir -p "$OUTDIR"
 
-# Export only manually installed packages (not dependencies)
-apt-mark showmanual | sort > "$OUTDIR/pkglist.txt"
+BASELIST="$(dirname "$0")/../install/debianinstall/packages/install/pkglist.txt"
+
+if [ -f "$BASELIST" ]; then
+    # Export only manually installed packages not in base list
+    apt-mark showmanual | sort | grep -vxFf "$BASELIST" > "$OUTDIR/pkglist.txt"
+    echo "Exported user-installed package list (excluding base) to $OUTDIR/pkglist.txt"
+else
+    # Export all manually installed packages
+    apt-mark showmanual | sort > "$OUTDIR/pkglist.txt"
+    echo "Exported manually installed package list to $OUTDIR/pkglist.txt (no base filter found)"
+fi
 
 # Optionally, export a list of all packages (including dependencies)
 # dpkg --get-selections | awk '{print $1}' | sort > "$OUTDIR/allpackages.txt"
-
-echo "Exported manually installed package list to $OUTDIR/pkglist.txt"

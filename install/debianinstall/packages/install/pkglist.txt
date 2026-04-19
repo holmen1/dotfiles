@@ -153,8 +153,6 @@ gir1.2-polkit-1.0
 gir1.2-secret-1
 gir1.2-soup-3.0
 gir1.2-wnck-3.0
-git
-git-man
 glib-networking
 glib-networking-common
 glib-networking-services
