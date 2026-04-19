@@ -1,52 +1,6 @@
 #!/bin/sh
 
-USER=$(whoami)
-EMAIL=$USER@gmail.com
-
-DOTFILES_DIR=~/repos/dotfiles
-SCRIPTS_DIR=$DOTFILES_DIR/scripts
-INSTALL_SCRIPT=$SCRIPTS_DIR/install-pacman.sh
-LINK_SCRIPT=$SCRIPTS_DIR/link_config.sh
-
-XMONAD_DIR=$DOTFILES_DIR/install/build/xmonad
-ST_DIR=$DOTFILES_DIR/install/build/st
-XKB_DIR=$DOTFILES_DIR/install/build/xkb
-
-COMPUTERNAME=$(hostnamectl --static 2>/dev/null || hostname -s)
-PKGPROFILE=${COMPUTERNAME}
-# Debian install script with profile support (like archinstall)
-PKGLIST=$DOTFILES_DIR/install/debianinstall/packages/$PKGPROFILE/pkglist.txt
-LINKS=$DOTFILES_DIR/install/debianinstall/links/$PKGPROFILE/links.config
-TEST=$DOTFILES_DIR/install/debianinstall/tests/$PKGPROFILE/sanity_check.sh
-
-sudo pacman -S --needed openssh
-sudo -k
-
-read -p "Configure git? [y/N] " ans
-case "$ans" in
-    [Yy]*)
-    # Configure git
-    git config --global user.name "$USER"
-    git config --global user.email "$EMAIL"
-    ;;
-esac
-
-read -p "Generate SSH key? [y/N] " ans
-case "$ans" in
-    [Yy]*)
-# Generate ssh key
-    cd ~
-    mkdir -p .ssh
-    chmod 700 .ssh
-    ssh-keygen -t ed25519 -C "$EMAIL" -f ~/.ssh/id_ed25519
-    eval "$(ssh-agent -s)"
-    ssh-add ~/.ssh/id_ed25519
-    ;;
-esac
-#!/bin/sh
-
 # Debian install script with profile support (modeled after archinstall)
-
 
 USER=$(whoami)
 EMAIL=$USER@gmail.com
@@ -66,8 +20,8 @@ PKGLIST=$DOTFILES_DIR/install/debianinstall/packages/$PKGPROFILE/pkglist.txt
 LINKS=$DOTFILES_DIR/install/debianinstall/links/$PKGPROFILE/links.config
 TEST=$DOTFILES_DIR/install/debianinstall/tests/$PKGPROFILE/sanity_check.sh
 
-sudo apt-get update
-sudo apt-get install -y openssh-client
+sudo apt update
+sudo apt install -y openssh-client
 sudo -k
 
 read -p "Configure git? [y/N] " ans
