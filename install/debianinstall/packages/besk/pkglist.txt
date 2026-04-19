@@ -1,8 +1,8 @@
 alsa-utils
-arm-none-eabi-binutils
-arm-none-eabi-gcc
-base
-base-devel
+binutils-arm-none-eabi  # unsure, may be 'binutils-arm-none-eabi' or 'binutils-arm-none-eabi' in Debian
+gcc-arm-none-eabi
+# base (Arch group, skip)
+# base-devel (Arch group, skip)
 bash-language-server
 bear
 brightnessctl
@@ -12,32 +12,32 @@ clang
 dmenu
 dunst
 efibootmgr
-ex-vi-compat
+ex-vi  # Debian package is 'ex-vi'
 fastfetch
-fd
+fd-find  # Debian package is 'fd-find'
 feh
 gdb
 git
-grub
-gst-plugin-pipewire
+grub-efi-amd64-bin  # grub package, may need to adjust for system
+gstreamer1.0-plugins-good  # gst-plugin-pipewire not in Debian, use gstreamer plugins
 htop
 i3lock
 intel-media-driver
-intel-ucode
-iwd
+# intel-ucode (not in Debian, skip)
+# iwd (not always available, skip or use 'wpasupplicant')
 less
-lf
-libpulse
-linux
-linux-firmware
+# lf (not in Debian main, skip or use alternative)
+libpulse0
+# linux (Arch kernel, skip)
+# linux-firmware (not in Debian, skip)
 llvm
-lua-language-server
+# lua-language-server (not in Debian stable, skip or use PPA)
 man-db
-man-pages
+manpages
 neovim
-noto-fonts-cjk
-openbsd-netcat
-openssh
+fonts-noto-cjk  # noto-fonts-cjk in Debian is fonts-noto-cjk
+netcat-openbsd  # openbsd-netcat in Debian is netcat-openbsd
+openssh-client
 pipewire
 pipewire-alsa
 pipewire-jack
