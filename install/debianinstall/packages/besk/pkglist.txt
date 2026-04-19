@@ -7,10 +7,12 @@ dunst
 fastfetch
 feh
 gdb
+ghc
 git
 htop
 i3lock
 llvm
+make
 neovim
 ripgrep
 scrot
