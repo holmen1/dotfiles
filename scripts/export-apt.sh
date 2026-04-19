@@ -10,10 +10,10 @@ fi
 OUTDIR="$1"
 mkdir -p "$OUTDIR"
 
-# Export all manually installed packages (not dependencies)
-dpkg-query -W -f='${Package}\n' | sort > "$OUTDIR/pkglist.txt"
+# Export only manually installed packages (not dependencies)
+apt-mark showmanual | sort > "$OUTDIR/pkglist.txt"
 
 # Optionally, export a list of all packages (including dependencies)
 # dpkg --get-selections | awk '{print $1}' | sort > "$OUTDIR/allpackages.txt"
 
-echo "Exported package list to $OUTDIR/pkglist.txt"
+echo "Exported manually installed package list to $OUTDIR/pkglist.txt"
