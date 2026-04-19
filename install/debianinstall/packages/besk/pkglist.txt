@@ -11,9 +11,12 @@ ghc
 git
 htop
 i3lock
+libx11-dev
+libxft-dev
 llvm
 make
 neovim
+pkg-config
 ripgrep
 scrot
 shellcheck
