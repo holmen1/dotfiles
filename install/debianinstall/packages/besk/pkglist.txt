@@ -13,6 +13,7 @@ htop
 i3lock
 libx11-dev
 libxft-dev
+libxinerama-dev
 libxrandr-dev
 libxss-dev
 llvm
