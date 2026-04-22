@@ -88,3 +88,9 @@ For more, see your `bin/xmonad-session-rc` and `.xinitrc` for customizations.
 
 Needed make .xinitrc executable
 
+### st
+install nerdfonts .ttf in
+```bash
+~/.local/share/fonts/
+```
+
