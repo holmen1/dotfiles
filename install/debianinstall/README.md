@@ -68,26 +68,23 @@ To add xmonad as a session option in LightDM:
   ```ini
   [Desktop Entry]
   Name=Xmonad
-  Comment=Lightweight tiling window manager
-  Exec=/home/holmen1/repos/dotfiles/bin/xmonad-session-rc
+  Exec=/home/holmen1/.config/xmonad-session-rc
   Type=Application
   ```
-  (Use your actual path to `xmonad-session-rc`.)
 
 2. **Ensure your session script launches xmonad:**
-  Your `xmonad-session-rc` should exec your `.xinitrc` or start xmonad directly, e.g.:
+  Your `xmonad-session-rc` should exec your `.xinitrc`e.g.:
   ```sh
   #!/bin/sh
   exec ~/.xinitrc
-  ```
-  or
-  ```sh
-  #!/bin/sh
-  exec xmonad
   ```
 
 3. **Select Xmonad at login:**
   Log out, then choose "Xmonad" from the session menu in LightDM.
 
 For more, see your `bin/xmonad-session-rc` and `.xinitrc` for customizations.
+
+## Lessons Learned
+
+Needed make .xinitrc executable
 
