@@ -3,6 +3,7 @@ brightnessctl
 btrfs-progs
 cabal-install
 clang
+cmake
 dunst
 fastfetch
 feh
@@ -11,6 +12,7 @@ ghc
 git
 htop
 i3lock
+lf
 libx11-dev
 libxft-dev
 libxinerama-dev
@@ -18,7 +20,6 @@ libxrandr-dev
 libxss-dev
 llvm
 make
-neovim
 pkg-config
 ripgrep
 scrot
