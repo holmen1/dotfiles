@@ -4,8 +4,10 @@ btrfs-progs
 cabal-install
 clang
 cmake
+curl
 dunst
 fastfetch
+fd-find
 feh
 gdb
 ghc
@@ -29,6 +31,7 @@ stow
 strace
 suckless-tools
 tree
+tree-sitter-cli
 xbindkeys
 xcape
 xcompmgr
