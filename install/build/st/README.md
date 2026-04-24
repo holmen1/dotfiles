@@ -39,7 +39,32 @@ Some patches may fail if the source has changed, then review any .rej files and 
 
 
 
-## Installation
+
+## Debugging Font Issues
+
+If you experience weird font rendering (e.g., letters spaced incorrectly or missing glyphs) after building st:
+
+1. **Check the font name in config.h:**
+	- The font name in the `font` variable must exactly match the installed font name.
+	- Use `fc-list | grep -i nerd` to see the exact installed Nerd Font names.
+	- Update `font` or `font2[]` in config.h to match the installed font name.
+
+2. **Rebuild st:**
+	- Run `./build-st.sh` again after making changes to config.h.
+
+3. **Test in a new terminal:**
+	- Open a new st window to verify the font is rendered correctly.
+
+4. **Fallbacks:**
+	- Add alternative font names to `font2[]` for better compatibility across systems.
+
+5. **Check for missing glyphs:**
+	- If some symbols are missing, ensure you have a Nerd Font installed that includes those glyphs.
+
+6. **Font cache:**
+	- If you manually installed fonts, run `fc-cache -fv` to refresh the font cache.
+
+If you still have issues, check the [st FAQ](https://st.suckless.org/faq/) or your distro's font packaging.
 
 After building, install the binary to a system location:
 
