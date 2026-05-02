@@ -10,7 +10,7 @@ fi
 OUTDIR="$1"
 mkdir -p "$OUTDIR"
 
-BASELIST="$(dirname "$0")/../install/debianinstall/packages/install/pkglist.txt"
+BASELIST="$(dirname "$0")/../packages/install/pkglist.txt"
 
 if [ -f "$BASELIST" ]; then
     # Export only manually installed packages not in base list
