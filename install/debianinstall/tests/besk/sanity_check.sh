@@ -45,10 +45,9 @@ check_cmd dunst
 check_cmd notify-send
 
 hdr "Dotfile symlinks"
-check_symlink "$HOME/.config/systemd/user/system-monitor.service"
-check_symlink "$HOME/.config/systemd/user/system-monitor.timer"
+check_symlink "$HOME/.config/systemd"
 check_symlink "$HOME/.config/nvim"
-check_symlink "$HOME/.config/dunst"
+check_symlink "$HOME/.config/dunstrc"
 
 hdr "System monitor timer"
 if systemctl --user is-active system-monitor.timer >/dev/null 2>&1; then
