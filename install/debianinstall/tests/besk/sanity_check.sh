@@ -1,251 +1,80 @@
 #!/bin/sh
 
-# Colors for output
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-YELLOW='\033[1;33m'
-BLUE='\033[0;34m'
-NC='\033[0m' # No Color
+PASS=0
+FAIL=0
 
-PASSED=0
-FAILED=0
-WARNINGS=0
+ok()   { printf "  [ok] %s\n" "$1"; PASS=$((PASS+1)); }
+fail() { printf " [!!] %s\n" "$1"; FAIL=$((FAIL+1)); }
+warn() { printf "  [?] %s\n" "$1"; }
+hdr()  { printf "\n--- %s\n" "$1"; }
 
-print_header() {
-    echo -e "\n${BLUE}=== $1 ===${NC}"
-}
-
-print_pass() {
-    echo -e "${GREEN}✓${NC} $1"
-    PASSED=$((PASSED + 1))
-}
-
-print_fail() {
-    echo -e "${RED}✗${NC} $1"
-    FAILED=$((FAILED + 1))
-}
-
-print_warn() {
-    echo -e "${YELLOW}!${NC} $1"
-    WARNINGS=$((WARNINGS + 1))
-}
-
-check_command() {
-    local cmd="$1"
-    local desc="$2"
-    if command -v "$cmd" > /dev/null 2>&1; then
-        print_pass "$desc"
-    else
-        print_fail "$desc - '$cmd' not found"
-    fi
-}
-
-check_file() {
-    local file="$1"
-    local desc="$2"
-    if [ -f "$file" ]; then
-        print_pass "$desc"
-    else
-        print_fail "$desc - '$file' not found"
-    fi
-}
-
+check_cmd() { command -v "$1" >/dev/null 2>&1 && ok "$1" || fail "$1 not found"; }
+check_file() { [ -f "$1" ] && ok "$1" || fail "$1 not found"; }
 check_symlink() {
-    local link="$1"
-    local desc="$2"
-    if [ -L "$link" ]; then
-        if [ -e "$link" ]; then
-            print_pass "$desc (valid symlink)"
-        else
-            print_fail "$desc (broken symlink)"
-        fi
-    else
-        print_fail "$desc - symlink not found"
+    if [ -L "$1" ] && [ -e "$1" ]; then ok "$1 -> $(readlink "$1")"
+    elif [ -L "$1" ];               then fail "$1 (broken symlink)"
+    else                                 fail "$1 (not a symlink)"
     fi
 }
 
-check_service() {
-    local service="$1"
-    local desc="$2"
-    local is_timer=false
-    case "$service" in
-        *.timer) is_timer=true ;;
-    esac
-    if systemctl --user is-active "$service" > /dev/null 2>&1; then
-        if $is_timer; then
-            print_pass "$desc (active and waiting)"
-        else
-            print_pass "$desc (active)"
-        fi
-    elif systemctl --user is-enabled "$service" > /dev/null 2>&1; then
-        print_warn "$desc (enabled but not active)"
-    else
-        print_fail "$desc (not enabled or not active)"
-    fi
-}
+printf "Sanity check — besk\n"
 
-echo -e "${BLUE}🔧 Dotfiles Installation Sanity Check${NC}"
-echo "Checking your custom Debian environment..."
+hdr "Core commands"
+check_cmd git
+check_cmd ssh
+check_cmd startx
+check_cmd xmonad
+check_cmd xterm
+check_cmd st
+check_cmd dmenu
+check_cmd nvim
 
-# Essential Commands
-print_header "Essential Commands"
-check_command "git" "Git version control"
-check_command "ssh" "SSH client"
-check_command "startx" "X11 server starter"
-check_command "xmonad" "XMonad window manager"
-check_command "xterm" "Terminal emulator"
-check_command "st" "Terminal emulator"
+hdr "X session"
+check_file "$HOME/.xinitrc"
+if [ -x /usr/local/bin/xmonad ]; then ok "/usr/local/bin/xmonad"
+else fail "/usr/local/bin/xmonad not found or not executable"; fi
+check_cmd xbindkeys
+check_file "$HOME/.xbindkeysrc"
+check_cmd scrot
+check_cmd xcompmgr
+check_cmd brightnessctl
+check_cmd i3lock
 
-# XMonad Setup
-print_header "XMonad Configuration"
-if [ -f "/usr/local/bin/xmonad" ]; then
-    print_pass "Custom XMonad binary exists"
-    if [ -x "/usr/local/bin/xmonad" ]; then
-        print_pass "XMonad binary is executable"
-    else
-        print_fail "XMonad binary is not executable"
-    fi
+hdr "Notifications"
+check_cmd dunst
+check_cmd notify-send
+
+hdr "Dotfile symlinks"
+check_symlink "$HOME/.config/systemd/user/system-monitor.service"
+check_symlink "$HOME/.config/systemd/user/system-monitor.timer"
+check_symlink "$HOME/.config/nvim"
+check_symlink "$HOME/.config/dunst"
+
+hdr "System monitor timer"
+if systemctl --user is-active system-monitor.timer >/dev/null 2>&1; then
+    ok "system-monitor.timer active"
 else
-    print_fail "Custom XMonad binary not found in /usr/local/bin"
+    fail "system-monitor.timer not active"
 fi
 
-check_file "$HOME/.xinitrc" ".xinitrc file"
-
-# Power Management (Debian: use 'sudo' group)
-print_header "Power Management"
-if groups | grep -q "sudo"; then
-    print_pass "User in sudo group"
-    if sudo -n systemctl --version > /dev/null 2>&1; then
-        print_pass "Passwordless sudo for systemctl poweroff confirmed by dry run"
-    else
-        print_warn "Passwordless sudo for systemctl poweroff not confirmed; password may be required"
-    fi
-else
-    print_fail "User not in sudo group - power management may not work"
-fi
-
-# System Monitoring
-print_header "System Monitoring"
-check_service "system-monitor.timer" "System monitoring timer"
-check_command "dunst" "Dunst notification daemon"
-check_command "notify-send" "Desktop notifications"
-
-# Key Bindings
-print_header "Key Bindings & Input"
-check_command "xbindkeys" "Key binding daemon"
-check_file "$HOME/.xbindkeysrc" "xbindkeys configuration"
-check_command "brightnessctl" "Brightness control"
-check_command "amixer" "Audio mixer (ALSA)"
-
-# Screenshot functionality
-print_header "Screenshots"
-check_command "scrot" "Screenshot utility"
-if [ -d "$HOME/Downloads" ]; then
-    print_pass "Downloads directory exists for screenshots"
-else
-    print_warn "Downloads directory not found - screenshots may fail"
-fi
-
-# Dotfiles Symlinks
-print_header "Dotfile Symlinks"
-# Add checks for your specific symlinked configurations
-if [ -L "$HOME/.config/systemd/user/wifi-monitor.service" ]; then
-    check_symlink "$HOME/.config/systemd/user/wifi-monitor.service" "Wifi monitor service symlink"
-fi
-if [ -L "$HOME/.config/systemd/user/vpn-monitor.service" ]; then
-    check_symlink "$HOME/.config/systemd/user/vpn-monitor.service" "VPN monitor service symlink"
-fi
-if [ -L "$HOME/.config/systemd/user/battery-monitor.service" ]; then
-    check_symlink "$HOME/.config/systemd/user/battery-monitor.service" "Battery monitor service symlink"
-fi
-if [ -L "$HOME/.config/systemd/user/system-monitor.timer" ]; then
-    check_symlink "$HOME/.config/systemd/user/system-monitor.timer" "System monitor timer symlink"
-fi
-
-# Git Configuration
-print_header "Git Configuration"
+hdr "Git"
 git_name=$(git config --global user.name 2>/dev/null)
 git_email=$(git config --global user.email 2>/dev/null)
+[ -n "$git_name" ]  && ok "user.name: $git_name"  || fail "git user.name not set"
+[ -n "$git_email" ] && ok "user.email: $git_email" || fail "git user.email not set"
 
-if [ -n "$git_name" ]; then
-    print_pass "Git username configured: $git_name"
-else
-    print_fail "Git username not configured"
-fi
-
-if [ -n "$git_email" ]; then
-    print_pass "Git email configured: $git_email"
-else
-    print_fail "Git email not configured"
-fi
-
-# SSH Setup
-print_header "SSH Configuration"
+hdr "SSH"
 if [ -f "$HOME/.ssh/id_ed25519" ]; then
-    print_pass "SSH private key exists"
+    ok "id_ed25519 exists"
     perms=$(stat -c %a "$HOME/.ssh/id_ed25519" 2>/dev/null)
-    if [ "$perms" = "600" ]; then
-        print_pass "SSH private key has correct permissions (600)"
-    else
-        print_fail "SSH private key has incorrect permissions ($perms, should be 600)"
-    fi
+    [ "$perms" = "600" ] && ok "id_ed25519 perms 600" || fail "id_ed25519 perms $perms (want 600)"
 else
-    print_fail "SSH private key not found"
+    fail "~/.ssh/id_ed25519 not found"
 fi
 
-if [ -f "$HOME/.ssh/id_ed25519.pub" ]; then
-    print_pass "SSH public key exists"
-else
-    print_fail "SSH public key not found"
-fi
+hdr "sudo group"
+groups | grep -q sudo && ok "user in sudo group" || fail "user not in sudo group"
+sudo -n true 2>/dev/null && ok "passwordless sudo enabled" || warn "passwordless sudo not configured"
 
-# X11 Libraries
-print_header "X11 Dependencies"
-check_command "xsetroot" "X11 root window cursor/background utility"
-check_command "xcompmgr" "X11 simple compositor"
-
-# Repository Structure
-print_header "Repository Structure"
-if [ -d "$HOME/repos/dotfiles" ]; then
-    print_pass "Dotfiles repository exists"
-    if [ -d "$HOME/repos/dotfiles/dotfiles" ]; then
-        print_pass "Dotfiles configuration directory exists"
-    else
-        print_fail "Dotfiles configuration directory missing"
-    fi
-    if [ -d "$HOME/repos/dotfiles/scripts" ]; then
-        print_pass "Scripts directory exists"
-    else
-        print_warn "Scripts directory not found"
-    fi
-    if [ -f "$HOME/repos/dotfiles/install/build/xmonad/build-xmonad.sh" ]; then
-        print_pass "XMonad build script exists"
-    else
-        print_fail "XMonad build script not found"
-    fi
-else
-    print_fail "Dotfiles repository not found"
-fi
-
-# Test Key Functionalities
-print_header "Functional Tests"
-check_command "i3lock" "Screen lock"
-
-# Summary
-print_header "Summary"
-echo -e "Tests completed:"
-echo -e "  ${GREEN}Passed: $PASSED${NC}"
-echo -e "  ${RED}Failed: $FAILED${NC}"
-echo -e "  ${YELLOW}Warnings: $WARNINGS${NC}"
-
-if [ $FAILED -eq 0 ]; then
-    echo -e "\n${GREEN}✓ Your installation looks good!\n${NC}"
-    if [ $WARNINGS -gt 0 ]; then
-        echo -e "${YELLOW}⚠️  Some warnings need attention${NC}"
-    fi
-    exit 0
-else
-    echo -e "\n${RED}❌ Some issues need to be fixed${NC}"
-    echo -e "Check the failed items above and refer to your installation guide."
-    exit 1
-fi
+printf "\nPassed: %d  Failed: %d\n" "$PASS" "$FAIL"
+[ "$FAIL" -eq 0 ] && exit 0 || exit 1
