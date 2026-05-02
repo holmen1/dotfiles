@@ -1,14 +1,19 @@
 # debianinstall
 
-This setup uses a profile-based install script for automating dotfiles, package installation, and system configuration on Debian systems.
+Profile-based install script for automating dotfiles, package installation, and system configuration on Debian.
+The base desktop is **Xfce** (installed initially), with **xmonad** as the primary WM.
+Debian-specific monitor scripts live in `debianinstall/scripts/` and hook into Xfce/NetworkManager rather than the Arch/iwd equivalents.
 
 ## Automated Install (Recommended)
 
 1. **Ensure your user is in the sudo group:**
+
+   On Debian, `su` alone keeps your current environment. Use `su --login` (or `su -`) to get a proper root login shell with root's `PATH` — otherwise commands like `adduser` may not be found.
    ```sh
    su --login
    root@host:~# adduser <youruser> sudo
    ```
+   Log out and back in for the group change to take effect.
 2. **Clone your dotfiles repo:**
    ```sh
    mkdir -p ~/repos
@@ -19,9 +24,9 @@ This setup uses a profile-based install script for automating dotfiles, package 
    ```sh
    ./configure_build_install_link.sh
    ```
-   - The script will auto-detect your profile (by hostname) and prompt for each step: git config, SSH key, package install, build, link, enable services, and run tests.
-   - Packages are read from `packages/<profile>/pkglist.txt`.
-   - Dotfile links are read from `links/<profile>/links.config`.
+   - Auto-detects profile by hostname; prompts for each step: git config, SSH key, package install, build xmonad/st/xkb, link dotfiles, enable services, run tests.
+   - Packages: `packages/<profile>/pkglist.txt`
+   - Dotfile links: `links/<profile>/links.config` (uses `systemd-debian` stow package, not the generic `systemd`)
 
 ## Manual Steps (if needed)
 
@@ -40,57 +45,71 @@ This setup uses a profile-based install script for automating dotfiles, package 
   ```sh
   sudo apt autoremove
   sudo apt clean
-  sudo flatpak uninstall --unused
   ```
 
 ## Package Management
-- Packages are managed via `pkglist.txt` per profile. To update your list:
+
+Run from `install/debianinstall/`:
+
+- Export currently installed packages:
   ```sh
-  ./scripts/export-apt.sh install/debianinstall/packages/<profile>
+  scripts/export-apt.sh packages/<profile>
   ```
-- To install from a list manually:
+- Install from list manually:
   ```sh
-  ./scripts/install-apt.sh install/debianinstall/packages/<profile>/pkglist.txt
+  scripts/install-apt.sh packages/<profile>/pkglist.txt
   ```
 
+## Debian-specific Scripts (`debianinstall/scripts/`)
+
+| Script | Backend | Purpose |
+|---|---|---|
+| `monitor-wifi.sh` | `nmcli` (NetworkManager) | WiFi state notifications + connect/scan helpers |
+| `monitor-battery.sh` | `/sys/class/power_supply/` | Battery level notifications |
+| `install-apt.sh` | `apt-get` | Install packages from pkglist |
+| `export-apt.sh` | `apt-mark` | Export manually installed packages to pkglist |
+
+The monitor scripts replace the repo-level `scripts/monitor-*.sh` which target Arch/iwd/FreeBSD.
+Both are wired into the `system-monitor` systemd user timer via the `systemd-debian` stow package (`dotfiles/systemd-debian/`), which runs checks every 2 minutes.
+
+## Build Neovim from Source
+
+Debian's packaged neovim lags behind. Build v0.12 from source:
+
+```sh
+../../build/neovim/build-neovim.sh
+```
+
+This clones the neovim repo, checks out the `stable` tag, builds with `cmake`, and installs to `/usr/local`. Requires `cmake`, `make`, `clang`, and `libluajit` dev packages (included in `pkglist.txt`).
+
 ## Xmonad, dmenu, etc.
-- Xmonad and related tools are built/installed via the script. See prompts during install.
-- For custom builds, see the `install/build/` directory.
+- Built/installed via the install script prompts. See `install/build/` for build scripts.
+- `xmonad.hs` reads `$TERMINAL` and `$BROWSER` from the environment (set in `.xinitrc` or session script).
 
 ---
 
-
 ## Xmonad session in LightDM (with Xfce)
-To add xmonad as a session option in LightDM:
 
-1. **Create a session file:**
-  Create `/usr/share/xsessions/xmonad.desktop` with:
-  ```ini
-  [Desktop Entry]
-  Name=Xmonad
-  Exec=/home/holmen1/.config/xmonad-session-rc
-  Type=Application
-  ```
+To add xmonad as a session option alongside Xfce in LightDM:
 
-2. **Ensure your session script launches xmonad:**
-  Your `xmonad-session-rc` should exec your `.xinitrc`e.g.:
-  ```sh
-  #!/bin/sh
-  exec ~/.xinitrc
-  ```
+1. **Create a session file** `/usr/share/xsessions/xmonad.desktop`:
+   ```ini
+   [Desktop Entry]
+   Name=Xmonad
+   Exec=/home/holmen1/.config/xmonad-session-rc
+   Type=Application
+   ```
 
-3. **Select Xmonad at login:**
-  Log out, then choose "Xmonad" from the session menu in LightDM.
+2. **Session script** `~/.config/xmonad-session-rc`:
+   ```sh
+   #!/bin/sh
+   exec ~/.xinitrc
+   ```
 
-For more, see your `bin/xmonad-session-rc` and `.xinitrc` for customizations.
+3. **Select Xmonad at login:** log out, choose "Xmonad" from the session menu.
 
 ## Lessons Learned
 
-Needed make .xinitrc executable
+- `.xinitrc` must be executable (`chmod +x ~/.xinitrc`)
 
-### st
-install nerdfonts .ttf in
-```bash
-~/.local/share/fonts/
-```
 

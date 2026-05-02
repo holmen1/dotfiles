@@ -7,7 +7,7 @@ EMAIL=$USER@gmail.com
 
 DOTFILES_DIR=~/repos/dotfiles
 SCRIPTS_DIR=$DOTFILES_DIR/scripts
-INSTALL_SCRIPT=$SCRIPTS_DIR/install-apt.sh
+INSTALL_SCRIPT=$DOTFILES_DIR/install/debianinstall/scripts/install-apt.sh
 LINK_SCRIPT=$SCRIPTS_DIR/link_config.sh
 
 XMONAD_DIR=$DOTFILES_DIR/install/build/xmonad
@@ -60,9 +60,10 @@ case "$ans" in
     [Yy]*)
     sudo mkdir -p /opt/xmonad
     for file in /opt/xmonad/*; do
-        if [ -e "$file" ] && [[ ! "$file" == *.bak ]]; then
-            sudo mv "$file" "${file}.bak"
-        fi
+        case "$file" in
+            *.bak) ;;
+            *) [ -e "$file" ] && sudo mv "$file" "${file}.bak" ;;
+        esac
     done
     sudo cp -f $XMONAD_DIR/bin/xmonad-v0.18.[0-9] /opt/xmonad/
     echo "Installed xmonad to /opt/xmonad/"
