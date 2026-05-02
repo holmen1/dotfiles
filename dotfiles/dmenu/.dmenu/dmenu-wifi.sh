@@ -1,7 +1,14 @@
 #!/bin/sh
 # dmenu-wifi: WiFi manager via dmenu.
 
-MONITOR_WIFI_SCRIPT="$HOME/repos/dotfiles/scripts/monitor-wifi.sh"
+DOTFILES="$HOME/repos/dotfiles"
+# Auto-select monitor scripts: prefer debian scripts if NM is present, not iwd
+if command -v nmcli >/dev/null 2>&1 && ! command -v iwctl >/dev/null 2>&1; then
+    MONITOR_SCRIPTS=$DOTFILES/install/debianinstall/scripts
+else
+    MONITOR_SCRIPTS=$DOTFILES/scripts
+fi
+MONITOR_WIFI_SCRIPT="$MONITOR_SCRIPTS/monitor-wifi.sh"
 
 fc-list | grep -qi "JetBrainsMono Nerd Font" \
     && FONT="JetBrainsMono Nerd Font Mono-14" \
