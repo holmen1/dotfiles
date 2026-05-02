@@ -22,18 +22,15 @@ check_optional xcompmgr
 export EDITOR=nvim
 export TERMINAL=st
 
-# Set browser based on OS
-case "$(uname -s)" in
-    Linux*)
-        export BROWSER=brave
-        ;;
-    FreeBSD*)
-        export BROWSER=librewolf
-        ;;
-    *)
-        export BROWSER=firefox  # Fallback
-        ;;
-esac
+# Set browser: use first installed from preference list
+for _b in brave chromium librewolf firefox; do
+    if command -v "$_b" >/dev/null 2>&1; then
+        export BROWSER="$_b"
+        break
+    fi
+done
+[ -z "$BROWSER" ] && echo "Warning: No browser found (brave, chromium, librewolf, firefox)"
+unset _b
 
 # Set keymap (don't background - fast and should complete before apps start)
 setxkbmap se
