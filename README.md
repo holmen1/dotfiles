@@ -1,34 +1,47 @@
 # dotfiles
 
-Minimal configuration for Linux, BSD, and macOS<sup>*</sup> : dotfiles, installation guides, and build scripts
+Minimal desktop configuration for Linux, BSD, and macOS — dotfiles, installation guides, and build scripts.
 
-* Display server: XLibre (X11 protocol implementation)
-* Window manager: Xmonad (tiling, minimal, highly configurable)
-* Menus: dmenu (dynamic menu for X)
-* Editor: Neovim (Telescope, LSP, gitsigns)
-* Terminal: st (simple terminal, patched for features)
-* File manager: lf (terminal-based, lightweight)
-* Dotfiles: Stow (symlink farm manager)
-* Keymaps: setxkbmap (keymaps and layouts via the X Keyboard Extension)
-* Network: Portable shell scripts
+## Design goals
+
+- **Uniform structure across distros** — every install follows the same pattern: profile-based package list, stow-managed dotfiles, per-distro scripts, same prompts
+- **Distro-specific via stow packages** — differences (init system, network backend, notification daemon) are handled by swapping stow packages in `links.config`, not by conditionals inside shared scripts
+
+## Stack
+
+* Display server: XLibre (X11)
+* Window manager: Xmonad
+* Menus: dmenu
+* Editor: Neovim
+* Terminal: st
+* File manager: lf
+* Dotfile linking: stow
+* Keymaps: setxkbmap / XKB
 
 ---
-<sup>*</sup> macOS config is limited to basic functionality
 
 ## TL;DR
 
 Clone the repository:
-```bash
+```sh
 git clone https://github.com/holmen1/dotfiles.git ~/repos/dotfiles
 cd ~/repos/dotfiles
 ```
-Run the appropriate script for your system (bsd or arch):
 
-**BSD:**
-```bash
-$ ./install/bsdinstall/configure_build_install_link.sh
+Run the install script for your system and follow the prompts:
+
+```sh
+# Arch
+./install/archinstall/configure_build_install_link.sh
+
+# Debian
+./install/debianinstall/configure_build_install_link.sh
+
+# FreeBSD
+./install/bsdinstall/configure_build_install_link.sh
 ```
-Then follow prompts:
+
+Prompts per step:
 ```
 Configure git? [y/N]
 Generate SSH key? [y/N]
@@ -47,42 +60,28 @@ Enable services? [y/N]
 Run tests? [Y/n]
 ```
 
-
-See [Installation guides](#installation-guides) for details
+See [Installation guides](#installation-guides) for details.
 
 ## Build
 
-The [build](https://github.com/holmen1/dotfiles/tree/master/install/build)
-folder contains scripts and tools for building and managing components (ghc, neovim, st, xkb, xmonad, xlibre) of this dotfiles setup.
+The [build](install/build) folder contains scripts for building components from source: ghc, neovim, st, xkb, xmonad, xlibre.
 
 ## Project Scope
 
-A stable, and maintainable **minimal desktop environment** configuration across multiple operating systems
-
-## Requirements
-
-Designed for low-spec hardware (tested on 4GB RAM). Minimal dependencies.
+Stable, maintainable minimal desktop across multiple operating systems. Designed for low-spec hardware (tested on 4 GB RAM).
 
 **Supported systems:**
 - Linux (Arch, Debian)
 - FreeBSD
-- macOS
-
-### Included Components
-- [Hyprland](https://github.com/holmen1/dotfiles/tree/master/dotfiles/hypr): a dynamic tiling Wayland compositor
-- [Xmonad](https://github.com/holmen1/dotfiles/tree/master/dotfiles/xmonad): a dynamic tiling X11 window manager
-- [Neovim](https://github.com/holmen1/dotfiles/tree/master/dotfiles/nvim): hyperextensible Vim-based text editor
-- [XKB](https://github.com/holmen1/dotfiles/tree/master/dotfiles/xkb): keymaps
-- [dmenu](https://github.com/holmen1/dotfiles/tree/master/dotfiles/dmenu): menu scripts
+- macOS (limited)
 
 ## Installation guides
 - [Arch Linux](install/archinstall)
-- [Debian/Ubuntu](install/debianinstall)
+- [Debian](install/debianinstall)
 - [FreeBSD](install/bsdinstall)
 - [macOS](install/macinstall)
 
 ## Automation scripts
 
-* Export/import packages
-* System monitoring
-
+* Export/import packages per distro
+* System monitoring (battery, wifi) via systemd user timers
