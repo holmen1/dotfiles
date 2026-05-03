@@ -1,0 +1,6 @@
+[Unit]
+Description=Combined System Status Monitor
+
+[Service]
+Type=oneshot
+ExecStart=/bin/sh -c "%h/repos/dotfiles/install/archinstall/scripts/monitor-battery.sh; %h/repos/dotfiles/install/archinstall/scripts/monitor-wifi.sh"
