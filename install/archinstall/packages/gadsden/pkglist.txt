@@ -32,6 +32,7 @@ lua-language-server
 ly
 man-db
 man-pages
+neovim
 network-manager-applet
 networkmanager
 noto-fonts-cjk
