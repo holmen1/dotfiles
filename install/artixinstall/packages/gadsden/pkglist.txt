@@ -1,0 +1,63 @@
+# TODO: adapt arch gadsden pkglist for artix openrc
+# Replace systemd service packages with openrc equivalents, e.g.:
+#   networkmanager-openrc
+#   iwd-openrc
+#   dbus-openrc
+# Remove: systemd, systemd-libs, etc.
+# See: https://artixlinux.org/packages.php
+
+amd-ucode
+base
+base-devel
+brightnessctl
+btrfs-progs
+clang
+dunst
+efibootmgr
+fd
+gcc
+gdb
+git
+grim
+grub
+gst-plugin-pipewire
+htop
+hyprland
+iwd
+iwd-openrc
+kitty
+less
+lf
+libnotify
+libpulse
+linux
+linux-firmware
+lua-language-server
+man-db
+man-pages
+networkmanager
+networkmanager-openrc
+noto-fonts-cjk
+openrc
+pipewire
+pipewire-alsa
+pipewire-jack
+pipewire-pulse
+polkit-kde-agent
+qt5-wayland
+qt6-wayland
+ripgrep
+slurp
+stow
+sudo
+swaylock
+tree
+ttf-jetbrains-mono-nerd
+unzip
+waybar
+wget
+wireplumber
+wl-clipboard
+wofi
+xdg-desktop-portal-hyprland
+xdg-utils
