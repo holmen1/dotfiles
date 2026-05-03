@@ -13,6 +13,33 @@ Go to [FreeBSD installation guide](./bsdinstall/README.md)
 ## mac
 Go to [MacOS config guide](./macinstall/README.md)
 
+### ISO
+
+```bash
+# Download ISO and signature
+wget image.iso
+wget image.iso.sig
+
+# Import distributor's key (one-time)
+gpg --recv-keys DISTRIBUTOR_KEYID
+
+# Verify signature
+gpg --verify image.iso.sig image.iso
+
+gpg --auto-key-retrieve --verify artix-base-openrc-20260402-x86_64.iso.sig artix-base-openrc-20260402-x86_64.iso
+```
+
+```bash
+# macos
+diskutil list
+diskutil unmountDisk /dev/disk4                  
+```
+
+```bash                
+sudo dd bs=4M if=artix-base-openrc-20260402-x86_64.iso of=/dev/disk4 status=progress oflag=sync
+```
+
+
 ## Post-installation
 
 ### Build from Source
