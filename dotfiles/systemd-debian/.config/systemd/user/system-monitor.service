@@ -1,0 +1,6 @@
+[Unit]
+Description=Combined System Status Monitor
+
+[Service]
+Type=oneshot
+ExecStart=/bin/sh -c "%h/repos/dotfiles/install/debianinstall/scripts/monitor-battery.sh; %h/repos/dotfiles/install/debianinstall/scripts/monitor-wifi.sh"

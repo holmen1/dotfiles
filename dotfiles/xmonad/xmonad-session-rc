@@ -1,8 +1,0 @@
-#!/bin/bash
-
-
-# Set a nice background
-feh --bg-fill --no-fehbg ~/repos/dotfiles/wallpapers/haskell.png
-
-# Compositor for opacity
-xcompmgr &

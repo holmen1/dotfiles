@@ -31,12 +31,19 @@ echo "Using config file: $CONFIG_FILE"
 echo ""
 
 for package in $packages; do
-    output=$(stow -v -d "$DOTFILES_DIR_EXPANDED" -t "$HOME" "$package" 2>&1)
-    if echo "$output" | grep -q "LINK"; then
-        echo "$package: Stowed"
-    else
-        echo "$package: Already stowed"
-    fi
+    # Dry run to find intended link targets
+    dry=$(stow -n -v -R -d "$DOTFILES_DIR_EXPANDED" -t "$HOME" "$package" 2>&1)
+    # Back up any real files that would conflict
+    echo "$dry" | awk '/^LINK:/{print $2}' | while read -r target; do
+        full="$HOME/$target"
+        if [ -f "$full" ] && [ ! -L "$full" ]; then
+            mv "$full" "${full}.bak"
+            echo "$package: backed up $target"
+        fi
+    done
+    # Restow
+    output=$(stow -R -v -d "$DOTFILES_DIR_EXPANDED" -t "$HOME" "$package" 2>&1)
+    echo "$package: Stowed"
 done
 
 echo "Done."
