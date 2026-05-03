@@ -43,11 +43,7 @@ for package in $packages; do
     done
     # Restow
     output=$(stow -R -v -d "$DOTFILES_DIR_EXPANDED" -t "$HOME" "$package" 2>&1)
-    if echo "$output" | grep -q "LINK"; then
-        echo "$package: Stowed"
-    else
-        echo "$package: Restowed (no changes)"
-    fi
+    echo "$package: Stowed"
 done
 
 echo "Done."

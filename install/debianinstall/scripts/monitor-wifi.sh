@@ -36,12 +36,19 @@ connect() {
     PASS="$2"
     [ -z "$SSID" ] && exit 1
     if [ -n "$PASS" ]; then
-        nmcli device wifi connect "$SSID" password "$PASS" ifname "$IFACE" 2>&1
+        result=$(nmcli device wifi connect "$SSID" password "$PASS" ifname "$IFACE" 2>&1)
     else
-        nmcli device wifi connect "$SSID" ifname "$IFACE" 2>&1
+        # Prefer saved connection profile; fall back to fresh connect
+        result=$(nmcli connection up "$SSID" 2>&1)
+        if ! echo "$result" | grep -qi "successfully\|activated"; then
+            result=$(nmcli device wifi connect "$SSID" ifname "$IFACE" 2>&1)
+        fi
     fi
-    NEW_STATE=$(nmcli -t -f DEVICE,STATE device | awk -F: -v iface="$IFACE" '$1==iface{print $2; exit}')
-    [ "$NEW_STATE" = "connected" ] && notify-send "WiFi" "Connected to $SSID"
+    if echo "$result" | grep -qi "successfully\|activated"; then
+        notify-send "WiFi" "Connected to $SSID"
+    else
+        notify-send -u critical "WiFi" "Failed: $result"
+    fi
 }
 
 disconnect() {
