@@ -4,9 +4,8 @@ USER=$(whoami)
 EMAIL=$USER@gmail.com
 
 DOTFILES_DIR=~/repos/dotfiles
-SCRIPTS_DIR=$DOTFILES_DIR/scripts
-INSTALL_SCRIPT=$SCRIPTS_DIR/install-pacman.sh
-LINK_SCRIPT=$SCRIPTS_DIR/link_config.sh
+INSTALL_SCRIPT=$DOTFILES_DIR/install/archinstall/scripts/install-pacman.sh
+LINK_SCRIPT=$DOTFILES_DIR/scripts/link_config.sh
 
 XMONAD_DIR=$DOTFILES_DIR/install/build/xmonad
 ST_DIR=$DOTFILES_DIR/install/build/st
@@ -150,6 +149,7 @@ case "$ans" in
     # Enable services
     systemctl --user daemon-reload
     systemctl --user enable --now system-monitor.timer
+    echo "Enabled system-monitor.timer"
     ;;
 esac
 

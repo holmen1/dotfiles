@@ -4,7 +4,7 @@
 DOTFILES=$HOME/repos/dotfiles
 DSCRIPT=$HOME/.dmenu
 DOCS=$DOTFILES/dotfiles
-MONITOR_SCRIPTS=$DOTFILES/scripts
+MONITOR_SCRIPTS=$DOTFILES/install/archinstall/scripts
 XKB_STATE=$HOME/.cache/xkb-layout
 
 # Font detection
