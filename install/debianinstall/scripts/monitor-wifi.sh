@@ -36,12 +36,16 @@ connect() {
     PASS="$2"
     [ -z "$SSID" ] && exit 1
     if [ -n "$PASS" ]; then
+        # Remove stale profile to avoid key-mgmt conflicts
+        nmcli connection delete "$SSID" 2>/dev/null
         result=$(nmcli device wifi connect "$SSID" password "$PASS" ifname "$IFACE" 2>&1)
     else
-        # Prefer saved connection profile; fall back to fresh connect
-        result=$(nmcli connection up "$SSID" 2>&1)
-        if ! echo "$result" | grep -qi "successfully\|activated"; then
-            result=$(nmcli device wifi connect "$SSID" ifname "$IFACE" 2>&1)
+        # Only connect if a saved profile exists
+        if nmcli -t -f NAME connection show | grep -qxF "$SSID"; then
+            result=$(nmcli connection up id "$SSID" 2>&1)
+        else
+            notify-send -u normal "WiFi" "No saved profile for '$SSID' — use Manual to enter password"
+            return
         fi
     fi
     if echo "$result" | grep -qi "successfully\|activated"; then

@@ -36,10 +36,14 @@ Debian-specific monitor scripts live in `debianinstall/scripts/` and hook into X
 - **WiFi management (nmcli):**
   - Show status: `nmcli general status`
   - List devices: `nmcli device status`
-  - List WiFi: `nmcli device wifi list`
-  - Connect: `nmcli device wifi connect <SSID> password <password>`
-  - Saved network: `nmcli connection up "Network Name"`
+  - List WiFi networks in range: `nmcli device wifi list`
+  - Connect new network (creates saved profile): `nmcli device wifi connect <SSID> password <password>`
+  - List saved profiles: `nmcli connection show`
+  - Connect using saved profile: `nmcli connection up id "<SSID>"`
+  - Delete saved profile: `nmcli connection delete "<SSID>"`
   - Toggle WiFi: `nmcli radio wifi on|off`
+
+  > dmenu Scan only works for SSIDs with a saved profile. Use `nmcli device wifi connect` once to create the profile, then Scan works for future connects.
 
 - **Cleanup:**
   ```sh
