@@ -6,27 +6,60 @@ In the latest Artix Linux ISO (OpenRC)
 ```
 loadkeys sv-latin1
 ```
-* Connect to the internet
+* Connect to the internet (live ISO uses ConnMan)
 ```
-ip addr show
-```
-```
-iwctl station wlan0 scan
-iwctl station wlan0 get-networks
-iwctl --passphrase <passphrase> station wlan0 connect <NetworkName>
+connmanctl
+connmanctl> enable wifi
+connmanctl> scan wifi
+connmanctl> services
+connmanctl> connect wifi_<id>
+connmanctl> quit
 ```
 
 ## Installation
-Artix ships with a guided installer:
+Artix uses a manual installation process (no guided installer like archinstall).
+
+### Partition & format
 ```
-artixinstall
+cfdisk /dev/nvme0n1
+mkfs.fat -F 32 /dev/nvme0n1p1    # EFI
+mkfs.btrfs /dev/nvme0n1p2         # root
 ```
-Set:
-- bootloader: grub
-- profile: Minimal
-- filesystem: btrfs
-- init: openrc
-- packages: git, openssh, vi
+
+### Mount
+```
+mount /dev/nvme0n1p2 /mnt
+mkdir -p /mnt/boot/efi
+mount /dev/nvme0n1p1 /mnt/boot/efi
+```
+
+### Install base system
+```
+basestrap /mnt base base-devel openrc elogind-openrc linux linux-firmware git vi
+```
+
+### Generate fstab
+```
+fstabgen -U /mnt >> /mnt/etc/fstab
+```
+
+### Chroot
+```
+artix-chroot /mnt
+```
+
+### Inside chroot: grub, hostname, user
+```
+pacman -S grub efibootmgr
+grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=grub
+grub-mkconfig -o /boot/grub/grub.cfg
+
+echo gadsden > /etc/hostname
+echo 'hostname="gadsden"' >> /etc/conf.d/hostname
+
+useradd -m -G wheel holmen1
+passwd holmen1
+```
 
 ## Post-installation
 
@@ -62,7 +95,6 @@ See [packages/](packages/) for package lists.
 
 ### Enable services (openrc)
 ```
-rc-update add NetworkManager default
 rc-update add iwd default
 rc-update add dbus default
 ```

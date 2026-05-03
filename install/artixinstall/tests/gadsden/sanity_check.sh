@@ -22,40 +22,35 @@ printf "Sanity check — gadsden (artix/openrc)\n"
 hdr "Core commands"
 check_cmd git
 check_cmd ssh
+check_cmd startx
+check_cmd xmonad
+check_cmd xterm
+check_cmd st
+check_cmd dmenu
 check_cmd nvim
-check_cmd kitty
 
-hdr "Hyprland session"
-check_cmd Hyprland
-check_file "$HOME/.config/hypr/hyprland.conf"
-check_cmd waybar
-check_file "$HOME/.config/waybar/config.jsonc"
-
-hdr "Screen & input"
-check_cmd swaylock
-check_cmd grim
-check_cmd brightnessctl
+hdr "X session"
+check_file "$HOME/.xinitrc"
+if [ -x /usr/local/bin/xmonad ]; then ok "/usr/local/bin/xmonad"
+else fail "/usr/local/bin/xmonad not found or not executable"; fi
+check_cmd xbindkeys
+check_cmd scrot
+check_cmd i3lock
 
 hdr "Notifications"
 check_cmd dunst
 check_cmd notify-send
 
 hdr "OpenRC services"
-if rc-service NetworkManager status >/dev/null 2>&1; then
-    ok "NetworkManager running"
-else
-    fail "NetworkManager not running"
-fi
 if rc-service iwd status >/dev/null 2>&1; then
     ok "iwd running"
 else
-    warn "iwd not running"
+    fail "iwd not running"
 fi
 
 hdr "Dotfile symlinks"
 check_symlink "$HOME/.config/nvim"
-check_symlink "$HOME/.config/hypr"
-check_symlink "$HOME/.config/waybar"
+check_symlink "$HOME/.xinitrc"
 
 hdr "Git"
 git_name=$(git config --global user.name 2>/dev/null)

@@ -76,7 +76,6 @@ read -p "Enable services? [y/N] " ans
 case "$ans" in
     [Yy]*)
     # OpenRC — add services at default runlevel
-    sudo rc-update add NetworkManager default
     sudo rc-update add iwd default
     sudo rc-update add dbus default
     echo "Services added to default runlevel"
