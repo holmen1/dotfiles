@@ -36,7 +36,7 @@
     "custom/appmenu": {
         "format": "\u677E", // matsu
         "tooltip-format": "Left: Show all keybindings",
-        "on-click": "~/repos/dotfiles/scripts/wofi-help.sh",
+        "on-click": "~/repos/dotfiles/install/archinstall/scripts/wofi-help.sh",
         "return-type": "json",
         "interval": 600
     },
@@ -44,7 +44,7 @@
     "custom/vpn": {
         "format": "{}",
         "interval": 20,
-        "exec": "~/repos/dotfiles/scripts/waybar-vpn-monitor.sh",
+        "exec": "~/repos/dotfiles/install/archinstall/scripts/waybar-vpn-monitor.sh",
         "return-type": "json"
     },
     // Workspaces
