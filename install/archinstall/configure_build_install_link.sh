@@ -88,9 +88,10 @@ case "$ans" in
     sudo mkdir -p /opt/xmonad
     # Backup existing files instead of removing
     for file in /opt/xmonad/*; do
-        if [ -e "$file" ] && [[ ! "$file" == *.bak ]]; then
-            sudo mv "$file" "${file}.bak"
-        fi
+        case "$file" in
+            *.bak) ;;
+            *) [ -e "$file" ] && sudo mv "$file" "${file}.bak" ;;
+        esac
     done
 
     sudo cp -f $XMONAD_DIR/bin/xmonad-v0.18.[0-9] /opt/xmonad/
