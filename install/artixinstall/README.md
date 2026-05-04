@@ -94,6 +94,8 @@ Expected result:
 /dev/nvme0n1p4 123731968 <end>      <rest>  Linux filesystem
 ```
 
+> **Note:** After writing, the kernel may not see all partitions immediately ("device busy"). Verify with `lsblk`. If p4 is missing, reboot the ISO — the table is correctly on disk and all 4 will appear after reboot.
+
 ### Format partitions
 
 Labels (`-L` / `-n`) make the partitions identifiable by name instead of device path:
@@ -133,6 +135,8 @@ basestrap /mnt base base-devel sudo openrc elogind-openrc linux linux-firmware g
 
 ### Generate fstab
 
+> **Note:** `basestrap` must have run first — it creates `/mnt/etc/`. If you get "no such file or directory", run `mkdir -p /mnt/etc` and retry.
+
 ```
 fstabgen -U /mnt >> /mnt/etc/fstab
 ```
@@ -166,14 +170,13 @@ echo "LANG=en_US.UTF-8" > /etc/locale.conf
 ### Console keymap
 
 ```
-echo "KEYMAP=sv-latin1" > /etc/vconsole.conf
+echo 'keymap="sv-latin1"' > /etc/conf.d/keymaps
 ```
 
 ### Hostname
 
 ```
 echo gadsden > /etc/hostname
-echo 'hostname="gadsden"' >> /etc/conf.d/hostname
 ```
 
 ### Root password
@@ -195,6 +198,12 @@ Allow wheel group to use sudo — run `visudo` and uncomment:
 ```
 
 ### Bootloader (GRUB)
+
+If `pacman` fails with connection errors (port 443), fix DNS and refresh mirrors first:
+```
+echo "nameserver 8.8.8.8" > /etc/resolv.conf
+pacman -Sy
+```
 
 ```
 pacman -S grub efibootmgr
