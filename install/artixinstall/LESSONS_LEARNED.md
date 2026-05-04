@@ -12,3 +12,8 @@
 - `rc-service <service> start` instead of `systemctl start`
 - No `hostnamectl` — use `hostname -s` or `/etc/hostname`
 - No `systemctl --user` — user-level daemons need another approach (e.g. supervise-daemon, user openrc session)
+
+## Package strategy
+- Start with `packages/minimal/` — just enough to get X server running (`xorg-xinit`, `xterm`, xlibre from AUR)
+- Verify `startx` launches xterm before installing the full `packages/gadsden/` list
+- Avoids chasing failures caused by unknown missing deps in a big install batch
