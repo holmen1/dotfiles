@@ -13,6 +13,21 @@
 - No `hostnamectl` — use `hostname -s` or `/etc/hostname`
 - No `systemctl --user` — user-level daemons need another approach (e.g. supervise-daemon, user openrc session)
 
+## Recovery (chroot from ISO to fix installed system)
+- Only mount root (`/mnt`)
+- `dhcpcd` was missing from basestrap; ethernet didn't work after first boot — added to basestrap and README
+- Minimal chroot repair:
+  ```
+  mount /dev/nvme0n1p3 /mnt
+  artix-chroot /mnt
+  pacman -S <missing-pkg>
+  exit && reboot
+  ```
+  then run
+  ```
+  dhcpcd
+  ```
+
 ## Package strategy
 - Start with `packages/minimal/` — just enough to get X server running (`xorg-xinit`, `xterm`, xlibre from AUR)
 - Verify `startx` launches xterm before installing the full `packages/gadsden/` list

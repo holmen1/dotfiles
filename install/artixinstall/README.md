@@ -127,7 +127,7 @@ free -h    # swap should appear
 ### Install base system
 
 ```
-basestrap /mnt base base-devel sudo openrc elogind-openrc linux linux-firmware git vi
+basestrap /mnt base base-devel sudo openrc elogind-openrc dhcpcd linux linux-firmware git vi openssh
 ```
 
 - `openrc` — init system
@@ -177,6 +177,12 @@ echo 'keymap="sv-latin1"' > /etc/conf.d/keymaps
 
 ```
 echo gadsden > /etc/hostname
+echo 'hostname="gadsden"' > /etc/conf.d/hostname
+```
+
+Configure `/etc/hosts`:
+```
+printf '127.0.0.1\tlocalhost\n::1\t\tlocalhost\n127.0.1.1\tgadsden.localdomain\tgadsden\n' >> /etc/hosts
 ```
 
 ### Root password
@@ -209,7 +215,7 @@ pacman -Sy
 pacman -S grub efibootmgr
 grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=grub
 grub-mkconfig -o /boot/grub/grub.cfg
-```
+````
 
 ### Exit chroot and reboot
 
