@@ -231,9 +231,35 @@ Remove the ISO/USB when the machine powers off.
 
 ## Post-installation
 
-> **Connect ethernet** before logging in — wifi is not configured yet and the script needs internet to install packages.
+> You need a working network connection before running the post-install script.
 
 Log in as `holmen1`.
+
+### Connect to WiFi
+
+If `dhcpcd` and `wpa_supplicant` are already installed, connect manually:
+
+Find the wireless interface name:
+```
+ip link
+```
+
+Create a `wpa_supplicant` config for your network:
+```
+sudo sh -c 'wpa_passphrase "YOUR_SSID" > /etc/wpa_supplicant/wpa_supplicant.conf'
+```
+It will prompt for the passphrase. `sudo` is required because the file is written under `/etc`.
+
+Start `wpa_supplicant` and request an IP address:
+```
+sudo wpa_supplicant -B -i wlan0 -c /etc/wpa_supplicant/wpa_supplicant.conf
+sudo dhcpcd wlan0
+```
+
+Replace `wlan0` with your actual wireless interface, then verify connectivity:
+```
+ping -c 3 artixlinux.org
+```
 
 ### Clone dotfiles
 
