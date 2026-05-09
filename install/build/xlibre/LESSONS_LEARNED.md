@@ -9,26 +9,35 @@ sudo pacman -S xlibre-xserver xlibre-input-libinput
 
 ---
 
-## startx freeze — xterm starts but everything locks (Artix, fresh install)
+## startx freeze — xterm starts but input dead (Artix OpenRC, AMD Radeon 780M)
 
-**Test:** `xorg-xinit` + `xterm` + `xlibre-xserver` + `xlibre-input-libinput` installed; `~/.xinitrc` = `exec xterm`; ran `startx` — xterm window appeared but system froze, had to switch to TTY with `Ctrl+Alt+F2`.
+**Setup:** `xorg-xinit` + `xterm` + `xlibre-xserver` + `xlibre-input-libinput` + `xlibre-video-amdgpu`; `~/.xinitrc` = `exec xterm`; ran `startx` — xterm window appeared but keyboard/mouse dead; could TTY-switch with `Ctrl+Alt+F2`.
 
-**Confirmed not the cause:** `xlibre-input-libinput` was installed.
+**Confirmed not the cause:**
+- `xlibre-video-amdgpu` not installed (Xorg.0.log): modesetting driver used, still froze.
+- `xlibre-video-amdgpu` installed (Xorg.1.log): amdgpu driver used, glamoregl + OpenGL 4.6 working, still froze.
+- → Video driver is NOT the issue. X server renders fine. Freeze is **input-only**.
 
-**Likely cause:** missing `mesa` or `mesa-utils`, or xlibre rendering via software fallback causing a hang on this Intel GPU. Could also be a missing `xf86-video-*` or `xlibre-video-*` driver for the specific GPU.
+**Root cause hypothesis:** `eudev` service not running → udev device enumeration fails → no input devices added to X.
+
+Both logs show:
+```
+(II) The server relies on udev to provide the list of input devices.
+     If no devices become available, reconfigure udev or disable AutoAddDevices.
+```
+
+On Artix OpenRC, eudev must be running for X to detect `/dev/input` devices.
 
 **Diagnose:**
-1. Check TTY response time after freeze — instant = X alive but input dead (driver issue); slow = deeper freeze
-2. Find the log:
-   ```
-   ls -lt /var/log/Xorg* ~/.local/share/xorg/Xorg* 2>/dev/null
-   ```
-3. Run with explicit log:
-   ```
-   startx -- -logfile /tmp/xorg.log -logverbose 6
-   ```
-   Then TTY out and read `/tmp/xorg.log`.
-4. Verify input driver is installed:
-   ```
-   pacman -Q | grep xlibre-input
-   ```
+```bash
+rc-service eudev status
+grep -i "input\|libinput\|device" ~/.local/share/xorg/Xorg.1.log | head -40
+libinput list-devices
+```
+
+**Fix if eudev not running:**
+```bash
+rc-update add eudev default
+rc-service eudev start
+startx
+```
