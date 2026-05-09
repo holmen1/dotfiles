@@ -97,21 +97,11 @@ lsblk
 free -h    # swap should appear
 ```
 
-### Connect to WiFi
+### Network
 
-The live ISO uses ConnMan:
-```
-connmanctl
-connmanctl> enable wifi
-connmanctl> scan wifi
-connmanctl> services
-```
-Copy the service ID from the output (looks like `wifi_<mac>_<ssid>_managed_psk`), then:
-```
-connmanctl> connect wifi_<id>
-connmanctl> quit
-```
-Verify connectivity:
+> **Use ethernet during installation.** WiFi can be configured properly post-installation. Attempting to set up WiFi at this stage is a known failure point.
+
+Plug in ethernet and verify connectivity:
 ```
 ping -c 3 artixlinux.org
 ```
@@ -238,11 +228,14 @@ Configure `/etc/hosts`:
 127.0.1.1   gadsden.localdomain gadsden
 ```
 
-And install your prefered DHCP client
+Install `iwd` (includes its own DHCP client) and D-Bus, then enable them at boot:
 ```
-pacman -S dhcpcd wpa_supplicant
+pacman -S iwd-openrc dbus-openrc
+rc-update add dbus default
+rc-update add iwd default
 ```
 
+`iwd` handles both association and DHCP — no `wpa_supplicant` or `dhcpcd` needed. Ethernet comes up via dhcpcd built into iwd; WiFi is configured with `iwctl` after first boot.
 
 ### Exit chroot and reboot
 
@@ -258,34 +251,32 @@ Remove the ISO/USB when the machine powers off.
 
 ## Post-installation
 
-> You need a working network connection before running the post-install script.
+> You need a working network connection before running the post-install script. Keep ethernet connected until WiFi is configured and verified.
 
 Log in as `holmen1`.
 
 ### Connect to WiFi
 
-If `dhcpcd` and `wpa_supplicant` are already installed, connect manually:
+`iwd` and `dbus` should be running (enabled in chroot). Use `iwctl` to connect:
 
-Find the wireless interface name:
 ```
-ip link
-```
-
-Create a `wpa_supplicant` config for your network:
-```
-sudo sh -c 'wpa_passphrase "YOUR_SSID" > /etc/wpa_supplicant/wpa_supplicant.conf'
-```
-It will prompt for the passphrase. `sudo` is required because the file is written under `/etc`.
-
-Start `wpa_supplicant` and request an IP address:
-```
-sudo wpa_supplicant -B -i wlan0 -c /etc/wpa_supplicant/wpa_supplicant.conf
-sudo dhcpcd wlan0
+iwctl
+[iwd]# device list
+[iwd]# station wlan0 scan
+[iwd]# station wlan0 get-networks
+[iwd]# station wlan0 connect YOUR_SSID
+[iwd]# exit
 ```
 
-Replace `wlan0` with your actual wireless interface, then verify connectivity:
+Verify connectivity:
 ```
 ping -c 3 artixlinux.org
+```
+
+If `iwd` is not running, start it first:
+```
+sudo rc-service dbus start
+sudo rc-service iwd start
 ```
 
 ### Clone dotfiles
@@ -323,14 +314,6 @@ OpenRC equivalents for common packages:
 - `dbus-openrc`
 
 See [packages/gadsden/](packages/gadsden/) for the full package lists.
-
-### Enable services
-
-```
-sudo rc-update add iwd default
-sudo rc-update add dbus default
-sudo rc-service iwd start
-```
 
 ### Export installed packages
 
