@@ -9,9 +9,14 @@ fastfetch
 git
 grub
 iwd-openrc
+less
 linux
 linux-firmware
 openrc
 openresolv
 openssh
 vim
+xlibre-input-libinput
+xlibre-xserver
+xorg-xinit
+xterm
