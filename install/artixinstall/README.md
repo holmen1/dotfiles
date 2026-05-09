@@ -288,6 +288,24 @@ git clone https://github.com/holmen1/dotfiles.git
 ```
 (Switch remote to SSH after keys are set up.)
 
+### Install xlibre (before running install script)
+
+`xlibre-xserver` is in AUR and requires a bootstrap step to avoid conflicts with `xorg-server`. Do this manually before the install script, which cannot handle the required sequencing:
+
+```
+yay -S xlibre-xserver-bootstrap    # provides xorg-server, satisfies deps
+yay -S xlibre-input-libinput
+yay -S xlibre-xserver              # replaces bootstrap; confirm removal when prompted
+```
+
+Verify no stale xorg packages remain:
+```
+pacman -Q | grep 'xorg-server\|xf86-'
+pacman -Q | grep 'xlibre-'
+```
+
+The install script's `foreignpkglist.txt` lists `xlibre-xserver` and `xlibre-input-libinput` — yay will skip them as already installed.
+
 ### Run install script
 
 ```
