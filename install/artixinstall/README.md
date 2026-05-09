@@ -314,7 +314,29 @@ mkdir repos
 cd repos
 git clone https://github.com/holmen1/dotfiles.git
 ```
-(Switch remote to SSH after keys are set up.)
+
+#### Switch to SSH (reusing existing key)
+
+Copy your existing private key to the new machine, then:
+```
+chmod 600 ~/.ssh/id_ed25519
+```
+
+Verify the key works with GitHub:
+```
+ssh -T git@github.com
+```
+
+Switch the remote from HTTPS to SSH:
+```
+cd ~/repos/dotfiles
+git remote set-url origin git@github.com:holmen1/dotfiles.git
+```
+
+Verify:
+```
+git remote -v
+```
 
 ### Install xlibre (before running install script)
 
