@@ -1,57 +1,34 @@
 # LESSONS LEARNED
 
-## XLibre is Now Available as a Binary Package
+## XLibre on Artix Linux
 
-XLibre landed in the FreeBSD ports tree in December 2025 and binary packages are now available. **Prefer `pkg` over ports** — it keeps everything consistently versioned and `pkg upgrade` handles it automatically.
-
-**Install via pkg (recommended):**
-```bash
-sudo pkg install xlibre-minimal xlibre-xf86-video-intel
+XLibre is available as a binary in the Artix **world** repo — use `pacman`, not AUR/yay:
 ```
-
-**Why ports caused breakage:** When XLibre was port-built but its dependencies (e.g., `xlibre-xf86-video-vesa`, `xlibre-xf86-input-libinput`) were upgraded as binary packages via `pkg upgrade`, the version skew between the port-built server and the upgraded binary dependencies caused X to fail with `signal 11 (segmentation fault)` or fall back to `scfb`. Switching fully to `pkg` resolved it immediately.
-
-**General rule:** Never mix port-built and pkg-installed versions of tightly coupled packages (server + drivers). Use one or the other consistently.
+sudo pacman -S xlibre-xserver xlibre-input-libinput
+```
 
 ---
 
-## pkg upgrade Can Break Mesa (crocus_dri / glamor crash)
+## startx freeze — xterm starts but everything locks (Artix, fresh install)
 
-**Symptom:** After `pkg upgrade`, `startx` freezes. `Xorg.0.log` shows a crash inside `crocus_dri.so` during `glamor_init`:
+**Test:** `xorg-xinit` + `xterm` + `xlibre-xserver` + `xlibre-input-libinput` installed; `~/.xinitrc` = `exec xterm`; ran `startx` — xterm window appeared but system froze, had to switch to TTY with `Ctrl+Alt+F2`.
 
-```
-7: /usr/local/lib/dri/crocus_dri.so
-...
-19: glamor_init
-20: modesetting_drv.so
-Fatal server error: Caught signal 6 (Abort trap). Server aborting
-```
+**Confirmed not the cause:** `xlibre-input-libinput` was installed.
 
-**Cause:** A regression in the `mesa-dri` package for Braswell/Gen8 Intel GPUs (device `8086:22b1`). The `modesetting` driver's default acceleration method (`glamor`) uses OpenGL/EGL via Mesa, and the upgraded `crocus_dri.so` crashes on initialization.
+**Likely cause:** missing `mesa` or `mesa-utils`, or xlibre rendering via software fallback causing a hang on this Intel GPU. Could also be a missing `xf86-video-*` or `xlibre-video-*` driver for the specific GPU.
 
-**Workaround (immediate):** Disable glamor acceleration in `/usr/local/etc/X11/xorg.conf.d/20-modesetting.conf`:
-
-```
-Section "Device"
-    Identifier  "Intel Graphics"
-    Driver      "modesetting"
-    Option      "AccelMethod" "none"
-EndSection
-```
-
-This bypasses the Mesa/OpenGL stack entirely. Software rendering is slower but perfectly usable for XMonad with terminals.
-
-**Alternative fix (tested working):** If the above config causes issues, remove the entire `/usr/local/share/X11/xorg.conf.d/` directory (or move to .bak). This forces X to autoconfigure without any device-specific configs, allowing `modesetting` with glamor to work properly on Braswell GPUs. However, `startx` with the built-in config still crashes due to the Mesa regression— the built-in includes intel in the ServerLayout, which triggers the bug even though intel is removed. Workaround: Create `/usr/local/etc/X11/xorg.conf` with a minimal modesetting config to override the built-in.
-
-**Proper fix:** Wait for a Mesa package update in the FreeBSD repo, then remove the `AccelMethod` line or re-enable configs to re-enable hardware acceleration. Check with:
-
-```bash
-pkg info mesa-dri
-```
-
-**Diagnosis steps used:**
-
-**Diagnosis steps used:**
-1. `X -probeonly` — safe way to test X without launching a window manager
-2. `startx ~/.xinitrc.test` (containing only `exec xterm`) — isolates X from XMonad
-3. `grep -E 'modesetting|signal|EE|Fatal' /var/log/Xorg.0.log` — quick log scan
+**Diagnose:**
+1. Check TTY response time after freeze — instant = X alive but input dead (driver issue); slow = deeper freeze
+2. Find the log:
+   ```
+   ls -lt /var/log/Xorg* ~/.local/share/xorg/Xorg* 2>/dev/null
+   ```
+3. Run with explicit log:
+   ```
+   startx -- -logfile /tmp/xorg.log -logverbose 6
+   ```
+   Then TTY out and read `/tmp/xorg.log`.
+4. Verify input driver is installed:
+   ```
+   pacman -Q | grep xlibre-input
+   ```
