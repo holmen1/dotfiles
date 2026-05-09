@@ -11,24 +11,6 @@ Boot the latest Artix Linux ISO (OpenRC variant).
 loadkeys sv-latin1
 ```
 
-### Connect to WiFi
-
-The live ISO uses ConnMan:
-```
-connmanctl
-connmanctl> enable wifi
-connmanctl> scan wifi
-connmanctl> services
-```
-Copy the service ID from the output (looks like `wifi_<mac>_<ssid>_managed_psk`), then:
-```
-connmanctl> connect wifi_<id>
-connmanctl> quit
-```
-Verify connectivity:
-```
-ping -c 3 artixlinux.org
-```
 
 ## Installation
 
@@ -47,8 +29,7 @@ Target layout (UEFI, GPT):
 |-----------|-------|------|------|
 | nvme0n1p1 | /boot/efi | 1G | EFI System |
 | nvme0n1p2 | [swap] | 8G | Linux swap |
-| nvme0n1p3 | / | 50G | Linux filesystem |
-| nvme0n1p4 | /home | rest | Linux filesystem |
+| nvme0n1p3 | /home | rest | Linux filesystem |
 
 ```
 fdisk /dev/nvme0n1
@@ -73,11 +54,6 @@ Last sector: +8G
 Command (m for help): n
 Partition number (3-128, default 3): <Enter>
 First sector: <Enter>
-Last sector: +50G
-
-Command (m for help): n
-Partition number (4-128, default 4): <Enter>
-First sector: <Enter>
 Last sector: <Enter>    (uses all remaining space)
 
 Command (m for help): p
@@ -90,32 +66,29 @@ Expected result:
 ```
 /dev/nvme0n1p1   2048    2099199    1G  Linux filesystem
 /dev/nvme0n1p2   2099200 18874367   8G  Linux filesystem
-/dev/nvme0n1p3  18874368 123731967  50G  Linux filesystem
-/dev/nvme0n1p4 123731968 <end>      <rest>  Linux filesystem
+/dev/nvme0n1p3  18874368 <end>      <rest>  Linux filesystem
 ```
 
-> **Note:** After writing, the kernel may not see all partitions immediately ("device busy"). Verify with `lsblk`. If p4 is missing, reboot the ISO — the table is correctly on disk and all 4 will appear after reboot.
+> **Note:** After writing, the kernel may not see all partitions immediately ("device busy"). Verify with `lsblk`. If pX is missing, reboot the ISO — the table is correctly on disk and all 3 will appear after reboot.
 
 ### Format partitions
 
 Labels (`-L` / `-n`) make the partitions identifiable by name instead of device path:
 
 ```
-mkfs.fat -F 32 -n EFI /dev/nvme0n1p1    # EFI system partition
-mkswap -L swap /dev/nvme0n1p2            # swap
-mkfs.ext4 -L root /dev/nvme0n1p3         # root
-mkfs.ext4 -L home /dev/nvme0n1p4         # home
+mkfs.fat -F 32 /dev/nvme0n1p1            # EFI system partition
+fatlabel /dev/nvme0n1p1 ESP
+mkswap -L SWAP /dev/nvme0n1p2            # swap
+mkfs.ext4 -L ROOT /dev/nvme0n1p3         # root
 ```
 
 ### Mount
 
 ```
-mount /dev/nvme0n1p3 /mnt
+swapon /dev/disc/by-label/SWAP
+mount /dev/disc/by-label/ROOT /mnt
 mkdir -p /mnt/boot/efi
-mount /dev/nvme0n1p1 /mnt/boot/efi
-mkdir -p /mnt/home
-mount /dev/nvme0n1p4 /mnt/home
-swapon /dev/nvme0n1p2
+mount /dev/disc/by-label/BOOT /mnt/boot/efi
 ```
 
 Verify:
@@ -124,14 +97,59 @@ lsblk
 free -h    # swap should appear
 ```
 
+### Connect to WiFi
+
+The live ISO uses ConnMan:
+```
+connmanctl
+connmanctl> enable wifi
+connmanctl> scan wifi
+connmanctl> services
+```
+Copy the service ID from the output (looks like `wifi_<mac>_<ssid>_managed_psk`), then:
+```
+connmanctl> connect wifi_<id>
+connmanctl> quit
+```
+Verify connectivity:
+```
+ping -c 3 artixlinux.org
+```
+
+### Update the system clock
+Activate the NTP daemon to synchronize the computer's real-time clock:
+
+```bash
+rc-service ntpd start
+```
+
 ### Install base system
 
 ```
-basestrap /mnt base base-devel sudo openrc elogind-openrc dhcpcd linux linux-firmware git vi openssh
+basestrap /mnt base base-devel openrc elogind-openrc
 ```
 
 - `openrc` — init system
 - `elogind-openrc` — session/seat management (replaces systemd-logind)
+
+If you encounter errors, you can use the -i flag of basestrap ('interactive'). Example:
+
+```bash
+basestrap -i /mnt base
+```
+
+### Install a kernel
+Artix provides three kernels: linux, linux-lts and linux-zen. It is very recommended to install linux-firmware too.
+You can try not installing it, but some devices such as network cards may not work.
+
+```bash
+basestrap /mnt linux linux-firmware
+```
+
+and, nice to have
+```
+basestrap /mnt sudo git vim openssh
+```
 
 ### Generate fstab
 
@@ -152,10 +170,13 @@ cat /mnt/etc/fstab
 artix-chroot /mnt
 ```
 
-### Timezone
-
+### Configure the system clock
+Set the time zone:
 ```
 ln -sf /usr/share/zoneinfo/Europe/Stockholm /etc/localtime
+```
+Run hwclock to generate /etc/adjtime:
+```
 hwclock --systohc
 ```
 
@@ -173,36 +194,6 @@ echo "LANG=en_US.UTF-8" > /etc/locale.conf
 echo 'keymap="sv-latin1"' > /etc/conf.d/keymaps
 ```
 
-### Hostname
-
-```
-echo gadsden > /etc/hostname
-echo 'hostname="gadsden"' > /etc/conf.d/hostname
-```
-
-Configure `/etc/hosts`:
-```
-printf '127.0.0.1\tlocalhost\n::1\t\tlocalhost\n127.0.1.1\tgadsden.localdomain\tgadsden\n' >> /etc/hosts
-```
-
-### Root password
-
-```
-passwd
-```
-
-### Create user
-
-```
-useradd -m -G wheel holmen1
-passwd holmen1
-```
-
-Allow wheel group to use sudo — run `visudo` and uncomment:
-```
-%wheel ALL=(ALL:ALL) ALL
-```
-
 ### Bootloader (GRUB)
 
 If `pacman` fails with connection errors (port 443), fix DNS and refresh mirrors first:
@@ -216,6 +207,42 @@ pacman -S grub efibootmgr
 grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=grub
 grub-mkconfig -o /boot/grub/grub.cfg
 ````
+
+### Add users
+
+```
+passwd
+```
+
+```
+useradd -m -G wheel holmen1
+passwd holmen1
+```
+
+Allow wheel group to use sudo — run `visudo` and uncomment:
+```
+%wheel ALL=(ALL:ALL) ALL
+```
+
+### Network configuration
+
+```
+echo gadsden > /etc/hostname
+echo 'hostname="gadsden"' > /etc/conf.d/hostname
+```
+
+Configure `/etc/hosts`:
+```
+127.0.0.1   localhost
+::1 localhost
+127.0.1.1   gadsden.localdomain gadsden
+```
+
+And install your prefered DHCP client
+```
+pacman -S dhcpcd wpa_supplicant
+```
+
 
 ### Exit chroot and reboot
 
