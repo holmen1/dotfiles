@@ -228,14 +228,30 @@ Configure `/etc/hosts`:
 127.0.1.1   gadsden.localdomain gadsden
 ```
 
-Install `iwd` (includes its own DHCP client) and D-Bus, then enable them at boot:
+Install `iwd`, D-Bus, and network support packages, then enable them at boot:
 ```
-pacman -S iwd-openrc dbus-openrc
+pacman -S iwd-openrc dbus-openrc dhcpcd openresolv
 rc-update add dbus default
 rc-update add iwd default
+rc-update add dhcpcd default
 ```
 
-`iwd` handles both association and DHCP — no `wpa_supplicant` or `dhcpcd` needed. Ethernet comes up via dhcpcd built into iwd; WiFi is configured with `iwctl` after first boot.
+`iwd` handles WiFi association and IP assignment (DHCP). `dhcpcd` handles wired ethernet. `openresolv` provides `resolvconf` for automatic DNS updates.
+
+Create `/etc/iwd/main.conf` to enable IP assignment and DNS integration:
+```
+mkdir -p /etc/iwd
+```
+```ini
+# /etc/iwd/main.conf
+[General]
+EnableNetworkConfiguration=true
+
+[Network]
+NameResolvingService=resolvconf
+```
+
+Without `EnableNetworkConfiguration=true`, `iwd` associates to WiFi but never assigns an IP address — the most common post-install networking failure.
 
 ### Exit chroot and reboot
 
@@ -279,63 +295,12 @@ sudo rc-service dbus start
 sudo rc-service iwd start
 ```
 
-#### Enable iwd network configuration (required for IP assignment)
-
-By default `iwd` associates to WiFi but does not configure IP addresses. Create `/etc/iwd/main.conf`:
-```
-sudo mkdir -p /etc/iwd
-sudo vim /etc/iwd/main.conf
-```
-```ini
-[General]
-EnableNetworkConfiguration=true
-```
-
-Restart `iwd` and reconnect:
-```
-sudo rc-service iwd restart
-iwctl station wlan0 disconnect
-iwctl station wlan0 connect YOUR_SSID
-```
-
-Set DNS manually until `openresolv` is installed:
-```
-echo "nameserver 8.8.8.8" > /etc/resolv.conf
-```
-
 Verify:
 ```
 ip addr show wlan0        # should show inet address
 ping -c 3 1.1.1.1         # tests IP routing
 ping -c 3 artixlinux.org  # tests DNS
 ```
-
-#### Install permanent network support
-
-Once online, install `dhcpcd` (for ethernet) and `openresolv` (for automatic DNS via `iwd`):
-```
-sudo pacman -S dhcpcd openresolv
-sudo rc-update add dhcpcd default
-sudo rc-service dhcpcd start
-```
-
-Then update `/etc/iwd/main.conf` to use `resolvconf` for DNS so
-`/etc/resolv.conf` is populated automatically on WiFi connect:
-```ini
-[General]
-EnableNetworkConfiguration=true
-
-[Network]
-NameResolvingService=resolvconf
-```
-
-Restart `iwd` once more to apply the DNS setting:
-```
-sudo rc-service iwd restart
-```
-
-After this, both ethernet (via `dhcpcd`) and WiFi (via `iwd`) will come up
-automatically on reboot with working DNS.
 
 ### Clone dotfiles
 
