@@ -436,3 +436,113 @@ X Protocol Version 11, Revision 0
 [2026-05-09 19:10:26] (II) systemd-logind: got pause for 13:64
 [2026-05-09 19:10:26] (II) systemd-logind: got pause for 13:68
 [2026-05-09 19:10:26] (II) systemd-logind: got pause for 13:71
+[2026-05-09 19:29:39] (II) systemd-logind: got resume for 226:1
+[2026-05-09 19:29:39] (II) AMDGPU(0): EDID vendor "LEN", prod id 16821
+[2026-05-09 19:29:39] (II) AMDGPU(0): Using EDID range info for horizontal sync
+[2026-05-09 19:29:39] (II) AMDGPU(0): Using EDID range info for vertical refresh
+[2026-05-09 19:29:39] (II) AMDGPU(0): Printing DDC gathered Modelines:
+[2026-05-09 19:29:39] (II) AMDGPU(0): Modeline "1920x1200"x0.00  157.50  1920 2028 2076 2120  1200 1210 1220 1238 +hsync -vsync (74.29 kHz eP)
+[2026-05-09 19:29:39] (II) systemd-logind: got resume for 13:69
+[2026-05-09 19:29:39] (II) event5  - ThinkPad Extra Buttons: is tagged by udev as: Keyboard Switch
+[2026-05-09 19:29:39] (II) event5  - ThinkPad Extra Buttons: device is a keyboard
+[2026-05-09 19:29:39] (II) systemd-logind: got resume for 13:66
+[2026-05-09 19:29:39] (II) event2  - Sleep Button: is tagged by udev as: Keyboard
+[2026-05-09 19:29:39] (II) event2  - Sleep Button: device is a keyboard
+[2026-05-09 19:29:39] (II) systemd-logind: got resume for 13:67
+[2026-05-09 19:29:39] (II) event3  - AT Translated Set 2 keyboard: is tagged by udev as: Keyboard
+[2026-05-09 19:29:39] (II) event3  - AT Translated Set 2 keyboard: device is a keyboard
+[2026-05-09 19:29:39] (II) systemd-logind: got resume for 13:76
+[2026-05-09 19:29:39] (II) event12 - TPPS/2 Elan TrackPoint: is tagged by udev as: Mouse Pointingstick
+[2026-05-09 19:29:39] (II) event12 - TPPS/2 Elan TrackPoint: device is a pointer
+[2026-05-09 19:29:39] (II) systemd-logind: got resume for 13:72
+[2026-05-09 19:29:39] (II) event8  - ELAN0688:00 04F3:320B Touchpad: is tagged by udev as: Touchpad
+[2026-05-09 19:29:39] (II) event8  - ELAN0688:00 04F3:320B Touchpad: device is a touchpad
+[2026-05-09 19:29:39] (II) systemd-logind: got resume for 13:64
+[2026-05-09 19:29:39] (II) event0  - Power Button: is tagged by udev as: Keyboard
+[2026-05-09 19:29:39] (II) event0  - Power Button: device is a keyboard
+[2026-05-09 19:29:39] (II) systemd-logind: got resume for 13:68
+[2026-05-09 19:29:39] (II) event4  - Video Bus: is tagged by udev as: Keyboard
+[2026-05-09 19:29:39] (II) event4  - Video Bus: device is a keyboard
+[2026-05-09 19:29:39] (II) systemd-logind: got resume for 13:71
+[2026-05-09 19:29:39] (II) event7  - ELAN0688:00 04F3:320B Mouse: is tagged by udev as: Mouse
+[2026-05-09 19:29:39] (II) event7  - ELAN0688:00 04F3:320B Mouse: device is a pointer
+[2026-05-09 19:29:42] (**) Option "fd" "32"
+[2026-05-09 19:29:42] (II) event4  - Video Bus: device removed
+[2026-05-09 19:29:42] (**) Option "fd" "33"
+[2026-05-09 19:29:42] (II) event7  - ELAN0688:00 04F3:320B Mouse: device removed
+[2026-05-09 19:29:42] (**) Option "fd" "30"
+[2026-05-09 19:29:42] (II) event8  - ELAN0688:00 04F3:320B Touchpad: device removed
+[2026-05-09 19:29:42] (**) Option "fd" "31"
+[2026-05-09 19:29:42] (II) event0  - Power Button: device removed
+[2026-05-09 19:29:42] (**) Option "fd" "25"
+[2026-05-09 19:29:42] (II) event2  - Sleep Button: device removed
+[2026-05-09 19:29:42] (**) Option "fd" "28"
+[2026-05-09 19:29:42] (II) event3  - AT Translated Set 2 keyboard: device removed
+[2026-05-09 19:29:42] (**) Option "fd" "29"
+[2026-05-09 19:29:42] (II) event12 - TPPS/2 Elan TrackPoint: device removed
+[2026-05-09 19:29:42] (**) Option "fd" "35"
+[2026-05-09 19:29:42] (II) event5  - ThinkPad Extra Buttons: device removed
+[2026-05-09 19:29:42] (II) systemd-logind: drop master for 226:1
+[2026-05-09 19:29:42] (II) systemd-logind: got pause for 13:69
+[2026-05-09 19:29:42] (II) systemd-logind: got pause for 13:66
+[2026-05-09 19:29:42] (II) systemd-logind: got pause for 13:67
+[2026-05-09 19:29:42] (II) systemd-logind: got pause for 13:76
+[2026-05-09 19:29:42] (II) systemd-logind: got pause for 13:72
+[2026-05-09 19:29:42] (II) systemd-logind: got pause for 13:64
+[2026-05-09 19:29:42] (II) systemd-logind: got pause for 13:68
+[2026-05-09 19:29:42] (II) systemd-logind: got pause for 13:71
+[2026-05-09 19:31:33] (II) systemd-logind: got resume for 226:1
+[2026-05-09 19:31:33] (II) AMDGPU(0): EDID vendor "LEN", prod id 16821
+[2026-05-09 19:31:33] (II) AMDGPU(0): Using hsync ranges from config file
+[2026-05-09 19:31:33] (II) AMDGPU(0): Using vrefresh ranges from config file
+[2026-05-09 19:31:33] (II) AMDGPU(0): Printing DDC gathered Modelines:
+[2026-05-09 19:31:33] (II) AMDGPU(0): Modeline "1920x1200"x0.00  157.50  1920 2028 2076 2120  1200 1210 1220 1238 +hsync -vsync (74.29 kHz eP)
+[2026-05-09 19:31:33] (II) systemd-logind: got resume for 13:69
+[2026-05-09 19:31:33] (II) event5  - ThinkPad Extra Buttons: is tagged by udev as: Keyboard Switch
+[2026-05-09 19:31:33] (II) event5  - ThinkPad Extra Buttons: device is a keyboard
+[2026-05-09 19:31:33] (II) systemd-logind: got resume for 13:66
+[2026-05-09 19:31:33] (II) event2  - Sleep Button: is tagged by udev as: Keyboard
+[2026-05-09 19:31:33] (II) event2  - Sleep Button: device is a keyboard
+[2026-05-09 19:31:33] (II) systemd-logind: got resume for 13:67
+[2026-05-09 19:31:33] (II) event3  - AT Translated Set 2 keyboard: is tagged by udev as: Keyboard
+[2026-05-09 19:31:33] (II) event3  - AT Translated Set 2 keyboard: device is a keyboard
+[2026-05-09 19:31:33] (II) systemd-logind: got resume for 13:76
+[2026-05-09 19:31:33] (II) event12 - TPPS/2 Elan TrackPoint: is tagged by udev as: Mouse Pointingstick
+[2026-05-09 19:31:33] (II) event12 - TPPS/2 Elan TrackPoint: device is a pointer
+[2026-05-09 19:31:33] (II) systemd-logind: got resume for 13:72
+[2026-05-09 19:31:33] (II) event8  - ELAN0688:00 04F3:320B Touchpad: is tagged by udev as: Touchpad
+[2026-05-09 19:31:33] (II) event8  - ELAN0688:00 04F3:320B Touchpad: device is a touchpad
+[2026-05-09 19:31:33] (II) systemd-logind: got resume for 13:64
+[2026-05-09 19:31:33] (II) event0  - Power Button: is tagged by udev as: Keyboard
+[2026-05-09 19:31:33] (II) event0  - Power Button: device is a keyboard
+[2026-05-09 19:31:33] (II) systemd-logind: got resume for 13:68
+[2026-05-09 19:31:33] (II) event4  - Video Bus: is tagged by udev as: Keyboard
+[2026-05-09 19:31:33] (II) event4  - Video Bus: device is a keyboard
+[2026-05-09 19:31:33] (II) systemd-logind: got resume for 13:71
+[2026-05-09 19:31:33] (II) event7  - ELAN0688:00 04F3:320B Mouse: is tagged by udev as: Mouse
+[2026-05-09 19:31:33] (II) event7  - ELAN0688:00 04F3:320B Mouse: device is a pointer
+[2026-05-09 19:31:37] (**) Option "fd" "32"
+[2026-05-09 19:31:37] (II) event4  - Video Bus: device removed
+[2026-05-09 19:31:37] (**) Option "fd" "33"
+[2026-05-09 19:31:37] (II) event7  - ELAN0688:00 04F3:320B Mouse: device removed
+[2026-05-09 19:31:37] (**) Option "fd" "30"
+[2026-05-09 19:31:37] (II) event8  - ELAN0688:00 04F3:320B Touchpad: device removed
+[2026-05-09 19:31:37] (**) Option "fd" "31"
+[2026-05-09 19:31:37] (II) event0  - Power Button: device removed
+[2026-05-09 19:31:37] (**) Option "fd" "25"
+[2026-05-09 19:31:37] (II) event2  - Sleep Button: device removed
+[2026-05-09 19:31:37] (**) Option "fd" "28"
+[2026-05-09 19:31:37] (II) event3  - AT Translated Set 2 keyboard: device removed
+[2026-05-09 19:31:37] (**) Option "fd" "29"
+[2026-05-09 19:31:37] (II) event12 - TPPS/2 Elan TrackPoint: device removed
+[2026-05-09 19:31:37] (**) Option "fd" "35"
+[2026-05-09 19:31:37] (II) event5  - ThinkPad Extra Buttons: device removed
+[2026-05-09 19:31:37] (II) systemd-logind: drop master for 226:1
+[2026-05-09 19:31:37] (II) systemd-logind: got pause for 13:69
+[2026-05-09 19:31:37] (II) systemd-logind: got pause for 13:66
+[2026-05-09 19:31:37] (II) systemd-logind: got pause for 13:67
+[2026-05-09 19:31:37] (II) systemd-logind: got pause for 13:76
+[2026-05-09 19:31:37] (II) systemd-logind: got pause for 13:72
+[2026-05-09 19:31:37] (II) systemd-logind: got pause for 13:64
+[2026-05-09 19:31:37] (II) systemd-logind: got pause for 13:68
+[2026-05-09 19:31:37] (II) systemd-logind: got pause for 13:71
