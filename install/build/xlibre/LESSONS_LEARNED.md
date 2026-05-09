@@ -9,35 +9,24 @@ sudo pacman -S xlibre-xserver xlibre-input-libinput
 
 ---
 
-## startx freeze — xterm starts but input dead (Artix OpenRC, AMD Radeon 780M)
+## startx freeze — xterm appears but system unresponsive (Artix OpenRC, AMD Radeon 780M, ThinkPad)
 
-**Setup:** `xorg-xinit` + `xterm` + `xlibre-xserver` + `xlibre-input-libinput` + `xlibre-video-amdgpu`; `~/.xinitrc` = `exec xterm`; ran `startx` — xterm window appeared but keyboard/mouse dead; could TTY-switch with `Ctrl+Alt+F2`.
+**Setup:** `xorg-xinit` + `xterm` + `xlibre-xserver` + `xlibre-input-libinput` + `xlibre-video-amdgpu`; `~/.xinitrc` = `exec xterm`; ran `startx` — xterm window appeared, could TTY-switch with `Ctrl+Alt+F2` (so kernel input alive), but X appeared frozen.
 
-**Confirmed not the cause:**
-- `xlibre-video-amdgpu` not installed (Xorg.0.log): modesetting driver used, still froze.
-- `xlibre-video-amdgpu` installed (Xorg.1.log): amdgpu driver used, glamoregl + OpenGL 4.6 working, still froze.
-- → Video driver is NOT the issue. X server renders fine. Freeze is **input-only**.
+**Confirmed NOT the cause:**
+- Video driver: modesetting and amdgpu both work; glamoregl + OpenGL 4.6 initialized fine.
+- Input driver: all devices registered correctly — keyboard (AT Translated Set 2), touchpad (ELAN0688), TrackPoint (TPPS/2), ThinkPad Extra Buttons all added to XINPUT. Adding user to `input` group made no difference.
+- udev service: `rc-service udev status` → started. Not the issue.
+- Fonts: empty FontPath (missing `fonts.dir`) was a red herring — installing `xorg-fonts-misc` + `xorg-mkfontscale` fixed font errors but freeze persists.
 
-**Root cause hypothesis:** `eudev` service not running → udev device enumeration fails → no input devices added to X.
+**Harmless errors in log (not the cause):**
+- `EE Failed to load module "ati"` — no xlibre-video-ati, not needed
+- `EE Failed to load module "fbdev"` / `"vesa"` — fallback drivers, not needed
+- `EE open /dev/dri/card0: No such file or directory` — AMD GPU is on card1, modesetting probes card0 first and fails gracefully; amdgpu uses card1 correctly
 
-Both logs show:
-```
-(II) The server relies on udev to provide the list of input devices.
-     If no devices become available, reconfigure udev or disable AutoAddDevices.
-```
+**Status: UNSOLVED** — X video and input both initialize correctly per logs, yet xterm is unresponsive.
 
-On Artix OpenRC, eudev must be running for X to detect `/dev/input` devices.
-
-**Diagnose:**
-```bash
-rc-service eudev status
-grep -i "input\|libinput\|device" ~/.local/share/xorg/Xorg.1.log | head -40
-libinput list-devices
-```
-
-**Fix if eudev not running:**
-```bash
-rc-update add eudev default
-rc-service eudev start
-startx
-```
+**Next steps to try:**
+- Run `X :1 vt2 -keeptty` bare (no xinitrc) — if cursor moves, X + input work and problem is xterm/xinitrc
+- Try `st` or `alacritty` instead of xterm to rule out xterm-specific hang
+- Check if xterm hangs on font lookup despite fonts installed: `xterm -fn fixed`
