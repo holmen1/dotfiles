@@ -1,106 +1,107 @@
-[2026-05-09 19:46:50] 
+[2026-05-09 20:08:33] 
 XLibre X Server 1.25.0
 X Protocol Version 11, Revision 0
-[2026-05-09 19:46:50] Current Operating System: Linux gadsden 7.0.3-artix1-2 #1 SMP PREEMPT_DYNAMIC Sat, 02 May 2026 00:51:14 +0000 x86_64
-[2026-05-09 19:46:50] Kernel command line: BOOT_IMAGE=/boot/vmlinuz-linux root=UUID=740223d7-6729-46a8-bf83-b68329a3e33b rw loglevel=3 quiet
-[2026-05-09 19:46:50]  
-[2026-05-09 19:46:50] Current version of pixman: 0.46.4
-[2026-05-09 19:46:50] 	Before reporting problems, check https://github.com/X11Libre/xserver
+[2026-05-09 20:08:33] Current Operating System: Linux gadsden 7.0.3-artix1-2 #1 SMP PREEMPT_DYNAMIC Sat, 02 May 2026 00:51:14 +0000 x86_64
+[2026-05-09 20:08:33] Kernel command line: BOOT_IMAGE=/boot/vmlinuz-linux root=UUID=740223d7-6729-46a8-bf83-b68329a3e33b rw loglevel=3 quiet
+[2026-05-09 20:08:33]  
+[2026-05-09 20:08:33] Current version of pixman: 0.46.4
+[2026-05-09 20:08:33] 	Before reporting problems, check https://github.com/X11Libre/xserver
 	to make sure that you have the latest version.
-[2026-05-09 19:46:50] Markers: (--) probed, (**) from config file, (==) default setting,
+[2026-05-09 20:08:33] Markers: (--) probed, (**) from config file, (==) default setting,
 	(++) from command line, (!!) notice, (II) informational,
 	(WW) warning, (EE) error, (NI) not implemented, (??) unknown.
-[2026-05-09 19:46:50] (==) Log file: "/home/holmen1/.local/share/xorg/Xorg.1.log", Time: Sat May  9 19:46:50 2026
-[2026-05-09 19:46:50] (==) Using system config directory "/usr/share/X11/xorg.conf.d"
-[2026-05-09 19:46:50] (==) No Layout section.  Using the first Screen section.
-[2026-05-09 19:46:50] (==) No screen section available. Using defaults.
-[2026-05-09 19:46:50] (**) |-->Screen "Default Screen Section" (0)
-[2026-05-09 19:46:50] (**) |   |-->Monitor "<default monitor>"
-[2026-05-09 19:46:50] (==) No monitor specified for screen "Default Screen Section".
+[2026-05-09 20:08:33] (==) Log file: "/home/holmen1/.local/share/xorg/Xorg.1.log", Time: Sat May  9 20:08:33 2026
+[2026-05-09 20:08:33] (==) Using system config directory "/usr/share/X11/xorg.conf.d"
+[2026-05-09 20:08:33] (==) No Layout section.  Using the first Screen section.
+[2026-05-09 20:08:33] (==) No screen section available. Using defaults.
+[2026-05-09 20:08:33] (**) |-->Screen "Default Screen Section" (0)
+[2026-05-09 20:08:33] (**) |   |-->Monitor "<default monitor>"
+[2026-05-09 20:08:33] (==) No monitor specified for screen "Default Screen Section".
 	Using a default monitor configuration.
-[2026-05-09 19:46:50] (==) Automatically adding devices
-[2026-05-09 19:46:50] (==) Automatically enabling devices
-[2026-05-09 19:46:50] (==) Automatically adding GPU devices
-[2026-05-09 19:46:50] (==) Automatically binding GPU devices
-[2026-05-09 19:46:50] (==) Max clients allowed: 256, resource mask: 0x1fffff
-[2026-05-09 19:46:50] (WW) `fonts.dir' not found (or not valid) in "/usr/share/fonts/misc".
-[2026-05-09 19:46:50] 	Entry deleted from font path.
-[2026-05-09 19:46:50] 	(Run 'mkfontdir' on "/usr/share/fonts/misc").
-[2026-05-09 19:46:50] (WW) `fonts.dir' not found (or not valid) in "/usr/share/fonts/TTF".
-[2026-05-09 19:46:50] 	Entry deleted from font path.
-[2026-05-09 19:46:50] 	(Run 'mkfontdir' on "/usr/share/fonts/TTF").
-[2026-05-09 19:46:50] (WW) `fonts.dir' not found (or not valid) in "/usr/share/fonts/OTF".
-[2026-05-09 19:46:50] 	Entry deleted from font path.
-[2026-05-09 19:46:50] 	(Run 'mkfontdir' on "/usr/share/fonts/OTF").
-[2026-05-09 19:46:50] (WW) The directory "/usr/share/fonts/Type1" does not exist.
-[2026-05-09 19:46:50] 	Entry deleted from font path.
-[2026-05-09 19:46:50] (WW) The directory "/usr/share/fonts/100dpi" does not exist.
-[2026-05-09 19:46:50] 	Entry deleted from font path.
-[2026-05-09 19:46:50] (WW) The directory "/usr/share/fonts/75dpi" does not exist.
-[2026-05-09 19:46:50] 	Entry deleted from font path.
-[2026-05-09 19:46:50] (==) FontPath set to:
+[2026-05-09 20:08:33] (==) Automatically adding devices
+[2026-05-09 20:08:33] (==) Automatically enabling devices
+[2026-05-09 20:08:33] (==) Automatically adding GPU devices
+[2026-05-09 20:08:33] (==) Automatically binding GPU devices
+[2026-05-09 20:08:33] (==) Max clients allowed: 256, resource mask: 0x1fffff
+[2026-05-09 20:08:33] (WW) `fonts.dir' not found (or not valid) in "/usr/share/fonts/misc".
+[2026-05-09 20:08:33] 	Entry deleted from font path.
+[2026-05-09 20:08:33] 	(Run 'mkfontdir' on "/usr/share/fonts/misc").
+[2026-05-09 20:08:33] (WW) `fonts.dir' not found (or not valid) in "/usr/share/fonts/TTF".
+[2026-05-09 20:08:33] 	Entry deleted from font path.
+[2026-05-09 20:08:33] 	(Run 'mkfontdir' on "/usr/share/fonts/TTF").
+[2026-05-09 20:08:33] (WW) `fonts.dir' not found (or not valid) in "/usr/share/fonts/OTF".
+[2026-05-09 20:08:33] 	Entry deleted from font path.
+[2026-05-09 20:08:33] 	(Run 'mkfontdir' on "/usr/share/fonts/OTF").
+[2026-05-09 20:08:33] (WW) The directory "/usr/share/fonts/Type1" does not exist.
+[2026-05-09 20:08:33] 	Entry deleted from font path.
+[2026-05-09 20:08:33] (WW) The directory "/usr/share/fonts/100dpi" does not exist.
+[2026-05-09 20:08:33] 	Entry deleted from font path.
+[2026-05-09 20:08:33] (WW) The directory "/usr/share/fonts/75dpi" does not exist.
+[2026-05-09 20:08:33] 	Entry deleted from font path.
+[2026-05-09 20:08:33] (==) FontPath set to:
 	
-[2026-05-09 19:46:50] (==) ModulePath set to "/usr/lib/xorg/modules"
-[2026-05-09 19:46:50] (II) The server relies on udev to provide the list of input devices.
+[2026-05-09 20:08:33] (==) ModulePath set to "/usr/lib/xorg/modules"
+[2026-05-09 20:08:33] (II) The server relies on udev to provide the list of input devices.
 	If no devices become available, reconfigure udev or disable AutoAddDevices.
-[2026-05-09 19:46:50] (II) Module ABI versions:
-[2026-05-09 19:46:50] 	X.Org ANSI C Emulation: 1.4
-[2026-05-09 19:46:50] 	X.Org Video Driver: 28.0
-[2026-05-09 19:46:50] 	X.Org XInput driver : 26.0
-[2026-05-09 19:46:50] 	X.Org Server Extension : 11.0
-[2026-05-09 19:46:50] (++) using VT number 8
+[2026-05-09 20:08:33] (II) Module ABI versions:
+[2026-05-09 20:08:33] 	X.Org ANSI C Emulation: 1.4
+[2026-05-09 20:08:33] 	X.Org Video Driver: 28.0
+[2026-05-09 20:08:33] 	X.Org XInput driver : 26.0
+[2026-05-09 20:08:33] 	X.Org Server Extension : 11.0
+[2026-05-09 20:08:33] (++) using VT number 8
 
-[2026-05-09 19:46:50] (II) systemd-logind: logind integration requires -keeptty and -keeptty was not provided, disabling logind integration
-[2026-05-09 19:46:50] (II) xfree86: Adding drm device (/dev/dri/card1)
-[2026-05-09 19:46:50] (II) Platform probe for /sys/devices/pci0000:00/0000:00:08.1/0000:64:00.0/drm/card1
-[2026-05-09 19:46:50] (--) PCI:*(100@0:0:0) 1002:15bf:17aa:50da rev 221, Mem @ 0x1c00000000/268435456, 0x78000000/2097152, 0x78500000/524288, I/O @ 0x1000/256
-[2026-05-09 19:46:50] (II) LoadModule: "glx"
-[2026-05-09 19:46:50] (II) Loading /usr/lib/xorg/modules/xlibre-25.0/extensions/libglx.so
-[2026-05-09 19:46:50] (II) Module glx: vendor="X.Org Foundation"
-[2026-05-09 19:46:50] 	compiled for 1.25.0, module version = 1.0.0
-[2026-05-09 19:46:50] 	ABI class: X.Org Server Extension, version 11.0
-[2026-05-09 19:46:50] (II) Applying OutputClass "AMDgpu" to /dev/dri/card1
-[2026-05-09 19:46:50] 	loading driver: amdgpu
-[2026-05-09 19:46:50] (==) Matched amdgpu as autoconfigured driver 0
-[2026-05-09 19:46:50] (==) Matched ati as autoconfigured driver 1
-[2026-05-09 19:46:50] (==) Matched modesetting as autoconfigured driver 2
-[2026-05-09 19:46:50] (==) Matched fbdev as autoconfigured driver 3
-[2026-05-09 19:46:50] (==) Matched vesa as autoconfigured driver 4
-[2026-05-09 19:46:50] (==) Assigned the driver to the xf86ConfigLayout
-[2026-05-09 19:46:50] (II) LoadModule: "amdgpu"
-[2026-05-09 19:46:50] (II) Loading /usr/lib/xorg/modules/xlibre-25/drivers/amdgpu_drv.so
-[2026-05-09 19:46:50] (II) Module amdgpu: vendor="X.Org Foundation"
-[2026-05-09 19:46:50] 	compiled for 1.25.0, module version = 25.1.1
-[2026-05-09 19:46:50] 	Module class: X.Org Video Driver
-[2026-05-09 19:46:50] 	ABI class: X.Org Video Driver, version 28.0
-[2026-05-09 19:46:50] (II) LoadModule: "ati"
-[2026-05-09 19:46:50] (WW) Warning, couldn't open module ati
-[2026-05-09 19:46:50] (EE) Failed to load module "ati" (module does not exist, 0)
-[2026-05-09 19:46:50] (II) LoadModule: "modesetting"
-[2026-05-09 19:46:50] (II) Loading /usr/lib/xorg/modules/xlibre-25.0/drivers/modesetting_drv.so
-[2026-05-09 19:46:50] (II) Module modesetting: vendor="X.Org Foundation"
-[2026-05-09 19:46:50] 	compiled for 1.25.0, module version = 1.25.0
-[2026-05-09 19:46:50] 	Module class: X.Org Video Driver
-[2026-05-09 19:46:50] 	ABI class: X.Org Video Driver, version 28.0
-[2026-05-09 19:46:50] (II) LoadModule: "fbdev"
-[2026-05-09 19:46:50] (WW) Warning, couldn't open module fbdev
-[2026-05-09 19:46:50] (EE) Failed to load module "fbdev" (module does not exist, 0)
-[2026-05-09 19:46:50] (II) LoadModule: "vesa"
-[2026-05-09 19:46:50] (WW) Warning, couldn't open module vesa
-[2026-05-09 19:46:50] (EE) Failed to load module "vesa" (module does not exist, 0)
-[2026-05-09 19:46:50] (II) AMDGPU: Driver for AMD Radeon:
+[2026-05-09 20:08:33] (II) systemd-logind: took control of session /org/freedesktop/login1/session/_32
+[2026-05-09 20:08:33] (II) xfree86: Adding drm device (/dev/dri/card1)
+[2026-05-09 20:08:33] (II) Platform probe for /sys/devices/pci0000:00/0000:00:08.1/0000:64:00.0/drm/card1
+[2026-05-09 20:08:33] (II) systemd-logind: got fd for /dev/dri/card1 226:1 fd 13 paused 0
+[2026-05-09 20:08:33] (--) PCI:*(100@0:0:0) 1002:15bf:17aa:50da rev 221, Mem @ 0x1c00000000/268435456, 0x78000000/2097152, 0x78500000/524288, I/O @ 0x1000/256
+[2026-05-09 20:08:33] (II) LoadModule: "glx"
+[2026-05-09 20:08:33] (II) Loading /usr/lib/xorg/modules/xlibre-25.0/extensions/libglx.so
+[2026-05-09 20:08:33] (II) Module glx: vendor="X.Org Foundation"
+[2026-05-09 20:08:33] 	compiled for 1.25.0, module version = 1.0.0
+[2026-05-09 20:08:33] 	ABI class: X.Org Server Extension, version 11.0
+[2026-05-09 20:08:33] (II) Applying OutputClass "AMDgpu" to /dev/dri/card1
+[2026-05-09 20:08:33] 	loading driver: amdgpu
+[2026-05-09 20:08:33] (==) Matched amdgpu as autoconfigured driver 0
+[2026-05-09 20:08:33] (==) Matched ati as autoconfigured driver 1
+[2026-05-09 20:08:33] (==) Matched modesetting as autoconfigured driver 2
+[2026-05-09 20:08:33] (==) Matched fbdev as autoconfigured driver 3
+[2026-05-09 20:08:33] (==) Matched vesa as autoconfigured driver 4
+[2026-05-09 20:08:33] (==) Assigned the driver to the xf86ConfigLayout
+[2026-05-09 20:08:33] (II) LoadModule: "amdgpu"
+[2026-05-09 20:08:33] (II) Loading /usr/lib/xorg/modules/xlibre-25/drivers/amdgpu_drv.so
+[2026-05-09 20:08:33] (II) Module amdgpu: vendor="X.Org Foundation"
+[2026-05-09 20:08:33] 	compiled for 1.25.0, module version = 25.1.1
+[2026-05-09 20:08:33] 	Module class: X.Org Video Driver
+[2026-05-09 20:08:33] 	ABI class: X.Org Video Driver, version 28.0
+[2026-05-09 20:08:33] (II) LoadModule: "ati"
+[2026-05-09 20:08:33] (WW) Warning, couldn't open module ati
+[2026-05-09 20:08:33] (EE) Failed to load module "ati" (module does not exist, 0)
+[2026-05-09 20:08:33] (II) LoadModule: "modesetting"
+[2026-05-09 20:08:33] (II) Loading /usr/lib/xorg/modules/xlibre-25.0/drivers/modesetting_drv.so
+[2026-05-09 20:08:33] (II) Module modesetting: vendor="X.Org Foundation"
+[2026-05-09 20:08:33] 	compiled for 1.25.0, module version = 1.25.0
+[2026-05-09 20:08:33] 	Module class: X.Org Video Driver
+[2026-05-09 20:08:33] 	ABI class: X.Org Video Driver, version 28.0
+[2026-05-09 20:08:33] (II) LoadModule: "fbdev"
+[2026-05-09 20:08:33] (WW) Warning, couldn't open module fbdev
+[2026-05-09 20:08:33] (EE) Failed to load module "fbdev" (module does not exist, 0)
+[2026-05-09 20:08:33] (II) LoadModule: "vesa"
+[2026-05-09 20:08:33] (WW) Warning, couldn't open module vesa
+[2026-05-09 20:08:33] (EE) Failed to load module "vesa" (module does not exist, 0)
+[2026-05-09 20:08:33] (II) AMDGPU: Driver for AMD Radeon:
 	All GPUs supported by the amdgpu kernel driver
-[2026-05-09 19:46:50] (II) modesetting: Driver for Modesetting Kernel Drivers: kms
-[2026-05-09 19:46:50] 
+[2026-05-09 20:08:33] (II) modesetting: Driver for Modesetting Kernel Drivers: kms
+[2026-05-09 20:08:33] 
 Fatal server error:
-[2026-05-09 19:46:50] xf86OpenConsole: Cannot open virtual console 8 (Permission denied)
-[2026-05-09 19:46:50] 
-[2026-05-09 19:46:50] 
+[2026-05-09 20:08:33] xf86OpenConsole: Cannot open virtual console 8 (Permission denied)
+[2026-05-09 20:08:33] 
+[2026-05-09 20:08:33] 
 Please consult the XLibre support 
 	 at https://github.com/X11Libre/xserver
  for help. 
-[2026-05-09 19:46:50] Please also check the log file at "/home/holmen1/.local/share/xorg/Xorg.1.log" for additional information.
-[2026-05-09 19:46:50] 
-[2026-05-09 19:46:50] (WW) xf86CloseConsole: KDSETMODE failed: Bad file descriptor
-[2026-05-09 19:46:50] (WW) xf86CloseConsole: VT_GETMODE failed: Bad file descriptor
-[2026-05-09 19:46:50] (EE) Server terminated with error (1). Closing log file.
+[2026-05-09 20:08:33] Please also check the log file at "/home/holmen1/.local/share/xorg/Xorg.1.log" for additional information.
+[2026-05-09 20:08:33] 
+[2026-05-09 20:08:33] (WW) xf86CloseConsole: KDSETMODE failed: Bad file descriptor
+[2026-05-09 20:08:33] (WW) xf86CloseConsole: VT_GETMODE failed: Bad file descriptor
+[2026-05-09 20:08:33] (EE) Server terminated with error (1). Closing log file.

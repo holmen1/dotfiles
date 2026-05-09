@@ -12,6 +12,7 @@ iwd-openrc
 less
 linux
 linux-firmware
+noto-fonts
 openrc
 openresolv
 openssh
@@ -19,5 +20,7 @@ vim
 xlibre-input-libinput
 xlibre-video-amdgpu
 xlibre-xserver
+xorg-font-util
+xorg-fonts-misc
 xorg-xinit
 xterm
