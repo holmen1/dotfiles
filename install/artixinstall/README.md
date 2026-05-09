@@ -340,21 +340,21 @@ git remote -v
 
 ### Install xlibre (before running install script)
 
-`xlibre-xserver` is in AUR and requires a bootstrap step to avoid conflicts with `xorg-server`. Do this manually before the install script, which cannot handle the required sequencing:
+`xlibre-xserver` and `xlibre-input-libinput` are in the Artix **world** repository — install directly with pacman, no AUR or yay needed:
 
 ```
-yay -S xlibre-xserver-bootstrap    # provides xorg-server, satisfies deps
-yay -S xlibre-input-libinput
-yay -S xlibre-xserver              # replaces bootstrap; confirm removal when prompted
+sudo pacman -S xlibre-xserver xlibre-input-libinput
 ```
 
-Verify no stale xorg packages remain:
+Pacman will handle the conflict with `xorg-server` automatically.
+
+Verify:
 ```
 pacman -Q | grep 'xorg-server\|xf86-'
 pacman -Q | grep 'xlibre-'
 ```
 
-The install script's `foreignpkglist.txt` lists `xlibre-xserver` and `xlibre-input-libinput` — yay will skip them as already installed.
+The install script's `pkglist.txt` lists `xlibre-xserver` and `xlibre-input-libinput` — pacman will skip them as already installed.
 
 ### Run install script
 
