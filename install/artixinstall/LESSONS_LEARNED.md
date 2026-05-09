@@ -13,19 +13,40 @@
 - No `hostnamectl` — use `hostname -s` or `/etc/hostname`
 - No `systemctl --user` — user-level daemons need another approach (e.g. supervise-daemon, user openrc session)
 
-## Recovery (chroot from ISO to fix installed system)
+## Networking
+- `iwd` associates to WiFi but **does not assign an IP by default** — requires `EnableNetworkConfiguration=true` in `/etc/iwd/main.conf`
+- `iwd`'s default DNS target is `systemd-resolved` (wrong for OpenRC) — set `NameResolvingService=resolvconf` and install `openresolv`
+- `iwd` only manages WiFi interfaces; wired ethernet needs `dhcpcd`
+- `dhcpcd` manages **all** interfaces by default — add `denyinterfaces wlan*` to `/etc/dhcpcd.conf` or it will conflict with iwd's DHCP on `wlan0` (WiFi drops after ethernet disconnect)
+- Full working `/etc/iwd/main.conf`:
+  ```ini
+  [General]
+  EnableNetworkConfiguration=true
+
+  [Network]
+  NameResolvingService=resolvconf
+  ```
+
+### Get ethernet working post-install (no chroot needed)
+If already booted with WiFi working (iwd running with `EnableNetworkConfiguration=true`):
+```
+sudo pacman -S dhcpcd dhcpcd-openrc openresolv
+sudo rc-update add dhcpcd default
+sudo rc-service dhcpcd start
+# eth0 should get an IP immediately
+```
+Then update `/etc/iwd/main.conf` to add `NameResolvingService=resolvconf` and restart iwd for permanent DNS.
+
+## Recovery (chroot from ISO — last resort only)
+- Prefer fixing on the live system when possible (e.g. `sudo pacman -S <missing-pkg>` over WiFi)
+- Use chroot only when the live system can't boot or has no network at all
 - Only mount root (`/mnt`)
-- `dhcpcd` was missing from basestrap; ethernet didn't work after first boot — added to basestrap and README
 - Minimal chroot repair:
   ```
   mount /dev/nvme0n1p3 /mnt
   artix-chroot /mnt
   pacman -S <missing-pkg>
   exit && reboot
-  ```
-  then run
-  ```
-  dhcpcd
   ```
 
 ## Package strategy

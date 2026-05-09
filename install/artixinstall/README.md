@@ -230,7 +230,7 @@ Configure `/etc/hosts`:
 
 Install `iwd`, D-Bus, and network support packages, then enable them at boot:
 ```
-pacman -S iwd-openrc dbus-openrc dhcpcd openresolv
+pacman -S iwd-openrc dbus-openrc dhcpcd dhcpcd-openrc openresolv
 rc-update add dbus default
 rc-update add iwd default
 rc-update add dhcpcd default
@@ -252,6 +252,11 @@ NameResolvingService=resolvconf
 ```
 
 Without `EnableNetworkConfiguration=true`, `iwd` associates to WiFi but never assigns an IP address — the most common post-install networking failure.
+
+Prevent `dhcpcd` from interfering with `wlan0` (iwd manages WiFi DHCP itself):
+```
+echo "denyinterfaces wlan*" >> /etc/dhcpcd.conf
+```
 
 ### Exit chroot and reboot
 
