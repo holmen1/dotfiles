@@ -85,10 +85,10 @@ mkfs.ext4 -L ROOT /dev/nvme0n1p3         # root
 ### Mount
 
 ```
-swapon /dev/disc/by-label/SWAP
-mount /dev/disc/by-label/ROOT /mnt
+swapon /dev/disk/by-label/SWAP
+mount /dev/disk/by-label/ROOT /mnt
 mkdir -p /mnt/boot/efi
-mount /dev/disc/by-label/BOOT /mnt/boot/efi
+mount /dev/disk/by-label/ESP /mnt/boot/efi
 ```
 
 Verify:
