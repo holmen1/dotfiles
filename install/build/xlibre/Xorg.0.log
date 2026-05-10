@@ -1,434 +1,584 @@
-[2026-05-09 20:34:57] 
+[2026-05-10 10:43:47] 
 XLibre X Server 1.25.0
 X Protocol Version 11, Revision 0
-[2026-05-09 20:34:57] Current Operating System: Linux gadsden 7.0.3-artix1-2 #1 SMP PREEMPT_DYNAMIC Sat, 02 May 2026 00:51:14 +0000 x86_64
-[2026-05-09 20:34:57] Kernel command line: BOOT_IMAGE=/boot/vmlinuz-linux root=UUID=740223d7-6729-46a8-bf83-b68329a3e33b rw loglevel=3 quiet
-[2026-05-09 20:34:57]  
-[2026-05-09 20:34:57] Current version of pixman: 0.46.4
-[2026-05-09 20:34:57] 	Before reporting problems, check https://github.com/X11Libre/xserver
+[2026-05-10 10:43:47] Current Operating System: Linux gadsden 7.0.3-artix1-2 #1 SMP PREEMPT_DYNAMIC Sat, 02 May 2026 00:51:14 +0000 x86_64
+[2026-05-10 10:43:47] Kernel command line: BOOT_IMAGE=/boot/vmlinuz-linux root=UUID=740223d7-6729-46a8-bf83-b68329a3e33b rw loglevel=3 quiet
+[2026-05-10 10:43:47]  
+[2026-05-10 10:43:47] Current version of pixman: 0.46.4
+[2026-05-10 10:43:47] 	Before reporting problems, check https://github.com/X11Libre/xserver
 	to make sure that you have the latest version.
-[2026-05-09 20:34:57] Markers: (--) probed, (**) from config file, (==) default setting,
+[2026-05-10 10:43:47] Markers: (--) probed, (**) from config file, (==) default setting,
 	(++) from command line, (!!) notice, (II) informational,
 	(WW) warning, (EE) error, (NI) not implemented, (??) unknown.
-[2026-05-09 20:34:57] (==) Log file: "/home/holmen1/.local/share/xorg/Xorg.0.log", Time: Sat May  9 20:34:57 2026
-[2026-05-09 20:34:57] (==) Using system config directory "/usr/share/X11/xorg.conf.d"
-[2026-05-09 20:34:57] (==) No Layout section.  Using the first Screen section.
-[2026-05-09 20:34:57] (==) No screen section available. Using defaults.
-[2026-05-09 20:34:57] (**) |-->Screen "Default Screen Section" (0)
-[2026-05-09 20:34:57] (**) |   |-->Monitor "<default monitor>"
-[2026-05-09 20:34:57] (==) No monitor specified for screen "Default Screen Section".
+[2026-05-10 10:43:47] (==) Log file: "/home/holmen1/.local/share/xorg/Xorg.0.log", Time: Sun May 10 10:43:47 2026
+[2026-05-10 10:43:47] (==) Using system config directory "/usr/share/X11/xorg.conf.d"
+[2026-05-10 10:43:47] (==) No Layout section.  Using the first Screen section.
+[2026-05-10 10:43:47] (==) No screen section available. Using defaults.
+[2026-05-10 10:43:47] (**) |-->Screen "Default Screen Section" (0)
+[2026-05-10 10:43:47] (**) |   |-->Monitor "<default monitor>"
+[2026-05-10 10:43:47] (==) No monitor specified for screen "Default Screen Section".
 	Using a default monitor configuration.
-[2026-05-09 20:34:57] (==) Automatically adding devices
-[2026-05-09 20:34:57] (==) Automatically enabling devices
-[2026-05-09 20:34:57] (==) Automatically adding GPU devices
-[2026-05-09 20:34:57] (==) Automatically binding GPU devices
-[2026-05-09 20:34:57] (==) Max clients allowed: 256, resource mask: 0x1fffff
-[2026-05-09 20:34:57] (WW) The directory "/usr/share/fonts/Type1" does not exist.
-[2026-05-09 20:34:57] 	Entry deleted from font path.
-[2026-05-09 20:34:57] (WW) The directory "/usr/share/fonts/100dpi" does not exist.
-[2026-05-09 20:34:57] 	Entry deleted from font path.
-[2026-05-09 20:34:57] (WW) The directory "/usr/share/fonts/75dpi" does not exist.
-[2026-05-09 20:34:57] 	Entry deleted from font path.
-[2026-05-09 20:34:57] (==) FontPath set to:
+[2026-05-10 10:43:47] (==) Automatically adding devices
+[2026-05-10 10:43:47] (==) Automatically enabling devices
+[2026-05-10 10:43:47] (==) Automatically adding GPU devices
+[2026-05-10 10:43:47] (==) Automatically binding GPU devices
+[2026-05-10 10:43:47] (==) Max clients allowed: 256, resource mask: 0x1fffff
+[2026-05-10 10:43:47] (WW) The directory "/usr/share/fonts/Type1" does not exist.
+[2026-05-10 10:43:47] 	Entry deleted from font path.
+[2026-05-10 10:43:47] (WW) The directory "/usr/share/fonts/100dpi" does not exist.
+[2026-05-10 10:43:47] 	Entry deleted from font path.
+[2026-05-10 10:43:47] (WW) The directory "/usr/share/fonts/75dpi" does not exist.
+[2026-05-10 10:43:47] 	Entry deleted from font path.
+[2026-05-10 10:43:47] (==) FontPath set to:
 	/usr/share/fonts/misc,
 	/usr/share/fonts/TTF,
 	/usr/share/fonts/OTF
-[2026-05-09 20:34:57] (==) ModulePath set to "/usr/lib/xorg/modules"
-[2026-05-09 20:34:57] (II) The server relies on udev to provide the list of input devices.
+[2026-05-10 10:43:47] (==) ModulePath set to "/usr/lib/xorg/modules"
+[2026-05-10 10:43:47] (II) The server relies on udev to provide the list of input devices.
 	If no devices become available, reconfigure udev or disable AutoAddDevices.
-[2026-05-09 20:34:57] (II) Module ABI versions:
-[2026-05-09 20:34:57] 	X.Org ANSI C Emulation: 1.4
-[2026-05-09 20:34:57] 	X.Org Video Driver: 28.0
-[2026-05-09 20:34:57] 	X.Org XInput driver : 26.0
-[2026-05-09 20:34:57] 	X.Org Server Extension : 11.0
-[2026-05-09 20:34:57] (++) using VT number 1
+[2026-05-10 10:43:47] (II) Module ABI versions:
+[2026-05-10 10:43:47] 	X.Org ANSI C Emulation: 1.4
+[2026-05-10 10:43:47] 	X.Org Video Driver: 28.0
+[2026-05-10 10:43:47] 	X.Org XInput driver : 26.0
+[2026-05-10 10:43:47] 	X.Org Server Extension : 11.0
+[2026-05-10 10:43:47] (++) using VT number 1
 
-[2026-05-09 20:34:57] (II) systemd-logind: took control of session /org/freedesktop/login1/session/_31
-[2026-05-09 20:34:57] (II) xfree86: Adding drm device (/dev/dri/card1)
-[2026-05-09 20:34:57] (II) Platform probe for /sys/devices/pci0000:00/0000:00:08.1/0000:64:00.0/drm/card1
-[2026-05-09 20:34:57] (II) systemd-logind: got fd for /dev/dri/card1 226:1 fd 13 paused 0
-[2026-05-09 20:34:57] (--) PCI:*(100@0:0:0) 1002:15bf:17aa:50da rev 221, Mem @ 0x1c00000000/268435456, 0x78000000/2097152, 0x78500000/524288, I/O @ 0x1000/256
-[2026-05-09 20:34:57] (II) LoadModule: "glx"
-[2026-05-09 20:34:57] (II) Loading /usr/lib/xorg/modules/xlibre-25.0/extensions/libglx.so
-[2026-05-09 20:34:57] (II) Module glx: vendor="X.Org Foundation"
-[2026-05-09 20:34:57] 	compiled for 1.25.0, module version = 1.0.0
-[2026-05-09 20:34:57] 	ABI class: X.Org Server Extension, version 11.0
-[2026-05-09 20:34:57] (II) Applying OutputClass "AMDgpu" to /dev/dri/card1
-[2026-05-09 20:34:57] 	loading driver: amdgpu
-[2026-05-09 20:34:57] (==) Matched amdgpu as autoconfigured driver 0
-[2026-05-09 20:34:57] (==) Matched ati as autoconfigured driver 1
-[2026-05-09 20:34:57] (==) Matched modesetting as autoconfigured driver 2
-[2026-05-09 20:34:57] (==) Matched fbdev as autoconfigured driver 3
-[2026-05-09 20:34:57] (==) Matched vesa as autoconfigured driver 4
-[2026-05-09 20:34:57] (==) Assigned the driver to the xf86ConfigLayout
-[2026-05-09 20:34:57] (II) LoadModule: "amdgpu"
-[2026-05-09 20:34:57] (II) Loading /usr/lib/xorg/modules/xlibre-25/drivers/amdgpu_drv.so
-[2026-05-09 20:34:57] (II) Module amdgpu: vendor="X.Org Foundation"
-[2026-05-09 20:34:57] 	compiled for 1.25.0, module version = 25.1.1
-[2026-05-09 20:34:57] 	Module class: X.Org Video Driver
-[2026-05-09 20:34:57] 	ABI class: X.Org Video Driver, version 28.0
-[2026-05-09 20:34:57] (II) LoadModule: "ati"
-[2026-05-09 20:34:57] (WW) Warning, couldn't open module ati
-[2026-05-09 20:34:57] (EE) Failed to load module "ati" (module does not exist, 0)
-[2026-05-09 20:34:57] (II) LoadModule: "modesetting"
-[2026-05-09 20:34:57] (II) Loading /usr/lib/xorg/modules/xlibre-25.0/drivers/modesetting_drv.so
-[2026-05-09 20:34:57] (II) Module modesetting: vendor="X.Org Foundation"
-[2026-05-09 20:34:57] 	compiled for 1.25.0, module version = 1.25.0
-[2026-05-09 20:34:57] 	Module class: X.Org Video Driver
-[2026-05-09 20:34:57] 	ABI class: X.Org Video Driver, version 28.0
-[2026-05-09 20:34:57] (II) LoadModule: "fbdev"
-[2026-05-09 20:34:57] (WW) Warning, couldn't open module fbdev
-[2026-05-09 20:34:57] (EE) Failed to load module "fbdev" (module does not exist, 0)
-[2026-05-09 20:34:57] (II) LoadModule: "vesa"
-[2026-05-09 20:34:57] (WW) Warning, couldn't open module vesa
-[2026-05-09 20:34:57] (EE) Failed to load module "vesa" (module does not exist, 0)
-[2026-05-09 20:34:57] (II) AMDGPU: Driver for AMD Radeon:
-	All GPUs supported by the amdgpu kernel driver
-[2026-05-09 20:34:57] (II) modesetting: Driver for Modesetting Kernel Drivers: kms
-[2026-05-09 20:34:57] (WW) Falling back to old probe method for modesetting
-[2026-05-09 20:34:57] (EE) open /dev/dri/card0: No such file or directory
-[2026-05-09 20:34:57] (WW) VGA arbiter: cannot open kernel arbiter, no multi-card support
-[2026-05-09 20:34:57] (II) AMDGPU(0): Creating default Display subsection in Screen section
+[2026-05-10 10:43:47] (II) systemd-logind: took control of session /org/freedesktop/login1/session/_31
+[2026-05-10 10:43:47] (II) xfree86: Adding drm device (/dev/dri/card1)
+[2026-05-10 10:43:47] (II) Platform probe for /sys/devices/pci0000:00/0000:00:08.1/0000:64:00.0/drm/card1
+[2026-05-10 10:43:47] (II) systemd-logind: got fd for /dev/dri/card1 226:1 fd 13 paused 0
+[2026-05-10 10:43:47] (--) PCI:*(100@0:0:0) 1002:15bf:17aa:50da rev 221, Mem @ 0x1c00000000/268435456, 0x78000000/2097152, 0x78500000/524288, I/O @ 0x1000/256
+[2026-05-10 10:43:47] (II) LoadModule: "glx"
+[2026-05-10 10:43:47] (II) Loading /usr/lib/xorg/modules/xlibre-25.0/extensions/libglx.so
+[2026-05-10 10:43:47] (II) Module glx: vendor="X.Org Foundation"
+[2026-05-10 10:43:47] 	compiled for 1.25.0, module version = 1.0.0
+[2026-05-10 10:43:47] 	ABI class: X.Org Server Extension, version 11.0
+[2026-05-10 10:43:47] (==) Matched ati as autoconfigured driver 0
+[2026-05-10 10:43:47] (==) Matched modesetting as autoconfigured driver 1
+[2026-05-10 10:43:47] (==) Matched fbdev as autoconfigured driver 2
+[2026-05-10 10:43:47] (==) Matched vesa as autoconfigured driver 3
+[2026-05-10 10:43:47] (==) Assigned the driver to the xf86ConfigLayout
+[2026-05-10 10:43:47] (II) LoadModule: "ati"
+[2026-05-10 10:43:47] (II) Loading /usr/lib/xorg/modules/xlibre-25.0/drivers/ati_drv.so
+[2026-05-10 10:43:47] (II) Module ati: vendor="X.Org Foundation"
+[2026-05-10 10:43:47] 	compiled for 1.25.0, module version = 25.0.1
+[2026-05-10 10:43:47] 	Module class: X.Org Video Driver
+[2026-05-10 10:43:47] 	ABI class: X.Org Video Driver, version 28.0
+[2026-05-10 10:43:48] (II) LoadModule: "radeon"
+[2026-05-10 10:43:48] (II) Loading /usr/lib/xorg/modules/xlibre-25.0/drivers/radeon_drv.so
+[2026-05-10 10:43:48] (II) Module radeon: vendor="X.Org Foundation"
+[2026-05-10 10:43:48] 	compiled for 1.25.0, module version = 25.0.1
+[2026-05-10 10:43:48] 	Module class: X.Org Video Driver
+[2026-05-10 10:43:48] 	ABI class: X.Org Video Driver, version 28.0
+[2026-05-10 10:43:48] (II) LoadModule: "modesetting"
+[2026-05-10 10:43:48] (II) Loading /usr/lib/xorg/modules/xlibre-25.0/drivers/modesetting_drv.so
+[2026-05-10 10:43:48] (II) Module modesetting: vendor="X.Org Foundation"
+[2026-05-10 10:43:48] 	compiled for 1.25.0, module version = 1.25.0
+[2026-05-10 10:43:48] 	Module class: X.Org Video Driver
+[2026-05-10 10:43:48] 	ABI class: X.Org Video Driver, version 28.0
+[2026-05-10 10:43:48] (II) LoadModule: "fbdev"
+[2026-05-10 10:43:48] (II) Loading /usr/lib/xorg/modules/xlibre-25/drivers/fbdev_drv.so
+[2026-05-10 10:43:48] (II) Module fbdev: vendor="X.Org Foundation"
+[2026-05-10 10:43:48] 	compiled for 1.25.1, module version = 25.0.0
+[2026-05-10 10:43:48] 	Module class: X.Org Video Driver
+[2026-05-10 10:43:48] 	ABI class: X.Org Video Driver, version 28.1
+[2026-05-10 10:43:48] (EE) fbdev: module ABI minor version (1) is newer than the server's version (0)
+[2026-05-10 10:43:48] (EE) Failed to load module "fbdev" (module requirement mismatch, 0)
+[2026-05-10 10:43:48] (II) LoadModule: "vesa"
+[2026-05-10 10:43:48] (II) Loading /usr/lib/xorg/modules/xlibre-25/drivers/vesa_drv.so
+[2026-05-10 10:43:48] (II) Module vesa: vendor="X.Org Foundation"
+[2026-05-10 10:43:48] 	compiled for 1.25.1, module version = 25.0.0
+[2026-05-10 10:43:48] 	Module class: X.Org Video Driver
+[2026-05-10 10:43:48] 	ABI class: X.Org Video Driver, version 28.1
+[2026-05-10 10:43:48] (EE) vesa: module ABI minor version (1) is newer than the server's version (0)
+[2026-05-10 10:43:48] (EE) Failed to load module "vesa" (module requirement mismatch, 0)
+[2026-05-10 10:43:48] (II) RADEON: Driver for ATI/AMD Radeon chipsets:
+	ATI Radeon Mobility X600 (M24), ATI FireMV 2400,
+	ATI Radeon Mobility X300 (M24), ATI FireGL M24 GL,
+	ATI Radeon X600 (RV380), ATI FireGL V3200 (RV380),
+	ATI Radeon IGP320 (A3), ATI Radeon IGP330/340/350 (A4),
+	ATI Radeon 9500, ATI Radeon 9600TX, ATI FireGL Z1, ATI Radeon 9800SE,
+	ATI Radeon 9800, ATI FireGL X2, ATI Radeon 9600, ATI Radeon 9600SE,
+	ATI Radeon 9600XT, ATI FireGL T2, ATI Radeon 9650, ATI FireGL RV360,
+	ATI Radeon 7000 IGP (A4+), ATI Radeon 8500 AIW,
+	ATI Radeon IGP320M (U1), ATI Radeon IGP330M/340M/350M (U2),
+	ATI Radeon Mobility 7000 IGP, ATI Radeon 9000/PRO, ATI Radeon 9000,
+	ATI Radeon X800 (R420), ATI Radeon X800PRO (R420),
+	ATI Radeon X800SE (R420), ATI FireGL X3 (R420),
+	ATI Radeon Mobility 9800 (M18), ATI Radeon X800 SE (R420),
+	ATI Radeon X800XT (R420), ATI Radeon X800 VE (R420),
+	ATI Radeon X850 (R480), ATI Radeon X850 XT (R480),
+	ATI Radeon X850 SE (R480), ATI Radeon X850 PRO (R480),
+	ATI Radeon X850 XT PE (R480), ATI Radeon Mobility M7,
+	ATI Mobility FireGL 7800 M7, ATI Radeon Mobility M6,
+	ATI FireGL Mobility 9000 (M9), ATI Radeon Mobility 9000 (M9),
+	ATI Radeon 9700 Pro, ATI Radeon 9700/9500Pro, ATI FireGL X1,
+	ATI Radeon 9800PRO, ATI Radeon 9800XT,
+	ATI Radeon Mobility 9600/9700 (M10/M11),
+	ATI Radeon Mobility 9600 (M10), ATI Radeon Mobility 9600 (M11),
+	ATI FireGL Mobility T2 (M10), ATI FireGL Mobility T2e (M11),
+	ATI Radeon, ATI FireGL 8700/8800, ATI Radeon 8500, ATI Radeon 9100,
+	ATI Radeon 7500, ATI Radeon VE/7000, ATI ES1000,
+	ATI Radeon Mobility X300 (M22), ATI Radeon Mobility X600 SE (M24C),
+	ATI FireGL M22 GL, ATI Radeon X800 (R423), ATI Radeon X800PRO (R423),
+	ATI Radeon X800LE (R423), ATI Radeon X800SE (R423),
+	ATI Radeon X800 XTP (R430), ATI Radeon X800 XL (R430),
+	ATI Radeon X800 SE (R430), ATI Radeon X800 (R430),
+	ATI FireGL V7100 (R423), ATI FireGL V5100 (R423),
+	ATI FireGL unknown (R423), ATI Mobility FireGL V5000 (M26),
+	ATI Mobility Radeon X700 XL (M26), ATI Mobility Radeon X700 (M26),
+	ATI Radeon X550XTX, ATI Radeon 9100 IGP (A5),
+	ATI Radeon Mobility 9100 IGP (U3), ATI Radeon XPRESS 200,
+	ATI Radeon XPRESS 200M, ATI Radeon 9250, ATI Radeon 9200,
+	ATI Radeon 9200SE, ATI FireMV 2200, ATI Radeon X300 (RV370),
+	ATI Radeon X600 (RV370), ATI Radeon X550 (RV370),
+	ATI FireGL V3100 (RV370), ATI FireMV 2200 PCIE (RV370),
+	ATI Radeon Mobility 9200 (M9+), ATI Mobility Radeon X800 XT (M28),
+	ATI Mobility FireGL V5100 (M28), ATI Mobility Radeon X800 (M28),
+	ATI Radeon X850, ATI unknown Radeon / FireGL (R480),
+	ATI Radeon X800XT (R423), ATI FireGL V5000 (RV410),
+	ATI Radeon X700 XT (RV410), ATI Radeon X700 PRO (RV410),
+	ATI Radeon X700 SE (RV410), ATI Radeon X700 (RV410),
+	ATI Radeon X1800, ATI Mobility Radeon X1800 XT,
+	ATI Mobility Radeon X1800, ATI Mobility FireGL V7200,
+	ATI FireGL V7200, ATI FireGL V5300, ATI Mobility FireGL V7100,
+	ATI FireGL V7300, ATI FireGL V7350, ATI Radeon X1600, ATI RV505,
+	ATI Radeon X1300/X1550, ATI Radeon X1550, ATI M54-GL,
+	ATI Mobility Radeon X1400, ATI Radeon X1550 64-bit,
+	ATI Mobility Radeon X1300, ATI Radeon X1300, ATI FireGL V3300,
+	ATI FireGL V3350, ATI Mobility Radeon X1450,
+	ATI Mobility Radeon X2300, ATI Mobility Radeon X1350,
+	ATI FireMV 2250, ATI Radeon X1650, ATI Mobility FireGL V5200,
+	ATI Mobility Radeon X1600, ATI Radeon X1300 XT/X1600 Pro,
+	ATI FireGL V3400, ATI Mobility FireGL V5250,
+	ATI Mobility Radeon X1700, ATI Mobility Radeon X1700 XT,
+	ATI FireGL V5200, ATI Radeon X2300HD, ATI Mobility Radeon HD 2300,
+	ATI Radeon X1950, ATI Radeon X1900, ATI AMD Stream Processor,
+	ATI RV560, ATI Mobility Radeon X1900, ATI Radeon X1950 GT, ATI RV570,
+	ATI FireGL V7400, ATI Radeon 9100 PRO IGP,
+	ATI Radeon Mobility 9200 IGP, ATI Radeon X1200, ATI RS740,
+	ATI RS740M, ATI Radeon HD 2900 XT, ATI Radeon HD 2900 Pro,
+	ATI Radeon HD 2900 GT, ATI FireGL V8650, ATI FireGL V8600,
+	ATI FireGL V7600, ATI Radeon 4800 Series, ATI Radeon HD 4870 x2,
+	ATI Radeon HD 4850 x2, ATI FirePro V8750 (FireGL),
+	ATI FirePro V7760 (FireGL), ATI Mobility RADEON HD 4850,
+	ATI Mobility RADEON HD 4850 X2, ATI FirePro RV770,
+	AMD FireStream 9270, AMD FireStream 9250, ATI FirePro V8700 (FireGL),
+	ATI Mobility RADEON HD 4870, ATI Mobility RADEON M98,
+	ATI FirePro M7750, ATI M98, ATI Mobility Radeon HD 4650,
+	ATI Radeon RV730 (AGP), ATI Mobility Radeon HD 4670,
+	ATI FirePro M5750, ATI RV730XT [Radeon HD 4670], ATI RADEON E4600,
+	ATI Radeon HD 4600 Series, ATI RV730 PRO [Radeon HD 4650],
+	ATI FirePro V7750 (FireGL), ATI FirePro V5700 (FireGL),
+	ATI FirePro V3750 (FireGL), ATI Mobility Radeon HD 4830,
+	ATI Mobility Radeon HD 4850, ATI FirePro M7740, ATI RV740,
+	ATI Radeon HD 4770, ATI Radeon HD 4700 Series, ATI RV610,
+	ATI Radeon HD 2400 XT, ATI Radeon HD 2400 Pro,
+	ATI Radeon HD 2400 PRO AGP, ATI FireGL V4000, ATI Radeon HD 2350,
+	ATI Mobility Radeon HD 2400 XT, ATI Mobility Radeon HD 2400,
+	ATI RADEON E2400, ATI FireMV 2260, ATI RV670, ATI Radeon HD3870,
+	ATI Mobility Radeon HD 3850, ATI Radeon HD3850,
+	ATI Mobility Radeon HD 3850 X2, ATI Mobility Radeon HD 3870,
+	ATI Mobility Radeon HD 3870 X2, ATI Radeon HD3870 X2,
+	ATI FireGL V7700, ATI Radeon HD3690, AMD Firestream 9170,
+	ATI Radeon HD 4550, ATI Radeon RV710, ATI Radeon HD 4350,
+	ATI Mobility Radeon 4300 Series, ATI Mobility Radeon 4500 Series,
+	ATI FirePro RG220, ATI Mobility Radeon 4330, ATI RV630,
+	ATI Mobility Radeon HD 2600, ATI Mobility Radeon HD 2600 XT,
+	ATI Radeon HD 2600 XT AGP, ATI Radeon HD 2600 Pro AGP,
+	ATI Radeon HD 2600 XT, ATI Radeon HD 2600 Pro, ATI Gemini RV630,
+	ATI Gemini Mobility Radeon HD 2600 XT, ATI FireGL V5600,
+	ATI FireGL V3600, ATI Radeon HD 2600 LE,
+	ATI Mobility FireGL Graphics Processor, ATI Radeon HD 3470,
+	ATI Mobility Radeon HD 3430, ATI Mobility Radeon HD 3400 Series,
+	ATI Radeon HD 3450, ATI Radeon HD 3430, ATI FirePro V3700,
+	ATI FireMV 2450, ATI Radeon HD 3600 Series, ATI Radeon HD 3650 AGP,
+	ATI Radeon HD 3600 PRO, ATI Radeon HD 3600 XT,
+	ATI Mobility Radeon HD 3650, ATI Mobility Radeon HD 3670,
+	ATI Mobility FireGL V5700, ATI Mobility FireGL V5725,
+	ATI Radeon HD 3200 Graphics, ATI Radeon 3100 Graphics,
+	ATI Radeon HD 3300 Graphics, ATI Radeon 3000 Graphics, SUMO, SUMO2,
+	ATI Radeon HD 4200, ATI Radeon 4100, ATI Mobility Radeon HD 4200,
+	ATI Mobility Radeon 4100, ATI Radeon HD 4290, ATI Radeon HD 4250,
+	AMD Radeon HD 6310 Graphics, AMD Radeon HD 6250 Graphics,
+	AMD Radeon HD 6300 Series Graphics,
+	AMD Radeon HD 6200 Series Graphics, PALM, CYPRESS,
+	ATI FirePro (FireGL) Graphics Adapter, AMD Firestream 9370,
+	AMD Firestream 9350, ATI Radeon HD 5800 Series,
+	ATI Radeon HD 5900 Series, ATI Mobility Radeon HD 5800 Series,
+	ATI Radeon HD 5700 Series, ATI Radeon HD 6700 Series,
+	ATI Mobility Radeon HD 5000 Series, ATI Mobility Radeon HD 5570,
+	ATI Radeon HD 5670, ATI Radeon HD 5570, ATI Radeon HD 5500 Series,
+	REDWOOD, ATI Mobility Radeon Graphics, CEDAR, ATI FirePro 2270,
+	ATI Radeon HD 5450, CAYMAN, AMD Radeon HD 6900 Series,
+	AMD Radeon HD 6900M Series, Mobility Radeon HD 6000 Series, BARTS,
+	AMD Radeon HD 6800 Series, AMD Radeon HD 6700 Series, TURKS, CAICOS,
+	ARUBA, TAHITI, PITCAIRN, VERDE, OLAND, HAINAN, BONAIRE, KABINI,
+	MULLINS, KAVERI, HAWAII
+[2026-05-10 10:43:48] (II) modesetting: Driver for Modesetting Kernel Drivers: kms
+[2026-05-10 10:43:48] (II) modeset(0): using drv /dev/dri/card1
+[2026-05-10 10:43:48] (WW) VGA arbiter: cannot open kernel arbiter, no multi-card support
+[2026-05-10 10:43:48] (II) modeset(0): Creating default Display subsection in Screen section
 	"Default Screen Section" for depth/fbbpp 24/32
-[2026-05-09 20:34:57] (==) AMDGPU(0): Depth 24, (--) framebuffer bpp 32
-[2026-05-09 20:34:57] (II) AMDGPU(0): Pixel depth = 24 bits stored in 4 bytes (32 bpp pixmaps)
-[2026-05-09 20:34:57] (==) AMDGPU(0): Default visual is TrueColor
-[2026-05-09 20:34:57] (II) Applying OutputClass "AMDgpu" options to /dev/dri/card1
-[2026-05-09 20:34:57] (==) AMDGPU(0): RGB weight 888
-[2026-05-09 20:34:57] (II) AMDGPU(0): Using 8 bits per RGB (8 bit DAC)
-[2026-05-09 20:34:57] (--) AMDGPU(0): Chipset: "AMD Radeon 780M Graphics" (ChipID = 0x15bf)
-[2026-05-09 20:34:57] (II) Loading sub module "fb"
-[2026-05-09 20:34:57] (II) LoadModule: "fb"
-[2026-05-09 20:34:57] (II) Module "fb" already built-in
-[2026-05-09 20:34:57] (II) Loading sub module "dri2"
-[2026-05-09 20:34:57] (II) LoadModule: "dri2"
-[2026-05-09 20:34:57] (II) Module "dri2" already built-in
-[2026-05-09 20:34:57] (II) Loading sub module "glamoregl"
-[2026-05-09 20:34:57] (II) LoadModule: "glamoregl"
-[2026-05-09 20:34:57] (II) Loading /usr/lib/xorg/modules/xlibre-25.0/libglamoregl.so
-[2026-05-09 20:34:57] (II) Module glamoregl: vendor="X.Org Foundation"
-[2026-05-09 20:34:57] 	compiled for 1.25.0, module version = 1.0.1
-[2026-05-09 20:34:57] 	ABI class: X.Org ANSI C Emulation, version 1.4
-[2026-05-09 20:34:57] (II) AMDGPU(0): glamor: Using OpenGL 4.6 context.
-[2026-05-09 20:34:57] (II) AMDGPU(0): glamor X acceleration enabled on AMD Radeon 780M Graphics (radeonsi, phoenix, ACO, DRM 3.64, 7.0.3-artix1-2)
-[2026-05-09 20:34:57] (II) AMDGPU(0): glamor detected, initialising EGL layer.
-[2026-05-09 20:34:57] (==) AMDGPU(0): TearFree property default: auto
-[2026-05-09 20:34:57] (==) AMDGPU(0): VariableRefresh: disabled
-[2026-05-09 20:34:57] (==) AMDGPU(0): AsyncFlipSecondaries: disabled
-[2026-05-09 20:34:57] (II) AMDGPU(0): KMS Pageflipping: enabled
-[2026-05-09 20:34:57] (II) AMDGPU(0): Output eDP has no monitor section
-[2026-05-09 20:34:57] (II) AMDGPU(0): Output HDMI-A-0 has no monitor section
-[2026-05-09 20:34:57] (II) AMDGPU(0): Output DisplayPort-0 has no monitor section
-[2026-05-09 20:34:57] (II) AMDGPU(0): Output DisplayPort-1 has no monitor section
-[2026-05-09 20:34:57] (II) AMDGPU(0): Output DisplayPort-2 has no monitor section
-[2026-05-09 20:34:57] (II) AMDGPU(0): Output DisplayPort-3 has no monitor section
-[2026-05-09 20:34:57] (II) AMDGPU(0): Output DisplayPort-4 has no monitor section
-[2026-05-09 20:34:57] (II) AMDGPU(0): Output DisplayPort-5 has no monitor section
-[2026-05-09 20:34:57] (WW) AMDGPU(0): 8 ZaphodHeads crtcs unavailable. Some outputs will stay off.
-[2026-05-09 20:34:57] (II) AMDGPU(0): EDID for output eDP
-[2026-05-09 20:34:57] (II) AMDGPU(0): Manufacturer: LEN  Model: 41b5  Serial#: 0
-[2026-05-09 20:34:57] (II) AMDGPU(0): Year: 2021  Week: 20
-[2026-05-09 20:34:57] (II) AMDGPU(0): EDID Version: 1.4
-[2026-05-09 20:34:57] (II) AMDGPU(0): Digital Display Input
-[2026-05-09 20:34:57] (II) AMDGPU(0): 8 bits per channel
-[2026-05-09 20:34:57] (II) AMDGPU(0): Digital interface is DisplayPort
-[2026-05-09 20:34:57] (II) AMDGPU(0): Max Image Size [cm]: horiz.: 34  vert.: 22
-[2026-05-09 20:34:57] (II) AMDGPU(0): Gamma: 2.20
-[2026-05-09 20:34:57] (II) AMDGPU(0): DPMS capabilities: StandBy Suspend Off
-[2026-05-09 20:34:57] (II) AMDGPU(0): Supported color encodings: RGB 4:4:4 
-[2026-05-09 20:34:57] (II) AMDGPU(0): First detailed timing is preferred mode
-[2026-05-09 20:34:57] (II) AMDGPU(0): Preferred mode is native pixel format and refresh rate
-[2026-05-09 20:34:57] (II) AMDGPU(0): Display is continuous-frequency
-[2026-05-09 20:34:57] (II) AMDGPU(0): redX: 0.57 redY: 0.34   greenX: 0.34 greenY: 0.58
-[2026-05-09 20:34:57] (II) AMDGPU(0): blueX: 0.16 blueY: 0.12   whiteX: 0.31 whiteY: 0.33
-[2026-05-09 20:34:57] (II) AMDGPU(0): Manufacturer's mask: 0
-[2026-05-09 20:34:57] (II) AMDGPU(0): Supported detailed timing:
-[2026-05-09 20:34:57] (II) AMDGPU(0): clock: 157.50 MHz   Image Size:  344 x 215 mm
-[2026-05-09 20:34:57] (II) AMDGPU(0): h_active: 1920  h_sync: 2028  h_sync_end 2076 h_blank_end 2120 h_border: 0
-[2026-05-09 20:34:57] (II) AMDGPU(0): v_active: 1200  v_sync: 1210  v_sync_end 1220 v_blanking: 1238 v_border: 0
-[2026-05-09 20:34:57] (II) AMDGPU(0): Ranges: V min: 40 V max: 60 Hz, H min: 75 H max: 75 kHz, PixClock max 165 MHz
-[2026-05-09 20:34:57] (II) AMDGPU(0): Unknown vendor-specific block f
-[2026-05-09 20:34:57] (II) AMDGPU(0):  B160UAN03.2
-[2026-05-09 20:34:57] (II) AMDGPU(0): EDID (in hex):
-[2026-05-09 20:34:57] (II) AMDGPU(0): 	00ffffffffffff0030aeb54100000000
-[2026-05-09 20:34:57] (II) AMDGPU(0): 	141f0104a5221678e3f225915758952a
-[2026-05-09 20:34:57] (II) AMDGPU(0): 	1f505400000001010101010101010101
-[2026-05-09 20:34:57] (II) AMDGPU(0): 	010101010101863d80c870b026406c30
-[2026-05-09 20:34:57] (II) AMDGPU(0): 	aa0058d71000001a000000fd00283c4b
-[2026-05-09 20:34:57] (II) AMDGPU(0): 	4b10010a2020202020200000000f00d1
-[2026-05-09 20:34:57] (II) AMDGPU(0): 	0a3cd10a281e0a0006af9cd4000000fe
-[2026-05-09 20:34:57] (II) AMDGPU(0): 	004231363055414e30332e32200a00b9
-[2026-05-09 20:34:57] (II) AMDGPU(0): Printing probed modes for output eDP
-[2026-05-09 20:34:57] (II) AMDGPU(0): Modeline "1920x1200"x60.01  157.50  1920 2028 2076 2120  1200 1210 1220 1238 +hsync -vsync (74.29 kHz eP)
-[2026-05-09 20:34:57] (II) AMDGPU(0): Modeline "1920x1080"x60.01  157.50  1920 2028 2076 2120  1080 1210 1220 1238 +hsync -vsync (74.29 kHz e)
-[2026-05-09 20:34:57] (II) AMDGPU(0): Modeline "1600x1200"x60.00  162.00  1600 1664 1856 2160  1200 1201 1204 1250 +hsync +vsync (75.00 kHz e)
-[2026-05-09 20:34:57] (II) AMDGPU(0): Modeline "1680x1050"x60.01  157.50  1680 2028 2076 2120  1050 1210 1220 1238 +hsync -vsync (74.29 kHz e)
-[2026-05-09 20:34:57] (II) AMDGPU(0): Modeline "1280x1024"x60.01  157.50  1280 2028 2076 2120  1024 1210 1220 1238 +hsync -vsync (74.29 kHz e)
-[2026-05-09 20:34:57] (II) AMDGPU(0): Modeline "1440x900"x60.01  157.50  1440 2028 2076 2120  900 1210 1220 1238 +hsync -vsync (74.29 kHz e)
-[2026-05-09 20:34:57] (II) AMDGPU(0): Modeline "1280x800"x60.01  157.50  1280 2028 2076 2120  800 1210 1220 1238 +hsync -vsync (74.29 kHz e)
-[2026-05-09 20:34:57] (II) AMDGPU(0): Modeline "1280x720"x60.01  157.50  1280 2028 2076 2120  720 1210 1220 1238 +hsync -vsync (74.29 kHz e)
-[2026-05-09 20:34:57] (II) AMDGPU(0): Modeline "1024x768"x60.01  157.50  1024 2028 2076 2120  768 1210 1220 1238 +hsync -vsync (74.29 kHz e)
-[2026-05-09 20:34:57] (II) AMDGPU(0): Modeline "800x600"x60.01  157.50  800 2028 2076 2120  600 1210 1220 1238 +hsync -vsync (74.29 kHz e)
-[2026-05-09 20:34:57] (II) AMDGPU(0): Modeline "640x480"x60.01  157.50  640 2028 2076 2120  480 1210 1220 1238 +hsync -vsync (74.29 kHz e)
-[2026-05-09 20:34:57] (II) AMDGPU(0): EDID for output HDMI-A-0
-[2026-05-09 20:34:57] (II) AMDGPU(0): EDID for output DisplayPort-0
-[2026-05-09 20:34:57] (II) AMDGPU(0): EDID for output DisplayPort-1
-[2026-05-09 20:34:57] (II) AMDGPU(0): EDID for output DisplayPort-2
-[2026-05-09 20:34:57] (II) AMDGPU(0): EDID for output DisplayPort-3
-[2026-05-09 20:34:57] (II) AMDGPU(0): EDID for output DisplayPort-4
-[2026-05-09 20:34:57] (II) AMDGPU(0): EDID for output DisplayPort-5
-[2026-05-09 20:34:57] (II) AMDGPU(0): Output eDP connected
-[2026-05-09 20:34:57] (II) AMDGPU(0): Output HDMI-A-0 disconnected
-[2026-05-09 20:34:57] (II) AMDGPU(0): Output DisplayPort-0 disconnected
-[2026-05-09 20:34:57] (II) AMDGPU(0): Output DisplayPort-1 disconnected
-[2026-05-09 20:34:57] (II) AMDGPU(0): Output DisplayPort-2 disconnected
-[2026-05-09 20:34:57] (II) AMDGPU(0): Output DisplayPort-3 disconnected
-[2026-05-09 20:34:57] (II) AMDGPU(0): Output DisplayPort-4 disconnected
-[2026-05-09 20:34:57] (II) AMDGPU(0): Output DisplayPort-5 disconnected
-[2026-05-09 20:34:57] (II) AMDGPU(0): Using exact sizes for initial modes
-[2026-05-09 20:34:57] (II) AMDGPU(0): Output eDP using initial mode 1920x1200 +0+0
-[2026-05-09 20:34:57] (II) AMDGPU(0): mem size init: gart size :360a8b000 vram size: s:faa49000 visible:faa49000
-[2026-05-09 20:34:57] (==) AMDGPU(0): DPI set to (96, 96)
-[2026-05-09 20:34:57] (==) AMDGPU(0): Using gamma correction (1.00, 1.00, 1.00)
-[2026-05-09 20:34:57] (II) Loading sub module "ramdac"
-[2026-05-09 20:34:57] (II) LoadModule: "ramdac"
-[2026-05-09 20:34:57] (II) Module "ramdac" already built-in
-[2026-05-09 20:34:57] (II) UnloadModule: "modesetting"
-[2026-05-09 20:34:57] (II) Unloading modesetting
-[2026-05-09 20:34:57] (II) AMDGPU(0): [DRI2] Setup complete
-[2026-05-09 20:34:57] (II) AMDGPU(0): [DRI2]   DRI driver: radeonsi
-[2026-05-09 20:34:57] (II) AMDGPU(0): [DRI2]   VDPAU driver: radeonsi
-[2026-05-09 20:34:57] (II) AMDGPU(0): Front buffer pitch: 7680 bytes
-[2026-05-09 20:34:57] (II) AMDGPU(0): SYNC extension fences enabled
-[2026-05-09 20:34:57] (II) AMDGPU(0): Present extension enabled
-[2026-05-09 20:34:57] (==) AMDGPU(0): DRI3 enabled
-[2026-05-09 20:34:57] (==) AMDGPU(0): Backing store enabled
-[2026-05-09 20:34:57] (II) AMDGPU(0): Direct rendering enabled
-[2026-05-09 20:34:57] (II) AMDGPU(0): Use GLAMOR acceleration.
-[2026-05-09 20:34:57] (II) AMDGPU(0): Acceleration enabled
-[2026-05-09 20:34:57] (==) AMDGPU(0): DPMS enabled
-[2026-05-09 20:34:57] (==) AMDGPU(0): Silken mouse enabled
-[2026-05-09 20:34:57] (II) AMDGPU(0): Set up textured video (glamor)
-[2026-05-09 20:34:57] (WW) AMDGPU(0): Option "HotplugDriver" is not used
-[2026-05-09 20:34:57] (II) Output(s) initialized
-[2026-05-09 20:34:57] (II) Initializing extension Generic Event Extension
-[2026-05-09 20:34:57] (II) Initializing extension SHAPE
-[2026-05-09 20:34:57] (II) Initializing extension MIT-SHM
-[2026-05-09 20:34:57] (II) Initializing extension XInputExtension
-[2026-05-09 20:34:57] (II) Initializing extension XTEST
-[2026-05-09 20:34:57] (II) Initializing extension BIG-REQUESTS
-[2026-05-09 20:34:57] (II) Initializing extension SYNC
-[2026-05-09 20:34:57] (II) Initializing extension XKEYBOARD
-[2026-05-09 20:34:57] (II) Initializing extension XC-MISC
-[2026-05-09 20:34:57] (II) Initializing extension SECURITY
-[2026-05-09 20:34:57] (II) Initializing extension XFIXES
-[2026-05-09 20:34:57] (II) Initializing extension RENDER
-[2026-05-09 20:34:57] (II) Initializing extension RANDR
-[2026-05-09 20:34:57] (II) Initializing extension COMPOSITE
-[2026-05-09 20:34:57] (II) Initializing extension DAMAGE
-[2026-05-09 20:34:57] (II) Initializing extension MIT-SCREEN-SAVER
-[2026-05-09 20:34:57] (II) Initializing extension DOUBLE-BUFFER
-[2026-05-09 20:34:57] (II) Initializing extension RECORD
-[2026-05-09 20:34:57] (II) Initializing extension DPMS
-[2026-05-09 20:34:57] (II) Initializing extension Present
-[2026-05-09 20:34:57] (II) Initializing extension DRI3
-[2026-05-09 20:34:57] (II) Initializing extension X-Resource
-[2026-05-09 20:34:57] (II) Initializing extension XVideo
-[2026-05-09 20:34:57] (II) Initializing extension XVideo-MotionCompensation
-[2026-05-09 20:34:57] (II) Initializing extension GLX
-[2026-05-09 20:34:57] (II) GLX: Initialized glamor GL provider for screen 0
-[2026-05-09 20:34:57] (II) GLX: Another vendor is already registered for screen 0
-[2026-05-09 20:34:57] (II) Initializing extension XFree86-VidModeExtension
-[2026-05-09 20:34:57] (II) Initializing extension XFree86-DGA
-[2026-05-09 20:34:57] (II) Initializing extension XFree86-DRI
-[2026-05-09 20:34:57] (II) Initializing extension DRI2
-[2026-05-09 20:34:57] (II) Extensions initialized
-[2026-05-09 20:34:57] (II) AMDGPU(0): Setting screen physical size to 508 x 317
-[2026-05-09 20:34:57] (II) Screen(s) initialized
-[2026-05-09 20:34:57] (II) config/udev: Adding input device HD-Audio Generic HDMI/DP,pcm=3 (/dev/input/event9)
-[2026-05-09 20:34:57] (II) No input driver specified, ignoring this device.
-[2026-05-09 20:34:57] (II) This device may have been added with another device file.
-[2026-05-09 20:34:57] (II) config/udev: Adding input device HD-Audio Generic HDMI/DP,pcm=7 (/dev/input/event10)
-[2026-05-09 20:34:57] (II) No input driver specified, ignoring this device.
-[2026-05-09 20:34:57] (II) This device may have been added with another device file.
-[2026-05-09 20:34:57] (II) config/udev: Adding input device HD-Audio Generic HDMI/DP,pcm=8 (/dev/input/event11)
-[2026-05-09 20:34:57] (II) No input driver specified, ignoring this device.
-[2026-05-09 20:34:57] (II) This device may have been added with another device file.
-[2026-05-09 20:34:57] (II) config/udev: Adding input device HD-Audio Generic Mic (/dev/input/event12)
-[2026-05-09 20:34:57] (II) No input driver specified, ignoring this device.
-[2026-05-09 20:34:57] (II) This device may have been added with another device file.
-[2026-05-09 20:34:57] (II) config/udev: Adding input device HD-Audio Generic Headphone (/dev/input/event13)
-[2026-05-09 20:34:57] (II) No input driver specified, ignoring this device.
-[2026-05-09 20:34:57] (II) This device may have been added with another device file.
-[2026-05-09 20:34:57] (II) config/udev: Adding input device Video Bus (/dev/input/event4)
-[2026-05-09 20:34:57] (**) Video Bus: Applying InputClass "libinput keyboard catchall"
-[2026-05-09 20:34:57] (II) LoadModule: "libinput"
-[2026-05-09 20:34:57] (II) Loading /usr/lib/xorg/modules/xlibre-25.0/input/libinput_drv.so
-[2026-05-09 20:34:57] (II) Module libinput: vendor="X.Org Foundation"
-[2026-05-09 20:34:57] 	compiled for 1.25.0, module version = 25.0.1
-[2026-05-09 20:34:57] 	Module class: X.Org XInput Driver
-[2026-05-09 20:34:57] 	ABI class: X.Org XInput driver, version 26.0
-[2026-05-09 20:34:57] (II) Using input driver 'libinput' for 'Video Bus'
-[2026-05-09 20:34:57] (II) systemd-logind: got fd for /dev/input/event4 13:68 fd 25 paused 0
-[2026-05-09 20:34:57] (**) Video Bus: always reports core events
-[2026-05-09 20:34:57] (**) Option "Device" "/dev/input/event4"
-[2026-05-09 20:34:57] (II) event4  - Video Bus: is tagged by udev as: Keyboard
-[2026-05-09 20:34:57] (II) event4  - Video Bus: device is a keyboard
-[2026-05-09 20:34:57] (II) event4  - Video Bus: device removed
-[2026-05-09 20:34:57] (**) Option "config_info" "udev:/sys/devices/pci0000:00/0000:00:08.1/acpi.video_bus.0/input/input5/event4"
-[2026-05-09 20:34:57] (II) XINPUT: Adding extended input device "Video Bus" (type: KEYBOARD, id 6)
-[2026-05-09 20:34:57] (II) event4  - Video Bus: is tagged by udev as: Keyboard
-[2026-05-09 20:34:57] (II) event4  - Video Bus: device is a keyboard
-[2026-05-09 20:34:57] (II) config/udev: Adding input device ELAN0688:00 04F3:320B Mouse (/dev/input/event7)
-[2026-05-09 20:34:57] (**) ELAN0688:00 04F3:320B Mouse: Applying InputClass "libinput pointer catchall"
-[2026-05-09 20:34:57] (II) Using input driver 'libinput' for 'ELAN0688:00 04F3:320B Mouse'
-[2026-05-09 20:34:57] (II) systemd-logind: got fd for /dev/input/event7 13:71 fd 28 paused 0
-[2026-05-09 20:34:57] (**) ELAN0688:00 04F3:320B Mouse: always reports core events
-[2026-05-09 20:34:57] (**) Option "Device" "/dev/input/event7"
-[2026-05-09 20:34:58] (II) event7  - ELAN0688:00 04F3:320B Mouse: is tagged by udev as: Mouse
-[2026-05-09 20:34:58] (II) event7  - ELAN0688:00 04F3:320B Mouse: device is a pointer
-[2026-05-09 20:34:58] (II) event7  - ELAN0688:00 04F3:320B Mouse: device removed
-[2026-05-09 20:34:58] (II) libinput: ELAN0688:00 04F3:320B Mouse: Step value 0 was provided, libinput Fallback acceleration function is used.
-[2026-05-09 20:34:58] (II) libinput: ELAN0688:00 04F3:320B Mouse: Step value 0 was provided, libinput Fallback acceleration function is used.
-[2026-05-09 20:34:58] (II) libinput: ELAN0688:00 04F3:320B Mouse: Step value 0 was provided, libinput Fallback acceleration function is used.
-[2026-05-09 20:34:58] (**) Option "config_info" "udev:/sys/devices/platform/AMDI0010:01/i2c-1/i2c-ELAN0688:00/0018:04F3:320B.0001/input/input12/event7"
-[2026-05-09 20:34:58] (II) XINPUT: Adding extended input device "ELAN0688:00 04F3:320B Mouse" (type: MOUSE, id 7)
-[2026-05-09 20:34:58] (**) Option "AccelerationScheme" "none"
-[2026-05-09 20:34:58] (**) ELAN0688:00 04F3:320B Mouse: (accel) selected scheme none/0
-[2026-05-09 20:34:58] (**) ELAN0688:00 04F3:320B Mouse: (accel) acceleration factor: 2.00
-[2026-05-09 20:34:58] (**) ELAN0688:00 04F3:320B Mouse: (accel) acceleration threshold: 4
-[2026-05-09 20:34:58] (II) event7  - ELAN0688:00 04F3:320B Mouse: is tagged by udev as: Mouse
-[2026-05-09 20:34:58] (II) event7  - ELAN0688:00 04F3:320B Mouse: device is a pointer
-[2026-05-09 20:34:58] (II) config/udev: Adding input device ELAN0688:00 04F3:320B Mouse (/dev/input/mouse0)
-[2026-05-09 20:34:58] (II) No input driver specified, ignoring this device.
-[2026-05-09 20:34:58] (II) This device may have been added with another device file.
-[2026-05-09 20:34:58] (II) config/udev: Adding input device ELAN0688:00 04F3:320B Touchpad (/dev/input/event8)
-[2026-05-09 20:34:58] (**) ELAN0688:00 04F3:320B Touchpad: Applying InputClass "libinput touchpad catchall"
-[2026-05-09 20:34:58] (II) Using input driver 'libinput' for 'ELAN0688:00 04F3:320B Touchpad'
-[2026-05-09 20:34:58] (II) systemd-logind: got fd for /dev/input/event8 13:72 fd 29 paused 0
-[2026-05-09 20:34:58] (**) ELAN0688:00 04F3:320B Touchpad: always reports core events
-[2026-05-09 20:34:58] (**) Option "Device" "/dev/input/event8"
-[2026-05-09 20:34:58] (II) event8  - ELAN0688:00 04F3:320B Touchpad: is tagged by udev as: Touchpad
-[2026-05-09 20:34:58] (II) event8  - ELAN0688:00 04F3:320B Touchpad: device is a touchpad
-[2026-05-09 20:34:58] (II) event8  - ELAN0688:00 04F3:320B Touchpad: device removed
-[2026-05-09 20:34:58] (II) libinput: ELAN0688:00 04F3:320B Touchpad: Step value 0 was provided, libinput Fallback acceleration function is used.
-[2026-05-09 20:34:58] (II) libinput: ELAN0688:00 04F3:320B Touchpad: Step value 0 was provided, libinput Fallback acceleration function is used.
-[2026-05-09 20:34:58] (II) libinput: ELAN0688:00 04F3:320B Touchpad: Step value 0 was provided, libinput Fallback acceleration function is used.
-[2026-05-09 20:34:58] (**) Option "config_info" "udev:/sys/devices/platform/AMDI0010:01/i2c-1/i2c-ELAN0688:00/0018:04F3:320B.0001/input/input14/event8"
-[2026-05-09 20:34:58] (II) XINPUT: Adding extended input device "ELAN0688:00 04F3:320B Touchpad" (type: TOUCHPAD, id 8)
-[2026-05-09 20:34:58] (**) Option "AccelerationScheme" "none"
-[2026-05-09 20:34:58] (**) ELAN0688:00 04F3:320B Touchpad: (accel) selected scheme none/0
-[2026-05-09 20:34:58] (**) ELAN0688:00 04F3:320B Touchpad: (accel) acceleration factor: 2.00
-[2026-05-09 20:34:58] (**) ELAN0688:00 04F3:320B Touchpad: (accel) acceleration threshold: 4
-[2026-05-09 20:34:58] (II) event8  - ELAN0688:00 04F3:320B Touchpad: is tagged by udev as: Touchpad
-[2026-05-09 20:34:58] (II) event8  - ELAN0688:00 04F3:320B Touchpad: device is a touchpad
-[2026-05-09 20:34:58] (II) config/udev: Adding input device ELAN0688:00 04F3:320B Touchpad (/dev/input/mouse1)
-[2026-05-09 20:34:58] (II) No input driver specified, ignoring this device.
-[2026-05-09 20:34:58] (II) This device may have been added with another device file.
-[2026-05-09 20:34:58] (II) config/udev: Adding input device Power Button (/dev/input/event0)
-[2026-05-09 20:34:58] (**) Power Button: Applying InputClass "libinput keyboard catchall"
-[2026-05-09 20:34:58] (II) Using input driver 'libinput' for 'Power Button'
-[2026-05-09 20:34:58] (II) systemd-logind: got fd for /dev/input/event0 13:64 fd 30 paused 0
-[2026-05-09 20:34:58] (**) Power Button: always reports core events
-[2026-05-09 20:34:58] (**) Option "Device" "/dev/input/event0"
-[2026-05-09 20:34:58] (II) event0  - Power Button: is tagged by udev as: Keyboard
-[2026-05-09 20:34:58] (II) event0  - Power Button: device is a keyboard
-[2026-05-09 20:34:58] (II) event0  - Power Button: device removed
-[2026-05-09 20:34:58] (**) Option "config_info" "udev:/sys/devices/platform/PNP0C0C:00/input/input0/event0"
-[2026-05-09 20:34:58] (II) XINPUT: Adding extended input device "Power Button" (type: KEYBOARD, id 9)
-[2026-05-09 20:34:58] (II) event0  - Power Button: is tagged by udev as: Keyboard
-[2026-05-09 20:34:58] (II) event0  - Power Button: device is a keyboard
-[2026-05-09 20:34:58] (II) config/udev: Adding input device Lid Switch (/dev/input/event1)
-[2026-05-09 20:34:58] (II) No input driver specified, ignoring this device.
-[2026-05-09 20:34:58] (II) This device may have been added with another device file.
-[2026-05-09 20:34:58] (II) config/udev: Adding input device Sleep Button (/dev/input/event2)
-[2026-05-09 20:34:58] (**) Sleep Button: Applying InputClass "libinput keyboard catchall"
-[2026-05-09 20:34:58] (II) Using input driver 'libinput' for 'Sleep Button'
-[2026-05-09 20:34:58] (II) systemd-logind: got fd for /dev/input/event2 13:66 fd 31 paused 0
-[2026-05-09 20:34:58] (**) Sleep Button: always reports core events
-[2026-05-09 20:34:58] (**) Option "Device" "/dev/input/event2"
-[2026-05-09 20:34:58] (II) event2  - Sleep Button: is tagged by udev as: Keyboard
-[2026-05-09 20:34:58] (II) event2  - Sleep Button: device is a keyboard
-[2026-05-09 20:34:58] (II) event2  - Sleep Button: device removed
-[2026-05-09 20:34:58] (**) Option "config_info" "udev:/sys/devices/platform/PNP0C0E:00/input/input2/event2"
-[2026-05-09 20:34:58] (II) XINPUT: Adding extended input device "Sleep Button" (type: KEYBOARD, id 10)
-[2026-05-09 20:34:58] (II) event2  - Sleep Button: is tagged by udev as: Keyboard
-[2026-05-09 20:34:58] (II) event2  - Sleep Button: device is a keyboard
-[2026-05-09 20:34:58] (II) config/udev: Adding input device AT Translated Set 2 keyboard (/dev/input/event3)
-[2026-05-09 20:34:58] (**) AT Translated Set 2 keyboard: Applying InputClass "libinput keyboard catchall"
-[2026-05-09 20:34:58] (II) Using input driver 'libinput' for 'AT Translated Set 2 keyboard'
-[2026-05-09 20:34:58] (II) systemd-logind: got fd for /dev/input/event3 13:67 fd 32 paused 0
-[2026-05-09 20:34:58] (**) AT Translated Set 2 keyboard: always reports core events
-[2026-05-09 20:34:58] (**) Option "Device" "/dev/input/event3"
-[2026-05-09 20:34:58] (II) event3  - AT Translated Set 2 keyboard: is tagged by udev as: Keyboard
-[2026-05-09 20:34:58] (II) event3  - AT Translated Set 2 keyboard: device is a keyboard
-[2026-05-09 20:34:58] (II) event3  - AT Translated Set 2 keyboard: device removed
-[2026-05-09 20:34:58] (**) Option "config_info" "udev:/sys/devices/platform/i8042/serio0/input/input3/event3"
-[2026-05-09 20:34:58] (II) XINPUT: Adding extended input device "AT Translated Set 2 keyboard" (type: KEYBOARD, id 11)
-[2026-05-09 20:34:58] (II) event3  - AT Translated Set 2 keyboard: is tagged by udev as: Keyboard
-[2026-05-09 20:34:58] (II) event3  - AT Translated Set 2 keyboard: device is a keyboard
-[2026-05-09 20:34:58] (II) config/udev: Adding input device TPPS/2 Elan TrackPoint (/dev/input/event14)
-[2026-05-09 20:34:58] (**) TPPS/2 Elan TrackPoint: Applying InputClass "libinput pointer catchall"
-[2026-05-09 20:34:58] (II) Using input driver 'libinput' for 'TPPS/2 Elan TrackPoint'
-[2026-05-09 20:34:58] (II) systemd-logind: got fd for /dev/input/event14 13:78 fd 33 paused 0
-[2026-05-09 20:34:58] (**) TPPS/2 Elan TrackPoint: always reports core events
-[2026-05-09 20:34:58] (**) Option "Device" "/dev/input/event14"
-[2026-05-09 20:34:58] (II) event14 - TPPS/2 Elan TrackPoint: is tagged by udev as: Mouse Pointingstick
-[2026-05-09 20:34:58] (II) event14 - TPPS/2 Elan TrackPoint: device is a pointer
-[2026-05-09 20:34:58] (II) event14 - TPPS/2 Elan TrackPoint: device removed
-[2026-05-09 20:34:58] (II) libinput: TPPS/2 Elan TrackPoint: Step value 0 was provided, libinput Fallback acceleration function is used.
-[2026-05-09 20:34:58] (II) libinput: TPPS/2 Elan TrackPoint: Step value 0 was provided, libinput Fallback acceleration function is used.
-[2026-05-09 20:34:58] (II) libinput: TPPS/2 Elan TrackPoint: Step value 0 was provided, libinput Fallback acceleration function is used.
-[2026-05-09 20:34:58] (**) Option "config_info" "udev:/sys/devices/platform/i8042/serio1/input/input8/event14"
-[2026-05-09 20:34:58] (II) XINPUT: Adding extended input device "TPPS/2 Elan TrackPoint" (type: MOUSE, id 12)
-[2026-05-09 20:34:58] (**) Option "AccelerationScheme" "none"
-[2026-05-09 20:34:58] (**) TPPS/2 Elan TrackPoint: (accel) selected scheme none/0
-[2026-05-09 20:34:58] (**) TPPS/2 Elan TrackPoint: (accel) acceleration factor: 2.00
-[2026-05-09 20:34:58] (**) TPPS/2 Elan TrackPoint: (accel) acceleration threshold: 4
-[2026-05-09 20:34:58] (II) event14 - TPPS/2 Elan TrackPoint: is tagged by udev as: Mouse Pointingstick
-[2026-05-09 20:34:58] (II) event14 - TPPS/2 Elan TrackPoint: device is a pointer
-[2026-05-09 20:34:58] (II) config/udev: Adding input device TPPS/2 Elan TrackPoint (/dev/input/mouse2)
-[2026-05-09 20:34:58] (II) No input driver specified, ignoring this device.
-[2026-05-09 20:34:58] (II) This device may have been added with another device file.
-[2026-05-09 20:34:58] (II) config/udev: Adding input device PC Speaker (/dev/input/event6)
-[2026-05-09 20:34:58] (II) No input driver specified, ignoring this device.
-[2026-05-09 20:34:58] (II) This device may have been added with another device file.
-[2026-05-09 20:34:58] (II) config/udev: Adding input device ThinkPad Extra Buttons (/dev/input/event5)
-[2026-05-09 20:34:58] (**) ThinkPad Extra Buttons: Applying InputClass "libinput keyboard catchall"
-[2026-05-09 20:34:58] (II) Using input driver 'libinput' for 'ThinkPad Extra Buttons'
-[2026-05-09 20:34:58] (II) systemd-logind: got fd for /dev/input/event5 13:69 fd 34 paused 0
-[2026-05-09 20:34:58] (**) ThinkPad Extra Buttons: always reports core events
-[2026-05-09 20:34:58] (**) Option "Device" "/dev/input/event5"
-[2026-05-09 20:34:58] (II) event5  - ThinkPad Extra Buttons: is tagged by udev as: Keyboard Switch
-[2026-05-09 20:34:58] (II) event5  - ThinkPad Extra Buttons: device is a keyboard
-[2026-05-09 20:34:58] (II) event5  - ThinkPad Extra Buttons: device removed
-[2026-05-09 20:34:58] (**) Option "config_info" "udev:/sys/devices/platform/thinkpad_acpi/input/input6/event5"
-[2026-05-09 20:34:58] (II) XINPUT: Adding extended input device "ThinkPad Extra Buttons" (type: KEYBOARD, id 13)
-[2026-05-09 20:34:58] (II) event5  - ThinkPad Extra Buttons: is tagged by udev as: Keyboard Switch
-[2026-05-09 20:34:58] (II) event5  - ThinkPad Extra Buttons: device is a keyboard
-[2026-05-09 20:34:58] (II) Input(s) initialized
-[2026-05-09 20:36:16] (**) Option "fd" "25"
-[2026-05-09 20:36:16] (II) event4  - Video Bus: device removed
-[2026-05-09 20:36:16] (**) Option "fd" "28"
-[2026-05-09 20:36:16] (II) event7  - ELAN0688:00 04F3:320B Mouse: device removed
-[2026-05-09 20:36:16] (**) Option "fd" "29"
-[2026-05-09 20:36:16] (II) event8  - ELAN0688:00 04F3:320B Touchpad: device removed
-[2026-05-09 20:36:16] (**) Option "fd" "30"
-[2026-05-09 20:36:16] (II) event0  - Power Button: device removed
-[2026-05-09 20:36:16] (**) Option "fd" "31"
-[2026-05-09 20:36:16] (II) event2  - Sleep Button: device removed
-[2026-05-09 20:36:16] (**) Option "fd" "32"
-[2026-05-09 20:36:16] (II) event3  - AT Translated Set 2 keyboard: device removed
-[2026-05-09 20:36:16] (**) Option "fd" "33"
-[2026-05-09 20:36:16] (II) event14 - TPPS/2 Elan TrackPoint: device removed
-[2026-05-09 20:36:16] (**) Option "fd" "34"
-[2026-05-09 20:36:16] (II) event5  - ThinkPad Extra Buttons: device removed
-[2026-05-09 20:36:16] (II) systemd-logind: drop master for 226:1
-[2026-05-09 20:36:16] (II) systemd-logind: got pause for 13:66
-[2026-05-09 20:36:16] (II) systemd-logind: got pause for 13:67
-[2026-05-09 20:36:16] (II) systemd-logind: got pause for 13:69
-[2026-05-09 20:36:16] (II) systemd-logind: got pause for 13:64
-[2026-05-09 20:36:16] (II) systemd-logind: got pause for 13:78
-[2026-05-09 20:36:16] (II) systemd-logind: got pause for 13:68
-[2026-05-09 20:36:16] (II) systemd-logind: got pause for 13:71
-[2026-05-09 20:36:16] (II) systemd-logind: got pause for 13:72
+[2026-05-10 10:43:48] (==) modeset(0): Depth 24, (==) framebuffer bpp 32
+[2026-05-10 10:43:48] (==) modeset(0): RGB weight 888
+[2026-05-10 10:43:48] (==) modeset(0): Default visual is TrueColor
+[2026-05-10 10:43:48] (II) Loading sub module "glamoregl"
+[2026-05-10 10:43:48] (II) LoadModule: "glamoregl"
+[2026-05-10 10:43:48] (II) Loading /usr/lib/xorg/modules/xlibre-25.0/libglamoregl.so
+[2026-05-10 10:43:48] (II) Module glamoregl: vendor="X.Org Foundation"
+[2026-05-10 10:43:48] 	compiled for 1.25.0, module version = 1.0.1
+[2026-05-10 10:43:48] 	ABI class: X.Org ANSI C Emulation, version 1.4
+[2026-05-10 10:43:48] (II) modeset(0): glamor: Using OpenGL 4.6 context.
+[2026-05-10 10:43:48] (II) modeset(0): glamor X acceleration enabled on AMD Radeon 780M Graphics (radeonsi, phoenix, ACO, DRM 3.64, 7.0.3-artix1-2)
+[2026-05-10 10:43:48] (II) modeset(0): glamor initialized
+[2026-05-10 10:43:48] (==) modeset(0): VariableRefresh: disabled
+[2026-05-10 10:43:48] (==) modeset(0): AsyncFlipSecondaries: disabled
+[2026-05-10 10:43:48] (II) modeset(0): Atomic modesetting disabled
+[2026-05-10 10:43:48] (II) modeset(0): TearFree: enabled
+[2026-05-10 10:43:48] (II) modeset(0): Output eDP-1 has no monitor section
+[2026-05-10 10:43:48] (II) modeset(0): Output HDMI-1 has no monitor section
+[2026-05-10 10:43:48] (II) modeset(0): Output DP-1 has no monitor section
+[2026-05-10 10:43:48] (II) modeset(0): Output DP-2 has no monitor section
+[2026-05-10 10:43:48] (II) modeset(0): Output DP-3 has no monitor section
+[2026-05-10 10:43:48] (II) modeset(0): Output DP-4 has no monitor section
+[2026-05-10 10:43:48] (II) modeset(0): Output DP-5 has no monitor section
+[2026-05-10 10:43:48] (II) modeset(0): Output DP-6 has no monitor section
+[2026-05-10 10:43:48] (II) modeset(0): EDID for output eDP-1
+[2026-05-10 10:43:48] (II) modeset(0): Manufacturer: LEN  Model: 41b5  Serial#: 0
+[2026-05-10 10:43:48] (II) modeset(0): Year: 2021  Week: 20
+[2026-05-10 10:43:48] (II) modeset(0): EDID Version: 1.4
+[2026-05-10 10:43:48] (II) modeset(0): Digital Display Input
+[2026-05-10 10:43:48] (II) modeset(0): 8 bits per channel
+[2026-05-10 10:43:48] (II) modeset(0): Digital interface is DisplayPort
+[2026-05-10 10:43:48] (II) modeset(0): Max Image Size [cm]: horiz.: 34  vert.: 22
+[2026-05-10 10:43:48] (II) modeset(0): Gamma: 2.20
+[2026-05-10 10:43:48] (II) modeset(0): DPMS capabilities: StandBy Suspend Off
+[2026-05-10 10:43:48] (II) modeset(0): Supported color encodings: RGB 4:4:4 
+[2026-05-10 10:43:48] (II) modeset(0): First detailed timing is preferred mode
+[2026-05-10 10:43:48] (II) modeset(0): Preferred mode is native pixel format and refresh rate
+[2026-05-10 10:43:48] (II) modeset(0): Display is continuous-frequency
+[2026-05-10 10:43:48] (II) modeset(0): redX: 0.57 redY: 0.34   greenX: 0.34 greenY: 0.58
+[2026-05-10 10:43:48] (II) modeset(0): blueX: 0.16 blueY: 0.12   whiteX: 0.31 whiteY: 0.33
+[2026-05-10 10:43:48] (II) modeset(0): Manufacturer's mask: 0
+[2026-05-10 10:43:48] (II) modeset(0): Supported detailed timing:
+[2026-05-10 10:43:48] (II) modeset(0): clock: 157.50 MHz   Image Size:  344 x 215 mm
+[2026-05-10 10:43:48] (II) modeset(0): h_active: 1920  h_sync: 2028  h_sync_end 2076 h_blank_end 2120 h_border: 0
+[2026-05-10 10:43:48] (II) modeset(0): v_active: 1200  v_sync: 1210  v_sync_end 1220 v_blanking: 1238 v_border: 0
+[2026-05-10 10:43:48] (II) modeset(0): Ranges: V min: 40 V max: 60 Hz, H min: 75 H max: 75 kHz, PixClock max 165 MHz
+[2026-05-10 10:43:48] (II) modeset(0): Unknown vendor-specific block f
+[2026-05-10 10:43:48] (II) modeset(0):  B160UAN03.2
+[2026-05-10 10:43:48] (II) modeset(0): EDID (in hex):
+[2026-05-10 10:43:48] (II) modeset(0): 	00ffffffffffff0030aeb54100000000
+[2026-05-10 10:43:48] (II) modeset(0): 	141f0104a5221678e3f225915758952a
+[2026-05-10 10:43:48] (II) modeset(0): 	1f505400000001010101010101010101
+[2026-05-10 10:43:48] (II) modeset(0): 	010101010101863d80c870b026406c30
+[2026-05-10 10:43:48] (II) modeset(0): 	aa0058d71000001a000000fd00283c4b
+[2026-05-10 10:43:48] (II) modeset(0): 	4b10010a2020202020200000000f00d1
+[2026-05-10 10:43:48] (II) modeset(0): 	0a3cd10a281e0a0006af9cd4000000fe
+[2026-05-10 10:43:48] (II) modeset(0): 	004231363055414e30332e32200a00b9
+[2026-05-10 10:43:48] (II) modeset(0): Printing probed modes for output eDP-1
+[2026-05-10 10:43:48] (II) modeset(0): Modeline "1920x1200"x60.01  157.50  1920 2028 2076 2120  1200 1210 1220 1238 +hsync -vsync (74.29 kHz eP)
+[2026-05-10 10:43:48] (II) modeset(0): Modeline "1920x1200"x60.01  154.15  1920 1968 2000 2080  1200 1203 1209 1235 +hsync -vsync (74.11 kHz d)
+[2026-05-10 10:43:48] (II) modeset(0): Modeline "1920x1080"x60.01  157.50  1920 2028 2076 2120  1080 1210 1220 1238 +hsync -vsync (74.29 kHz e)
+[2026-05-10 10:43:48] (II) modeset(0): Modeline "1920x1080"x60.01  138.68  1920 1968 2000 2080  1080 1083 1088 1111 +hsync -vsync (66.67 kHz d)
+[2026-05-10 10:43:48] (II) modeset(0): Modeline "1600x1200"x60.01  162.03  1600 1664 1856 2160  1200 1201 1204 1250 +hsync +vsync (75.01 kHz d)
+[2026-05-10 10:43:48] (II) modeset(0): Modeline "1600x1200"x60.00  162.00  1600 1664 1856 2160  1200 1201 1204 1250 +hsync +vsync (75.00 kHz e)
+[2026-05-10 10:43:48] (II) modeset(0): Modeline "1680x1050"x60.01  157.50  1680 2028 2076 2120  1050 1210 1220 1238 +hsync -vsync (74.29 kHz e)
+[2026-05-10 10:43:48] (II) modeset(0): Modeline "1680x1050"x60.01  119.25  1680 1728 1760 1840  1050 1053 1059 1080 +hsync -vsync (64.81 kHz d)
+[2026-05-10 10:43:48] (II) modeset(0): Modeline "1400x1050"x60.01  122.07  1400 1488 1640 1880  1050 1052 1064 1082 +hsync +vsync (64.93 kHz d)
+[2026-05-10 10:43:48] (II) modeset(0): Modeline "1600x900"x60.01  97.80  1600 1648 1680 1760  900 903 908 926 +hsync -vsync (55.57 kHz d)
+[2026-05-10 10:43:48] (II) modeset(0): Modeline "1280x1024"x60.01  157.50  1280 2028 2076 2120  1024 1210 1220 1238 +hsync -vsync (74.29 kHz e)
+[2026-05-10 10:43:48] (II) modeset(0): Modeline "1280x1024"x60.01  107.98  1280 1328 1440 1688  1024 1025 1028 1066 +hsync +vsync (63.97 kHz d)
+[2026-05-10 10:43:48] (II) modeset(0): Modeline "1440x900"x60.01  157.50  1440 2028 2076 2120  900 1210 1220 1238 +hsync -vsync (74.29 kHz e)
+[2026-05-10 10:43:48] (II) modeset(0): Modeline "1400x900"x60.01  86.69  1400 1448 1480 1560  900 903 913 926 +hsync -vsync (55.57 kHz d)
+[2026-05-10 10:43:48] (II) modeset(0): Modeline "1280x960"x60.01  108.02  1280 1376 1488 1800  960 961 964 1000 +hsync +vsync (60.01 kHz d)
+[2026-05-10 10:43:48] (II) modeset(0): Modeline "1440x810"x60.01  151.96  1440 1464 1480 1520  810 811 814 833 doublescan +hsync -vsync (99.98 kHz d)
+[2026-05-10 10:43:48] (II) modeset(0): Modeline "1368x768"x60.01  72.44  1368 1416 1448 1528  768 771 781 790 +hsync -vsync (47.41 kHz d)
+[2026-05-10 10:43:48] (II) modeset(0): Modeline "1280x800"x60.01  157.50  1280 2028 2076 2120  800 1210 1220 1238 +hsync -vsync (74.29 kHz e)
+[2026-05-10 10:43:48] (II) modeset(0): Modeline "1280x800"x60.01  71.12  1280 1328 1360 1440  800 803 809 823 +hsync -vsync (49.39 kHz d)
+[2026-05-10 10:43:48] (II) modeset(0): Modeline "1280x720"x60.01  157.50  1280 2028 2076 2120  720 1210 1220 1238 +hsync -vsync (74.29 kHz e)
+[2026-05-10 10:43:48] (II) modeset(0): Modeline "1280x720"x60.01  64.03  1280 1328 1360 1440  720 723 728 741 +hsync -vsync (44.47 kHz d)
+[2026-05-10 10:43:48] (II) modeset(0): Modeline "1024x768"x60.01  157.50  1024 2028 2076 2120  768 1210 1220 1238 +hsync -vsync (74.29 kHz e)
+[2026-05-10 10:43:48] (II) modeset(0): Modeline "1024x768"x60.01  65.01  1024 1048 1184 1344  768 771 777 806 -hsync -vsync (48.37 kHz d)
+[2026-05-10 10:43:48] (II) modeset(0): Modeline "960x720"x60.01  117.02  960 1024 1128 1300  720 720 722 750 doublescan -hsync +vsync (90.01 kHz d)
+[2026-05-10 10:43:48] (II) modeset(0): Modeline "928x696"x60.01  109.08  928 976 1088 1264  696 696 698 719 doublescan -hsync +vsync (86.29 kHz d)
+[2026-05-10 10:43:48] (II) modeset(0): Modeline "896x672"x60.01  102.39  896 960 1060 1224  672 672 674 697 doublescan -hsync +vsync (83.65 kHz d)
+[2026-05-10 10:43:48] (II) modeset(0): Modeline "1024x576"x60.01  42.13  1024 1072 1104 1184  576 579 584 593 +hsync -vsync (35.59 kHz d)
+[2026-05-10 10:43:48] (II) modeset(0): Modeline "960x600"x60.01  77.01  960 984 1000 1040  600 601 604 617 doublescan +hsync -vsync (74.05 kHz d)
+[2026-05-10 10:43:48] (II) modeset(0): Modeline "960x540"x60.01  37.37  960 1008 1040 1120  540 543 548 556 +hsync -vsync (33.37 kHz d)
+[2026-05-10 10:43:48] (II) modeset(0): Modeline "800x600"x60.01  157.50  800 2028 2076 2120  600 1210 1220 1238 +hsync -vsync (74.29 kHz e)
+[2026-05-10 10:43:48] (II) modeset(0): Modeline "800x600"x60.01  38.41  800 824 896 1024  600 601 603 625 +hsync +vsync (37.51 kHz d)
+[2026-05-10 10:43:48] (II) modeset(0): Modeline "840x525"x60.01  59.63  840 864 880 920  525 526 529 540 doublescan +hsync -vsync (64.81 kHz d)
+[2026-05-10 10:43:48] (II) modeset(0): Modeline "864x486"x60.01  30.73  864 912 944 1024  486 489 494 500 +hsync -vsync (30.00 kHz d)
+[2026-05-10 10:43:48] (II) modeset(0): Modeline "700x525"x60.01  61.04  700 744 820 940  525 526 532 541 doublescan +hsync +vsync (64.93 kHz d)
+[2026-05-10 10:43:48] (II) modeset(0): Modeline "800x450"x60.01  48.90  800 824 840 880  450 451 454 463 doublescan +hsync -vsync (55.57 kHz d)
+[2026-05-10 10:43:48] (II) modeset(0): Modeline "640x512"x60.01  53.99  640 664 720 844  512 512 514 533 doublescan +hsync +vsync (63.97 kHz d)
+[2026-05-10 10:43:48] (II) modeset(0): Modeline "700x450"x60.01  43.34  700 724 740 780  450 451 456 463 doublescan +hsync -vsync (55.57 kHz d)
+[2026-05-10 10:43:48] (II) modeset(0): Modeline "640x480"x60.01  157.50  640 2028 2076 2120  480 1210 1220 1238 +hsync -vsync (74.29 kHz e)
+[2026-05-10 10:43:48] (II) modeset(0): Modeline "640x480"x60.01  25.20  640 656 752 800  480 490 492 525 -hsync -vsync (31.50 kHz d)
+[2026-05-10 10:43:48] (II) modeset(0): Modeline "720x405"x60.01  22.13  720 768 800 880  405 408 413 419 +hsync -vsync (25.14 kHz d)
+[2026-05-10 10:43:48] (II) modeset(0): Modeline "684x384"x60.01  36.22  684 708 724 764  384 385 390 395 doublescan +hsync -vsync (47.41 kHz d)
+[2026-05-10 10:43:48] (II) modeset(0): Modeline "640x360"x60.01  17.95  640 688 720 800  360 363 368 374 +hsync -vsync (22.44 kHz d)
+[2026-05-10 10:43:48] (II) modeset(0): Modeline "512x384"x60.01  32.50  512 524 592 672  384 385 388 403 doublescan -hsync -vsync (48.37 kHz d)
+[2026-05-10 10:43:48] (II) modeset(0): Modeline "512x288"x60.01  21.03  512 536 552 592  288 289 292 296 doublescan +hsync -vsync (35.53 kHz d)
+[2026-05-10 10:43:48] (II) modeset(0): Modeline "480x270"x60.01  18.68  480 504 520 560  270 271 274 278 doublescan +hsync -vsync (33.36 kHz d)
+[2026-05-10 10:43:48] (II) modeset(0): Modeline "400x300"x60.01  19.17  400 412 448 512  300 300 301 312 doublescan +hsync +vsync (37.45 kHz d)
+[2026-05-10 10:43:48] (II) modeset(0): Modeline "432x243"x60.01  15.36  432 456 472 512  243 244 247 250 doublescan +hsync -vsync (30.00 kHz d)
+[2026-05-10 10:43:48] (II) modeset(0): Modeline "320x240"x60.01  12.58  320 328 376 400  240 245 246 262 doublescan -hsync -vsync (31.44 kHz d)
+[2026-05-10 10:43:48] (II) modeset(0): Modeline "360x202"x60.01  11.04  360 384 400 440  202 204 206 209 doublescan +hsync -vsync (25.08 kHz d)
+[2026-05-10 10:43:48] (II) modeset(0): Modeline "320x180"x60.01  8.98  320 344 360 400  180 181 184 187 doublescan +hsync -vsync (22.44 kHz d)
+[2026-05-10 10:43:48] (II) modeset(0): EDID for output HDMI-1
+[2026-05-10 10:43:48] (II) modeset(0): EDID for output DP-1
+[2026-05-10 10:43:48] (II) modeset(0): EDID for output DP-2
+[2026-05-10 10:43:48] (II) modeset(0): EDID for output DP-3
+[2026-05-10 10:43:48] (II) modeset(0): EDID for output DP-4
+[2026-05-10 10:43:48] (II) modeset(0): EDID for output DP-5
+[2026-05-10 10:43:48] (II) modeset(0): EDID for output DP-6
+[2026-05-10 10:43:48] (II) modeset(0): Output eDP-1 connected
+[2026-05-10 10:43:48] (II) modeset(0): Output HDMI-1 disconnected
+[2026-05-10 10:43:48] (II) modeset(0): Output DP-1 disconnected
+[2026-05-10 10:43:48] (II) modeset(0): Output DP-2 disconnected
+[2026-05-10 10:43:48] (II) modeset(0): Output DP-3 disconnected
+[2026-05-10 10:43:48] (II) modeset(0): Output DP-4 disconnected
+[2026-05-10 10:43:48] (II) modeset(0): Output DP-5 disconnected
+[2026-05-10 10:43:48] (II) modeset(0): Output DP-6 disconnected
+[2026-05-10 10:43:48] (II) modeset(0): Using exact sizes for initial modes
+[2026-05-10 10:43:48] (II) modeset(0): Output eDP-1 using initial mode 1920x1200 +0+0
+[2026-05-10 10:43:48] (==) modeset(0): Using gamma correction (1.00, 1.00, 1.00)
+[2026-05-10 10:43:48] (==) modeset(0): DPI set to (96, 96)
+[2026-05-10 10:43:48] (II) Loading sub module "fb"
+[2026-05-10 10:43:48] (II) LoadModule: "fb"
+[2026-05-10 10:43:48] (II) Module "fb" already built-in
+[2026-05-10 10:43:48] (II) UnloadModule: "radeon"
+[2026-05-10 10:43:48] (II) Unloading radeon
+[2026-05-10 10:43:48] (==) modeset(0): Backing store enabled
+[2026-05-10 10:43:48] (==) modeset(0): Silken mouse enabled
+[2026-05-10 10:43:48] (II) modeset(0): Initializing kms color map for depth 24, 8 bpc.
+[2026-05-10 10:43:48] (==) modeset(0): DPMS enabled
+[2026-05-10 10:43:48] (II) modeset(0): [DRI2] Setup complete
+[2026-05-10 10:43:48] (II) modeset(0): [DRI2]   DRI driver: radeonsi
+[2026-05-10 10:43:48] (II) modeset(0): [DRI2]   VDPAU driver: radeonsi
+[2026-05-10 10:43:48] (II) Output(s) initialized
+[2026-05-10 10:43:48] (II) Initializing extension Generic Event Extension
+[2026-05-10 10:43:48] (II) Initializing extension SHAPE
+[2026-05-10 10:43:48] (II) Initializing extension MIT-SHM
+[2026-05-10 10:43:48] (II) Initializing extension XInputExtension
+[2026-05-10 10:43:48] (II) Initializing extension XTEST
+[2026-05-10 10:43:48] (II) Initializing extension BIG-REQUESTS
+[2026-05-10 10:43:48] (II) Initializing extension SYNC
+[2026-05-10 10:43:48] (II) Initializing extension XKEYBOARD
+[2026-05-10 10:43:48] (II) Initializing extension XC-MISC
+[2026-05-10 10:43:48] (II) Initializing extension SECURITY
+[2026-05-10 10:43:48] (II) Initializing extension XFIXES
+[2026-05-10 10:43:48] (II) Initializing extension RENDER
+[2026-05-10 10:43:48] (II) Initializing extension RANDR
+[2026-05-10 10:43:48] (II) Initializing extension COMPOSITE
+[2026-05-10 10:43:48] (II) Initializing extension DAMAGE
+[2026-05-10 10:43:48] (II) Initializing extension MIT-SCREEN-SAVER
+[2026-05-10 10:43:48] (II) Initializing extension DOUBLE-BUFFER
+[2026-05-10 10:43:48] (II) Initializing extension RECORD
+[2026-05-10 10:43:48] (II) Initializing extension DPMS
+[2026-05-10 10:43:48] (II) Initializing extension Present
+[2026-05-10 10:43:48] (II) Initializing extension DRI3
+[2026-05-10 10:43:48] (II) Initializing extension X-Resource
+[2026-05-10 10:43:48] (II) Initializing extension XVideo
+[2026-05-10 10:43:48] (II) Initializing extension XVideo-MotionCompensation
+[2026-05-10 10:43:48] (II) Initializing extension GLX
+[2026-05-10 10:43:48] (II) GLX: Initialized glamor GL provider for screen 0
+[2026-05-10 10:43:48] (II) GLX: Another vendor is already registered for screen 0
+[2026-05-10 10:43:48] (II) Initializing extension XFree86-VidModeExtension
+[2026-05-10 10:43:48] (II) Initializing extension XFree86-DGA
+[2026-05-10 10:43:48] (II) Initializing extension XFree86-DRI
+[2026-05-10 10:43:48] (II) Initializing extension DRI2
+[2026-05-10 10:43:48] (II) Extensions initialized
+[2026-05-10 10:43:48] (II) modeset(0): Damage tracking initialized
+[2026-05-10 10:43:48] (II) modeset(0): Setting screen physical size to 508 x 317
+[2026-05-10 10:43:48] (II) Screen(s) initialized
+[2026-05-10 10:43:48] (II) config/udev: Adding input device HD-Audio Generic HDMI/DP,pcm=3 (/dev/input/event9)
+[2026-05-10 10:43:48] (II) No input driver specified, ignoring this device.
+[2026-05-10 10:43:48] (II) This device may have been added with another device file.
+[2026-05-10 10:43:48] (II) config/udev: Adding input device HD-Audio Generic HDMI/DP,pcm=7 (/dev/input/event10)
+[2026-05-10 10:43:48] (II) No input driver specified, ignoring this device.
+[2026-05-10 10:43:48] (II) This device may have been added with another device file.
+[2026-05-10 10:43:48] (II) config/udev: Adding input device HD-Audio Generic HDMI/DP,pcm=8 (/dev/input/event11)
+[2026-05-10 10:43:48] (II) No input driver specified, ignoring this device.
+[2026-05-10 10:43:48] (II) This device may have been added with another device file.
+[2026-05-10 10:43:48] (II) config/udev: Adding input device HD-Audio Generic Mic (/dev/input/event12)
+[2026-05-10 10:43:48] (II) No input driver specified, ignoring this device.
+[2026-05-10 10:43:48] (II) This device may have been added with another device file.
+[2026-05-10 10:43:48] (II) config/udev: Adding input device HD-Audio Generic Headphone (/dev/input/event13)
+[2026-05-10 10:43:48] (II) No input driver specified, ignoring this device.
+[2026-05-10 10:43:48] (II) This device may have been added with another device file.
+[2026-05-10 10:43:48] (II) config/udev: Adding input device Video Bus (/dev/input/event4)
+[2026-05-10 10:43:48] (**) Video Bus: Applying InputClass "libinput keyboard catchall"
+[2026-05-10 10:43:48] (II) LoadModule: "libinput"
+[2026-05-10 10:43:48] (II) Loading /usr/lib/xorg/modules/xlibre-25.0/input/libinput_drv.so
+[2026-05-10 10:43:48] (II) Module libinput: vendor="X.Org Foundation"
+[2026-05-10 10:43:48] 	compiled for 1.25.0, module version = 25.0.1
+[2026-05-10 10:43:48] 	Module class: X.Org XInput Driver
+[2026-05-10 10:43:48] 	ABI class: X.Org XInput driver, version 26.0
+[2026-05-10 10:43:48] (II) Using input driver 'libinput' for 'Video Bus'
+[2026-05-10 10:43:48] (II) systemd-logind: got fd for /dev/input/event4 13:68 fd 24 paused 0
+[2026-05-10 10:43:48] (**) Video Bus: always reports core events
+[2026-05-10 10:43:48] (**) Option "Device" "/dev/input/event4"
+[2026-05-10 10:43:48] (II) event4  - Video Bus: is tagged by udev as: Keyboard
+[2026-05-10 10:43:48] (II) event4  - Video Bus: device is a keyboard
+[2026-05-10 10:43:48] (II) event4  - Video Bus: device removed
+[2026-05-10 10:43:48] (**) Option "config_info" "udev:/sys/devices/pci0000:00/0000:00:08.1/acpi.video_bus.0/input/input5/event4"
+[2026-05-10 10:43:48] (II) XINPUT: Adding extended input device "Video Bus" (type: KEYBOARD, id 6)
+[2026-05-10 10:43:48] (II) event4  - Video Bus: is tagged by udev as: Keyboard
+[2026-05-10 10:43:48] (II) event4  - Video Bus: device is a keyboard
+[2026-05-10 10:43:48] (II) config/udev: Adding input device ELAN0688:00 04F3:320B Mouse (/dev/input/event7)
+[2026-05-10 10:43:48] (**) ELAN0688:00 04F3:320B Mouse: Applying InputClass "libinput pointer catchall"
+[2026-05-10 10:43:48] (II) Using input driver 'libinput' for 'ELAN0688:00 04F3:320B Mouse'
+[2026-05-10 10:43:48] (II) systemd-logind: got fd for /dev/input/event7 13:71 fd 27 paused 0
+[2026-05-10 10:43:48] (**) ELAN0688:00 04F3:320B Mouse: always reports core events
+[2026-05-10 10:43:48] (**) Option "Device" "/dev/input/event7"
+[2026-05-10 10:43:48] (II) event7  - ELAN0688:00 04F3:320B Mouse: is tagged by udev as: Mouse
+[2026-05-10 10:43:48] (II) event7  - ELAN0688:00 04F3:320B Mouse: device is a pointer
+[2026-05-10 10:43:48] (II) event7  - ELAN0688:00 04F3:320B Mouse: device removed
+[2026-05-10 10:43:48] (II) libinput: ELAN0688:00 04F3:320B Mouse: Step value 0 was provided, libinput Fallback acceleration function is used.
+[2026-05-10 10:43:48] (II) libinput: ELAN0688:00 04F3:320B Mouse: Step value 0 was provided, libinput Fallback acceleration function is used.
+[2026-05-10 10:43:48] (II) libinput: ELAN0688:00 04F3:320B Mouse: Step value 0 was provided, libinput Fallback acceleration function is used.
+[2026-05-10 10:43:48] (**) Option "config_info" "udev:/sys/devices/platform/AMDI0010:01/i2c-1/i2c-ELAN0688:00/0018:04F3:320B.0001/input/input12/event7"
+[2026-05-10 10:43:48] (II) XINPUT: Adding extended input device "ELAN0688:00 04F3:320B Mouse" (type: MOUSE, id 7)
+[2026-05-10 10:43:48] (**) Option "AccelerationScheme" "none"
+[2026-05-10 10:43:48] (**) ELAN0688:00 04F3:320B Mouse: (accel) selected scheme none/0
+[2026-05-10 10:43:48] (**) ELAN0688:00 04F3:320B Mouse: (accel) acceleration factor: 2.00
+[2026-05-10 10:43:48] (**) ELAN0688:00 04F3:320B Mouse: (accel) acceleration threshold: 4
+[2026-05-10 10:43:48] (II) event7  - ELAN0688:00 04F3:320B Mouse: is tagged by udev as: Mouse
+[2026-05-10 10:43:48] (II) event7  - ELAN0688:00 04F3:320B Mouse: device is a pointer
+[2026-05-10 10:43:48] (II) config/udev: Adding input device ELAN0688:00 04F3:320B Mouse (/dev/input/mouse0)
+[2026-05-10 10:43:48] (II) No input driver specified, ignoring this device.
+[2026-05-10 10:43:48] (II) This device may have been added with another device file.
+[2026-05-10 10:43:48] (II) config/udev: Adding input device ELAN0688:00 04F3:320B Touchpad (/dev/input/event8)
+[2026-05-10 10:43:48] (**) ELAN0688:00 04F3:320B Touchpad: Applying InputClass "libinput touchpad catchall"
+[2026-05-10 10:43:48] (II) Using input driver 'libinput' for 'ELAN0688:00 04F3:320B Touchpad'
+[2026-05-10 10:43:48] (II) systemd-logind: got fd for /dev/input/event8 13:72 fd 28 paused 0
+[2026-05-10 10:43:48] (**) ELAN0688:00 04F3:320B Touchpad: always reports core events
+[2026-05-10 10:43:48] (**) Option "Device" "/dev/input/event8"
+[2026-05-10 10:43:48] (II) event8  - ELAN0688:00 04F3:320B Touchpad: is tagged by udev as: Touchpad
+[2026-05-10 10:43:48] (II) event8  - ELAN0688:00 04F3:320B Touchpad: device is a touchpad
+[2026-05-10 10:43:48] (II) event8  - ELAN0688:00 04F3:320B Touchpad: device removed
+[2026-05-10 10:43:48] (II) libinput: ELAN0688:00 04F3:320B Touchpad: Step value 0 was provided, libinput Fallback acceleration function is used.
+[2026-05-10 10:43:48] (II) libinput: ELAN0688:00 04F3:320B Touchpad: Step value 0 was provided, libinput Fallback acceleration function is used.
+[2026-05-10 10:43:48] (II) libinput: ELAN0688:00 04F3:320B Touchpad: Step value 0 was provided, libinput Fallback acceleration function is used.
+[2026-05-10 10:43:48] (**) Option "config_info" "udev:/sys/devices/platform/AMDI0010:01/i2c-1/i2c-ELAN0688:00/0018:04F3:320B.0001/input/input14/event8"
+[2026-05-10 10:43:48] (II) XINPUT: Adding extended input device "ELAN0688:00 04F3:320B Touchpad" (type: TOUCHPAD, id 8)
+[2026-05-10 10:43:48] (**) Option "AccelerationScheme" "none"
+[2026-05-10 10:43:48] (**) ELAN0688:00 04F3:320B Touchpad: (accel) selected scheme none/0
+[2026-05-10 10:43:48] (**) ELAN0688:00 04F3:320B Touchpad: (accel) acceleration factor: 2.00
+[2026-05-10 10:43:48] (**) ELAN0688:00 04F3:320B Touchpad: (accel) acceleration threshold: 4
+[2026-05-10 10:43:48] (II) event8  - ELAN0688:00 04F3:320B Touchpad: is tagged by udev as: Touchpad
+[2026-05-10 10:43:48] (II) event8  - ELAN0688:00 04F3:320B Touchpad: device is a touchpad
+[2026-05-10 10:43:48] (II) config/udev: Adding input device ELAN0688:00 04F3:320B Touchpad (/dev/input/mouse1)
+[2026-05-10 10:43:48] (II) No input driver specified, ignoring this device.
+[2026-05-10 10:43:48] (II) This device may have been added with another device file.
+[2026-05-10 10:43:48] (II) config/udev: Adding input device Power Button (/dev/input/event0)
+[2026-05-10 10:43:48] (**) Power Button: Applying InputClass "libinput keyboard catchall"
+[2026-05-10 10:43:48] (II) Using input driver 'libinput' for 'Power Button'
+[2026-05-10 10:43:48] (II) systemd-logind: got fd for /dev/input/event0 13:64 fd 29 paused 0
+[2026-05-10 10:43:48] (**) Power Button: always reports core events
+[2026-05-10 10:43:48] (**) Option "Device" "/dev/input/event0"
+[2026-05-10 10:43:48] (II) event0  - Power Button: is tagged by udev as: Keyboard
+[2026-05-10 10:43:48] (II) event0  - Power Button: device is a keyboard
+[2026-05-10 10:43:48] (II) event0  - Power Button: device removed
+[2026-05-10 10:43:48] (**) Option "config_info" "udev:/sys/devices/platform/PNP0C0C:00/input/input0/event0"
+[2026-05-10 10:43:48] (II) XINPUT: Adding extended input device "Power Button" (type: KEYBOARD, id 9)
+[2026-05-10 10:43:48] (II) event0  - Power Button: is tagged by udev as: Keyboard
+[2026-05-10 10:43:48] (II) event0  - Power Button: device is a keyboard
+[2026-05-10 10:43:48] (II) config/udev: Adding input device Lid Switch (/dev/input/event1)
+[2026-05-10 10:43:48] (II) No input driver specified, ignoring this device.
+[2026-05-10 10:43:48] (II) This device may have been added with another device file.
+[2026-05-10 10:43:48] (II) config/udev: Adding input device Sleep Button (/dev/input/event2)
+[2026-05-10 10:43:48] (**) Sleep Button: Applying InputClass "libinput keyboard catchall"
+[2026-05-10 10:43:48] (II) Using input driver 'libinput' for 'Sleep Button'
+[2026-05-10 10:43:48] (II) systemd-logind: got fd for /dev/input/event2 13:66 fd 30 paused 0
+[2026-05-10 10:43:48] (**) Sleep Button: always reports core events
+[2026-05-10 10:43:48] (**) Option "Device" "/dev/input/event2"
+[2026-05-10 10:43:48] (II) event2  - Sleep Button: is tagged by udev as: Keyboard
+[2026-05-10 10:43:48] (II) event2  - Sleep Button: device is a keyboard
+[2026-05-10 10:43:48] (II) event2  - Sleep Button: device removed
+[2026-05-10 10:43:48] (**) Option "config_info" "udev:/sys/devices/platform/PNP0C0E:00/input/input2/event2"
+[2026-05-10 10:43:48] (II) XINPUT: Adding extended input device "Sleep Button" (type: KEYBOARD, id 10)
+[2026-05-10 10:43:48] (II) event2  - Sleep Button: is tagged by udev as: Keyboard
+[2026-05-10 10:43:48] (II) event2  - Sleep Button: device is a keyboard
+[2026-05-10 10:43:48] (II) config/udev: Adding input device AT Translated Set 2 keyboard (/dev/input/event3)
+[2026-05-10 10:43:48] (**) AT Translated Set 2 keyboard: Applying InputClass "libinput keyboard catchall"
+[2026-05-10 10:43:48] (II) Using input driver 'libinput' for 'AT Translated Set 2 keyboard'
+[2026-05-10 10:43:48] (II) systemd-logind: got fd for /dev/input/event3 13:67 fd 31 paused 0
+[2026-05-10 10:43:48] (**) AT Translated Set 2 keyboard: always reports core events
+[2026-05-10 10:43:48] (**) Option "Device" "/dev/input/event3"
+[2026-05-10 10:43:48] (II) event3  - AT Translated Set 2 keyboard: is tagged by udev as: Keyboard
+[2026-05-10 10:43:48] (II) event3  - AT Translated Set 2 keyboard: device is a keyboard
+[2026-05-10 10:43:48] (II) event3  - AT Translated Set 2 keyboard: device removed
+[2026-05-10 10:43:48] (**) Option "config_info" "udev:/sys/devices/platform/i8042/serio0/input/input3/event3"
+[2026-05-10 10:43:48] (II) XINPUT: Adding extended input device "AT Translated Set 2 keyboard" (type: KEYBOARD, id 11)
+[2026-05-10 10:43:48] (II) event3  - AT Translated Set 2 keyboard: is tagged by udev as: Keyboard
+[2026-05-10 10:43:48] (II) event3  - AT Translated Set 2 keyboard: device is a keyboard
+[2026-05-10 10:43:48] (II) config/udev: Adding input device TPPS/2 Elan TrackPoint (/dev/input/event14)
+[2026-05-10 10:43:48] (**) TPPS/2 Elan TrackPoint: Applying InputClass "libinput pointer catchall"
+[2026-05-10 10:43:48] (II) Using input driver 'libinput' for 'TPPS/2 Elan TrackPoint'
+[2026-05-10 10:43:48] (II) systemd-logind: got fd for /dev/input/event14 13:78 fd 32 paused 0
+[2026-05-10 10:43:48] (**) TPPS/2 Elan TrackPoint: always reports core events
+[2026-05-10 10:43:48] (**) Option "Device" "/dev/input/event14"
+[2026-05-10 10:43:48] (II) event14 - TPPS/2 Elan TrackPoint: is tagged by udev as: Mouse Pointingstick
+[2026-05-10 10:43:48] (II) event14 - TPPS/2 Elan TrackPoint: device is a pointer
+[2026-05-10 10:43:48] (II) event14 - TPPS/2 Elan TrackPoint: device removed
+[2026-05-10 10:43:48] (II) libinput: TPPS/2 Elan TrackPoint: Step value 0 was provided, libinput Fallback acceleration function is used.
+[2026-05-10 10:43:48] (II) libinput: TPPS/2 Elan TrackPoint: Step value 0 was provided, libinput Fallback acceleration function is used.
+[2026-05-10 10:43:48] (II) libinput: TPPS/2 Elan TrackPoint: Step value 0 was provided, libinput Fallback acceleration function is used.
+[2026-05-10 10:43:48] (**) Option "config_info" "udev:/sys/devices/platform/i8042/serio1/input/input8/event14"
+[2026-05-10 10:43:48] (II) XINPUT: Adding extended input device "TPPS/2 Elan TrackPoint" (type: MOUSE, id 12)
+[2026-05-10 10:43:48] (**) Option "AccelerationScheme" "none"
+[2026-05-10 10:43:48] (**) TPPS/2 Elan TrackPoint: (accel) selected scheme none/0
+[2026-05-10 10:43:48] (**) TPPS/2 Elan TrackPoint: (accel) acceleration factor: 2.00
+[2026-05-10 10:43:48] (**) TPPS/2 Elan TrackPoint: (accel) acceleration threshold: 4
+[2026-05-10 10:43:48] (II) event14 - TPPS/2 Elan TrackPoint: is tagged by udev as: Mouse Pointingstick
+[2026-05-10 10:43:48] (II) event14 - TPPS/2 Elan TrackPoint: device is a pointer
+[2026-05-10 10:43:48] (II) config/udev: Adding input device TPPS/2 Elan TrackPoint (/dev/input/mouse2)
+[2026-05-10 10:43:48] (II) No input driver specified, ignoring this device.
+[2026-05-10 10:43:48] (II) This device may have been added with another device file.
+[2026-05-10 10:43:48] (II) config/udev: Adding input device PC Speaker (/dev/input/event6)
+[2026-05-10 10:43:48] (II) No input driver specified, ignoring this device.
+[2026-05-10 10:43:48] (II) This device may have been added with another device file.
+[2026-05-10 10:43:48] (II) config/udev: Adding input device ThinkPad Extra Buttons (/dev/input/event5)
+[2026-05-10 10:43:48] (**) ThinkPad Extra Buttons: Applying InputClass "libinput keyboard catchall"
+[2026-05-10 10:43:48] (II) Using input driver 'libinput' for 'ThinkPad Extra Buttons'
+[2026-05-10 10:43:48] (II) systemd-logind: got fd for /dev/input/event5 13:69 fd 33 paused 0
+[2026-05-10 10:43:48] (**) ThinkPad Extra Buttons: always reports core events
+[2026-05-10 10:43:48] (**) Option "Device" "/dev/input/event5"
+[2026-05-10 10:43:48] (II) event5  - ThinkPad Extra Buttons: is tagged by udev as: Keyboard Switch
+[2026-05-10 10:43:48] (II) event5  - ThinkPad Extra Buttons: device is a keyboard
+[2026-05-10 10:43:48] (II) event5  - ThinkPad Extra Buttons: device removed
+[2026-05-10 10:43:48] (**) Option "config_info" "udev:/sys/devices/platform/thinkpad_acpi/input/input6/event5"
+[2026-05-10 10:43:48] (II) XINPUT: Adding extended input device "ThinkPad Extra Buttons" (type: KEYBOARD, id 13)
+[2026-05-10 10:43:48] (II) event5  - ThinkPad Extra Buttons: is tagged by udev as: Keyboard Switch
+[2026-05-10 10:43:48] (II) event5  - ThinkPad Extra Buttons: device is a keyboard
+[2026-05-10 10:43:48] (II) Input(s) initialized
+[2026-05-10 10:43:58] (**) Option "fd" "24"
+[2026-05-10 10:43:58] (II) event4  - Video Bus: device removed
+[2026-05-10 10:43:58] (**) Option "fd" "27"
+[2026-05-10 10:43:58] (II) event7  - ELAN0688:00 04F3:320B Mouse: device removed
+[2026-05-10 10:43:58] (**) Option "fd" "28"
+[2026-05-10 10:43:58] (II) event8  - ELAN0688:00 04F3:320B Touchpad: device removed
+[2026-05-10 10:43:58] (**) Option "fd" "29"
+[2026-05-10 10:43:58] (II) event0  - Power Button: device removed
+[2026-05-10 10:43:58] (**) Option "fd" "30"
+[2026-05-10 10:43:58] (II) event2  - Sleep Button: device removed
+[2026-05-10 10:43:58] (**) Option "fd" "31"
+[2026-05-10 10:43:58] (II) event3  - AT Translated Set 2 keyboard: device removed
+[2026-05-10 10:43:58] (**) Option "fd" "32"
+[2026-05-10 10:43:58] (II) event14 - TPPS/2 Elan TrackPoint: device removed
+[2026-05-10 10:43:58] (**) Option "fd" "33"
+[2026-05-10 10:43:58] (II) event5  - ThinkPad Extra Buttons: device removed
+[2026-05-10 10:43:58] (II) systemd-logind: drop master for 226:1
+[2026-05-10 10:43:58] (II) systemd-logind: got pause for 13:78
+[2026-05-10 10:43:58] (II) systemd-logind: got pause for 13:71
+[2026-05-10 10:43:58] (II) systemd-logind: got pause for 13:69
+[2026-05-10 10:43:58] (II) systemd-logind: got pause for 13:72
+[2026-05-10 10:43:58] (II) systemd-logind: got pause for 13:68
+[2026-05-10 10:43:58] (II) systemd-logind: got pause for 13:64
+[2026-05-10 10:43:58] (II) systemd-logind: got pause for 13:67
+[2026-05-10 10:43:58] (II) systemd-logind: got pause for 13:66

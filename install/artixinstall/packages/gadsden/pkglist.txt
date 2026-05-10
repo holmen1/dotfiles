@@ -18,6 +18,9 @@ openresolv
 openssh
 vim
 xlibre-input-libinput
+xlibre-video-ati
+xlibre-video-fbdev
+xlibre-video-vesa
 xlibre-xserver
 xorg-xinit
 xterm
