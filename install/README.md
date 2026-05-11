@@ -44,10 +44,52 @@ sudo dd bs=4M if=artix-base-openrc-20260402-x86_64.iso of=/dev/disk4 status=prog
 
 ### Build from Source
 For software not available via package managers (see [`install/build/`](./build/README.md)):
+
+#### Download Sources
 ```bash
+# From git repository
 git clone <repo> && cd <repo>
-./configure && make && sudo make install   # autotools
-cmake -B build && cmake --build build && sudo cmake --install build  # cmake
+
+# OR download tarball
+curl -L -o package-version.tar.gz https://example.com/package-version.tar.gz
+
+# Verify checksum (recommended)
+sha256sum package-version.tar.gz
+
+# Extract
+tar -xzf package-version.tar.gz
+cd package-version/
+```
+
+#### Build Methods
+```bash
+# Autotools (configure/make)
+./configure && make && sudo make install
+
+# CMake
+cmake -B build && cmake --build build && sudo cmake --install build
+
+# Haskell (runhaskell)
+runhaskell Setup.lhs configure --user
+runhaskell Setup.lhs build
+runhaskell Setup.lhs install
+```
+
+#### Uninstall
+```bash
+# Autotools/cmake (if supported)
+sudo make uninstall  # from build directory
+# OR
+sudo xargs rm < install_manifest.txt  # if generated
+
+# Haskell packages
+ghc-pkg unregister package-name
+rm -rf ~/.cabal/lib/*package-name*
+
+# Manual cleanup (check install location)
+sudo rm /usr/local/bin/program
+sudo rm -rf /usr/local/share/program
+```
 ```
 
 ### Install with Cargo
