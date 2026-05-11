@@ -84,9 +84,9 @@ build_simple "data-default-class" "$DATA_DEFAULT_CLASS_VER"
 
 # setlocale has base upper bound <= 4.16, incompatible with GHC 9.12+ (base 4.21)
 fetch_hackage "setlocale" "$SETLOCALE_VER"
-sed -i 's/base >= 4\.6 && <= 4\.16/base >= 4.6/' "$WORK_DIR/setlocale-$SETLOCALE_VER/setlocale.cabal"
+sed -i 's/base >=4.6 && <4.16/base >= 4.6/' "$WORK_DIR/setlocale-$SETLOCALE_VER/setlocale.cabal"
 cd "$WORK_DIR/setlocale-$SETLOCALE_VER"
-SETUP_FILE=Setup.lhs
+SETUP_FILE=Setup.hs
 runhaskell "$SETUP_FILE" configure --user
 runhaskell "$SETUP_FILE" build
 runhaskell "$SETUP_FILE" install
