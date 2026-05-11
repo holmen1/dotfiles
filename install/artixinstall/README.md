@@ -356,6 +356,28 @@ pacman -Q | grep 'xlibre-'
 
 The install script's `pkglist.txt` lists `xlibre-xserver` and `xlibre-input-libinput` — pacman will skip them as already installed.
 
+### Haskell Compiler (GHC)
+
+For systems requiring Haskell development or custom xmonad builds:
+
+- [GHC build scripts](../build/ghc/) - Install Haskell compiler from source
+- Provides `ghc`, `runhaskell`, and Cabal library for building Haskell packages
+- Required before building xmonad from source
+
+### XMonad Window Manager
+
+For building xmonad without cabal-install dependency:
+
+**Prerequisites:**
+- Haskell compiler (GHC) installed
+- X11 development libraries: `libx11`, `libxrandr`, `libxext`, `libxinerama`, `libxss`
+- `autoconf` for X11 Haskell package
+
+- [XMonad build scripts](../build/xmonad/) - Build xmonad and xmonad-contrib from source
+- Uses `runhaskell Setup.lhs` with GHC's built-in Cabal library
+- Produces standalone binaries without cabal-install dependency
+- See [xmonad toolchain warmup](../build/xmonad/ghc-toolchain-warmup.md) for verification
+
 ### Run install script
 
 ```
