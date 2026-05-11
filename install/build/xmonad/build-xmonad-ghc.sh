@@ -92,7 +92,17 @@ runhaskell "$SETUP_FILE" build
 runhaskell "$SETUP_FILE" install
 echo "── Installed setlocale-$SETLOCALE_VER ──"
 
-build_simple "splitmix"           "$SPLITMIX_VER"
+# splitmix has tight upper bounds incompatible with GHC 9.12+ (base 4.21, deepseq 1.5+)
+fetch_hackage "splitmix" "$SPLITMIX_VER"
+sed -i 's/base >=4\.3 && <4\.16/base >=4.3/' "$WORK_DIR/splitmix-$SPLITMIX_VER/splitmix.cabal"
+sed -i 's/deepseq >= 1\.3\.0\.0 && <1\.5/deepseq >= 1.3.0.0/' "$WORK_DIR/splitmix-$SPLITMIX_VER/splitmix.cabal"
+cd "$WORK_DIR/splitmix-$SPLITMIX_VER"
+if [ -f Setup.lhs ]; then SETUP_FILE=Setup.lhs; else SETUP_FILE=Setup.hs; fi
+runhaskell "$SETUP_FILE" configure --user
+runhaskell "$SETUP_FILE" build
+runhaskell "$SETUP_FILE" install
+echo "── Installed splitmix-$SPLITMIX_VER ──"
+
 build_simple "random"             "$RANDOM_VER"
 build_simple "utf8-string"        "$UTF8_STRING_VER"
 build_configure "X11"             "$X11_VER"

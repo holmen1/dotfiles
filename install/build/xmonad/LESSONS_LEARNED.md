@@ -1,5 +1,23 @@
 # LESSONS LEARNED
 
+## Hackage Package Upper Bounds vs GHC 9.12+
+
+When building Haskell packages from Hackage tarballs with GHC 9.12+ (base 4.21),
+many older packages have tight upper bounds that predate this GHC version. The
+tarball ships the original `.cabal` with the old bounds — Hackage revisions
+(which relax the bounds) are only available via `cabal get`, not in the tarball.
+
+The workaround is to `sed`-patch the `.cabal` file after extraction, before
+running `runhaskell Setup.lhs configure`. Dots must be escaped in the sed pattern (`\.`).
+
+Known offenders in the xmonad dependency tree:
+
+| Package | Constraint | Fix |
+|---------|------------|-----|
+| `setlocale-1.0.0.10` | `base >= 4.6 && <= 4.16` | remove upper bound |
+| `splitmix-0.1.0.2` | `base >=4.3 && <4.16` | remove upper bound |
+| `splitmix-0.1.0.2` | `deepseq >= 1.3.0.0 && <1.5` | remove upper bound |
+
 ## Note on Binary Locations
 
 - Original installation: `~/.local/bin/xmonad`
