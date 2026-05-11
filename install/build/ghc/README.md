@@ -9,6 +9,10 @@ Find versions from main [GHC site](https://www.haskell.org/ghc/)
 
 More on hls below
 
+For `Arch/Artix` I use Debians dynamically linked
+```bash
+curl -O https://downloads.haskell.org/~ghc/9.12.4/ghc-9.12.4-x86_64-deb12-linux.tar.gz
+```
 
 ## Build and Install
 
@@ -28,10 +32,6 @@ sudo make install
 
 For more information, full GHC documentation is available from the
 main [GHC site](https://www.haskell.org/ghc/)
-
-checking whether gcc used as a linker understands --target... gcc: error: unrecognized command-line option '--target=x86_64-unknown-linux'
-no
-checking whether gcc used as a linker understands --target... gcc: error: unrecognized command-line option '--target=x86_64-unknown-linux'
 
 ## HLS
 
