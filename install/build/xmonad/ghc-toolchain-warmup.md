@@ -76,6 +76,8 @@ tar xzf "$TARBALL"
 cd "${PKG}-${VER}"
 ```
 
+**Where is Setup.lhs?** It's included in the package tarball you just downloaded! Every Haskell package on Hackage comes with its own build script (`Setup.lhs` or `Setup.hs`) that handles configuration, building, and installation. This is similar to how C libraries include `configure` scripts or Makefiles.
+
 ### 4. Build with runhaskell Setup.lhs
 
 Some Haskell packages, especially older ones, use `Setup.lhs` (literate Haskell) instead of `Setup.hs`. The `runhaskell` command can execute both file types, but you must use the correct filename as found in the package directory.
@@ -85,6 +87,8 @@ runhaskell Setup.lhs configure --user
 runhaskell Setup.lhs build
 runhaskell Setup.lhs install
 ```
+
+**Why no `ghc-pkg` commands?** The `install` command automatically registers the package with `ghc-pkg`. You can verify with `ghc-pkg list --user` afterward.
 
 ### 6. Confirm Package Usability and Linking
 
@@ -141,6 +145,17 @@ ghc-pkg list --user  # Shows user-installed packages
 - Package built and installed without cabal-install
 - `data-default-class-0.1.2.2` appears in `ghc-pkg list`
 - Package can be imported, linked, and the `Default` type class can be used
+
+## Verification: No cabal-install Dependency
+
+**Confirmed:** The build process truly works without cabal-install.
+
+- `runhaskell` is part of GHC (`runghc 9.12.2`)
+- `Cabal-3.14.1.0` library is in the global GHC package database
+- `Setup.lhs` scripts import `Distribution.Simple` from the bundled Cabal library
+- No `cabal` commands are used - only `runhaskell Setup.lhs`
+
+This approach will work on any machine with just GHC installed.
 
 ## Next Steps
 
