@@ -81,7 +81,17 @@ build_configure() {
 # ── build non-boot dependencies in order ─────────────────────────────
 
 build_simple "data-default-class" "$DATA_DEFAULT_CLASS_VER"
-build_simple "setlocale"          "$SETLOCALE_VER"
+
+# setlocale has base upper bound <= 4.16, incompatible with GHC 9.12+ (base 4.21)
+fetch_hackage "setlocale" "$SETLOCALE_VER"
+sed -i 's/base >= 4\.6 && <= 4\.16/base >= 4.6/' "$WORK_DIR/setlocale-$SETLOCALE_VER/setlocale.cabal"
+cd "$WORK_DIR/setlocale-$SETLOCALE_VER"
+SETUP_FILE=Setup.lhs
+runhaskell "$SETUP_FILE" configure --user
+runhaskell "$SETUP_FILE" build
+runhaskell "$SETUP_FILE" install
+echo "── Installed setlocale-$SETLOCALE_VER ──"
+
 build_simple "splitmix"           "$SPLITMIX_VER"
 build_simple "random"             "$RANDOM_VER"
 build_simple "utf8-string"        "$UTF8_STRING_VER"
