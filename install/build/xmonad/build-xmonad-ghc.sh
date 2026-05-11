@@ -51,9 +51,14 @@ build_simple() {
     echo "── Building $pkg-$ver ──"
     fetch_hackage "$pkg" "$ver"
     cd "$WORK_DIR/${pkg}-${ver}"
-    runhaskell Setup.hs configure --user
-    runhaskell Setup.hs build
-    runhaskell Setup.hs install
+    if [ -f Setup.lhs ]; then
+        SETUP_FILE=Setup.lhs
+    else
+        SETUP_FILE=Setup.hs
+    fi
+    runhaskell "$SETUP_FILE" configure --user
+    runhaskell "$SETUP_FILE" build
+    runhaskell "$SETUP_FILE" install
     echo "── Installed $pkg-$ver ──"
 }
 
@@ -62,9 +67,14 @@ build_configure() {
     echo "── Building $pkg-$ver (configure) ──"
     fetch_hackage "$pkg" "$ver"
     cd "$WORK_DIR/${pkg}-${ver}"
-    runhaskell Setup.hs configure --user
-    runhaskell Setup.hs build
-    runhaskell Setup.hs install
+    if [ -f Setup.lhs ]; then
+        SETUP_FILE=Setup.lhs
+    else
+        SETUP_FILE=Setup.hs
+    fi
+    runhaskell "$SETUP_FILE" configure --user
+    runhaskell "$SETUP_FILE" build
+    runhaskell "$SETUP_FILE" install
     echo "── Installed $pkg-$ver ──"
 }
 
