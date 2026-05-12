@@ -1,44 +1,37 @@
 # GHC
 
-## Download
+Glasgow Haskell Compiler — installed from binary distribution into `~/.local/ghc-<version>`.
 
-Find versions from main [GHC site](https://www.haskell.org/ghc/)
+Find versions from the main [GHC site](https://www.haskell.org/ghc/).
 
-**Note** if you use language server, check first
+**Note:** if you use a language server, check
 [ghc-version-support](https://haskell-language-server.readthedocs.io/en/latest/support/ghc-version-support.html)
+before choosing a version.
 
-More on hls below
-
-For `Arch/Artix` I use Debians dynamically linked
-```bash
-curl -O https://downloads.haskell.org/~ghc/9.12.4/ghc-9.12.4-x86_64-deb12-linux.tar.gz
-```
-
-## Build and Install
-
-The default installation directory is ```/usr/local```
-
-Run the configure script (as usual, run the script with --help to see what options it supports)
+## Usage
 
 ```bash
-./configure
+./build-ghc.sh <version>
 ```
-Ignore ```gcc: error: unrecognized command-line option '--target=x86_64-unknown-linux'```
 
-Then run
+e.g.
 ```bash
-sudo make install
+./build-ghc.sh 9.12.4
 ```
 
-For more information, full GHC documentation is available from the
-main [GHC site](https://www.haskell.org/ghc/)
+The script:
+1. Downloads the binary tarball for `x86_64-deb12-linux` (suitable for Arch/Artix)
+2. Installs into `~/.local/ghc-<version>` via `./configure --prefix`
+
+## Activation
+
+To make a version the system default:
+```bash
+sudo ln -sf ~/.local/ghc-<version>/bin/ghc /usr/local/bin/ghc
+sudo ln -sf ~/.local/ghc-<version>/bin/ghci /usr/local/bin/ghci
+sudo ln -sf ~/.local/ghc-<version>/bin/runghc /usr/local/bin/runghc
+```
 
 ## HLS
 
-Try from package managers, or
-
-### Direct installation from Hackage
-
-While possible via ```cabal install haskell-language-server```, is not recommended for most people. Said command builds the haskell-language-server binary and installs it in the default Cabal binaries folder, but the binary will only work with projects that use the same GHC version that built it.
-
-**Note** add ```$HOME.local/bin``` to PATH
+<!-- TODO: document HLS installation -->
