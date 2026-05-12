@@ -1,6 +1,9 @@
 # Ignore cabal build artifacts
 custom-xmonad/
 
+# Ignore Hackage build work directory
+_ghc_build/
+
 # Ignore test directory build artifacts but keep source
 _ghc_test/data-default-class*
 _ghc_test/data-default*
@@ -8,9 +11,9 @@ _ghc_test/test-default
 _ghc_test/test-default.o
 _ghc_test/test-default.hi
 
-# Ignore all other files in build directories
+# Ignore all other files in build directories (used by build-xmonad.sh)
 xmonad/
 xmonad-contrib/
 
-/# Ignore binary files
-/bin
+# Ignore binary files
+bin/

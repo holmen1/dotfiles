@@ -2,17 +2,30 @@
 #
 # Build xmonad + xmonad-contrib using only GHC (no cabal-install).
 # Uses runhaskell Setup.hs with GHC's built-in Cabal library.
+# Target: GHC 9.8.4 (base-4.19)
 #
 # Prerequisites:
-#   - GHC installed (e.g. from install/build/ghc/)
+#   - GHC 9.8.4 installed (e.g. from install/build/ghc/build-ghc.sh 9.8.4)
 #   - System C libraries: libX11, libXrandr, libXext, libXinerama, libXScrnSaver
 #     Artix/Arch: pacman -S libx11 libxrandr libxext libxinerama libxss
 #   - autoconf (for X11 Haskell package)
 
 set -e
 
-XMONAD_TAG="v0.18.1"
-XMONAD_CONTRIB_TAG="v0.18.2"
+GHC_VERSION="9.8.4"
+GHC_BIN="${HOME}/.local/ghc-${GHC_VERSION}/bin"
+
+if [ ! -x "${GHC_BIN}/ghc" ]; then
+    echo "Error: GHC ${GHC_VERSION} not found at ${GHC_BIN}"
+    echo "Run: install/build/ghc/build-ghc.sh ${GHC_VERSION}"
+    exit 1
+fi
+
+export PATH="${GHC_BIN}:${PATH}"
+echo "Using $(ghc --version)"
+
+XMONAD_VER="0.18.1"
+XMONAD_CONTRIB_VER="0.18.2"
 
 HACKAGE="https://hackage.haskell.org/package"
 
@@ -24,7 +37,7 @@ CONFIG_SOURCE=~/repos/dotfiles/dotfiles/xmonad/xmonad.hs
 # Haskell packages to fetch from Hackage (non-boot dependencies)
 DATA_DEFAULT_CLASS_VER="0.1.2.2"
 SETLOCALE_VER="1.0.0.10"
-SPLITMIX_VER="0.1.0.2"
+SPLITMIX_VER="0.1.3.2"
 RANDOM_VER="1.2.1.2"
 UTF8_STRING_VER="1.0.2"
 X11_VER="1.10.3"
@@ -82,7 +95,8 @@ build_configure() {
 
 build_simple "data-default-class" "$DATA_DEFAULT_CLASS_VER"
 
-# setlocale has base upper bound <= 4.16, incompatible with GHC 9.12+ (base 4.21)
+# NB: setlocale-1.0.0.10 tarball has stale base <4.16; Hackage revised it to <4.23
+# but the tarball is unchanged — patching .cabal in-place until a new release ships
 fetch_hackage "setlocale" "$SETLOCALE_VER"
 sed -i 's/base >=4.6 && <4.16/base >= 4.6/' "$WORK_DIR/setlocale-$SETLOCALE_VER/setlocale.cabal"
 cd "$WORK_DIR/setlocale-$SETLOCALE_VER"
@@ -92,42 +106,14 @@ runhaskell "$SETUP_FILE" build
 runhaskell "$SETUP_FILE" install
 echo "── Installed setlocale-$SETLOCALE_VER ──"
 
-# splitmix has tight upper bounds incompatible with GHC 9.12+ (base 4.21, deepseq 1.5+)
-fetch_hackage "splitmix" "$SPLITMIX_VER"
-sed -i 's/base >=4\.3 && <4\.16/base >=4.3/' "$WORK_DIR/splitmix-$SPLITMIX_VER/splitmix.cabal"
-sed -i 's/deepseq >= 1\.3\.0\.0 && <1\.5/deepseq >= 1.3.0.0/' "$WORK_DIR/splitmix-$SPLITMIX_VER/splitmix.cabal"
-cd "$WORK_DIR/splitmix-$SPLITMIX_VER"
-if [ -f Setup.lhs ]; then SETUP_FILE=Setup.lhs; else SETUP_FILE=Setup.hs; fi
-runhaskell "$SETUP_FILE" configure --user
-runhaskell "$SETUP_FILE" build
-runhaskell "$SETUP_FILE" install
-echo "── Installed splitmix-$SPLITMIX_VER ──"
+build_simple "splitmix"            "$SPLITMIX_VER"
 
 build_simple "random"             "$RANDOM_VER"
 build_simple "utf8-string"        "$UTF8_STRING_VER"
 build_configure "X11"             "$X11_VER"
 
-# ── build xmonad from git ────────────────────────────────────────────
-
-echo "── Building xmonad $XMONAD_TAG ──"
-cd "$WORK_DIR"
-rm -rf xmonad
-git clone --depth 1 --branch "$XMONAD_TAG" https://github.com/xmonad/xmonad.git
-cd xmonad
-runhaskell Setup.hs configure --user
-runhaskell Setup.hs build
-runhaskell Setup.hs install
-echo "── Installed xmonad $XMONAD_TAG ──"
-
-echo "── Building xmonad-contrib $XMONAD_CONTRIB_TAG ──"
-cd "$WORK_DIR"
-rm -rf xmonad-contrib
-git clone --depth 1 --branch "$XMONAD_CONTRIB_TAG" https://github.com/xmonad/xmonad-contrib.git
-cd xmonad-contrib
-runhaskell Setup.hs configure --user
-runhaskell Setup.hs build
-runhaskell Setup.hs install
-echo "── Installed xmonad-contrib $XMONAD_CONTRIB_TAG ──"
+build_simple "xmonad"         "$XMONAD_VER"
+build_simple "xmonad-contrib" "$XMONAD_CONTRIB_VER"
 
 # ── compile custom xmonad binary ─────────────────────────────────────
 
@@ -142,19 +128,28 @@ ghc --make xmonad.hs \
     -package X11 \
     -o xmonad-custom
 
-cp xmonad-custom "$BIN_DIR/xmonad-$XMONAD_TAG"
-chmod +x "$BIN_DIR/xmonad-$XMONAD_TAG"
+cp xmonad-custom "$BIN_DIR/xmonad-$XMONAD_VER"
+chmod +x "$BIN_DIR/xmonad-$XMONAD_VER"
 
 # archive
 cd "$BIN_DIR"
-tar -czf "xmonad-$XMONAD_TAG.tar.gz" "xmonad-$XMONAD_TAG"
+tar -czf "xmonad-$XMONAD_VER.tar.gz" "xmonad-$XMONAD_VER"
 
 echo ""
 echo "Build complete."
-echo "Binary:  $BIN_DIR/xmonad-$XMONAD_TAG"
-echo "Archive: $BIN_DIR/xmonad-$XMONAD_TAG.tar.gz"
+echo "Binary:  $BIN_DIR/xmonad-$XMONAD_VER"
+echo "Archive: $BIN_DIR/xmonad-$XMONAD_VER.tar.gz"
+
+# Health check
+BINARY="$BIN_DIR/xmonad-$XMONAD_VER"
+if "$BINARY" --version 2>/dev/null | grep -q "xmonad"; then
+    echo "Health check: OK ($($BINARY --version))"
+else
+    echo "Health check: FAIL — binary did not respond to --version"
+fi
+
 echo ""
 echo "Install with:"
 echo "  sudo mkdir -p /opt/xmonad"
-echo "  sudo cp $BIN_DIR/xmonad-$XMONAD_TAG /opt/xmonad/"
-echo "  sudo ln -sf /opt/xmonad/xmonad-$XMONAD_TAG /usr/local/bin/xmonad"
+echo "  sudo cp $BIN_DIR/xmonad-$XMONAD_VER /opt/xmonad/"
+echo "  sudo ln -sf /opt/xmonad/xmonad-$XMONAD_VER /usr/local/bin/xmonad"
