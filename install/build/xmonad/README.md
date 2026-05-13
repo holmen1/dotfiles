@@ -1,153 +1,70 @@
 # XMonad Build Factory
 
-This repository provides a streamlined approach for building and distributing XMonad binaries. The core concept is to separate the build process from deployment, allowing you to compile XMonad once on a dedicated "build machine" and then distribute the binary to other systems.
+XMonad is always built from source — no cabal-install required. The build script
+`build-xmonad-ghc.sh` fetches all dependencies directly from Hackage and builds
+with plain GHC using `runhaskell Setup.hs`.
 
-## Build Once, Deploy Anywhere
+## Build scripts
 
-This approach offers several advantages:
-- **Resource Efficiency**: Only one machine needs the full Haskell development environment
-- **Minimal Target Systems**: Target machines only need the binary (~2-4MB), not libraries (~100MB+)
-- **Consistent Experience**: Same XMonad version across all your machines
-- **Simple Updates**: Rebuild and redistribute only when needed (rarely)
-
-
-### Features
-- **Automated Setup**: The `build-xmonad.sh` script handles cloning repositories, building binaries, and installing dependencies.
-- **Customizable Configuration**: Easily create and recompile your `xmonad.hs` configuration file.
-
+| Script | Purpose |
+|---|---|
+| `build-xmonad-ghc.sh` | Build using GHC only (no cabal-install). Preferred. |
+| `build-xmonad.sh` | Legacy build using cabal-install. |
 
 ---
 
-## Build Machine Setup
+## Prerequisites
 
-### Install Dependencies
+### System C libraries
 ```bash
-# For Arch-based systems
-pacman -S xorg-apps xorg-xmessage libx11 libxft libxinerama libxrandr libxss pkgconf xterm
+# Arch/Artix
+pacman -S libx11 libxrandr libxext libxinerama libxss pkgconf autoconf
 
-# For Debian-based systems
-apt install libx11-dev libxft-dev libxinerama-dev libxrandr-dev libxss-dev pkg-config xterm
+# Debian/Ubuntu
+apt install libx11-dev libxft-dev libxinerama-dev libxrandr-dev libxss-dev pkg-config autoconf
 ```
 
-### Install Haskell
+### GHC
 
+Install GHC 9.8.4 via the build factory:
 ```bash
-# Install GHCup
-curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
+./install/build/ghc/build-ghc.sh 9.8.4
 ```
+See [GHC build README](../ghc/README.md) for details.
 
-#### Arch Linux (Recommended for Arch systems)
+---
 
-Note: [Static linking](https://wiki.archlinux.org/title/Haskell#Static_linking)
-
-Instead of GHCup, you can use Pacman to install pre-built Haskell tools.
-
-If pacman behind, see how to build from
-[source](../ghc/README.md).
-
-#### Install on FreeBSD
-```bash
-pkg install ghc hs-cabal-install [hs-haskell-language-server]
-```
-
-### Config cabal
-Create cabal.project file
-```
-cat > cabal.project <<EOF
-packages: ./xmonad ./xmonad-contrib
-EOF
-```
-
-### Build
-```
-$ ./build-xmonad.hs
-```
-**Role of build-xmonad.sh**
-The build-xmonad.sh script automates the process of setting up and building xmonad
-
-1. **Clone or Update Repositories**:
-   - Clones the xmonad and xmonad-contrib repositories from GitHub if they don't already exist.
-   - Updates the repositories if they are already cloned.
-
-2. **Copies Your Configuration**:
-   - Takes your custom `xmonad.hs` from the specified location
-   - Creates a Cabal project that includes your configuration
-
-3. **Builds a Self-Contained Binary**:
-   - Compiles your configuration directly into the binary
-   - No need for a separate configuration file on target machines
-   - Creates a binary at `$BUILD_DIR/bin/`
+## Build
 
 ```bash
-# Create a distributable archive
-tar -czvf xmonad-binary.tar.gz -C ~/.local/bin xmonad
+./install/build/xmonad/build-xmonad-ghc.sh
 ```
 
-## Target Machine Setup
+The script:
+1. Verifies GHC 9.8.4 is installed at `~/.local/ghc-9.8.4/`
+2. Fetches all Haskell dependencies from Hackage
+3. Builds xmonad and xmonad-contrib
+4. Compiles a custom binary from `dotfiles/xmonad/xmonad.hs`
+5. Places the versioned binary in `bin/` and runs a health check
 
-Target machines only need X11 libraries, not Haskell:
+---
 
-```bash
-# For Arch-based systems
-pacman -S libx11 libxft libxinerama libxrandr libxss xterm
-
-# For Debian-based systems
-apt install libx11-6 libxft2 libxinerama1 libxrandr2 libxss1 xterm
-```
-
-### Configuration on Build Machine
-
-1. Create configuration directory:
-```bash
-mkdir -p ~/.config/xmonad
-```
-
-2. Create a minimal xmonad.hs for debugging:
-```bash
-echo 'import XMonad
-
-main :: IO ()
-main = xmonad def' > ~/.config/xmonad/xmonad.hs
-```
-When ok, switch to ```~/repos/dotfiles/dotfiles/xmonad/xmonad.hs```
-
-3. Set up .xinitrc:
-```bash
-echo 'exec xmonad' >> ~/.xinitrc
-```
-
-### Recompilation when debugging
-Whenever you update `xmonad.hs`, recompile it with:
+## Deploy
 
 ```bash
-xmonad --recompile
-xmonad --restart
-```
-
-### Binary Installation on Target Machines
-
-Since we never recompile on target machines, installation is simple:
-
-```bash
-# Extract and install binary
-tar -xzf xmonad-v0.18.0.tar.gz
 sudo mkdir -p /opt/xmonad
-sudo cp xmonad-v0.18.0 /opt/xmonad/
-sudo chmod +x /opt/xmonad/xmonad-v0.18.0
+sudo cp bin/xmonad-0.18.1 /opt/xmonad/
+sudo ln -sf /opt/xmonad/xmonad-0.18.1 /usr/local/bin/xmonad
+```
 
-# Create symlink
-sudo ln -sf /opt/xmonad/xmonad-v0.18.0 /usr/local/bin/xmonad
-``
+Target machines only need X11 runtime libraries, not Haskell:
+```bash
+# Arch/Artix
+pacman -S libx11 libxft libxinerama libxrandr libxss xterm
+```
 
-## Important Note on Recompilation
+**Note:** target machines cannot recompile without rebuilding the binary on the build machine.
 
-**The target machines cannot recompile your xmonad.hs without installing the libraries.**
-
-If you need to modify xmonad.hs on target machines:
-1. Copy it back to your build machine
-2. Make changes there
-3. Recompile
-4. Redistribute the binary
 
 This trade-off of flexibility for size and simplicity is the core of the "build factory" approach.
 
