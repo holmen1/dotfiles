@@ -2,7 +2,7 @@
 # dmenu-menu: Unified menu for system (Artix)
 
 DOTFILES=$HOME/repos/dotfiles
-DSCRIPT=$HOME/.dmenu-artix
+DSCRIPT=$HOME/.dmenu
 DOCS=$DOTFILES/dotfiles
 MONITOR_SCRIPTS=$DOTFILES/install/artixinstall/scripts
 XKB_STATE=$HOME/.cache/xkb-layout
