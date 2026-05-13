@@ -12,7 +12,7 @@
 
 set -e
 
-GHC_VERSION="9.8.4"
+GHC_VERSION="9.12.2"
 GHC_BIN="${HOME}/.local/ghc-${GHC_VERSION}/bin"
 
 if [ ! -x "${GHC_BIN}/ghc" ]; then
