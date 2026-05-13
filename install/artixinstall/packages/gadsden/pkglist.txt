@@ -3,6 +3,7 @@ base-devel
 bear
 brightnessctl
 clang
+cronie-openrc
 dhcpcd
 dhcpcd-openrc
 dmenu
