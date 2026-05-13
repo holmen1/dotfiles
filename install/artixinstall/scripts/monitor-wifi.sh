@@ -2,6 +2,11 @@
 # monitor-wifi: Monitor and manage WiFi via iwd (iwctl).
 # TODO: verify on artix — iwd behaviour should be identical to arch
 
+notify() {
+    title="$1"; msg="$2"
+    printf '%s' "$msg" | dmenu -p "$title:" >/dev/null 2>&1 &
+}
+
 IFACE=$(iwctl device list 2>/dev/null | awk '/station/{print $2}')
 INFO=$(iwctl station "$IFACE" show 2>/dev/null)
 STATE=$(printf '%s' "$INFO" | awk '/State/{print $2}')
@@ -9,14 +14,14 @@ POWERED=$(printf '%s' "$INFO" | awk '/Powered/{print $2}')
 
 if [ -z "$1" ]; then
     if [ -z "$IFACE" ]; then
-        notify-send -u normal "Network" "No wireless interface found" -i network-wireless-offline
+        notify "Network" "No wireless interface found"
         exit 0
     fi
     if [ "$STATE" != "connected" ]; then
         if [ "$POWERED" = "on" ]; then
-            notify-send -u normal -t 150000 "WiFi Help" "WiFi enabled but not connected" -i network-wireless-disconnected
+            notify "WiFi Help" "WiFi enabled but not connected"
         else
-            notify-send -u critical "Network" "WiFi is disabled" -i network-wireless-offline
+            notify "Network" "WiFi is disabled"
         fi
     fi
     exit 0
@@ -46,22 +51,22 @@ connect() {
     fi
     sleep 1
     if iwctl station "$IFACE" show 2>/dev/null | awk '/State/{print $2}' | grep -q connected; then
-        notify-send "WiFi" "Connected to $SSID"
+        notify "WiFi" "Connected to $SSID"
     else
-        notify-send -u critical "WiFi" "Failed to connect to $SSID"
+        notify "WiFi" "Failed to connect to $SSID"
     fi
 }
 
 disconnect() {
     if [ -z "$IFACE" ]; then exit 1; fi
     iwctl station "$IFACE" disconnect
-    notify-send "WiFi" "Disconnected"
+    notify "WiFi" "Disconnected"
 }
 
 restart() {
     if [ -z "$IFACE" ]; then exit 1; fi
     sudo rc-service iwd restart
-    notify-send "WiFi" "Restarting"
+    notify "WiFi" "Restarting"
 }
 
 help() {
