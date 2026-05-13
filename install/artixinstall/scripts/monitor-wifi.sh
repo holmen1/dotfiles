@@ -1,10 +1,12 @@
 #!/bin/sh
 # monitor-wifi: Monitor and manage WiFi via iwd (iwctl).
 # TODO: verify on artix — iwd behaviour should be identical to arch
+echo "$(date): $0" >> ~/monitor.log
 
 notify() {
     title="$1"; msg="$2"
-    printf '%s' "$msg" | dmenu -p "$title:" >/dev/null 2>&1 &
+    #printf '%s' "$msg" | dmenu -p "$title:" >/dev/null 2>&1 &
+    xmessage -title "$title" -timeout 5 "$msg"
 }
 
 IFACE=$(iwctl device list 2>/dev/null | awk '/station/{print $2}')
