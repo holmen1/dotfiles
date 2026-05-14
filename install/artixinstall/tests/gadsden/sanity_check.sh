@@ -16,6 +16,13 @@ check_symlink() {
     else                                 fail "$1 (not a symlink)"
     fi
 }
+check_service() {
+    if rc-service "$1" status >/dev/null 2>&1; then
+        ok "$1 running"
+    else
+        fail "$1 not running"
+    fi
+}
 
 printf "Sanity check — gadsden (artix/openrc)\n"
 
@@ -41,11 +48,11 @@ hdr "Notifications"
 check_cmd xmessage
 
 hdr "OpenRC services"
-if rc-service iwd status >/dev/null 2>&1; then
-    ok "iwd running"
-else
-    fail "iwd not running"
-fi
+check_service dbus
+check_service dhcpcd
+check_service elogind
+check_service iwd
+check_service ntpd
 
 hdr "Dotfile symlinks"
 check_symlink "$HOME/.config/nvim"

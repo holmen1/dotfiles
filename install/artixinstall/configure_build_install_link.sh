@@ -137,9 +137,6 @@ case "$ans" in
     sudo rc-update add iwd default
     sudo rc-update add dbus default
     sudo rc-update add elogind default
-    sudo rc-update add cronie default
-    sudo rc-service cronie start
-    crontab ~/.config/cron/user.crontab
     echo "Services added to default runlevel"
     ;;
 esac

@@ -67,8 +67,8 @@ if command -v xbindkeys >/dev/null 2>&1; then
     xbindkeys &
 fi
 
-
-$HOME/.scripts/monitor-loop.sh &
+# Start battery/wifi monitors in background
+[ -x "$HOME/.scripts/monitor-loop.sh" ] && $HOME/.scripts/monitor-loop.sh &
 
 # Let background processes initialize
 sleep 0.2
