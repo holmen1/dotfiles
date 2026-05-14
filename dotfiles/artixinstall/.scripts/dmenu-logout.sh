@@ -1,0 +1,1 @@
+/home/holmen1/repos/dotfiles/install/artixinstall/scripts/dmenu-logout.sh

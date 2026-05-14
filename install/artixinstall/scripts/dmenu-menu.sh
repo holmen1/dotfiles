@@ -1,10 +1,7 @@
 #!/bin/sh
 # dmenu-menu: Unified menu for system (Artix)
 
-DOTFILES=$HOME/repos/dotfiles
-DSCRIPT=$HOME/.dmenu
-DOCS=$DOTFILES/dotfiles
-MONITOR_SCRIPTS=$DOTFILES/install/artixinstall/scripts
+SCRIPTS=$HOME/.scripts
 XKB_STATE=$HOME/.cache/xkb-layout
 
 # Font detection
@@ -13,9 +10,9 @@ fc-list | grep -qi "JetBrainsMono Nerd Font" \
     || FONT="monospace-14"
 
 current_xkb=$(cat "$XKB_STATE" 2>/dev/null || echo "se")
-battery_level=$($MONITOR_SCRIPTS/monitor-battery.sh --get-level)
-ssid=$($MONITOR_SCRIPTS/monitor-wifi.sh --get-ssid)
-vpn=$($MONITOR_SCRIPTS/monitor-vpn.sh --get-location)
+battery_level=$($SCRIPTS/monitor-battery.sh --get-level)
+ssid=$($SCRIPTS/monitor-wifi.sh --get-ssid)
+vpn=$($SCRIPTS/monitor-vpn.sh --get-location)
 
 # Main categories
 category=$(printf "Help\nNetwork\nExit" | dmenu -i -p "x[$current_xkb] w[$ssid] v[$vpn] b[$battery_level%]" \
@@ -39,15 +36,15 @@ case "$category" in
         sed -n 14,40p "$DOCS/lf/README.md" | dmenu -l 23 -i -p "lf Help" \
                 -nb "#222222" -nf "#ffffff" -sb "#222222" -sf "#ffffff" -fn "$FONT" ;;
       "wifi")
-        $MONITOR_SCRIPTS/monitor-wifi.sh --help | dmenu -l 7 -p "wifi Help" \
+        $SCRIPTS/monitor-wifi.sh --help | dmenu -l 7 -p "wifi Help" \
                 -nb "#222222" -nf "#ffffff" -sb "#222222" -sf "#ffffff" -fn "$FONT" ;;
     esac ;;
   "Network")
     net=$(printf "WiFi\nVPN" | dmenu -i -p "Net:" -nb "#222222" -nf "#ffffff" -sb "#A300A3" -sf "#ffffff" -fn "$FONT")
     case "$net" in
-      "WiFi") $DSCRIPT/dmenu-wifi.sh ;;
-      "VPN")  $DSCRIPT/dmenu-vpn.sh ;;
+      "WiFi") $SCRIPTS/dmenu-wifi.sh ;;
+      "VPN")  $SCRIPTS/dmenu-vpn.sh ;;
     esac ;;
   "Exit")
-    $DSCRIPT/dmenu-logout.sh ;;
+    $SCRIPTS/dmenu-logout.sh ;;
 esac

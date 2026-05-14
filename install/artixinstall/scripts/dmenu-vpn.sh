@@ -1,7 +1,7 @@
 #!/bin/sh
 # dmenu-vpn: Control Mullvad VPN via dmenu (Arch).
 
-MONITOR_VPN_SCRIPT="$HOME/repos/dotfiles/scripts/monitor-vpn.sh"
+MONITOR_VPN_SCRIPT="$HOME/.scripts/monitor-vpn.sh"
 
 fc-list | grep -qi "JetBrainsMono Nerd Font" \
     && FONT="JetBrainsMono Nerd Font Mono-14" \
