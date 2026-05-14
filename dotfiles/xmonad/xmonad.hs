@@ -65,7 +65,7 @@ myKeys terminal browser =
     -- scripts
     ((myModMask, xK_x), spawn "~/repos/dotfiles/scripts/xkb-toggle.sh"),
     -- dmenu scripts
-    ((myModMask, xK_m), spawn "~/.dmenu/dmenu-menu.sh"),
+    ((myModMask, xK_m), spawn "~/.scripts/dmenu-menu.sh"),
     ((myModMask, xK_w), namedScratchpadAction (myScratchpads terminal browser) "browser"),
     ((myModMask, xK_p), namedScratchpadAction (myScratchpads terminal browser) "htop")
   ]

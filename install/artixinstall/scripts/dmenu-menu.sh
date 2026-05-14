@@ -2,6 +2,7 @@
 # dmenu-menu: Unified menu for system (Artix)
 
 SCRIPTS=$HOME/.scripts
+DOCS=$HOME/repos/dotfiles/dotfiles
 XKB_STATE=$HOME/.cache/xkb-layout
 
 # Font detection
