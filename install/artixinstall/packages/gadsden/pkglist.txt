@@ -7,7 +7,6 @@ cronie-openrc
 dhcpcd
 dhcpcd-openrc
 dmenu
-dunst
 efibootmgr
 elogind-openrc
 ex-vi-compat
@@ -39,6 +38,7 @@ shellcheck-bin
 stow
 strace
 tree
+ungoogled-chromium
 vim
 xbindkeys
 xclip
@@ -49,5 +49,6 @@ xlibre-video-fbdev
 xlibre-video-vesa
 xlibre-xserver
 xorg-xinit
+xorg-xmessage
 xterm
 xwallpaper

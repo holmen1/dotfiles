@@ -67,6 +67,9 @@ if command -v xbindkeys >/dev/null 2>&1; then
     xbindkeys &
 fi
 
+
+$HOME/.scripts/monitor-loop.sh &
+
 # Let background processes initialize
 sleep 0.2
 

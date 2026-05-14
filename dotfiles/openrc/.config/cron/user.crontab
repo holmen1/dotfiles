@@ -1,2 +1,0 @@
-*/2 * * * * DISPLAY=:0 $HOME/repos/dotfiles/install/artixinstall/scripts/monitor-battery.sh
-*/2 * * * * DISPLAY=:0 $HOME/repos/dotfiles/install/artixinstall/scripts/monitor-wifi.sh

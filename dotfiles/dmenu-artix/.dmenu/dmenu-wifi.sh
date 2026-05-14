@@ -1,7 +1,8 @@
 #!/bin/sh
 # dmenu-wifi: WiFi manager via dmenu (Arch/iwd).
 
-MONITOR_WIFI_SCRIPT="$HOME/repos/dotfiles/scripts/monitor-wifi.sh"
+DESKTOP=artixinstall
+MONITOR_WIFI_SCRIPT="$HOME/repos/dotfiles/install/$DESKTOP/scripts/monitor-wifi.sh"
 
 fc-list | grep -qi "JetBrainsMono Nerd Font" \
     && FONT="JetBrainsMono Nerd Font Mono-14" \

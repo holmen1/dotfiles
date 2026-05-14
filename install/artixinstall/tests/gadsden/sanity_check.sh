@@ -38,8 +38,7 @@ check_cmd scrot
 check_cmd i3lock
 
 hdr "Notifications"
-check_cmd dunst
-check_cmd notify-send
+check_cmd xmessage
 
 hdr "OpenRC services"
 if rc-service iwd status >/dev/null 2>&1; then

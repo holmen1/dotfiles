@@ -5,7 +5,6 @@ echo "$(date): $0" >> ~/monitor.log
 
 notify() {
     title="$1"; msg="$2"
-    #printf '%s' "$msg" | dmenu -p "$title:" >/dev/null 2>&1 &
     xmessage -title "$title" -timeout 5 "$msg"
 }
 
