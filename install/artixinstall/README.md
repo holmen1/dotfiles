@@ -205,9 +205,15 @@ passwd
 ```
 
 ```
-useradd -m -G wheel holmen1
+useradd -m -G wheel,video holmen1
 passwd holmen1
 ```
+
+To add when already in group
+```
+sudo usermod -aG input $USER
+```
+or `audio`
 
 Allow wheel group to use sudo — run `visudo` and uncomment:
 ```

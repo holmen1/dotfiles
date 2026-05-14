@@ -52,7 +52,6 @@ check_service dbus
 check_service dhcpcd
 check_service elogind
 check_service iwd
-check_service ntpd
 
 hdr "Dotfile symlinks"
 check_symlink "$HOME/.config/nvim"
