@@ -32,7 +32,7 @@ echo ""
 
 for package in $packages; do
     # Dry run to find intended link targets, --adopt needed here to prevent escape
-    dry=$(stow -n -v -R --adopt -d "$DOTFILES_DIR_EXPANDED" -t "$HOME" "$package" 2>&1)
+    dry=$(stow -n -v -R --adopt --ignore='.*\.md' -d "$DOTFILES_DIR_EXPANDED" -t "$HOME" "$package" 2>&1)
     # Back up any real files that would conflict
     echo "$dry" | awk '/^LINK:/{print $2}' | while read -r target; do
         full="$HOME/$target"
@@ -42,7 +42,7 @@ for package in $packages; do
         fi
     done
     # Restow
-    output=$(stow -R -v -d "$DOTFILES_DIR_EXPANDED" -t "$HOME" "$package" 2>&1)
+    output=$(stow -R -v -d --ignore='.*\.md' "$DOTFILES_DIR_EXPANDED" -t "$HOME" "$package" 2>&1)
     echo "$package: Stowed"
 done
 
