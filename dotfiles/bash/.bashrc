@@ -53,7 +53,7 @@ fnd() {
 alias cdr='cd ~/repos'
 
 alias ls='ls --color=auto'
-alias ll='ls -lat --color=auto'
+alias ll='ls -lath --color=auto'
 alias grep='grep --color=auto'
 alias ..='cd ..'
 alias reboot='sudo reboot'
@@ -63,6 +63,7 @@ alias ff='fastfetch'
 alias diff='diff --color=auto'
 alias less='less -R'
 alias ret='echo $?'
+alias ss='sudo !!'
 
 # Git Aliases
 alias gs='git status'
