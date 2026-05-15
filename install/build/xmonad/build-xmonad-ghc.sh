@@ -75,22 +75,6 @@ build_simple() {
     echo "── Installed $pkg-$ver ──"
 }
 
-build_configure() {
-    pkg=$1; ver=$2
-    echo "── Building $pkg-$ver (configure) ──"
-    fetch_hackage "$pkg" "$ver"
-    cd "$WORK_DIR/${pkg}-${ver}"
-    if [ -f Setup.lhs ]; then
-        SETUP_FILE=Setup.lhs
-    else
-        SETUP_FILE=Setup.hs
-    fi
-    runhaskell "$SETUP_FILE" configure --user
-    runhaskell "$SETUP_FILE" build
-    runhaskell "$SETUP_FILE" install
-    echo "── Installed $pkg-$ver ──"
-}
-
 # ── build non-boot dependencies in order ─────────────────────────────
 
 build_simple "data-default-class" "$DATA_DEFAULT_CLASS_VER"
@@ -107,11 +91,9 @@ runhaskell "$SETUP_FILE" install
 echo "── Installed setlocale-$SETLOCALE_VER ──"
 
 build_simple "splitmix"            "$SPLITMIX_VER"
-
 build_simple "random"             "$RANDOM_VER"
 build_simple "utf8-string"        "$UTF8_STRING_VER"
-build_configure "X11"             "$X11_VER"
-
+build_simple "X11"             "$X11_VER"
 build_simple "xmonad"         "$XMONAD_VER"
 build_simple "xmonad-contrib" "$XMONAD_CONTRIB_VER"
 

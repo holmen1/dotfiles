@@ -19,9 +19,6 @@ LINKS=$DOTFILES_DIR/install/artixinstall/links/$PKGPROFILE/links.config
 
 TEST=$DOTFILES_DIR/install/artixinstall/tests/$PKGPROFILE/sanity_check.sh
 
-sudo pacman -S --needed openssh
-sudo -k
-
 read -p "Configure git? [y/N] " ans
 case "$ans" in
     [Yy]*)
@@ -69,10 +66,10 @@ case "$ans" in
     ;;
 esac
 
-read -p "Build xmonad? [y/N] " ans
+read -p "Rebuild xmonad? [y/N] " ans
 case "$ans" in
     [Yy]*)
-    $XMONAD_DIR/build-xmonad.sh
+    $XMONAD_DIR/rebuild-xmonad.sh
     ;;
 esac
 
@@ -86,8 +83,8 @@ case "$ans" in
             *) [ -e "$file" ] && sudo mv "$file" "${file}.bak" ;;
         esac
     done
-    sudo cp -f $XMONAD_DIR/bin/xmonad-v0.18.[0-9] /opt/xmonad/
-    LATEST_XMONAD=$(ls -v /opt/xmonad/xmonad-v0.18.[0-9] | grep -v '\.bak$' | tail -n 1)
+    sudo cp -f $XMONAD_DIR/bin/xmonad-0.18.[0-9] /opt/xmonad/
+    LATEST_XMONAD=$(ls -v /opt/xmonad/xmonad-0.18.[0-9] | grep -v '\.bak$' | tail -n 1)
     if [ -n "$LATEST_XMONAD" ]; then
         sudo ln -sf "$LATEST_XMONAD" /usr/local/bin/xmonad
         echo "Created symlink for xmonad -> $LATEST_XMONAD"

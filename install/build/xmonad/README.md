@@ -117,6 +117,23 @@ readelf -p .comment ~/.local/bin/xmonad
 readelf -p .comment ~/.cache/xmonad/xmonad-x86_64-linux
 ```
 
+```bash
+cmp -l file1.bin file2 | wc -l          # How many differences?
+cmp -l file1.bin file2 | head            # Where do they start?
+
+# Then visualize
+vbindiff file1 file2
+
+#Or for human-readable
+diff -u <(xxd -g1 -c 32 file1.bin) <(xxd -g1 -c 32 file2.bin) | less
+
+# Pro tip: If these are ELF executables or object files, also try:bash
+objdump -d file1 > 1.asm
+objdump -d file2 > 2.asm
+diff -u 1.asm 2.asm
+```
+
+
 These commands will help you understand:
 1. Whether debug symbols are present (explaining larger size)
 2. Which optimization levels were used 
