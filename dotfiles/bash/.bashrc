@@ -45,25 +45,24 @@ bak() {
 }
 
 # Quick file search function (rename from ff to avoid conflict)
-fnd() {
+ff() {
     find "${2:-.}" -name "*$1*" 2>/dev/null
 }
 
-
-alias cdr='cd ~/repos'
-
 alias ls='ls --color=auto'
 alias ll='ls -lath --color=auto'
-alias grep='grep --color=auto'
+alias gg='grep --color=auto'
 alias ..='cd ..'
 alias reboot='sudo reboot'
 alias shutdown='sudo shutdown'
 alias v='nvim'
-alias ff='fastfetch'
+alias c='code .'
 alias diff='diff --color=auto'
 alias less='less -R'
 alias ret='echo $?'
 alias ss='sudo !!'
+alias ee='echo $1'
+alias tt='tree -aL 2'
 
 # Git Aliases
 alias gs='git status'
