@@ -31,8 +31,8 @@ echo "Using config file: $CONFIG_FILE"
 echo ""
 
 for package in $packages; do
-    # Dry run to find intended link targets
-    dry=$(stow -n -v -R -d "$DOTFILES_DIR_EXPANDED" -t "$HOME" "$package" 2>&1)
+    # Dry run to find intended link targets, --adopt needed here to prevent escape
+    dry=$(stow -n -v -R --adopt -d "$DOTFILES_DIR_EXPANDED" -t "$HOME" "$package" 2>&1)
     # Back up any real files that would conflict
     echo "$dry" | awk '/^LINK:/{print $2}' | while read -r target; do
         full="$HOME/$target"
