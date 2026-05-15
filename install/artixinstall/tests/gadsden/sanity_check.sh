@@ -29,20 +29,21 @@ printf "Sanity check — gadsden (artix/openrc)\n"
 hdr "Core commands"
 check_cmd git
 check_cmd ssh
-check_cmd startx
 check_cmd xmonad
-check_cmd xterm
 check_cmd st
+check_cmd stow
 check_cmd dmenu
 check_cmd nvim
 
 hdr "X session"
+check_cmd startx
 check_file "$HOME/.xinitrc"
 if [ -x /usr/local/bin/xmonad ]; then ok "/usr/local/bin/xmonad"
 else fail "/usr/local/bin/xmonad not found or not executable"; fi
 check_cmd xbindkeys
 check_cmd scrot
 check_cmd i3lock
+check_cmd xterm
 
 hdr "Notifications"
 check_cmd dunst
@@ -73,9 +74,10 @@ else
     fail "~/.ssh/id_ed25519 not found"
 fi
 
-hdr "wheel group"
+hdr "groups"
 groups | grep -q wheel && ok "user in wheel group" || fail "user not in wheel group"
 sudo -n true 2>/dev/null && ok "passwordless sudo enabled" || warn "passwordless sudo not configured"
+groups | grep -q video && ok "user in video group" || fail "user not in video group"
 
 printf "\nPassed: %d  Failed: %d\n" "$PASS" "$FAIL"
 [ "$FAIL" -eq 0 ] && exit 0 || exit 1

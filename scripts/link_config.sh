@@ -20,11 +20,6 @@ if [ -z "$packages" ]; then
   exit 1
 fi
 
-if ! command -v stow >/dev/null 2>&1; then
-  echo "Error: stow is not installed."
-  exit 1
-fi
-
 DOTFILES_DIR_EXPANDED=$(eval echo "$DOTFILES_DIR")
 
 echo "Using config file: $CONFIG_FILE"
