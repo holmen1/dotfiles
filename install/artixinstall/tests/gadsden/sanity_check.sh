@@ -45,7 +45,8 @@ check_cmd scrot
 check_cmd i3lock
 
 hdr "Notifications"
-check_cmd xmessage
+check_cmd dunst
+check_cmd notify-send
 
 hdr "OpenRC services"
 check_service dbus

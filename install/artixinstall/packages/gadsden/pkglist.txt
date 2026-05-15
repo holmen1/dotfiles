@@ -7,6 +7,7 @@ cronie-openrc
 dhcpcd
 dhcpcd-openrc
 dmenu
+dunst
 efibootmgr
 elogind-openrc
 ex-vi-compat
@@ -20,6 +21,7 @@ i3lock
 iwd-openrc
 less
 lf
+libnotify
 libxinerama
 libxss
 linux
@@ -49,6 +51,5 @@ xlibre-video-fbdev
 xlibre-video-vesa
 xlibre-xserver
 xorg-xinit
-xorg-xmessage
 xterm
 xwallpaper
