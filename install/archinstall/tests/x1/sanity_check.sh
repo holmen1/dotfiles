@@ -28,6 +28,7 @@ check_cmd xterm
 check_cmd st
 check_cmd dmenu
 check_cmd nvim
+check_cmd stow
 
 hdr "X session"
 check_file "$HOME/.xinitrc"
@@ -45,16 +46,14 @@ check_cmd dunst
 check_cmd notify-send
 
 hdr "Dotfile symlinks"
-check_symlink "$HOME/.config/systemd/user/system-monitor.service"
-check_symlink "$HOME/.config/systemd/user/system-monitor.timer"
 check_symlink "$HOME/.config/nvim"
 check_symlink "$HOME/.config/dunstrc"
 
-hdr "System monitor timer"
-if systemctl --user is-active system-monitor.timer >/dev/null 2>&1; then
-    ok "system-monitor.timer active"
+hdr "Services"
+if systemctl is-active iwd >/dev/null 2>&1; then
+    ok "iwd active"
 else
-    fail "system-monitor.timer not active"
+    fail "iwd not active"
 fi
 
 hdr "Git"
@@ -69,7 +68,7 @@ if [ -f "$HOME/.ssh/id_ed25519" ]; then
     perms=$(stat -c %a "$HOME/.ssh/id_ed25519" 2>/dev/null)
     [ "$perms" = "600" ] && ok "id_ed25519 perms 600" || fail "id_ed25519 perms $perms (want 600)"
 else
-    fail "~/.ssh/id_ed25519 not found"
+    fail "$HOME/.ssh/id_ed25519 not found"
 fi
 
 hdr "wheel group"

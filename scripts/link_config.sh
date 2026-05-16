@@ -6,7 +6,8 @@ if [ -z "$1" ]; then
 fi
 
 CONFIG_FILE="$1"
-BASE_DIR="~/repos/dotfiles"
+STOW_DIR="$HOME/repos/dotfiles/dotfiles"
+TARGET="$HOME"
 
 if [ -f "$CONFIG_FILE" ]; then
   . "$CONFIG_FILE"
@@ -20,14 +21,12 @@ if [ -z "$packages" ]; then
   exit 1
 fi
 
-DOTFILES_DIR_EXPANDED=$(eval echo "$DOTFILES_DIR")
-
 echo "Using config file: $CONFIG_FILE"
 echo ""
 
 for package in $packages; do
     # Dry run to find intended link targets, --adopt needed here to prevent escape
-    dry=$(stow -n -v -R --adopt --ignore='.*\.md' -d "$DOTFILES_DIR_EXPANDED" -t "$HOME" "$package" 2>&1)
+    dry=$(stow -n -v -R --adopt --ignore='.*\.md' -d "$STOW_DIR" -t "$TARGET" "$package" 2>&1)
     # Back up any real files that would conflict
     echo "$dry" | awk '/^LINK:/{print $2}' | while read -r target; do
         full="$HOME/$target"
@@ -37,7 +36,7 @@ for package in $packages; do
         fi
     done
     # Restow
-    output=$(stow -R -v -d --ignore='.*\.md' "$DOTFILES_DIR_EXPANDED" -t "$HOME" "$package" 2>&1)
+    stow -R -v --ignore='.*\.md' -d "$STOW_DIR" -t "$TARGET" "$package" 2>&1
     echo "$package: Stowed"
 done
 
