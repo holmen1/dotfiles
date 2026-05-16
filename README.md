@@ -23,7 +23,7 @@ Minimal desktop configuration for Linux, BSD, and macOS — dotfiles, installati
 ## TL;DR
 
 - Install a base system
-[Artix Wiki](wiki.artixlinux.org/Main/Installation
+[Artix Wiki](wiki.artixlinux.org/Main/Installation)
 
 - Clone this repository:
 ```sh
