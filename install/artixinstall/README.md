@@ -1,6 +1,6 @@
 # artixinstall
 
-Port of archinstall to Artix Linux (OpenRC). Artix does not have a guided installer — every step is manual.
+Port of archinstall to Artix Linux (OpenRC)
 
 ## Pre-installation
 
@@ -149,9 +149,24 @@ basestrap /mnt sudo git vim openssh
 fstabgen -U /mnt >> /mnt/etc/fstab
 ```
 
-Inspect the result and make sure all four partitions are listed (EFI, swap, root, home):
+Inspect the result and make sure all partitions are listed (root, efi, swap, [home]):
 ```
 cat /mnt/etc/fstab
+```
+
+```
+# Static information about the filesystems.
+# See fstab(5) for details.
+
+# <file system> <dir> <type> <options> <dump> <pass>
+# /dev/nvme0n1p3 LABEL=ROOT
+UUID=740223d7-6729-46a8-bf83-b68329a3e33b	/         	ext4      	rw,relatime	0 1
+
+# /dev/nvme0n1p1 LABEL=ESP
+UUID=AF1B-0335      	/boot/efi 	vfat      	rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=ascii,shortname=mixed,utf8,errors=remount-ro	0 2
+
+# /dev/nvme0n1p2 LABEL=SWAP
+UUID=3dbe3090-4cf3-49be-9a7c-2cff14d9a484	none      	swap      	defaults  	0 0
 ```
 
 ### Chroot into the new system
@@ -200,14 +215,17 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 ### Add users
 
+- Root
 ```
 passwd
 ```
 
+- User
 ```
 useradd -m -G wheel,video holmen1
 passwd holmen1
 ```
+video needed to run `brightnessctl`
 
 To add when already in group
 ```
@@ -215,9 +233,9 @@ sudo usermod -aG input $USER
 ```
 or `audio`
 
-Allow wheel group to use sudo — run `visudo` and uncomment:
+Allow wheel group to use sudo [without password] — run `EDITOR=vim visudo` and uncomment:
 ```
-%wheel ALL=(ALL:ALL) ALL
+%wheel ALL=(ALL:ALL) [NOPASSWD:] ALL
 ```
 
 ### Network configuration
@@ -343,8 +361,22 @@ Verify:
 ```
 git remote -v
 ```
+```
+origin  git@github.com:holmen1/dotfiles.git (fetch)
+origin  git@github.com:holmen1/dotfiles.git (push)
+```
 
-### Install xlibre (before running install script)
+### Install
+
+Some need to built from source
+
+#### 0. Synchronizes the repository databases and updates the system's packages
+
+```bash
+pacman -Syu
+```
+
+#### 1. Install X server (Xlibre)
 
 `xlibre-xserver` and `xlibre-input-libinput` are in the Artix **world** repository — install directly with pacman, no AUR or yay needed:
 
@@ -352,53 +384,69 @@ git remote -v
 sudo pacman -S xlibre-xserver xlibre-input-libinput
 ```
 
-Pacman will handle the conflict with `xorg-server` automatically.
+#### 2. Install X stuff
 
-Verify:
+[x_pkg.txt](install/artixinstall/packages/x_pkg.txt)
+```bash
+./install/artixinstall/scripts/install-pacman.sh install/artixinstall/packages/x_pkg.txt
 ```
-pacman -Q | grep 'xorg-server\|xf86-'
-pacman -Q | grep 'xlibre-'
+
+Verify by creating a minimal `.xinitrc`
+```bash
+echo "exec xterm" > ~/.xinitrc
 ```
 
-The install script's `pkglist.txt` lists `xlibre-xserver` and `xlibre-input-libinput` — pacman will skip them as already installed.
+then
+```bash
+startx
+```
+a terminal should open, may need be pointed to to activate
 
-### Haskell Compiler (GHC)
+Monitor
+`~/.local/share/xorg/Xorg.0.log`
+for errors
+
+
+
+#### 3. Build or install Haskell Compiler (GHC)
 
 For systems requiring Haskell development or custom xmonad builds:
 
 - [GHC build scripts](../build/ghc/) - Install Haskell compiler from source
 - Provides `ghc`, `runhaskell`, and Cabal library for building Haskell packages
-- Required before building xmonad from source
 
-### XMonad Window Manager
+#### 4. XMonad Window Manager
 
-For building xmonad without cabal-install dependency:
-
-**Prerequisites:**
-- Haskell compiler (GHC) installed
-- X11 development libraries: `libx11`, `libxrandr`, `libxext`, `libxinerama`, `libxss`
-- `autoconf` for X11 Haskell package
+Building custom xmonad without cabal-install dependency:
 
 - [XMonad build scripts](../build/xmonad/) - Build xmonad and xmonad-contrib from source
 - Uses `runhaskell Setup.lhs` with GHC's built-in Cabal library
 - Produces standalone binaries without cabal-install dependency
-- See [xmonad toolchain warmup](../build/xmonad/ghc-toolchain-warmup.md) for verification
 
-### Run install script
+#### 5. Run install script
 
+Press enter to skip steps, `y` as shown below.
+This will:
+- Install pkglist
+- Install `xmonad`
+- Build and install `st`
+- Link dotfiles
+- Enable services (openrc)
+- Run sanity check
 ```
 cd ~/repos/dotfiles/install/artixinstall
-sh configure_build_install_link.sh
+./configure_build_install_link.sh
 ```
-
-This will prompt to:
-1. Configure git
-2. Generate SSH key (add public key to GitHub before cloning via SSH)
-3. Install yay (AUR helper)
-4. Install pkglist / foreignpkglist
-5. Link dotfiles
-6. Enable services (openrc)
-7. Run sanity check
+```bash
+/home/holmen1/repos/dotfiles/install/artixinstall/packages/gadsden/pkglist.txt
+Install pkglist? [y]
+Install xmonad? [y]
+Build st? [y]
+Install st? [y]
+Link dotfiles? [y]
+Enable services? [y]
+Run tests? [Y]
+```
 
 ### Package management
 
@@ -415,14 +463,9 @@ See [packages/gadsden/](packages/gadsden/) for the full package lists.
 
 ```
 ~/repos/dotfiles/install/artixinstall/scripts/export-pacman.sh \
-  ~/repos/dotfiles/install/artixinstall/packages/gadsden/
+  ~/repos/dotfiles/install/artixinstall/packages/<hostname>
 ```
 
-### Sanity check
-
-```
-~/repos/dotfiles/install/artixinstall/tests/gadsden/sanity_check.sh
-```
 
 ---
 

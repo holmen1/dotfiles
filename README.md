@@ -22,23 +22,22 @@ Minimal desktop configuration for Linux, BSD, and macOS — dotfiles, installati
 
 ## TL;DR
 
-Clone the repository:
+- Install a base system
+[Artix Wiki](wiki.artixlinux.org/Main/Installation
+
+- Clone this repository:
 ```sh
-git clone https://github.com/holmen1/dotfiles.git ~/repos/dotfiles
-cd ~/repos/dotfiles
+git clone --depth 1 --branch v0.0.4 https://github.com/holmen1/dotfiles.git ~/repos/dotfiles
 ```
 
+- Chose distro:
+```sh
+cd ~/repos/dotfiles/install/artixinstall
+```
 Run the install script for your system and follow the prompts:
 
 ```sh
-# Arch
-./install/archinstall/configure_build_install_link.sh
-
-# Debian
-./install/debianinstall/configure_build_install_link.sh
-
-# FreeBSD
-./install/bsdinstall/configure_build_install_link.sh
+./configure_build_install_link.sh
 ```
 
 Prompts per step:
@@ -46,11 +45,11 @@ Prompts per step:
 Configure git? [y/N]
 Generate SSH key? [y/N]
 Install yay? [y/N]
-/home/holmen1/repos/dotfiles/install/archinstall/packages/x1/pkglist.txt
+/home/holmen1/repos/dotfiles/install/artixinstall/packages/gadsden/pkglist.txt
 Install pkglist? [y/N]
-/home/holmen1/repos/dotfiles/install/archinstall/packages/x1/foreignpkglist.txt
+/home/holmen1/repos/dotfiles/install/artixinstall/packages/gadsden/foreignpkglist.txt
 Install foreignpkglist? [y/N]
-Build xmonad? [y/N]
+Rebuild xmonad? [y/N]
 Install xmonad? [y/N]
 Build st? [y/N]
 Install st? [y/N]
@@ -58,9 +57,55 @@ Build xkb keymap? [y/N]
 Link dotfiles? [y/N]
 Enable services? [y/N]
 Run tests? [Y/n]
-```
+Sanity check — gadsden (artix/openrc)
 
-See [Installation guides](#installation-guides) for details.
+--- Core commands
+  [ok] git
+  [ok] ssh
+  [ok] xmonad
+  [ok] st
+  [ok] stow
+  [ok] dmenu
+  [ok] nvim
+
+--- X session
+  [ok] startx
+  [ok] /home/holmen1/.xinitrc
+  [ok] /usr/local/bin/xmonad
+  [ok] xbindkeys
+  [ok] scrot
+  [ok] i3lock
+  [ok] xterm
+
+--- Notifications
+  [ok] dunst
+  [ok] notify-send
+
+--- OpenRC services
+  [ok] dbus running
+  [ok] dhcpcd running
+  [ok] elogind running
+  [ok] iwd running
+
+--- Dotfile symlinks
+  [ok] /home/holmen1/.config/nvim -> ../repos/dotfiles/dotfiles/nvim/.config/nvim
+  [ok] /home/holmen1/.xinitrc -> repos/dotfiles/dotfiles/x/.xinitrc
+
+--- Git
+  [ok] user.name: holmen1
+  [ok] user.email: holmen1@gmail.com
+
+--- SSH
+  [ok] id_ed25519 exists
+  [ok] id_ed25519 perms 600
+
+--- groups
+  [ok] user in wheel group
+  [ok] passwordless sudo enabled
+  [ok] user in video group
+
+Passed: 29  Failed: 0
+```
 
 ## Build
 
@@ -71,17 +116,16 @@ The [build](install/build) folder contains scripts for building components from 
 Stable, maintainable minimal desktop across multiple operating systems. Designed for low-spec hardware (tested on 4 GB RAM).
 
 **Supported systems:**
-- Linux (Arch, Debian)
-- FreeBSD
+- Linux (Artix, Arch, Debian)
+- BSD   (FreeBSD)
 - macOS (limited)
+- Unix  (xv6) [TODO]
 
 ## Installation guides
-- [Arch Linux](install/archinstall)
-- [Debian](install/debianinstall)
-- [FreeBSD](install/bsdinstall)
-- [macOS](install/macinstall)
+
+[Distro install guides](install)
 
 ## Automation scripts
 
 * Export/import packages per distro
-* System monitoring (battery, wifi) via systemd user timers
+* System monitoring (battery, wifi)

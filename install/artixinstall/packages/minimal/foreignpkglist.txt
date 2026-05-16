@@ -1,3 +1,0 @@
-yay
-xlibre-xserver
-xlibre-input-libinput

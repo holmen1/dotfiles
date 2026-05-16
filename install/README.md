@@ -1,7 +1,10 @@
 # install
-Guides for setting up environments quickly and consistently — Arch Linux, FreeBSD, Debian, macOS
+Guides for setting up environments quickly and consistently — Linux, BSD, macOS
 
-## arch
+## artix (full install)
+Go to [Artix Linux installation guide](./artixinstall/README.md)
+
+## arch (using archinstall)
 Go to [Arch Linux installation guide](./archinstall/README.md)
 
 ## debian

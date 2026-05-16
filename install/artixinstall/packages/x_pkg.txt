@@ -1,9 +1,6 @@
-base-devel
 libxinerama
 libxss
 noto-fonts
-xlibre-input-libinput
-xlibre-xserver
 xorg-xinit
 xterm
 
