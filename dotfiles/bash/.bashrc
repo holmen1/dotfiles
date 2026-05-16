@@ -48,7 +48,15 @@ bak() {
 ff() {
     find "${2:-.}" -name "*$1*" 2>/dev/null
 }
+# Echo variable
+ee() {
+    echo "${!1}"
+}
+# Repeat last command with sudo
+ss() { sudo "$(history -p !!)" ; }
 
+
+# Aliases
 alias ls='ls --color=auto'
 alias ll='ls -lath --color=auto'
 alias gg='grep --color=auto'
@@ -60,8 +68,8 @@ alias c='code .'
 alias diff='diff --color=auto'
 alias less='less -R'
 alias ret='echo $?'
-alias ss='sudo !!'
-alias ee='echo $1'
+alias sudo='sudo ' # Allow alias expansion after sudo
+alias pp='ping -c 4'
 alias tt='tree -aL 2'
 
 # Git Aliases
