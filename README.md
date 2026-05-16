@@ -34,7 +34,8 @@ git clone --depth 1 --branch v0.0.4 https://github.com/holmen1/dotfiles.git ~/re
 ```sh
 cd ~/repos/dotfiles/install/artixinstall
 ```
-Run the install script for your system and follow the prompts:
+Run the install script for your system and follow the prompts
+(current artixinstall require manual build and install of: xlibre, ghc, xmonad **NB**):
 
 ```sh
 ./configure_build_install_link.sh
@@ -92,8 +93,8 @@ Sanity check — gadsden (artix/openrc)
   [ok] /home/holmen1/.xinitrc -> repos/dotfiles/dotfiles/x/.xinitrc
 
 --- Git
-  [ok] user.name: holmen1
-  [ok] user.email: holmen1@gmail.com
+  [ok] user.name: user
+  [ok] user.email: user@mail.com
 
 --- SSH
   [ok] id_ed25519 exists
