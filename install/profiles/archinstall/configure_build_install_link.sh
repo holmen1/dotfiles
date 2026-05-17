@@ -147,9 +147,10 @@ read -p "Enable services? [y/N] " ans
 case "$ans" in
     [Yy]*)
     # Enable services
-    systemctl --user daemon-reload
-    systemctl --user enable --now system-monitor.timer
+    #systemctl --user daemon-reload
+    #systemctl --user enable --now system-monitor.timer
     echo "Enabled system-monitor.timer"
+    echo "Handled by ~/.scripts/monitor-loop.sh"
     ;;
 esac
 
