@@ -111,29 +111,52 @@ Passed: 29  Failed: 0
 
 ## Structure
 
+```bash
 dotfiles/  
-├── config/              # All user dotfiles (one per editor/tool)  
-│   ├── nvim/  
-│   ├── bash/  
-│   ├── zsh/  
-│   ├── x/  
-│   └── ...  
-├── install/             # Distro-specific installers  
-│   ├── profiles/        # Profile configs (arch, debian, bsd, macos)  
-│   │   ├── arch/  
-│   │   ├── debian/  
-│   │   ├── bsd/  
-│   │   └── macos/  
-│   ├── build/           # Source-built components  
-│   │   ├── xmonad/  
-│   │   ├── st/  
-│   │   ├── xkb/  
-│   │   └── ...  
-│   └── scripts/         # Shared install helpers, and utilities (monitoring, linking)  
-└── README.md 
+├── config              # All user dotfiles to stow (one per editor/tool)
+│   ├── bash
+│   ├── nvim
+│   ├── xmonad
+|   └── ...
+└── install
+    ├── build           # Source-built components
+    │   ├── st
+    │   ├── xlibre
+    │   └── xmonad
+    │   └── ...
+    ├── common          # shared utilities
+    │   ├── dmenu-logout.sh
+    │   ├── dmenu-menu.sh
+    │   ├── link_config.sh
+    │   ├── plasma_darkesthour1920x1200.jpg
+    │   └── ...
+    └── profiles        # Distro-specific installers
+        ├── archinstall
+        ├── artixinstall
+        ├── bsdinstall
+        └── ...
+```
 
-
-
+where every distro structured uniformly
+```bash
+artixinstall/
+├── configure_build_install_link.sh
+├── links
+│   └── gadsden
+│       └── links.config
+├── packages
+│   ├── gadsden
+│   │   ├── foreignpkglist.txt
+│   │   └── pkglist.txt
+├── scripts
+│   ├── export-pacman.sh
+│   ├── install-pacman.sh
+│   ├── monitor-battery.sh
+│   └── monitor-wifi.sh
+└── tests
+    └── gadsden
+        └── sanity_check.sh
+```
 
 ## Build
 
