@@ -1,1 +1,1 @@
-/home/holmen1/repos/dotfiles/install/artixinstall/scripts/monitor-wifi.sh
+/home/holmen1/repos/dotfiles/install/profiles/artixinstall/scripts/monitor-wifi.sh

@@ -1,1 +1,1 @@
-/home/holmen1/repos/dotfiles/install/artixinstall/scripts/monitor-loop.sh
+/home/holmen1/repos/dotfiles/install/common/monitor-loop.sh

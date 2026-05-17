@@ -1,1 +1,1 @@
-/home/holmen1/repos/dotfiles/install/artixinstall/scripts/monitor-battery.sh
+/home/holmen1/repos/dotfiles/install/profiles/artixinstall/scripts/monitor-battery.sh

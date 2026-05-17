@@ -124,7 +124,7 @@ dotfiles/
 │   │   ├── debian/  
 │   │   ├── bsd/  
 │   │   └── macos/  
-│   ├── builders/        # Source-built components  
+│   ├── build/           # Source-built components  
 │   │   ├── xmonad/  
 │   │   ├── st/  
 │   │   ├── xkb/  
@@ -137,7 +137,7 @@ dotfiles/
 
 ## Build
 
-The [build](install/build) folder contains scripts for building components from source: ghc, neovim, st, xkb, xmonad, xlibre.
+The [build](install/build) directory contains scripts for building components from source: ghc, neovim, st, xkb, xmonad, xlibre.
 
 ## Project Scope
 

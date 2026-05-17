@@ -4,8 +4,8 @@ USER=$(whoami)
 EMAIL=$USER@gmail.com
 
 DOTFILES_DIR=~/repos/dotfiles
-INSTALL_SCRIPT=$DOTFILES_DIR/install/archinstall/scripts/install-pacman.sh
-LINK_SCRIPT=$DOTFILES_DIR/scripts/link_config.sh
+INSTALL_SCRIPT=$DOTFILES_DIR/install/profiles/archinstall/scripts/install-pacman.sh
+LINK_SCRIPT=$DOTFILES_DIR/install/common/link_config.sh
 
 XMONAD_DIR=$DOTFILES_DIR/install/build/xmonad
 ST_DIR=$DOTFILES_DIR/install/build/st
@@ -13,11 +13,11 @@ XKB_DIR=$DOTFILES_DIR/install/build/xkb
 
 COMPUTERNAME=$(hostnamectl --static 2>/dev/null || hostname -s)
 PKGPROFILE=${COMPUTERNAME}
-PKGLIST=$DOTFILES_DIR/install/archinstall/packages/$PKGPROFILE/pkglist.txt
-FPKGLIST=$DOTFILES_DIR/install/archinstall/packages/$PKGPROFILE/foreignpkglist.txt
-LINKS=$DOTFILES_DIR/install/archinstall/links/$PKGPROFILE/links.config
+PKGLIST=$DOTFILES_DIR/install/profiles/archinstall/packages/$PKGPROFILE/pkglist.txt
+FPKGLIST=$DOTFILES_DIR/install/archinstall/profiles/packages/$PKGPROFILE/foreignpkglist.txt
+LINKS=$DOTFILES_DIR/install/profiles/archinstall/links/$PKGPROFILE/links.config
 
-TEST=$DOTFILES_DIR/install/archinstall/tests/$PKGPROFILE/sanity_check.sh
+TEST=$DOTFILES_DIR/install/profiles/archinstall/tests/$PKGPROFILE/sanity_check.sh
 
 sudo pacman -S --needed openssh
 sudo -k

@@ -1,1 +1,1 @@
-/home/holmen1/repos/dotfiles/install/artixinstall/scripts/xkb-toggle.sh
+/home/holmen1/repos/dotfiles/install/common/xkb-toggle.sh

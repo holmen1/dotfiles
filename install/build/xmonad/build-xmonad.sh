@@ -8,7 +8,7 @@ XMONAD_CONTRIB_TAG="v0.18.2"
 # Define directories
 BUILD_DIR=~/repos/dotfiles/install/build/xmonad
 BIN_DIR=$BUILD_DIR/bin
-CONFIG_SOURCE=~/repos/dotfiles/dotfiles/xmonad/xmonad.hs
+CONFIG_SOURCE=~/repos/dotfiles/config/xmonad/xmonad.hs
 
 # Create the build directory if it doesn't exist
 mkdir -p $BUILD_DIR

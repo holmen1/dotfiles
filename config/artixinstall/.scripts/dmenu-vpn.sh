@@ -1,1 +1,1 @@
-/home/holmen1/repos/dotfiles/install/artixinstall/scripts/dmenu-vpn.sh
+/home/holmen1/repos/dotfiles/install/common/dmenu-vpn.sh

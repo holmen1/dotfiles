@@ -41,7 +41,7 @@ xsetroot -cursor_name left_ptr &
 
 # Set a nice background using xwallpaper if available
 if command -v xwallpaper >/dev/null 2>&1; then
-    xwallpaper --zoom ~/repos/dotfiles/install/wallpapers/plasma_darkesthour1920x1200.jpg &
+    xwallpaper --zoom ~/repos/dotfiles/install/common/plasma_darkesthour1920x1200.jpg &
 else
     echo "Warning: xwallpaper not installed, wallpaper not set by .xinitrc"
 fi
