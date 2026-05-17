@@ -107,6 +107,33 @@ Sanity check — gadsden (artix/openrc)
 
 Passed: 29  Failed: 0
 ```
+---
+
+## Structure
+
+dotfiles/  
+├── config/              # All user dotfiles (one per editor/tool)  
+│   ├── nvim/  
+│   ├── bash/  
+│   ├── zsh/  
+│   ├── x/  
+│   └── ...  
+├── install/             # Distro-specific installers  
+│   ├── profiles/        # Profile configs (arch, debian, bsd, macos)  
+│   │   ├── arch/  
+│   │   ├── debian/  
+│   │   ├── bsd/  
+│   │   └── macos/  
+│   ├── builders/        # Source-built components  
+│   │   ├── xmonad/  
+│   │   ├── st/  
+│   │   ├── xkb/  
+│   │   └── ...  
+│   └── scripts/         # Shared install helpers, and utilities (monitoring, linking)  
+└── README.md 
+
+
+
 
 ## Build
 

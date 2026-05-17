@@ -6,7 +6,7 @@ if [ -z "$1" ]; then
 fi
 
 CONFIG_FILE="$1"
-STOW_DIR="$HOME/repos/dotfiles/dotfiles"
+STOW_DIR="$HOME/repos/dotfiles/config"
 TARGET="$HOME"
 
 if [ -f "$CONFIG_FILE" ]; then
@@ -37,9 +37,8 @@ for package in $packages; do
     done
     # Restow
     stow -R -v --ignore='.*\.md' -d "$STOW_DIR" -t "$TARGET" "$package" 2>&1
-    echo "$package: Stowed"
+    #echo "$package: Stowed"
 done
 
 echo "Done."
-
 
