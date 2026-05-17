@@ -1,23 +1,30 @@
 #!/bin/sh
 
-USER=$(whoami)
-EMAIL=$USER@gmail.com
-
+PROFILE=artix
 DOTFILES_DIR=~/repos/dotfiles
-INSTALL_SCRIPT=$DOTFILES_DIR/install/artixinstall/scripts/install-pacman.sh
-LINK_SCRIPT=$DOTFILES_DIR/scripts/link_config.sh
 
-XMONAD_DIR=$DOTFILES_DIR/install/build/xmonad
-ST_DIR=$DOTFILES_DIR/install/build/st
-XKB_DIR=$DOTFILES_DIR/install/build/xkb
+COMMON_DIR=$DOTFILES_DIR/install/common
+PROFILE_DIR=$DOTFILES_DIR/install/profiles/"$PROFILE"install
+BUILD_DIR=$DOTFILES_DIR/install/build
 
 COMPUTERNAME=$(hostname -s)
 PKGPROFILE=${COMPUTERNAME}
-PKGLIST=$DOTFILES_DIR/install/artixinstall/packages/$PKGPROFILE/pkglist.txt
-FPKGLIST=$DOTFILES_DIR/install/artixinstall/packages/$PKGPROFILE/foreignpkglist.txt
-LINKS=$DOTFILES_DIR/install/artixinstall/links/$PKGPROFILE/links.config
 
-TEST=$DOTFILES_DIR/install/artixinstall/tests/$PKGPROFILE/sanity_check.sh
+LINK_SCRIPT=$COMMON_DIR/link_config.sh
+LINKS=$PROFILE_DIR/links/$PKGPROFILE/links.config
+
+INSTALL_SCRIPT=$PROFILE_DIR/scripts/install-pacman.sh
+PKGLIST=$PROFILE_DIR/packages/$PKGPROFILE/pkglist.txt
+FPKGLIST=$PROFILE_DIR/packages/$PKGPROFILE/foreignpkglist.txt
+
+XMONAD_DIR=$BUILD_DIR/xmonad
+ST_DIR=$BUILD_DIR/st
+XKB_DIR=$BUILD_DIR/xkb
+
+TEST=$PROFILE_DIR/tests/$PKGPROFILE/sanity_check.sh
+
+USER=$(whoami)
+EMAIL=$USER@gmail.com
 
 read -p "Configure git? [y/N] " ans
 case "$ans" in

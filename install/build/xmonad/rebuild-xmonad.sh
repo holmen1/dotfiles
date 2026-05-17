@@ -4,11 +4,13 @@
 # Uses runhaskell Setup.hs with GHC's built-in Cabal library.
 # Target: GHC 9.8.4 (base-4.19)
 
+GHC_VERSION="9.12.2"
+XMONAD_VER="0.18.1"
+CONFIG_SOURCE=~/repos/dotfiles/config/xmonad/xmonad.hs
+
 set -e
 
-GHC_VERSION="9.12.2"
 GHC_BIN="${HOME}/.local/ghc-${GHC_VERSION}/bin"
-
 if [ ! -x "${GHC_BIN}/ghc" ]; then
     echo "Error: GHC ${GHC_VERSION} not found at ${GHC_BIN}"
     echo "Run: install/build/ghc/build-ghc.sh ${GHC_VERSION}"
@@ -18,13 +20,9 @@ fi
 export PATH="${GHC_BIN}:${PATH}"
 echo "Using $(ghc --version)"
 
-XMONAD_VER="0.18.1"
-XMONAD_CONTRIB_VER="0.18.2"
-
 BUILD_DIR=~/repos/dotfiles/install/build/xmonad
 BIN_DIR=$BUILD_DIR/bin
 WORK_DIR=$BUILD_DIR/_ghc_build
-CONFIG_SOURCE=~/repos/dotfiles/dotfiles/xmonad/xmonad.hs
 
 mkdir -p "$BIN_DIR" "$WORK_DIR"
 
