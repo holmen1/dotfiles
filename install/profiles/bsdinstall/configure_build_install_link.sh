@@ -21,7 +21,7 @@ XMONAD_DIR=$BUILD_DIR/xmonad
 ST_DIR=$BUILD_DIR/st
 XKB_DIR=$BUILD_DIR/xkb
 
-TEST=$PROFILE_DIR/tests/sanity_check.sh
+TEST=$PROFILE_DIR/tests/$COMPUTERNAME/sanity_check.sh
 
 USER=$(whoami)
 EMAIL=$USER@gmail.com
@@ -53,7 +53,7 @@ echo "$PKGLIST"
 read -p "Install pkglist? [y/N] " ans
 case "$ans" in
     [Yy]*)
-    $SCRIPTS_DIR/install-pkg.sh $PKGLIST
+    $INSTALL_SCRIPT $PKGLIST
     ;;
 esac
 

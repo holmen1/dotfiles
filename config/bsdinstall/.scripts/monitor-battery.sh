@@ -1,0 +1,1 @@
+/home/holmen1/repos/dotfiles/install/profiles/bsdinstall/scripts/monitor-battery.sh

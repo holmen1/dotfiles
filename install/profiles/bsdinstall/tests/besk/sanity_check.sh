@@ -200,13 +200,13 @@ print_header "Repository Structure"
 if [ -d "$HOME/repos/dotfiles" ]; then
     print_pass "Dotfiles repository exists"
     
-    if [ -d "$HOME/repos/dotfiles/dotfiles" ]; then
+    if [ -d "$HOME/repos/dotfiles/config" ]; then
         print_pass "Dotfiles configuration directory exists"
     else
         print_fail "Dotfiles configuration directory missing"
     fi
     
-    if [ -d "$HOME/repos/dotfiles/scripts" ]; then
+    if [ -d "$HOME/repos/dotfiles/install/scripts" ]; then
         print_pass "Scripts directory exists"
     else
         print_warn "Scripts directory not found"
