@@ -43,6 +43,41 @@ Add user to groups: wheel video (one at a time)
 
 otherwise my choice, see [user_configuration_besk.json](log/user_configuration_besk.json)  
 
+## Post-installation
+
+Log in as root
+### sudo
+
+- Install sudo
+- Enable passwordless for `wheel`
+
+### Window Manager
+
+```bash
+pkg install xlibre
+echo "exec xterm" > ~/.xinitrc
+startx
+``` 
+
+- Install useful: `git`, `bash`, `curl`
+
+
+
+### Shell, also need adding hostname if used in scripts
+
+```bash
+chsh -s /usr/local/bin/bash
+sysrc hostname="besk"
+service hostname restart
+```
+
+### Clone dotfiles
+```bash
+mkdir repos
+git clone git@github.com:holmen1/dotfiles.git
+```
+
+
 ## Diaster recovery
 
 1. **Reboot and enter single-user mode** from the boot menu.
@@ -66,44 +101,6 @@ otherwise my choice, see [user_configuration_besk.json](log/user_configuration_b
 tail -f /var/log/daemon.log          # live view
 ```
 
-## Post-installation
-
-Log in as root
-### sudo
-
-- Install sudo
-- Enable passwordless for `wheel`
-
-
-
-### Shell, also need adding hostname if used in scripts
-```bash
-chsh -s /usr/local/bin/bash
-sysrc hostname="besk"
-service hostname restart
-```
-
-### X
-
-Install xlibre, xterm
-
-
-### Wireless Configuration
-
-Obtain the network device interface by using
-```bash
-sysctl net.wlan.devices
-````
-
-```bash
-
-ifconfig wlan0 create wlandev iwm0
-````
-
-To make the change persist across reboots execute the following command:
-```bash
-sysrc wlans_iwm0="wlan0"
-```
 
 
 To list the wireless networks execute the following command:
@@ -111,21 +108,9 @@ To list the wireless networks execute the following command:
 ifconfig wlan0 up list scan
 ````
 
-
-To use a dynamic address it will be necessary to execute the following command:
-```bash
-sysrc ifconfig_wlan0="WPA DHCP"
-````
-
 Then restart the network executing the following command:
 ```bash
 service netif restart
-```
-
-### Clone dotfiles
-```bash
-mkdir repos
-git clone git@github.com:holmen1/dotfiles.git
 ```
 
 ### Install packages
@@ -141,28 +126,6 @@ cd /usr/ports/htop
 sudo make [install/deinstall/build/clean]
 ```
 
-### X11 Configuration
-Deploy the modesetting driver config (required — see LESSONS LEARNED):
-```bash
-sudo mkdir -p /usr/local/etc/X11/xorg.conf.d
-sudo cp ~/repos/dotfiles/install/bsdinstall/20-modesetting.conf /usr/local/etc/X11/xorg.conf.d/
-```
-
-### Install binaries
-pre-built binaries from the [build factory](../build/):
-```
-cp /mnt/usb/st-0.9.2 /opt/st
-cp /mnt/usb/xmonad-v0.18.0 /opt/xmonad/
-```
-and link to ```/usr/local/bin```
-
-
-### Enable System Monitoring (Battery & WiFi)
-```crontab```
-```bash
-DISPLAY=:0
-*/2 * * * * /home/holmen1/repos/dotfiles/scripts/battery-monitor.sh >/dev/null 2>&1; /home/holmen1/repos/dotfiles/scripts/wifi-monitor.sh >/dev/null 2>&1
-```
 
 ### Setting Brightness and Volume Keybindings with xbindkeys
 
@@ -186,8 +149,6 @@ DISPLAY=:0
    # Launch key binding daemon
    xbindkeys &
    ```
-
-
 
 ### Sanity check
 Run the sanity check script to verify your installation:

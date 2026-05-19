@@ -16,7 +16,7 @@ COMPUTERNAME=$(hostname -s)
 PKGPROFILE=${COMPUTERNAME}
 PKGLIST=$DOTFILES_DIR/install/bsdinstall/packages/$PKGPROFILE/pkglist.txt
 
-TEST=$DOTFILES_DIR/install/bsdinstall/sanity_check.sh
+TEST=$DOTFILES_DIR/install/profiles/bsdinstall/sanity_check.sh
 
 
 read -p "Configure git? [y/N] " ans
