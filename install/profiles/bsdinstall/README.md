@@ -1,16 +1,47 @@
 # bsdinstall
+
+
 ## Pre-installation
 
-* Collect Network Information
+FreeBSD installation files are available at the [FreeBSD](https://www.freebsd.org/where/)
+download page
+
+
+```bash
+dd if=FreeBSD-{rel-latest}-RELEASE-amd64-memstick.img of=/dev/da0 bs=1M conv=sync
+```
+`-memstick.img` contains all of the files needed to install FreeBSD, its source, and the Ports
 
 ## Guided installation
-Install FreeBSD using the text-based installation program named bsdinstall
 
-Add user to groups: wheel video
+Once the system boots from the installation media, 
+a text-based installation program named `bsdinstall` starts, chose defaults
 
-Wifi: ETSI
+### Wifi
 
-otherwise my choice, see [user_configuration_x1.json](../archinstall/log/user_configuration_x1.json)  
+Advice: setup here, ensure it work before continue
+
+regdomain: ETSI[2], SE  
+Install driver  
+IPv6 resolver (may not need)
+
+Once the scanning of the wireless networks has been carried out, that information will be added to the file ```/etc/wpa_supplicant.conf```
+
+```bash
+network={
+        scan_ssid=1 
+        ssid="FreeBSD" 
+        psk="12345678" 
+}
+```
+
+
+### Add user
+
+Add user to groups: wheel video (one at a time)
+
+
+otherwise my choice, see [user_configuration_besk.json](log/user_configuration_besk.json)  
 
 ## Diaster recovery
 
@@ -36,12 +67,26 @@ tail -f /var/log/daemon.log          # live view
 ```
 
 ## Post-installation
+
+Log in as root
+### sudo
+
+- Install sudo
+- Enable passwordless for `wheel`
+
+
+
 ### Shell, also need adding hostname if used in scripts
 ```bash
 chsh -s /usr/local/bin/bash
 sysrc hostname="besk"
 service hostname restart
 ```
+
+### X
+
+Install xlibre, xterm
+
 
 ### Wireless Configuration
 
@@ -51,6 +96,7 @@ sysctl net.wlan.devices
 ````
 
 ```bash
+
 ifconfig wlan0 create wlandev iwm0
 ````
 
@@ -59,20 +105,12 @@ To make the change persist across reboots execute the following command:
 sysrc wlans_iwm0="wlan0"
 ```
 
+
 To list the wireless networks execute the following command:
 ```bash
 ifconfig wlan0 up list scan
 ````
 
-Once the scanning of the wireless networks has been carried out, a network has been chosen and have the password (PSK), that information will be added to the file ```/etc/wpa_supplicant```
-
-```bash
-network={
-        scan_ssid=1 
-        ssid="FreeBSD" 
-        psk="12345678" 
-}
-```
 
 To use a dynamic address it will be necessary to execute the following command:
 ```bash
