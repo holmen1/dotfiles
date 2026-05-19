@@ -13,8 +13,8 @@ DOTFILES="${HOME}/repos/dotfiles"
 SYMBOLS_DIR="${DOTFILES}/install/build/xkb"
 
 case "$(uname -s)" in
-    FreeBSD*) KEYMAP="${DOTFILES}/dotfiles/xkb/.config/xkb/keymap-bsd.xkb" ;;
-    *)        KEYMAP="${DOTFILES}/dotfiles/xkb/.config/xkb/keymap-linux.xkb" ;;
+    FreeBSD*) KEYMAP="${DOTFILES}/config/xkb/.config/xkb/keymap-bsd.xkb" ;;
+    *)        KEYMAP="${DOTFILES}/config/xkb/.config/xkb/keymap-linux.xkb" ;;
 esac
 
 mkdir -p "$(dirname "$KEYMAP")"
