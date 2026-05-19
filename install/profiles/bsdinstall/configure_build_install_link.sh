@@ -1,23 +1,30 @@
 #!/bin/sh
 
-USER=$(whoami)
-EMAIL=$USER@gmail.com
+PROFILE=bsd
+DOTFILES_DIR=~/repos/dotfiles
 
-DOTFILES_DIR=$HOME/repos/dotfiles
-SCRIPTS_DIR=$DOTFILES_DIR/scripts
-LINK_SCRIPT=$SCRIPTS_DIR/link_config.sh
-LINKS=$DOTFILES_DIR/install/bsdinstall/links/suckless_links.config
-
-XMONAD_DIR=$DOTFILES_DIR/install/build/xmonad
-ST_DIR=$DOTFILES_DIR/install/build/st
-XKB_DIR=$DOTFILES_DIR/install/build/xkb
+COMMON_DIR=$DOTFILES_DIR/install/common
+PROFILE_DIR=$DOTFILES_DIR/install/profiles/"$PROFILE"install
+BUILD_DIR=$DOTFILES_DIR/install/build
 
 COMPUTERNAME=$(hostname -s)
 PKGPROFILE=${COMPUTERNAME}
-PKGLIST=$DOTFILES_DIR/install/bsdinstall/packages/$PKGPROFILE/pkglist.txt
 
-TEST=$DOTFILES_DIR/install/profiles/bsdinstall/sanity_check.sh
+LINK_SCRIPT=$COMMON_DIR/link_config.sh
+LINKS=$PROFILE_DIR/links/$PKGPROFILE/links.config
 
+INSTALL_SCRIPT=$PROFILE_DIR/scripts/install-pkg.sh
+PKGLIST=$PROFILE_DIR/packages/$PKGPROFILE/pkglist.txt
+FPKGLIST=$PROFILE_DIR/packages/$PKGPROFILE/foreignpkglist.txt
+
+XMONAD_DIR=$BUILD_DIR/xmonad
+ST_DIR=$BUILD_DIR/st
+XKB_DIR=$BUILD_DIR/xkb
+
+TEST=$PROFILE_DIR/tests/sanity_check.sh
+
+USER=$(whoami)
+EMAIL=$USER@gmail.com
 
 read -p "Configure git? [y/N] " ans
 case "$ans" in
@@ -108,25 +115,6 @@ case "$ans" in
     [Yy]*)
     # Link dotfiles
     $LINK_SCRIPT $LINKS
-    ;;
-esac
-
-read -p "Enable system monitoring? [y/N] " ans
-BAT=monitor-battery.sh
-WIFI=monitor-wifi.sh
-case "$ans" in
-    [Yy]*)
-    # Add cron job for system monitoring (runs every 2 minutes)
-    CRON_LINE="DISPLAY=:0"$'\n'"*/2 * * * * $SCRIPTS_DIR/$BAT >/dev/null 2>&1; $SCRIPTS_DIR/$WIFI >/dev/null 2>&1"
-    
-    # Check if cron job already exists
-    if crontab -l 2>/dev/null | grep -q $BAT && crontab -l 2>/dev/null | grep -q $WIFI; then
-        echo "Cron job already exists"
-    else
-        # Add to crontab
-        (crontab -l 2>/dev/null; printf "%s\n" "$CRON_LINE") | crontab -
-        echo "Added system monitoring to crontab (runs every 2 minutes)"
-    fi
     ;;
 esac
 
