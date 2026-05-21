@@ -1,4 +1,5 @@
 shells/bash
+www/chromium
 ftp/curl
 x11/dmenu
 sysutils/dunst
@@ -15,10 +16,12 @@ editors/neovim
 ports-mgmt/pkg
 devel/pkgconf
 textproc/ripgrep
+graphics/scrot
 sysutils/stow
 security/sudo
 sysutils/tree
 graphics/viu
+x11/xbindkeys
 x11-wm/xcompmgr
 x11/xlibre
 x11-toolkits/xwallpaper

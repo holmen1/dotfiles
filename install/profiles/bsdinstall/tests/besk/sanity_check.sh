@@ -114,11 +114,12 @@ fi
 BAT=monitor-battery.sh
 WIFI=monitor-wifi.sh
 print_header "System Monitoring"
-if crontab -l 2>/dev/null | grep -q $BAT && crontab -l 2>/dev/null | grep -q $WIFI; then
-    print_pass "System monitoring cron job configured"
-else
-    print_warn "System monitoring cron job not found"
-fi
+
+#if TODO monitor-loop
+#    print_pass "System monitoring loop configured"
+#else
+#    print_warn "System monitoring cron not found"
+#fi
 check_command "dunst" "Dunst notification daemon"
 check_command "notify-send" "Desktop notifications"
 
@@ -205,8 +206,7 @@ if [ -d "$HOME/repos/dotfiles" ]; then
     else
         print_fail "Dotfiles configuration directory missing"
     fi
-    
-    if [ -d "$HOME/repos/dotfiles/install/scripts" ]; then
+    if [ -d "$HOME/repos/dotfiles/install/common" ]; then
         print_pass "Scripts directory exists"
     else
         print_warn "Scripts directory not found"
