@@ -45,9 +45,12 @@ check_command() {
 check_file() {
     local file="$1"
     local desc="$2"
+    local warning="$3"
     
     if [ -f "$file" ]; then
         print_pass "$desc"
+    elif [ -n $warning ] ; then
+        print_warn "$desc - '$file' not found"
     else
         print_fail "$desc - '$file' not found"
     fi
@@ -126,8 +129,8 @@ check_command "notify-send" "Desktop notifications"
 # Key Bindings
 print_header "Key Bindings & Input"
 check_command "xbindkeys" "Key binding daemon"
-check_file "$HOME/.xbindkeysrc" "xbindkeys configuration"
-check_file "$HOME/.config/xkb/keymap-bsd.xkb" "XKB configuration"
+check_file "$HOME/.xbindkeysrc" "xbindkeys configuration" "warning"
+check_file "$HOME/.cache/custom-keymap.xkb" "XKB configuration" "warning"
 check_command "backlight" "Brightness control (FreeBSD)"
 check_command "mixer" "Audio mixer (OSS)"
 
@@ -206,7 +209,7 @@ if [ -d "$HOME/repos/dotfiles" ]; then
     else
         print_fail "Dotfiles configuration directory missing"
     fi
-    if [ -d "$HOME/repos/dotfiles/install/common" ]; then
+    if [ -d "$HOME/repos/dotfiles/config/common" ]; then
         print_pass "Scripts directory exists"
     else
         print_warn "Scripts directory not found"

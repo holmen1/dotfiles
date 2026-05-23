@@ -3,7 +3,8 @@
 PROFILE=bsd
 DOTFILES_DIR=~/repos/dotfiles
 
-COMMON_DIR=$DOTFILES_DIR/install/common
+CONFIG_DIR=$DOTFILES_DIR/config
+COMMON_DIR=$CONFIG_DIR/common/.scripts
 PROFILE_DIR=$DOTFILES_DIR/install/profiles/"$PROFILE"install
 BUILD_DIR=$DOTFILES_DIR/install/build
 
@@ -13,7 +14,7 @@ PKGPROFILE=${COMPUTERNAME}
 LINK_SCRIPT=$COMMON_DIR/link_config.sh
 LINKS=$PROFILE_DIR/links/$PKGPROFILE/links.config
 
-INSTALL_SCRIPT=$PROFILE_DIR/scripts/install-pkg.sh
+INSTALL_SCRIPT=$CONFIG_DIR/"$PROFILE"install/.scripts/install-pkg.sh
 PKGLIST=$PROFILE_DIR/packages/$PKGPROFILE/pkglist.txt
 FPKGLIST=$PROFILE_DIR/packages/$PKGPROFILE/foreignpkglist.txt
 
