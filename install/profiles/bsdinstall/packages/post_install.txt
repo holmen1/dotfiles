@@ -1,0 +1,6 @@
+ftp/curl
+sysutils/fastfetch
+devel/git
+ports-mgmt/pkg
+security/sudo
+x11/xlibre

@@ -107,10 +107,59 @@ Sanity check — gadsden (artix/openrc)
 
 Passed: 29  Failed: 0
 ```
+---
+
+## Structure
+
+```bash
+dotfiles/  
+├── config              # All user dotfiles to stow (one per editor/tool)
+│   ├── artixinstall    # Distro-specifc scripts
+│   ├── bash
+│   ├── brave
+│   ├── chromium
+│   ├── common          # Shared scripts
+│   ├── lf
+│   ├── nvim
+│   ├── openrc
+│   ├── vscode
+│   ├── x
+│   ├── xmonad
+│   └── ...
+└── install
+    ├── build           # Source-built components
+    │   ├── ghc
+    │   ├── neovim
+    │   ├── st
+    │   ├── xkb
+    │   ├── xlibre
+    │   └── xmonad
+    └── profiles        # Distro-specific installers
+        ├── artixinstall
+        ├── bsdinstall
+        ├── debianinstall
+        └── ...
+```
+
+where every distro structured uniformly
+```bash
+artixinstall/
+├── configure_build_install_link.sh
+├── links
+|   └── gadsden
+│       └── links.config
+├── packages
+|   └── gadsden
+│       ├── foreignpkglist.txt
+│       └── pkglist.txt
+└── tests
+    └── gadsden
+        └── sanity_check.sh
+```
 
 ## Build
 
-The [build](install/build) folder contains scripts for building components from source: ghc, neovim, st, xkb, xmonad, xlibre.
+The [build](install/build) directory contains scripts for building components from source: ghc, neovim, st, xkb, xmonad, xlibre.
 
 ## Project Scope
 

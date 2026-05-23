@@ -1,0 +1,88 @@
+# lf (list files) - minimal terminal file manager: https://github.com/gokcehan/lf
+# Docs and config examples: https://github.com/gokcehan/lf/wiki
+
+# interpreter for shell commands
+set shell bash
+
+# Show hidden files by default
+set hidden
+
+# set internal field separator (IFS) to "\n" for shell commands
+set ifs "\n"
+
+# leave some space at the top and the bottom of the screen
+set scrolloff 10
+
+# Use the `dim` attribute instead of underline for the cursor in the preview pane
+set cursorpreviewfmt "\033[7;2m"
+
+# Set previewer
+set previewer ~/repos/dotfiles/config/lf/.config/lf/preview.sh
+
+# ====================
+# KEYBINDINGS
+# ====================
+
+# Backtick: Clear/refresh the output pane
+# Press this after running a command to view output
+map ` !true
+
+# execute current file (must be executable)
+# Run file in BACKGROUND - lf stays responsive, command runs asynchronously
+map x $$f
+# Run file in FOREGROUND - lf blocks/waits for command to complete
+map X !$f
+
+# Map Enter to open command
+map <enter> open
+
+# mkdir command
+map a :push %mkdir<space>
+
+# rename command
+map r push :rename<space>
+
+# move to trash
+map d trash
+
+# ====================
+# COMMANDS
+# ====================
+
+# define a custom 'open' command
+cmd open &{{
+    case $(file --mime-type -Lb $f) in
+        text/*) lf -remote "send $id \$$EDITOR \$fx";;
+        image/*) feh --scale-down "$f" & ;;
+        *) xdg-open "$f" & ;;
+    esac
+}}
+
+# define a custom 'rename' command without prompt for overwrite
+cmd rename %[ -e $1 ] && printf "file exists" || mv $f $1
+
+# make sure trash folder exists and move files to trash
+%mkdir -p $HOME/.trash
+cmd trash %set -f; mv $fx $HOME/.trash
+
+# extract archives
+cmd untar ${{
+    set -f
+    case $f in
+        *.tar.bz|*.tar.bz2|*.tbz|*.tbz2) tar xjvf $f;;
+        *.tar.gz|*.tgz) tar xzvf $f;;
+        *.tar.xz|*.txz) tar xJvf $f;;
+        *.zip) unzip $f;;
+        *.rar) unrar x $f;;
+        *.7z) 7z x $f;;
+    esac
+}}
+
+# compress current file or selected files with tar and gunzip
+cmd tar ${{
+    set -f
+    mkdir $1
+    cp -r $fx $1
+    tar czf $1.tar.gz $1
+    rm -rf $1
+}}

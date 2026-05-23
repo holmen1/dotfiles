@@ -1,1 +1,0 @@
-/home/holmen1/repos/dotfiles/install/artixinstall/scripts/monitor-wifi.sh
