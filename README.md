@@ -114,26 +114,30 @@ Passed: 29  Failed: 0
 ```bash
 dotfiles/  
 ├── config              # All user dotfiles to stow (one per editor/tool)
+│   ├── artixinstall    # Distro-specifc scripts
 │   ├── bash
+│   ├── brave
+│   ├── chromium
+│   ├── common          # Shared scripts
+│   ├── lf
 │   ├── nvim
+│   ├── openrc
+│   ├── vscode
+│   ├── x
 │   ├── xmonad
-|   └── ...
+│   └── ...
 └── install
     ├── build           # Source-built components
+    │   ├── ghc
+    │   ├── neovim
     │   ├── st
+    │   ├── xkb
     │   ├── xlibre
     │   └── xmonad
-    │   └── ...
-    ├── common          # shared utilities
-    │   ├── dmenu-logout.sh
-    │   ├── dmenu-menu.sh
-    │   ├── link_config.sh
-    │   ├── plasma_darkesthour1920x1200.jpg
-    │   └── ...
     └── profiles        # Distro-specific installers
-        ├── archinstall
         ├── artixinstall
         ├── bsdinstall
+        ├── debianinstall
         └── ...
 ```
 
@@ -142,17 +146,12 @@ where every distro structured uniformly
 artixinstall/
 ├── configure_build_install_link.sh
 ├── links
-│   └── gadsden
+|   └── gadsden
 │       └── links.config
 ├── packages
-│   ├── gadsden
-│   │   ├── foreignpkglist.txt
-│   │   └── pkglist.txt
-├── scripts
-│   ├── export-pacman.sh
-│   ├── install-pacman.sh
-│   ├── monitor-battery.sh
-│   └── monitor-wifi.sh
+|   └── gadsden
+│       ├── foreignpkglist.txt
+│       └── pkglist.txt
 └── tests
     └── gadsden
         └── sanity_check.sh
