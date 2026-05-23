@@ -1,23 +1,31 @@
 #!/bin/sh
 
-USER=$(whoami)
-EMAIL=$USER@gmail.com
-
+PROFILE=arch
 DOTFILES_DIR=~/repos/dotfiles
-INSTALL_SCRIPT=$DOTFILES_DIR/config/artixinstall/.scripts/install-pacman.sh
-LINK_SCRIPT=$DOTFILES_DIR/config/common/.scripts/link_config.sh
 
-XMONAD_DIR=$DOTFILES_DIR/install/build/xmonad
-ST_DIR=$DOTFILES_DIR/install/build/st
-XKB_DIR=$DOTFILES_DIR/install/build/xkb
+CONFIG_DIR=$DOTFILES_DIR/config
+COMMON_DIR=$CONFIG_DIR/common/.scripts
+PROFILE_DIR=$DOTFILES_DIR/install/profiles/"$PROFILE"install
+BUILD_DIR=$DOTFILES_DIR/install/build
 
 COMPUTERNAME=$(hostnamectl --static 2>/dev/null || hostname -s)
 PKGPROFILE=${COMPUTERNAME}
-PKGLIST=$DOTFILES_DIR/install/profiles/archinstall/packages/$PKGPROFILE/pkglist.txt
-FPKGLIST=$DOTFILES_DIR/install/archinstall/profiles/packages/$PKGPROFILE/foreignpkglist.txt
-LINKS=$DOTFILES_DIR/install/profiles/archinstall/links/$PKGPROFILE/links.config
 
-TEST=$DOTFILES_DIR/install/profiles/archinstall/tests/$PKGPROFILE/sanity_check.sh
+LINK_SCRIPT=$COMMON_DIR/link_config.sh
+LINKS=$PROFILE_DIR/links/$PKGPROFILE/links.config
+
+INSTALL_SCRIPT=$CONFIG_DIR/artixinstall/.scripts/install-pacman.sh
+PKGLIST=$PROFILE_DIR/packages/$PKGPROFILE/pkglist.txt
+FPKGLIST=$PROFILE_DIR/packages/$PKGPROFILE/foreignpkglist.txt
+
+XMONAD_DIR=$BUILD_DIR/xmonad
+ST_DIR=$BUILD_DIR/st
+XKB_DIR=$BUILD_DIR/xkb
+
+TEST=$PROFILE_DIR/tests/$PKGPROFILE/sanity_check.sh
+
+USER=$(whoami)
+EMAIL=$USER@gmail.com
 
 sudo pacman -S --needed openssh
 sudo -k
