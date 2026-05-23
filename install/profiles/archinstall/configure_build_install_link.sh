@@ -4,8 +4,8 @@ USER=$(whoami)
 EMAIL=$USER@gmail.com
 
 DOTFILES_DIR=~/repos/dotfiles
-INSTALL_SCRIPT=$DOTFILES_DIR/install/profiles/archinstall/scripts/install-pacman.sh
-LINK_SCRIPT=$DOTFILES_DIR/install/common/link_config.sh
+INSTALL_SCRIPT=$DOTFILES_DIR/config/archinstall/.scripts/install-pacman.sh
+LINK_SCRIPT=$DOTFILES_DIR/config/common/.scripts/link_config.sh
 
 XMONAD_DIR=$DOTFILES_DIR/install/build/xmonad
 ST_DIR=$DOTFILES_DIR/install/build/st

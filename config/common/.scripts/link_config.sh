@@ -9,6 +9,8 @@ CONFIG_FILE="$1"
 STOW_DIR="$HOME/repos/dotfiles/config"
 TARGET="$HOME"
 
+mkdir -p "$TARGET/.scripts" # TODO: handle adding to .scripts from multiple packages better, maybe with a separate stow package for scripts? For now just make sure this exists before stow tries to link into it.
+
 if [ -f "$CONFIG_FILE" ]; then
   . "$CONFIG_FILE"
 else
