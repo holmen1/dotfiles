@@ -22,6 +22,7 @@ security/sudo
 sysutils/tree
 graphics/viu
 x11/xbindkeys
+x11/xclip
 x11-wm/xcompmgr
 x11/xlibre
 x11-toolkits/xwallpaper

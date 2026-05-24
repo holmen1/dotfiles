@@ -1,5 +1,16 @@
 # LESSONS LEARNED
 
+## xlibre-1.0
+
+Fresh install that work fine.
+
+Brightness dont work using backlight
+
+Tried install both drm-kmod and xlibre-xf86-video-intel, got black screen after startx
+
+
+
+
 ## Migrating from Full Font Collections to Individual Fonts
 
 The `nerd-fonts` package contains hundreds of patched fonts and takes a very long time to upgrade (90%+ of `pkg upgrade` time). If you only use specific fonts like JetBrains Mono:

@@ -23,7 +23,7 @@ export EDITOR=nvim
 export TERMINAL=st
 
 # Set browser: use first installed from preference list
-for _b in brave chromium librewolf firefox; do
+for _b in brave chromium librewolf firefox chrome; do
     if command -v "$_b" >/dev/null 2>&1; then
         export BROWSER="$_b"
         break
