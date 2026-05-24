@@ -42,8 +42,30 @@ diskutil unmountDisk /dev/disk4
 sudo dd bs=4M if=artix-base-openrc-20260402-x86_64.iso of=/dev/disk4 status=progress oflag=sync
 ```
 
-
 ## Post-installation
+
+### Confirm WiFi
+
+Verify connectivity:
+```
+ping -c 3 artixlinux.org
+```
+
+Troubleshooting:
+```
+ip addr show wlan0        # should show inet address
+ping -c 3 1.1.1.1         # tests IP routing
+ping -c 3 artixlinux.org  # tests DNS
+```
+
+### Clone dotfiles
+
+```
+mkdir repos && cd repos
+git clone https://github.com/holmen1/dotfiles.git
+```
+
+
 
 ### Build from Source
 For software not available via package managers (see [`install/build/`](./build/README.md)):

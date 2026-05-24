@@ -1,11 +1,17 @@
 # dotfiles
 
-Minimal desktop configuration for Linux, BSD, and macOS — dotfiles, installation guides, and build scripts.
+Minimal barless window manager
 
-## Design goals
+Workstation setup for Linux, BSD, and macOS — dotfiles, installation guides, and build scripts
 
-- **Uniform structure across distros** — every install follows the same pattern: profile-based package list, stow-managed dotfiles, per-distro scripts, same prompts
-- **Distro-specific via stow packages** — differences (init system, network backend, notification daemon) are handled by swapping stow packages in `links.config`, not by conditionals inside shared scripts
+- Menus and monitoring handled by application launcher to replace traditional DE components
+- Automation scripts for package export/import, battery monitoring, and Wi-Fi
+- [Build](install/build) scripts included for source-built components:
+ghc, neovim, st, xkb, xmonad, xlibre.
+- Uniform [structure](#structure) across distros — every install follows the same pattern:
+profile-based package list, stow-managed dotfiles, per-distro scripts
+- Distro-specific via stow packages — differences (init system, network backend, notification daemon)
+are handled by swapping stow packages in `links.config`, not by conditionals inside shared scripts
 
 ## Stack
 
@@ -22,8 +28,14 @@ Minimal desktop configuration for Linux, BSD, and macOS — dotfiles, installati
 
 ## TL;DR
 
-- Install a base system
+0. **Install a base system**
 [Artix Wiki](https://wiki.artixlinux.org/Main/Installation)
+
+1. **Install X server**
+from your distribution's provided packages or build and install
+[Xlibre](https://github.com/X11Libre/xserver/wiki/Building-XLibre) from source
+
+2. **Run install script** that will install, link and test your system
 
 - Clone this repository:
 ```sh
@@ -34,7 +46,7 @@ git clone --depth 1 --branch v0.0.4 https://github.com/holmen1/dotfiles.git ~/re
 ```sh
 cd ~/repos/dotfiles/install/artixinstall
 ```
-Run the install script for your system and follow the prompts
+Run and follow the prompts
 (current artixinstall require manual build and install of: xlibre, ghc, xmonad **NB**):
 
 ```sh
@@ -157,10 +169,6 @@ artixinstall/
         └── sanity_check.sh
 ```
 
-## Build
-
-The [build](install/build) directory contains scripts for building components from source: ghc, neovim, st, xkb, xmonad, xlibre.
-
 ## Project Scope
 
 Stable, maintainable minimal desktop across multiple operating systems. Designed for low-spec hardware (tested on 4 GB RAM).
@@ -173,9 +181,11 @@ Stable, maintainable minimal desktop across multiple operating systems. Designed
 
 ## Installation guides
 
-[Distro install guides](install)
+[Distro install guides](install/profiles)
 
-## Automation scripts
+## TODO
 
-* Export/import packages per distro
-* System monitoring (battery, wifi)
+- Add `ungoogled-chromium` to the browser/profile options
+- Complete GHC/XMonad toolchain support in the build/install flow
+- Add a post-install commands text file for Vim-based execution instead of typing
+- Document install and maintenance commands in a single reference file
