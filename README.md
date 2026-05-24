@@ -189,3 +189,7 @@ Stable, maintainable minimal desktop across multiple operating systems. Designed
 - Complete GHC/XMonad toolchain support in the build/install flow
 - Add a post-install commands text file for Vim-based execution instead of typing
 - Document install and maintenance commands in a single reference file
+- Move generic post-install from distros to install
+- Add description to Build/README
+- Repair .md links after restructure
+
