@@ -39,6 +39,8 @@ echo "se" > "$HOME/.cache/xkb-layout" # Cache current layout for dmenu status sc
 # Set the default X cursor to the usual pointer
 xsetroot -cursor_name left_ptr &
 
+xrandr --auto
+
 # Set a nice background using xwallpaper if available
 if command -v xwallpaper >/dev/null 2>&1; then
     xwallpaper --zoom ~/.scripts/plasma_darkesthour1920x1200.jpg &
