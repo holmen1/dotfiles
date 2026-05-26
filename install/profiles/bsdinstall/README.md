@@ -40,7 +40,6 @@ network={
 
 Add user to groups: wheel video (one at a time)
 
-
 otherwise my choice, see [user_configuration_besk.json](log/user_configuration_besk.json)  
 
 ## Post-installation
@@ -60,7 +59,6 @@ startx
 ``` 
 
 - Install useful: `git`, `bash`, `curl`
-
 
 
 ### Shell, also need adding hostname if used in scripts
@@ -101,8 +99,6 @@ git clone git@github.com:holmen1/dotfiles.git
 tail -f /var/log/daemon.log          # live view
 ```
 
-
-
 To list the wireless networks execute the following command:
 ```bash
 ifconfig wlan0 up list scan
@@ -128,6 +124,10 @@ sudo make [install/deinstall/build/clean]
 
 
 ### Setting Brightness and Volume Keybindings with xbindkeys
+
+[TODO]
+backlight dont, work drivers cuase blackscreen
+
 
 1. First, install backlight
 2. Create a config file:
@@ -179,8 +179,6 @@ I created /etc/devd/thinkpad.conf with the above in it.
 ### xbacklight
 holmen1@besk ~$ sudo xbacklight -get
 No outputs have backlight property
-
-
 
 
 ### Sanity check

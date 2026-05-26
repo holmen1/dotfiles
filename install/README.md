@@ -1,22 +1,17 @@
 # install
 Guides for setting up environments quickly and consistently — Linux, BSD, macOS
 
-## artix (full install)
-Go to [Artix Linux installation guide](./artixinstall/README.md)
+- **artix (full install)** Go to [Artix Linux installation guide](./profiles/artixinstall/README.md)
 
-## arch (using archinstall)
-Go to [Arch Linux installation guide](./archinstall/README.md)
+- **arch (using archinstall)** Go to [Arch Linux installation guide](./profiles/archinstall/README.md)
 
-## debian
-Go to [Debian installation guide](./debianinstall/README.md)
+- **debian** Go to [Debian installation guide](./profiles/debianinstall/README.md)
 
-## bsd
-Go to [FreeBSD installation guide](./bsdinstall/README.md)
+- **bsd** Go to [FreeBSD installation guide](./profiles/bsdinstall/README.md)
 
-## mac
-Go to [MacOS config guide](./macinstall/README.md)
+- **mac** Go to [MacOS config guide](./profiles/macinstall/README.md)
 
-### ISO
+## ISO
 
 ```bash
 # Download ISO and signature
@@ -58,114 +53,9 @@ ping -c 3 1.1.1.1         # tests IP routing
 ping -c 3 artixlinux.org  # tests DNS
 ```
 
-### Clone dotfiles
-
-```
-mkdir repos && cd repos
-git clone https://github.com/holmen1/dotfiles.git
-```
-
-
-
-### Build from Source
-For software not available via package managers (see [`install/build/`](./build/README.md)):
-
-#### Download Sources
-```bash
-# From git repository
-git clone <repo> && cd <repo>
-
-# OR download tarball
-curl -L -o package-version.tar.gz https://example.com/package-version.tar.gz
-
-# Verify checksum (recommended)
-sha256sum package-version.tar.gz
-
-# Extract
-tar -xzf package-version.tar.gz
-cd package-version/
-```
-
-#### Build Methods
-```bash
-# Autotools (configure/make)
-./configure && make && sudo make install
-
-# CMake
-cmake -B build && cmake --build build && sudo cmake --install build
-
-# Haskell (runhaskell)
-runhaskell Setup.lhs configure --user
-runhaskell Setup.lhs build
-runhaskell Setup.lhs install
-```
-
-#### Uninstall
-```bash
-# Autotools/cmake (if supported)
-sudo make uninstall  # from build directory
-# OR
-sudo xargs rm < install_manifest.txt  # if generated
-
-# Haskell packages
-ghc-pkg unregister package-name
-rm -rf ~/.cabal/lib/*package-name*
-
-# Manual cleanup (check install location)
-sudo rm /usr/local/bin/program
-sudo rm -rf /usr/local/share/program
-```
-```
-
-### Install with Cargo
-For Rust tools (e.g., `tree-sitter-cli`, `ripgrep`):
-```bash
-# Install Rust toolchain if missing
-curl https://sh.rustup.rs -sSf | sh
-source "$HOME/.cargo/env"
-
-cargo install <crate>               # latest version
-cargo install --locked <crate>      # reproducible, recommended for CLI tools
-```
-Binaries land in `~/.cargo/bin` — ensure it's on your `PATH`:
-```bash
-export PATH="$HOME/.cargo/bin:$PATH"
-```
-
-Manage installed crates:
-```bash
-cargo install --list                # show installed crates and versions
-cargo install <crate>               # upgrade to latest
-cargo uninstall <crate>             # remove
-```
-
-### Configure Git
-git config --global user.name "$git_username"  
-git config --global user.email "$git_email"
-
-### SSH
-Generate SSH key
-```
-ssh-keygen -t ed25519 -C "$git_email" -f ~/.ssh/id_ed25519 -N ""
-```
-Start the ssh-agent in the background
-```
-eval "$(ssh-agent -s)"
-```
-Add the SSH key to the ssh-agent
-```
-ssh-add ~/.ssh/id_ed25519
-```
-
-If reusing copy, set correct permissions for your private key
-```
-chmod 600 ~/.ssh/id_ed25519
-```
-After you generate an SSH key pair, you must add the public key to GitHub.com to enable SSH access for your account
-
 ### Add user
 ```
-useradd -m -g wheel username
+useradd -m -G wheel[,video] username
 passwd username
 ```
 The passwd -d command deletes (removes) a user's password, allowing passwordless login for that account. For example:
@@ -197,6 +87,40 @@ Make sure your user is in the `wheel` group!
 $ groups
 holmen1 wheel
 ```
+
+### Clone dotfiles
+
+```
+mkdir repos && cd repos
+git clone https://github.com/holmen1/dotfiles.git
+```
+
+### Build from Source
+For software not available via package managers (see [`install/build/`](./build/README.md)):
+
+### Configure Git
+git config --global user.name "$git_username"  
+git config --global user.email "$git_email"
+
+### SSH
+Generate SSH key
+```
+ssh-keygen -t ed25519 -C "$git_email" -f ~/.ssh/id_ed25519 -N ""
+```
+Start the ssh-agent in the background
+```
+eval "$(ssh-agent -s)"
+```
+Add the SSH key to the ssh-agent
+```
+ssh-add ~/.ssh/id_ed25519
+```
+
+If reusing copy, set correct permissions for your private key
+```
+chmod 600 ~/.ssh/id_ed25519
+```
+After you generate an SSH key pair, you must add the public key to GitHub.com to enable SSH access for your account
 
 ### Link dotfiles
 Edit a
