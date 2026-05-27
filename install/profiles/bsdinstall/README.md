@@ -126,59 +126,8 @@ sudo make [install/deinstall/build/clean]
 ### Setting Brightness and Volume Keybindings with xbindkeys
 
 [TODO]
-backlight dont, work drivers cuase blackscreen
+backlight dont, work drivers cause blackscreen
 
-
-1. First, install backlight
-2. Create a config file:
-   ```bash
-   touch ~/.xbindkeysrc
-   ```
-3. Add brightness controls to ~/.xbindkeysrc:
-   ```
-   # Decrease brightness
-   "backlight decr 10"
-     F5
-
-   # Increase brightness
-   "backlight incr 10"
-     F6
-   ```
-4. Add xbindkeys to your .xinitrc:
-   ```bash
-   # Launch key binding daemon
-   xbindkeys &
-   ```
-
-# pkg install drm-kmod
-# sysrc kld_list+=i915kms
-kldstat
-
-### ACPI
-
-And add this line to /boot/loader.conf to load it at boot:
-acpi_ibm_load="YES"
-
-I use a devd script to make the brightness keys work on my ThinkPad T16:
-notify 100 {
-         match "system"                  "ACPI";
-         match "subsystem"               "IBM";
-         match "notify"                  "0x10";
-         action "/usr/bin/backlight +";
-};
-
-notify 100 {
-         match "system"                  "ACPI";
-         match "subsystem"               "IBM";
-         match "notify"                  "0x11";
-         action "/usr/bin/backlight -";
-};
-
-I created /etc/devd/thinkpad.conf with the above in it.
-
-### xbacklight
-holmen1@besk ~$ sudo xbacklight -get
-No outputs have backlight property
 
 
 ### Sanity check

@@ -1,16 +1,6 @@
 # install
 Guides for setting up environments quickly and consistently — Linux, BSD, macOS
 
-- **artix (full install)** Go to [Artix Linux installation guide](./profiles/artixinstall/README.md)
-
-- **arch (using archinstall)** Go to [Arch Linux installation guide](./profiles/archinstall/README.md)
-
-- **debian** Go to [Debian installation guide](./profiles/debianinstall/README.md)
-
-- **bsd** Go to [FreeBSD installation guide](./profiles/bsdinstall/README.md)
-
-- **mac** Go to [MacOS config guide](./profiles/macinstall/README.md)
-
 ## ISO
 
 ```bash
@@ -37,7 +27,19 @@ diskutil unmountDisk /dev/disk4
 sudo dd bs=4M if=artix-base-openrc-20260402-x86_64.iso of=/dev/disk4 status=progress oflag=sync
 ```
 
-## Post-installation
+## Base install
+
+- **artix (full install)** Go to [Artix Linux installation guide](./profiles/artixinstall/README.md)
+
+- **arch (using archinstall)** Go to [Arch Linux installation guide](./profiles/archinstall/README.md)
+
+- **debian** Go to [Debian installation guide](./profiles/debianinstall/README.md)
+
+- **bsd** Go to [FreeBSD installation guide](./profiles/bsdinstall/README.md)
+
+- **mac** Go to [MacOS config guide](./profiles/macinstall/README.md)
+
+## Post-install
 
 ### Confirm WiFi
 
@@ -88,21 +90,13 @@ $ groups
 holmen1 wheel
 ```
 
-### Clone dotfiles
-
-```
-mkdir repos && cd repos
-git clone https://github.com/holmen1/dotfiles.git
-```
-
-### Build from Source
-For software not available via package managers (see [`install/build/`](./build/README.md)):
-
 ### Configure Git
+
 git config --global user.name "$git_username"  
 git config --global user.email "$git_email"
 
 ### SSH
+
 Generate SSH key
 ```
 ssh-keygen -t ed25519 -C "$git_email" -f ~/.ssh/id_ed25519 -N ""
@@ -122,13 +116,16 @@ chmod 600 ~/.ssh/id_ed25519
 ```
 After you generate an SSH key pair, you must add the public key to GitHub.com to enable SSH access for your account
 
-### Link dotfiles
-Edit a
-[links.config](./archinstall/links/suckless_links.config) (Arch) or [macos_links.conf](./macinstall/macos_links.conf) (macOS)
-and run
-```bash
-./scripts/link_config.sh links.config
+### Clone dotfiles
+
 ```
+mkdir repos && cd repos
+git clone https://github.com/holmen1/dotfiles.git
+```
+
+### Build from Source
+For software not available via package managers (see [`install/build/`](./build/README.md)):
+
 
 ### startx
 Enter tty via C-A-F2 or disable display manager (Arch: lightdm, FreeBSD: not applicable)  
@@ -197,88 +194,6 @@ $ diff /usr/bin/xmonad-session /usr/bin/xmonad-session.bak
 
 See [LESSONS_LEARNED.md](LESSONS_LEARNED.md) for lessons learned.
 
-## Nice to have *(Arch Linux)*
-
-### WiFi not found
-Brave and VS Code are leaking file descriptors, causing system-wide issues
-
-```bash
-iwctl --passphrase xxx station wlan0 connect XX
-Device wlan0 not found
-```
-
-Checked status
-```bash
-$ systemctl status iwd
-● iwd.service - Wireless service
-     Loaded: loaded (/usr/lib/systemd/system/iwd.service; enabled; preset: disabled)
-     Active: active (running) since Wed 2025-08-20 14:57:42 CEST; 21min ago
- Invocation: 92b30d00addf4705b0ef05fb3020502a
-       Docs: man:iwd(8)
-             man:iwd.config(5)
-             man:iwd.network(5)
-             man:iwd.ap(5)
-   Main PID: 1482 (iwd)
-      Tasks: 1 (limit: 33075)
-     Memory: 2M (peak: 3.2M)
-        CPU: 22ms
-     CGroup: /system.slice/iwd.service
-             └─1482 /usr/lib/iwd/iwd
-
-Aug 20 14:57:43 p16 iwd[1482]:                         Max HE RX <= 80MHz MCS: 0-11 for NSS: 2
-Aug 20 14:57:43 p16 iwd[1482]:                         Max HE TX <= 80MHz MCS: 0-11 for NSS: 2
-Aug 20 14:57:43 p16 iwd[1482]:                         Max HE RX <= 160MHz MCS: 0-11 for NSS: 2
-Aug 20 14:57:43 p16 iwd[1482]:                         Max HE TX <= 160MHz MCS: 0-11 for NSS: 2
-Aug 20 14:57:43 p16 iwd[1482]:         Ciphers: BIP-CMAC-256 BIP-GMAC-256 BIP-GMAC-128 CCMP-256
-Aug 20 14:57:43 p16 iwd[1482]:                  GCMP-256 GCMP-128 BIP-CMAC-128 CCMP-128
-Aug 20 14:57:43 p16 iwd[1482]:                  TKIP
-Aug 20 14:57:43 p16 iwd[1482]:         Supported iftypes: station ap p2p-client p2p-go p2p-device
-Aug 20 14:57:43 p16 iwd[1482]: NEW_INTERFACE failed: Too many open files in system
-Aug 20 14:57:43 p16 iwd[1482]: udev interface=wlan0 ifindex=3
-```
-**❌ ERROR: Too many open files in system**
-
-#### Monitoring and Recovery
-
-1. Monitor open files regularly:
-   ```bash
-   lsof | wc -l
-   sudo lsof | awk '{print $2}' | sort | uniq -c | sort -nr | head
-   ```
-
-2. Identify the leaking process:
-   ```bash
-   ps -p <pid1>,<pid2>,... -o pid,comm,cmd
-   ```
-   - Replace `<pid1>,<pid2>,...` with the PIDs from the previous command
-   - If you see a process (e.g., `code`, `brave`) with tens of thousands of open files, it may be leaking file descriptors, ie
-   ```
-   PID COMMAND         CMD
-   1868 brave           /opt/brave-bin/brave --password-store=basic
-   2939 code            /opt/visual-studio-code/code .
-   1642 Hyprland        Hyprland
-   ```
-
-3. Recover:
-   Save your work, then kill or restart the offending process(es):
-     ```bash
-     kill <pid>
-     ```
-   Restart iwd to restore WiFi:
-     ```bash
-     sudo systemctl restart iwd
-     ```
-     ⚠️ Only use one network manager at a time (iwd, NetworkManager, or systemd-networkd).
-Running multiple network managers can cause conflicts, unpredictable behavior, or loss of connectivity
-
-4. Reconnect to WiFi if needed:
-   ```bash
-   iwctl station wlan0 connect <NetworkName>
-   ```
-
-5. or switch to NetworkManager...
-
-
 
 ### VPN
 
@@ -308,10 +223,24 @@ Link
 $ sudo ln -s /opt/VSCode-linux-x64/bin/code /usr/local/bin/code
 ```
 
-### Useful Keyboard Shortcuts
-- `Ctrl+Alt+F2` - Switch to TTY2 console (F1-F6 for different TTY sessions)
-- `Ctrl+Alt+F7` - Return to GUI session
-- `Ctrl+Alt+T` - Open terminal (in most desktop environments)
+### Keyboard Shortcuts — TTY & X Session Access
+
+#### Linux (Arch/Artix)
+- `Ctrl+Alt+F2` through `Ctrl+Alt+F6` — Switch to TTY console
+- `Ctrl+Alt+F7` — Return to GUI/X session
+- `Ctrl+Alt+T` — Open terminal (desktop environment dependent)
+
+#### FreeBSD (Xlibre) — Black Screen Recovery
+- `Alt+F1`, `Alt+F2`, etc. — Cycle virtual consoles (if keyboard responds)
+- `Scroll Lock` then arrow keys — Alternative TTY switching
+- `Ctrl+Alt+Delete` or power cycle — Last resort reboot
+
+Once at TTY:
+```bash
+ps aux | grep X           # Check if X is running
+pkill -9 X                # Kill stuck Xlibre
+startx                    # Restart X session
+```
 
 ### Mounting USB Drives
 Identify the USB drive:

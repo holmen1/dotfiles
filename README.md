@@ -1,6 +1,6 @@
 # dotfiles
 
-Minimal barless window manager
+Minimal window manager
 
 Workstation setup for Linux, BSD, and macOS — dotfiles, installation guides, and build scripts
 
@@ -178,8 +178,6 @@ Stable, maintainable minimal desktop across multiple operating systems. Designed
 - BSD   (FreeBSD)
 - macOS (limited)
 - Unix  (xv6) [TODO]
-
-## Installation guides
 
 [Distro install guides](install/profiles)
 
