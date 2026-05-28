@@ -39,3 +39,49 @@ XMonad automatically uses the newer cache version when available.
   - `Mod + Space`: Switches between layouts
   - `Mod + Tab`: Cycles through windows
   - `Mod + Q`: Restarts xmonad
+
+## cabal vs ghc
+
+[TODO]
+Investigate if cabal flags: +with-xft should be handled by ghc
+```
+holmen1@x1 bin (master)$ ldd xmonad-v0.18.1
+        linux-vdso.so.1 (0x00007f854a245000)
+        libm.so.6 => /usr/lib/libm.so.6 (0x00007f854a0f4000)
+        libXft.so.2 => /usr/lib/libXft.so.2 (0x00007f854a0da000)
+        libXss.so.1 => /usr/lib/libXss.so.1 (0x00007f854a0d5000)
+        libXinerama.so.1 => /usr/lib/libXinerama.so.1 (0x00007f854a0d0000)
+        libXext.so.6 => /usr/lib/libXext.so.6 (0x00007f854a0bc000)
+        libX11.so.6 => /usr/lib/libX11.so.6 (0x00007f8549f78000)
+        libXrandr.so.2 => /usr/lib/libXrandr.so.2 (0x00007f8549f6b000)
+        libgmp.so.10 => /usr/lib/libgmp.so.10 (0x00007f8549ec4000)
+        libc.so.6 => /usr/lib/libc.so.6 (0x00007f8549c00000)
+        /lib64/ld-linux-x86-64.so.2 => /usr/lib64/ld-linux-x86-64.so.2 (0x00007f854a247000)
+        libfontconfig.so.1 => /usr/lib/libfontconfig.so.1 (0x00007f8549e73000)
+        libfreetype.so.6 => /usr/lib/libfreetype.so.6 (0x00007f8549b30000)
+        libXrender.so.1 => /usr/lib/libXrender.so.1 (0x00007f8549e67000)
+        libxcb.so.1 => /usr/lib/libxcb.so.1 (0x00007f8549e3a000)
+        libexpat.so.1 => /usr/lib/libexpat.so.1 (0x00007f8549b03000)
+        libz.so.1 => /usr/lib/libz.so.1 (0x00007f8549e1f000)
+        libbz2.so.1.0 => /usr/lib/libbz2.so.1.0 (0x00007f8549af0000)
+        libpng16.so.16 => /usr/lib/libpng16.so.16 (0x00007f8549ab5000)
+        libbrotlidec.so.1 => /usr/lib/libbrotlidec.so.1 (0x00007f8549aa6000)
+        libXau.so.6 => /usr/lib/libXau.so.6 (0x00007f8549aa1000)
+        libXdmcp.so.6 => /usr/lib/libXdmcp.so.6 (0x00007f8549a99000)
+        libbrotlicommon.so.1 => /usr/lib/libbrotlicommon.so.1 (0x00007f8549a76000)
+holmen1@x1 bin (master)$ ldd xmonad-0.18.1
+        linux-vdso.so.1 (0x00007f2c459da000)
+        libm.so.6 => /usr/lib/libm.so.6 (0x00007f2c45889000)
+        libXss.so.1 => /usr/lib/libXss.so.1 (0x00007f2c45884000)
+        libXinerama.so.1 => /usr/lib/libXinerama.so.1 (0x00007f2c4587f000)
+        libXext.so.6 => /usr/lib/libXext.so.6 (0x00007f2c4586b000)
+        libX11.so.6 => /usr/lib/libX11.so.6 (0x00007f2c45729000)
+        libXrandr.so.2 => /usr/lib/libXrandr.so.2 (0x00007f2c4571a000)
+        libgmp.so.10 => /usr/lib/libgmp.so.10 (0x00007f2c45673000)
+        libc.so.6 => /usr/lib/libc.so.6 (0x00007f2c45400000)
+        /lib64/ld-linux-x86-64.so.2 => /usr/lib64/ld-linux-x86-64.so.2 (0x00007f2c459dc000)
+        libxcb.so.1 => /usr/lib/libxcb.so.1 (0x00007f2c45648000)
+        libXrender.so.1 => /usr/lib/libXrender.so.1 (0x00007f2c4563c000)
+        libXau.so.6 => /usr/lib/libXau.so.6 (0x00007f2c45637000)
+        libXdmcp.so.6 => /usr/lib/libXdmcp.so.6 (0x00007f2c4562d000)
+```
