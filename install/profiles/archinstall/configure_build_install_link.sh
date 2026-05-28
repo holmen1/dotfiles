@@ -85,7 +85,7 @@ read -p "Build xmonad? [y/N] " ans
 case "$ans" in
     [Yy]*)
     # Build Xmonad
-    $XMONAD_DIR/build-xmonad.sh
+    $XMONAD_DIR/rebuild-xmonad.sh
     ;;
 esac
 
@@ -101,10 +101,10 @@ case "$ans" in
         esac
     done
 
-    sudo cp -f $XMONAD_DIR/bin/xmonad-v0.18.[0-9] /opt/xmonad/
+    sudo cp -f $XMONAD_DIR/bin/xmonad-0.18.[0-9] /opt/xmonad/
     echo "Installed xmonad to /opt/xmonad/"
     # Link to the latest installed version, ignoring .bak files
-    LATEST_XMONAD=$(ls -v /opt/xmonad/xmonad-v0.18.[0-9] | grep -v "\.bak$" | tail -n 1)
+    LATEST_XMONAD=$(ls -v /opt/xmonad/xmonad-0.18.[0-9] | grep -v "\.bak$" | tail -n 1)
     if [ -n "$LATEST_XMONAD" ]; then
         sudo ln -sf "$LATEST_XMONAD" /usr/local/bin/xmonad
         echo "Created symlink for xmonad pointing to $LATEST_XMONAD"
