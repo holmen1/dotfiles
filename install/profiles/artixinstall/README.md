@@ -298,19 +298,17 @@ Remove the ISO/USB when the machine powers off.
 
 > You need a working network connection before running the post-install script. Keep ethernet connected until WiFi is configured and verified.
 
-Log in as `holmen1`.
+Log in as `$USER`.
 
 ### Connect to WiFi
 
-`iwd` and `dbus` should be running (enabled in chroot). Use `iwctl` to connect:
+`iwd` and `dbus` should be running (enabled in chroot)
 
 ```
-iwctl
-[iwd]# device list
-[iwd]# station wlan0 scan
-[iwd]# station wlan0 get-networks
-[iwd]# station wlan0 connect YOUR_SSID
-[iwd]# exit
+iwctl device list
+iwctl station wlan0 scan
+iwctl station wlan0 get-networks
+iwctl --password PSK station wlan0 connect YOUR_SSID
 ```
 
 Verify connectivity:
@@ -386,9 +384,8 @@ sudo pacman -S xlibre-xserver xlibre-input-libinput
 
 #### 2. Install X stuff
 
-[x_pkg.txt](install/artixinstall/packages/x_pkg.txt)
-```bash
-./install/artixinstall/scripts/install-pacman.sh install/artixinstall/packages/x_pkg.txt
+```
+sudo pacman -S libxinerama libxss noto-fonts xorg-xinit xterm
 ```
 
 Verify by creating a minimal `.xinitrc`
@@ -402,10 +399,11 @@ startx
 ```
 a terminal should open, may need be pointed to to activate
 
-Monitor
-`~/.local/share/xorg/Xorg.0.log`
-for errors
+##### Troubleshooting
 
+```bash
+less ~/.local/share/xorg/Xorg.0.log
+```
 
 
 #### 3. Build or install Haskell Compiler (GHC)
