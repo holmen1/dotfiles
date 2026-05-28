@@ -45,9 +45,10 @@ Tip: execute from vim instead of typing
 
 | Command | Description |
 ----------|-------------|
-| .!sh    | Execute current line, replaced by result |
-| .w !sh  | Execute current line |
-| w !sh   | Execute visual selection |
+| `:.!sh` | Replace current line with shell output |
+| `:.w !sh` | Pipe current line to `sh` |
+| `:'<,'>w !sh` | Pipe visual selection to `sh` |
+| `!!sh` | Normal-mode shorthand for `:.!sh` |
 
 ### Confirm WiFi
 
