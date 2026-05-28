@@ -16,7 +16,7 @@ ssid=$($SCRIPTS/monitor-wifi.sh --get-ssid)
 vpn=$($SCRIPTS/monitor-vpn.sh --get-location)
 
 # Main categories
-category=$(printf "Help\nNetwork\nExit" | dmenu -i -p "x[$current_xkb] w[$ssid] v[$vpn] b[$battery_level%]" \
+category=$(printf "Exit\nNetwork\nHelp" | dmenu -i -p "x[$current_xkb] w[$ssid] v[$vpn] b[$battery_level%]" \
 -nb "#222222" -nf "#ffffff" -sb "#A300A3" -sf "#ffffff" \
 -fn "$FONT")
 
