@@ -69,12 +69,30 @@ ping -c 3 artixlinux.org  # tests DNS
 useradd -m -G wheel[,video] username
 passwd username
 ```
-The passwd -d command deletes (removes) a user's password, allowing passwordless login for that account. For example:
+#### Passwordless
+
+This is generally not recommended for regular users due to security risks
+
+The passwd -d command deletes (removes) a user's password, allowing passwordless login for that account
 
 ```bash
 passwd -d username
 ```
-This is generally not recommended for regular users due to security risks
+
+then edit 'getty@tty1.service' (Arch)
+```bash
+diff /etc/systemd/system/getty.target.wants/getty\@tty1.service.bak /etc/systemd/system/getty.target.wants/getty\@tty1.service
+34c34
+< ExecStart=-/usr/bin/agetty --noreset --noclear - ${TERM}
+---
+> ExecStart=-/usr/bin/agetty --noreset --autologin holmen1 --noclear - ${TERM}
+```
+
+Also need add
+```bash
+echo -n ""
+```
+in `.bash_profile` in my case [WHY?]
 
 
 ### sudo without password
