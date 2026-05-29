@@ -245,6 +245,10 @@ Registers store text for yanking, deleting, or pasting (like multiple clipboards
 | `:x,yw >> FILENAME` | Appends lines x-y to file FILENAME |
 | `gf` | Go to file under cursor |
 | `gx` | Open URL under cursor |
+| `:.!sh` | Replace current line with shell output |
+| `!!sh` | Normal-mode shorthand for `:.!sh` |
+| `:.w !sh` | Pipe current line to `sh` |
+| `:'<,'>w !sh` | Pipe visual selection to `sh` |
 
 ### Navigation
 

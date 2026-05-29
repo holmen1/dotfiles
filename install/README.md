@@ -41,15 +41,6 @@ sudo dd bs=4M if=artix-base-openrc-20260402-x86_64.iso of=/dev/disk4 status=prog
 
 ## Post-install
 
-Tip: execute from vim instead of typing
-
-| Command | Description |
-----------|-------------|
-| `:.!sh` | Replace current line with shell output |
-| `:.w !sh` | Pipe current line to `sh` |
-| `:'<,'>w !sh` | Pipe visual selection to `sh` |
-| `!!sh` | Normal-mode shorthand for `:.!sh` |
-
 ### Confirm WiFi
 
 Verify connectivity:
