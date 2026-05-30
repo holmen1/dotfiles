@@ -1,30 +1,18 @@
 #!/bin/sh
 #
-# Rebuild xmonad + xmonad-contrib using only GHC (no cabal-install).
-# Uses runhaskell Setup.hs with GHC's built-in Cabal library.
-# Target: GHC 9.8.4 (base-4.19)
+# Compile and link custom xmonad using only GHC (no cabal-install).
 
 set -e
 
 XMONAD_VER="0.18.1"
 CONFIG_SOURCE=~/repos/dotfiles/config/xmonad/xmonad.hs
 
-GHC_VERSION="9.12.2"
-LOCAL_GHC_BIN="${HOME}/.local/ghc-${GHC_VERSION}/bin"
-
-# Prefer package-manager GHC already on PATH; fall back to local source build.
 if command -v ghc >/dev/null 2>&1; then
     echo "Using GHC from PATH: $(command -v ghc)"
-elif [ -x "${LOCAL_GHC_BIN}/ghc" ]; then
-    export PATH="${LOCAL_GHC_BIN}:${PATH}"
-    echo "Using local GHC at ${LOCAL_GHC_BIN}/ghc"
 else
-    echo "Error: no ghc found on PATH, and fallback not found at ${LOCAL_GHC_BIN}/ghc"
-    echo "Install ghc via package manager, or run: install/build/ghc/build-ghc.sh ${GHC_VERSION}"
+    echo "Error: no ghc found on PATH"
     exit 1
 fi
-
-echo "Using $(ghc --version)"
 
 BUILD_DIR=~/repos/dotfiles/install/build/xmonad
 BIN_DIR=$BUILD_DIR/bin

@@ -8,7 +8,8 @@ with plain GHC using `runhaskell Setup.hs`.
 
 | Script | Purpose |
 |---|---|
-| `build-xmonad-ghc.sh` | Build using GHC only (no cabal-install). Preferred. |
+| `build-xmonad-ghc.sh` | Build libraries using GHC (no cabal-install). Preferred |
+| `rebuild-xmonad.sh` | Compile and link custom xmonad |
 | `build-xmonad.sh` | Legacy build using cabal-install. |
 
 ---
@@ -22,15 +23,14 @@ pacman -S libx11 libxrandr libxext libxinerama libxss pkgconf autoconf
 
 # Debian/Ubuntu
 apt install libx11-dev libxft-dev libxinerama-dev libxrandr-dev libxss-dev pkg-config autoconf
+# may not need xft
 ```
 
 ### GHC
 
-Install GHC 9.8.4 via the build factory:
-```bash
-./install/build/ghc/build-ghc.sh 9.8.4
-```
-See [GHC build README](../ghc/README.md) for details.
+Ensure GHC used tested for current version.
+If there is no tested version in your package manager,
+[build GHC from source](../ghc/README.md).
 
 ---
 
@@ -40,8 +40,8 @@ See [GHC build README](../ghc/README.md) for details.
 ./install/build/xmonad/build-xmonad-ghc.sh
 ```
 
-The script:
-1. Verifies GHC 9.8.4 is installed at `~/.local/ghc-9.8.4/`
+The scripts:
+1. Verifies GHC is installed
 2. Fetches all Haskell dependencies from Hackage
 3. Builds xmonad and xmonad-contrib
 4. Compiles a custom binary from `dotfiles/xmonad/xmonad.hs`
@@ -60,7 +60,7 @@ sudo ln -sf /opt/xmonad/xmonad-0.18.1 /usr/local/bin/xmonad
 Target machines only need X11 runtime libraries, not Haskell:
 ```bash
 # Arch/Artix
-pacman -S libx11 libxft libxinerama libxrandr libxss xterm
+pacman -S libx11 [libxft?] libxinerama libxrandr libxss xterm
 ```
 
 **Note:** target machines cannot recompile without rebuilding the binary on the build machine.

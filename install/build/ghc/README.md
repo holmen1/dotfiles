@@ -23,14 +23,19 @@ The script:
 1. Downloads the binary tarball for `x86_64-deb12-linux` (suitable for Arch/Artix)
 2. Installs into `~/.local/ghc-<version>` via `./configure --prefix`
 
+When `./configure`, this gcc error can be ignored
+```
+checking whether gcc used as a linker understands --target... gcc: error: unrecognized command-line option '--target=x86_64-unknown-linux'
+no
+```
+
 ## Activation
 
 To make a version the system default:
 ```bash
-sudo ln -sf ~/.local/ghc-<version>/bin/ghc /usr/local/bin/ghc
-sudo ln -sf ~/.local/ghc-<version>/bin/ghci /usr/local/bin/ghci
-sudo ln -sf ~/.local/ghc-<version>/bin/runghc /usr/local/bin/runghc
+./configure && sudo make install
 ```
+installs to `/usr/local`
 
 ## HLS
 
