@@ -187,7 +187,7 @@ HOOKS="base udev autodetect modconf block **encrypt** keyboard keymap consolefon
 ```
 
 ```bash
-pacman -S lvm2 cryptsetup glibc mkinitcpio
+pacman -S lvm2 lvm2-openrc cryptsetup cryptsetup-openrc glibc mkinitcpio
 ###
 mkinitcpio -p linux-hardened
 ```
@@ -206,11 +206,13 @@ grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=grub
 Append UUID to `/etc/default/grub`
 ```bash
 blkid -s UUID -o value /dev/nvme0n1p2 >> /etc/default/grub
+blkid -s UUID -o value /dev/lvmSystem/volSwap >> /etc/default/grub
 ```
 
 then replace `<uuid>`like so:
 ```sh
-GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet zswap.enabled=1 cryptdevice=UUID=<uuid>:cryptlvm root=/dev/lvmSystem/volRoot"
+GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet cryptdevice=UUID=<uuid>:cryptlvm resume=UUID=<uuid>"
+#GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet zswap.enabled=1 cryptdevice=UUID=<uuid>:cryptlvm root=/dev/lvmSystem/volRoot"
 ```
 ```bash
 grub-mkconfig -o /boot/grub/grub.cfg
@@ -277,4 +279,16 @@ reboot
 ```
 
 Remove the ISO/USB when the machine powers off.
+
+
+## Troubleshooting
+
+```bash
+cryptsetup luksOpen /dev/nvme0n1p2 cryptlvm
+vgchange -ay lvmSystem  # activates all known volume groups in the system
+mount /dev/lvmSystem/volRoot /mnt
+```
+```bash
+artix-chroot /mnt /bin/bash
+```
 
