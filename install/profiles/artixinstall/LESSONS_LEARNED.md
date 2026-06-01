@@ -37,61 +37,27 @@ sudo rc-service dhcpcd start
 ```
 Then update `/etc/iwd/main.conf` to add `NameResolvingService=resolvconf` and restart iwd for permanent DNS.
 
-## Recovery (chroot from ISO — last resort only)
-- Prefer fixing the installed system from the live ISO instead of reinstalling
-- Use chroot only when the installed system does not boot or needs boot/package repair
-- For this guide's current layout, mount root and the ESP first, then regenerate `fstab` if mount points changed or are missing:
-  ```
-  cryptsetup open /dev/nvme0n1p2 cryptlvm
-  vgchange -ay lvmSystem
-  mount /dev/lvmSystem/volRoot /mnt
-  mount /dev/nvme0n1p1 /mnt/boot
-  fstabgen -U /mnt >> /mnt/etc/fstab
-  artix-chroot /mnt /bin/bash
-  ```
-- Then repair the installed system in place:
-  ```
-  pacman -S <missing-pkg>
-  mkinitcpio -p linux-hardened
-  grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub
-  grub-mkconfig -o /boot/grub/grub.cfg
-  ```
-- Exit, unmount, reboot:
-  ```
-  exit
-  umount -R /mnt
-  reboot
-  ```
+### ISO rescue path (if current boot path fails)
+```
+cryptsetup open /dev/nvme0n1p2 cryptlvm
+vgchange -ay lvmSystem
+mount /dev/lvmSystem/volRoot /mnt
+mount /dev/nvme0n1p1 /mnt/boot
+fstabgen -U /mnt > /mnt/etc/fstab
+artix-chroot /mnt /bin/bash
+mkinitcpio -p linux-hardened
+grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub
+grub-mkconfig -o /boot/grub/grub.cfg
+exit
+umount -R /mnt
+reboot
+```
 
 ## Boot (GRUB / UEFI)
 
 - Simplest setup for this guide: mount the ESP on `p1` at `/boot` and keep `/` on encrypted LUKS/LVM
 - That gives a single passphrase prompt at boot because GRUB and the kernel live on the unencrypted ESP
 - Avoid the encrypted-`/boot` + cryptodisk + keyfile path unless you explicitly want extra boot complexity
-
-## Repair (live ISO)
-
-- Use this when the install exists but boot or packages are broken; do not redo the whole install
-- Open the encrypted root, mount it, then chroot and repair from inside the installed system
-- For this guide's layout:
-  ```
-  cryptsetup open /dev/nvme0n1p2 cryptlvm
-  vgchange -ay lvmSystem
-  mount /dev/lvmSystem/volRoot /mnt
-  mount /dev/nvme0n1p1 /mnt/boot
-  artix-chroot /mnt /bin/bash
-  ```
-- Inside the chroot, fix the broken piece directly, for example:
-  - `pacman -Syu <missing-package>`
-  - `mkinitcpio -p linux-hardened`
-  - `grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub`
-  - `grub-mkconfig -o /boot/grub/grub.cfg`
-- Then exit, unmount, and reboot:
-  ```
-  exit
-  umount -R /mnt
-  reboot
-  ```
 
 ## Package strategy
 - Start with `packages/minimal/` — just enough to get X server running (`xorg-xinit`, `xterm`, xlibre)
