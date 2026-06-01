@@ -207,8 +207,10 @@ pacman -S grub efibootmgr
 ````
 
 ```bash
-grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=grub
+grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=grub --removable
 ```
+
+> **Note (Lenovo X1):** Add `--removable` so GRUB is also installed to the fallback path `EFI/BOOT/BOOTX64.EFI`. Without it, some UEFI firmware (Lenovo in particular) loses the EFI boot entry on reboot and drops to a raw device menu (`NVMe0: UMIS RPET...`).
 
 Append UUID to `/etc/default/grub`
 ```bash

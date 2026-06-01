@@ -49,6 +49,28 @@ Then update `/etc/iwd/main.conf` to add `NameResolvingService=resolvconf` and re
   exit && reboot
   ```
 
+## Boot (GRUB / UEFI)
+
+### Lenovo X1: drops to raw device menu after install (`NVMe0: UMIS RPET...`)
+- Symptom: reboot after installation shows the UEFI firmware's own boot selector listing the raw NVMe drive instead of GRUB
+- Cause: Lenovo UEFI does not reliably persist EFI boot entries created by `grub-install`; it ignores the registered entry on next boot
+- Fix (during install, in chroot): add `--removable` to `grub-install`
+  ```
+  grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=grub --removable
+  grub-mkconfig -o /boot/grub/grub.cfg
+  ```
+  This additionally writes the bootloader to the fallback path `EFI/BOOT/BOOTX64.EFI`, which all UEFI firmware checks unconditionally.
+- Fix (after the fact, from live ISO):
+  ```
+  cryptsetup open /dev/nvme0n1p2 cryptlvm
+  mount /dev/lvmSystem/volRoot /mnt
+  mount /dev/nvme0n1p1 /mnt/boot/efi
+  artix-chroot /mnt
+  grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=grub --removable
+  grub-mkconfig -o /boot/grub/grub.cfg
+  exit && reboot
+  ```
+
 ## Package strategy
 - Start with `packages/minimal/` — just enough to get X server running (`xorg-xinit`, `xterm`, xlibre)
 - Verify `startx` launches xterm before installing the full `packages/gadsden/` list
