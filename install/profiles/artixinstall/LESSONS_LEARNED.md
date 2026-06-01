@@ -54,6 +54,7 @@ Then update `/etc/iwd/main.conf` to add `NameResolvingService=resolvconf` and re
 ### Lenovo X1: drops to raw device menu after install (`NVMe0: UMIS RPET...`)
 - Symptom: reboot after installation shows the UEFI firmware's own boot selector listing the raw NVMe drive instead of GRUB
 - Cause: Lenovo UEFI does not reliably persist EFI boot entries created by `grub-install`; it ignores the registered entry on next boot
+- Also required: `GRUB_ENABLE_CRYPTODISK=y` in `/etc/default/grub` before `grub-install` (see below)
 - Fix (during install, in chroot): add `--removable` to `grub-install`
   ```
   grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=grub --removable

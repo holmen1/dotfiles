@@ -190,8 +190,10 @@ echo 'keymap="sv-latin1"' > /etc/conf.d/keymaps
 vi /etc/mkinitcpio.conf
 ```
 ```
-HOOKS="base udev autodetect modconf block **encrypt** keyboard keymap consolefont **lvm2** resume filesystems fsck"
+HOOKS="base udev autodetect modconf block keyboard keymap consolefont encrypt lvm2 resume filesystems fsck"
 ```
+
+> **Note:** `keyboard keymap consolefont` must come *before* `encrypt` so the keyboard is active when the LUKS passphrase prompt appears at boot.
 
 ```bash
 pacman -S lvm2 lvm2-openrc cryptsetup cryptsetup-openrc glibc mkinitcpio
@@ -212,13 +214,18 @@ grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=grub 
 
 > **Note (Lenovo X1):** Add `--removable` so GRUB is also installed to the fallback path `EFI/BOOT/BOOTX64.EFI`. Without it, some UEFI firmware (Lenovo in particular) loses the EFI boot entry on reboot and drops to a raw device menu (`NVMe0: UMIS RPET...`).
 
+Enable GRUB cryptodisk support in `/etc/default/grub` — **must be set before `grub-install`**:
+```bash
+echo 'GRUB_ENABLE_CRYPTODISK=y' >> /etc/default/grub
+```
+
 Append UUID to `/etc/default/grub`
 ```bash
 blkid -s UUID -o value /dev/nvme0n1p2 >> /etc/default/grub
 blkid -s UUID -o value /dev/lvmSystem/volSwap >> /etc/default/grub
 ```
 
-then replace `<uuid>`like so:
+then replace `<uuid>` like so:
 ```sh
 GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet cryptdevice=UUID=<uuid>:cryptlvm resume=UUID=<uuid>"
 #GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet zswap.enabled=1 cryptdevice=UUID=<uuid>:cryptlvm root=/dev/lvmSystem/volRoot"
