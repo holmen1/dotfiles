@@ -1,8 +1,15 @@
 # encrypt
 
-Using [LVM on LUKS]
+My own mix using these resources:
+
+- Artix [Installation With Full Disk Encryption]
+(https://wiki.artixlinux.org/Main/InstallationWithFullDiskEncryption)
+
+- Arch [LVM on LUKS]
 (https://wiki.archlinux.org/title/Dm-crypt/Encrypting_an_entire_system#LVM_on_LUKS)
 
+- The Rad Lectures [Step-by-Step Artix Linux Install]
+(https://www.radleylewis.com/lab/guides/artix-openrc-install-guide/)
 
 ```
 |----------------------------------------------------------------------|
