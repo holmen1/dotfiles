@@ -13,7 +13,7 @@ My own mix using these resources:
 
 ```
 |----------------------------------------------------------------------|
-|   /boot/efi        | [SWAP]                 | /                      |                
+|   /boot            | [SWAP]                 | /                      |                
 |                    |                        |                        |
 |                    | /dev/lvmSystem/volSwap | /dev/lvmSystem/volRoot |
 |--------------------|------------------------|------------------------|
@@ -86,8 +86,8 @@ mkfs.ext4 -L ROOT /dev/lvmSystem/volRoot
 ```bash
 swapon /dev/lvmSystem/volSwap
 mount /dev/lvmSystem/volRoot /mnt
-mkdir -p /mnt/boot/efi
-mount /dev/disk/by-label/ESP /mnt/boot/efi
+mkdir -p /mnt/boot
+mount /dev/disk/by-label/ESP /mnt/boot
 ```
 
 ### Network
@@ -209,14 +209,7 @@ pacman -S grub efibootmgr
 ````
 
 ```bash
-grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=grub --removable
-```
-
-> **Note (Lenovo X1):** Add `--removable` so GRUB is also installed to the fallback path `EFI/BOOT/BOOTX64.EFI`. Without it, some UEFI firmware (Lenovo in particular) loses the EFI boot entry on reboot and drops to a raw device menu (`NVMe0: UMIS RPET...`).
-
-Enable GRUB cryptodisk support in `/etc/default/grub` — **must be set before `grub-install`**:
-```bash
-echo 'GRUB_ENABLE_CRYPTODISK=y' >> /etc/default/grub
+grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub
 ```
 
 Append UUID to `/etc/default/grub`
