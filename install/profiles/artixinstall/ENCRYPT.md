@@ -119,9 +119,10 @@ basestrap /mnt base base-devel openrc elogind-openrc
 ### Install a kernel
 For security, the standard Linux kernel and its' headers - should be replaced by a hardened version:
 ```bash
-basestrap /mnt linux-hardened linux-hardened-headers
+basestrap /mnt linux-hardened linux-hardened-headers linux-firmware
 #basestrap /mnt linux linux-firmware
 ```
+Note: firmware resolved no wlan0 on lenovo using i5
 
 and, nice to have
 ```bash
@@ -243,7 +244,7 @@ Configure `/etc/hosts`:
 
 Install `iwd`, D-Bus, and network support packages, then enable them at boot:
 ```
-pacman -S iwd-openrc dbus-openrc dhcpcd dhcpcd-openrc openresolv
+pacman -S iwd iwd-openrc dbus-openrc dhcpcd dhcpcd-openrc openresolv
 rc-update add dbus default
 rc-update add iwd default
 rc-update add dhcpcd default
@@ -265,6 +266,12 @@ NameResolvingService=resolvconf
 ```
 
 Without `EnableNetworkConfiguration=true`, `iwd` associates to WiFi but never assigns an IP address — the most common post-install networking failure.
+
+If `/etc/resolv.conf` empty, add:
+```
+nameserver 8.8.8.8 # Primary DNS
+nameserver 1.1.1.1
+```
 
 Prevent `dhcpcd` from interfering with `wlan0` (iwd manages WiFi DHCP itself):
 ```
