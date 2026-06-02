@@ -56,27 +56,35 @@ ping -c 3 artixlinux.org  # tests DNS
 ```
 
 ### Add user
-```
+
+```bash
 useradd -m -G wheel[,video] username
-passwd username
+#passwd username
 ```
 #### Passwordless
 
 This is generally not recommended for regular users due to security risks
 
-The passwd -d command deletes (removes) a user's password, allowing passwordless login for that account
+The passwd -d command deletes (removes) a user's password if set, allowing passwordless login for that account
 
 ```bash
 passwd -d username
 ```
 
-then edit 'getty@tty1.service' (Arch)
-```bash
-diff /etc/systemd/system/getty.target.wants/getty\@tty1.service.bak /etc/systemd/system/getty.target.wants/getty\@tty1.service
-34c34
-< ExecStart=-/usr/bin/agetty --noreset --noclear - ${TERM}
----
-> ExecStart=-/usr/bin/agetty --noreset --autologin holmen1 --noclear - ${TERM}
+#### Autologin
+
+Artix:
+```
+#/etc/conf.d/agetty.tty1
+
+agetty_options="-a yourusername"
+```   
+
+Arch:
+```
+#/etc/systemd/system/getty.target.wants/getty@tty1.service
+
+ExecStart=-/usr/bin/agetty --noreset --autologin yourusername --noclear - ${TERM}
 ```
 
 Also need add
