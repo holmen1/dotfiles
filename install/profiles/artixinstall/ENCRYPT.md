@@ -5,21 +5,20 @@ My own mix using these resources:
 - Artix [Installation With Full Disk Encryption]
 (https://wiki.artixlinux.org/Main/InstallationWithFullDiskEncryption)
 
-- Arch [LVM on LUKS]
-(https://wiki.archlinux.org/title/Dm-crypt/Encrypting_an_entire_system#LVM_on_LUKS)
+- Arch [LUKS on a partition]
+(https://wiki.archlinux.org/title/Dm-crypt/Encrypting_an_entire_system#LUKS_on_a_partition)
 
 - The Rad Lectures [Step-by-Step Artix Linux Install]
 (https://www.radleylewis.com/lab/guides/artix-openrc-install-guide/)
 
 ```
-|----------------------------------------------------------------------|
-|   /boot            | [SWAP]                 | /                      |                
-|                    |                        |                        |
-|                    | /dev/lvmSystem/volSwap | /dev/lvmSystem/volRoot |
-|--------------------|------------------------|------------------------|
-|                    |           LUKS encrypted partition              |
-|   /dev/nvme0n1p1   |           /dev/nvme0n1p2                        |
-|----------------------------------------------------------------------|
+|--------------------------------------------------|
+|   /boot            |  /                          |                
+|                    |  /dev/mapper/cryptroot      |
+|--------------------|-----------------------------|
+|                    |  LUKS encrypted partition   |
+|   /dev/nvme0n1p1   |  /dev/nvme0n1p2             |
+|--------------------------------------------------|
 ```
 
 
@@ -51,43 +50,22 @@ cryptsetup luksFormat /dev/nvme0n1p2
 
 Open the container:
 ```bash
-cryptsetup open /dev/nvme0n1p2 cryptlvm
+cryptsetup open /dev/nvme0n1p2 cryptroot
 ```
-The decrypted container is now available at /dev/mapper/cryptlvm.
-
-### Logical volumes
-
-Create a physical volume on top of the opened LUKS container:
-```bash
-pvcreate /dev/mapper/cryptlvm
-```
-
-Create a volume group and add the previously created physical volume to it:
-```bash
-vgcreate lvmSystem /dev/mapper/cryptlvm
-```
-
-```bash
- lvcreate -L 8G -n volSwap lvmSystem
- lvcreate -l +100%FREE -n volRoot lvmSystem
- lvreduce -L -256M lvmSystem/volRoot
-```
+The decrypted container is now available at /dev/mapper/cryptroot
 
 ### Format
 
 ```bash
 mkfs.fat -F 32 /dev/nvme0n1p1
-fatlabel /dev/nvme0n1p1 ESP
-mkswap -L SWAP /dev/lvmSystem/volSwap
-mkfs.ext4 -L ROOT /dev/lvmSystem/volRoot
+mkfs.ext4 /dev/mapper/cryptroot
 ```
 
 ### Mount
 ```bash
-swapon /dev/lvmSystem/volSwap
-mount /dev/lvmSystem/volRoot /mnt
+mount /dev/mapper/cryptroot /mnt
 mkdir -p /mnt/boot
-mount /dev/disk/by-label/ESP /mnt/boot
+mount /dev/nvme0n1p1 /mnt/boot
 ```
 
 ### Network
@@ -115,7 +93,6 @@ basestrap /mnt base base-devel openrc elogind-openrc
 - `openrc` — init system
 - `elogind-openrc` — session/seat management (replaces systemd-logind)
 
-
 ### Install a kernel
 For security, the standard Linux kernel and its' headers - should be replaced by a hardened version:
 ```bash
@@ -137,7 +114,7 @@ basestrap /mnt sudo
 fstabgen -U /mnt >> /mnt/etc/fstab
 ```
 
-Inspect the result and make sure all partitions are listed (root, efi, swap):
+Inspect the result and make sure all partitions are listed (root, boot):
 ```
 cat /mnt/etc/fstab
 ```
@@ -145,7 +122,7 @@ cat /mnt/etc/fstab
 ## Chroot into the new system
 
 ```bash
-artix-chroot /mnt /bin/bash
+artix-chroot /mnt bash
 ```
 
 Set up a root password
@@ -157,9 +134,7 @@ passwd
 pacman -Sy
 pacman-key --init
 pacman-key --populate artix
-#pacman -Syu
 ```
-
 
 ### Configure the system clock
 Set the time zone:
@@ -191,17 +166,16 @@ echo 'keymap="sv-latin1"' > /etc/conf.d/keymaps
 vi /etc/mkinitcpio.conf
 ```
 ```
-HOOKS="base udev autodetect modconf block keyboard keymap consolefont encrypt lvm2 resume filesystems fsck"
+HOOKS="base udev autodetect modconf block keyboard keymap consolefont encrypt filesystems fsck"
 ```
 
 > **Note:** `keyboard keymap consolefont` must come *before* `encrypt` so the keyboard is active when the LUKS passphrase prompt appears at boot.
 
 ```bash
-pacman -S lvm2 lvm2-openrc cryptsetup cryptsetup-openrc glibc mkinitcpio
+pacman -S cryptsetup cryptsetup-openrc glibc mkinitcpio
 ###
 mkinitcpio -p linux-hardened
 ```
-
 
 ### Bootloader (GRUB)
 
@@ -216,13 +190,11 @@ grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub
 Append UUID to `/etc/default/grub`
 ```bash
 blkid -s UUID -o value /dev/nvme0n1p2 >> /etc/default/grub
-blkid -s UUID -o value /dev/lvmSystem/volSwap >> /etc/default/grub
 ```
 
 then replace `<uuid>` like so:
 ```sh
-GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet cryptdevice=UUID=<uuid>:cryptlvm resume=UUID=<uuid>"
-#GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet zswap.enabled=1 cryptdevice=UUID=<uuid>:cryptlvm root=/dev/lvmSystem/volRoot"
+GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet cryptdevice=UUID=<uuid>:cryptroot root=/dev/mapper/cryptroot"
 ```
 ```bash
 grub-mkconfig -o /boot/grub/grub.cfg
@@ -249,7 +221,6 @@ rc-update add dbus default
 rc-update add iwd default
 rc-update add dhcpcd default
 ```
-
 `iwd` handles WiFi association and IP assignment (DHCP). `dhcpcd` handles wired ethernet. `openresolv` provides `resolvconf` for automatic DNS updates.
 
 Create `/etc/iwd/main.conf` to enable IP assignment and DNS integration:
@@ -272,18 +243,11 @@ If `/etc/resolv.conf` empty, add:
 nameserver 8.8.8.8 # Primary DNS
 nameserver 1.1.1.1
 ```
+`chmod 444` so not overwritten, `chmod 644` if need edit 
 
 Prevent `dhcpcd` from interfering with `wlan0` (iwd manages WiFi DHCP itself):
 ```
 echo "denyinterfaces wlan*" >> /etc/dhcpcd.conf
-```
-
-### Boot services
-In order to decrypt and use the LUKS/LVM volumes, the following services need to be installed and activated:
-```bash
-rc-update add device-mapper boot
-rc-update add lvm boot
-rc-update add dmcrypt boot
 ```
 
 ### Exit chroot and reboot
@@ -300,11 +264,10 @@ Remove the ISO/USB when the machine powers off.
 ## Troubleshooting
 
 ```bash
-cryptsetup luksOpen /dev/nvme0n1p2 cryptlvm
-vgchange -ay lvmSystem  # activates all known volume groups in the system
-mount /dev/lvmSystem/volRoot /mnt
+cryptsetup luksOpen /dev/nvme0n1p2 cryptroot
+mount /dev/mapper/cryptoot /mnt
 ```
 ```bash
-artix-chroot /mnt /bin/bash
+artix-chroot /mnt bash
 ```
 
