@@ -1,5 +1,5 @@
 {
-   "checksum": "c3078253e8ab8f3cb59102ee1c1f61c0",
+   "checksum": "aa3c837c30d238f6d7298296de8cb7e2",
    "roots": {
       "bookmark_bar": {
          "children": [ {
@@ -15,7 +15,7 @@
             "url": "https://wiki.artixlinux.org/"
          }, {
             "date_added": "13423208352904658",
-            "date_last_used": "13423331879980693",
+            "date_last_used": "13424977484302995",
             "guid": "0d5dbd98-2061-4da2-8ae1-3d3065f66535",
             "id": "6",
             "meta_info": {
@@ -122,4 +122,3 @@
    },
    "version": 1
 }
-
