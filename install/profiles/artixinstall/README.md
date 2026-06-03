@@ -1,16 +1,26 @@
 # artixinstall
 
-Port of archinstall to Artix Linux (OpenRC)
+Artix Linux base install + custom window manager
+
+References:
+
+- Artix [Installation With Full Disk Encryption]
+(https://wiki.artixlinux.org/Main/InstallationWithFullDiskEncryption)
+
+- Arch [LUKS on a partition]
+(https://wiki.archlinux.org/title/Dm-crypt/Encrypting_an_entire_system#LUKS_on_a_partition)
+
+- The Rad Lectures [Step-by-Step Artix Linux Install]
+(https://www.radleylewis.com/lab/guides/artix-openrc-install-guide/)
 
 ## Pre-installation
 
-Boot the latest Artix Linux ISO (OpenRC variant).
+Boot latest ISO (OpenRC variant)
 
 ### Keyboard layout
 ```
 loadkeys sv-latin1
 ```
-
 
 ## Installation
 
@@ -19,7 +29,17 @@ loadkeys sv-latin1
 ```
 fdisk -l
 ```
-Look for your NVMe drive, typically `/dev/nvme0n1`. Confirm size matches expectations before proceeding.
+Look for your NVMe drive, typically `/dev/nvme0n1`  
+Confirm size matches expectations before proceeding
+
+### Erase disk
+
+```bash
+ dd bs=4096 if=/dev/zero iflag=nocache of=/dev/nvme0n1 oflag=direct status=progress || true
+ sync
+ dd bs=4096 if=/dev/urandom iflag=nocache of=/dev/nvme0n1 oflag=direct status=progress || true
+ sync
+ ```
 
 ### Partition with fdisk
 
@@ -27,14 +47,13 @@ Target layout (UEFI, GPT):
 
 | Partition | Mount | Size | Type |
 |-----------|-------|------|------|
-| nvme0n1p1 | /boot/efi | 1G | EFI System |
-| nvme0n1p2 | [swap] | 8G | Linux swap |
-| nvme0n1p3 | /home | rest | Linux filesystem |
+| nvme0n1p1 | /boot | 1G   | EFI System |
+| nvme0n1p2 | /     | rest | LUKS encrypted partition |
+
 
 ```
 fdisk /dev/nvme0n1
 ```
-
 Inside the interactive prompt, follow this sequence:
 
 ```
@@ -47,12 +66,7 @@ First sector: <Enter>
 Last sector: +1G
 
 Command (m for help): n
-Partition number (2-128, default 2): <Enter>
-First sector: <Enter>
-Last sector: +8G
-
-Command (m for help): n
-Partition number (3-128, default 3): <Enter>
+Partition number (2-128, default 3): <Enter>
 First sector: <Enter>
 Last sector: <Enter>    (uses all remaining space)
 
@@ -64,44 +78,49 @@ Command (m for help): w
 
 Expected result:
 ```
-/dev/nvme0n1p1   2048    2099199    1G  Linux filesystem
-/dev/nvme0n1p2   2099200 18874367   8G  Linux filesystem
-/dev/nvme0n1p3  18874368 <end>      <rest>  Linux filesystem
+/dev/nvme0n1p1   2048    2099199    1G      Linux filesystem
+/dev/nvme0n1p2   2099200 <end>      <rest>  Linux filesystem
 ```
 
 > **Note:** After writing, the kernel may not see all partitions immediately ("device busy"). Verify with `lsblk`. If pX is missing, reboot the ISO — the table is correctly on disk and all 3 will appear after reboot.
 
-### Format partitions
+### Create the LUKS encrypted container
 
-Labels (`-L` / `-n`) make the partitions identifiable by name instead of device path:
-
+```bash
+cryptsetup luksFormat /dev/nvme0n1p2
 ```
-mkfs.fat -F 32 /dev/nvme0n1p1            # EFI system partition
-fatlabel /dev/nvme0n1p1 ESP
-mkswap -L SWAP /dev/nvme0n1p2            # swap
-mkfs.ext4 -L ROOT /dev/nvme0n1p3         # root
+
+Open the container:
+```bash
+cryptsetup open /dev/nvme0n1p2 cryptroot
+```
+The decrypted container is now available at `/dev/mapper/cryptroot`
+
+### Format
+
+```bash
+mkfs.fat -F 32 /dev/nvme0n1p1
+mkfs.ext4 /dev/mapper/cryptroot
 ```
 
 ### Mount
 
-```
-swapon /dev/disk/by-label/SWAP
-mount /dev/disk/by-label/ROOT /mnt
-mkdir -p /mnt/boot/efi
-mount /dev/disk/by-label/ESP /mnt/boot/efi
+```bash
+mount /dev/mapper/cryptroot /mnt
+mkdir -p /mnt/boot
+mount /dev/nvme0n1p1 /mnt/boot
 ```
 
 Verify:
 ```
 lsblk
-free -h    # swap should appear
 ```
 
 ### Network
 
-> **Use ethernet during installation.** WiFi can be configured properly post-installation. Attempting to set up WiFi at this stage is a known failure point.
+> **Use ethernet during installation.** Attempting to set up WiFi at this stage is a known failure point.
 
-Plug in ethernet and verify connectivity:
+Verify connectivity:
 ```
 ping -c 3 artixlinux.org
 ```
@@ -118,10 +137,8 @@ rc-service ntpd start
 ```
 basestrap /mnt base base-devel openrc elogind-openrc
 ```
-
 - `openrc` — init system
 - `elogind-openrc` — session/seat management (replaces systemd-logind)
-
 If you encounter errors, you can use the -i flag of basestrap ('interactive'). Example:
 
 ```bash
@@ -129,16 +146,18 @@ basestrap -i /mnt base
 ```
 
 ### Install a kernel
-Artix provides three kernels: linux, linux-lts and linux-zen. It is very recommended to install linux-firmware too.
-You can try not installing it, but some devices such as network cards may not work.
 
+For security, the standard Linux kernel and its' headers - should be replaced by a hardened version  
+It is very recommended to install linux-firmware too, or some devices such as network cards may not work.  
+Confirmed necessary on lenovo using i5: no wlan0 
 ```bash
-basestrap /mnt linux linux-firmware
+basestrap /mnt linux-hardened linux-hardened-headers linux-firmware
+#basestrap /mnt linux linux-firmware
 ```
 
 and, nice to have
-```
-basestrap /mnt sudo git vim openssh
+```bash
+basestrap /mnt sudo vim
 ```
 
 ### Generate fstab
@@ -149,46 +168,42 @@ basestrap /mnt sudo git vim openssh
 fstabgen -U /mnt >> /mnt/etc/fstab
 ```
 
-Inspect the result and make sure all partitions are listed (root, efi, swap, [home]):
+Inspect the result and make sure all partitions are listed (root, boot):
 ```
 cat /mnt/etc/fstab
 ```
 
-```
-# Static information about the filesystems.
-# See fstab(5) for details.
-
-# <file system> <dir> <type> <options> <dump> <pass>
-# /dev/nvme0n1p3 LABEL=ROOT
-UUID=740223d7-6729-46a8-bf83-b68329a3e33b	/         	ext4      	rw,relatime	0 1
-
-# /dev/nvme0n1p1 LABEL=ESP
-UUID=AF1B-0335      	/boot/efi 	vfat      	rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=ascii,shortname=mixed,utf8,errors=remount-ro	0 2
-
-# /dev/nvme0n1p2 LABEL=SWAP
-UUID=3dbe3090-4cf3-49be-9a7c-2cff14d9a484	none      	swap      	defaults  	0 0
-```
-
 ### Chroot into the new system
 
+```bash
+artix-chroot /mnt bash
 ```
-artix-chroot /mnt
+
+Set up a root password
+```bash
+passwd
+```
+
+```bash
+pacman -Sy
+pacman-key --init
+pacman-key --populate artix
 ```
 
 ### Configure the system clock
 Set the time zone:
-```
+```bash
 ln -sf /usr/share/zoneinfo/Europe/Stockholm /etc/localtime
 ```
 Run hwclock to generate /etc/adjtime:
-```
+```bash
 hwclock --systohc
 ```
 
 ### Locale
 
 Edit `/etc/locale.gen` and uncomment `en_US.UTF-8 UTF-8`, then:
-```
+```bash
 locale-gen
 echo "LANG=en_US.UTF-8" > /etc/locale.conf
 ```
@@ -199,44 +214,55 @@ echo "LANG=en_US.UTF-8" > /etc/locale.conf
 echo 'keymap="sv-latin1"' > /etc/conf.d/keymaps
 ```
 
+### mkinitcpio.conf
+
+```bash
+vim /etc/mkinitcpio.conf
+```
+```
+HOOKS="base udev autodetect modconf block keyboard keymap consolefont encrypt filesystems fsck"
+```
+
+> **Note:** `keyboard keymap consolefont` must come *before* `encrypt` so the keyboard is active when the LUKS passphrase prompt appears at boot.
+
+```bash
+pacman -S cryptsetup cryptsetup-openrc glibc mkinitcpio
+###
+mkinitcpio -p linux-hardened
+```
+
 ### Bootloader (GRUB)
 
-If `pacman` fails with connection errors (port 443), fix DNS and refresh mirrors first:
-```
-echo "nameserver 8.8.8.8" > /etc/resolv.conf
-pacman -Sy
-```
-
-```
+```bash
 pacman -S grub efibootmgr
-grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=grub
-grub-mkconfig -o /boot/grub/grub.cfg
 ````
 
-### Add users
-
-- Root
-```
-passwd
+```bash
+grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub
 ```
 
-- User
+Append UUID to `/etc/default/grub`
+```bash
+blkid -s UUID -o value /dev/nvme0n1p2 >> /etc/default/grub
 ```
-useradd -m -G wheel,video holmen1
-passwd holmen1
+
+then replace `<uuid>` like so:
+```sh
+GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet cryptdevice=UUID=<uuid>:cryptroot root=/dev/mapper/cryptroot"
+```
+```bash
+grub-mkconfig -o /boot/grub/grub.cfg
+```
+
+### Add user
+
+```
+useradd -m -G wheel,video <username>
+#passwd <username>
 ```
 video needed to run `brightnessctl`
 
-To add when already in group
-```
-sudo usermod -aG input $USER
-```
-or `audio`
-
-Allow wheel group to use sudo [without password] — run `EDITOR=vim visudo` and uncomment:
-```
-%wheel ALL=(ALL:ALL) [NOPASSWD:] ALL
-```
+Allow wheel group to use (sudo without password)[../../README#sudo_without_password]
 
 ### Network configuration
 
@@ -254,12 +280,11 @@ Configure `/etc/hosts`:
 
 Install `iwd`, D-Bus, and network support packages, then enable them at boot:
 ```
-pacman -S iwd-openrc dbus-openrc dhcpcd dhcpcd-openrc openresolv
+pacman -S iwd iwd-openrc dbus-openrc dhcpcd dhcpcd-openrc openresolv
 rc-update add dbus default
 rc-update add iwd default
 rc-update add dhcpcd default
 ```
-
 `iwd` handles WiFi association and IP assignment (DHCP). `dhcpcd` handles wired ethernet. `openresolv` provides `resolvconf` for automatic DNS updates.
 
 Create `/etc/iwd/main.conf` to enable IP assignment and DNS integration:
@@ -274,13 +299,24 @@ EnableNetworkConfiguration=true
 [Network]
 NameResolvingService=resolvconf
 ```
-
 Without `EnableNetworkConfiguration=true`, `iwd` associates to WiFi but never assigns an IP address — the most common post-install networking failure.
 
-Prevent `dhcpcd` from interfering with `wlan0` (iwd manages WiFi DHCP itself):
+#### Resolve nameserver
+
+If `/etc/resolv.conf` empty, add:
+```
+nameserver 8.8.8.8 # Primary DNS
+nameserver 1.1.1.1
+```
+`chmod 444` so not overwritten, `chmod 644` if need edit 
+
+
+#### Prevent `dhcpcd` from interfering with `wlan0`
+
 ```
 echo "denyinterfaces wlan*" >> /etc/dhcpcd.conf
 ```
+(iwd manages WiFi DHCP itself)
 
 ### Exit chroot and reboot
 
@@ -309,11 +345,6 @@ iwctl device list
 iwctl station wlan0 scan
 iwctl station wlan0 get-networks
 iwctl --password PSK station wlan0 connect YOUR_SSID
-```
-
-Verify connectivity:
-```
-ping -c 3 artixlinux.org
 ```
 
 If `iwd` is not running, start it first:

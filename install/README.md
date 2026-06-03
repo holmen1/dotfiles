@@ -54,6 +54,12 @@ ip addr show wlan0        # should show inet address
 ping -c 3 1.1.1.1         # tests IP routing
 ping -c 3 artixlinux.org  # tests DNS
 ```
+If `/etc/resolv.conf` empty, add:
+```
+nameserver 8.8.8.8 # Primary DNS
+nameserver 1.1.1.1
+```
+`chmod 444` so not overwritten, `chmod 644` if need edit 
 
 ### Add user
 
@@ -61,6 +67,13 @@ ping -c 3 artixlinux.org  # tests DNS
 useradd -m -G wheel[,video] username
 #passwd username
 ```
+
+To add when already in group
+```
+sudo usermod -aG input $USER
+```
+or `audio`
+
 #### Passwordless
 
 This is generally not recommended for regular users due to security risks
@@ -97,9 +110,8 @@ in `.bash_profile` in my case [WHY?]
 ### sudo without password
 
 
-To allow all members of the `wheel` group to use `sudo` without a password, edit `/etc/sudoers` using `visudo`:
-
-Uncomment this line:
+To allow all members of the `wheel` group to use `sudo` without a password, edit `/etc/sudoers` using:
+`EDITOR=vim visudo` and uncomment this line:
 ```
 %wheel ALL=(ALL:ALL) NOPASSWD: ALL
 ```
