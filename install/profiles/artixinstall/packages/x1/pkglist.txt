@@ -17,7 +17,6 @@ feh
 git
 grub
 htop
-i3lock
 iwd
 iwd-openrc
 less

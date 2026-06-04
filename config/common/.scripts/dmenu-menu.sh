@@ -6,9 +6,8 @@ DOCS=$HOME/repos/dotfiles/config
 XKB_STATE=$HOME/.cache/xkb-layout
 
 # Font detection
-fc-list | grep -qi "JetBrainsMono Nerd Font" \
-    && FONT="JetBrainsMono Nerd Font Mono-14" \
-    || FONT="monospace-14"
+#fc-list | grep -qi "JetBrainsMono Nerd Font" \
+FONT="Liberation Mono-16"
 
 current_xkb=$(cat "$XKB_STATE" 2>/dev/null || echo "se")
 battery_level=$($SCRIPTS/monitor-battery.sh --get-level)

@@ -3,9 +3,8 @@
 
 MONITOR_VPN_SCRIPT="$HOME/.scripts/monitor-vpn.sh"
 
-fc-list | grep -qi "JetBrainsMono Nerd Font" \
-    && FONT="JetBrainsMono Nerd Font Mono-14" \
-    || FONT="monospace-14"
+#fc-list | grep -qi "JetBrainsMono Nerd Font" \
+FONT="Liberation Mono-16"
 
 menu() { dmenu -i -p "$1" ${2:+-l "$2"} -nb "#222222" -nf "#ffffff" -sb "#A300A3" -sf "#ffffff" -fn "$FONT"; }
 
