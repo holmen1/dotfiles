@@ -263,7 +263,7 @@ useradd -m -G wheel,video <username>
 ```
 video needed to run `brightnessctl`
 
-Allow wheel group to use (sudo without password)[../../README#sudo_without_password]
+Allow wheel group to use [sudo without password](../../README#sudo_without_password)
 
 ### Network configuration
 

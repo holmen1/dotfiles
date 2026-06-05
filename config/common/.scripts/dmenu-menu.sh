@@ -21,7 +21,7 @@ category=$(printf "Exit\nNetwork\nHelp" | dmenu -i -p "x[$current_xkb] w[$ssid] 
 
 case "$category" in
   "Help")
-    app=$(printf "XKB\nlf\nbash\nXmonad\nwifi\nnvim" | dmenu -i -p "App:" -nb "#222222" -nf "#ffffff" -sb "#A300A3" -sf "#ffffff" -fn "$FONT")
+    app=$(printf "XKB\nlf\nbash\nXmonad\nwifi\ngit\nnvim" | dmenu -i -p "App:" -nb "#222222" -nf "#ffffff" -sb "#A300A3" -sf "#ffffff" -fn "$FONT")
     case "$app" in
       "XKB")
         sed -n 9,34p "$DOCS/xkb/README.md" | dmenu -l 26 -p "XKB Help" \
@@ -37,6 +37,9 @@ case "$category" in
                 -nb "#222222" -nf "#ffffff" -sb "#222222" -sf "#ffffff" -fn "$FONT" ;;
       "wifi")
         $SCRIPTS/monitor-wifi.sh --help | dmenu -l 7 -p "wifi Help" \
+                -nb "#222222" -nf "#ffffff" -sb "#222222" -sf "#ffffff" -fn "$FONT" ;;
+      "git")
+        sed -n 3,27p "$DOCS/git/README.md" | dmenu -l 25 -p "git Help" \
                 -nb "#222222" -nf "#ffffff" -sb "#222222" -sf "#ffffff" -fn "$FONT" ;;
       "nvim")
         echo "<leader>sk" | dmenu -l 7 -p "Search Keymaps" \
