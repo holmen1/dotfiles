@@ -171,7 +171,7 @@ artixinstall/
 
 ## Project Scope
 
-Stable, maintainable minimal desktop across multiple operating systems. Designed for low-spec hardware (tested on 4 GB RAM).
+Minimal "desktop" across multiple operating systems. Designed for low-spec hardware (tested on 4 GB RAM).
 
 **Supported systems:**
 - Linux (Artix, Arch, Debian)
@@ -179,14 +179,7 @@ Stable, maintainable minimal desktop across multiple operating systems. Designed
 - macOS (limited)
 - Unix  (xv6) [TODO]
 
-[Distro install guides](install/profiles)
+Per distro[install guides](install/profiles)
 
 ## TODO
 
-- Add `ungoogled-chromium` to the browser/profile options
-- Add a post-install commands text file for Vim-based execution instead of typing
-- Document install and maintenance commands in a single reference file
-- Move generic post-install from distros to install
-- Add description to Build/README
-- Repair .md links after restructure
-- Investigate if cabal flags: +with-xft should be handled by ghc

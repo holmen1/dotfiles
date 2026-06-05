@@ -36,6 +36,7 @@ cd package-version/
 ```
 
 ## Build Methods
+
 ```bash
 # Autotools (configure/make)
 ./configure && make && sudo make install
@@ -50,6 +51,7 @@ runhaskell Setup.lhs install
 ```
 
 ## Uninstall
+
 ```bash
 # Autotools/cmake (if supported)
 sudo make uninstall  # from build directory
@@ -64,9 +66,9 @@ rm -rf ~/.cabal/lib/*package-name*
 sudo rm /usr/local/bin/program
 sudo rm -rf /usr/local/share/program
 ```
-```
 
 ## Install with Cargo
+
 For Rust tools (e.g., `tree-sitter-cli`, `ripgrep`):
 ```bash
 # Install Rust toolchain if missing
