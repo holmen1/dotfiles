@@ -22,8 +22,6 @@ Boot latest ISO (OpenRC variant)
 loadkeys sv-latin1
 ```
 
-## Installation
-
 ### Identify the target disk
 
 ```
@@ -40,6 +38,8 @@ Confirm size matches expectations before proceeding
  dd bs=4096 if=/dev/urandom iflag=nocache of=/dev/nvme0n1 oflag=direct status=progress || true
  sync
  ```
+
+## Installation
 
 ### Partition with fdisk
 
@@ -245,6 +245,7 @@ Append UUID to `/etc/default/grub`
 ```bash
 blkid -s UUID -o value /dev/nvme0n1p2 >> /etc/default/grub
 ```
+or `:r!blkid` somewhere inside `/etc/default/grub`
 
 then replace `<uuid>` like so:
 ```sh
@@ -498,19 +499,15 @@ See [packages/gadsden/](packages/gadsden/) for the full package lists.
 
 ---
 
-## REPAIR
+## Troubleshooting
 
 Boot from ISO, then remount and chroot:
-
+```bash
+cryptsetup luksOpen /dev/nvme0n1p2 cryptroot
+mount /dev/mapper/cryptoot /mnt
 ```
-fdisk -l                            # confirm partition layout
-mount /dev/nvme0n1p3 /mnt
-mkdir -p /mnt/boot/efi
-mount /dev/nvme0n1p1 /mnt/boot/efi
-mkdir -p /mnt/home
-mount /dev/nvme0n1p4 /mnt/home
-swapon /dev/nvme0n1p2
-artix-chroot /mnt
+```bash
+artix-chroot /mnt bash
 ```
 
 ---

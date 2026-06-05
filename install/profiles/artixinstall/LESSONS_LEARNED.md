@@ -53,14 +53,7 @@ umount -R /mnt
 reboot
 ```
 
-## Boot (GRUB / UEFI)
-
-- Simplest setup for this guide: mount the ESP on `p1` at `/boot` and keep `/` on encrypted LUKS/LVM
-- That gives a single passphrase prompt at boot because GRUB and the kernel live on the unencrypted ESP
-- Avoid the encrypted-`/boot` + cryptodisk + keyfile path unless you explicitly want extra boot complexity
-
 ## Package strategy
 - Start with `packages/minimal/` — just enough to get X server running (`xorg-xinit`, `xterm`, xlibre)
 - Verify `startx` launches xterm before installing the full `packages/gadsden/` list
-- Avoids chasing failures caused by unknown missing deps in a big install batch
 - See [install/build/xlibre/LESSONS_LEARNED.md](../../build/xlibre/LESSONS_LEARNED.md) for xlibre-specific issues
