@@ -47,30 +47,11 @@ case "$ans" in
     ;;
 esac
 
-read -p "Install yay? [y/N] " ans
-case "$ans" in
-    [Yy]*)
-    mkdir -p tmp
-    cd tmp
-    sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
-    sudo -k
-    cd ..
-    ;;
-esac
-
 echo "$PKGLIST"
 read -p "Install pkglist? [y/N] " ans
 case "$ans" in
     [Yy]*)
     $INSTALL_SCRIPT $PKGLIST
-    ;;
-esac
-
-echo "$FPKGLIST"
-read -p "Install foreignpkglist? [y/N] " ans
-case "$ans" in
-    [Yy]*)
-    $INSTALL_SCRIPT $FPKGLIST
     ;;
 esac
 

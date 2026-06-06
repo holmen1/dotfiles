@@ -42,7 +42,6 @@ if [ -x /usr/local/bin/xmonad ]; then ok "/usr/local/bin/xmonad"
 else fail "/usr/local/bin/xmonad not found or not executable"; fi
 check_cmd xbindkeys
 check_cmd scrot
-check_cmd i3lock
 check_cmd xterm
 
 hdr "Notifications"
