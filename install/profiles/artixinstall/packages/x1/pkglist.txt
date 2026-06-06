@@ -1,7 +1,7 @@
+acpilight
 base
 base-devel
 bear
-brightnessctl
 clang
 cryptsetup
 cryptsetup-openrc

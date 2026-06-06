@@ -261,7 +261,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 useradd -m -G wheel,video <username>
 #passwd <username>
 ```
-video needed to run `brightnessctl`
+video [maybe] needed to run `xbacklight` [TODO]
 
 Allow wheel group to use [sudo without password](../../README.md#sudo-without-password)
 
