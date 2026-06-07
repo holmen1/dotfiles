@@ -178,6 +178,33 @@ leave x session
 $ pkill x 
 ```
 
+### Docker
+
+```bash
+# Artix
+sudo pacman -S docker docker-openrc
+
+sudo rc-update add docker default
+sudo rc-service docker start
+```
+
+Verify
+```bash
+docker info
+```
+
+If you want to be able to run the docker CLI command as a non-root user,
+add your user to the docker user group,
+```bash
+sudo usermod -aG docker $USER
+```
+re-login and restart
+
+Test
+```bash
+docker run -it --rm artixlinux/artixlinux:base /bin/bash -c "echo hello world"
+```
+
 ### Enable SSH Server (remote login)
 
 1. Install and start the SSH server:

@@ -8,6 +8,8 @@ cryptsetup-openrc
 dhcpcd
 dhcpcd-openrc
 dmenu
+docker
+docker-openrc
 dunst
 efibootmgr
 elogind-openrc
