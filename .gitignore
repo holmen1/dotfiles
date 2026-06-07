@@ -1,5 +1,3 @@
 *.bak
 *.wants/
-config/chromium/
-config/chromium/.config/chromium/Default/Bookmarks
 

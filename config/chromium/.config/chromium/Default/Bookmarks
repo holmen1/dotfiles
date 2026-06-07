@@ -1,21 +1,10 @@
 {
-   "checksum": "aa3c837c30d238f6d7298296de8cb7e2",
+   "checksum": "68e79c4774f47f74d9ac4b8ca64b6ff1",
    "roots": {
       "bookmark_bar": {
          "children": [ {
-            "date_added": "13423208300705738",
-            "date_last_used": "13423509213382759",
-            "guid": "af0e0e77-448f-42a4-98c2-62e1344390ae",
-            "id": "5",
-            "meta_info": {
-               "power_bookmark_meta": ""
-            },
-            "name": "Artix Wiki",
-            "type": "url",
-            "url": "https://wiki.artixlinux.org/"
-         }, {
             "date_added": "13423208352904658",
-            "date_last_used": "13424977484302995",
+            "date_last_used": "13425289462645078",
             "guid": "0d5dbd98-2061-4da2-8ae1-3d3065f66535",
             "id": "6",
             "meta_info": {
@@ -26,7 +15,7 @@
             "url": "https://github.com/holmen1"
          }, {
             "date_added": "13399412429270451",
-            "date_last_used": "13400080143808046",
+            "date_last_used": "13425287489206280",
             "guid": "7ccacf04-0720-4e88-9b58-dab97dcfbd67",
             "id": "7",
             "meta_info": {
@@ -37,7 +26,7 @@
             "url": "https://wiki.archlinux.org/title/Main_page"
          }, {
             "date_added": "13399808995203608",
-            "date_last_used": "13400082076469390",
+            "date_last_used": "13425287406347382",
             "guid": "9bf3801f-d317-41ae-9e2b-ab3bc1c98002",
             "id": "8",
             "meta_info": {
@@ -47,19 +36,40 @@
             "type": "url",
             "url": "https://hoogle.haskell.org/"
          }, {
-            "date_added": "13399633834835128",
-            "date_last_used": "13400011818931771",
-            "guid": "1f6d5d7c-15e6-4e78-a3f4-d51ccd199ee7",
-            "id": "9",
+            "date_added": "13425288200858464",
+            "date_last_used": "0",
+            "guid": "0a893cc3-1f20-4017-989f-cc3a402e3f18",
+            "id": "14",
             "meta_info": {
                "power_bookmark_meta": ""
             },
-            "name": "Hackage",
+            "name": "Yr",
             "type": "url",
-            "url": "https://hackage.haskell.org/"
+            "url": "https://www.yr.no/nb"
+         } ],
+         "date_added": "13423207769404597",
+         "date_last_used": "0",
+         "date_modified": "13425288780973098",
+         "guid": "0bc5d13f-2cba-5d74-951f-3f233fe6c908",
+         "id": "1",
+         "name": "Bookmarks bar",
+         "type": "folder"
+      },
+      "other": {
+         "children": [ {
+            "date_added": "13425288780973098",
+            "date_last_used": "0",
+            "guid": "50bc95e3-82d0-4fcf-90da-1c9cff525d2f",
+            "id": "16",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "FreeBSD Handbook",
+            "type": "url",
+            "url": "https://docs.freebsd.org/en/books/handbook/"
          }, {
             "date_added": "13399807694370389",
-            "date_last_used": "13400080148049468",
+            "date_last_used": "13425288032265099",
             "guid": "f75ec02a-7ede-410b-b26e-2e3b9ce75747",
             "id": "10",
             "meta_info": {
@@ -69,19 +79,8 @@
             "type": "url",
             "url": "https://cabal.readthedocs.io/en/stable/index.html"
          }, {
-            "date_added": "13399751241568995",
-            "date_last_used": "13399968310497830",
-            "guid": "dcc6a8ec-602e-4a17-bc68-3a4e4022c735",
-            "id": "11",
-            "meta_info": {
-               "power_bookmark_meta": ""
-            },
-            "name": "Category Theory for Programmers",
-            "type": "url",
-            "url": "file:///home/holmen1/Downloads/category-theory-for-programmers.pdf"
-         }, {
             "date_added": "13423227245474226",
-            "date_last_used": "13423509280004724",
+            "date_last_used": "13425288712864492",
             "guid": "f34f514b-5cfd-4527-8da0-5af6fd798568",
             "id": "12",
             "meta_info": {
@@ -90,20 +89,54 @@
             "name": "Gentoo Wiki",
             "type": "url",
             "url": "https://wiki.gentoo.org/wiki/Main_Page"
+         }, {
+            "date_added": "13423208300705738",
+            "date_last_used": "13425288037233997",
+            "guid": "af0e0e77-448f-42a4-98c2-62e1344390ae",
+            "id": "5",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "Artix Wiki",
+            "type": "url",
+            "url": "https://wiki.artixlinux.org/"
+         }, {
+            "date_added": "13425288260732884",
+            "date_last_used": "13425289231725702",
+            "guid": "1225d2c5-2804-42a3-896b-158552e24238",
+            "id": "15",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "GHC User’s Guide",
+            "type": "url",
+            "url": "https://downloads.haskell.org/ghc/latest/docs/users_guide/"
+         }, {
+            "date_added": "13399633834835128",
+            "date_last_used": "13425289229675859",
+            "guid": "1f6d5d7c-15e6-4e78-a3f4-d51ccd199ee7",
+            "id": "9",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "Hackage",
+            "type": "url",
+            "url": "https://hackage.haskell.org/"
+         }, {
+            "date_added": "13399751241568995",
+            "date_last_used": "13425288023747626",
+            "guid": "dcc6a8ec-602e-4a17-bc68-3a4e4022c735",
+            "id": "11",
+            "meta_info": {
+               "power_bookmark_meta": ""
+            },
+            "name": "Category Theory for Programmers",
+            "type": "url",
+            "url": "file:///home/holmen1/Downloads/category-theory-for-programmers.pdf"
          } ],
          "date_added": "13423207769404597",
          "date_last_used": "0",
-         "date_modified": "13423227245474226",
-         "guid": "0bc5d13f-2cba-5d74-951f-3f233fe6c908",
-         "id": "1",
-         "name": "Bookmarks bar",
-         "type": "folder"
-      },
-      "other": {
-         "children": [  ],
-         "date_added": "13423207769404597",
-         "date_last_used": "0",
-         "date_modified": "13423208300705738",
+         "date_modified": "13425289302351489",
          "guid": "82b081ec-3dd3-529c-8475-ab6c344590dd",
          "id": "2",
          "name": "Other bookmarks",
