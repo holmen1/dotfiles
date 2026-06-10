@@ -1,6 +1,7 @@
 acpilight
 base
 base-devel
+bc
 bear
 clang
 cryptsetup
@@ -37,6 +38,7 @@ noto-fonts
 openrc
 openresolv
 openssh
+qemu-system-riscv
 ripgrep
 rust
 scrot
