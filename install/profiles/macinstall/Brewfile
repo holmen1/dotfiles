@@ -1,28 +1,47 @@
+tap "riscv-software-src/riscv", trusted: true
+# GNU compiler collection for arm-none-eabi
 brew "arm-none-eabi-gcc"
+# GNU debugger for arm-none-eabi cross development
 brew "arm-none-eabi-gdb"
+# Language server for NASM/GAS/GO Assembly
 brew "asm-lsp"
-brew "docker"
+# Simple, fast and user-friendly alternative to find
 brew "fd"
+# GNU debugger
 brew "gdb"
+# GNU Privacy Guard (OpenPGP)
 brew "gnupg"
+# Next-gen compiler infrastructure
 brew "llvm"
+# Language Server for the Lua language
 brew "lua-language-server"
+# Incremental parsing library
 brew "tree-sitter"
+# Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
+# Generic machine emulator and virtualizer
 brew "qemu"
+# Search tool like grep and The Silver Searcher
 brew "ripgrep"
+# Safe, concurrent, practical language
 brew "rust"
+# Organize software neatly under a single directory tree (e.g. /usr/local)
 brew "stow"
+# Parser generator tool
 brew "tree-sitter-cli"
-cask "balenaetcher"
+# RISC-V toolchain including gcc (with newlib), simulator (spike), and pk
+brew "riscv-software-src/riscv/riscv-tools"
+# Web browser focusing on privacy
 cask "brave-browser"
+# C and C++ IDE
 cask "clion"
+# Brings the power of Copilot coding agent directly to your terminal
 cask "copilot-cli"
-cask "docker-desktop"
 cask "font-jetbrains-mono-nerd-font"
+# GPU-based terminal emulator
 cask "kitty"
+# VPN client
 cask "mullvad-vpn"
-cask "rider"
 vscode "arm.arm-debugger"
 vscode "arm.cmsis-csolution"
 vscode "arm.device-manager"
@@ -31,5 +50,4 @@ vscode "arm.virtual-hardware"
 vscode "eclipse-cdt.memory-inspector"
 vscode "eclipse-cdt.peripheral-inspector"
 vscode "eclipse-cdt.serial-monitor"
-vscode "github.copilot-chat"
 vscode "redhat.vscode-yaml"
