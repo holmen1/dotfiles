@@ -1,5 +1,6 @@
 base
 base-devel
+bc
 bear
 brightnessctl
 clang
@@ -34,7 +35,11 @@ noto-fonts
 openrc
 openresolv
 openssh
+qemu-emulators-full
 ripgrep
+riscv64-linux-gnu-binutils
+riscv64-linux-gnu-gcc
+riscv64-linux-gnu-gdb
 rust
 scrot
 shellcheck-bin
