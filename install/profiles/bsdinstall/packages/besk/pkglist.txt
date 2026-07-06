@@ -16,6 +16,7 @@ sysutils/htop
 deskutils/i3lock
 misc/lf
 devel/llvm
+sysutils/lsblk
 editors/neovim
 ports-mgmt/pkg
 devel/pkgconf
@@ -27,6 +28,7 @@ security/sudo
 sysutils/tree
 graphics/viu
 x11/xbindkeys
+x11/xcape
 x11/xclip
 x11-wm/xcompmgr
 x11/xlibre
