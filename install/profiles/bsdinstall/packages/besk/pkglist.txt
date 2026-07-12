@@ -1,4 +1,5 @@
 shells/bash
+devel/bear
 www/chromium
 ftp/curl
 x11/dmenu
