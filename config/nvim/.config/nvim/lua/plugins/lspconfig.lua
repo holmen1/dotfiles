@@ -89,7 +89,7 @@ end
 
 -- Configure servers using Neovim 0.12+ native API
 vim.lsp.config('clangd', {
-  init_options = { fallbackFlags = { '--std=c99' } },
+  init_options = { fallbackFlags = { '--std=gnu99' } },
 })
 
 -- Configure servers only available on non-BSD systems
