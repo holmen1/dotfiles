@@ -13,24 +13,25 @@ X11 keyboard customisation using **XKB** and **xcape**.
 
 | Key | L1  | L2  | L3  | L4 |
 |-----|-----|-----|-----|----|
-| ´   | "   | `   | #   | na |
+| §   | `   | ~   | na  | na |
+| +   | -   | _   | na  | na |
+| ´   | =   | +   | *   | na |
 | u   | u   | U   | 7   | na |
 | i   | i   | I   | 8   | na |
 | o   | o   | O   | 9   | na |
-| å   | [   | {   | &   | na |
-| ^   | ]   | }   | ~   | "  |
+| å   | [   | {   | (   | na |
+| ^   | ]   | }   | )   | na |
 | s   | s   | S   | $   | na |
-| j   | j   | J   | 4   | (  |
-| k   | k   | K   | 5   | )  |
+| j   | j   | J   | 4   | na |
+| k   | k   | K   | 5   | na |
 | l   | l   | L   | 6   | na |
-| ö   | :   | /   | !   | na |
-| ä   | ⌫   | \|  | +   | \  |
-| n   | n   | N   | 0   | (  |
-| m   | m   | M   | 1   | )  |
-| ,   | ,   | ;   | 2   | <  |
-| .   | .   | :   | 3   | >  |
-| '   | '   | *   | =   | na |
-| -   | -   | _   | ?   | na |
+| ö   | ;   | :   | ⌫   | na |
+| ä   | '   | "   | \|  | na |
+| n   | n   | N   | 0   | na |
+| m   | m   | M   | 1   | na |
+| ,   | ,   | <   | 2   | na |
+| .   | .   | >   | 3   | na |
+| -   | /   | ?   | &   | \  |
 
 ### Num-layer
 
@@ -126,9 +127,11 @@ See [LESSONS_LEARNED.md](LESSONS_LEARNED.md) for lessons learned.
 ## Debugging
 
 ```sh
-setxkbmap -query                                   # current options
-xkbcomp -xkb "$DISPLAY" - | grep -A4 'key <LWIN>' # check Super mapping
-xkbcomp -xkb "$DISPLAY" - | grep -A4 'key <AD07>' # check u/7 mapping
-xev | grep -A2 KeyPress                            # watch raw events
-cat /usr/share/X11/xkb/keycodes/evdev | grep nn
+setxkbmap -query                                    # current options
+xkbcomp -xkb "$DISPLAY" - | grep -A4 'key <LWIN>'   # check Super mapping
+xkbcomp -xkb "$DISPLAY" - | grep -A4 'key <AD07>'   # check u/7 mapping
+xkbcomp "$DISPLAY" - | grep -A 50 'xkb_keycodes'    # check scancodes/keycodes (AD07/30) mapping
+xev | grep -A2 KeyPress                             # watch raw events, then grep keycode
+grep "> = 30;" /usr/share/X11/xkb/keycodes/evdev
+<AD07> = 30;
 ```
