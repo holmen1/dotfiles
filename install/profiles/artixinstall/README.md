@@ -480,14 +480,22 @@ Run tests? [Y]
 
 ### Package management
 
-Artix uses `pacman` backed by Artix and Arch repos. AUR packages via `yay`.
+Artix has its own set of official repositories which must take precedence over any other 3rd party ones
 
 OpenRC equivalents for common packages:
 - `networkmanager-openrc`
 - `iwd-openrc`
 - `dbus-openrc`
 
-See [packages/gadsden/](packages/gadsden/) for the full package lists.
+See [packages/x1/](packages/x1/) for the full package lists.
+
+All Arch repositories are disabled by default.
+To enable them install artix-archlinux-support from the galaxy repository,
+and enable repos in `/etc/pacman.conf` can:
+```bash
+[extra]
+Include = /etc/pacman.d/mirrorlist-arch
+```
 
 ### Export installed packages
 

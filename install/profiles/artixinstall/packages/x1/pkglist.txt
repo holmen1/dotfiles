@@ -1,4 +1,5 @@
 acpilight
+artix-archlinux-support
 base
 base-devel
 bc
@@ -48,6 +49,7 @@ strace
 tree
 vim
 xbindkeys
+xcape
 xclip
 xcompmgr
 xlibre-input-libinput
