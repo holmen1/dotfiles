@@ -12,12 +12,12 @@
 "backlight incr 10"
     F6
 
-# Simple ALSA Volume Controls
-"~/repos/dotfiles/scripts/volume-up.sh"
+# Simple Volume Controls
+"wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 10%+"
     XF86AudioRaiseVolume
 
-"~/repos/dotfiles/scripts/volume-down.sh"
+"wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 10%-"
     XF86AudioLowerVolume
 
-"~/repos/dotfiles/scripts/volume-mute.sh"
+"wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
     XF86AudioMute

@@ -69,6 +69,13 @@ if command -v xbindkeys >/dev/null 2>&1; then
     xbindkeys &
 fi
 
+# TODO
+pipewire &
+pipewire-pulse &
+wireplumber &
+
+
+
 # Start battery/wifi monitors in background
 [ -x "$HOME/.scripts/monitor-loop.sh" ] && $HOME/.scripts/monitor-loop.sh &
 

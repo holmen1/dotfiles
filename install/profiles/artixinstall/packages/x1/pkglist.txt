@@ -40,11 +40,14 @@ noto-fonts
 openrc
 openresolv
 openssh
+pipewire-alsa
+pipewire-pulse
 qemu-system-riscv
 ripgrep
 rust
 scrot
 shellcheck-bin
+sof-firmware
 stow
 strace
 tree
