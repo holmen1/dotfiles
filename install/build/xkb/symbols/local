@@ -9,6 +9,7 @@
 partial alphanumeric_keys
 xkb_symbols "local" {
     key <TLDE> { [ grave, asciitilde ] };
+    key <AE06> { [ 6, asciicircum ] };
     key <AE11> { [ minus, underscore ] };
     key <AE12> { [ equal, plus, asterisk ] };
     key <AD07> { [ u, U, 7 ] };
@@ -22,6 +23,7 @@ xkb_symbols "local" {
     key <AC09> { [ l, L, 6 ] };
     key <AC10> { [ semicolon, colon, BackSpace ] };
     key <AC11> { [ apostrophe, quotedbl, bar ] };
+    key <LSGT> { [ Shift_L ] };
     key <AB06> { [ n, N, 0 ] };
     key <AB07> { [ m, M, 1 ] };
     key <AB08> { [ comma, less, 2 ] };

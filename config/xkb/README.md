@@ -14,6 +14,7 @@ X11 keyboard customisation using **XKB** and **xcape**.
 | Key | L1  | L2  | L3  | L4 |
 |-----|-----|-----|-----|----|
 | §   | `   | ~   | na  | na |
+| 6   | 6   | ^   | na  | na |
 | +   | -   | _   | na  | na |
 | ´   | =   | +   | *   | na |
 | u   | u   | U   | 7   | na |
@@ -27,6 +28,7 @@ X11 keyboard customisation using **XKB** and **xcape**.
 | l   | l   | L   | 6   | na |
 | ö   | ;   | :   | ⌫   | na |
 | ä   | '   | "   | \|  | na |
+| <   |shift| na  | na  | na |
 | n   | n   | N   | 0   | na |
 | m   | m   | M   | 1   | na |
 | ,   | ,   | <   | 2   | na |
