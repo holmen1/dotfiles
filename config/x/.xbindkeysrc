@@ -13,11 +13,11 @@
     F6
 
 # Simple Volume Controls
-"wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 10%+"
+"amixer -c 1 sset Master 10%+"
     XF86AudioRaiseVolume
 
-"wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 10%-"
+"amixer -c 1 sset Master 10%-"
     XF86AudioLowerVolume
 
-"wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+"amixer -c 1 sset Master toggle"
     XF86AudioMute

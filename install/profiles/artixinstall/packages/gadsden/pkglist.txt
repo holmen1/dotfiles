@@ -1,3 +1,5 @@
+alsa-utils
+alsa-utils-openrc
 base
 base-devel
 bc
@@ -46,7 +48,6 @@ shellcheck-bin
 stow
 strace
 tree
-ungoogled-chromium
 vim
 xbindkeys
 xclip
