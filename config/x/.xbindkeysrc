@@ -2,15 +2,15 @@
 "xbacklight -dec 10"
     XF86MonBrightnessDown
 
-"backlight decr 10"
-    F5
-
 # Increase brightness
 "xbacklight -inc 10"
     XF86MonBrightnessUp
 
-"backlight incr 10"
-    F6
+# Free BSD
+#"backlight decr 10"
+#    F5
+#"backlight incr 10"
+#    F6
 
 # Simple Volume Controls
 "amixer sset Master 10%+"

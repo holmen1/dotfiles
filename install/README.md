@@ -180,36 +180,35 @@ $ pkill x
 
 ### Audio
 
-Pure ALSA  
-On Artix:
+Pure ALSA on Artix:
 ```bash
 pacman -S alsa-utils [sof-firmware]
 ```
 may need sof if Intel
 
-#### Quick Diagnosis Order
-1. `aplay -l` + `cat /proc/asound/cards`  
+1. `aplay -l`  
    → Note card numbers. Look for analog vs HDMI.
 2. `lspci -nnk | grep -A3 -i audio`  
    → Confirm AMD / Intel / etc. (SOF only for many modern Intel).
 3. `dmesg | grep -iE 'sof|snd|hda|audio|codec'`  
    → SOF missing firmware shows clear “firmware file is missing”.  
      No SOF lines + AMD controller = classic `snd_hda_intel`.
-4. Test each card:
-   ```bash
-   speaker-test -D hw:X,0 -c 2
-   ```
+
+#### Default Card Config Snippet
+If your analog card `!= 0`
+```bash
+# ~/.asoundrc (or /etc/asound.conf)
+defaults.pcm.card X
+defaults.ctl.card X
+```
 
 #### Most Common Fixes (in order of likelihood)
 | Problem | Fix | Command / File |
 |---------------------------|---------------------------------------------------------------------|---------------|
 | Auto-Mute enabled | Disable in alsamixer | `alsamixer -c X` → Auto-Mute → Disabled |
-| Channels muted | Unmute Master / Speaker / Front / PCM | `alsamixer -c X` → press `M` |
 | Wrong default card | Force analog card as default | `~/.asoundrc` or `/etc/asound.conf`:<br>`defaults.pcm.card X`<br>`defaults.ctl.card X` |
 | Wrong default card (alt) | Reorder loading | add a file at "/etc/modprobe.d/alsa.conf", with the line "options snd_hda_intel index=1,0 |
-| Settings lost on reboot | Save mixer state | `sudo alsactl store` |
 | Missing SOF firmware | (Intel only) Install package | `sudo pacman -S sof-firmware alsa-ucm-conf` |
-| No cards at all | Check modules + firmware | `lsmod \| grep snd`<br>`linux-firmware` package |
 
 #### Essential Commands
 ```bash
@@ -220,25 +219,9 @@ amixer -c X
 # Test
 speaker-test -c 2
 speaker-test -D hw:X,0 -c 2
-aplay -D hw:X,0 /usr/share/sounds/alsa/Front_Left.wav
-
-# Info
-aplay -l
-cat /proc/asound/cards
-cat /proc/asound/cardX/codec#*
-dmesg | grep -iE 'hda|snd_hda|codec|sof'
-lsmod | grep -E 'snd|hda'
-```
-
-#### Default Card Config Snippet
-```bash
-# ~/.asoundrc (or /etc/asound.conf)
-defaults.pcm.card X
-defaults.ctl.card X
 ```
 
 #### Remember
-- 2 cards almost always = analog + HDMI. Default is often the silent HDMI one.
 - Auto-Mute is a frequent silent killer on laptops (especially Realtek codecs behind AMD/Intel controllers).
 - Pure ALSA → `~/.asoundrc` is enough.  
 - After any mixer change: `sudo alsactl store`
