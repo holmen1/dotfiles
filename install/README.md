@@ -183,8 +183,9 @@ $ pkill x
 Pure ALSA  
 On Artix:
 ```bash
-pacman -S alsa-utils alsa-utils-openrc
+pacman -S alsa-utils [sof-firmware]
 ```
+may need sof if Intel
 
 #### Quick Diagnosis Order
 1. `aplay -l` + `cat /proc/asound/cards`  
@@ -236,7 +237,7 @@ defaults.pcm.card X
 defaults.ctl.card X
 ```
 
-### Remember
+#### Remember
 - 2 cards almost always = analog + HDMI. Default is often the silent HDMI one.
 - Auto-Mute is a frequent silent killer on laptops (especially Realtek codecs behind AMD/Intel controllers).
 - Pure ALSA → `~/.asoundrc` is enough.  

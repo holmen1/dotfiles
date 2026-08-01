@@ -13,11 +13,11 @@
     F6
 
 # Simple Volume Controls
-"amixer -c 1 sset Master 10%+"
+"amixer sset Master 10%+"
     XF86AudioRaiseVolume
 
-"amixer -c 1 sset Master 10%-"
+"amixer sset Master 10%-"
     XF86AudioLowerVolume
 
-"amixer -c 1 sset Master toggle"
+"amixer sset Master toggle"
     XF86AudioMute

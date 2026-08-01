@@ -1,4 +1,5 @@
 acpilight
+alsa-utils
 artix-archlinux-support
 base
 base-devel
@@ -40,8 +41,6 @@ noto-fonts
 openrc
 openresolv
 openssh
-pipewire-alsa
-pipewire-pulse
 qemu-system-riscv
 ripgrep
 rust
