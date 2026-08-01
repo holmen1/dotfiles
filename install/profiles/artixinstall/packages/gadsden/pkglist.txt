@@ -25,6 +25,7 @@ iwd-openrc
 less
 lf
 libnotify
+librewolf
 libxinerama
 libxss
 linux
