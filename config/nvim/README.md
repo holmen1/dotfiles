@@ -1,18 +1,16 @@
 # slim-vim
 
-A lean Neovim configuration originally based on [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim) but refactored a lot, managed by **lazy.nvim** with essential plugins for code navigation and LSP integration. Optimized for C, Haskell, and cross-platform development (Arch Linux, FreeBSD).
+A lean Neovim configuration originally based on [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim) but refactored a lot,
+managed by **lazy.nvim** with essential plugins for code navigation and LSP integration.
 
-## Top 7 Vim Commands (For High-Speed Dev)
+## 6 less used 
 
-For blazing fast code development—especially if you manipulate and copy/paste blocks of code often—burn these into your muscle memory:
-
-1. **`gv`**: Reselect your previous visual selection. An absolute lifesaver if you clicked away and lost your highlight right before you wanted to yank or change it.
-2. **`ciw` (Change Inner Word)**: Deletes the word under your cursor and drops you into Insert mode instantly. Stop relying on `dw` and `i`.
-3. **`.` (Dot Command)**: Repeats your last change. The quintessential Vim power-user tool.
-4. **`*` then `cgn`**: Rename variables like a pro. Press `*` over a word to search it, type `cgn` to change it, type your new name, press `<Esc>`, and hit `.` to replace subsequent matches one by one!
-5. **`vip`**: Visually select the inner paragraph (code block). Follow up immediately with `y` (yank) or `c` (change) to manipulate entire chunks of code effortlessly.
-6. **`<C-v>` (Visual Block)**: Select columns of text. Press `I` (Shift+i) to insert text on multiple lines sequentially, type your text, and press `<Esc>` to apply to all lines.
-7. **`<C-o>` and `<C-i>`**: Time-travel your cursor. Jump back to where you previously were (`<C-o>`) and forward again (`<C-i>`), even spanning across different files.
+1. **`<C-o>` in INSERT**: Allow you execute a single NORMAL mode command
+2. **`.` (Dot Command)**: Repeats your last change
+3. **`vip`**: Visually select the inner paragraph (code block). Follow up immediately with `y` (yank) or `c` (change) to manipulate entire chunks of code effortlessly.
+4. **`<C-v>` (Visual Block)**: Select columns of text. Press `I` (Shift+i) to insert text on multiple lines sequentially, type your text, and press `<Esc>` to apply to all lines.
+5. **`gv`**: Reselect your previous visual selection
+6. **`<C-o>` and `<C-i>`**: Jump back to where you previously were (`<C-o>`) and forward again (`<C-i>`)
 
 ## Features
 
@@ -103,11 +101,10 @@ Use `:bd` to close a buffer. Use `<leader><leader>` to search and switch buffers
 | `K` | Hover documentation | Show docs for symbol under cursor |
 | `gd` | Go to definition | Jump to where a symbol is defined |
 | `gD` | Go to declaration | Jump to declaration (e.g., .h file in C) |
-| `gr` | Find references | See all usages of a symbol[^1] |
-| `gI` | Go to implementation | In Haskell: type class instances; in Go/C#: interface implementations |
-| `<leader>rn` | Rename symbol | Rename variables/functions across files |
-| `<leader>ca` | Code action | Fix errors, organize imports |
-| `<leader>f` | Format code | Format current buffer or selection |
+| `grr` | Find references | See all usages of a symbol[^1] |
+| `gri` | Go to implementation | In Haskell: type class instances; in Go/C#: interface implementations |
+| `grn` | Rename symbol | Rename variables/functions across files |
+| `gra` | Code action | Fix errors, organize imports |
 | `<leader>th` | Toggle inlay hints | Show/hide inline type information |
 
 **Supported servers:**
@@ -163,6 +160,7 @@ This config uses manual completions for a minimal experience. Press `<C-x>` foll
 
 | Mapping | Description |
 |---------|-------------|
+| `gc[c]` | Comment selection [entire line] |
 | `guu` | Lowercase entire line |
 | `gUU` | Uppercase entire line |
 | `guw` | Lowercase word |

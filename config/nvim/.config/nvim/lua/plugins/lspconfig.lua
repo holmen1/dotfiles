@@ -31,25 +31,12 @@ vim.api.nvim_create_autocmd('LspAttach', {
     map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
     -- Find references for the word under your cursor.
-    map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
+    map('grr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
 
     -- Jump to the implementation of the word under your cursor.
     -- In Haskell, finds all instances of a type class.
     -- In interface-based languages (Go, C#), finds all implementations of an interface.
-    map('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
-
-    -- Rename the variable under your cursor.
-    --  Most Language Servers support renaming across files, etc.
-    map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
-
-    -- Execute a code action, usually your cursor needs to be on top of an error
-    -- or a suggestion from your LSP for this to activate.
-    map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction', { 'n', 'x' })
-    
-    -- Format current buffer or visual selection
-    map('<leader>f', function()
-      vim.lsp.buf.format { async = true }
-    end, 'Format code', { 'n', 'v' })
+    map('gri', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
 
     -- Toggle inlay hints keymap
     local client = vim.lsp.get_client_by_id(event.data.client_id)
