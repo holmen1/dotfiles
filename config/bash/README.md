@@ -4,25 +4,24 @@ This directory contains configuration files for the Bash shell.
 
 ## Features
 
-- **Emacs Mode**: Uses Bash's default Emacs-style keybindings for efficient command line editing
+- **Vi Mode**: Uses Bash's vi-style keybindings for command line editing
 - **History Management**: Ignores duplicates and erased commands
 - **Custom Aliases**: Shortcuts for common commands and Git operations
 - **Productivity Functions**: Helper functions for directory navigation and file operations
 
 ## Key Bindings
 
-| Keybinding   | Action |
-|--------------|--------|
-| `C-p` or `↑` | Previous command in history            |
-| `C-n` or `↓` | Next command in history                |
-| `C-r`        | Reverse incremental search             |
-| `C-l`        | Clear                                  |
-| `C-a`        | Move to beginning of line              |
-| `C-e`        | Move to end of line                    |
-| `C-k`        | Cut from cursor to end of line         |
-| `C-u`        | Cut from cursor to beginning of line   |
-| `C-y`        | Yank (paste) last killed text          |
-| `C-d`        | Delete character forward (or exit if line is empty) |
+### Vi mode basics
+
+| Keybinding | Action |
+|------------|--------|
+| `Esc`      | Switch to command mode |
+| `i`        | Enter insert mode |
+| `/`        | Search command history |
+| `n`        | Next search match |
+| `N`        | Previous search match |
+| `k`        | Previous command in history |
+| `j`        | Next command in history |
 
 ## Aliases
 

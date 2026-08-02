@@ -15,6 +15,9 @@ export GREP_COLORS='ms=38;5;33:fn=38;5;60:ln=38;5;24'
 # Auto  cd
 shopt -s autocd
 
+# Enable vi mode in bash
+set -o vi
+
 # Make Tab autocomplete regardless of filename case
 bind 'set completion-ignore-case on'
 

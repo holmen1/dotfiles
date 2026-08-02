@@ -21,13 +21,10 @@ category=$(printf "Exit\nNetwork\nHelp" | dmenu -i -p "x[$current_xkb] w[$ssid] 
 
 case "$category" in
   "Help")
-    app=$(printf "XKB\nlf\nbash\nXmonad\nwifi\ngit\nnvim" | dmenu -i -p "App:" -nb "#222222" -nf "#ffffff" -sb "#A300A3" -sf "#ffffff" -fn "$FONT")
+    app=$(printf "XKB\nlf\nXmonad\nwifi\ngit\nnvim" | dmenu -i -p "App:" -nb "#222222" -nf "#ffffff" -sb "#A300A3" -sf "#ffffff" -fn "$FONT")
     case "$app" in
       "XKB")
         sed -n 9,36p "$DOCS/xkb/README.md" | dmenu -l 28 -p "XKB Help" \
-		-nb "#222222" -nf "#ffffff" -sb "#222222" -sf "#ffffff" -fn "$FONT" ;;
-      "bash")
-        sed -n 16,26p "$DOCS/bash/README.md" | dmenu -l 11 -p "bash Help" \
 		-nb "#222222" -nf "#ffffff" -sb "#222222" -sf "#ffffff" -fn "$FONT" ;;
       "Xmonad")
         sed -n 12,41p "$DOCS/xmonad/README.md" | dmenu -l 25 -i -p "XMonad Help" \
