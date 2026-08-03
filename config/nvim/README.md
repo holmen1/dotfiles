@@ -3,14 +3,15 @@
 A lean Neovim configuration originally based on [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim) but refactored a lot,
 managed by **lazy.nvim** with essential plugins for code navigation and LSP integration.
 
-## 6 less used 
+## less used 
 
 1. **`<C-o>` in INSERT**: Allow you execute a single NORMAL mode command
 2. **`.` (Dot Command)**: Repeats your last change
 3. **`vip`**: Visually select the inner paragraph (code block). Follow up immediately with `y` (yank) or `c` (change) to manipulate entire chunks of code effortlessly.
 4. **`<C-v>` (Visual Block)**: Select columns of text. Press `I` (Shift+i) to insert text on multiple lines sequentially, type your text, and press `<Esc>` to apply to all lines.
-5. **`gv`**: Reselect your previous visual selection
-6. **`<C-o>` and `<C-i>`**: Jump back to where you previously were (`<C-o>`) and forward again (`<C-i>`)
+5. **`<C-a>/<C-x>` (++/--)**: Increment number (works on visual selection, add g for numberings 
+6. **`gv`**: Reselect your previous visual selection
+7. **`<C-o>` and `<C-i>`**: Jump back to where you previously were (`<C-o>`) and forward again (`<C-i>`)
 
 ## Features
 
@@ -161,6 +162,8 @@ This config uses manual completions for a minimal experience. Press `<C-x>` foll
 | Mapping | Description |
 |---------|-------------|
 | `gc[c]` | Comment selection [entire line] |
+| `~`   | Toggle case |
+| `~{motion}`| Toggle case |
 | `guu` | Lowercase entire line |
 | `gUU` | Uppercase entire line |
 | `guw` | Lowercase word |
@@ -198,6 +201,15 @@ Text objects allow operations (change, delete, yank, visual select) on structure
 | `!uniq` | Remove duplicate lines (from visual selection) |
 | `v motion :w FILENAME` | Save the Visually selected lines in file FILENAME |
 | `v motion :w >> FILENAME` | Append the Visually selected lines to file FILENAME |
+
+### Insert Mode
+
+| Mapping | Description |
+|---------|-------------|
+| `<C-o>` | Allow you execute a single NORMAL mode command |
+| `<C-w>` | Delete previous word |
+| `<C-h>` | Delete previous character |
+| `<C-u>` | Delete previous (d0) |
 
 ### Search & Replace
 

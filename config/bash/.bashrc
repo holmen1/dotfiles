@@ -17,6 +17,7 @@ shopt -s autocd
 
 # Enable vi mode in bash
 set -o vi
+bind -m vi-insert 'Control-l: clear-screen'
 
 # Make Tab autocomplete regardless of filename case
 bind 'set completion-ignore-case on'
