@@ -19,6 +19,9 @@ Fork of X.Org that must be built from AUR on Arch (available via `pkg` on FreeBS
 [xmonad](https://github.com/holmen1/dotfiles/tree/master/install/build/xmonad)
 A lightweight tiling window manager for X11 written in Haskell
 
+[dwm](https://github.com/holmen1/dotfiles/tree/master/install/build/dwm)
+A lightweight tiling window manager for X11 from suckless.org
+
 ## Get Source
 ```bash
 # From git repository

@@ -1,0 +1,9 @@
+# Exclude st source directories
+dwm-6.*/
+
+# Exclude built binaries and archives
+bin/
+share/
+
+*.o
+
