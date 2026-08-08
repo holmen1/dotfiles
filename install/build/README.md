@@ -93,4 +93,17 @@ cargo install <crate>               # upgrade to latest
 cargo uninstall <crate>             # remove
 ```
 
+## Diff Generation and Patching
 
+Create own diff files or patch suckles software (st, dwm)
+```bash
+cd modified-program-directory/..
+diff -up original-program-directory modified-program-directory > \
+           toolname-patchname-RELEASE.diff
+```
+
+
+```bash
+cd program-directory
+patch -p1 < path/to/patch.diff
+```
