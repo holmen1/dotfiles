@@ -13,7 +13,7 @@ cd "${BUILD_DIR}"
 
 # Build and install
 echo "Building dwm..."
-gmake clean install
+make clean install
 
 # Create compressed binary archive
 echo "Creating compressed binary archive..."
@@ -25,6 +25,6 @@ echo "Archive: $BIN_DIR/dwm-$DWM_VERSION.tar.gz"
 
 # Clean up build artifacts in source directory
 cd "$BUILD_DIR"
-gmake clean
+make clean
 
 echo "Build complete - dwm binary ready for manual deployment"

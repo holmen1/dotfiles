@@ -1,0 +1,31 @@
+diff '--color=auto' -up dwm-6.8/config.mk dwm-patched/config.mk
+--- dwm-6.8/config.mk	2026-01-30 11:19:28.660280483 +0100
++++ dwm-patched/config.mk	2026-08-09 22:06:25.543177639 +0200
+@@ -4,11 +4,11 @@ VERSION = 6.8
+ # Customize below to fit your system
+ 
+ # paths
+-PREFIX = /usr/local
++PREFIX = ${HOME}/repos/dotfiles/install/build/dwm
+ MANPREFIX = ${PREFIX}/share/man
+ 
+-X11INC = /usr/X11R6/include
+-X11LIB = /usr/X11R6/lib
++X11INC = /usr/local/include
++X11LIB = /usr/local/lib
+ 
+ # Xinerama, comment if you don't want it
+ XINERAMALIBS  = -lXinerama
+@@ -16,9 +16,9 @@ XINERAMAFLAGS = -DXINERAMA
+ 
+ # freetype
+ FREETYPELIBS = -lfontconfig -lXft
+-FREETYPEINC = /usr/include/freetype2
++#FREETYPEINC = /usr/include/freetype2
+ # OpenBSD (uncomment)
+-#FREETYPEINC = ${X11INC}/freetype2
++FREETYPEINC = ${X11INC}/freetype2
+ #MANPREFIX = ${PREFIX}/man
+ 
+ # includes and libs
+
