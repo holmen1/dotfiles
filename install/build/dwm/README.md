@@ -11,12 +11,14 @@ A minimal build setup for dwm from suckless.org.
 This will build and install to ```/bin``` with version tag
 
 ## Features
-- **noborder** Remove the border when there is only one window visible 
+- **xmonadkeys** Custom keys similar to my xmonad
 
 ## Configuration
-The build uses the default configuration with patches applied.
+**NOTE** FreeBSD: edit `X11INC` `X11LIB` `FREETYPEINC`
 
-## Patching [currently using default]
+The build uses the default configuration with 1 patch applied.
+
+## Patching
 When upgrading dwm, download the new source version and reapply your patches
 
 ```bash
@@ -29,12 +31,14 @@ patch -p1 < ../patches/dwm-xyz-n.n.n.diff
 
 Some patches may fail if the source has changed, then review any .rej files and manually adjust the patch or source as needed.
 
-## My dwm Keybindings [currently using default]
+## My dwm Keybindings
 
 | Keybinding | Function   |
 |------------|------------|
-| M-S-ENTER  | terminal   |
-| M-S-Q      | exit   |
+| M-ENTER    | terminal   |
+| M-Q        | kill window|
+| M-E        | explorer   |
+| M-S-Q      | exit       |
 
 Based on [dwm](https://st.suckless.org/) from the suckless.org team.
 

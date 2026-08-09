@@ -1,1 +1,0 @@
-net/wifi-firmware-iwlwifi-kmod

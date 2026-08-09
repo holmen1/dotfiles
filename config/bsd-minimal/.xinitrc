@@ -26,10 +26,22 @@ echo "se" > "$HOME/.cache/xkb-layout" # Cache current layout for dmenu status sc
 
 xrandr --auto
 
+# Set a nice background using xwallpaper if available
+if command -v xwallpaper >/dev/null 2>&1; then
+    xwallpaper --zoom "$HOME/repos/dotfiles/config/common/.scripts/plasma_darkesthour1920x1200.jpg" &
+else
+    echo "Warning: xwallpaper not installed, wallpaper not set by .xinitrc"
+fi
+
+# Start compositor for transparency/shadows 
+if command -v xcompmgr >/dev/null 2>&1; then
+    xcompmgr &
+fi
+
 # Launch key binding daemon if available
 if command -v xbindkeys >/dev/null 2>&1; then
     xbindkeys &
 fi
 
-exec st -g 160x40+0+0
+exec dwm
 
