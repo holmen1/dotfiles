@@ -122,6 +122,23 @@ cd /usr/ports/htop
 sudo make [install/deinstall/build/clean]
 ```
 
+### Autologin
+
+Edit
+`/etc/gettytab`
+```bash
+# Autologin - automatically log in as username
+#
+
+Al|Autologin:\
+	:ht:np:sp#115200:al=username:
+```
+and
+`/etc/ttys`
+```bash
+`---`ttyv0	"/usr/libexec/getty Pc"		xterm	onifexists secure
+`+++`ttyv0	"/usr/libexec/getty Al"		xterm	onifexists secure
+```
 
 ### Setting Brightness and Volume Keybindings with xbindkeys
 

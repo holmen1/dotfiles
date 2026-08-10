@@ -100,6 +100,8 @@ Arch:
 ExecStart=-/usr/bin/agetty --noreset --autologin yourusername --noclear - ${TERM}
 ```
 
+[FreeBSD](./profiles/bsdinstall/README.md#autologin)
+
 Also need add
 ```bash
 echo -n ""
