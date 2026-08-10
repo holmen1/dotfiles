@@ -1,6 +1,7 @@
 shells/bash
 ftp/curl
 x11/dmenu
+graphics/drm-kmod
 sysutils/fastfetch
 shells/fd
 graphics/feh
@@ -26,5 +27,6 @@ x11/xbindkeys
 x11/xclip
 x11-wm/xcompmgr
 x11/xlibre
+x11-drivers/xlibre-xf86-video-intel
 x11/xrandr
 x11-toolkits/xwallpaper

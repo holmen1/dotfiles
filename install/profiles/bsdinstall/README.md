@@ -21,7 +21,7 @@ a text-based installation program named `bsdinstall` starts, chose defaults
 
 Advice: setup here, ensure it work before continue
 
-regdomain: ETSI[2], SE  
+regdomain: ETSI2, SE  
 Install driver  
 IPv6 resolver (may not need)
 
@@ -40,7 +40,7 @@ network={
 
 Add user to groups: wheel video (one at a time)
 
-otherwise my choice, see [user_configuration_besk.json](log/user_configuration_besk.json)  
+otherwise my choice, see [bsdinstall_log](log/bsdinstall_log)  
 
 ## Post-installation
 
@@ -53,12 +53,15 @@ Log in as root
 ### Window Manager
 
 ```bash
-pkg install xlibre
+sudo pkg install xlibre [xlibre-xf86-video-intel]
 echo "exec xterm" > ~/.xinitrc
 startx
-``` 
+```
+[TROUBLESHOOTING XLIBRE](../../build/xlibre/README.md)
 
-- Install useful: `git`, `bash`, `curl`
+### Initial utilities
+
+- Install: `git`, `bash`, `curl`
 
 
 ### Shell, also need adding hostname if used in scripts
@@ -142,9 +145,12 @@ and
 
 ### Setting Brightness and Volume Keybindings with xbindkeys
 
-[TODO]
-backlight dont, work drivers cause blackscreen
-
+Enable ACPI in
+`/boot/loader.conf`
+```bash
+[...]
+acpi_video_load="YES"
+```
 
 
 ### Sanity check

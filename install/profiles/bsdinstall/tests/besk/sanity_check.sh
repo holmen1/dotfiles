@@ -79,22 +79,9 @@ print_header "Essential Commands"
 check_command "git" "Git version control"
 check_command "ssh" "SSH client"
 check_command "startx" "X11 server starter"
-check_command "xmonad" "XMonad window manager"
+check_command "dwm" "Dynamic window manager"
 check_command "xterm" "Terminal emulator"
 check_command "st" "Terminal emulator"
-
-# XMonad Setup
-print_header "XMonad Configuration"
-if [ -f "/usr/local/bin/xmonad" ]; then
-    print_pass "Custom XMonad binary exists"
-    if [ -x "/usr/local/bin/xmonad" ]; then
-        print_pass "XMonad binary is executable"
-    else
-        print_fail "XMonad binary is not executable"
-    fi
-else
-    print_fail "Custom XMonad binary not found in /usr/local/bin"
-fi
 
 check_file "$HOME/.xinitrc" ".xinitrc file"
 
@@ -113,37 +100,14 @@ else
     print_fail "User not in wheel group - power management may not work"
 fi
 
-# System Monitoring
-BAT=monitor-battery.sh
-WIFI=monitor-wifi.sh
-print_header "System Monitoring"
-
-#if TODO monitor-loop
-#    print_pass "System monitoring loop configured"
-#else
-#    print_warn "System monitoring cron not found"
-#fi
-check_command "dunst" "Dunst notification daemon"
-check_command "notify-send" "Desktop notifications"
-
 # Key Bindings
 print_header "Key Bindings & Input"
 check_command "xbindkeys" "Key binding daemon"
 check_file "$HOME/.xbindkeysrc" "xbindkeys configuration" "warning"
 check_file "$HOME/.cache/custom-keymap.xkb" "XKB configuration" "warning"
 check_command "backlight" "Brightness control (FreeBSD)"
-check_command "mixer" "Audio mixer (OSS)"
 
 # XKB (optional, warn only) TODO
-
-# Screenshot functionality
-print_header "Screenshots"
-check_command "scrot" "Screenshot utility"
-if [ -d "$HOME/Downloads" ]; then
-    print_pass "Downloads directory exists for screenshots"
-else
-    print_warn "Downloads directory not found - screenshots may fail"
-fi
 
 # Dotfiles Symlinks
 print_header "Dotfile Symlinks"
@@ -209,24 +173,19 @@ if [ -d "$HOME/repos/dotfiles" ]; then
     else
         print_fail "Dotfiles configuration directory missing"
     fi
-    if [ -d "$HOME/repos/dotfiles/config/common" ]; then
+    if [ -d "$HOME/repos/dotfiles/config/bsd-minimal" ]; then
         print_pass "Scripts directory exists"
     else
         print_warn "Scripts directory not found"
     fi
     
-    if [ -f "$HOME/repos/dotfiles/install/build/xmonad/build-xmonad.sh" ]; then
-        print_pass "XMonad build script exists"
-    else
-        print_fail "XMonad build script not found"
-    fi
 else
     print_fail "Dotfiles repository not found"
 fi
 
 # Test Key Functionalities
 print_header "Functional Tests"
-check_command "i3lock" "Screen lock"
+check_command "lf" "File manager"
 
 
 # Summary

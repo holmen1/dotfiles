@@ -1,6 +1,6 @@
 DEBUG: Running installation step: auto 
 DEBUG: dialog.subr: DEBUG_SELF_INITIALIZE=[]
-DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.0-RELEASE]
+DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.1-RELEASE]
 DEBUG: common.subr: Successfully loaded.
 DEBUG: f_include: file=[/usr/share/bsdconfig/dialog.subr]
 DEBUG: dialog.subr: loading includes...
@@ -86,7 +86,7 @@ DEBUG: f_getvar: var=[nfs_reserved_port_only] value=[NO] r=0
 DEBUG: f_getvar: var=[nfs_use_tcp] value=[NO] r=0
 DEBUG: f_getvar: var=[nfs_use_v3] value=[YES] r=0
 DEBUG: f_getvar: var=[PKG_TMPDIR] value=[/var/tmp] r=0
-DEBUG: f_getvar: var=[releaseName] value=[15.0-RELEASE] r=0
+DEBUG: f_getvar: var=[releaseName] value=[15.1-RELEASE] r=0
 DEBUG: f_variable_set_defaults: Defaults initialized.
 DEBUG: variable.subr: Successfully loaded.
 DEBUG: f_include_lang: file=[/usr/libexec/bsdconfig/include/messages.subr] lang=[C.UTF-8]
@@ -95,15 +95,15 @@ DEBUG: f_dialog_init: ARGV=[] GETOPTS_STDARGS=[dD:SX]
 DEBUG: f_dialog_init: SECURE=[] USE_XDIALOG=[]
 DEBUG: f_dialog_init: dialog(1) API initialized.
 DEBUG: dialog.subr: Successfully loaded.
-DEBUG: Began Installation at Thu Dec 18 19:31:34 UTC 2025
+DEBUG: Began Installation at Fri Aug  7 06:29:01 UTC 2026
 DEBUG: dialog.subr: DEBUG_SELF_INITIALIZE=[]
-DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.0-RELEASE]
+DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.1-RELEASE]
 DEBUG: common.subr: Successfully loaded.
 DEBUG: f_debug_init: ARGV=[keymap] GETOPTS_STDARGS=[dD:]
 DEBUG: f_debug_init: debug=[1] debugFile=[/tmp/bsdinstall_log]
 DEBUG: Running installation step: keymap 
 DEBUG: dialog.subr: DEBUG_SELF_INITIALIZE=[]
-DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.0-RELEASE]
+DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.1-RELEASE]
 DEBUG: common.subr: Successfully loaded.
 DEBUG: /usr/libexec/bsdinstall/keymap: loading includes...
 DEBUG: f_include: file=[/usr/share/bsdconfig/dialog.subr]
@@ -190,7 +190,7 @@ DEBUG: f_getvar: var=[nfs_reserved_port_only] value=[NO] r=0
 DEBUG: f_getvar: var=[nfs_use_tcp] value=[NO] r=0
 DEBUG: f_getvar: var=[nfs_use_v3] value=[YES] r=0
 DEBUG: f_getvar: var=[PKG_TMPDIR] value=[/var/tmp] r=0
-DEBUG: f_getvar: var=[releaseName] value=[15.0-RELEASE] r=0
+DEBUG: f_getvar: var=[releaseName] value=[15.1-RELEASE] r=0
 DEBUG: f_variable_set_defaults: Defaults initialized.
 DEBUG: variable.subr: Successfully loaded.
 DEBUG: f_include_lang: file=[/usr/libexec/bsdconfig/include/messages.subr] lang=[C.UTF-8]
@@ -218,8 +218,7 @@ DEBUG: f_struct_new: type=[KEYMAP] name=[keymap_bg_bds_kbd]
 DEBUG: f_struct_new: type=[KEYMAP] name=[keymap_bg_phonetic_kbd]
 DEBUG: f_struct_new: type=[KEYMAP] name=[keymap_br_kbd]
 DEBUG: f_struct_new: type=[KEYMAP] name=[keymap_br_noacc_kbd]
-DEBUG: f_getvar: var=[debug] value=[1] r=0
-DEBUG: /usr/share/vt/keymaps/br.lenovo.kbd: No such file or directory
+DEBUG: f_struct_new: type=[KEYMAP] name=[keymap_br_lenovo_kbd]
 DEBUG: f_struct_new: type=[KEYMAP] name=[keymap_by_kbd]
 DEBUG: f_struct_new: type=[KEYMAP] name=[keymap_centraleuropean_kbd]
 DEBUG: f_struct_new: type=[KEYMAP] name=[keymap_centraleuropean_qwerty_kbd]
@@ -290,8 +289,7 @@ DEBUG: f_struct_new: type=[KEYMAP] name=[keymap_uk_dvorak_kbd]
 DEBUG: f_struct_new: type=[KEYMAP] name=[keymap_uk_macbook_kbd]
 DEBUG: f_struct_new: type=[KEYMAP] name=[keymap_us_kbd]
 DEBUG: f_struct_new: type=[KEYMAP] name=[keymap_us_acc_kbd]
-DEBUG: f_getvar: var=[debug] value=[1] r=0
-DEBUG: /usr/share/vt/keymaps/us.intl.acc.kbd: No such file or directory
+DEBUG: f_struct_new: type=[KEYMAP] name=[keymap_us_intl_acc_kbd]
 DEBUG: f_struct_new: type=[KEYMAP] name=[keymap_us_dvorak_kbd]
 DEBUG: f_struct_new: type=[KEYMAP] name=[keymap_us_dvorakr_kbd]
 DEBUG: f_struct_new: type=[KEYMAP] name=[keymap_us_dvorakl_kbd]
@@ -304,7 +302,7 @@ DEBUG: f_struct_new: type=[KEYMAP] name=[keymap_us_macbook_kbd]
 DEBUG: f_struct_new: type=[KEYMAP] name=[keymap_ua_kbd]
 DEBUG: f_struct_new: type=[KEYMAP] name=[keymap_ua_shift_alt_kbd]
 DEBUG: f_keymap_get_all: Sorting keymap entries by description...
-DEBUG: keymap.subr: Found 88 keymap file(s).
+DEBUG: keymap.subr: Found 90 keymap file(s).
 DEBUG: keymap.subr: Successfully loaded.
 DEBUG: f_include: file=[/usr/share/bsdconfig/sysrc.subr]
 DEBUG: sysrc.subr: loading includes...
@@ -323,6 +321,8 @@ DEBUG: f_getvar: var=[_struct_value_keymap_br_kbd_keym] value=[br.kbd] r=0
 DEBUG: f_getvar: var=[_struct_value_keymap_br_kbd_desc] value=[Brazilian (accent keys)] r=0
 DEBUG: f_getvar: var=[_struct_value_keymap_br_noacc_kbd_keym] value=[br.noacc.kbd] r=0
 DEBUG: f_getvar: var=[_struct_value_keymap_br_noacc_kbd_desc] value=[Brazilian (without accent keys)] r=0
+DEBUG: f_getvar: var=[_struct_value_keymap_br_lenovo_kbd_keym] value=[br.lenovo.kbd] r=0
+DEBUG: f_getvar: var=[_struct_value_keymap_br_lenovo_kbd_desc] value=[Brazilian Lenovo Laptop (accent keys, with slash in place of right Ctrl)] r=0
 DEBUG: f_getvar: var=[_struct_value_keymap_bg_bds_kbd_keym] value=[bg.bds.kbd] r=0
 DEBUG: f_getvar: var=[_struct_value_keymap_bg_bds_kbd_desc] value=[Bulgarian (BDS)] r=0
 DEBUG: f_getvar: var=[_struct_value_keymap_bg_phonetic_kbd_keym] value=[bg.phonetic.kbd] r=0
@@ -475,6 +475,8 @@ DEBUG: f_getvar: var=[_struct_value_keymap_us_acc_kbd_keym] value=[us.acc.kbd] r
 DEBUG: f_getvar: var=[_struct_value_keymap_us_acc_kbd_desc] value=[United States of America (accent keys)] r=0
 DEBUG: f_getvar: var=[_struct_value_keymap_us_emacs_kbd_keym] value=[us.emacs.kbd] r=0
 DEBUG: f_getvar: var=[_struct_value_keymap_us_emacs_kbd_desc] value=[United States of America Emacs optimized layout] r=0
+DEBUG: f_getvar: var=[_struct_value_keymap_us_intl_acc_kbd_keym] value=[us.intl.acc.kbd] r=0
+DEBUG: f_getvar: var=[_struct_value_keymap_us_intl_acc_kbd_desc] value=[United States of America International (accent keys)] r=0
 DEBUG: f_getvar: var=[_struct_value_keymap_us_dvorakp_kbd_keym] value=[us.dvorakp.kbd] r=0
 DEBUG: f_getvar: var=[_struct_value_keymap_us_dvorakp_kbd_desc] value=[United States of America Programmer Dvorak] r=0
 DEBUG: f_getvar: var=[_struct_value_keymap_us_unix_kbd_keym] value=[us.unix.kbd] r=0
@@ -504,6 +506,8 @@ DEBUG: f_getvar: var=[_struct_value_keymap_br_kbd_keym] value=[br.kbd] r=0
 DEBUG: f_getvar: var=[_struct_value_keymap_br_kbd_desc] value=[Brazilian (accent keys)] r=0
 DEBUG: f_getvar: var=[_struct_value_keymap_br_noacc_kbd_keym] value=[br.noacc.kbd] r=0
 DEBUG: f_getvar: var=[_struct_value_keymap_br_noacc_kbd_desc] value=[Brazilian (without accent keys)] r=0
+DEBUG: f_getvar: var=[_struct_value_keymap_br_lenovo_kbd_keym] value=[br.lenovo.kbd] r=0
+DEBUG: f_getvar: var=[_struct_value_keymap_br_lenovo_kbd_desc] value=[Brazilian Lenovo Laptop (accent keys, with slash in place of right Ctrl)] r=0
 DEBUG: f_getvar: var=[_struct_value_keymap_bg_bds_kbd_keym] value=[bg.bds.kbd] r=0
 DEBUG: f_getvar: var=[_struct_value_keymap_bg_bds_kbd_desc] value=[Bulgarian (BDS)] r=0
 DEBUG: f_getvar: var=[_struct_value_keymap_bg_phonetic_kbd_keym] value=[bg.phonetic.kbd] r=0
@@ -656,6 +660,8 @@ DEBUG: f_getvar: var=[_struct_value_keymap_us_acc_kbd_keym] value=[us.acc.kbd] r
 DEBUG: f_getvar: var=[_struct_value_keymap_us_acc_kbd_desc] value=[United States of America (accent keys)] r=0
 DEBUG: f_getvar: var=[_struct_value_keymap_us_emacs_kbd_keym] value=[us.emacs.kbd] r=0
 DEBUG: f_getvar: var=[_struct_value_keymap_us_emacs_kbd_desc] value=[United States of America Emacs optimized layout] r=0
+DEBUG: f_getvar: var=[_struct_value_keymap_us_intl_acc_kbd_keym] value=[us.intl.acc.kbd] r=0
+DEBUG: f_getvar: var=[_struct_value_keymap_us_intl_acc_kbd_desc] value=[United States of America International (accent keys)] r=0
 DEBUG: f_getvar: var=[_struct_value_keymap_us_dvorakp_kbd_keym] value=[us.dvorakp.kbd] r=0
 DEBUG: f_getvar: var=[_struct_value_keymap_us_dvorakp_kbd_desc] value=[United States of America Programmer Dvorak] r=0
 DEBUG: f_getvar: var=[_struct_value_keymap_us_unix_kbd_keym] value=[us.unix.kbd] r=0
@@ -673,13 +679,13 @@ DEBUG: f_getvar: var=[height] value=[22] r=0
 DEBUG: f_getvar: var=[rows] value=[16] r=0
 DEBUG: f_getvar: var=[menu_choice] value=[>>> Continue with se.kbd keymap] r=0
 DEBUG: dialog.subr: DEBUG_SELF_INITIALIZE=[]
-DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.0-RELEASE]
+DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.1-RELEASE]
 DEBUG: common.subr: Successfully loaded.
 DEBUG: f_debug_init: ARGV=[hostname] GETOPTS_STDARGS=[dD:]
 DEBUG: f_debug_init: debug=[1] debugFile=[/tmp/bsdinstall_log]
 DEBUG: Running installation step: hostname 
 DEBUG: dialog.subr: DEBUG_SELF_INITIALIZE=[]
-DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.0-RELEASE]
+DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.1-RELEASE]
 DEBUG: common.subr: Successfully loaded.
 DEBUG: /usr/libexec/bsdinstall/hostname: loading_includes...
 DEBUG: f_include: file=[/usr/share/bsdconfig/dialog.subr]
@@ -766,7 +772,7 @@ DEBUG: f_getvar: var=[nfs_reserved_port_only] value=[NO] r=0
 DEBUG: f_getvar: var=[nfs_use_tcp] value=[NO] r=0
 DEBUG: f_getvar: var=[nfs_use_v3] value=[YES] r=0
 DEBUG: f_getvar: var=[PKG_TMPDIR] value=[/var/tmp] r=0
-DEBUG: f_getvar: var=[releaseName] value=[15.0-RELEASE] r=0
+DEBUG: f_getvar: var=[releaseName] value=[15.1-RELEASE] r=0
 DEBUG: f_variable_set_defaults: Defaults initialized.
 DEBUG: variable.subr: Successfully loaded.
 DEBUG: f_include_lang: file=[/usr/libexec/bsdconfig/include/messages.subr] lang=[C.UTF-8]
@@ -780,32 +786,32 @@ DEBUG: f_getvar: var=[height] value=[11] r=0
 DEBUG: f_getvar: var=[width] value=[55] r=0
 DEBUG: hostname: echo "hostname=\"$HOSTNAME\"" > "/tmp/bsdinstall_etc/rc.conf.hostname"
 DEBUG: hostname: retval=0 <no output>
-DEBUG: hostname: hostname -s ""
+DEBUG: hostname: hostname -s "besk"
 DEBUG: hostname: retval=0 <no output>
 DEBUG: dialog.subr: DEBUG_SELF_INITIALIZE=[]
-DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.0-RELEASE]
+DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.1-RELEASE]
 DEBUG: common.subr: Successfully loaded.
 DEBUG: f_debug_init: ARGV=[netconfig] GETOPTS_STDARGS=[dD:]
 DEBUG: f_debug_init: debug=[1] debugFile=[/tmp/bsdinstall_log]
 DEBUG: Running installation step: netconfig 
 DEBUG: dialog.subr: DEBUG_SELF_INITIALIZE=[]
-DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.0-RELEASE]
+DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.1-RELEASE]
 DEBUG: common.subr: Successfully loaded.
 DEBUG: dialog.subr: DEBUG_SELF_INITIALIZE=[]
-DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.0-RELEASE]
+DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.1-RELEASE]
 DEBUG: common.subr: Successfully loaded.
 DEBUG: f_include: file=[/usr/share/bsdconfig/sysrc.subr]
 DEBUG: sysrc.subr: loading includes...
 DEBUG: f_include_lang: file=[/usr/libexec/bsdconfig/include/messages.subr] lang=[C.UTF-8]
 DEBUG: sysrc.subr: Successfully loaded.
 DEBUG: dialog.subr: DEBUG_SELF_INITIALIZE=[]
-DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.0-RELEASE]
+DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.1-RELEASE]
 DEBUG: common.subr: Successfully loaded.
 DEBUG: f_debug_init: ARGV=[wlanconfig wlan0] GETOPTS_STDARGS=[dD:]
 DEBUG: f_debug_init: debug=[1] debugFile=[/tmp/bsdinstall_log]
 DEBUG: Running installation step: wlanconfig wlan0
 DEBUG: dialog.subr: DEBUG_SELF_INITIALIZE=[]
-DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.0-RELEASE]
+DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.1-RELEASE]
 DEBUG: common.subr: Successfully loaded.
 DEBUG: f_include: file=[/usr/share/bsdconfig/dialog.subr]
 DEBUG: dialog.subr: loading includes...
@@ -885,13 +891,13 @@ DEBUG: variable.subr: VARIABLE_SELF_INITIALIZE=[1]
 DEBUG: f_variable_set_defaults: Initializing defaults...
 DEBUG: f_getvar: var=[debug] value=[1] r=0
 DEBUG: f_getvar: var=[editor] value=[/usr/bin/ee] r=0
-DEBUG: f_getvar: var=[hostname] value=[] r=0
+DEBUG: f_getvar: var=[hostname] value=[besk] r=0
 DEBUG: f_getvar: var=[MEDIA_TIMEOUT] value=[300] r=0
 DEBUG: f_getvar: var=[nfs_reserved_port_only] value=[NO] r=0
 DEBUG: f_getvar: var=[nfs_use_tcp] value=[NO] r=0
 DEBUG: f_getvar: var=[nfs_use_v3] value=[YES] r=0
 DEBUG: f_getvar: var=[PKG_TMPDIR] value=[/var/tmp] r=0
-DEBUG: f_getvar: var=[releaseName] value=[15.0-RELEASE] r=0
+DEBUG: f_getvar: var=[releaseName] value=[15.1-RELEASE] r=0
 DEBUG: f_variable_set_defaults: Defaults initialized.
 DEBUG: variable.subr: Successfully loaded.
 DEBUG: f_include_lang: file=[/usr/libexec/bsdconfig/include/messages.subr] lang=[C.UTF-8]
@@ -920,13 +926,13 @@ DEBUG: f_dialog_max_size: bsddialog --print-maxsize = [MaxSize: 27, 97]
 DEBUG: f_getvar: var=[height] value=[22] r=0
 DEBUG: f_getvar: var=[width] value=[26] r=0
 DEBUG: f_getvar: var=[rows] value=[16] r=0
-DEBUG: f_getvar: var=[regdomain] value=[ETSI] r=0
+DEBUG: f_getvar: var=[regdomain] value=[ETSI2] r=0
 DEBUG: f_dialog_max_size: bsddialog --print-maxsize = [MaxSize: 27, 97]
 DEBUG: f_getvar: var=[height] value=[22] r=0
 DEBUG: f_getvar: var=[width] value=[27] r=0
 DEBUG: f_getvar: var=[rows] value=[16] r=0
 DEBUG: f_getvar: var=[country] value=[SE] r=0
-DEBUG: wlanconfig: ifconfig wlan0 country SE regdomain ETSI
+DEBUG: wlanconfig: ifconfig wlan0 country SE regdomain ETSI2
 DEBUG: wlanconfig: retval=0 <no output>
 DEBUG: wlanconfig: ifconfig wlan0 up
 DEBUG: wlanconfig: retval=0 <no output>
@@ -941,43 +947,35 @@ DEBUG: wlanconfig: wpa_cli scan_results
 DEBUG: wlanconfig: retval=0 <output below>
 Selected interface 'wlan0'
 bssid / frequency / signal level / flags / ssid
-64:20:9f:31:10:0d	5600	-59	[WPA2-PSK-CCMP][WPS][ESS]	Bb2_nNLiVwuk
-32:20:9f:31:10:0d	5600	-59	[WPA2-PSK-CCMP][WPS][ESS]	AA46
-64:20:9f:31:10:0a	2462	-56	[WPA2-PSK-CCMP][WPS][ESS]	Bb2_nNLiVwuk
-32:20:9f:31:10:0a	2462	-56	[WPA2-PSK-CCMP][WPS][ESS]	BB46
-f0:2f:74:b7:cf:f0	2452	-68	[WPA2-PSK-CCMP][WPS][ESS]	Jussi WIFI
-10:7b:44:d1:1a:60	2437	-71	[WPA2-PSK-CCMP][WPS][ESS]	Tiedemann
-c8:ea:f8:a2:f5:69	2437	-74	[WPA2-PSK-CCMP][WPS][ESS]	4G-Gateway-A2F569
-10:7b:44:d3:4a:58	2437	-75	[WPA2-PSK-CCMP][WPS][ESS]	Tiedemann
-64:20:9f:2e:f3:02	2412	-76	[WPA2-PSK-CCMP][WPS][ESS]	A3-7JkbgQytpLEZ
-64:20:9f:32:8e:8e	2442	-77	[WPA2-PSK-CCMP][WPS][ESS]	Bb2_nz94o4Jd
-28:bd:89:13:45:7c	2462	-77	[WPA2-PSK-CCMP][ESS]	CocoM
-34:53:d2:9d:a3:3b	2412	-79	[WPA2-PSK-CCMP][WPS][ESS]	Tele2_9da336
-64:20:9f:32:ae:4e	2412	-79	[WPA2-PSK-CCMP][WPS][ESS]	Bb2_beJcVocc
-8c:de:f9:05:e5:78	2412	-80	[WPA-PSK-CCMP+TKIP][WPA2-PSK-CCMP+TKIP][WPS][ESS]	TN_wifi_61BE7F
-ec:be:dd:ba:fb:6a	2437	-80	[WPA2-PSK-CCMP][WPS][ESS]	Harrys WiFi
-34:53:d2:9b:44:4f	2462	-80	[WPA2-PSK-CCMP][WPS][ESS]	Tele2_9b444a
-f0:2f:74:b7:cf:f4	5220	-85	[WPA2-PSK-CCMP][WPS][ESS]	Jussi WIFI 5G
-64:20:9f:31:67:52	2442	-81	[WPA2-PSK-CCMP][WPS][ESS]	Bb2_mgckuf3d
-10:7b:44:d1:1a:62	5660	-86	[WPA2-PSK-CCMP][WPS][ESS]	Tiedemann
-20:9a:7d:8e:85:76	2412	-83	[WPA2-PSK-CCMP][WPS][ESS]	#Telia-8E8570
-64:20:9f:30:ee:8a	2462	-83	[WPA2-PSK-CCMP][WPS][ESS]	kalmar wlan 2.4
-b8:8c:2b:5f:14:fc	2437	-83	[WPA2-PSK-CCMP][WPS][ESS]	Tele2_5f14f7
-34:53:d2:9b:44:50	5540	-88	[WPA2-PSK-CCMP][WPS][ESS]	Tele2_9b444a
-36:53:d2:9b:45:51	5540	-88	[WPA2-PSK-CCMP][ESS]	\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00
-b8:8c:2b:5f:14:fd	5180	-89	[WPA2-PSK-CCMP][WPS][ESS]	Tele2_5f14f7
-ba:8c:2b:5f:15:fe	5180	-89	[WPA2-PSK-CCMP][ESS]	
-b8:d9:4d:5f:9d:e1	5180	-92	[WPA2-PSK-CCMP+TKIP][WPS][ESS]	COMHEM_5f9ddb-5G
-10:7b:44:d3:4a:5c	5240	-92	[WPA2-PSK-CCMP][WPS][ESS]	Tiedemann
-64:20:9f:32:8e:91	5540	-92	[WPA2-PSK-CCMP][WPS][ESS]	Bb2_nz94o4Jd
-10:7b:44:d3:4a:5a	5660	-92	[WPA2-PSK-CCMP][WPS][ESS]	Tiedemann
-64:20:9f:2e:f3:05	5240	-93	[WPA-PSK-CCMP][WPA2-PSK-CCMP][WPS][ESS]	A3-7JkbgQytpLEZ
-b8:d9:4d:60:73:d7	2462	-89	[WPA2-PSK-CCMP+TKIP][WPS][ESS]	COMHEM_6073d2
-a8:6a:bb:c6:97:02	2462	-91	[WPA2-PSK-CCMP][WPS][ESS]	Tele2_c696fd
-00:02:61:ce:35:68	2472	-92	[WPA2-PSK-CCMP][WPS][ESS]	bahnhof2_4Ghz-260358
-5c:35:3b:e8:81:3b	2437	-96	[WPA-PSK-CCMP+TKIP][WPA2-PSK-CCMP+TKIP][ESS]	comhem_E6B2A8
-fa:8f:ca:73:dc:1a	5240	-93	[ESS]	
-00:22:6c:01:4d:46	2412	-91	[ESS]	
+32:20:9f:31:10:0a	2452	-51	[WPA2-PSK-CCMP][WPS][ESS]	BB46
+64:20:9f:31:10:0a	2452	-52	[WPA2-PSK-CCMP][WPS][ESS]	Bb2_nNLiVwuk
+f0:2f:74:b7:cf:f0	2417	-62	[WPA2-PSK-CCMP][WPS][ESS]	Jussi WIFI
+10:7b:44:d1:1a:60	2437	-63	[WPA2-PSK-CCMP][WPS][ESS]	Tiedemann
+10:7b:44:d3:4a:58	2437	-66	[WPA2-PSK-CCMP][WPS][ESS]	Tiedemann
+32:20:9f:31:10:0d	5600	-75	[WPA2-PSK-CCMP][WPS][ESS]	AA46
+64:20:9f:31:10:0d	5600	-75	[WPA2-PSK-CCMP][WPS][ESS]	Bb2_nNLiVwuk
+f0:2f:74:b7:cf:f4	5220	-77	[WPA2-PSK-CCMP][WPS][ESS]	Jussi WIFI 5G
+10:7b:44:d1:1a:62	5520	-80	[WPA2-PSK-CCMP][WPS][ESS]	Tiedemann
+10:7b:44:d3:4a:5a	5520	-83	[WPA2-PSK-CCMP][WPS][ESS]	Tiedemann
+ba:8c:2b:5f:15:fe	5200	-88	[WPA2-PSK-CCMP][ESS]	
+b8:8c:2b:5f:14:fd	5200	-88	[WPA2-PSK-CCMP][WPS][ESS]	Tele2_5f14f7
+da:33:b7:a9:bf:b3	5260	-89	[WPA2-PSK-CCMP][ESS]	\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00
+36:53:d2:9d:a4:3d	5540	-89	[WPA2-PSK-CCMP][ESS]	\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00
+d8:33:b7:a9:be:b2	5260	-90	[WPA2-PSK-CCMP][WPS][ESS]	Tele2_a9beac
+34:53:d2:9d:a3:3c	5540	-91	[WPA2-PSK-CCMP][WPS][ESS]	Tele2_9da336
+22:b8:2b:35:10:27	5200	-91	[WPA2-PSK-CCMP][ESS]	
+20:b8:2b:35:0f:26	5200	-91	[WPA2-PSK-CCMP][WPS][ESS]	Tele2_350f20
+10:7b:44:d3:4a:5c	5240	-93	[WPA2-PSK-CCMP][WPS][ESS]	Tiedemann
+36:53:d2:9b:45:51	5260	-93	[WPA2-PSK-CCMP][ESS]	\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00
+10:7b:44:d1:1a:64	5240	-93	[WPA2-PSK-CCMP][WPS][ESS]	Tiedemann
+10:7b:44:d1:1a:6a	5520	-94	[WPA2-PSK-CCMP][WPS][ESS]	Tiedemann
+0e:ef:15:9e:c6:0d	5220	-94	[WPA2-PSK-CCMP][WPS][ESS]	Apaapaapa
+34:53:d2:9b:44:50	5260	-94	[WPA2-PSK-CCMP][WPS][ESS]	Tele2_9b444a
+44:15:24:e3:59:8d	5200	-95	[WPA2-PSK-CCMP][WPS][ESS]	Tele2_e35987
+64:20:9f:31:53:6d	5620	-95	[WPA2-PSK-CCMP][WPS][ESS]	Bb2_GXyHv4VU
+64:20:9f:32:8e:91	5560	-96	[WPA2-PSK-CCMP][WPS][ESS]	Bb2_nz94o4Jd
+64:20:9f:2e:f3:05	5240	-97	[WPA-PSK-CCMP][WPA2-PSK-CCMP][WPS][ESS]	A3-7JkbgQytpLEZ
+fa:8f:ca:73:dc:1a	5240	-90	[ESS]	
 DEBUG: f_dialog_max_size: bsddialog --print-maxsize = [MaxSize: 27, 97]
 DEBUG: f_getvar: var=[height] value=[22] r=0
 DEBUG: f_getvar: var=[width] value=[97] r=0
@@ -988,13 +986,13 @@ DEBUG: wlanconfig: retval=0 <output below>
 Selected interface 'wlan0'
 OK
 DEBUG: dialog.subr: DEBUG_SELF_INITIALIZE=[]
-DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.0-RELEASE]
+DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.1-RELEASE]
 DEBUG: common.subr: Successfully loaded.
 DEBUG: f_debug_init: ARGV=[netconfig_ipv4 wlan0 WPA  auto] GETOPTS_STDARGS=[dD:]
 DEBUG: f_debug_init: debug=[1] debugFile=[/tmp/bsdinstall_log]
 DEBUG: Running installation step: netconfig_ipv4 wlan0 WPA  auto
 DEBUG: dialog.subr: DEBUG_SELF_INITIALIZE=[]
-DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.0-RELEASE]
+DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.1-RELEASE]
 DEBUG: common.subr: Successfully loaded.
 DEBUG: /usr/libexec/bsdinstall/netconfig_ipv4: loading includes...
 DEBUG: f_include: file=[/usr/share/bsdconfig/dialog.subr]
@@ -1075,13 +1073,13 @@ DEBUG: variable.subr: VARIABLE_SELF_INITIALIZE=[1]
 DEBUG: f_variable_set_defaults: Initializing defaults...
 DEBUG: f_getvar: var=[debug] value=[1] r=0
 DEBUG: f_getvar: var=[editor] value=[/usr/bin/ee] r=0
-DEBUG: f_getvar: var=[hostname] value=[] r=0
+DEBUG: f_getvar: var=[hostname] value=[besk] r=0
 DEBUG: f_getvar: var=[MEDIA_TIMEOUT] value=[300] r=0
 DEBUG: f_getvar: var=[nfs_reserved_port_only] value=[NO] r=0
 DEBUG: f_getvar: var=[nfs_use_tcp] value=[NO] r=0
 DEBUG: f_getvar: var=[nfs_use_v3] value=[YES] r=0
 DEBUG: f_getvar: var=[PKG_TMPDIR] value=[/var/tmp] r=0
-DEBUG: f_getvar: var=[releaseName] value=[15.0-RELEASE] r=0
+DEBUG: f_getvar: var=[releaseName] value=[15.1-RELEASE] r=0
 DEBUG: f_variable_set_defaults: Defaults initialized.
 DEBUG: variable.subr: Successfully loaded.
 DEBUG: f_include_lang: file=[/usr/libexec/bsdconfig/include/messages.subr] lang=[C.UTF-8]
@@ -1092,20 +1090,20 @@ DEBUG: f_dialog_init: dialog(1) API initialized.
 DEBUG: dialog.subr: Successfully loaded.
 pkill: Cannot open pidfile `/var/run/dhclient/dhclient.wlan0.pid': No such file or directory
 DEBUG: dialog.subr: DEBUG_SELF_INITIALIZE=[]
-DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.0-RELEASE]
+DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.1-RELEASE]
 DEBUG: common.subr: Successfully loaded.
 DEBUG: f_include: file=[/usr/share/bsdconfig/sysrc.subr]
 DEBUG: sysrc.subr: loading includes...
 DEBUG: f_include_lang: file=[/usr/libexec/bsdconfig/include/messages.subr] lang=[C.UTF-8]
 DEBUG: sysrc.subr: Successfully loaded.
 DEBUG: dialog.subr: DEBUG_SELF_INITIALIZE=[]
-DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.0-RELEASE]
+DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.1-RELEASE]
 DEBUG: common.subr: Successfully loaded.
 DEBUG: f_debug_init: ARGV=[netconfig_ipv6 wlan0 auto] GETOPTS_STDARGS=[dD:]
 DEBUG: f_debug_init: debug=[1] debugFile=[/tmp/bsdinstall_log]
 DEBUG: Running installation step: netconfig_ipv6 wlan0 auto
 DEBUG: dialog.subr: DEBUG_SELF_INITIALIZE=[]
-DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.0-RELEASE]
+DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.1-RELEASE]
 DEBUG: common.subr: Successfully loaded.
 DEBUG: /usr/libexec/bsdinstall/netconfig_ipv6: loading includes...
 DEBUG: f_include: file=[/usr/share/bsdconfig/dialog.subr]
@@ -1186,13 +1184,13 @@ DEBUG: variable.subr: VARIABLE_SELF_INITIALIZE=[1]
 DEBUG: f_variable_set_defaults: Initializing defaults...
 DEBUG: f_getvar: var=[debug] value=[1] r=0
 DEBUG: f_getvar: var=[editor] value=[/usr/bin/ee] r=0
-DEBUG: f_getvar: var=[hostname] value=[] r=0
+DEBUG: f_getvar: var=[hostname] value=[besk] r=0
 DEBUG: f_getvar: var=[MEDIA_TIMEOUT] value=[300] r=0
 DEBUG: f_getvar: var=[nfs_reserved_port_only] value=[NO] r=0
 DEBUG: f_getvar: var=[nfs_use_tcp] value=[NO] r=0
 DEBUG: f_getvar: var=[nfs_use_v3] value=[YES] r=0
 DEBUG: f_getvar: var=[PKG_TMPDIR] value=[/var/tmp] r=0
-DEBUG: f_getvar: var=[releaseName] value=[15.0-RELEASE] r=0
+DEBUG: f_getvar: var=[releaseName] value=[15.1-RELEASE] r=0
 DEBUG: f_variable_set_defaults: Defaults initialized.
 DEBUG: variable.subr: Successfully loaded.
 DEBUG: f_include_lang: file=[/usr/libexec/bsdconfig/include/messages.subr] lang=[C.UTF-8]
@@ -1202,7 +1200,7 @@ DEBUG: f_dialog_init: SECURE=[] USE_XDIALOG=[]
 DEBUG: f_dialog_init: dialog(1) API initialized.
 DEBUG: dialog.subr: Successfully loaded.
 DEBUG: dialog.subr: DEBUG_SELF_INITIALIZE=[]
-DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.0-RELEASE]
+DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.1-RELEASE]
 DEBUG: common.subr: Successfully loaded.
 DEBUG: f_include: file=[/usr/share/bsdconfig/sysrc.subr]
 DEBUG: sysrc.subr: loading includes...
@@ -1215,13 +1213,13 @@ DEBUG: smbios.system.version=[ThinkPad 11e 3rd Gen]
 DEBUG: smbios.planar.maker=[LENOVO]
 DEBUG: smbios.planar.product=[Intel powered classmate PC]
 DEBUG: dialog.subr: DEBUG_SELF_INITIALIZE=[]
-DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.0-RELEASE]
+DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.1-RELEASE]
 DEBUG: common.subr: Successfully loaded.
 DEBUG: f_debug_init: ARGV=[zfsboot] GETOPTS_STDARGS=[dD:]
 DEBUG: f_debug_init: debug=[1] debugFile=[/tmp/bsdinstall_log]
 DEBUG: Running installation step: zfsboot 
 DEBUG: dialog.subr: DEBUG_SELF_INITIALIZE=[]
-DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.0-RELEASE]
+DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.1-RELEASE]
 DEBUG: common.subr: Successfully loaded.
 DEBUG: /usr/libexec/bsdinstall/zfsboot: loading includes...
 DEBUG: f_include: file=[/usr/share/bsdconfig/device.subr]
@@ -1304,13 +1302,13 @@ DEBUG: variable.subr: VARIABLE_SELF_INITIALIZE=[1]
 DEBUG: f_variable_set_defaults: Initializing defaults...
 DEBUG: f_getvar: var=[debug] value=[1] r=0
 DEBUG: f_getvar: var=[editor] value=[/usr/bin/ee] r=0
-DEBUG: f_getvar: var=[hostname] value=[] r=0
+DEBUG: f_getvar: var=[hostname] value=[besk] r=0
 DEBUG: f_getvar: var=[MEDIA_TIMEOUT] value=[300] r=0
 DEBUG: f_getvar: var=[nfs_reserved_port_only] value=[NO] r=0
 DEBUG: f_getvar: var=[nfs_use_tcp] value=[NO] r=0
 DEBUG: f_getvar: var=[nfs_use_v3] value=[YES] r=0
 DEBUG: f_getvar: var=[PKG_TMPDIR] value=[/var/tmp] r=0
-DEBUG: f_getvar: var=[releaseName] value=[15.0-RELEASE] r=0
+DEBUG: f_getvar: var=[releaseName] value=[15.1-RELEASE] r=0
 DEBUG: f_variable_set_defaults: Defaults initialized.
 DEBUG: variable.subr: Successfully loaded.
 DEBUG: f_include_lang: file=[/usr/libexec/bsdconfig/include/messages.subr] lang=[C.UTF-8]
@@ -1325,7 +1323,7 @@ DEBUG: f_include: file=[/usr/share/bsdconfig/strings.subr]
 DEBUG: f_include: file=[/usr/share/bsdconfig/struct.subr]
 DEBUG: struct.subr: Successfully loaded.
 DEBUG: geom.subr: GEOM_SELF_SCAN_ALL=[1]
-DEBUG: geom.subr: Initialized 52 geom devices in 10 classes.
+DEBUG: geom.subr: Initialized 42 geom devices in 10 classes.
 DEBUG: geom.subr: Successfully loaded.
 DEBUG: f_include: file=[/usr/share/bsdconfig/strings.subr]
 DEBUG: f_include: file=[/usr/share/bsdconfig/struct.subr]
@@ -1338,30 +1336,23 @@ DEBUG: f_getvar: var=[height] value=[3] r=0
 DEBUG: f_getvar: var=[width] value=[59] r=0
 DEBUG: Found network device named re0
 DEBUG: Found network device named wlan0
-DEBUG: WARNING! Unable to classify GEOM device diskid/DISK-4CEDFB74A333E811497906C2p2 as media source
-DEBUG: WARNING! Unable to classify GEOM device diskid/DISK-4CEDFB74A333E811497906C2p1 as media source
-DEBUG: WARNING! Unable to classify GEOM device iso9660/15_0_RELEASE_AMD64_DVDp2 as media source
-DEBUG: WARNING! Unable to classify GEOM device iso9660/15_0_RELEASE_AMD64_DVDp1 as media source
+DEBUG: Found UFS partition labeled ufs/FreeBSD_Install
+DEBUG: Found UFS partition named da0s2a
 DEBUG: Found DOS partition labeled msdosfs/EFISYS
-DEBUG: WARNING! Unable to classify GEOM device gptid/ce1f65a8-cc22-11f0-1d08-61407e6af4da as media source
-DEBUG: WARNING! Unable to classify GEOM device gptid/ce1f6576-cc22-11f0-067b-ff9d86f8dced as media source
-DEBUG: WARNING! Unable to classify GEOM device diskid/DISK-4CEDFB74A333E811497906C2 as media source
-DEBUG: Found CDROM device labeled iso9660/15_0_RELEASE_AMD64_DVD
-DEBUG: WARNING! Unable to classify GEOM device da0p2 as media source
-DEBUG: WARNING! Unable to classify GEOM device da0p1 as media source
+DEBUG: WARNING! Unable to classify GEOM device da0s2 as media source
+DEBUG: WARNING! Unable to classify GEOM device da0s1 as media source
 DEBUG: Found disk device named da0
-DEBUG: Found CDROM device for disk da0
 DEBUG: WARNING! Unable to classify GEOM device diskid/DISK-S2YRNB0H869754p4 as media source
 DEBUG: WARNING! Unable to classify GEOM device diskid/DISK-S2YRNB0H869754p3 as media source
 DEBUG: WARNING! Unable to classify GEOM device diskid/DISK-S2YRNB0H869754p2 as media source
 DEBUG: WARNING! Unable to classify GEOM device diskid/DISK-S2YRNB0H869754p1 as media source
-DEBUG: WARNING! Unable to classify GEOM device gptid/754b5d82-d34b-11f0-970b-54ab3adb3aee as media source
+DEBUG: WARNING! Unable to classify GEOM device gptid/41a69252-52ff-11f1-aa27-54ab3adb3aee as media source
 DEBUG: WARNING! Unable to classify GEOM device gpt/zfs0 as media source
-DEBUG: WARNING! Unable to classify GEOM device gptid/7542b899-d34b-11f0-970b-54ab3adb3aee as media source
+DEBUG: WARNING! Unable to classify GEOM device gptid/419ead82-52ff-11f1-aa27-54ab3adb3aee as media source
 DEBUG: WARNING! Unable to classify GEOM device gpt/swap0 as media source
-DEBUG: WARNING! Unable to classify GEOM device gptid/753922c9-d34b-11f0-970b-54ab3adb3aee as media source
+DEBUG: WARNING! Unable to classify GEOM device gptid/41972c18-52ff-11f1-aa27-54ab3adb3aee as media source
 DEBUG: WARNING! Unable to classify GEOM device gpt/gptboot0 as media source
-DEBUG: WARNING! Unable to classify GEOM device gptid/75306d50-d34b-11f0-970b-54ab3adb3aee as media source
+DEBUG: WARNING! Unable to classify GEOM device gptid/4190f690-52ff-11f1-aa27-54ab3adb3aee as media source
 DEBUG: WARNING! Unable to classify GEOM device gpt/efiboot0 as media source
 DEBUG: WARNING! Unable to classify GEOM device diskid/DISK-S2YRNB0H869754 as media source
 DEBUG: WARNING! Unable to classify GEOM device ada0p4 as media source
@@ -1387,6 +1378,13 @@ DEBUG: f_dialog_max_size: bsddialog --print-maxsize = [MaxSize: 27, 97]
 DEBUG: f_getvar: var=[height] value=[8] r=0
 DEBUG: f_getvar: var=[width] value=[97] r=0
 DEBUG: machdep.bootmethod=[UEFI]
+DEBUG: f_getvar: var=[nonInteractive] value=[] r=1
+DEBUG: f_dialog_max_size: bsddialog --print-maxsize = [MaxSize: 27, 97]
+DEBUG: f_getvar: var=[height] value=[19] r=0
+DEBUG: f_getvar: var=[width] value=[59] r=0
+DEBUG: f_getvar: var=[rows] value=[12] r=0
+DEBUG: f_getvar: var=[menu_choice] value=[E Encrypt Disks?] r=0
+DEBUG: retval=0 mtag=[E Encrypt Disks?]
 DEBUG: f_getvar: var=[nonInteractive] value=[] r=1
 DEBUG: f_dialog_max_size: bsddialog --print-maxsize = [MaxSize: 27, 97]
 DEBUG: f_getvar: var=[height] value=[19] r=0
@@ -1490,8 +1488,29 @@ DEBUG: zfs_create_diskpart: zpool labelclear -f "/dev/ada0p4"
 DEBUG: zfs_create_diskpart: retval=0 <no output>
 DEBUG: zfs_create_diskpart: printf "$FSTAB_FMT" "/dev/ada0p3" "none" "swap" "sw" "0" "0" >> "/tmp/bsdinstall_etc/fstab"
 DEBUG: zfs_create_diskpart: retval=0 <no output>
+DEBUG: zfs_create_boot: kldload aesni
+DEBUG: zfs_create_boot: retval=1 <output below>
+kldload: can't load aesni: module already loaded or in kernel
+DEBUG: f_dialog_max_size: bsddialog --print-maxsize = [MaxSize: 27, 97]
+DEBUG: f_getvar: var=[height1] value=[8] r=0
+DEBUG: f_getvar: var=[width1] value=[97] r=0
+DEBUG: f_dialog_max_size: bsddialog --print-maxsize = [MaxSize: 27, 97]
+DEBUG: f_getvar: var=[height2] value=[8] r=0
+DEBUG: f_getvar: var=[width2] value=[56] r=0
+DEBUG: f_dialog_max_size: bsddialog --print-maxsize = [MaxSize: 27, 97]
+DEBUG: f_getvar: var=[height] value=[4] r=0
+DEBUG: f_getvar: var=[width] value=[46] r=0
+DEBUG: zfs_create_boot: geli init -bg -e AES-XTS -J - -l 256 -s 4096 "ada0p4"
+DEBUG: zfs_create_boot: retval=0 <output below>
+
+Metadata backup for provider ada0p4 can be found in /var/backups/ada0p4.eli
+and can be restored with the following command:
+
+	# geli restore /var/backups/ada0p4.eli ada0p4
+DEBUG: zfs_create_boot: geli attach -j - "ada0p4"
+DEBUG: zfs_create_boot: retval=0 <no output>
 DEBUG: zfs_create_boot: Creating root pool...
-DEBUG: zfs_create_boot: zpool create -o altroot=/mnt -O compression=on -O atime=off -m none -f "zroot"   ada0p4
+DEBUG: zfs_create_boot: zpool create -o altroot=/mnt -O compression=on -O atime=off -m none -f "zroot"   ada0p4.eli
 DEBUG: zfs_create_boot: retval=0 <no output>
 DEBUG: zfs_create_boot: Creating ZFS datasets...
 DEBUG: zfs_create_boot: zfs create -o mountpoint=none "zroot/ROOT"
@@ -1552,29 +1571,45 @@ DEBUG: zfs_create_boot: echo "kern.geom.label.gptid.enable=\"0\"" >> "/tmp/bsdin
 DEBUG: zfs_create_boot: retval=0 <no output>
 DEBUG: zfs_create_boot: echo "vfs.zfs.vdev.min_auto_ashift=12" >> "/tmp/bsdinstall_etc/sysctl.conf.zfs"
 DEBUG: zfs_create_boot: retval=0 <no output>
+DEBUG: zfs_create_boot: Configuring disk encryption...
+DEBUG: zfs_create_boot: echo "aesni_load=\"YES\"" >> "/tmp/bsdinstall_boot/loader.conf.aesni"
+DEBUG: zfs_create_boot: retval=0 <no output>
+DEBUG: zfs_create_boot: echo "geom_eli_load=\"YES\"" >> "/tmp/bsdinstall_boot/loader.conf.geli"
+DEBUG: zfs_create_boot: retval=0 <no output>
 DEBUG: dialog.subr: DEBUG_SELF_INITIALIZE=[]
-DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.0-RELEASE]
+DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.1-RELEASE]
 DEBUG: common.subr: Successfully loaded.
 DEBUG: f_debug_init: ARGV=[mount] GETOPTS_STDARGS=[dD:]
 DEBUG: f_debug_init: debug=[1] debugFile=[/tmp/bsdinstall_log]
 DEBUG: Running installation step: mount 
 DEBUG: dialog.subr: DEBUG_SELF_INITIALIZE=[]
-DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.0-RELEASE]
+DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.1-RELEASE]
 DEBUG: common.subr: Successfully loaded.
 DEBUG: dialog.subr: DEBUG_SELF_INITIALIZE=[]
-DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.0-RELEASE]
+DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.1-RELEASE]
+DEBUG: common.subr: Successfully loaded.
+DEBUG: f_debug_init: ARGV=[mount_aux] GETOPTS_STDARGS=[dD:]
+DEBUG: f_debug_init: debug=[1] debugFile=[/tmp/bsdinstall_log]
+DEBUG: Running installation step: mount_aux 
+DEBUG: dialog.subr: DEBUG_SELF_INITIALIZE=[]
+DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.1-RELEASE]
+DEBUG: common.subr: Successfully loaded.
+DEBUG: dialog.subr: DEBUG_SELF_INITIALIZE=[]
+DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.1-RELEASE]
 DEBUG: common.subr: Successfully loaded.
 DEBUG: f_debug_init: ARGV=[pkgbase] GETOPTS_STDARGS=[dD:]
 DEBUG: f_debug_init: debug=[1] debugFile=[/tmp/bsdinstall_log]
 DEBUG: Running installation step: pkgbase 
+pkg: Failed to fetch https://pkg.FreeBSD.org/FreeBSD:15:amd64/base_release_1/./Hashed/FreeBSD-kernel-generic-dbg-15.1p2: Timeout was reached
+pkg: Failed to fetch https://pkg.FreeBSD.org/FreeBSD:15:amd64/base_release_1/./Hashed/FreeBSD-kernel-generic-dbg-15.1p2: Timeout was reached
 DEBUG: dialog.subr: DEBUG_SELF_INITIALIZE=[]
-DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.0-RELEASE]
+DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.1-RELEASE]
 DEBUG: common.subr: Successfully loaded.
 DEBUG: f_debug_init: ARGV=[bootconfig] GETOPTS_STDARGS=[dD:]
 DEBUG: f_debug_init: debug=[1] debugFile=[/tmp/bsdinstall_log]
 DEBUG: Running installation step: bootconfig 
 DEBUG: dialog.subr: DEBUG_SELF_INITIALIZE=[]
-DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.0-RELEASE]
+DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.1-RELEASE]
 DEBUG: common.subr: Successfully loaded.
 DEBUG: /usr/libexec/bsdinstall/bootconfig: loading_includes...
 DEBUG: f_include: file=[/usr/share/bsdconfig/dialog.subr]
@@ -1655,13 +1690,13 @@ DEBUG: variable.subr: VARIABLE_SELF_INITIALIZE=[1]
 DEBUG: f_variable_set_defaults: Initializing defaults...
 DEBUG: f_getvar: var=[debug] value=[1] r=0
 DEBUG: f_getvar: var=[editor] value=[/usr/bin/ee] r=0
-DEBUG: f_getvar: var=[hostname] value=[] r=0
+DEBUG: f_getvar: var=[hostname] value=[besk] r=0
 DEBUG: f_getvar: var=[MEDIA_TIMEOUT] value=[300] r=0
 DEBUG: f_getvar: var=[nfs_reserved_port_only] value=[NO] r=0
 DEBUG: f_getvar: var=[nfs_use_tcp] value=[NO] r=0
 DEBUG: f_getvar: var=[nfs_use_v3] value=[YES] r=0
 DEBUG: f_getvar: var=[PKG_TMPDIR] value=[/var/tmp] r=0
-DEBUG: f_getvar: var=[releaseName] value=[15.0-RELEASE] r=0
+DEBUG: f_getvar: var=[releaseName] value=[15.1-RELEASE] r=0
 DEBUG: f_variable_set_defaults: Defaults initialized.
 DEBUG: variable.subr: Successfully loaded.
 DEBUG: f_include_lang: file=[/usr/libexec/bsdconfig/include/messages.subr] lang=[C.UTF-8]
@@ -1672,52 +1707,51 @@ DEBUG: f_dialog_init: dialog(1) API initialized.
 DEBUG: dialog.subr: Successfully loaded.
 DEBUG: Installing loader.efi onto ESP
 DEBUG: Creating UEFI boot entry
-efibootmgr: Cannot translate unix loader path '\tmp\bsdinstall-esp.USjdoINiW4\' to UEFI: No such file or directory
 DEBUG: Finished configuring ESP
 DEBUG: dialog.subr: DEBUG_SELF_INITIALIZE=[]
-DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.0-RELEASE]
+DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.1-RELEASE]
 DEBUG: common.subr: Successfully loaded.
 DEBUG: f_debug_init: ARGV=[rootpass] GETOPTS_STDARGS=[dD:]
 DEBUG: f_debug_init: debug=[1] debugFile=[/tmp/bsdinstall_log]
 DEBUG: Running installation step: rootpass 
 DEBUG: dialog.subr: DEBUG_SELF_INITIALIZE=[]
-DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.0-RELEASE]
+DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.1-RELEASE]
 DEBUG: common.subr: Successfully loaded.
 DEBUG: dialog.subr: DEBUG_SELF_INITIALIZE=[]
-DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.0-RELEASE]
+DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.1-RELEASE]
 DEBUG: common.subr: Successfully loaded.
 DEBUG: f_debug_init: ARGV=[time] GETOPTS_STDARGS=[dD:]
 DEBUG: f_debug_init: debug=[1] debugFile=[/tmp/bsdinstall_log]
 DEBUG: Running installation step: time 
 DEBUG: dialog.subr: DEBUG_SELF_INITIALIZE=[]
-DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.0-RELEASE]
+DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.1-RELEASE]
 DEBUG: common.subr: Successfully loaded.
 DEBUG: dialog.subr: DEBUG_SELF_INITIALIZE=[]
-DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.0-RELEASE]
+DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.1-RELEASE]
 DEBUG: common.subr: Successfully loaded.
 DEBUG: f_debug_init: ARGV=[services] GETOPTS_STDARGS=[dD:]
 DEBUG: f_debug_init: debug=[1] debugFile=[/tmp/bsdinstall_log]
 DEBUG: Running installation step: services 
 DEBUG: dialog.subr: DEBUG_SELF_INITIALIZE=[]
-DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.0-RELEASE]
+DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.1-RELEASE]
 DEBUG: common.subr: Successfully loaded.
 DEBUG: dialog.subr: DEBUG_SELF_INITIALIZE=[]
-DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.0-RELEASE]
+DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.1-RELEASE]
 DEBUG: common.subr: Successfully loaded.
 DEBUG: f_debug_init: ARGV=[hardening] GETOPTS_STDARGS=[dD:]
 DEBUG: f_debug_init: debug=[1] debugFile=[/tmp/bsdinstall_log]
 DEBUG: Running installation step: hardening 
 DEBUG: dialog.subr: DEBUG_SELF_INITIALIZE=[]
-DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.0-RELEASE]
+DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.1-RELEASE]
 DEBUG: common.subr: Successfully loaded.
 DEBUG: dialog.subr: DEBUG_SELF_INITIALIZE=[]
-DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.0-RELEASE]
+DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.1-RELEASE]
 DEBUG: common.subr: Successfully loaded.
 DEBUG: f_debug_init: ARGV=[firmware] GETOPTS_STDARGS=[dD:]
 DEBUG: f_debug_init: debug=[1] debugFile=[/tmp/bsdinstall_log]
 DEBUG: Running installation step: firmware 
 DEBUG: dialog.subr: DEBUG_SELF_INITIALIZE=[]
-DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.0-RELEASE]
+DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.1-RELEASE]
 DEBUG: common.subr: Successfully loaded.
 DEBUG: /usr/libexec/bsdinstall/firmware: loading includes...
 DEBUG: f_include: file=[/usr/share/bsdconfig/dialog.subr]
@@ -1798,13 +1832,13 @@ DEBUG: variable.subr: VARIABLE_SELF_INITIALIZE=[1]
 DEBUG: f_variable_set_defaults: Initializing defaults...
 DEBUG: f_getvar: var=[debug] value=[1] r=0
 DEBUG: f_getvar: var=[editor] value=[/usr/bin/ee] r=0
-DEBUG: f_getvar: var=[hostname] value=[] r=0
+DEBUG: f_getvar: var=[hostname] value=[besk] r=0
 DEBUG: f_getvar: var=[MEDIA_TIMEOUT] value=[300] r=0
 DEBUG: f_getvar: var=[nfs_reserved_port_only] value=[NO] r=0
 DEBUG: f_getvar: var=[nfs_use_tcp] value=[NO] r=0
 DEBUG: f_getvar: var=[nfs_use_v3] value=[YES] r=0
 DEBUG: f_getvar: var=[PKG_TMPDIR] value=[/var/tmp] r=0
-DEBUG: f_getvar: var=[releaseName] value=[15.0-RELEASE] r=0
+DEBUG: f_getvar: var=[releaseName] value=[15.1-RELEASE] r=0
 DEBUG: f_variable_set_defaults: Defaults initialized.
 DEBUG: variable.subr: Successfully loaded.
 DEBUG: f_include_lang: file=[/usr/libexec/bsdconfig/include/messages.subr] lang=[C.UTF-8]
@@ -1831,7 +1865,7 @@ DEBUG: f_include: file=[/usr/share/bsdconfig/strings.subr]
 DEBUG: f_include: file=[/usr/share/bsdconfig/struct.subr]
 DEBUG: struct.subr: Successfully loaded.
 DEBUG: geom.subr: GEOM_SELF_SCAN_ALL=[1]
-DEBUG: geom.subr: Initialized 41 geom devices in 12 classes.
+DEBUG: geom.subr: Initialized 33 geom devices in 13 classes.
 DEBUG: geom.subr: Successfully loaded.
 DEBUG: f_include: file=[/usr/share/bsdconfig/strings.subr]
 DEBUG: f_include: file=[/usr/share/bsdconfig/struct.subr]
@@ -1844,28 +1878,22 @@ DEBUG: f_getvar: var=[height] value=[3] r=0
 DEBUG: f_getvar: var=[width] value=[59] r=0
 DEBUG: Found network device named re0
 DEBUG: Found network device named wlan0
+DEBUG: WARNING! Unable to classify GEOM device ada0p4.eli as media source
 DEBUG: WARNING! Unable to classify GEOM device ada0p4 as media source
-DEBUG: WARNING! Unable to classify GEOM device gptid/a82d6812-dc48-11f0-bdc7-54ab3adb3aee as media source
+DEBUG: WARNING! Unable to classify GEOM device gptid/4026f3cd-922a-11f1-b164-54ab3adb3aee as media source
 DEBUG: WARNING! Unable to classify GEOM device gpt/swap0 as media source
 DEBUG: WARNING! Unable to classify GEOM device ada0p3 as media source
-DEBUG: WARNING! Unable to classify GEOM device gptid/a8246ed1-dc48-11f0-bdc7-54ab3adb3aee as media source
+DEBUG: WARNING! Unable to classify GEOM device gptid/401e5abe-922a-11f1-b164-54ab3adb3aee as media source
 DEBUG: WARNING! Unable to classify GEOM device gpt/gptboot0 as media source
 DEBUG: WARNING! Unable to classify GEOM device ada0p2 as media source
 DEBUG: WARNING! Unable to classify GEOM device gpt/efiboot0 as media source
 DEBUG: WARNING! Unable to classify GEOM device ada0p1 as media source
-DEBUG: WARNING! Unable to classify GEOM device diskid/DISK-4CEDFB74A333E811497906C2p2 as media source
-DEBUG: WARNING! Unable to classify GEOM device diskid/DISK-4CEDFB74A333E811497906C2p1 as media source
-DEBUG: WARNING! Unable to classify GEOM device iso9660/15_0_RELEASE_AMD64_DVDp2 as media source
-DEBUG: WARNING! Unable to classify GEOM device iso9660/15_0_RELEASE_AMD64_DVDp1 as media source
+DEBUG: Found UFS partition labeled ufs/FreeBSD_Install
+DEBUG: Found UFS partition named da0s2a
 DEBUG: Found DOS partition labeled msdosfs/EFISYS
-DEBUG: WARNING! Unable to classify GEOM device gptid/ce1f65a8-cc22-11f0-1d08-61407e6af4da as media source
-DEBUG: WARNING! Unable to classify GEOM device gptid/ce1f6576-cc22-11f0-067b-ff9d86f8dced as media source
-DEBUG: WARNING! Unable to classify GEOM device diskid/DISK-4CEDFB74A333E811497906C2 as media source
-DEBUG: Found CDROM device labeled iso9660/15_0_RELEASE_AMD64_DVD
-DEBUG: WARNING! Unable to classify GEOM device da0p2 as media source
-DEBUG: WARNING! Unable to classify GEOM device da0p1 as media source
+DEBUG: WARNING! Unable to classify GEOM device da0s2 as media source
+DEBUG: WARNING! Unable to classify GEOM device da0s1 as media source
 DEBUG: Found disk device named da0
-DEBUG: Found CDROM device for disk da0
 DEBUG: Found disk device named ada0
 DEBUG: device.subr: Successfully loaded.
 DEBUG: f_include: file=[/usr/share/bsdconfig/media/common.subr]
@@ -2001,27 +2029,35 @@ DEBUG: f_getvar: var=[height] value=[8] r=0
 DEBUG: f_getvar: var=[width] value=[75] r=0
 DEBUG: f_getvar: var=[rows] value=[1] r=0
 DEBUG: f_getvar: var=[text] value=[wifi-firmware-iwlwifi-kmod-7000] r=0
-pkg: Repository FreeBSD-base has a wrong packagesite, need to re-create database
 DEBUG: dialog.subr: DEBUG_SELF_INITIALIZE=[]
-DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.0-RELEASE]
+DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.1-RELEASE]
 DEBUG: common.subr: Successfully loaded.
 DEBUG: f_debug_init: ARGV=[adduser] GETOPTS_STDARGS=[dD:]
 DEBUG: f_debug_init: debug=[1] debugFile=[/tmp/bsdinstall_log]
 DEBUG: Running installation step: adduser 
 DEBUG: dialog.subr: DEBUG_SELF_INITIALIZE=[]
-DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.0-RELEASE]
+DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.1-RELEASE]
 DEBUG: common.subr: Successfully loaded.
 DEBUG: dialog.subr: DEBUG_SELF_INITIALIZE=[]
-DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.0-RELEASE]
+DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.1-RELEASE]
 DEBUG: common.subr: Successfully loaded.
 DEBUG: f_debug_init: ARGV=[finalconfig] GETOPTS_STDARGS=[dD:]
 DEBUG: f_debug_init: debug=[1] debugFile=[/tmp/bsdinstall_log]
 DEBUG: Running installation step: finalconfig 
 DEBUG: dialog.subr: DEBUG_SELF_INITIALIZE=[]
-DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.0-RELEASE]
+DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.1-RELEASE]
 DEBUG: common.subr: Successfully loaded.
 DEBUG: dialog.subr: DEBUG_SELF_INITIALIZE=[]
-DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.0-RELEASE]
+DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.1-RELEASE]
+DEBUG: common.subr: Successfully loaded.
+DEBUG: f_debug_init: ARGV=[adduser] GETOPTS_STDARGS=[dD:]
+DEBUG: f_debug_init: debug=[1] debugFile=[/tmp/bsdinstall_log]
+DEBUG: Running installation step: adduser 
+DEBUG: dialog.subr: DEBUG_SELF_INITIALIZE=[]
+DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.1-RELEASE]
+DEBUG: common.subr: Successfully loaded.
+DEBUG: dialog.subr: DEBUG_SELF_INITIALIZE=[]
+DEBUG: UNAME_S=[FreeBSD] UNAME_P=[amd64] UNAME_R=[15.1-RELEASE]
 DEBUG: common.subr: Successfully loaded.
 DEBUG: f_debug_init: ARGV=[config] GETOPTS_STDARGS=[dD:]
 DEBUG: f_debug_init: debug=[1] debugFile=[/tmp/bsdinstall_log]

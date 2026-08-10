@@ -1,9 +1,9 @@
 # Decrease brightness (Arch: XF86, FreeBSD: F5)
-"xbacklight -dec 10"
+"sudo backlight decr 10"
     XF86MonBrightnessDown
 
 # Increase brightness
-"xbacklight -inc 10"
+"sudo backlight incr 10"
     XF86MonBrightnessUp
 
 # Free BSD
