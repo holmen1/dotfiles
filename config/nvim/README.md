@@ -110,7 +110,7 @@ Use `:bd` to close a buffer. Use `<leader><leader>` to search and switch buffers
 
 **Supported servers:**
 - **Arch Linux**: clangd, haskell-language-server, asm-lsp, lua-language-server, bash-language-server
-- **FreeBSD**: clangd, haskell-language-server (no bash-language-server, asm-lsp, or lua-language-server)
+- **FreeBSD**: clangd, haskell-language-server, lua-language-server (no bash-language-server, asm-lsp)
 
 [^1]: Requires quick typing to work properly.
 
@@ -358,18 +358,17 @@ This config bypasses Mason entirely - LSP servers are installed via system packa
 
 ### Install LSP Servers
 
-| Server | Arch | FreeBSD |
-|--------|------|---------|
-| clangd | `pacman -S clang` | `pkg install llvm` |
-| lua_ls | `pacman -S lua-language-server` | Build from source |
-| hls | `ghcup install hls` | `pkg install hs-haskell-language-server` |
+| Server | Artix  | FreeBSD |
+|--------|--------|---------|
+| clangd | `clang`| `llvm`  |
+| lua_ls | `lua-language-server` | lua-language-server |
+| hls    | `extra/haskell-language-server` | `hs-haskell-language-server` |
 
 ### Check Status
 
 ```vim
-:LspInfo              " View attached servers
 :LspLog               " Check for errors
-:checkhealth lsp      " Full diagnostics
+:checkhealth vim.lsp  " Full diagnostics
 ```
 
 ### Common Issues
