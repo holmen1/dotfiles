@@ -1,12 +1,18 @@
 shells/bash
+devel/bear
 ftp/curl
 x11/dmenu
 graphics/drm-kmod
 sysutils/fastfetch
 shells/fd
 graphics/feh
+lang/gcc
+devel/gdb
+lang/ghc
 devel/git
 devel/gmake
+devel/hs-cabal-install
+devel/hs-haskell-language-server
 sysutils/htop
 misc/lf
 devel/llvm
@@ -24,6 +30,7 @@ sysutils/tree
 graphics/viu
 net/wifi-firmware-iwlwifi-kmod
 x11/xbindkeys
+x11/xcape
 x11/xclip
 x11-wm/xcompmgr
 x11/xlibre

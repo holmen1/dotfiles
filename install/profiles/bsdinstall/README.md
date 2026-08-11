@@ -1,5 +1,16 @@
 # bsdinstall
 
+Similar artixinstall, using dwm, less features
+
+## Stack
+
+* Display server: XLibre (X11)
+* Window manager: dwm
+* Editor: Neovim
+* Terminal: st
+* File manager: lf
+* Dotfile linking: stow
+* Keymaps: setxkbmap / XKB
 
 ## Pre-installation
 
