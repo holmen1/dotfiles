@@ -15,7 +15,14 @@ sudo pacman -S xlibre-xserver xlibre-input-libinput
 ### FreeBSD
 ```
 sudo pkg install xlibre [xlibre-xf86-video-intel]
+startx -- -keeptty
 ```
+If you are testing the server directly, `X :1 vt8 -keeptty` is the same idea without `startx`.
+
+### FreeBSD: first startx only works with `-keeptty`
+On FreeBSD, XLibre can start cleanly but not receive input on the first `startx` attempt unless it keeps the controlling tty. Without `-keeptty`, libseat is disabled and seat ownership may not settle until a second launch, which looks like "run startx twice".
+
+Use `startx -- -keeptty` so X keeps the tty and libseat can hand input devices to the server correctly from the first launch.
 ---
 ## TROUBLESHOOTING
 
@@ -81,6 +88,10 @@ Installed: drm-kmod and xlibre-xf86-video-intel
 `/usr/local/etc/X11/xorg.conf.d/`
 [10-device.conf](10-device.conf)
 
+If `/etc/X11` is empty, that is fine on FreeBSD. XLibre still reads system snippets from `/usr/local/share/X11/xorg.conf.d/` and local overrides from `/usr/local/etc/X11/xorg.conf.d/`. If there are any `.conf` files under `/usr/local/share/X11/xorg.conf.d/` that mention GPU drivers, remove or rename the conflicting ones first; those are part of the active config search path and can override your intent.
+
+If you found NVIDIA snippets there but the logs never mention `nvidia`, they are probably not in play for this machine. The current logs only show Intel/modesetting/scfb/vesa, so those NVIDIA files are likely harmless leftovers rather than the cause.
+
 
 fastfetch:
 ```
@@ -106,4 +117,25 @@ Logs:
 [Xorg.0.first.log](Xorg.0.first.log)
 [Xorg.0.second.log](Xorg.0.second.log)
 
+**Why `-keeptty` matters here:** the first launch starts XLibre, but without keeping the controlling tty FreeBSD can leave libseat inactive during that session, so input does not arrive until a second `startx`. Passing `startx -- -keeptty` keeps the tty attached and lets XLibre claim the seat on the first try.
 
+**How this showed up in the logs:** the first log stops right after XLibre initializes, then shows `seat-libseat: libseat integration requires -keeptty`, followed by a GPU re-probe and a segfault while udev is still reshuffling `/dev/dri/card0`. The second log is the “already warmed up” path: X gets through device setup cleanly and stays up long enough to hand control to the session.
+
+**Why it worked before the backlight changes:** enabling ACPI/backlight support changed the kernel and device mix enough to expose the timing bug. With the older setup, XLibre likely stayed on the simpler path and never hit the bad first-launch seat/DRM rebind window; after the backlight tweak, the first launch became sensitive to the exact tty/seat handoff, so it started needing the second try.
+**Backlight setup verdict:** the FreeBSD backlight changes are sound. `acpi_video_load="YES"` is the right kind of change for brightness keys, and it is separate from XLibre itself. You do not need the whole `install/profiles/bsdinstall/packages/besk` package set for backlight; most of it is normal desktop tooling. For graphics you only need the X stack pieces (`drm-kmod` plus the XLibre server, and `xlibre-xf86-video-intel` if you want the Intel DDX).
+
+**About `10-device.conf`:** it is not required for brightness. It only forces XLibre to use the Intel driver on this machine. The logs show XLibre can discover `/dev/dri/card0` and the Intel GPU by itself, so the file is a preference/override, not a backlight fix. Keep it only if you want to pin the Intel driver; otherwise XLibre should be able to auto-configure from the hardware.
+
+Fun fact: pinning `modesetting` failed, which is a good sign that the Intel DDX is the safer choice here.
+
+New `-keeptty` logs show the seat problem is no longer the blocker. The first run now dies later with `modeset(1): drmSetMaster failed: Device busy` and `AddScreen/ScreenInit failed for driver 1`. That means XLibre is successfully getting far enough to initialize the Intel screen, but then a second autoconfigured driver (`modesetting`) tries to take DRM master on the same card and loses.
+
+So the remaining issue is driver collision during XLibre autoconfig, not the backlight change. `10-device.conf` only nudges the Intel driver; it does not stop XLibre from also probing modesetting/scfb/vesa. The backlight setup itself is still sound.
+
+You removing `10-device.conf` makes sense: the behavior is the same either way, so it was not the cause. The wallpaper flash before the crash is also a useful clue — XLibre is getting far enough to set the framebuffer and briefly present the root window, then dying after the screen/DRM handoff. That matches a late driver/DRM-master failure, not a pure backlight or font problem.
+
+**Next step:** stop XLibre from autoloading extra GPU paths and retest with one driver only. The log already shows Intel is viable and `modesetting` is the one losing DRM master, so the cleanest experiment is a temporary config that disables GPU auto-add and leaves only the Intel path. If that boots, the bug is confirmed as multi-driver autoconfig; if it still fails, the remaining candidate is the Intel DDX itself or FreeBSD's DRM handoff.
+
+This is not just you: similar `drmSetMaster failed: Device or resource busy` reports exist upstream in XLibre (`X11Libre/xserver` issues #1565 and #3332), and there is also a FreeBSD/libseat-related thread (#1753) about drivers breaking under seatd.
+
+**Workaround split:** `startx -- -keeptty` and the temporary `ServerFlags` tweak solve different layers. `-keeptty` keeps the tty/seat path sane; `ServerFlags` is only for GPU probing/collision. If `ServerFlags` does not change behavior on this box, drop it. If `-keeptty` is required for the first session to even reach the screen, keep it.

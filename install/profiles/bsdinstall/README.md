@@ -55,7 +55,7 @@ Log in as root
 ```bash
 sudo pkg install xlibre [xlibre-xf86-video-intel]
 echo "exec xterm" > ~/.xinitrc
-startx
+startx -- -keeptty
 ```
 [TROUBLESHOOTING XLIBRE](../../build/xlibre/README.md)
 
@@ -329,4 +329,3 @@ See [LESSONS_LEARNED.md](LESSONS_LEARNED.md) for general FreeBSD installation le
 - mount -t msdosfs
 - GNU make vs BSD make — Use `gmake` for GNU Makefiles; FreeBSD's default `make` is BSD make with different syntax
 - Header ordering in C network programming — On FreeBSD, include `<sys/types.h>` before `<sys/socket.h>` and other network headers to avoid compilation errors
-

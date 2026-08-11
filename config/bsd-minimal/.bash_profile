@@ -24,5 +24,6 @@ if [[ -z $DISPLAY ]] && { [[ $(tty) = /dev/tty1 ]] || [[ $(tty) = /dev/ttyv0 ]];
     
     # Clear terminal completely before starting X to prevent artifacts
     clear
-    exec startx
+    # XLibre on FreeBSD needs a kept tty so libseat stays active on first start.
+    exec startx -- -keeptty
 fi
