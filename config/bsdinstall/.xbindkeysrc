@@ -1,0 +1,8 @@
+# Decrease brightness
+"sudo backlight decr 10"
+    XF86MonBrightnessDown
+
+# Increase brightness
+"sudo backlight incr 10"
+    XF86MonBrightnessUp
+

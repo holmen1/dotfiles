@@ -18,7 +18,6 @@ INSTALL_SCRIPT=$CONFIG_DIR/"$PROFILE"install/.scripts/install-pkg.sh
 PKGLIST=$PROFILE_DIR/packages/$PKGPROFILE/pkglist.txt
 FPKGLIST=$PROFILE_DIR/packages/$PKGPROFILE/foreignpkglist.txt
 
-XMONAD_DIR=$BUILD_DIR/xmonad
 ST_DIR=$BUILD_DIR/st
 XKB_DIR=$BUILD_DIR/xkb
 
@@ -57,28 +56,6 @@ case "$ans" in
     $INSTALL_SCRIPT $PKGLIST
     ;;
 esac
-
-read -p "Build xmonad? [y/N] " ans
-case "$ans" in
-    [Yy]*)
-    # Build Xmonad
-    $XMONAD_DIR/build-xmonad.sh
-    ;;
-esac
-
-read -p "Install xmonad? [y/N] " ans
-case "$ans" in
-    [Yy]*)
-    sudo mkdir -p /opt/xmonad
-    sudo rm -f /opt/xmonad/*
-
-    sudo cp -f $XMONAD_DIR/bin/xmonad-v0.18.[0-9] /opt/xmonad/
-    echo "Installed xmonad to /opt/xmonad/"
-    sudo ln -sf /opt/xmonad/xmonad-v0.18.* /usr/local/bin/xmonad
-    echo "Created symlink for xmonad"
-    ;;
-esac
-sudo -k
 
 read -p "Build st? [y/N] " ans
 case "$ans" in

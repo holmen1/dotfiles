@@ -85,8 +85,8 @@ check_command "st" "Terminal emulator"
 
 check_file "$HOME/.xinitrc" ".xinitrc file"
 
-# Power Management
-print_header "Power Management"
+# User
+print_header "User"
 if groups | grep -q "wheel"; then
     print_pass "User in wheel group"
 
@@ -105,7 +105,6 @@ print_header "Key Bindings & Input"
 check_command "xbindkeys" "Key binding daemon"
 check_file "$HOME/.xbindkeysrc" "xbindkeys configuration" "warning"
 check_file "$HOME/.cache/custom-keymap.xkb" "XKB configuration" "warning"
-check_command "backlight" "Brightness control (FreeBSD)"
 
 # XKB (optional, warn only) TODO
 
@@ -160,7 +159,7 @@ fi
 
 # X11 Libraries
 print_header "X11 Dependencies"
-check_command "xsetroot" "X11 root window cursor/background utility"
+check_command "xwallpaper" "X11 background utility"
 check_command "xcompmgr" "X11 simple compositor"
 
 # Repository Structure
@@ -173,7 +172,7 @@ if [ -d "$HOME/repos/dotfiles" ]; then
     else
         print_fail "Dotfiles configuration directory missing"
     fi
-    if [ -d "$HOME/repos/dotfiles/config/bsd-minimal" ]; then
+    if [ -d "$HOME/repos/dotfiles/config/bsdinstall" ]; then
         print_pass "Scripts directory exists"
     else
         print_warn "Scripts directory not found"
@@ -186,6 +185,7 @@ fi
 # Test Key Functionalities
 print_header "Functional Tests"
 check_command "lf" "File manager"
+check_command "backlight" "Brightness control (FreeBSD)"
 
 
 # Summary

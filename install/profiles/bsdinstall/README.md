@@ -161,36 +161,12 @@ Run the sanity check script to verify your installation:
 
 This script verifies:
 - Essential commands (git, ssh, xmonad, xterm)
-- XMonad custom binary and configuration
-- Screen locking (i3lock) functionality  
 - Power management (wheel group, passwordless shutdown)
 - System monitoring services
 - Key bindings and input controls
-- Screenshot functionality (scrot, Downloads directory)
 - Dotfile symlinks
 - Git and SSH configuration
 - Repository structure
-
-
-### Install Haskell
-If ghcup has issues on FreeBSD 15, use native packages:
-```bash
-sudo pkg update
-sudo pkg install ghc cabal-install haskell-language-server
-```
-
-Verify:
-```bash
-ghc --version
-cabal --version
-haskell-language-server --version
-```
-
-Add to your shell config:
-```bash
-export PATH="$HOME/.cabal/bin:$PATH"
-```
-
 
 ### Building from Ports (For Custom/Latest Builds)
 
@@ -207,32 +183,6 @@ sudo git clone --depth 1 https://git.freebsd.org/ports.git /usr/ports
 
 # Update existing ports tree
 sudo git -C /usr/ports pull
-```
-
-#### Building XLibre (X.Org Replacement)
-XLibre is a fork of X.Org that must be built from ports. This replaces the standard X11 implementation.
-
-**Important:** Remove conflicting X.Org packages before installing xlibre:
-```bash
-# Check for conflicts
-pkg info | grep -E 'xorg-server|xf86-'
-
-# Remove X.Org packages if present
-sudo pkg delete -f xorg-server xf86-input-libinput xf86-video-intel
-```
-
-**Build and install xlibre:**
-```bash
-# Install dependencies from binary packages (faster)
-cd /usr/ports/x11/xlibre-minimal
-make all-depends-list | cut -d/ -f5- | xargs sudo pkg install -y
-
-# Build xlibre server
-sudo make install clean
-
-# Install display driver (required for graphics to work)
-cd /usr/ports/x11-drivers/xlibre-xf86-video-intel  # or xf86-video-vesa for generic
-sudo make install clean
 ```
 
 #### Resolving Package Conflicts
@@ -315,9 +265,7 @@ pkg query -e '%a = 0' '%R %o' | awk '$1 != "FreeBSD-ports" && $1 != "FreeBSD-bas
 
 # LESSONS LEARNED
 
-See [install/build/xlibre/LESSONS_LEARNED.md](../build/xlibre/LESSONS_LEARNED.md) for XLibre-specific lessons learned.
-
-See [LESSONS_LEARNED.md](LESSONS_LEARNED.md) for general FreeBSD installation lessons learned.
+See [install/build/xlibre/LESSONS_LEARNED.md](../../../build/xlibre/README.md) for XLibre-specific lessons learned.
 
 ---
 

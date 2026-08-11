@@ -1,16 +1,10 @@
-# Decrease brightness (Arch: XF86, FreeBSD: F5)
+# Decrease brightness
 "xbacklight -dec 10"
     XF86MonBrightnessDown
 
 # Increase brightness
 "xbacklight -inc 10"
     XF86MonBrightnessUp
-
-# Free BSD
-#"backlight decr 10"
-#    F5
-#"backlight incr 10"
-#    F6
 
 # Simple Volume Controls
 "amixer sset Master 10%+"
