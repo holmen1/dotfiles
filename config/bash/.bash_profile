@@ -10,6 +10,7 @@ echo -n ""
 if [[ -z $DISPLAY ]] && { [[ $(tty) = /dev/tty1 ]] || [[ $(tty) = /dev/ttyv0 ]]; }; then
     clear
     echo "" # Add a newline for spacing
+    fastfetch --logo "none"
     echo "" # Add a newline for spacing
 
     for i in {6..1}; do
