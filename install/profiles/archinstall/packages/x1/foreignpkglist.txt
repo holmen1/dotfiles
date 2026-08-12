@@ -1,7 +1,0 @@
-asm-lsp
-brave-bin
-mullvad-vpn-cli
-visual-studio-code-bin
-xlibre-input-libinput
-xlibre-xserver
-yay

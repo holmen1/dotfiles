@@ -1,4 +1,0 @@
-brave-bin
-mullvad-vpn-cli
-visual-studio-code-bin
-yay

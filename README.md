@@ -16,7 +16,7 @@ are handled by swapping stow packages in `links.config`, not by conditionals ins
 ## Stack
 
 * Display server: XLibre (X11)
-* Window manager: Xmonad
+* Window manager: Artix/Xmonad, FreeBSD/dwm
 * Menus: dmenu
 * Editor: Neovim
 * Terminal: st
@@ -149,7 +149,6 @@ dotfiles/
     └── profiles        # Distro-specific installers
         ├── artixinstall
         ├── bsdinstall
-        ├── debianinstall
         └── ...
 ```
 
