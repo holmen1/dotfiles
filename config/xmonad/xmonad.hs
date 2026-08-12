@@ -36,7 +36,13 @@ myScratchpads terminal browser =
 -- Removes the borders from a window under one of the following conditions:
 -- There is only one screen and only one window
 -- A floating window covers the entire screen
-myLayout = smartBorders $ layoutHook def
+newRatioLayout = tiled ||| Mirror tiled ||| Full
+  where
+     tiled   = Tall nmaster delta ratio
+     nmaster = 1
+     ratio   = 11/20
+     delta   = 3/100
+myLayout = smartBorders $ newRatioLayout
 
 myManageHook terminal browser = namedScratchpadManageHook (myScratchpads terminal browser)
 
@@ -63,9 +69,9 @@ myKeys terminal browser =
     ((myModMask, xK_s), spawn "scrot ~/Downloads/screenshot_%Y-%m-%d_%H-%M-%S.png"),
     ((myModMask .|. shiftMask, xK_s), unGrab >> spawn "scrot -s ~/Downloads/screenshot_%Y-%m-%d_%H-%M-%S.png"),
     -- scripts
-    ((myModMask, xK_x), spawn "~/.scripts/xkb-toggle.sh"),
+    ((myModMask, xK_x), spawn "xkb-toggle"),
     -- dmenu scripts
-    ((myModMask, xK_m), spawn "~/.scripts/dmenu-menu.sh"),
+    ((myModMask, xK_m), spawn "dmenu-menu"),
     ((myModMask, xK_w), namedScratchpadAction (myScratchpads terminal browser) "browser"),
     ((myModMask, xK_p), namedScratchpadAction (myScratchpads terminal browser) "htop")
   ]

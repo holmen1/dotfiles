@@ -34,6 +34,8 @@ check_cmd st
 check_cmd stow
 check_cmd dmenu
 check_cmd nvim
+check_cmd dmenu-menu
+check_cmd xkb-toggle
 
 hdr "X session"
 check_cmd startx

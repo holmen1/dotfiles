@@ -102,7 +102,7 @@ alias gr='git restore'
 alias gcl='git clone'
 alias gsta='git stash -u'
 alias gstp='git stash pop'
-gat() {git tag -a "$1" -m "$2"} # Annotated tag
+gat() { git tag -a "$1" -m "$2" ; } # Annotated tag
 # Then: git push origin vX.X
 
 ### Prompt

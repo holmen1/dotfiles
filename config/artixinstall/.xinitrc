@@ -43,7 +43,7 @@ xrandr --auto
 
 # Set a nice background using xwallpaper if available
 if command -v xwallpaper >/dev/null 2>&1; then
-    xwallpaper --zoom ~/.scripts/plasma_darkesthour1920x1200.jpg &
+    xwallpaper --zoom ~/.config/wallpapers/plasma_darkesthour1920x1200.jpg &
 else
     echo "Warning: xwallpaper not installed, wallpaper not set by .xinitrc"
 fi

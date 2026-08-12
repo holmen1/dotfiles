@@ -116,6 +116,16 @@ case "$ans" in
     ;;
 esac
 
+read -p "Link menu and xkbtoggle? [y/N] " ans
+case "$ans" in
+    [Yy]*)
+    # Used by dwm
+    sudo ln -sf "$CONFIG_DIR/common/.scripts/dmenu-menu.sh" /usr/local/bin/dmenu-menu
+    sudo ln -sf "$CONFIG_DIR/xkb/.scripts/xkb-toggle.sh" /usr/local/bin/xkb-toggle
+    ;;
+esac
+sudo -k
+
 read -p "Enable services? [y/N] " ans
 case "$ans" in
     [Yy]*)

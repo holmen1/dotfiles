@@ -100,8 +100,8 @@ read -p "Link menu and xkbtoggle? [y/N] " ans
 case "$ans" in
     [Yy]*)
     # Used by dwm
-    sudo ln -s "$DOTFILES_DIR/common/.scripts/dmenu-menu.sh" /usr/local/bin/dmenu-menu
-    sudo ln -s "$DOTFILE_DIR/xkb/.scripts/xkb-toggle.sh" /usr/local/bin/xkb-toggle
+    sudo ln -sf "$CONFIG_DIR/common/.scripts/dmenu-menu.sh" /usr/local/bin/dmenu-menu
+    sudo ln -sf "$CONFIG_DIR/xkb/.scripts/xkb-toggle.sh" /usr/local/bin/xkb-toggle
     ;;
 esac
 
