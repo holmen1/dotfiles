@@ -16,6 +16,9 @@ check_optional xsetroot
 check_optional feh
 check_optional dunst
 
+# Set environment variables for applications (before `lf` starts)
+export EDITOR=nvim
+
 # Set keymap (don't background - fast and should complete before apps start)
 setxkbmap se
 echo "se" > "$HOME/.cache/xkb-layout" # Cache current layout for dmenu status script
