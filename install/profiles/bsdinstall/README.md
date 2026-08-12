@@ -6,6 +6,7 @@ Similar artixinstall, using dwm, less features
 
 * Display server: XLibre (X11)
 * Window manager: dwm
+* Menus: dmenu
 * Editor: Neovim
 * Terminal: st
 * File manager: lf
@@ -89,6 +90,19 @@ mkdir repos
 git clone git@github.com:holmen1/dotfiles.git
 ```
 
+#### Run install script
+
+Press enter to skip steps, `y` as shown below.
+This will:
+- Install pkglist
+- Build and install `st`
+- Link dotfiles
+- Link utils to `/usr/local/bin`
+- Run sanity check
+```
+cd ~/repos/dotfiles/install/bsdinstall
+./configure_build_install_link.sh
+```
 
 ## Diaster recovery
 

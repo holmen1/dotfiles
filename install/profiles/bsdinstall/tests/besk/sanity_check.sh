@@ -106,8 +106,6 @@ check_command "xbindkeys" "Key binding daemon"
 check_file "$HOME/.xbindkeysrc" "xbindkeys configuration" "warning"
 check_file "$HOME/.cache/custom-keymap.xkb" "XKB configuration" "warning"
 
-# XKB (optional, warn only) TODO
-
 # Dotfiles Symlinks
 print_header "Dotfile Symlinks"
 # Check common dotfile symlinks
@@ -186,6 +184,8 @@ fi
 print_header "Functional Tests"
 check_command "lf" "File manager"
 check_command "backlight" "Brightness control (FreeBSD)"
+check_command "dmenu-menu" "Menu"
+check_command "xkb-toggle" "XKB toggle"
 
 
 # Summary

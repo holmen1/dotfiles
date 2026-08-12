@@ -37,7 +37,9 @@ Some patches may fail if the source has changed, then review any .rej files and 
 |------------|------------|
 | M-ENTER    | terminal   |
 | M-Q        | kill window|
-| M-E        | explorer   |
+| M-M        | menu       |
+| M-E        | filemanager|
+| M-X        | toggle xkb |
 | M-S-Q      | exit       |
 
 Based on [dwm](https://st.suckless.org/) from the suckless.org team.
