@@ -27,7 +27,7 @@ xrandr --auto
 
 # Set a nice background using xwallpaper if available
 if command -v xwallpaper >/dev/null 2>&1; then
-    xwallpaper --zoom "$HOME/repos/dotfiles/config/common/.scripts/plasma_darkesthour1920x1200.jpg" &
+    xwallpaper --zoom "$HOME/.config/wallpapers/plasma_darkesthour1920x1200.jpg" &
 else
     echo "Warning: xwallpaper not installed, wallpaper not set by .xinitrc"
 fi
@@ -41,6 +41,12 @@ fi
 if command -v xbindkeys >/dev/null 2>&1; then
     xbindkeys &
 fi
+
+# Start battery/wifi monitors in background
+[ -x "$HOME/.scripts/monitor-loop.sh" ] && $HOME/.scripts/monitor-loop.sh &
+
+# Let background processes initialize
+sleep 0.2
 
 exec dwm
 
