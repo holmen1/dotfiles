@@ -50,7 +50,7 @@ Run and follow the prompts
 (current artixinstall require manual build and install of: xlibre, ghc, xmonad **NB**):
 
 ```sh
-./configure_build_install_link.sh
+./configure-build-install-link.sh
 ```
 
 Prompts per step:
@@ -155,7 +155,7 @@ dotfiles/
 where every distro structured uniformly
 ```bash
 artixinstall/
-├── configure_build_install_link.sh
+├── configure-build-install-link.sh
 ├── links
 |   └── gadsden
 │       └── links.config

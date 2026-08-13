@@ -16,35 +16,24 @@ LINKS=$PROFILE_DIR/links/$PKGPROFILE/links.config
 
 INSTALL_SCRIPT=$CONFIG_DIR/"$PROFILE"install/.scripts/install-pkg.sh
 PKGLIST=$PROFILE_DIR/packages/$PKGPROFILE/pkglist.txt
-FPKGLIST=$PROFILE_DIR/packages/$PKGPROFILE/foreignpkglist.txt
 
 ST_DIR=$BUILD_DIR/st
+DWM_DIR=$BUILD_DIR/dwm
 XKB_DIR=$BUILD_DIR/xkb
 
 TEST=$PROFILE_DIR/tests/$COMPUTERNAME/sanity_check.sh
 
-USER=$(whoami)
-EMAIL=$USER@gmail.com
-
 read -p "Configure git? [y/N] " ans
 case "$ans" in
     [Yy]*)
-    # Configure git
-    git config --global user.name "$USER"
-    git config --global user.email "$EMAIL"
+    $COMMON_DIR/configure-git.sh
     ;;
 esac
 
 read -p "Generate SSH key? [y/N] " ans
 case "$ans" in
     [Yy]*)
-# Generate ssh key
-    cd $HOME
-    mkdir -p .ssh
-    chmod 700 .ssh
-    ssh-keygen -t ed25519 -C "$EMAIL" -f $HOME/.ssh/id_ed25519
-    eval "$(ssh-agent -s)"
-    ssh-add $HOME/.ssh/id_ed25519
+    $COMMON_DIR/generate-ssh-key.sh
     ;;
 esac
 
@@ -76,6 +65,21 @@ case "$ans" in
     sudo ln -sf /opt/st/st-0.9.* /usr/local/bin/st
     sudo -k
     echo "Created symlink for st"
+    ;;
+esac
+sudo -k
+
+read -p "Build dwm? [y/N] " ans
+case "$ans" in
+    [Yy]*)
+    $DWM_DIR/build-dwm.sh
+    ;;
+esac
+
+read -p "Install dwm? [y/N] " ans
+case "$ans" in
+    [Yy]*)
+    $DWM_DIR/install-dwm.sh
     ;;
 esac
 sudo -k
@@ -115,3 +119,4 @@ case "$ans" in
     $TEST
     ;;
 esac
+

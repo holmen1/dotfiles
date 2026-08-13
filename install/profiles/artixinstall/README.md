@@ -465,7 +465,7 @@ This will:
 - Run sanity check
 ```
 cd ~/repos/dotfiles/install/artixinstall
-./configure_build_install_link.sh
+./configure-build-install-link.sh
 ```
 ```bash
 /home/holmen1/repos/dotfiles/install/artixinstall/packages/gadsden/pkglist.txt

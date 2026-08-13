@@ -101,7 +101,7 @@ This will:
 - Run sanity check
 ```
 cd ~/repos/dotfiles/install/bsdinstall
-./configure_build_install_link.sh
+./configure-build-install-link.sh
 ```
 
 ## Diaster recovery

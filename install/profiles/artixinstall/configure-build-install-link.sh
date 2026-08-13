@@ -16,7 +16,6 @@ LINKS=$PROFILE_DIR/links/$PKGPROFILE/links.config
 
 INSTALL_SCRIPT=$CONFIG_DIR/artixinstall/.scripts/install-pacman.sh
 PKGLIST=$PROFILE_DIR/packages/$PKGPROFILE/pkglist.txt
-FPKGLIST=$PROFILE_DIR/packages/$PKGPROFILE/foreignpkglist.txt
 
 XMONAD_DIR=$BUILD_DIR/xmonad
 ST_DIR=$BUILD_DIR/st
@@ -24,26 +23,17 @@ XKB_DIR=$BUILD_DIR/xkb
 
 TEST=$PROFILE_DIR/tests/$PKGPROFILE/sanity_check.sh
 
-USER=$(whoami)
-EMAIL=$USER@gmail.com
-
 read -p "Configure git? [y/N] " ans
 case "$ans" in
     [Yy]*)
-    git config --global user.name "$USER"
-    git config --global user.email "$EMAIL"
+    $COMMON_DIR/configure-git.sh
     ;;
 esac
 
 read -p "Generate SSH key? [y/N] " ans
 case "$ans" in
     [Yy]*)
-    cd ~
-    mkdir -p .ssh
-    chmod 700 .ssh
-    ssh-keygen -t ed25519 -C "$EMAIL" -f ~/.ssh/id_ed25519
-    eval "$(ssh-agent -s)"
-    ssh-add ~/.ssh/id_ed25519
+    $COMMON_DIR/generate-ssh-key.sh
     ;;
 esac
 
