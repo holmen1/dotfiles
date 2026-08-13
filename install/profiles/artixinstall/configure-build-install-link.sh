@@ -82,12 +82,7 @@ esac
 read -p "Install st? [y/N] " ans
 case "$ans" in
     [Yy]*)
-    sudo mkdir -p /opt/st
-    sudo rm -f /opt/st/*
-    sudo cp -f $ST_DIR/bin/st-0.9.[0-9] /opt/st/
-    sudo ln -sf /opt/st/st-0.9.* /usr/local/bin/st
-    sudo -k
-    echo "Created symlink for st"
+    $ST_DIR/install-st.sh
     ;;
 esac
 

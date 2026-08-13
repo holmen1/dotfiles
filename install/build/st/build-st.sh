@@ -7,26 +7,18 @@ ST_DIR="${HOME}/repos/dotfiles/install/build/st"
 BUILD_DIR="${ST_DIR}/st-patched"
 BIN_DIR="$ST_DIR/bin"
 
-
 # Enter source directory
 cd "${BUILD_DIR}"
 
-# Build and install
+# Build and local install
 echo "Building st..."
-make clean
-make
-
-# Copy binary to BIN_DIR for manual handling
-echo "Installing to $BIN_DIR"
-mkdir -p $BIN_DIR
-cp st "$BIN_DIR/st-$ST_VERSION"
-chmod +x "$BIN_DIR/st-$ST_VERSION"
+make clean install
 
 # Create compressed binary archive
 echo "Creating compressed binary archive..."
 cd "$BIN_DIR"
+cp st "st-$ST_VERSION"
 tar -czf "st-$ST_VERSION.tar.gz" "st-$ST_VERSION"
-
 echo "Binary: $BIN_DIR/st-$ST_VERSION"
 echo "Archive: $BIN_DIR/st-$ST_VERSION.tar.gz"
 
@@ -35,3 +27,4 @@ cd "$BUILD_DIR"
 make clean
 
 echo "Build complete - st binary ready for manual deployment"
+

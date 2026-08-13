@@ -3,6 +3,7 @@ st-0.9.*/
 
 # Exclude built binaries and archives
 bin/
+share/
 
 *.o
 
