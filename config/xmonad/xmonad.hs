@@ -4,7 +4,6 @@ import XMonad
 import XMonad.Actions.CycleWS
 import XMonad.Hooks.EwmhDesktops (ewmh, ewmhFullscreen)
 import XMonad.Hooks.FadeWindows
-import XMonad.Layout.NoBorders
 import XMonad.Operations (unGrab)
 import qualified XMonad.StackSet as W
 import XMonad.Util.EZConfig (additionalKeys)
@@ -12,7 +11,9 @@ import XMonad.Util.NamedScratchpad
 import XMonad.Util.SpawnOnce
 
 myModMask = mod1Mask
+
 myAppLauncher = "dmenu_run -fn 'JetBrainsMono Nerd Font:size=14' -nb '#222222' -nf '#bbbbbb' -sb '#A300A3' -sf '#eeeeee'"
+
 myMagenta = "#A300A3"
 
 myWorkspaces = map show [1 .. 4]
@@ -33,21 +34,19 @@ myScratchpads terminal browser =
       (customFloating $ W.RationalRect 0 0 1 1)
   ]
 
--- Removes the borders from a window under one of the following conditions:
--- There is only one screen and only one window
--- A floating window covers the entire screen
-newRatioLayout = tiled ||| Mirror tiled ||| Full
+myLayout = tiled ||| Mirror tiled ||| Full
   where
-     tiled   = Tall nmaster delta ratio
-     nmaster = 1
-     ratio   = 11/20
-     delta   = 3/100
-myLayout = smartBorders $ newRatioLayout
+    tiled = Tall nmaster delta ratio
+    nmaster = 1
+    ratio = 11 / 20
+    delta = 3 / 100
+
+myBorderWidth = 0
 
 myManageHook terminal browser = namedScratchpadManageHook (myScratchpads terminal browser)
 
 myStartupHook terminal = do
-  spawnOnce terminal  -- Start terminal on first launch only
+  spawnOnce terminal -- Start terminal on first launch only
 
 myFadeHook =
   composeAll
@@ -75,19 +74,19 @@ myKeys terminal browser =
     ((myModMask, xK_w), namedScratchpadAction (myScratchpads terminal browser) "browser"),
     ((myModMask, xK_p), namedScratchpadAction (myScratchpads terminal browser) "htop")
   ]
-  ++
-  -- mod-[1..9], Switch to workspace N
-  -- mod-shift-[1..9], Move client to workspace N and follow it
-  [ ((m .|. myModMask, k), windows $ f i)
-    | (i, k) <- zip myWorkspaces [xK_1 .. xK_9],
-      (f, m) <- [(W.greedyView, 0), (\ i w -> W.greedyView i (W.shift i w), shiftMask)]
-  ]
+    ++
+    -- mod-[1..9], Switch to workspace N
+    -- mod-shift-[1..9], Move client to workspace N and follow it
+    [ ((m .|. myModMask, k), windows $ f i)
+      | (i, k) <- zip myWorkspaces [xK_1 .. xK_9],
+        (f, m) <- [(W.greedyView, 0), (\i w -> W.greedyView i (W.shift i w), shiftMask)]
+    ]
 
 myConfig terminal browser =
   def
     { terminal = terminal,
       workspaces = myWorkspaces,
-      focusedBorderColor = myMagenta,
+      borderWidth = myBorderWidth,
       layoutHook = myLayout,
       manageHook = myManageHook terminal browser,
       startupHook = myStartupHook terminal,
