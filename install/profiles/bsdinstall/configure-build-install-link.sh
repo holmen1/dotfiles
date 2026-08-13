@@ -91,12 +91,15 @@ case "$ans" in
     ;;
 esac
 
+# TODO script
 read -p "Link menu and xkbtoggle? [y/N] " ans
 case "$ans" in
     [Yy]*)
     # Used by dwm
     sudo ln -sf "$CONFIG_DIR/common/.scripts/dmenu-menu.sh" /usr/local/bin/dmenu-menu
     sudo ln -sf "$CONFIG_DIR/xkb/.scripts/xkb-toggle.sh" /usr/local/bin/xkb-toggle
+    [ -L /usr/local/bin/dmenu-menu ] && echo "dmenu-menu linked"
+    [ -L /usr/local/bin/xkb-toggle ] && echo "xkb-toggle linked"
     ;;
 esac
 

@@ -17,9 +17,9 @@ are handled by swapping stow packages in `links.config`
 |                   | Artix         | FreeBSD   |                       
 |-------------------|---------------|-----------
 | Display server    | XLibre (X11)  | XLibre (X11)|
-| Window manager    | Xmonad        | FreeBSD/dwm|
+| Window manager    | Xmonad        | dwm       |
 | Menus             | dmenu         | dmenu     |
-| Editor            | Neovim        | Neovim    |
+| Editor / IDE      | Neovim        | Neovim    |
 | Terminal          | st            | st        |
 | File manager      | lf            | lf        |
 | Dotfile linking   | stow          | stow      |
@@ -29,10 +29,12 @@ are handled by swapping stow packages in `links.config`
 
 ## TL;DR
 
-0. **Install base system** of your choice
-[Artix Wiki](https://wiki.artixlinux.org/Main/Installation)  
-or  
-[Get FreeBSD](https://freebsd.org/where)
+0. **Get and install a base system** of your choice 
+
+|        | Artix         | FreeBSD   |                       
+|--------|---------------|-----------
+| .iso   | [artix-base-openrc](https://artixlinux.org/download.php)|[FreeBSD](https://freebsd.org/where)|
+|My guide| [artixinstall](install/profiles/artixinstall/README.md)|[bsdinstall](install/profiles/bsdinstall/README.md)|
 
 1. **Install X server**
 from your distribution's provided packages or build and install
@@ -180,5 +182,4 @@ Minimal "desktop" across multiple operating systems. Designed for low-spec hardw
 - macOS: Some config (zsh, nvim, kitty)
 - Unix  (xv6) [TODO]
 
-Per distro [install guides](install/profiles)
 
