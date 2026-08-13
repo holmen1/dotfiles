@@ -10,7 +10,8 @@ Workstation setup for Linux, BSD, and macOS — dotfiles, installation guides, a
 - Uniform [structure](#structure) across distros — every install follows the same pattern:
 profile-based package list, stow-managed dotfiles, per-distro scripts
 - Distro-specific via `stow` packages — differences (init system, network backend)
-are handled by swapping stow packages in `links.config`
+are handled by swapping stow packages in
+[links.config](install/profiles/artixinstall/links/x1/links.config)
 
 ## Stack
 
