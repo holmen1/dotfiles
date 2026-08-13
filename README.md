@@ -4,32 +4,35 @@ Minimal window manager
 
 Workstation setup for Linux, BSD, and macOS — dotfiles, installation guides, and build scripts
 
-- Menus and monitoring handled by application launcher to replace traditional DE components
-- Automation scripts for package export/import, battery monitoring, and Wi-Fi
+- Menus and monitoring handled by dmenu and simple shell scripts
 - [Build](install/build) scripts included for source-built components:
-ghc, neovim, st, xkb, xmonad, xlibre.
+`dwm`, `ghc`, `neovim`, `st`, `xkb`, `xmonad`, `xlibre`
 - Uniform [structure](#structure) across distros — every install follows the same pattern:
 profile-based package list, stow-managed dotfiles, per-distro scripts
-- Distro-specific via stow packages — differences (init system, network backend, notification daemon)
-are handled by swapping stow packages in `links.config`, not by conditionals inside shared scripts
+- Distro-specific via `stow` packages — differences (init system, network backend)
+are handled by swapping stow packages in `links.config`
 
 ## Stack
 
-* Display server: XLibre (X11)
-* Window manager: Artix/Xmonad, FreeBSD/dwm
-* Menus: dmenu
-* Editor: Neovim
-* Terminal: st
-* File manager: lf
-* Dotfile linking: stow
-* Keymaps: setxkbmap / XKB
+|                   | Artix         | FreeBSD   |                       
+|-------------------|---------------|-----------
+| Display server    | XLibre (X11)  | XLibre (X11)|
+| Window manager    | Xmonad        | FreeBSD/dwm|
+| Menus             | dmenu         | dmenu     |
+| Editor            | Neovim        | Neovim    |
+| Terminal          | st            | st        |
+| File manager      | lf            | lf        |
+| Dotfile linking   | stow          | stow      |
+| Keymaps           | setxkbmap/XKB | setxkbmap/XKB|
 
 ---
 
 ## TL;DR
 
-0. **Install a base system**
-[Artix Wiki](https://wiki.artixlinux.org/Main/Installation)
+0. **Install base system** of your choice
+[Artix Wiki](https://wiki.artixlinux.org/Main/Installation)  
+or  
+[Get FreeBSD](https://freebsd.org/where)
 
 1. **Install X server**
 from your distribution's provided packages or build and install
@@ -127,19 +130,17 @@ Passed: 29  Failed: 0
 dotfiles/  
 ├── config              # All user dotfiles to stow (one per editor/tool)
 │   ├── artixinstall    # Distro-specifc scripts
+│   ├── bsdinstall      # Distro-specifc scripts
 │   ├── bash
-│   ├── brave
 │   ├── chromium
 │   ├── common          # Shared scripts
 │   ├── lf
 │   ├── nvim
-│   ├── openrc
-│   ├── vscode
-│   ├── x
 │   ├── xmonad
 │   └── ...
 └── install
     ├── build           # Source-built components
+    │   ├── dwm
     │   ├── ghc
     │   ├── neovim
     │   ├── st
@@ -157,14 +158,14 @@ where every distro structured uniformly
 artixinstall/
 ├── configure-build-install-link.sh
 ├── links
-|   └── gadsden
+|   └── machine01
 │       └── links.config
 ├── packages
-|   └── gadsden
+|   └── machine01
 │       ├── foreignpkglist.txt
 │       └── pkglist.txt
 └── tests
-    └── gadsden
+    └── machine01
         └── sanity_check.sh
 ```
 
@@ -173,12 +174,11 @@ artixinstall/
 Minimal "desktop" across multiple operating systems. Designed for low-spec hardware (tested on 4 GB RAM).
 
 **Supported systems:**
-- Linux (Artix, Arch, Debian)
-- BSD   (FreeBSD)
-- macOS (limited)
+- Linux: Artix (old install guides for Arch and Debian in
+[stale](https://github.com/holmen1/dotfiles/tree/stale) branch)
+- BSD: FreeBSD
+- macOS: Some config (zsh, nvim, kitty)
 - Unix  (xv6) [TODO]
 
-Per distro[install guides](install/profiles)
-
-## TODO
+Per distro [install guides](install/profiles)
 

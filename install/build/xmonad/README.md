@@ -1,16 +1,16 @@
 # XMonad Build Factory
 
 XMonad is always built from source — no cabal-install required. The build script
-`build-xmonad-ghc.sh` fetches all dependencies directly from Hackage and builds
+`build-xmonad.sh` fetches all dependencies directly from Hackage and builds
 with plain GHC using `runhaskell Setup.hs`.
 
 ## Build scripts
 
-| Script | Purpose |
-|---|---|
-| `build-xmonad-ghc.sh` | Build libraries using GHC (no cabal-install). Preferred |
-| `rebuild-xmonad.sh` | Compile and link custom xmonad |
-| `build-xmonad.sh` | Legacy build using cabal-install. |
+| Script                    | Purpose |
+|---------------------------|---------|
+| `build-xmonad.sh`         | Build libraries using GHC (no cabal-install). Preferred |
+| `rebuild-xmonad.sh`       | Compile and link custom xmonad |
+| `build-xmonad-cabal.sh`   | Legacy build using cabal-install. |
 
 ---
 
@@ -37,7 +37,7 @@ If there is no tested version in your package manager,
 ## Build
 
 ```bash
-./install/build/xmonad/build-xmonad-ghc.sh
+./build-xmonad.sh
 ```
 
 The scripts:

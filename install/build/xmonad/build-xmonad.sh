@@ -1,95 +1,100 @@
 #!/bin/sh
+#
+# Build xmonad + xmonad-contrib using only GHC (no cabal-install).
+# Uses runhaskell Setup.hs with GHC's built-in Cabal library.
+# Target: GHC 9.8.4 (base-4.19)
+#
+# Prerequisites:
+#   - GHC, check that version is tested
+#   - System C libraries: libX11, libXrandr, libXext, libXinerama, libXScrnSaver
+#     Artix/Arch: pacman -S libx11 libxrandr libxext libxinerama libxss
+#   - autoconf (for X11 Haskell package)
 
-set -e  # Exit on error
+set -e
 
-XMONAD_TAG="v0.18.1"
-XMONAD_CONTRIB_TAG="v0.18.2" 
+if command -v ghc >/dev/null 2>&1; then
+    echo "Using GHC from PATH: $(command -v ghc)"
+else
+    echo "Error: no ghc found on PATH"
+    exit 1
+fi
 
-# Define directories
+if ! command -v runhaskell >/dev/null 2>&1; then
+    echo "Error: runhaskell not found (needed to run Setup.hs)"
+    exit 1
+fi
+
+XMONAD_VER="0.18.1"
+XMONAD_CONTRIB_VER="0.18.2"
+
+HACKAGE="https://hackage.haskell.org/package"
+
 BUILD_DIR=~/repos/dotfiles/install/build/xmonad
 BIN_DIR=$BUILD_DIR/bin
-CONFIG_SOURCE=~/repos/dotfiles/config/xmonad/xmonad.hs
+WORK_DIR=$BUILD_DIR/_ghc_build
 
-# Create the build directory if it doesn't exist
-mkdir -p $BUILD_DIR
-cd $BUILD_DIR
-mkdir -p $BIN_DIR
+# Haskell packages to fetch from Hackage (non-boot dependencies)
+DATA_DEFAULT_CLASS_VER="0.1.2.2"
+SETLOCALE_VER="1.0.0.10"
+SPLITMIX_VER="0.1.3.2"
+RANDOM_VER="1.2.1.2"
+UTF8_STRING_VER="1.0.2"
+X11_VER="1.10.3"
 
-# Function to clone or update a repository
-clone_repo() {
-  local repo_name=$1
-  local repo_url=$2
-  local tag=$3
-  
-  # Remove existing repo directory if it exists
-  rm -rf "$BUILD_DIR/$repo_name"
-  
-  echo "Cloning $repo_name repository at $tag..."
-  git clone "$repo_url" "$BUILD_DIR/$repo_name"
-  cd "$BUILD_DIR/$repo_name"
-  git checkout $tag
-  cd "$BUILD_DIR"
+mkdir -p "$WORK_DIR"
+
+# ── helpers ──────────────────────────────────────────────────────────
+
+fetch_hackage() {
+    pkg=$1; ver=$2
+    tarball="${pkg}-${ver}.tar.gz"
+    url="${HACKAGE}/${pkg}-${ver}/${tarball}"
+    if [ ! -f "$WORK_DIR/$tarball" ]; then
+        echo "Fetching $pkg-$ver ..."
+        curl -L -o "$WORK_DIR/$tarball" "$url"
+    fi
+    cd "$WORK_DIR"
+    rm -rf "${pkg}-${ver}"
+    tar xzf "$tarball"
 }
 
-# Always clone fresh xmonad and xmonad-contrib repositories
-clone_repo "xmonad" "https://github.com/xmonad/xmonad" "$XMONAD_TAG"
-clone_repo "xmonad-contrib" "https://github.com/xmonad/xmonad-contrib" "$XMONAD_CONTRIB_TAG"
+build_simple() {
+    pkg=$1; ver=$2
+    echo "── Building $pkg-$ver ──"
+    fetch_hackage "$pkg" "$ver"
+    cd "$WORK_DIR/${pkg}-${ver}"
+    if [ -f Setup.lhs ]; then
+        SETUP_FILE=Setup.lhs
+    else
+        SETUP_FILE=Setup.hs
+    fi
+    runhaskell "$SETUP_FILE" configure --user
+    runhaskell "$SETUP_FILE" build
+    runhaskell "$SETUP_FILE" install
+    echo "── Installed $pkg-$ver ──"
+}
 
-# Copy your configuration to build directory
-echo "Using custom configuration from $CONFIG_SOURCE"
-mkdir -p "$BUILD_DIR/custom-xmonad"
-ln -sf "$CONFIG_SOURCE" "$BUILD_DIR/custom-xmonad/xmonad.hs"
+# ── build non-boot dependencies in order ─────────────────────────────
 
-# Build custom XMonad
-echo "Building custom XMonad binary..."
-cd "$BUILD_DIR/custom-xmonad"
+build_simple "data-default-class" "$DATA_DEFAULT_CLASS_VER"
 
-# Create a simple cabal file that includes your configuration
-cat > custom-xmonad.cabal << EOF
-cabal-version:      2.4
-name:               custom-xmonad
-version:            0.1.0.0
-build-type:         Simple
+# NB: setlocale-1.0.0.10 tarball has stale base <4.16; Hackage revised it to <4.23
+# but the tarball is unchanged — patching .cabal in-place until a new release ships
+fetch_hackage "setlocale" "$SETLOCALE_VER"
+sed -i 's/base >=4.6 && <4.16/base >= 4.6/' "$WORK_DIR/setlocale-$SETLOCALE_VER/setlocale.cabal"
+cd "$WORK_DIR/setlocale-$SETLOCALE_VER"
+SETUP_FILE=Setup.hs
+runhaskell "$SETUP_FILE" configure --user
+runhaskell "$SETUP_FILE" build
+runhaskell "$SETUP_FILE" install
+echo "── Installed setlocale-$SETLOCALE_VER ──"
 
-executable xmonad
-  main-is:          xmonad.hs
-  build-depends:    base, xmonad, xmonad-contrib
-  default-language: Haskell2010
-EOF
+build_simple "splitmix"            "$SPLITMIX_VER"
+build_simple "random"             "$RANDOM_VER"
+build_simple "utf8-string"        "$UTF8_STRING_VER"
+build_simple "X11"             "$X11_VER"
+build_simple "xmonad"         "$XMONAD_VER"
+build_simple "xmonad-contrib" "$XMONAD_CONTRIB_VER"
 
-# Initialize cabal project
-echo "package xmonad
-  flags: +with-xft
+echo "Building packages complete."
 
-package xmonad-contrib
-  flags: +with-xft" > cabal.project.local
-
-# Create a proper project structure that Cabal can recognize
-echo "packages: ." > cabal.project
-
-# Build the custom binary
-echo "Running cabal update..."
-cabal update
-echo "Building with cabal..."
-cabal build
-
-# Copy binary to BIN_DIR for manual handling
-echo "Installing to $BIN_DIR"
-rm -f "$BIN_DIR/xmonad-$XMONAD_TAG"
-BIN_PATH="$(cabal list-bin xmonad)"
-cp "$BIN_PATH" "$BIN_DIR/xmonad-$XMONAD_TAG"
-#find dist-newstyle -name xmonad -type f -executable -exec cp {} "$BIN_DIR/xmonad-$XMONAD_TAG" \;
-chmod +x "$BIN_DIR/xmonad-$XMONAD_TAG"
-
-# Create compressed binary archive
-echo "Creating compressed binary archive..."
-cd "$BIN_DIR"
-tar -czf "xmonad-$XMONAD_TAG.tar.gz" "xmonad-$XMONAD_TAG"
-
-echo "Cleaning up XMonad runtime/config/cache directories..."
-rm -rf ~/.local/share/xmonad ~/.cache/xmonad ~/.config/xmonad
-echo "Removed: ~/.local/share/xmonad ~/.cache/xmonad ~/.config/xmonad"
-
-echo "Build complete - your configuration is now baked into the XMonad binary"
-echo "Binary: $BIN_DIR/xmonad-$XMONAD_TAG"
-echo "Archive: $BIN_DIR/xmonad-$XMONAD_TAG.tar.gz"
