@@ -3,6 +3,7 @@ devel/bear
 ftp/curl
 x11/dmenu
 graphics/drm-kmod
+sysutils/dunst
 sysutils/fastfetch
 shells/fd
 graphics/feh

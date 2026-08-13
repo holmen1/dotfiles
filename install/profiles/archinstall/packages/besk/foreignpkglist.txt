@@ -1,7 +1,0 @@
-brave-bin
-gnu-netcat
-mullvad-vpn-bin
-xlibre-input-libinput
-xlibre-xserver
-yay
-yay-debug

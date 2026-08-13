@@ -31,10 +31,6 @@ sudo dd bs=4M if=artix-base-openrc-20260402-x86_64.iso of=/dev/disk4 status=prog
 
 - **artix (full install)** Go to [Artix Linux installation guide](./profiles/artixinstall/README.md)
 
-- **arch (using archinstall)** Go to [Arch Linux installation guide](./profiles/archinstall/README.md)
-
-- **debian** Go to [Debian installation guide](./profiles/debianinstall/README.md)
-
 - **bsd** Go to [FreeBSD installation guide](./profiles/bsdinstall/README.md)
 
 - **mac** Go to [MacOS config guide](./profiles/macinstall/README.md)

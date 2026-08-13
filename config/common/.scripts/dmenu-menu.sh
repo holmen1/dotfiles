@@ -2,7 +2,7 @@
 # dmenu-menu: Unified menu for system (Artix)
 
 SCRIPTS=$HOME/.scripts
-DOCS=$HOME/repos/dotfiles/config
+CONF_DIR=$HOME/repos/dotfiles/config
 XKB_STATE=$HOME/.cache/xkb-layout
 
 # Font detection
@@ -24,19 +24,19 @@ case "$category" in
     app=$(printf "XKB\nlf\nXmonad\nwifi\ngit\nnvim" | dmenu -i -p "App:" -nb "#222222" -nf "#ffffff" -sb "#A300A3" -sf "#ffffff" -fn "$FONT")
     case "$app" in
       "XKB")
-        sed -n 9,36p "$DOCS/xkb/README.md" | dmenu -l 28 -p "XKB Help" \
+        sed -n 9,36p "$CONF_DIR/xkb/README.md" | dmenu -l 28 -p "XKB Help" \
 		-nb "#222222" -nf "#ffffff" -sb "#222222" -sf "#ffffff" -fn "$FONT" ;;
       "Xmonad")
-        sed -n 12,41p "$DOCS/xmonad/README.md" | dmenu -l 25 -i -p "XMonad Help" \
+        sed -n 12,41p "$CONF_DIR/xmonad/README.md" | dmenu -l 25 -i -p "XMonad Help" \
 		-nb "#222222" -nf "#ffffff" -sb "#222222" -sf "#ffffff" -fn "$FONT" ;;
       "lf")
-        sed -n 14,40p "$DOCS/lf/README.md" | dmenu -l 23 -i -p "lf Help" \
+        sed -n 14,40p "$CONF_DIR/lf/README.md" | dmenu -l 23 -i -p "lf Help" \
                 -nb "#222222" -nf "#ffffff" -sb "#222222" -sf "#ffffff" -fn "$FONT" ;;
       "wifi")
         $SCRIPTS/monitor-wifi.sh --help | dmenu -l 7 -p "wifi Help" \
                 -nb "#222222" -nf "#ffffff" -sb "#222222" -sf "#ffffff" -fn "$FONT" ;;
       "git")
-        sed -n 3,27p "$DOCS/git/README.md" | dmenu -l 25 -p "git Help" \
+        sed -n 89,106p "$CONF_DIR/bash/.bashrc" | dmenu -l 18 -p "git Help" \
                 -nb "#222222" -nf "#ffffff" -sb "#222222" -sf "#ffffff" -fn "$FONT" ;;
       "nvim")
         echo "<leader>sk" | dmenu -l 7 -p "Search Keymaps" \

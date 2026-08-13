@@ -159,7 +159,7 @@ This approach will work on any machine with just GHC installed.
 
 ## Next Steps
 
-The toolchain is confirmed ready. Proceed to the full xmonad build using `build-xmonad-ghc.sh`.
+The toolchain is confirmed ready. Proceed to the full xmonad build using `build-xmonad.sh`.
 
 ## Troubleshooting
 

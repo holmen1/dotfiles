@@ -1,3 +1,8 @@
+## Features
+# **Vi Mode**: Uses Bash's vi-style keybindings for command line editing
+# **History Management**: Ignores duplicates and erased commands
+# **Custom Aliases**: Shortcuts for common commands and Git operations
+# **Productivity Functions**: Helper functions for directory navigation and file operations
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
@@ -18,6 +23,15 @@ shopt -s autocd
 # Enable vi mode in bash
 set -o vi
 bind -m vi-insert 'Control-l: clear-screen'
+# Key | Action                  |
+#-----|-------------------------|
+# Esc | Switch to command mode  |
+# i   | Enter insert mode       |
+# /   | Search command history  |
+# n   | Next search match       |
+# N   | Previous search match   |
+# k   | Previous command in history |
+# j   | Next command in history |
 
 # Make Tab autocomplete regardless of filename case
 bind 'set completion-ignore-case on'
@@ -26,10 +40,9 @@ bind 'set completion-ignore-case on'
 bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
 
-export HISTCONTROL=ignoreboth:erasedups
+export HISTCONTROL=ignoreboth:erasedups # Ignore duplicates and commands starting with space
 
-# Custom functions
-
+### Custom functions
 # Open current directory in VSCode or Neovim
 cdc() {
 	cd "$1" && code .
@@ -37,17 +50,14 @@ cdc() {
 cdv() {
 	cd "$1" && nvim .
 }
-
 # Create and change into a new directory
 mkcd() {
     mkdir -p "$1" && cd "$1"
 }
-
 # Create backup file
 bak() {
     cp "$1" "$1.bak"
 }
-
 # Quick file search function (rename from ff to avoid conflict)
 ff() {
     find "${2:-.}" -name "*$1*" 2>/dev/null
@@ -59,8 +69,7 @@ ee() {
 # Repeat last command with sudo
 ss() { sudo "$(history -p !!)" ; }
 
-
-# Aliases
+### Aliases
 alias ls='ls --color=auto'
 alias ll='ls -lath --color=auto'
 alias gg='grep --color=auto'
@@ -88,23 +97,26 @@ alias gcb='git checkout -b'
 alias gd='git diff'
 alias gds='git diff --staged'
 alias gpo='git pull origin'
+alias gpr='git pull --rebase' # When behind remote
 alias gr='git restore'
 alias gcl='git clone'
-alias gsta='git stash'
+alias gsta='git stash -u'
 alias gstp='git stash pop'
+gat() { git tag -a "$1" -m "$2" ; } # Annotated tag
+# Then: git push origin vX.X
 
+### Prompt
 # source git-prompt if available (tries common locations)
 for p in $HOME/.scripts/git-prompt.sh /usr/share/git/completion/git-prompt.sh /etc/bash_completion.d/git-prompt.sh /mingw64/share/git/completion/git-prompt.sh; do
   [ -f "$p" ] && source "$p" && break
 done
-export GIT_PS1_SHOWDIRTYSTATE=1
+export GIT_PS1_SHOWDIRTYSTATE=1 # Show Git repository dirty state in prompt
 export PS1="${COLOR_USER}\u@\h ${COLOR_PATH}\W${COLOR_GIT}\$(__git_ps1 ' (%s)')${COLOR_PROMPT}\$ ${COLOR_RESET}"
 
+### Paths
 # iw
 export PATH=$PATH:/usr/sbin
-
 # Custom bin usd by haskell-language-server
 export PATH="$HOME/.local/bin:$PATH"
-
 # Cargo (Rust) binary path
 export PATH="$HOME/.cargo/bin:$PATH"

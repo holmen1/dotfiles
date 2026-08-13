@@ -3,6 +3,7 @@ alsa-utils
 artix-archlinux-support
 base
 base-devel
+bash-language-server
 bc
 bear
 clang
@@ -21,6 +22,7 @@ fd
 feh
 git
 grub
+haskell-language-server
 htop
 iwd
 iwd-openrc
@@ -34,6 +36,7 @@ linux-firmware
 linux-hardened
 linux-hardened-headers
 llvm
+lua-language-server
 man-db
 man-pages
 neovim
