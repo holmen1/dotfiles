@@ -9,11 +9,11 @@ gitsigns.setup({
     changedelete = { text = '~' },
   },
   on_attach = function(bufnr)
-    local function map(keys, func, desc)
-      vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
+    local function map(mode, keys, func, desc)
+      vim.keymap.set(mode, keys, func, { buffer = bufnr, desc = desc })
     end
 
-    map(']c', function()
+    map('n', ']c', function()
       if vim.wo.diff then
         vim.cmd.normal({ ']c', bang = true })
       else
@@ -21,7 +21,7 @@ gitsigns.setup({
       end
     end, 'Next hunk')
 
-    map('[c', function()
+    map('n', '[c', function()
       if vim.wo.diff then
         vim.cmd.normal({ '[c', bang = true })
       else
@@ -29,9 +29,16 @@ gitsigns.setup({
       end
     end, 'Previous hunk')
 
-    map('<leader>gd', gitsigns.preview_hunk_inline, '[G]it [D]iff inline')
-    map('<leader>gr', gitsigns.reset_hunk, '[G]it [r]eset hunk')
-    map('<leader>gR', gitsigns.reset_buffer, '[G]it [R]eset buffer')
+    map('n', '<leader>gd', gitsigns.preview_hunk_inline, '[G]it [d]iff inline')
+    map('n', '<leader>gr', gitsigns.reset_hunk, '[G]it [r]eset hunk')
+    map('v', '<leader>gr', function()
+      gitsigns.reset_hunk({ vim.fn.line('.'), vim.fn.line('v') })
+    end, '[G]it [r]eset hunk')
+    map('n', '<leader>gR', gitsigns.reset_buffer, '[G]it [R]eset buffer')
+    map('n', '<leader>ga', gitsigns.stage_hunk, '[G]it st[a]ge hunk')
+    map('v', '<leader>ga', function()
+      gitsigns.stage_hunk({ vim.fn.line('.'), vim.fn.line('v') })
+    end, '[G]it st[a]ge hunk')
 
     local hl = vim.api.nvim_set_hl
     hl(0, 'GitSignsAdd', { fg = '#808000', bg = 'NONE', bold = true })

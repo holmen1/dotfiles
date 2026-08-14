@@ -33,7 +33,6 @@ No Mason-style tool manager; install servers and CLIs where the OS expects them.
 
 ### Global
 
-- `<Esc>` — clear search highlight
 - `<leader>q` — diagnostic list
 - `<C-j>` / `<C-k>` — move between windows
 - `<A-h/j/k/l>` — resize splits
@@ -50,10 +49,13 @@ No Mason-style tool manager; install servers and CLIs where the OS expects them.
 
 ### LSP
 
+- `K` — hover documentation
 - `gd` — definition
 - `gD` — declaration
 - `grr` — references
 - `gri` — implementations
+- `grn` — rename
+- `gra` — code action
 - `<leader>th` — toggle inlay hints
 
 ### Git
@@ -62,6 +64,7 @@ No Mason-style tool manager; install servers and CLIs where the OS expects them.
 - `<leader>gd` — preview hunk
 - `<leader>gr` — reset hunk
 - `<leader>gR` — reset buffer
+- `<leader>ga` — stage hunk
 
 ### Terminal
 
@@ -77,14 +80,12 @@ No Mason-style tool manager; install servers and CLIs where the OS expects them.
 
 ## Notes
 
-- If you are new to the config, start with Telescope (`<leader>sf`, `<leader>sg`, `<leader><leader>`) and the terminal toggle (`<leader>tt`).
-- LSP servers are expected to be available on `PATH`.
-- `nvim-treesitter` uses `main`, not `master`, for Neovim 0.12 compatibility.
-- The config prefers boring, stable defaults over extra tooling.
+- LSP servers are expected to be available on `PATH`
+- Keymap may timeout if typing to slow, set `vim.opt.timeoutlen = 1500`
 
 ## Appendix: Vim basics
 
-### Less used
+### Less known, very useful
 
 1. `<C-o>` in INSERT: execute a single NORMAL mode command.
 2. `.`: repeat your last change.
@@ -93,6 +94,7 @@ No Mason-style tool manager; install servers and CLIs where the OS expects them.
 5. `<C-a>` / `<C-x>`: increment or decrement numbers.
 6. `gv`: reselect your previous visual selection.
 7. `<C-o>` / `<C-i>`: jump back and forward in the jump list.
+8. `!!sh` : normal-mode shorthand for `:.!sh`, replace line with shell output
 
 ### Editing
 
@@ -189,8 +191,8 @@ No Mason-style tool manager; install servers and CLIs where the OS expects them.
 | Mapping | Description |
 |---------|-------------|
 | `:b[uffer] [name/number]` | Switch buffers |
-| `:bn[ext]` | Next buffer |
-| `:bp[revious]` | Previous buffer |
+| `C-l' or ':bn[ext]` | Next buffer |
+| `C-h' or ':bp[revious]` | Previous buffer |
 | `:bd[elete]` | Unload current buffer |
 | `:r FILENAME` | Read file into buffer |
 | `:r !command` | Insert output of command |
@@ -306,11 +308,12 @@ This config bypasses Mason entirely. LSP servers are installed via the system pa
 
 #### Install LSP servers
 
-| Server | Arch | FreeBSD |
+| Server | Artix | FreeBSD |
 |--------|------|---------|
 | clangd | `clang` | `llvm` |
 | lua_ls | `lua-language-server` | `lua-language-server` |
-| hls | `haskell-language-server` | `hs-haskell-language-server` |
+| hls | `extra/haskell-language-server` | `hs-haskell-language-server` |
+| bash | `extra/bash-language-server`, `extra/shfmt` | `hs-ShellCheck`, `shfmt` (not tested) |
 
 #### Check status
 
