@@ -8,10 +8,13 @@ vim.g.maplocalleader = " "
 vim.g.have_nerd_font = true
 
 -- [[ Setting options ]]
-require 'options'
+require('core.options')
 
 -- [[ Basic Keymaps ]]
-require 'keymaps'
+require('core.keymaps')
+
+-- [[ Basic Autocommands ]]
+require('core.autocmds')
 
 -- [[ Bootstrap lazy.nvim ]]
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
@@ -25,19 +28,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- [[ Plugin Specs ]]
-local plugins = {
-  { 'folke/tokyonight.nvim', priority = 1000, lazy = false, config = function() require('plugins.theme') end },
-  { 'nvim-treesitter/nvim-treesitter', branch = 'main', lazy = false, build = ':TSUpdate', config = function() require('plugins.treesitter') end },
-  { 'nvim-lua/plenary.nvim', lazy = true },
-  { 'nvim-telescope/telescope.nvim', event = 'VeryLazy', config = function() require('plugins.telescope') end, dependencies = { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' } },
-  { 'nvim-tree/nvim-web-devicons', lazy = true },
-  { 'neovim/nvim-lspconfig', lazy = false, config = function() require('plugins.lspconfig') end, dependencies = { 'j-hui/fidget.nvim' } },
-  { 'j-hui/fidget.nvim', lazy = true },
-  { 'echasnovski/mini.nvim', lazy = false, config = function() require('plugins.mini') end },
-  { 'lewis6991/gitsigns.nvim', event = 'VeryLazy', config = function() require('plugins.gitsigns') end },
-}
-
-require('lazy').setup(plugins)
+require('lazy').setup(require('plugins'))
 
 -- Custom modules
 require('custom.terminal')
