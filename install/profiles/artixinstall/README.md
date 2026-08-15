@@ -1,17 +1,7 @@
 # artixinstall
 
-Artix Linux base install + custom window manager
+Artix Linux base install (LVM on LUKS) + custom window manager (XMonad)
 
-References:
-
-- Artix [Installation With Full Disk Encryption]
-(https://wiki.artixlinux.org/Main/InstallationWithFullDiskEncryption)
-
-- Arch [LUKS on a partition]
-(https://wiki.archlinux.org/title/Dm-crypt/Encrypting_an_entire_system#LUKS_on_a_partition)
-
-- The Rad Lectures [Step-by-Step Artix Linux Install]
-(https://www.radleylewis.com/lab/guides/artix-openrc-install-guide/)
 
 ## Pre-installation
 
@@ -48,14 +38,15 @@ Target layout (UEFI, GPT):
 | Partition | Mount | Size | Type |
 |-----------|-------|------|------|
 | nvme0n1p1 | /boot | 1G   | EFI System |
-| nvme0n1p2 | /     | rest | LUKS encrypted partition |
+| nvme0n1p2 | LUKS container | rest | Linux filesystem |
 
 
 ```
 fdisk /dev/nvme0n1
 ```
-Inside the interactive prompt, follow this sequence:
+If warning about active swap partitions, do `swapoff -a`
 
+Inside the interactive prompt, follow this sequence:
 ```
 Command (m for help): g
 Created a new GPT disklabel.
@@ -96,29 +87,63 @@ cryptsetup open /dev/nvme0n1p2 cryptroot
 ```
 The decrypted container is now available at `/dev/mapper/cryptroot`
 
+### Create LVM volumes inside LUKS (root + swap + home)
+
+Install LVM tooling (`lvm2`) in the live ISO if needed
+
+Create PV/VG/LVs:
+```bash
+pvcreate /dev/mapper/cryptroot
+vgcreate vg0 /dev/mapper/cryptroot
+
+# Adjust sizes as needed:
+lvcreate -L 80G -n root vg0
+lvcreate -L 16G -n swap vg0
+lvcreate -l 100%FREE -n home vg0
+```
+
+Your logical volumes should now be located in `/dev/vg0/`. If you cannot find them,
+use the next commands to bring up the module for creating device nodes and to make volume groups available:
+```
+# modprobe dm_mod
+# vgscan
+# vgchange -ay
+```
+
 ### Format
 
 ```bash
 mkfs.fat -F 32 /dev/nvme0n1p1
-mkfs.ext4 /dev/mapper/cryptroot
+mkfs.ext4 /dev/vg0/root
+mkfs.ext4 /dev/vg0/home
+mkswap /dev/vg0/swap
 ```
 
 ### Mount
 
 ```bash
-mount /dev/mapper/cryptroot /mnt
+mount /dev/vg0/root /mnt
+mkdir -p /mnt/home
+mount /dev/vg0/home /mnt/home
 mkdir -p /mnt/boot
 mount /dev/nvme0n1p1 /mnt/boot
+swapon /dev/vg0/swap
 ```
 
 Verify:
 ```
-lsblk
+$ lsblk
+NAME           MAJ:MIN RM   SIZE RO TYPE  MOUNTPOINTS
+nvme0n1        259:0    0 476.9G  0 disk
+├─nvme0n1p1    259:1    0     1G  0 part  /boot
+└─nvme0n1p2    259:2    0 475.9G  0 part
+  └─cryptroot  254:0    0 475.9G  0 crypt
+    ├─vg0-root 254:1    0    80G  0 lvm   /
+    ├─vg0-swap 254:2    0    16G  0 lvm   [SWAP]
+    └─vg0-home 254:3    0 379.9G  0 lvm   /home
 ```
 
 ### Network
-
-> **Use ethernet during installation.** Attempting to set up WiFi at this stage is a known failure point.
 
 Verify connectivity:
 ```
@@ -129,13 +154,16 @@ ping -c 3 artixlinux.org
 Activate the NTP daemon to synchronize the computer's real-time clock:
 
 ```bash
-rc-service ntpd start
+rc-service chrony start
+
+# Legacy pre spring 2026
+# rc-service ntpd start
 ```
 
 ### Install base system
 
 ```
-basestrap /mnt base base-devel openrc elogind-openrc
+basestrap /mnt base base-devel openrc elogind-openrc lvm2
 ```
 - `openrc` — init system
 - `elogind-openrc` — session/seat management (replaces systemd-logind)
@@ -155,9 +183,9 @@ basestrap /mnt linux-hardened linux-hardened-headers linux-firmware
 #basestrap /mnt linux linux-firmware
 ```
 
-and, nice to have
+and, nice to have during install
 ```bash
-basestrap /mnt sudo vim
+basestrap /mnt vi git openssh
 ```
 
 ### Generate fstab
@@ -167,12 +195,9 @@ basestrap /mnt sudo vim
 ```
 fstabgen -U /mnt >> /mnt/etc/fstab
 ```
+Inspect the result and make sure all are listed (`/`, `/home`, `/boot`, and swap):
 
-Inspect the result and make sure all partitions are listed (root, boot):
-```
-cat /mnt/etc/fstab
-```
-
+---
 ### Chroot into the new system
 
 ```bash
@@ -183,7 +208,7 @@ Set up a root password
 ```bash
 passwd
 ```
-
+Initializing the keyring:
 ```bash
 pacman -Sy
 pacman-key --init
@@ -219,8 +244,9 @@ echo 'keymap="sv-latin1"' > /etc/conf.d/keymaps
 ```bash
 vim /etc/mkinitcpio.conf
 ```
-```
-HOOKS="base udev autodetect modconf block keyboard keymap consolefont encrypt filesystems fsck"
+Add `encrypt` and `lvm2` to HOOKS:
+```bash
+HOOKS=(base udev autodetect microcode modconf kms keyboard keymap consolefont encrypt lvm2 block filesystems fsck)
 ```
 
 > **Note:** `keyboard keymap consolefont` must come *before* `encrypt` so the keyboard is active when the LUKS passphrase prompt appears at boot.
@@ -249,7 +275,7 @@ or `:r!blkid` somewhere inside `/etc/default/grub`
 
 then replace `<uuid>` like so:
 ```sh
-GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet cryptdevice=UUID=<uuid>:cryptroot root=/dev/mapper/cryptroot"
+GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet cryptdevice=UUID=<uuid>:cryptroot root=/dev/vg0/root"
 ```
 ```bash
 grub-mkconfig -o /boot/grub/grub.cfg
@@ -345,7 +371,7 @@ Log in as `$USER`.
 iwctl device list
 iwctl station wlan0 scan
 iwctl station wlan0 get-networks
-iwctl --password PSK station wlan0 connect YOUR_SSID
+iwctl --passphrase PSK station wlan0 connect YOUR_SSID
 ```
 
 If `iwd` is not running, start it first:
@@ -360,19 +386,16 @@ ip addr show wlan0        # should show inet address
 ping -c 3 1.1.1.1         # tests IP routing
 ping -c 3 artixlinux.org  # tests DNS
 ```
+Recheck if `/etc/resolv.conf` empty
 
 ### Clone dotfiles
 
-```
-mkdir repos
-cd repos
-git clone https://github.com/holmen1/dotfiles.git
-```
 
 #### Switch to SSH (reusing existing key)
 
 Copy your existing private key to the new machine, then:
 ```
+chmod 700 ~/.ssh
 chmod 600 ~/.ssh/id_ed25519
 ```
 
@@ -380,20 +403,15 @@ Verify the key works with GitHub:
 ```
 ssh -T git@github.com
 ```
-
-Switch the remote from HTTPS to SSH:
+#### Clone
 ```
-cd ~/repos/dotfiles
-git remote set-url origin git@github.com:holmen1/dotfiles.git
+mkdir repos
+cd repos
+git clone git@github.com:holmen1/dotfiles.git
 ```
-
 Verify:
 ```
 git remote -v
-```
-```
-origin  git@github.com:holmen1/dotfiles.git (fetch)
-origin  git@github.com:holmen1/dotfiles.git (push)
 ```
 
 ### Install
@@ -429,7 +447,7 @@ then
 ```bash
 startx
 ```
-a terminal should open, may need be pointed to to activate
+a terminal should open, may need be pointed to to activate, `pkill x` to close
 
 ##### Troubleshooting
 
@@ -478,6 +496,7 @@ Enable services? [y]
 Run tests? [Y]
 ```
 
+---
 ### Package management
 
 Artix has its own set of official repositories which must take precedence over any other 3rd party ones
@@ -491,7 +510,7 @@ See [packages/x1/](packages/x1/) for the full package lists.
 
 All Arch repositories are disabled by default.
 To enable them install artix-archlinux-support from the galaxy repository,
-and enable repos in `/etc/pacman.conf` can:
+and enable repos in `/etc/pacman.conf`:
 ```bash
 [extra]
 Include = /etc/pacman.d/mirrorlist-arch
@@ -504,9 +523,6 @@ Include = /etc/pacman.d/mirrorlist-arch
   ~/repos/dotfiles/install/artixinstall/packages/<hostname>
 ```
 
-
----
-
 ## Troubleshooting
 
 Boot from ISO, then remount and chroot:
@@ -518,6 +534,20 @@ mount /dev/mapper/cryptoot /mnt
 artix-chroot /mnt bash
 ```
 
----
+## References
 
-See [LESSONS_LEARNED.md](LESSONS_LEARNED.md) for lessons learned.
+- Artix [Installation With Full Disk Encryption]
+(https://wiki.artixlinux.org/Main/InstallationWithFullDiskEncryption)
+
+- Arch [LVM on LUKS]
+(https://wiki.archlinux.org/title/Dm-crypt/Encrypting_an_entire_system#LVM_on_LUKS)
+
+- Arch [Install Arch Linux on LVM]
+(https://wiki.archlinux.org/title/Install_Arch_Linux_on_LVM)
+
+- The Rad Lectures [Step-by-Step Artix Linux Install]
+(https://www.radleylewis.com/lab/guides/artix-openrc-install-guide/)
+
+## Lessons learned
+
+See [LESSONS_LEARNED.md](LESSONS_LEARNED.md)
