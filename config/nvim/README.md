@@ -34,7 +34,7 @@ No Mason-style tool manager; install servers and CLIs where the OS expects them.
 ### Global
 
 - `<C-j>` / `<C-k>` — move between windows
-- `<A-h/j/k/l>` — resize splits
+- `<C-A-j/k>` — resize splits
 
 ### Telescope
 
