@@ -1,186 +1,134 @@
 # slim-vim
 
-A lean Neovim configuration originally based on [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim) but refactored a lot,
-managed by **lazy.nvim** with essential plugins for code navigation and LSP integration.
+A lean Neovim config built around a small set of stable plugins and system-installed tools.
 
-## less used 
+## Layout
 
-1. **`<C-o>` in INSERT**: Allow you execute a single NORMAL mode command
-2. **`.` (Dot Command)**: Repeats your last change
-3. **`vip`**: Visually select the inner paragraph (code block). Follow up immediately with `y` (yank) or `c` (change) to manipulate entire chunks of code effortlessly.
-4. **`<C-v>` (Visual Block)**: Select columns of text. Press `I` (Shift+i) to insert text on multiple lines sequentially, type your text, and press `<Esc>` to apply to all lines.
-5. **`<C-a>/<C-x>` (++/--)**: Increment number (works on visual selection, add g for numberings 
-6. **`gv`**: Reselect your previous visual selection
-7. **`<C-o>` and `<C-i>`**: Jump back to where you previously were (`<C-o>`) and forward again (`<C-i>`)
+- `lua/core/options.lua` — editor options
+- `lua/core/keymaps.lua` — global keymaps
+- `lua/core/autocmds.lua` — autosave and yank highlight
+- `lua/plugins/init.lua` — lazy.nvim plugin list
+- `lua/plugins/*.lua` — plugin setup
+- `sitiom/nvim-numbertoggle` — automatic relative/absolute line numbers
+- `lua/custom/terminal.lua` — terminal toggle
 
-## Features
+## Package strategy
 
-- **Fast Fuzzy Navigation**: Telescope for files, grep, buffers, and keymaps
-- **Modern Syntax Highlighting**: Treesitter for accurate, efficient code understanding
-- **Streamlined LSP Support**: Native Neovim LSP with manual server configuration (no Mason)
-- **Buffer Tabs**: Quick visual buffer management with tab bar at top
-- **Git Integration**: Gitsigns for inline diffs and status indicators
-- **Smart Keybinding Help**: `<leader>sk` from Telescope for keybinding discovery
-- **Lightweight Toolkit**: Mini.nvim for statusline, buffer tabs, and text object improvements
-- **Cross-Platform**: Works on Arch Linux and FreeBSD with server auto-detection
+- **Plugins:** `lazy.nvim`
+- **LSP/runtime tools:** system package manager
 
-## Behavior
+No Mason-style tool manager; install servers and CLIs where the OS expects them.
 
-**Autosave**: Files are automatically saved when you leave insert mode or make changes in normal mode
+## What it does
 
-## Key Plugins
+- Telescope for file, buffer, grep, and keymap search
+- Treesitter for syntax highlighting
+- Native LSP via `nvim-lspconfig`
+- Gitsigns for git hunks and inline diffing
+- Mini for buffer tabline, statusline, and textobjects
+- Simple terminal toggle on `<leader>tt`
+- Autosave on edits and insert leave
 
-| Plugin | Purpose | Why It's Included |
-|--------|---------|-------------------|
-| **lazy.nvim** | Plugin manager | Handles lazy loading and updates cleanly |
-| **telescope.nvim** | Fuzzy finding | Essential navigation for files, symbols, and help |
-| **nvim-treesitter** | Syntax highlighting | Better code understanding with minimal overhead |
-| **nvim-lspconfig** | Language server setup | Code intelligence via system-installed LSP servers |
-| **mini.nvim** | Statusline, tabline, textobjects | Lightweight, composable toolkit; replaces multiple plugins |
-| **gitsigns.nvim** | Git change indicators in gutter | Minimal, fast, and visually clear git status |
-| **fidget.nvim** | LSP status notifications | Non-intrusive progress spinners for long operations |
+## Main keymaps
 
+### Global
 
-## Keymaps
+- `<C-j>` / `<C-k>` — move between windows
+- `<C-A-j/k>` — resize splits
 
 ### Telescope
-| Mapping | Description | Function |
-|---------|-------------|----------|
-| `<leader>sf` | Search Files | Find files in current directory |
-| `<leader>sg` | Search by Grep | Search file contents (live grep) |
-| `<leader>sw` | Search current Word | Find occurrences of word under cursor |
-| `<leader>sr` | Search Resume | Resume previous search |
-| `<leader>sk` | Search Keymaps | Browse all keybindings |
-| `<leader><leader>` | Find Buffers | Switch between open files/buffers |
-| `<leader>sc` | Search Commits | View git history for current buffer |
 
-### Buffer Navigation
-| Mapping | Description |
-|---------|-------------|
-| `<C-h>` | Next buffer |
-| `<C-l>` | Previous buffer |
+- `<leader>sf` — find files
+- `<leader>sg` — live grep
+- `<leader>sw` — grep word under cursor
+- `<leader>sr` — resume search
+- `<leader>sk` — search keymaps
+- `<leader><leader>` — buffers
+- `<leader>sc` — git commits for current buffer
+- `:Telescope fidget` — notification history
 
-Use `:bd` to close a buffer. Use `<leader><leader>` to search and switch buffers via Telescope.
+### LSP
 
-### Window Navigation
-| Mapping | Description |
-|---------|-------------|
-| `<C-j>` | Move focus to lower window |
-| `<C-k>` | Move focus to upper window |
-
-### Diagnostics
-| Mapping | Description |
-|---------|-------------|
-| `<leader>q` | Open diagnostic quickfix list |
+- `K` — hover documentation
+- `gd` — definition
+- `gD` — declaration
+- `grr` — references
+- `gri` — implementations
+- `grn` — rename
+- `<leader>q` — diagnostic list
+- `<leader>th` — toggle inlay hints
 
 ### Git
 
-| Mapping | Description |
-|---------|-------------|
-| `]c` / `[c` | Next/previous hunk (works in diff mode or normal editing) |
-| `<leader>gd` | Preview hunk diff inline |
-| `<leader>gr` | Reset hunk (undo changes in current hunk) |
-| `<leader>gR` | Reset buffer (undo all changes in file) |
+- `]c` / `[c` — next / previous hunk
+- `<leader>gd` — preview hunk
+- `<leader>gr` — reset hunk
+- `<leader>gR` — reset buffer
+- `<leader>ga` — stage hunk
 
-**Gitsigns** provides visual indicators in the gutter:
-- `+` Added lines
-- `~` Changed lines
-- `_` Deleted lines
+### Terminal
 
-**Git workflow**:
-1. See changes: Gutter signs show what's modified
-2. Review hunk: `<leader>gd` shows inline diff
-3. Navigate: `]c` / `[c` to jump between hunks
-4. Undo hunk: `<leader>gr` to reset current hunk
-5. Undo all: `<leader>gR` to reset entire file
+- `<leader>tt` — toggle bottom terminal
 
-*See `<leader>sc` under Telescope section for commit history search.*
+**After opening the terminal:**
 
-### LSP Navigation & Actions
-| Mapping | Description | Notes |
-|---------|-------------|-------|
-| `K` | Hover documentation | Show docs for symbol under cursor |
-| `gd` | Go to definition | Jump to where a symbol is defined |
-| `gD` | Go to declaration | Jump to declaration (e.g., .h file in C) |
-| `grr` | Find references | See all usages of a symbol[^1] |
-| `gri` | Go to implementation | In Haskell: type class instances; in Go/C#: interface implementations |
-| `grn` | Rename symbol | Rename variables/functions across files |
-| `gra` | Code action | Fix errors, organize imports |
-| `<leader>th` | Toggle inlay hints | Show/hide inline type information |
+1. Neovim starts you in terminal-insert mode, so you can type commands right away.
+2. Press `<Esc>` to leave terminal insert mode and go back to terminal normal mode.
+3. Use `<C-k>` / `<C-j>` to move between the terminal split and the rest of Neovim.
+4. Press `i` to type in the terminal again.
+5. Press `<leader>tt` again to close the terminal split.
 
-**Supported servers:**
-- **Arch Linux**: clangd, haskell-language-server, asm-lsp, lua-language-server, bash-language-server
-- **FreeBSD**: clangd, haskell-language-server, lua-language-server (no bash-language-server, asm-lsp)
+## Notes
 
-[^1]: Requires quick typing to work properly.
+- LSP servers are expected to be available on `PATH`
+- Keymap may timeout if typing to slow, set `vim.opt.timeoutlen = 1500`
 
-### Terminal Navigation
-| Mapping | Description |
-|---------|-------------|
-| `<leader>tt` | Toggle terminal | Opens/closes bottom split terminal (15 lines) |
+## Appendix: Vim basics
 
-**Terminal workflow:**
-- `<leader>tt` — Open terminal at bottom, drop into insert mode
-- `Esc` — Exit insert mode, enter normal mode in terminal
-- `<C-k>` — Exit terminal, navigate to upper window
-- `<C-j>` — Navigate down into terminal
-- `i` — Return to insert mode and type commands
+### Less known, very useful
 
-### Completions
-
-This config uses manual completions for a minimal experience. Press `<C-x>` followed by another key to trigger different completion modes:
-
-| Mapping | Description | Example |
-|---------|-------------|---------|
-| `<C-x><C-o>` | LSP/Omni completion | Functions, variables from language server |
-| `<C-x><C-n>` | Current buffer keywords | Words in the current file |
-| `<C-x><C-l>` | Line completion | Entire lines from file |
-
-**Navigation**: `<C-n>` next, `<C-p>` previous, `<C-y>` accept, `<C-e>` cancel.
-
-## Appendix: Vim Basics
+1. `<C-o>` in INSERT: execute a single NORMAL mode command.
+2. `.`: repeat your last change.
+3. `vip`: visually select the inner paragraph, then `y` or `c`.
+4. `<C-v>`: visual block mode.
+5. `<C-a>` / `<C-x>`: increment or decrement numbers.
+6. `gv`: reselect your previous visual selection.
+7. `<C-o>` / `<C-i>`: jump back and forward in the jump list.
+8. `!!sh` : normal-mode shorthand for `:.!sh`, replace line with shell output
 
 ### Editing
 
 | Mapping | Description |
 |---------|-------------|
 | `.` | Repeat last change |
-| `u` | Undo previous |
-| `U` | Undo all changes on line |
-| `<C-r>` | Redo undone |
-| `c [number] motion` | Change text specified by [number] and motion |
-| `R` | Enters Replace mode until `<Esc>` is pressed |
-| `D` | Delete remainder of line |
-| `I` | Insert at first non-blank character of line |
-| `gI` | Insert at column 1 of line |
-| `<C-t>` | Shift indent right (Insert mode) |
-| `<C-d>` | Shift indent left (Insert mode) |
-| `<C-f>` | Force re-evaluate auto-indentation, e.g. for C brackets (Insert mode) |
-
-### Text Manipulation
-
-| Mapping | Description |
-|---------|-------------|
-| `gc[c]` | Comment selection [entire line] |
-| `~`   | Toggle case |
-| `~{motion}`| Toggle case |
-| `guu` | Lowercase entire line |
-| `gUU` | Uppercase entire line |
-| `guw` | Lowercase word |
-| `gUw` | Uppercase word |
+| `u` | Undo previous change |
+| `<C-r>` | Redo undone change |
+| `U` | Undo all changes on the current line |
+| `R` | Replace mode until `<Esc>` |
+| `D` | Delete to end of line |
+| `I` | Insert at first non-blank character |
+| `gI` | Insert at column 1 |
+| `<C-t>` | Shift indent right in INSERT mode |
+| `<C-d>` | Shift indent left in INSERT mode |
+| `<C-f>` | Re-evaluate auto-indentation in INSERT mode |
 | `gJ` | Join lines without adding space |
-| `gq` | Format/wrap text (motion) |
+| `gq` | Format or wrap text |
 
-### Text Objects
-
-Text objects allow operations (change, delete, yank, visual select) on structured text like words, sentences, or delimited blocks.
+### Text manipulation
 
 | Mapping | Description |
 |---------|-------------|
+| `gc[c]` | Comment selection or line |
+| `~` | Toggle case |
+| `~{motion}` | Toggle case for motion |
+| `guu` | Lowercase current line |
+| `gUU` | Uppercase current line |
+| `guw` | Lowercase current word |
+| `gUw` | Uppercase current word |
 | `ci"` | Change inside double quotes |
 | `di(` | Delete inside parentheses |
 | `vi[` | Visual select inside brackets |
-| `caw` | Change around word (includes whitespace) |
+| `caw` | Change around word |
 | `vaw` | Visual select around word |
 | `diw` | Delete inner word |
 | `vip` | Visual select inner paragraph |
@@ -188,211 +136,213 @@ Text objects allow operations (change, delete, yank, visual select) on structure
 | `cis` | Change inside sentence |
 | `vas` | Visual select around sentence |
 
-### Visual Mode
+### Visual mode
 
 | Mapping | Description |
 |---------|-------------|
-| `<C-v>` | Visual block mode - select rectangular blocks of text |
-| `o` / `O` | Swap cursor to the other end of the visual selection |
+| `<C-v>` | Visual block mode |
+| `o` / `O` | Swap cursor to the other end of the selection |
 | `gv` | Reselect last visual selection |
 | `vey` | Yank from cursor to end of word |
 | `vep` | Paste over from cursor to end of word |
-| `!nl` | Number selected lines (when in visual mode) |
-| `!uniq` | Remove duplicate lines (from visual selection) |
-| `v motion :w FILENAME` | Save the Visually selected lines in file FILENAME |
-| `v motion :w >> FILENAME` | Append the Visually selected lines to file FILENAME |
+| `!nl` | Number selected lines |
+| `!uniq` | Remove duplicate lines from selection |
+| `v motion :w FILENAME` | Save selected lines to a file |
+| `v motion :w >> FILENAME` | Append selected lines to a file |
 
-### Insert Mode
+### Insert mode
 
 | Mapping | Description |
 |---------|-------------|
-| `<C-o>` | Allow you execute a single NORMAL mode command |
+| `<C-o>` | Execute one NORMAL mode command |
 | `<C-w>` | Delete previous word |
 | `<C-h>` | Delete previous character |
-| `<C-u>` | Delete previous (d0) |
+| `<C-u>` | Delete back to the start of line |
 
-### Search & Replace
+### Search and replace
 
 | Mapping | Description |
 |---------|-------------|
 | `:%s/old/new/gc` | Global find and replace with confirmation |
 | `:g/pattern/d` | Delete all lines matching pattern |
-| `:v/pattern/d` | Delete all lines NOT matching pattern |
+| `:v/pattern/d` | Delete all lines not matching pattern |
 | `%!uniq` | Remove duplicate lines from entire file |
 | `*` | Search forward for word under cursor |
 | `#` | Search backward for word under cursor |
 
 ### Macros
 
-Macros allow recording and replaying sequences of commands.
-
 | Mapping | Description |
 |---------|-------------|
-| `q<register>` | Start recording macro to a register (e.g., `qa`) |
+| `q<register>` | Start recording a macro |
 | `q` | Stop recording macro |
-| `@<register>` | Replay macro from register (e.g., `@a`) |
+| `@<register>` | Replay macro from register |
 | `@@` | Replay the last executed macro |
 
 ### Registers
 
-Registers store text for yanking, deleting, or pasting (like multiple clipboards).
+| Mapping | Description |
+|---------|-------------|
+| `"a` | Use register `a` for yank/delete/paste |
+| `:reg` | View register contents |
+
+### File operations and buffers
 
 | Mapping | Description |
 |---------|-------------|
-| `"a` | Use register 'a' for yank/delete/paste (replace 'a' with any letter) |
-| `:reg` | View contents of all registers |
-
-### File Operations & Buffers
-
-| Mapping | Description |
-|---------|-------------|
-| `:b[uffer] [name/number]` | Switch to a buffer |
-| `:bn[ext]` | Switch to the next buffer |
-| `:bp[revious]` | Switch to the previous buffer |
-| `:bd[elete]` | Unload buffer and remove it from list |
-| `:r FILENAME` | Retrieves disk file and puts it below the cursor |
-| `:r !command` | Insert output of shell command below cursor (ex: date) |
-| `:x,yw >> FILENAME` | Appends lines x-y to file FILENAME |
+| `:b[uffer] [name/number]` | Switch buffers |
+| `C-l' or ':bn[ext]` | Next buffer |
+| `C-h' or ':bp[revious]` | Previous buffer |
+| `:bd[elete]` | Unload current buffer |
+| `:r FILENAME` | Read file into buffer |
+| `:r !command` | Insert output of command |
 | `gf` | Go to file under cursor |
 | `gx` | Open URL under cursor |
-| `:.!sh` | Replace current line with shell output |
+| `:.!sh` | Replace line with shell output |
 | `!!sh` | Normal-mode shorthand for `:.!sh` |
-| `:.w !sh` | Pipe current line to `sh` |
-| `:'<,'>w !sh` | Pipe visual selection to `sh` |
+| `:.w !sh` | Pipe current line to shell |
+| `:'<,'>w !sh` | Pipe visual selection to shell |
 
 ### Navigation
 
-**Jump List** - Tracks significant cursor movements (searches, go to definition, file jumps):
+**Jump list**
 
 | Mapping | Description |
 |---------|-------------|
-| `<C-o>` | Jump to older position (back) |
-| `<C-i>` or `<Tab>` | Jump to newer position (forward) |
-| `<C-6>` | Toggle between last two files (use `6` on non-US keyboards) |
-| `:jumps` | View full jump list |
+| `<C-o>` | Jump to older position |
+| `<C-i>` / `<Tab>` | Jump to newer position |
+| `<C-6>` | Toggle between last two files |
+| `:jumps` | View jump list |
 
-**Change List**:
+**Change list**
 
 | Mapping | Description |
 |---------|-------------|
 | `g;` | Jump to last change position |
 | `g,` | Jump to newer change position |
 
-**Scrolling**:
+**Scrolling**
 
 | Mapping | Description |
 |---------|-------------|
 | `<C-d>` | Scroll down half a page |
 | `<C-u>` | Scroll up half a page |
-| `zt` | Scroll screen to put cursor at top |
-| `zz` | Scroll screen to put cursor at middle |
-| `zb` | Scroll screen to put cursor at bottom |
+| `zt` | Put cursor line at top |
+| `zz` | Put cursor line in middle |
+| `zb` | Put cursor line at bottom |
 
-**Screen Movement**:
-
-| Mapping | Description |
-|---------|-------------|
-| `H` | Move cursor to Highest line on screen |
-| `M` | Move cursor to Middle line on screen |
-| `L` | Move cursor to Lowest line on screen |
-
-**Line & Word Navigation**:
+**Screen movement**
 
 | Mapping | Description |
 |---------|-------------|
-| `f{char}` / `F{char}` | Find character forward/backward in current line |
-| `;` | Repeat last `f` or `F` in the same direction |
-| `,` | Repeat last `f` or `F` in the opposite direction |
+| `H` | Move to highest line on screen |
+| `M` | Move to middle line on screen |
+| `L` | Move to lowest line on screen |
 
-**Other**:
+**Line and word navigation**
 
 | Mapping | Description |
 |---------|-------------|
-| `gi` | Insert at last insert position |
+| `f{char}` / `F{char}` | Find character forward/backward |
+| `;` | Repeat last `f` or `F` |
+| `,` | Repeat last `f` or `F` in reverse |
+| `gi` | Return to last insert position |
 
-**Split Windows**:
+### Split windows
 
-| Mapping    | Action                        |
-|------------|-------------------------------|
-| `<C-h>`    | Move focus to left split      |
-| `<C-l>`    | Move focus to right split     |
-| `<C-j>`    | Move focus to lower split     |
-| `<C-k>`    | Move focus to upper split     |
-| `<A-h>`    | Resize split left             |
-| `<A-l>`    | Resize split right            |
-| `<A-j>`    | Resize split down             |
-| `<A-k>`    | Resize split up               |
+| Mapping | Action |
+|---------|--------|
+| `<C-h>` | Move focus to left split |
+| `<C-l>` | Move focus to right split |
+| `<C-j>` | Move focus to lower split |
+| `<C-k>` | Move focus to upper split |
+| `<A-h>` | Resize split left |
+| `<A-l>` | Resize split right |
+| `<A-j>` | Resize split down |
+| `<A-k>` | Resize split up |
 
-### Diff Mode
+### Diff mode
 
-**Commands**:
+**Commands**
 
 ```vim
 :diffsplit %              " Compare with saved file
 :w !diff % -              " Show changes
 :w !diff -u % -           " Show changes with context
-:w !colordiff % -         " Colorized diff (if colordiff installed)
+:w !colordiff % -         " Colorized diff if installed
 ```
 
-**Navigation**:
+**Navigation**
 
 | Mapping | Action |
 |---------|--------|
 | `]c` | Jump to next difference |
 | `[c` | Jump to previous difference |
-| `do` | Obtain changes (from other window) |
-| `dp` | Put changes (to other window) |
+| `do` | Obtain changes from other window |
+| `dp` | Put changes to other window |
 | `zr` | Expand folds to see more context |
 
-## Checkhealth
+### Completions
 
-Headless Checkhealth: If debugging an environment purely from the terminal without opening UI, run
+This config keeps completion simple. Press `<C-x>` plus another key:
+
+| Mapping | Description | Example |
+|---------|-------------|---------|
+| `<C-x><C-o>` | LSP / omni completion | Functions and symbols from the language server |
+| `<C-x><C-n>` | Current-buffer keywords | Words in the current file |
+| `<C-x><C-l>` | Line completion | Entire lines from the file |
+
+**Navigation:** `<C-n>` next, `<C-p>` previous, `<C-y>` accept, `<C-e>` cancel.
+
+### Checkhealth
+
+If the config behaves strangely, use:
+
 ```bash
-nvim --headless -c "checkhealth" -c "w! health.log" -c "qa"
+nvim --headless -c "checkhealth" -c "qa"
 ```
-to pipe output to `health.log`
 
-## LSP Troubleshooting
+### LSP troubleshooting
 
-This config bypasses Mason entirely - LSP servers are installed via system package manager.
+This config bypasses Mason entirely. LSP servers are installed via the system package manager.
 
-### Install LSP Servers
+#### Install LSP servers
 
-| Server | Artix  | FreeBSD |
-|--------|--------|---------|
-| clangd | `clang`| `llvm`  |
-| lua_ls | `lua-language-server` | lua-language-server |
-| hls    | `extra/haskell-language-server` | `hs-haskell-language-server` |
+| Server | Artix | FreeBSD |
+|--------|------|---------|
+| clangd | `clang` | `llvm` |
+| lua_ls | `lua-language-server` | `lua-language-server` |
+| hls | `extra/haskell-language-server` | `hs-haskell-language-server` |
+| bash | `extra/bash-language-server`, `extra/shfmt` | `hs-ShellCheck`, `shfmt` (not tested) |
 
-### Check Status
+#### Check status
 
 ```vim
-:LspLog               " Check for errors
-:checkhealth vim.lsp  " Full diagnostics
+:LspLog
+:checkhealth vim.lsp
 ```
 
-### Common Issues
+#### Common issues
 
 **"No LSP implementation found"**
-- Server not installed: `which clangd haskell-language-server-wrapper`
-- Server not in PATH: Check shell profile
+- Server not installed
+- Server not in `PATH`
 - Not a project: HLS needs `*.cabal`, clangd needs `compile_commands.json`
 
-**Generate compile_commands.json for C/C++:**
+**Generate `compile_commands.json`**
+
 ```bash
 bear -- make
 ```
 
-**"No information available" on hover (K)**
-- LSP still indexing - wait for it to finish
+**"No information available" on hover (`K`)**
+- LSP still indexing
 - Standalone file without project structure
 
-### Force Restart
+#### Restart LSP
 
 ```vim
 :LspRestart
 :LspStop
 :LspStart
 ```
-
-

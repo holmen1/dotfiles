@@ -1,20 +1,12 @@
--- ~/.config/nvim/lua/plugins/theme.lua
--- Native configuration for TokyoNight colorscheme
+local tokyonight = require('tokyonight')
 
--- Ensure the plugin is available before attempting to configure it
-local status_ok, tokyonight = pcall(require, "tokyonight")
-if not status_ok then
-  vim.notify("Tokyonight colorscheme not found! Ensure `vim.pack.add` worked.", vim.log.levels.WARN)
-  return
-end
-
--- Configure the colorscheme
 tokyonight.setup({
   transparent = true,
   styles = {
-    comments = { italic = false }, -- Disable italics in comments
+    comments = { italic = false },
   },
 })
 
--- Load the colorscheme
 vim.cmd.colorscheme("tokyonight")
+
+-- vim: ts=2 sts=2 sw=2 et
