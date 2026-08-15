@@ -33,7 +33,6 @@ No Mason-style tool manager; install servers and CLIs where the OS expects them.
 
 ### Global
 
-- `<leader>q` — diagnostic list
 - `<C-j>` / `<C-k>` — move between windows
 - `<A-h/j/k/l>` — resize splits
 
@@ -46,6 +45,7 @@ No Mason-style tool manager; install servers and CLIs where the OS expects them.
 - `<leader>sk` — search keymaps
 - `<leader><leader>` — buffers
 - `<leader>sc` — git commits for current buffer
+- `:Telescope fidget` — notification history
 
 ### LSP
 
@@ -55,7 +55,7 @@ No Mason-style tool manager; install servers and CLIs where the OS expects them.
 - `grr` — references
 - `gri` — implementations
 - `grn` — rename
-- `gra` — code action
+- `<leader>q` — diagnostic list
 - `<leader>th` — toggle inlay hints
 
 ### Git

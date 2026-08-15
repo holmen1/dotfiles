@@ -32,10 +32,29 @@ If a plugin needs setup, keep the spec in `lua/plugins/init.lua` and move the co
 Example:
 
 ```lua
-{ 'author/plugin-name', config = function() require('plugins.plugin-name') end },
+{ 'j-hui/fidget.nvim', lazy = false, config = function() require('plugins.fidget') end },
 ```
 
-Then put the setup code in `lua/plugins/plugin-name.lua`.
+Then put the setup code in `lua/plugins/fidget.lua`:
+
+```lua
+require('fidget').setup({
+  notification = {
+    override_vim_notify = true,
+    window = {
+      done_ttl = 5,
+    },
+    configs = {
+      default = {
+        name = false,
+        icon = false,
+      }
+    }
+  },
+})
+
+require('telescope').load_extension('fidget')
+```
 
 Use a separate file when the plugin:
 

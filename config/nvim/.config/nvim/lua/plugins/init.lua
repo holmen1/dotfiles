@@ -6,8 +6,8 @@ return {
   { 'nvim-lua/plenary.nvim', lazy = true }, -- shared helper library, only load when another plugin needs it
   { 'nvim-telescope/telescope.nvim', event = 'VeryLazy', config = function() require('plugins.telescope') end, dependencies = { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' } },
   { 'nvim-tree/nvim-web-devicons', lazy = true }, -- icons are optional and only needed when a UI component asks for them
-  { 'neovim/nvim-lspconfig', lazy = false, config = function() require('plugins.lspconfig') end, dependencies = { 'j-hui/fidget.nvim' } }, -- LSP wiring should be ready as soon as editing starts
-  { 'j-hui/fidget.nvim', lazy = true }, -- only needed for LSP progress UI
+  { 'j-hui/fidget.nvim', lazy = false, config = function() require('plugins.fidget') end }, -- notifications and progress indicators for async tasks
+  { 'neovim/nvim-lspconfig', lazy = false, config = function() require('plugins.lspconfig') end }, -- LSP wiring should be ready as soon as editing starts
   { 'echasnovski/mini.nvim', lazy = false, config = function() require('plugins.mini') end }, -- statusline/tabline/textobjects are part of the base editing experience
   { 'sitiom/nvim-numbertoggle' }, -- simple plugin: just install it, no setup file needed
   { 'lewis6991/gitsigns.nvim', event = 'VeryLazy', config = function() require('plugins.gitsigns') end },

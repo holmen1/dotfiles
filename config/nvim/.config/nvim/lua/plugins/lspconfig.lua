@@ -1,11 +1,3 @@
-local fidget = require('fidget')
-
-fidget.setup({
-  notification = {
-    override_vim_notify = true,
-  },
-})
-
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('nvim-lsp-attach', { clear = true }),
   callback = function(event)

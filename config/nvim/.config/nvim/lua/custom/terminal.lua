@@ -3,15 +3,21 @@ local terminal_buf
 local terminal_win
 
 function M.toggle()
-  local open = terminal_buf
-    and vim.api.nvim_buf_is_valid(terminal_buf)
-    and terminal_win
-    and vim.api.nvim_win_is_valid(terminal_win)
+  local buf_valid = terminal_buf and vim.api.nvim_buf_is_valid(terminal_buf)
+  local win_valid = terminal_win and vim.api.nvim_win_is_valid(terminal_win)
 
-  if open then
-    vim.api.nvim_win_close(terminal_win, true)
-    terminal_buf = nil
+  if win_valid then
+    vim.api.nvim_win_close(terminal_win, false)
     terminal_win = nil
+    return
+  end
+
+  if buf_valid then
+    vim.cmd.split()
+    vim.cmd('buffer ' .. terminal_buf)
+    vim.cmd.resize(15)
+    terminal_win = vim.api.nvim_get_current_win()
+    vim.cmd.startinsert()
     return
   end
 
