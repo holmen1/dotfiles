@@ -10,12 +10,13 @@ XKB_STATE=$HOME/.cache/xkb-layout
 FONT="Liberation Mono-16"
 
 current_xkb=$(cat "$XKB_STATE" 2>/dev/null || echo "se")
-battery_level=$($SCRIPTS/monitor-battery.sh --get-level)
-ssid=$($SCRIPTS/monitor-wifi.sh --get-ssid)
-vpn=$($SCRIPTS/monitor-vpn.sh --get-location)
+battery_level=$("$SCRIPTS"/monitor-battery.sh --get-level)
+ssid=$("$SCRIPTS"/monitor-wifi.sh --get-ssid)
+vpn=$("$SCRIPTS"/monitor-vpn.sh --get-location)
 
-# Main categories
-category=$(printf "Exit\nNetwork\nHelp" | dmenu -i -p "x[$current_xkb] w[$ssid] v[$vpn] b[$battery_level%]" \
+# Tray: keyboard, wifi, vpn and battery status
+# Main menu: Exit, Wifi or Help
+category=$(printf "Exit\nNetwork\nHelp" | timeout 4s dmenu -i -p "x[$current_xkb] w[$ssid] v[$vpn] b[$battery_level%]" \
 -nb "#222222" -nf "#ffffff" -sb "#A300A3" -sf "#ffffff" \
 -fn "$FONT")
 
@@ -33,7 +34,7 @@ case "$category" in
         sed -n 14,40p "$CONF_DIR/lf/README.md" | dmenu -l 23 -i -p "lf Help" \
                 -nb "#222222" -nf "#ffffff" -sb "#222222" -sf "#ffffff" -fn "$FONT" ;;
       "wifi")
-        $SCRIPTS/monitor-wifi.sh --help | dmenu -l 7 -p "wifi Help" \
+        "$SCRIPTS"/monitor-wifi.sh --help | dmenu -l 7 -p "wifi Help" \
                 -nb "#222222" -nf "#ffffff" -sb "#222222" -sf "#ffffff" -fn "$FONT" ;;
       "git")
         sed -n 89,106p "$CONF_DIR/bash/.bashrc" | dmenu -l 18 -p "git Help" \
@@ -45,9 +46,9 @@ case "$category" in
   "Network")
     net=$(printf "WiFi\nVPN" | dmenu -i -p "Net:" -nb "#222222" -nf "#ffffff" -sb "#A300A3" -sf "#ffffff" -fn "$FONT")
     case "$net" in
-      "WiFi") $SCRIPTS/dmenu-wifi.sh ;;
-      "VPN")  $SCRIPTS/dmenu-vpn.sh ;;
+      "WiFi") "$SCRIPTS"/dmenu-wifi.sh ;;
+      "VPN")  "$SCRIPTS"/dmenu-vpn.sh ;;
     esac ;;
   "Exit")
-    $SCRIPTS/dmenu-logout.sh ;;
+    "$SCRIPTS"/dmenu-logout.sh ;;
 esac
