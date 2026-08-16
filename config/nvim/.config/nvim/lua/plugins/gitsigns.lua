@@ -43,7 +43,7 @@ gitsigns.setup({
     local hl = vim.api.nvim_set_hl
     hl(0, 'GitSignsAdd', { fg = '#808000', bg = 'NONE', bold = true })
     hl(0, 'GitSignsChange', { fg = '#FFBF00', bg = 'NONE', bold = true })
-    hl(0, 'GitSignsDelete', { fg = '#7C0A02', bg = 'NONE', bold = true })
+    hl(0, 'GitSignsDelete', { fg = '#F44336', bg = 'NONE', bold = true })
   end,
 })
 
