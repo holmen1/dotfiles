@@ -13,7 +13,7 @@
 set -e
 
 if command -v ghc >/dev/null 2>&1; then
-    echo "Using GHC from PATH: $(command -v ghc)"
+    echo "Using $(ghc --version)"
 else
     echo "Error: no ghc found on PATH"
     exit 1
@@ -30,7 +30,6 @@ XMONAD_CONTRIB_VER="0.18.2"
 HACKAGE="https://hackage.haskell.org/package"
 
 BUILD_DIR=~/repos/dotfiles/install/build/xmonad
-BIN_DIR=$BUILD_DIR/bin
 WORK_DIR=$BUILD_DIR/_ghc_build
 
 # Haskell packages to fetch from Hackage (non-boot dependencies)
