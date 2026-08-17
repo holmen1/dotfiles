@@ -3,7 +3,7 @@ set -e
 
 if [ -z "$1" ]; then
     echo "Usage: $0 <ghc-version>"
-    echo "  e.g. $0 9.12.4"
+    echo "  e.g. $0 9.12.2"
     exit 1
 fi
 
@@ -34,6 +34,10 @@ mkdir -p "$INSTALL_PREFIX"
 ./configure --prefix="$INSTALL_PREFIX"
 make install
 
-echo "Done: $(${INSTALL_PREFIX}/bin/ghc --version)"
-echo "Installed: ${INSTALL_PREFIX}"
-echo "To activate: sudo ln -sf ${INSTALL_PREFIX}/bin/ghc /usr/local/bin/ghc"
+echo "Done!: $("${INSTALL_PREFIX}"/bin/ghc --version)"
+echo "Local install: ${INSTALL_PREFIX}"
+echo ""
+echo "Install to /usr/local/bin/:"
+echo "cd ${SRC_DIR}"
+echo "./configure"
+echo "sudo make install"
