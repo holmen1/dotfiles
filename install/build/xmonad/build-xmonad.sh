@@ -12,6 +12,18 @@
 
 set -e
 
+BUILD_DIR=~/repos/dotfiles/install/build/xmonad
+WORK_DIR=$BUILD_DIR/_ghc_build
+LOG_FILE="$BUILD_DIR/build-xmonad-$(date +%Y%m%d_%H%M%S).log"
+
+# Log all output to file and stdout
+exec 1> >(tee -a "$LOG_FILE")
+exec 2>&1
+
+echo "=== XMonad build started at $(date) ===" 
+echo "Log: $LOG_FILE"
+echo ""
+
 if command -v ghc >/dev/null 2>&1; then
     echo "Using $(ghc --version)"
 else
@@ -28,9 +40,6 @@ XMONAD_VER="0.18.1"
 XMONAD_CONTRIB_VER="0.18.2"
 
 HACKAGE="https://hackage.haskell.org/package"
-
-BUILD_DIR=~/repos/dotfiles/install/build/xmonad
-WORK_DIR=$BUILD_DIR/_ghc_build
 
 # Haskell packages to fetch from Hackage (non-boot dependencies)
 DATA_DEFAULT_VER="0.8.0.2"
@@ -106,5 +115,7 @@ echo "── Installed X11-$X11_VER ──"
 build_simple "xmonad"         "$XMONAD_VER"
 build_simple "xmonad-contrib" "$XMONAD_CONTRIB_VER"
 
-echo "Building packages complete."
+echo ""
+echo "=== Build complete at $(date) ==="
+echo "Log saved to: $LOG_FILE"
 

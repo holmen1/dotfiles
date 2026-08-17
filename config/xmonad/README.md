@@ -90,6 +90,54 @@ machineSpecificKeys = do
 ```
 Writes to ```~/.cache/xmonad/xmonad-debug.log```
 
+## TODOs
+
+- [ ] **Screenshot directory safety** (xmonad.hs:60-61) — Hardcoded `~/Downloads` may not exist. Add check in `.xinitrc` startup hook or create directory on demand. Currently screenshots fail silently if directory missing.
+
+- [ ] **Fade hook transparency conflict** (xmonad.hs:45-49) — Brave-browser set to 15% opacity unconditionally, conflicts with `opaque` rule for focused windows. Reorder rules or exclude Brave from opaque rule to clarify behavior.
+
+- [ ] **Workspace keybinding clarity** (xmonad.hs:72-75) — Lambda composition `(\i w -> W.greedyView i (W.shift i w), shiftMask)` works but is non-obvious. Extract into named functions `viewWS` and `shiftWS` for maintainability and to prevent API breakage.
+
+  **How to clean up complex lambdas:**
+  
+  Current (hard to read):
+  ```haskell
+  [ ((m .|. myModMask, k), windows $ f i)
+    | (i, k) <- zip myWorkspaces [xK_1 .. xK_9],
+      (f, m) <- [(W.greedyView, 0), (\i w -> W.greedyView i (W.shift i w), shiftMask)]
+  ]
+  ```
+
+  Better (extract named functions first):
+  ```haskell
+  let viewWS i = W.greedyView i
+      shiftWS i = W.greedyView i . W.shift i
+  in [ ((m .|. myModMask, k), windows $ f i)
+       | (i, k) <- zip myWorkspaces [xK_1 .. xK_9],
+         (f, m) <- [(viewWS, 0), (shiftWS, shiftMask)]
+       ]
+  ```
+
+  Benefits:
+  - Function intent is explicit (shift moves AND views, view only views)
+  - Easier to test each function independently
+  - Less susceptible to API changes in XMonad
+  - Readable at a glance
+
+- [ ] **XMonad compilation verification** — Sanity checks verify xmonad binary exists but don't test that config compiles or loads. Add integration test that runs `xmonad --version` and verifies fade hook, scratchpads, key bindings respond as expected.
+
+- [ ] **Type annotation** (xmonad.hs:8) — Add explicit type to `myModMask :: KeyMask` for code clarity and early error detection.
+
+- [ ] **Lightweight optimization** — Remove unused/cosmetic features to keep binary thin (trade ~2-3% binary size for fewer runtime hooks):
+  - Remove `myMagenta = "#A300A3"` (line 16) — defined but never used
+  - Remove `XMonad.Hooks.FadeWindows` (line 6) + `myFadeHook` + `logHook` — transparency is cosmetic, adds ~1-2 KB
+  - Remove `XMonad.Util.NamedScratchpad` (line 10) + `myScratchpads` — browser/htop scratchpads; keep if frequently used
+  - Remove `XMonad.Hooks.EwmhDesktops` (line 5) — desktop environment integration; only needed if using taskbar/panel
+  
+  **Keep:** `XMonad.Util.SpawnOnce` (efficient one-time startup for terminal)
+
+---
+
 ## Why Export HOSTNAME is Necessary for XMonad
 When lookupEnv "HOSTNAME" returns Nothing inside your xmonad.hs (line 54), it means the HOSTNAME environment variable isn't available to XMonad. This happens due to how environment variables are handled in desktop environments.
 
