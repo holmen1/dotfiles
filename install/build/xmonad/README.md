@@ -21,10 +21,6 @@ with plain GHC using `runhaskell Setup.hs`.
 ```bash
 # Arch/Artix
 pacman -S libx11 libxrandr libxext libxinerama libxss pkgconf autoconf
-
-# Debian/Ubuntu
-apt install libx11-dev libxft-dev libxinerama-dev libxrandr-dev libxss-dev pkg-config autoconf
-# may not need xft
 ```
 
 ### GHC
@@ -43,6 +39,7 @@ If there is no tested version in your package manager,
 1. Verifies GHC is installed
 2. Fetches all Haskell dependencies from Hackage
 3. Builds xmonad and xmonad-contrib
+4. Writes progress to logfile
 
 ```bash
 ./rebuild-xmonad.sh

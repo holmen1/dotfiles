@@ -2,37 +2,17 @@ import Data.Maybe (fromMaybe)
 import System.Environment (lookupEnv)
 import XMonad
 import XMonad.Actions.CycleWS
-import XMonad.Hooks.EwmhDesktops (ewmh, ewmhFullscreen)
 import XMonad.Hooks.FadeWindows
 import XMonad.Operations (unGrab)
 import qualified XMonad.StackSet as W
 import XMonad.Util.EZConfig (additionalKeys)
-import XMonad.Util.NamedScratchpad
 import XMonad.Util.SpawnOnce
 
 myModMask = mod1Mask
 
-myAppLauncher = "dmenu_run -fn 'JetBrainsMono Nerd Font:size=14' -nb '#222222' -nf '#bbbbbb' -sb '#A300A3' -sf '#eeeeee'"
-
-myMagenta = "#A300A3"
+myAppLauncher = "dmenu_run -fn 'Liberation Mono-16' -nb '#222222' -nf '#bbbbbb' -sb '#A300A3' -sf '#eeeeee'"
 
 myWorkspaces = map show [1 .. 4]
-
--- Scratchpads
--- Note, find class name by running `xprop` in the terminal and clicking on the window
--- WM_CLASS(STRING) = "brave-browser", "Brave-browser"
-myScratchpads terminal browser =
-  [ NS
-      "htop"
-      (terminal ++ " -e htop")
-      (title =? "htop")
-      (customFloating $ W.RationalRect 0.5 0 1 0.4),
-    NS
-      "browser"
-      (browser ++ " --class=MyScratchpad")
-      (className =? "MyScratchpad")
-      (customFloating $ W.RationalRect 0 0 1 1)
-  ]
 
 myLayout = tiled ||| Mirror tiled ||| Full
   where
@@ -41,9 +21,7 @@ myLayout = tiled ||| Mirror tiled ||| Full
     ratio = 11 / 20
     delta = 3 / 100
 
-myBorderWidth = 0
-
-myManageHook terminal browser = namedScratchpadManageHook (myScratchpads terminal browser)
+noBorderWidth = 0
 
 myStartupHook terminal = do
   spawnOnce terminal -- Start terminal on first launch only
@@ -51,15 +29,15 @@ myStartupHook terminal = do
 myFadeHook =
   composeAll
     [ opaque,
-      isUnfocused --> transparency 0.8,
-      className =? "brave-browser" --> transparency 0.15
+      isUnfocused --> transparency 0.6
     ]
 
 myKeys terminal browser =
   [ ((myModMask, xK_a), spawn myAppLauncher),
-    ((myModMask, xK_e), spawn $ terminal ++ " -e lf"),
+    ((myModMask, xK_e), spawn $ terminal ++ " lf"),
+    ((myModMask, xK_p), spawn $ terminal ++ " htop"),
     ((myModMask, xK_Return), spawn terminal),
-    ((myModMask, xK_b), spawn browser),
+    ((myModMask, xK_w), spawn browser),
     ((myModMask .|. shiftMask, xK_Return), windows W.swapMaster),
     ((myModMask, xK_Tab), nextWS),
     ((myModMask .|. shiftMask, xK_Tab), prevWS),
@@ -70,9 +48,7 @@ myKeys terminal browser =
     -- scripts
     ((myModMask, xK_x), spawn "xkb-toggle"),
     -- dmenu scripts
-    ((myModMask, xK_m), spawn "dmenu-menu"),
-    ((myModMask, xK_w), namedScratchpadAction (myScratchpads terminal browser) "browser"),
-    ((myModMask, xK_p), namedScratchpadAction (myScratchpads terminal browser) "htop")
+    ((myModMask, xK_m), spawn "dmenu-menu")
   ]
     ++
     -- mod-[1..9], Switch to workspace N
@@ -86,9 +62,8 @@ myConfig terminal browser =
   def
     { terminal = terminal,
       workspaces = myWorkspaces,
-      borderWidth = myBorderWidth,
+      borderWidth = noBorderWidth,
       layoutHook = myLayout,
-      manageHook = myManageHook terminal browser,
       startupHook = myStartupHook terminal,
       logHook = fadeWindowsLogHook myFadeHook
     }
@@ -99,7 +74,4 @@ main = do
   -- Read terminal and browser from environment variables with fallbacks
   myTerminal <- fromMaybe "xterm" <$> lookupEnv "TERMINAL"
   myBrowser <- fromMaybe "firefox" <$> lookupEnv "BROWSER"
-  xmonad
-    . ewmhFullscreen
-    . ewmh
-    $ myConfig myTerminal myBrowser
+  xmonad $ myConfig myTerminal myBrowser

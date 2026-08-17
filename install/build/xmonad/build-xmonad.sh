@@ -14,7 +14,7 @@ set -e
 
 BUILD_DIR=~/repos/dotfiles/install/build/xmonad
 WORK_DIR=$BUILD_DIR/_ghc_build
-LOG_FILE="$BUILD_DIR/build-xmonad-$(date +%Y%m%d_%H%M%S).log"
+LOG_FILE="$WORK_DIR/build-xmonad-$(date +%Y%m%d_%H%M%S).log"
 
 # Log all output to file and stdout
 exec 1> >(tee -a "$LOG_FILE")
