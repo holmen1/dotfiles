@@ -1,5 +1,25 @@
 # LESSONS LEARNED
 
+## 2026-08 Upgrading libraries
+
+Unregister old versions, list installed, verify dependencies
+
+```bash
+$ ghc-pkg --help
+  ghc-pkg unregister [pkg-id] 
+    Unregister the specified packages in the order given
+
+  ghc-pkg list [pkg]
+    List registered packages in the global database, and also the
+    user database
+
+  ghc-pkg dot
+    Generate a graph of the package dependencies
+
+  ghc-pkg check
+    Check the consistency of package dependencies and list broken packages
+```
+
 ## Hackage Package Upper Bounds vs GHC 9.12+
 
 When building Haskell packages from Hackage tarballs with GHC 9.12+ (base 4.21),
@@ -17,6 +37,76 @@ Known offenders in the xmonad dependency tree:
 | `setlocale-1.0.0.10` | `base >= 4.6 && <= 4.16` | remove upper bound |
 | `splitmix-0.1.0.2` | `base >=4.3 && <4.16` | remove upper bound |
 | `splitmix-0.1.0.2` | `deepseq >= 1.3.0.0 && <1.5` | remove upper bound |
+
+
+## Examining XMonad Binaries to Understand Size Differences
+
+
+### Basic Analysis
+
+```bash
+# Compare file types
+file ~/.local/bin/xmonad
+file ~/.cache/xmonad/xmonad-x86_64-linux
+
+# See what libraries they depend on
+ldd ~/.local/bin/xmonad
+ldd ~/.cache/xmonad/xmonad-x86_64-linux
+
+# Check section sizes
+size ~/.local/bin/xmonad
+size ~/.cache/xmonad/xmonad-x86_64-linux
+```
+
+### Looking at Debug Symbols
+
+```bash
+# Count symbols in each binary
+nm ~/.local/bin/xmonad | wc -l
+nm ~/.cache/xmonad/xmonad-x86_64-linux | wc -l
+
+# Create a stripped copy to see impact of debug symbols
+cp ~/.cache/xmonad/xmonad-x86_64-linux /tmp/xmonad-stripped
+strip /tmp/xmonad-stripped
+ls -la /tmp/xmonad-stripped
+```
+
+### Deeper Analysis
+
+```bash
+# Examine section headers
+readelf -S ~/.local/bin/xmonad | grep -A2 "\[.*\] \."
+readelf -S ~/.cache/xmonad/xmonad-x86_64-linux | grep -A2 "\[.*\] \."
+
+# Check compilation flags (might show optimization level)
+readelf -p .comment ~/.local/bin/xmonad
+readelf -p .comment ~/.cache/xmonad/xmonad-x86_64-linux
+```
+
+```bash
+cmp -l file1.bin file2 | wc -l          # How many differences?
+cmp -l file1.bin file2 | head            # Where do they start?
+
+# Then visualize
+vbindiff file1 file2
+
+#Or for human-readable
+diff -u <(xxd -g1 -c 32 file1.bin) <(xxd -g1 -c 32 file2.bin) | less
+
+# Pro tip: If these are ELF executables or object files, also try:bash
+objdump -d file1 > 1.asm
+objdump -d file2 > 2.asm
+diff -u 1.asm 2.asm
+```
+
+
+These commands will help you understand:
+1. Whether debug symbols are present (explaining larger size)
+2. Which optimization levels were used 
+3. Whether static vs dynamic linking differs
+4. Which sections contribute to size differences
+
+The cache binary is likely larger because it contains debug information to help with error reporting during development, whereas the installed binary may be optimized for size and performance.
 
 ## Note on Binary Locations
 

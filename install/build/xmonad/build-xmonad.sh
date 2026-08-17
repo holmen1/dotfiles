@@ -2,7 +2,7 @@
 #
 # Build xmonad + xmonad-contrib using only GHC (no cabal-install).
 # Uses runhaskell Setup.hs with GHC's built-in Cabal library.
-# Target: GHC 9.8.4 (base-4.19)
+# Target: GHC 9.14.1 (base-4.22)
 #
 # Prerequisites:
 #   - GHC, check that version is tested
@@ -33,10 +33,11 @@ BUILD_DIR=~/repos/dotfiles/install/build/xmonad
 WORK_DIR=$BUILD_DIR/_ghc_build
 
 # Haskell packages to fetch from Hackage (non-boot dependencies)
-DATA_DEFAULT_CLASS_VER="0.1.2.2"
+DATA_DEFAULT_VER="0.8.0.2"
+DATA_DEFAULT_CLASS_VER="0.2.0.0"
 SETLOCALE_VER="1.0.0.10"
 SPLITMIX_VER="0.1.3.2"
-RANDOM_VER="1.2.1.2"
+RANDOM_VER="1.3.1"
 UTF8_STRING_VER="1.0.2"
 X11_VER="1.10.3"
 
@@ -75,6 +76,7 @@ build_simple() {
 
 # ── build non-boot dependencies in order ─────────────────────────────
 
+build_simple "data-default" "$DATA_DEFAULT_VER"
 build_simple "data-default-class" "$DATA_DEFAULT_CLASS_VER"
 
 # NB: setlocale-1.0.0.10 tarball has stale base <4.16; Hackage revised it to <4.23
@@ -91,7 +93,16 @@ echo "── Installed setlocale-$SETLOCALE_VER ──"
 build_simple "splitmix"            "$SPLITMIX_VER"
 build_simple "random"             "$RANDOM_VER"
 build_simple "utf8-string"        "$UTF8_STRING_VER"
-build_simple "X11"             "$X11_VER"
+
+fetch_hackage "X11" "$X11_VER"
+sed -i 's/data-default-class == 0.1.*/data-default-class >= 0.1.2/' "$WORK_DIR/X11-$X11_VER/X11.cabal"
+cd "$WORK_DIR/X11-$X11_VER"
+SETUP_FILE=Setup.hs
+runhaskell "$SETUP_FILE" configure --user
+runhaskell "$SETUP_FILE" build
+runhaskell "$SETUP_FILE" install
+echo "── Installed X11-$X11_VER ──"
+
 build_simple "xmonad"         "$XMONAD_VER"
 build_simple "xmonad-contrib" "$XMONAD_CONTRIB_VER"
 
