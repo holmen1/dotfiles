@@ -30,23 +30,15 @@ $ ll xmonad-0.18.1-ghc-9.14.1
 $ size xmonad-0.18.1-ghc-9.14.1
    text    data     bss     dec     hex filename
 3808244  422640   30824 4261708  41074c xmonad-0.18.1-ghc-9.14.1
-$ ldd xmonad-0.18.1-ghc-9.14.1
-        linux-vdso.so.1 (0x00006e0b29caf000)
-        libm.so.6 => /usr/lib/libm.so.6 (0x00006e0b29b54000)
-        libXss.so.1 => /usr/lib/libXss.so.1 (0x00006e0b29b4f000)
-        libXinerama.so.1 => /usr/lib/libXinerama.so.1 (0x00006e0b29b4a000)
-        libXext.so.6 => /usr/lib/libXext.so.6 (0x00006e0b29b36000)
-        libX11.so.6 => /usr/lib/libX11.so.6 (0x00006e0b299f1000)
-        libXrandr.so.2 => /usr/lib/libXrandr.so.2 (0x00006e0b299e4000)
-        libgmp.so.10 => /usr/lib/libgmp.so.10 (0x00006e0b2993d000)
-        libc.so.6 => /usr/lib/libc.so.6 (0x00006e0b29600000)
-        /lib64/ld-linux-x86-64.so.2 => /usr/lib64/ld-linux-x86-64.so.2 (0x00006e0b29cb1000)
-        libxcb.so.1 => /usr/lib/libxcb.so.1 (0x00006e0b29912000)
-        libXrender.so.1 => /usr/lib/libXrender.so.1 (0x00006e0b29903000)
-        libXau.so.6 => /usr/lib/libXau.so.6 (0x00006e0b298fe000)
-        libXdmcp.so.6 => /usr/lib/libXdmcp.so.6 (0x00006e0b298f6000)
 ```
 
+```bash
+$ ll xmonad-0.18.1-ghc-9.12.2
+-rwxr-xr-x 1 holmen1 holmen1 6.8M Aug 17 19:45 xmonad-0.18.1-ghc-9.12.2
+$ size xmonad-0.18.1-ghc-9.12.2
+   text    data     bss     dec     hex filename
+4122953  483896   18536 4625385  4693e9 xmonad-0.18.1-ghc-9.12.2
+```
 
 ## Hackage Package Upper Bounds vs GHC 9.12+
 
