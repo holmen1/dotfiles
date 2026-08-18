@@ -31,6 +31,9 @@ case "$mimetype" in
             echo "Or press '<enter>' to open with feh"
         fi
         ;;
+    application/json|application/*+json)
+        jq -C . "$file" 2>/dev/null | head -n $((h-2)) || head -n $((h-2)) "$file"
+        ;;
     text/*)
         # Preview text files
         head -n $((h-2)) "$file"

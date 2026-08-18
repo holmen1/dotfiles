@@ -11,28 +11,28 @@
 
 | Command | Description |
 |---------|-------------|
-| `gg` / `G`    | Go to top/bottom of list  |
-| `/`           | Search                    |
-| `Enter`       | Open file with default opener |
-| `d`           | Move to .trash            |
-| `y`           | Yank (copy) file          |
-| `p`           | Paste file                |
-| `r`           | Rename file               |
-| `a`           | mkdir                     |
-| `q`           | Quit                      |
-| `zh`          | Toggle hidden files       |
-| `z?`          | Show help                 |
-| `gh`          | cd ~                      |
+| `gg` / `G`   | Go to top/bottom of list    |
+| `/`          | Search                      |
+| `Enter`      | Open file with default opener|
+| `y`          | Yank (copy) file            |
+| `p`          | Paste file                  |
+| `r`          | Rename file                 |
+| `a`          | mkdir                       |
+| `q`          | Quit                        |
+| `zh`         | Toggle hidden files         |
+| `gh`         | cd ~                        |
 
 ### Custom Keymaps
 
-| Command | Description |
-|---------|-------------|
-| `x`           | Execute current file in a subshell |
-| `X`           | Execute current file in background |
-| ` (backtick)  | Show result of previous command |
-| `:tar <name>` | Compress current file or selected files with tar and gunzip |
-| `:untar`      | Extract current file with the right command |
+| Command      | Description                 |
+|--------------|-----------------------------|
+| `ze`         | Extract                     |
+| `zc`         | Compress with tar and gunzip|
+| `zd`         | Move to .trash              |
+| `gt`         | Open terminal               |
+| `x`          | Execute file in subshell    |
+| `X`          | Execute file in background  |
+| ` (backtick) | Result of previous command  |
 
 ## Image Preview
 

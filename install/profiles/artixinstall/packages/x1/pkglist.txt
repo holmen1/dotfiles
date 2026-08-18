@@ -17,6 +17,7 @@ docker-openrc
 dunst
 efibootmgr
 elogind-openrc
+ex-vi-compat
 fastfetch
 fd
 feh
@@ -26,6 +27,7 @@ haskell-language-server
 htop
 iwd
 iwd-openrc
+jq
 less
 lf
 libnotify
@@ -49,11 +51,12 @@ ripgrep
 rust
 scrot
 shellcheck-bin
+shfmt
 sof-firmware
 stow
 strace
 tree
-vim
+viu
 xbindkeys
 xcape
 xclip
