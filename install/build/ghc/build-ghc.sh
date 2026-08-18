@@ -11,7 +11,6 @@ fi
 GHC_VERSION="$1"
 GHC_ARCH="x86_64-deb12-linux"
 GHC_DIR="${HOME}/repos/dotfiles/install/build/ghc"
-INSTALL_PREFIX="${HOME}/.local/ghc-${GHC_VERSION}"
 
 # Fetch source if not already present
 SRC_DIR=$(find "$GHC_DIR" -maxdepth 1 -type d -name "ghc-${GHC_VERSION}-*" 2>/dev/null | head -1)
@@ -27,17 +26,13 @@ if [ -z "$SRC_DIR" ]; then
     SRC_DIR=$(find "$GHC_DIR" -maxdepth 1 -type d -name "ghc-${GHC_VERSION}-*")
 fi
 
-echo "Installing GHC ${GHC_VERSION} to ${INSTALL_PREFIX}..."
+echo "Installing GHC ${GHC_VERSION} to /usr/local..."
 cd "$SRC_DIR"
 
-mkdir -p "$INSTALL_PREFIX"
-./configure --prefix="$INSTALL_PREFIX"
-make install
+./configure
+sudo make install
+sudo -k
 
-echo "Done!: $("${INSTALL_PREFIX}"/bin/ghc --version)"
-echo "Local install: ${INSTALL_PREFIX}"
 echo ""
-echo "Install to /usr/local/bin/:"
-echo "cd ${SRC_DIR}"
-echo "./configure"
-echo "sudo make install"
+ghc --version
+which ghc
