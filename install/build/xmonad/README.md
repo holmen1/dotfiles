@@ -1,16 +1,17 @@
 # XMonad Build Factory
 
 XMonad is always built from source — no cabal-install required. The build script
-`build-xmonad.sh` fetches all dependencies directly from Hackage and builds
+`build-xmonad-libs.sh` fetches all dependencies directly from Hackage and builds
 with plain GHC using `runhaskell Setup.hs`.
 
 ## Build scripts
 
 | Script                    | Purpose |
 |---------------------------|---------|
-| `build-xmonad.sh`         | Build libraries using GHC (no cabal-install). Preferred |
-| `rebuild-xmonad.sh`       | Compile and link custom xmonad |
-| `build-xmonad-cabal.sh`   | Legacy build using cabal-install. |
+| `build-xmonad-libs.sh`         | Build libraries using GHC (no cabal-install). Preferred |
+| `build-custom-xmonad.sh`       | Compile and link custom xmonad |
+| `install-custom-xmonad.sh`       | Install custom xmonad |
+| `legacy-build-xmonad-cabal.sh`   | Legacy build using cabal-install. |
 
 ---
 
@@ -20,10 +21,6 @@ with plain GHC using `runhaskell Setup.hs`.
 ```bash
 # Arch/Artix
 pacman -S libx11 libxrandr libxext libxinerama libxss pkgconf autoconf
-
-# Debian/Ubuntu
-apt install libx11-dev libxft-dev libxinerama-dev libxrandr-dev libxss-dev pkg-config autoconf
-# may not need xft
 ```
 
 ### GHC
@@ -34,28 +31,32 @@ If there is no tested version in your package manager,
 
 ---
 
-## Build
+## Build libraries and custom xmonad
 
 ```bash
-./build-xmonad.sh
+./build-xmonad-libs.sh
 ```
-
-The scripts:
 1. Verifies GHC is installed
 2. Fetches all Haskell dependencies from Hackage
 3. Builds xmonad and xmonad-contrib
-4. Compiles a custom binary from `dotfiles/xmonad/xmonad.hs`
-5. Places the versioned binary in `bin/` and runs a health check
+4. Writes progress to logfile
+
+```bash
+./build-custom-xmonad.sh
+```
+1. Compiles a custom binary from `dotfiles/config/xmonad/xmonad.hs`
+2. Places the versioned binary in `bin/` and runs a health check
 
 ---
 
-## Deploy
+## Install
 
 ```bash
-sudo mkdir -p /opt/xmonad
-sudo cp bin/xmonad-0.18.1 /opt/xmonad/
-sudo ln -sf /opt/xmonad/xmonad-0.18.1 /usr/local/bin/xmonad
+./install-custom-xmonad.sh
 ```
+1. Copies (safe) to `/opt/xmonad/`
+2. Links it to `/usr/local/bin/xmonad`
+
 
 Target machines only need X11 runtime libraries, not Haskell:
 ```bash
@@ -72,72 +73,7 @@ This trade-off of flexibility for size and simplicity is the core of the "build 
 
 See [LESSONS_LEARNED.md](LESSONS_LEARNED.md) for lessons learned.
 
----
-# Examining XMonad Binaries to Understand Size Differences
+## TODO
 
+-[] Cabal build custom xmonad
 
-## Basic Analysis
-
-```bash
-# Compare file types
-file ~/.local/bin/xmonad
-file ~/.cache/xmonad/xmonad-x86_64-linux
-
-# See what libraries they depend on
-ldd ~/.local/bin/xmonad
-ldd ~/.cache/xmonad/xmonad-x86_64-linux
-
-# Check section sizes
-size ~/.local/bin/xmonad
-size ~/.cache/xmonad/xmonad-x86_64-linux
-```
-
-## Looking at Debug Symbols
-
-```bash
-# Count symbols in each binary
-nm ~/.local/bin/xmonad | wc -l
-nm ~/.cache/xmonad/xmonad-x86_64-linux | wc -l
-
-# Create a stripped copy to see impact of debug symbols
-cp ~/.cache/xmonad/xmonad-x86_64-linux /tmp/xmonad-stripped
-strip /tmp/xmonad-stripped
-ls -la /tmp/xmonad-stripped
-```
-
-## Deeper Analysis
-
-```bash
-# Examine section headers
-readelf -S ~/.local/bin/xmonad | grep -A2 "\[.*\] \."
-readelf -S ~/.cache/xmonad/xmonad-x86_64-linux | grep -A2 "\[.*\] \."
-
-# Check compilation flags (might show optimization level)
-readelf -p .comment ~/.local/bin/xmonad
-readelf -p .comment ~/.cache/xmonad/xmonad-x86_64-linux
-```
-
-```bash
-cmp -l file1.bin file2 | wc -l          # How many differences?
-cmp -l file1.bin file2 | head            # Where do they start?
-
-# Then visualize
-vbindiff file1 file2
-
-#Or for human-readable
-diff -u <(xxd -g1 -c 32 file1.bin) <(xxd -g1 -c 32 file2.bin) | less
-
-# Pro tip: If these are ELF executables or object files, also try:bash
-objdump -d file1 > 1.asm
-objdump -d file2 > 2.asm
-diff -u 1.asm 2.asm
-```
-
-
-These commands will help you understand:
-1. Whether debug symbols are present (explaining larger size)
-2. Which optimization levels were used 
-3. Whether static vs dynamic linking differs
-4. Which sections contribute to size differences
-
-The cache binary is likely larger because it contains debug information to help with error reporting during development, whereas the installed binary may be optimized for size and performance.

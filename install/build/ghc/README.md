@@ -1,6 +1,6 @@
 # GHC
 
-Glasgow Haskell Compiler — installed from binary distribution into `~/.local/ghc-<version>`.
+Glasgow Haskell Compiler — installed from binary distribution into
 
 Find versions from the main [GHC site](https://www.haskell.org/ghc/).
 
@@ -16,12 +16,16 @@ before choosing a version.
 
 e.g.
 ```bash
-./build-ghc.sh 9.12.4
+$ ./build-ghc.sh 9.14.1
+[...]
+
+The Glorious Glasgow Haskell Compilation System, version 9.14.1
+/usr/local/bin/ghc
 ```
 
 The script:
 1. Downloads the binary tarball for `x86_64-deb12-linux` (suitable for Arch/Artix)
-2. Installs into `~/.local/ghc-<version>` via `./configure --prefix`
+2. Installs into `/usr/local`
 
 When `./configure`, this gcc error can be ignored
 ```
@@ -29,13 +33,11 @@ checking whether gcc used as a linker understands --target... gcc: error: unreco
 no
 ```
 
-## Activation
+## Local install
 
-To make a version the system default:
 ```bash
-./configure && sudo make install
+./configure --prefix=<dir> && sudo make install
 ```
-installs to `/usr/local`
 
 ## HLS
 
