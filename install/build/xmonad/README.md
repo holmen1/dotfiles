@@ -1,17 +1,17 @@
 # XMonad Build Factory
 
 XMonad is always built from source — no cabal-install required. The build script
-`build-xmonad.sh` fetches all dependencies directly from Hackage and builds
+`build-xmonad-libs.sh` fetches all dependencies directly from Hackage and builds
 with plain GHC using `runhaskell Setup.hs`.
 
 ## Build scripts
 
 | Script                    | Purpose |
 |---------------------------|---------|
-| `build-xmonad.sh`         | Build libraries using GHC (no cabal-install). Preferred |
-| `rebuild-xmonad.sh`       | Compile and link customZZ xmonad |
-| `install-xmonad.sh`       | Install custom xmonad |
-| `build-xmonad-cabal.sh`   | Legacy build using cabal-install. |
+| `build-xmonad-libs.sh`         | Build libraries using GHC (no cabal-install). Preferred |
+| `build-custom-xmonad.sh`       | Compile and link custom xmonad |
+| `install-custom-xmonad.sh`       | Install custom xmonad |
+| `legacy-build-xmonad-cabal.sh`   | Legacy build using cabal-install. |
 
 ---
 
@@ -34,7 +34,7 @@ If there is no tested version in your package manager,
 ## Build libraries and custom xmonad
 
 ```bash
-./build-xmonad.sh
+./build-xmonad-libs.sh
 ```
 1. Verifies GHC is installed
 2. Fetches all Haskell dependencies from Hackage
@@ -42,7 +42,7 @@ If there is no tested version in your package manager,
 4. Writes progress to logfile
 
 ```bash
-./rebuild-xmonad.sh
+./build-custom-xmonad.sh
 ```
 1. Compiles a custom binary from `dotfiles/config/xmonad/xmonad.hs`
 2. Places the versioned binary in `bin/` and runs a health check
@@ -52,7 +52,7 @@ If there is no tested version in your package manager,
 ## Install
 
 ```bash
-./install-xmonad.sh
+./install-custom-xmonad.sh
 ```
 1. Copies (safe) to `/opt/xmonad/`
 2. Links it to `/usr/local/bin/xmonad`
@@ -72,4 +72,8 @@ This trade-off of flexibility for size and simplicity is the core of the "build 
 ---
 
 See [LESSONS_LEARNED.md](LESSONS_LEARNED.md) for lessons learned.
+
+## TODO
+
+-[] Cabal build custom xmonad
 

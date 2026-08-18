@@ -48,14 +48,14 @@ esac
 read -p "Rebuild xmonad? [y/N] " ans
 case "$ans" in
     [Yy]*)
-    $XMONAD_DIR/rebuild-xmonad.sh
+    $XMONAD_DIR/build-custom-xmonad.sh
     ;;
 esac
 
 read -p "Install xmonad? [y/N] " ans
 case "$ans" in
     [Yy]*)
-    $XMONAD_DIR/install-xmonad.sh
+    $XMONAD_DIR/install-custom-xmonad.sh
     ;;
 esac
 
