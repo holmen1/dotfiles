@@ -8,7 +8,6 @@
 ## Keymaps
 
 ### Default Keymaps
-
 | Command | Description |
 |---------|-------------|
 | `gg` / `G`   | Go to top/bottom of list    |
@@ -23,7 +22,6 @@
 | `gh`         | cd ~                        |
 
 ### Custom Keymaps
-
 | Command      | Description                 |
 |--------------|-----------------------------|
 | `ze`         | Extract                     |
@@ -33,6 +31,8 @@
 | `x`          | Execute file in subshell    |
 | `X`          | Execute file in background  |
 | ` (backtick) | Result of previous command  |
+
+`:vmaps` list mappings created by the 'vmap' and 'map' command
 
 ## Image Preview
 
