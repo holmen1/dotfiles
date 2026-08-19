@@ -12,7 +12,7 @@
 
 set -e
 
-BUILD_DIR=~/repos/dotfiles/install/build/xmonad
+BUILD_DIR=~/repos/dotfiles/install/build/xmonad/sandbox/ghc-build
 WORK_DIR=$BUILD_DIR/_ghc_build
 LOG_FILE="$WORK_DIR/build-xmonad-libs-$(date +%Y%m%d_%H%M%S).log"
 

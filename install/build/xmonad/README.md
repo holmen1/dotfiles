@@ -75,5 +75,6 @@ See [LESSONS_LEARNED.md](LESSONS_LEARNED.md) for lessons learned.
 
 ## TODO
 
--[] Cabal build custom xmonad
+-[x] Cabal build custom xmonad
+-[] xmonad --recompile
 

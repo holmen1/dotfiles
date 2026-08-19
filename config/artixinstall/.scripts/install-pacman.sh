@@ -17,3 +17,5 @@ while IFS= read -r package; do
         $MANAGER -S --noconfirm "$package"
     fi
 done < "$1"
+sudo -k
+

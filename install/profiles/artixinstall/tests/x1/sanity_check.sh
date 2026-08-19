@@ -40,8 +40,8 @@ check_cmd xkb-toggle
 hdr "X session"
 check_cmd startx
 check_file "$HOME/.xinitrc"
-if [ -x /usr/local/bin/xmonad ]; then ok "/usr/local/bin/xmonad"
-else fail "/usr/local/bin/xmonad not found or not executable"; fi
+if [ -x ~/.cabal/bin/xmonad ]; then ok "$(command -v xmonad)"
+else fail "xmonad not found or not executable"; fi
 check_cmd xbindkeys
 check_cmd scrot
 check_cmd xterm
