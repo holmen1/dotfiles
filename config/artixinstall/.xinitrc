@@ -2,7 +2,7 @@
 
 # --- Essential applications ---
 check_essential() {
-    command -v "$1" >/dev/null 2>&1 || { echo >&2 "Required program $1 not installed. Aborting."; exit 1; }
+    command -v "$1" >/dev/null 2>&1 || { echo >&2 ".xinitrc require $1. Aborting"; exit 1; }
 }
 check_essential xmonad
 check_essential xterm  # Fallback terminal

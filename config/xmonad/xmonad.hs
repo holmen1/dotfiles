@@ -8,12 +8,16 @@ import qualified XMonad.StackSet as W
 import XMonad.Util.EZConfig (additionalKeys)
 import XMonad.Util.SpawnOnce
 
+myModMask :: KeyMask
 myModMask = mod1Mask
 
+myAppLauncher :: String
 myAppLauncher = "dmenu_run -fn 'Liberation Mono-16' -nb '#222222' -nf '#bbbbbb' -sb '#A300A3' -sf '#eeeeee'"
 
-myWorkspaces = map show [1 .. 4]
+myWorkspaces :: [WorkspaceId]
+myWorkspaces = map show [1 .. 4 :: Int]
 
+myLayout :: Choose Tall (Choose (Mirror Tall) Full) a
 myLayout = tiled ||| Mirror tiled ||| Full
   where
     tiled = Tall nmaster delta ratio
@@ -21,17 +25,21 @@ myLayout = tiled ||| Mirror tiled ||| Full
     ratio = 11 / 20
     delta = 3 / 100
 
+noBorderWidth :: Dimension
 noBorderWidth = 0
 
+myStartupHook :: String -> X ()
 myStartupHook terminal = do
   spawnOnce terminal -- Start terminal on first launch only
 
+myFadeHook :: FadeHook
 myFadeHook =
   composeAll
     [ opaque,
       isUnfocused --> transparency 0.6
     ]
 
+myKeys :: [Char] -> String -> [((KeyMask, KeySym), X ())]
 myKeys terminal browser =
   [ ((myModMask, xK_a), spawn myAppLauncher),
     ((myModMask, xK_e), spawn $ terminal ++ " lf"),
@@ -58,6 +66,7 @@ myKeys terminal browser =
         (f, m) <- [(W.greedyView, 0), (\i w -> W.greedyView i (W.shift i w), shiftMask)]
     ]
 
+myConfig :: String -> String -> XConfig (Choose Tall (Choose (Mirror Tall) Full))
 myConfig terminal browser =
   def
     { terminal = terminal,

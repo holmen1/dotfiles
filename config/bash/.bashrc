@@ -120,3 +120,5 @@ export PATH=$PATH:/usr/sbin
 export PATH="$HOME/.local/bin:$PATH"
 # Cargo (Rust) binary path
 export PATH="$HOME/.cargo/bin:$PATH"
+# XMonad (cabal) binary path
+export PATH="$HOME/.cabal/bin:$PATH"
