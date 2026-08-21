@@ -77,4 +77,5 @@ See [LESSONS_LEARNED.md](LESSONS_LEARNED.md) for lessons learned.
 
 -[x] Cabal build custom xmonad
 -[] xmonad --recompile
+-[] Configure LSP
 
