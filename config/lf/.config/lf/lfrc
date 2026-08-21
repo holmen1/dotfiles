@@ -43,8 +43,11 @@ map a :push %mkdir<space>
 # rename command
 map r rename
 
-# move to trash
-map zd trash
+# trash
+map zt trash
+
+# delete
+map d delete
 
 # tar
 map ze :extract
@@ -106,5 +109,14 @@ cmd compress ${{
 cmd terminal_here ${{
     dir="$PWD"; [ -d "$f" ] && dir="$f"
     setsid -f "$TERMINAL" -e bash -lc 'cd "$1"; exec bash -l' _ "$dir" >/dev/null 2>&1
+}}
+
+# define a custom 'delete' command
+cmd delete ${{
+    set -f
+    printf "$fx\n"
+    printf "delete? [Y/n] "
+    read ans
+    [ "$ans" != "n" ] && rm -rf $fx
 }}
 
