@@ -29,6 +29,10 @@ Living index of TODOs found in code and documentation.
 
 - [config/nvim/.config/nvim/lua/core/keymaps.lua:6](config/nvim/.config/nvim/lua/core/keymaps.lua#L6) — enable jumping up in terminal mode.
 
+## Shell
+
+- Get proper POSIX sh instead of sh -> bash
+
 ## Suggested improvements
 
 - Make the installer/profile layout fully consistent across Artix and FreeBSD, including naming and prompt order.

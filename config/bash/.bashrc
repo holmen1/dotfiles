@@ -17,7 +17,7 @@ export COLOR_PROMPT='\[\e[38;5;40m\]'    # Forest green
 export LS_COLORS='di=38;5;32:fi=38;5;244:ln=38;5;60:ex=38;5;40:*.sh=38;5;40:*.py=38;5;24:*.js=38;5;60'
 export GREP_COLORS='ms=38;5;33:fn=38;5;60:ln=38;5;24'
 
-# Auto  cd
+# Auto cd
 shopt -s autocd
 
 # Enable vi mode in bash
@@ -52,19 +52,20 @@ cdv() {
 }
 # Create and change into a new directory
 mkcd() {
-    mkdir -p "$1" && cd "$1"
+    mkdir -p "$1" && cd "$1" || exit
 }
 # Create backup file
 bak() {
-    cp "$1" "$1.bak"
+    cp -a "$1" "$1.bak"
 }
-# Quick file search function (rename from ff to avoid conflict)
+# Quick file search function
 ff() {
     find "${2:-.}" -name "*$1*" 2>/dev/null
 }
-# Echo variable
+# Echo variable capitalized
 ee() {
-    echo "${!1}"
+    VAR=${1^^}
+    echo "${!VAR}"
 }
 # Repeat last command with sudo
 ss() { sudo "$(history -p !!)" ; }
@@ -81,7 +82,7 @@ alias c='code .'
 alias diff='diff --color=auto'
 alias less='less -R'
 alias ret='echo $?'
-alias sudo='sudo ' # Allow alias expansion after sudo
+alias s='sudo ' # Allow alias expansion after sudo
 alias pp='ping -c 4'
 alias tt='tree -aL 2'
 
