@@ -1,12 +1,15 @@
 # XMonad Build Factory
 
-The build script use Cabal and fetches all dependencies directly from Hackage
+Cabal builds and caches the libraries (`xmonad`, `xmonad-contrib`), fetched
+directly from Hackage. Plain GHC then compiles and links `xmonad.hs` against
+them - no generated `.cabal` project needed.
 
 ## Build scripts
 
 | Script                     | Purpose |
 |----------------------------|---------|
-| `build-custom-xmonad.sh`   | Compile and link custom xmonad |
+| `build-xmonad-libs.sh`     | Install pinned xmonad/xmonad-contrib libraries via Cabal |
+| `build-custom-xmonad.sh`   | Compile and link custom xmonad with GHC |
 | `install-custom-xmonad.sh` | Install custom xmonad |
 
 ---
@@ -34,7 +37,7 @@ Run `sandbox/smoke-test.sh` to test a simple build
 ```bash
 ./install-custom-xmonad.sh
 ```
-Copies (safe) to `~/.cabal/bin/xmonad`, ensure on `$PATH`
+Copies to `/opt/xmonad/xmonad-X.Y.Z`, symlinked (unversioned) from `/usr/local/bin/xmonad`
 
 
 Target machines only need X11 runtime libraries, not Haskell:

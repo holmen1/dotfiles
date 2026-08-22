@@ -1,40 +1,52 @@
 #!/bin/sh
 #
+# Compile and link the custom xmonad binary using plain GHC, against the
+# libraries/environment file installed by build-xmonad-libs.sh.
+#
+# No cabal project is needed here - GHC auto-discovers the GHC environment
+# file (.ghc.environment.*) when invoked with cwd set to the same directory
+# it lives in, which is why we cd into $ENV_DIR (= ~/.config/xmonad, where
+# xmonad.hs already lives via stow) before compiling.
+
 set -e
+
 XMONAD_VER="0.18.1"
-XMONAD_CONTRIB_VER="0.18.2"
-
+ENV_DIR=~/.config/xmonad
 BUILD_DIR=~/repos/dotfiles/install/build/xmonad
-WORK_DIR=$BUILD_DIR/cabal-build
-CONFIG_SOURCE=~/repos/dotfiles/config/xmonad/xmonad.hs
+BIN_DIR="$BUILD_DIR/bin"
 
-cd $WORK_DIR || exit
-cp $CONFIG_SOURCE .
-
-cat > xmonad-rc.cabal << EOF
-cabal-version:      3.0
-name:               xmonad-rc
-version:            0.1.0
-
-build-type:         Simple
-common warnings
-    ghc-options: -Wall
-executable xmonad-rc
-    import:           warnings
-    main-is:          xmonad.hs
-    build-depends:    base           >=4.21.2
-                    , xmonad         ==${XMONAD_VER}
-                    , xmonad-contrib ==${XMONAD_CONTRIB_VER}
-    default-language: GHC2021
-EOF
-
-cabal build && cabal install --overwrite-policy=always
-
-# Health check
-if command -v xmonad-rc >/dev/null; then
-	echo ""
-        xmonad-rc --version
+if command -v ghc >/dev/null 2>&1; then
+    echo "Using GHC from PATH: $(command -v ghc)"
 else
-        echo "Health check: FAIL — binary did not respond to --version"
+    echo "Error: no ghc found on PATH"
+    exit 1
 fi
 
+if [ ! -f "$ENV_DIR/xmonad.hs" ]; then
+    echo "Error: $ENV_DIR/xmonad.hs not found - stow the xmonad package first"
+    exit 1
+fi
+
+mkdir -p "$BIN_DIR"
+
+echo ""
+echo "=== Compiling custom xmonad binary ==="
+cd "$ENV_DIR"
+ghc --make xmonad.hs \
+    -fforce-recomp \
+    -main-is main \
+    -o "$BIN_DIR/xmonad-$XMONAD_VER"
+
+# Clean up GHC's intermediate build artifacts left next to the config source
+rm -f "$ENV_DIR"/*.o "$ENV_DIR"/*.hi
+
+echo ""
+echo "Binary: $BIN_DIR/xmonad-$XMONAD_VER"
+
+# Health check
+BINARY="$BIN_DIR/xmonad-$XMONAD_VER"
+if "$BINARY" --version 2>/dev/null | grep -q "xmonad"; then
+    echo "Health check: OK ($($BINARY --version))"
+else
+    echo "Health check: FAIL — binary did not respond to --version"
+fi
