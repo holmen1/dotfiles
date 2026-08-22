@@ -1,7 +1,7 @@
 # install
 Guides for setting up environments quickly and consistently — Linux, BSD, macOS
 
-## ISO
+## Pre-install
 
 ```bash
 # Download ISO and signature
@@ -26,6 +26,15 @@ diskutil unmountDisk /dev/disk4
 ```bash                
 sudo dd bs=4M if=artix-base-openrc-20260402-x86_64.iso of=/dev/disk4 status=progress oflag=sync
 ```
+### TTY
+
+```bash
+loadkeys sv-latin1  # sv + -> us -
+TERM=linux-m        # monochrome
+setfont /usr/share/kbd/consolefonts/solar24x32.psfu.gz # larger font
+setfont -R          # reset
+```
+List installed terminfo: `toe [-a]`
 
 ## Base install
 
