@@ -8,14 +8,21 @@
 [[ $- != *i* ]] && return
 
 # Color definitions
+# Prompt colors use \[...\] to mark zero-width escapes for readline (PS1 only).
 export COLOR_RESET='\[\e[0m\]'           # Proper ANSI reset
 export COLOR_USER='\[\e[38;5;24m\]'      # Steel blue
 export COLOR_PATH='\[\e[38;5;33m\]'      # Electric blue
 export COLOR_GIT='\[\e[38;5;60m\]'       # Dark slate
 export COLOR_PROMPT='\[\e[38;5;40m\]'    # Forest green
 
-export LS_COLORS='di=38;5;32:fi=38;5;244:ln=38;5;60:ex=38;5;40:*.sh=38;5;40:*.py=38;5;24:*.js=38;5;60'
-export GREP_COLORS='ms=38;5;33:fn=38;5;60:ln=38;5;24'
+export LS_COLORS='di=38;5;32:fi=38;5;244:ln=38;5;111:ex=38;5;40:*.sh=38;5;40:*.py=38;5;24:*.js=38;5;111'
+export GREP_COLORS='ms=38;5;208:fn=38;5;111:ln=38;5;24'
+
+# Default (plain/unstyled) text tint via OSC 10.
+# Amber-on-dark was the standard look of early monochrome CRT terminals (DEC VT100/220, IBM 5151)
+printf '\e]10;#d9b382\a'
+# To reset the default foreground back to st's config.h value:
+#   printf '\e]110;\a'
 
 # Auto cd
 shopt -s autocd
