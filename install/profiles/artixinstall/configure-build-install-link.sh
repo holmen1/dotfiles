@@ -8,20 +8,20 @@ COMMON_DIR=$CONFIG_DIR/common/.scripts
 PROFILE_DIR=$DOTFILES_DIR/install/profiles/"$PROFILE"install
 BUILD_DIR=$DOTFILES_DIR/install/build
 
-COMPUTERNAME=$(hostname -s)
-PKGPROFILE=${COMPUTERNAME}
+MACHINE=$(hostname -s)
+# PKGPROFILE=${MACHINE}
 
 LINK_SCRIPT=$COMMON_DIR/link_config.sh
-LINKS=$PROFILE_DIR/links/$PKGPROFILE/links.config
+LINKS=$PROFILE_DIR/links/$MACHINE/links.config
 
 INSTALL_SCRIPT=$CONFIG_DIR/artixinstall/.scripts/install-pacman.sh
-PKGLIST=$PROFILE_DIR/packages/$PKGPROFILE/pkglist.txt
+PKGLIST=$PROFILE_DIR/packages/$MACHINE/pkglist.txt
 
 XMONAD_DIR=$BUILD_DIR/xmonad
 ST_DIR=$BUILD_DIR/st
 XKB_DIR=$BUILD_DIR/xkb
 
-TEST=$PROFILE_DIR/tests/$PKGPROFILE/sanity_check.sh
+TEST=$PROFILE_DIR/tests/$MACHINE/sanity_check.sh
 
 read -p "Configure git? [y/N] " ans
 case "$ans" in
@@ -115,5 +115,5 @@ esac
 read -p "Run tests? [Y/n] " ans
 case "$ans" in
     [Nn]) ;;
-    *)    $TEST ;;
+    *)    $TEST "$PROFILE" "$MACHINE";;
 esac
