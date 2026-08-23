@@ -47,8 +47,8 @@ echo "=== Installing libraries into $ENV_DIR ==="
 # install it separately, and doing so can conflict with the compiler's
 # own copy.
 cabal install --lib --package-env="$ENV_DIR" \
-    xmonad=="${XMONAD_VER}" \
-    xmonad-contrib=="${XMONAD_CONTRIB_VER}"
+    xmonad-"${XMONAD_VER}" \
+    xmonad-contrib-"${XMONAD_CONTRIB_VER}"
 
 echo ""
 echo "=== Done ==="

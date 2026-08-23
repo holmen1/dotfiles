@@ -77,3 +77,4 @@ sleep 0.2
 
 # Start xmonad (xmonad should handle starting terminals via its config)
 exec xmonad
+# exec xmonad-0.18.1
