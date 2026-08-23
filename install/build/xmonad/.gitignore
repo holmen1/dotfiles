@@ -1,6 +1,7 @@
 # Ignore test directory build artifacts but keep source
 # sandbox/
 _ghc_build/
+_cabal_build/
 
 # Cabal refused link
 cabal-build/xmonad.hs

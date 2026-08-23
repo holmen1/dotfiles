@@ -4,8 +4,8 @@ set -e
 XMONAD_VER="0.18.1"
 XMONAD_CONTRIB_VER="0.18.2"
 
-BUILD_DIR=~/repos/dotfiles/install/build/xmonad
-WORK_DIR=$BUILD_DIR/cabal-build
+BUILD_DIR=~/repos/dotfiles/install/build/xmonad/sandbox/cabal-build
+WORK_DIR=$BUILD_DIR/_cabal_build
 CONFIG_SOURCE=~/repos/dotfiles/config/xmonad/.config/xmonad/xmonad.hs
 
 mkdir -p "$WORK_DIR"
