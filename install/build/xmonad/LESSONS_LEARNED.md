@@ -1,5 +1,97 @@
 # LESSONS LEARNED
 
+## 2026-08 GHC's implicit linking: the package env file is a linker script gcc never needs
+
+### Cabal store ~= `/usr/lib` + ldconfig cache, but per-user and hash-addressed
+
+`cabal install --lib xmonad-0.18.1 xmonad-contrib-0.18.2` builds both
+packages and drops them into `~/.local/state/cabal/store/ghc-<ver>/`, one
+directory per package, named `<name>-<version>-<hash>` (hash = full
+dependency resolution, so two different builds of "the same" version
+coexist without collision). This is the gcc-world equivalent of `make
+install` populating `/usr/lib` - except versioned and hashed instead of
+whatever-was-last-installed-wins.
+
+Cabal also registers each package into a **package database** (`package.db`)
+under that store dir - GHC's analogue of the `ldconfig` cache: an index
+mapping package name/version to the actual files, so the compiler doesn't
+need to be told exact paths every time.
+
+### GHC has explicit flags for this - we're just not using them here
+
+GHC's linking model does have a direct gcc parallel, if you want it:
+
+| gcc                          | GHC                                    |
+|-------------------------------|-----------------------------------------|
+| `-L/path/to/libs`             | `-package-db /path/to/package.db`       |
+| `-lfoo`                        | `-package foo` or `-package-id foo-1.0-<hash>` |
+| default system lib dirs        | GHC's global + user package db (implicit) |
+| `-nostdlib` / `-nodefaultlibs`  | `-hide-all-packages`                    |
+
+So this *could* be written gcc-style, fully explicit, no generated file:
+
+```sh
+ghc --make xmonad.hs \
+    -package-db "$STORE_DIR/package.db" \
+    -package xmonad-0.18.1 \
+    -package xmonad-contrib-0.18.2 \
+    -o xmonad
+```
+
+That's exactly `-L` + `-l` per dependency
+
+### The environment file is that flag list, externalized
+
+`--package-env="$WORK_DIR"` makes cabal also write
+`$WORK_DIR/.ghc.environment.x86_64-linux-<ghc-ver>`, and the real file has
+more lines than just `package-id`:
+
+```
+clear-package-db
+global-package-db
+package-db /home/holmen1/.cabal/store/ghc-9.12.4/package.db
+package-id base-4.21.2.0-b708
+package-id xmonad-0.18.1-c8b7a5839caccdafd9aec4d51ca537398e363378faf3343c9d9036dd59379921
+package-id xmonad-contrib-0.18.2-17b44d76fac2a9101f5bba2fb8e5114c49c60de8c09b64c1cfdc4007eaf65306
+```
+
+The first two lines set up the db *search stack* before any `-package-id`
+is resolved - gcc equivalent of `-nostdlib` followed by manually re-adding
+back `-L/usr/lib -lc`:
+
+- `clear-package-db` = `-nostdlib`/`-nodefaultlibs`: drop GHC's implicit
+  global+user db stack, don't trust ambient defaults.
+- `global-package-db` = explicit `-L` for `/usr/lib`: re-add *only* GHC's
+  own global db (where `base`, `ghc-prim`, etc. live) back onto the stack,
+  by name, not by default inheritance.
+- `package-db /home/holmen1/.../package.db` = `-L$STORE_DIR`: add the
+  Cabal store's db as a second search location, for `xmonad`/`xmonad-contrib`.
+
+Then every `package-id` line is one `-package-id` flag, resolved against
+whichever db in that stack actually has it (`base` from the global db,
+`xmonad`/`xmonad-contrib` from the store db) - the full stack is rebuilt
+explicitly every time, not left to compiler defaults.
+
+### The one thing with no gcc equivalent: cwd-triggered auto-loading
+
+gcc never scans your current directory for a linker script. GHC does,
+for exactly this file: if a `.ghc.environment.*` file exists in GHC's cwd,
+it's read automatically, equivalent to every `-package-id` line in it
+being typed on the command line. No flag enables this - it's cwd-implicit,
+closer to a shell auto-sourcing `.envrc` than anything in the C toolchain.
+
+This is why `build-custom-xmonad.sh` does `cd "$WORK_DIR"` before
+`ghc --make "$ENV_DIR/xmonad.hs"`: the source path is absolute and
+unaffected by cwd, but the environment-file pickup is cwd-only
+
+### Flags worth noting
+
+- `-fforce-recomp`: skip GHC's mtime-based recompilation check (its rough
+  `make` equivalent) - always rebuild, no incremental-build speedup.
+- `-outputdir DIR`: put all intermediate `.o`/`.hi` here, see above.
+- `-Wall`: same meaning as gcc's `-Wall`.
+
+
 ## 2026-08 Upgrading libraries
 
 ### GHC
