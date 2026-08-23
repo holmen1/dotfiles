@@ -18,11 +18,10 @@ export COLOR_PROMPT='\[\e[38;5;40m\]'    # Forest green
 export LS_COLORS='di=38;5;32:fi=38;5;244:ln=38;5;111:ex=38;5;40:*.sh=38;5;40:*.py=38;5;24:*.js=38;5;111'
 export GREP_COLORS='ms=38;5;208:fn=38;5;111:ln=38;5;24'
 
-# Default (plain/unstyled) text tint via OSC 10.
-# Amber-on-dark was the standard look of early monochrome CRT terminals (DEC VT100/220, IBM 5151)
-printf '\e]10;#d9b382\a'
-# To reset the default foreground back to st's config.h value:
-#   printf '\e]110;\a'
+## Default (plain/unstyled) text tint via OSC 10
+# printf '\e]10;#d9b382\a'	# Amber-on-dark the standard on monochrome CRT terminals (DEC VT100/220, IBM 5151)
+printf '\e]10;#e8cfa8\a'	# softer
+# printf '\e]110;\a'		# To reset the default foreground back to st's config.h value:
 
 # Auto cd
 shopt -s autocd
@@ -94,7 +93,7 @@ alias pp='ping -c 4'
 alias tt='tree -aL 2'
 
 # Git Aliases
-alias gs='git status'
+alias gs='git status --short'
 alias ga='git add'
 alias gaa='git add --all'
 alias gcm='git commit -m'
