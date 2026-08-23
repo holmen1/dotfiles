@@ -19,7 +19,8 @@ set -e
 XMONAD_VER="0.18.1"
 XMONAD_CONTRIB_VER="0.18.2"
 
-ENV_DIR=~/.config/xmonad
+BUILD_DIR=~/repos/dotfiles/install/build/xmonad
+WORK_DIR=$BUILD_DIR/work
 
 if command -v ghc >/dev/null 2>&1; then
     echo "Using $(ghc --version)"
@@ -35,23 +36,26 @@ else
     exit 1
 fi
 
-mkdir -p "$ENV_DIR"
+mkdir -p "$WORK_DIR"
 
 echo ""
 echo "=== Updating Cabal package index ==="
 cabal update
 
 echo ""
-echo "=== Installing libraries into $ENV_DIR ==="
+echo "=== Installing libraries into $WORK_DIR ==="
 # base ships as a boot/wired-in package with GHC itself - no need to
 # install it separately, and doing so can conflict with the compiler's
 # own copy.
-cabal install --lib --package-env="$ENV_DIR" \
+cabal install \
+    --package-env="$WORK_DIR" \
+    --force-reinstalls \
+    --lib \
     xmonad-"${XMONAD_VER}" \
     xmonad-contrib-"${XMONAD_CONTRIB_VER}"
 
 echo ""
 echo "=== Done ==="
-echo "GHC environment file written to: $ENV_DIR/.ghc.environment.*"
+echo "GHC environment file written to: $WORK_DIR/.ghc.environment.*"
 echo "Libraries are cached in the shared Cabal store - rerun this script"
 echo "only when bumping xmonad/xmonad-contrib versions."

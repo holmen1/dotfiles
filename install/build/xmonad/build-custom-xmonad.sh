@@ -13,7 +13,9 @@ set -e
 XMONAD_VER="0.18.1"
 ENV_DIR=~/.config/xmonad
 BUILD_DIR=~/repos/dotfiles/install/build/xmonad
+WORK_DIR="$BUILD_DIR/work"
 BIN_DIR="$BUILD_DIR/bin"
+RELEASE_CANDIDATE=$BIN_DIR/xmonad-$XMONAD_VER-rc-"$(date +%Y%m%d_%H%M%S)"
 
 if command -v ghc >/dev/null 2>&1; then
     echo "Using GHC from PATH: $(command -v ghc)"
@@ -31,17 +33,19 @@ mkdir -p "$BIN_DIR"
 
 echo ""
 echo "=== Compiling custom xmonad binary ==="
-cd "$ENV_DIR"
-ghc --make xmonad.hs \
+cd "$WORK_DIR"
+ghc --make $ENV_DIR/xmonad.hs \
+    -Wall \
     -fforce-recomp \
     -main-is main \
-    -o "$BIN_DIR/xmonad-$XMONAD_VER"
+    -outputdir "$WORK_DIR" \
+    -o "$RELEASE_CANDIDATE"
 
 # Clean up GHC's intermediate build artifacts left next to the config source
-rm -f "$ENV_DIR"/*.o "$ENV_DIR"/*.hi
+# rm -f "$ENV_DIR"/*.o "$ENV_DIR"/*.hi
 
 echo ""
-echo "Binary: $BIN_DIR/xmonad-$XMONAD_VER"
+echo "Binary: $RELEASE_CANDIDATE"
 
 # Health check
 BINARY="$BIN_DIR/xmonad-$XMONAD_VER"
