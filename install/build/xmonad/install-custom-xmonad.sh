@@ -9,26 +9,31 @@ set -e
 
 XMONAD_VER="0.18.1"
 BUILD_DIR=~/repos/dotfiles/install/build/xmonad
-BINARY="$BUILD_DIR/bin/xmonad-$XMONAD_VER"
 OPT_DIR="/opt/xmonad"
 
-if [ ! -f "$BINARY" ]; then
-    echo "Error: $BINARY not found - run build-custom-xmonad.sh first"
+BINARY=$(find "$BUILD_DIR/bin" -type f \
+    -name "xmonad-$XMONAD_VER-rc-*" -print | sort -r | sed -n '1p')
+
+if [ -z "$BINARY" ]; then
+    echo "Error: no xmonad release candidates found in $BUILD_DIR/bin"
     exit 1
 fi
 
-echo "Installing xmonad-$XMONAD_VER to $OPT_DIR"
+INSTALLED_NAME=$(basename "$BINARY" | sed 's/-rc-/-/')
+INSTALLED_BINARY="$OPT_DIR/$INSTALLED_NAME"
+
+echo "Installing $(basename "$BINARY") as $INSTALLED_BINARY"
 sudo mkdir -p "$OPT_DIR"
-sudo cp "$BINARY" "$OPT_DIR/xmonad-$XMONAD_VER"
-sudo ln -sf "$OPT_DIR/xmonad-$XMONAD_VER" /usr/local/bin/xmonad
+sudo cp "$BINARY" "$INSTALLED_BINARY"
+sudo ln -sf "$INSTALLED_BINARY" /usr/local/bin/xmonad
 
 echo ""
-echo "Installed: $OPT_DIR/xmonad-$XMONAD_VER"
-echo "Linked:    /usr/local/bin/xmonad -> $OPT_DIR/xmonad-$XMONAD_VER"
+echo "Installed: $INSTALLED_BINARY"
+echo "Linked:    /usr/local/bin/xmonad -> $INSTALLED_BINARY"
 
 # Health check
-if command -v xmonad >/dev/null && xmonad --version 2>/dev/null | grep -q "xmonad"; then
-    echo "Health check: OK ($(xmonad --version))"
+if "$INSTALLED_BINARY" --version 2>/dev/null | grep -q "xmonad"; then
+    echo "Health check: OK ($("$INSTALLED_BINARY" --version))"
 else
-    echo "Health check: FAIL — /usr/local/bin/xmonad did not respond to --version"
+    echo "Health check: FAIL — $INSTALLED_BINARY did not respond to --version"
 fi

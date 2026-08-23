@@ -5,8 +5,7 @@
 #
 # No cabal project is needed here - GHC auto-discovers the GHC environment
 # file (.ghc.environment.*) when invoked with cwd set to the same directory
-# it lives in, which is why we cd into $ENV_DIR (= ~/.config/xmonad, where
-# xmonad.hs already lives via stow) before compiling.
+# it lives in.
 
 set -e
 
@@ -41,16 +40,12 @@ ghc --make $ENV_DIR/xmonad.hs \
     -outputdir "$WORK_DIR" \
     -o "$RELEASE_CANDIDATE"
 
-# Clean up GHC's intermediate build artifacts left next to the config source
-# rm -f "$ENV_DIR"/*.o "$ENV_DIR"/*.hi
-
 echo ""
 echo "Binary: $RELEASE_CANDIDATE"
 
 # Health check
-BINARY="$BIN_DIR/xmonad-$XMONAD_VER"
-if "$BINARY" --version 2>/dev/null | grep -q "xmonad"; then
-    echo "Health check: OK ($($BINARY --version))"
+if "$RELEASE_CANDIDATE" --version 2>/dev/null | grep -q "xmonad"; then
+    echo "Health check: OK ($("$RELEASE_CANDIDATE" --version))"
 else
     echo "Health check: FAIL — binary did not respond to --version"
 fi

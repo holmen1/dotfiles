@@ -37,7 +37,10 @@ Run `sandbox/smoke-test.sh` to test a simple build
 ```bash
 ./install-custom-xmonad.sh
 ```
-Copies to `/opt/xmonad/xmonad-X.Y.Z`, symlinked (unversioned) from `/usr/local/bin/xmonad`
+Selects the newest release candidate from `bin/`, copies it to
+`/opt/xmonad/xmonad-X.Y.Z-YYYYMMDD_HHMMSS` (without the `-rc-` marker), and
+symlinks `/usr/local/bin/xmonad` to that installed binary. Older installed
+versions remain in `/opt/xmonad/` for manual rollback.
 
 
 Target machines only need X11 runtime libraries, not Haskell:
@@ -60,4 +63,3 @@ See [LESSONS_LEARNED.md](LESSONS_LEARNED.md) for lessons learned.
 -[x] Cabal build custom xmonad
 -[] xmonad --recompile
 -[] Configure LSP
-
