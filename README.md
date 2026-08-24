@@ -78,7 +78,7 @@ Build xkb keymap? [y/N]
 Link dotfiles? [y/N]
 Enable services? [y/N]
 Run tests? [Y/n]
-Sanity check — gadsden (artix/openrc)
+Sanity check — x1 (artix)
 
 --- Core commands
   [ok] git
@@ -88,14 +88,15 @@ Sanity check — gadsden (artix/openrc)
   [ok] stow
   [ok] dmenu
   [ok] nvim
+  [ok] dmenu-menu
+  [ok] xkb-toggle
 
 --- X session
   [ok] startx
   [ok] /home/holmen1/.xinitrc
-  [ok] /usr/local/bin/xmonad
+  [ok] /home/holmen1/.cabal/bin/xmonad
   [ok] xbindkeys
   [ok] scrot
-  [ok] i3lock
   [ok] xterm
 
 --- Notifications
@@ -109,12 +110,14 @@ Sanity check — gadsden (artix/openrc)
   [ok] iwd running
 
 --- Dotfile symlinks
-  [ok] /home/holmen1/.config/nvim -> ../repos/dotfiles/dotfiles/nvim/.config/nvim
-  [ok] /home/holmen1/.xinitrc -> repos/dotfiles/dotfiles/x/.xinitrc
+  [ok] /home/holmen1/.xinitrc -> repos/dotfiles/config/artixinstall/.xinitrc
+  [ok] /home/holmen1/.config/xmonad -> ../repos/dotfiles/config/xmonad/.config/xmonad
+  [ok] /home/holmen1/.config/nvim -> ../repos/dotfiles/config/nvim/.config/nvim
+  [ok] /home/holmen1/.bashrc -> repos/dotfiles/config/bash/.bashrc
 
 --- Git
   [ok] user.name: user
-  [ok] user.email: user@mail.com
+  [ok] user.email: user@gmail.com
 
 --- SSH
   [ok] id_ed25519 exists
@@ -125,7 +128,7 @@ Sanity check — gadsden (artix/openrc)
   [ok] passwordless sudo enabled
   [ok] user in video group
 
-Passed: 29  Failed: 0
+Passed: 32  Failed: 0
 ```
 ---
 

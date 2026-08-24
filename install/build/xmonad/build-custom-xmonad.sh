@@ -1,40 +1,53 @@
 #!/bin/sh
 #
+# Compile and link the custom xmonad binary using plain GHC, against the
+# libraries/environment file installed by build-xmonad-libs.sh.
+#
+# No cabal project is needed here, neither .ghc.environment.*,
+# since explicit library links gcc-style
+
 set -e
+
 XMONAD_VER="0.18.1"
-XMONAD_CONTRIB_VER="0.18.2"
-
+ENV_DIR=~/.config/xmonad
 BUILD_DIR=~/repos/dotfiles/install/build/xmonad
-WORK_DIR=$BUILD_DIR/cabal-build
-CONFIG_SOURCE=~/repos/dotfiles/config/xmonad/xmonad.hs
+BIN_DIR="$BUILD_DIR/bin"
+RELEASE_CANDIDATE=$BIN_DIR/xmonad-$XMONAD_VER-rc-"$(date +%Y%m%d_%H%M%S)"
 
-cd $WORK_DIR || exit
-cp $CONFIG_SOURCE .
-
-cat > xmonad-rc.cabal << EOF
-cabal-version:      3.0
-name:               xmonad-rc
-version:            0.1.0
-
-build-type:         Simple
-common warnings
-    ghc-options: -Wall
-executable xmonad-rc
-    import:           warnings
-    main-is:          xmonad.hs
-    build-depends:    base           >=4.21.2
-                    , xmonad         ==${XMONAD_VER}
-                    , xmonad-contrib ==${XMONAD_CONTRIB_VER}
-    default-language: GHC2021
-EOF
-
-cabal build && cabal install --overwrite-policy=always
-
-# Health check
-if command -v xmonad-rc >/dev/null; then
-	echo ""
-        xmonad-rc --version
+if command -v ghc >/dev/null 2>&1; then
+    GHC_VER="$(ghc --numeric-version)"
+    echo "Using ghc-$GHC_VER"
 else
-        echo "Health check: FAIL — binary did not respond to --version"
+    echo "Error: no ghc found on PATH"
+    exit 1
 fi
 
+if [ ! -f "$ENV_DIR/xmonad.hs" ]; then
+    echo "Error: $ENV_DIR/xmonad.hs not found - stow the xmonad package first"
+    exit 1
+fi
+
+mkdir -p "$BIN_DIR"
+
+echo ""
+echo "=== Compiling custom xmonad binary ==="
+ghc --make $ENV_DIR/xmonad.hs \
+    -Wall \
+    -clear-package-db \
+    -global-package-db \
+    -package-db "${HOME}"/.cabal/store/ghc-"$GHC_VER"/package.db \
+    -package xmonad \
+    -package xmonad-contrib \
+    -fforce-recomp \
+    -outputdir "$BIN_DIR" \
+    -o "$RELEASE_CANDIDATE"
+
+echo ""
+echo "Binary: $RELEASE_CANDIDATE"
+
+# Health check
+if "$RELEASE_CANDIDATE" --version 2>/dev/null | grep -q "xmonad"; then
+    echo "Health check: OK ($("$RELEASE_CANDIDATE" --version))"
+else
+    echo "Health check: FAIL — binary did not respond to --version"
+fi

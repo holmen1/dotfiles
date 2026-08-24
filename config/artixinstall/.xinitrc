@@ -2,10 +2,12 @@
 
 # --- Essential applications ---
 check_essential() {
-    command -v "$1" >/dev/null 2>&1 || { echo >&2 ".xinitrc require $1. Aborting"; exit 1; }
+    command -v "$1" >/dev/null 2>&1 || { echo >&2 ".xinitrc require $1. Aborting"; }
 }
-check_essential xmonad
-check_essential xterm  # Fallback terminal
+{
+    check_essential xmonad
+    check_essential xterm
+} 2>&1 | tee ~/.xinitrc-errors.log
 
 # --- Optional applications ---
 check_optional() {

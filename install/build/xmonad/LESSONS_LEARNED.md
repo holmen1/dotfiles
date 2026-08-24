@@ -1,5 +1,392 @@
 # LESSONS LEARNED
 
+## 2026-08 A stale `~/.cache/xmonad/xmonad-x86_64-linux` silently won over `/usr/local/bin/xmonad`
+
+**Symptom:** edited `xmonad.hs` (4 → 6 workspaces), rebuilt with
+`build-custom-xmonad.sh`, reinstalled with `install-custom-xmonad.sh`
+(confirmed `/usr/local/bin/xmonad` symlink pointed at the new
+`/opt/xmonad/xmonad-...` binary), exited X, `startx` again - still 4
+workspaces. Persisted across many rebuild/reinstall cycles.
+
+**False leads chased first, in order:**
+1. GHC flags / build script bug - ruled out, build was reverted to a
+   known-good version and the symptom didn't change.
+2. `~/.xinitrc` not actually symlinked into the repo (stow/link never run,
+   or a stale `*.bak` in its place) - **checked and disproved**: the
+   symlink was correct.
+3. `.xinitrc`'s `check_essential xmonad` silently passing even for a
+   deliberately-broken test (`check_essential xmonadw`, and a direct
+   `exec /usr/local/bin/mynewxmonad` to a nonexistent path) - in
+   hindsight, likely a misremembered/hallucinated test rather than a real
+   observation; not corroborated afterward. Don't trust this one.
+4. Stale X server/lock files (`/tmp/.X0-lock`, orphaned `Xorg`/`xmonad`
+   processes surviving `exit`) - a **real, separately-documented** failure
+   mode for this machine (see `install/build/xlibre/README.md`,
+   "Stale X locks" / the OpenRC+elogind freeze writeup), and worth always
+   ruling out first on this hardware - but not the cause this time.
+
+**Actual root cause - found by @holmen1, not by any of the above
+theorizing:** while chasing lead 4 (stale processes/locks) with
+`pgrep -a xmonad` / `pgrep -a Xorg`, spotted the culprit by inspection
+rather than by any of the code-tracing done here - a stale binary sitting
+at `~/.cache/xmonad/xmonad-x86_64-linux` (`cacheDir </> "xmonad-" <> arch
+<> "-" <> os`, see `binFileName` in the next section) was somehow still
+being run instead of `/usr/local/bin/xmonad`, even when `.xinitrc` did
+`exec /usr/local/bin/xmonad` (or a differently-named custom binary)
+directly. Renaming the stale cache file away fixed it immediately. All
+four "false lead" theories above were dead ends; the fix came from
+looking at what was actually running (`pgrep -a`) and what was actually
+sitting in `~/.cache/xmonad/`, not from reasoning about it in the
+abstract - worth remembering next time a build/install pipeline "should"
+be doing the right thing but isn't: check the filesystem and the process
+table before the source code.
+
+**Open question - this appears to contradict the analysis below:** the
+"`--restart` re-execs `\"xmonad\"` off `$PATH`" section right below this
+one concludes `executeFile prog True [] Nothing` never touches
+`binFileName dirs` for our `CompileScript` setup, and should always
+re-resolve `/usr/local/bin/xmonad` fresh. That reasoning covers
+`xmonad --recompile && xmonad --restart`, but doesn't explain a *plain
+process launch* (`.xinitrc`'s `exec`) preferring the cache file. Prime
+suspect for next time this resurfaces: the `~/.config/xmonad/build`
+symlink (the thing that makes `detectCompile` pick `CompileScript` at
+all) being transiently missing during some earlier test - e.g. after a
+`stow`/relink - would make XMonad's *own* `CompileGhc` fallback kick in
+and write straight to `binFileName`, and if something afterward invoked
+that path directly (or a keybinding-triggered `--restart` ran once while
+`build` was absent), the stale cache file would be exactly the artifact
+left behind. Not confirmed - just the most consistent story with the code
+already traced below. If this happens again: check `readlink -f
+~/.config/xmonad/build` *and* `ls -la ~/.cache/xmonad/` before anything
+else.
+
+**Fix applied:** renamed/removed the stale
+`~/.cache/xmonad/xmonad-x86_64-linux`. `.xinitrc` was left untouched
+(reverted an `exec /usr/local/bin/xmonad` hardening edit - preference is
+to keep `.xinitrc` matching the working config as closely as possible
+rather than add defensive indirection for a bug that wasn't actually in
+`.xinitrc`).
+
+**Confirmed via controlled re-test (same day):** restored the stale file
+back to `~/.cache/xmonad/xmonad-x86_64-linux`, then launched with
+`exec /usr/local/bin/xmonad` (the known-good, freshly-rebuilt 6-workspace
+binary) directly - the stale 4-workspace behavior came back immediately.
+This rules out coincidence/placebo from the first fix and confirms the
+cache file, not the binary actually named in `exec`, is what ends up
+running or otherwise dictating the workspace count. The "open question"
+above (how a bare `exec` of the right path ends up influenced by the
+cache file at all) is therefore real and reproducible, not a fluke - it's
+just still unexplained *why*, since the code path traced in the section
+below says a plain launch (no `--restart` flag, no `XMONAD_RESTART`
+ClientMessage received) should never touch `binFileName` at all.
+
+**This is xmonad's own internal behavior, not a flaw in my build/install
+pipeline.** My workflow is deliberately: edit `xmonad.hs` -> rebuild ->
+`install-custom-xmonad.sh` -> full logout -> fresh `startx`. I never
+invoke `xmonad --recompile` or `xmonad --restart` myself (the default
+`mod-q` binding for that is overridden to `kill` in `myKeys` - see
+`xmonad.hs`), and don't plan to start relying on them - my rollback-safe
+`/opt/xmonad` + `/usr/local/bin` symlink approach already gives me
+everything `--recompile`/`--restart` are for, without the cache-file
+ambiguity documented above. So this whole cache-vs-`exec` mystery isn't
+blocking day-to-day use - it's `xmonad` itself behaving in an undocumented
+and slightly ugly way under the hood, worth digging into purely out of
+curiosity (internals rabbit hole for a rainy day), not out of necessity.
+
+**Next diagnostic steps, if this resurfaces:**
+1. `readlink -f /proc/<xmonad-pid>/exe` immediately after a fresh
+   `startx` - if it doesn't match `/opt/xmonad/xmonad-<installed-ts>`,
+   the running process silently re-exec'd into something else right
+   after launch (strongly points at an unexpected self-restart).
+2. `xprop -root` right after launch, looking for any queued/leftover
+   custom atoms (e.g. an `XMONAD_RESTART`-style `ClientMessage` never
+   consumed by a previous, uncleanly-terminated xmonad) - ties back to
+   the stale-X-server/lock-file lead above; a persisted root window
+   across a "failed" `startx` could carry a pending restart message into
+   the next process's very first event.
+3. `ls -la ~/.local/share/xmonad/xmonad.state` and diff its serialized
+   workspace count against `myWorkspaces` - if xmonad restores session
+   state from a stale 4-workspace snapshot on startup, that alone could
+   look identical to "still 4 workspaces" without the wrong *binary*
+   being involved at all. Delete this file as part of the retest to
+   isolate binary-cache vs. session-state as the actual variable.
+
+## 2026-08 `xmonad --recompile` doesn't call our script the way we assumed
+
+Traced through `XMonad.Core`, `XMonad.Main`, `XMonad.Operations` (upstream
+`xmonad/xmonad`, `src/XMonad/{Core,Main}.hs` and
+`src/XMonad/Operations.hs`) after `xmonad --recompile && xmonad --restart`
+ran our `build-custom-xmonad.sh` but left stray state in `~/.cache` and
+`~/.local`.
+
+### Directories are XDG, not `~/.config/xmonad` by convention - `build`'s presence decides that
+
+`getDirectories` (`Core.hs`) tries, in order: the three `XMONAD_*_DIR` env
+vars; then `~/.xmonad` *if* `~/.xmonad/xmonad.hs` or `~/.xmonad/build`
+exists (all three dirs collapse to `~/.xmonad`); otherwise XDG dirs,
+created on the spot with `createDirectoryIfMissing`:
+
+| purpose | our machine |
+|---|---|
+| `cfgDir`   | `~/.config/xmonad` (`$XDG_CONFIG_HOME/xmonad`) |
+| `cacheDir` | `~/.cache/xmonad` |
+| `dataDir`  | `~/.local/share/xmonad` |
+
+Since our config lives in `~/.config/xmonad`, not `~/.xmonad`, we're on the
+XDG branch - that's the gcc parallel to `$XDG_CONFIG_HOME` vs a
+hardcoded `/etc/myapp`: convention-based lookup, several fallback
+locations tried in a fixed order, first hit wins, no explicit flag.
+
+### `detectCompile`: our `build` symlink pre-empts everything else, unconditionally
+
+`detectCompile` (`Core.hs`) checks, in order: executable `build` script →
+`stack.yaml` → `flake.nix` → `default.nix` → a lone `*.cabal` file →
+fall back to plain `ghc`. First match wins - not merged, not layered.
+Because `config/xmonad/.config/xmonad/build` is a symlink to
+`build-custom-xmonad.sh`, XMonad's *own* built-in GHC invocation
+(the `CompileGhc` case below) never runs on this machine anymore. Every
+recompile, forced or not, goes through our script.
+
+### `--recompile` only builds; it never touches the running process
+
+`xmonad --recompile` calls `recompile dirs True` (`Main.hs`), which is
+`detectCompile` + `compile`, nothing else. For our `CompileScript` case,
+`compile` (`Core.hs`) runs:
+
+```haskell
+CompileScript script -> run script [binFileName dirs]
+```
+
+i.e. our script is invoked with **one positional argument**:
+`binFileName dirs` = `~/.cache/xmonad/xmonad-x86_64-linux` (`cacheDir </>
+"xmonad-" <> arch <> "-" <> os`). `build-custom-xmonad.sh` never reads
+`$1` - it builds into its own `bin/` dir under a `-rc-<timestamp>` name
+regardless. So the file XMonad expects at `binFileName` is never written.
+`compile` still reports success (our script exits 0), and only *stderr* is
+captured, into `errFileName dirs` = `~/.local/share/xmonad/xmonad.errors`
+(`dataDir </> "xmonad.errors"`) - that's the `.local` side effect: GHC's
+`-Wall` warnings landing in a file, even though the "recompile" didn't
+produce anything `--restart` will use.
+
+Also note `shouldCompile` (`Core.hs`) for `CompileScript` is unconditionally
+`True` - unlike the `CompileGhc` branch, which compares mtimes of
+`xmonad.hs`/`lib/*.hs` against the existing binary (its rough `make`
+equivalent) before deciding to rebuild at all. A custom `build` script is
+trusted to always run, gcc-analogy: like always invoking `make` with no
+target-freshness check, and letting the script itself decide what "stale"
+means (which ours currently doesn't check either - see `-fforce-recomp`
+discussion elsewhere in this file).
+
+### `--restart` re-execs `"xmonad"` off `$PATH` - not the file `--recompile` built
+
+`xmonad --restart` doesn't touch the build at all: `sendRestart`
+(`Operations.hs`) just sends an `XMONAD_RESTART` `ClientMessageEvent` to
+the *already-running* xmonad process via the root window. That running
+process's own event loop (`handle` in `Main.hs`) catches it and calls:
+
+```haskell
+restart "xmonad" True
+```
+
+`restart` (`Operations.hs`) does `writeStateToFile` (serializes workspace
+state to `dataDir/xmonad.state` - the other `.local` side effect, deleted
+again on next successful read) then:
+
+```haskell
+catchIO (executeFile prog True [] Nothing)   -- prog = "xmonad"
+```
+
+`executeFile`'s second argument means "search `$PATH`" - so this re-execs
+*whatever `xmonad` currently resolves to on `$PATH`* (`/usr/local/bin/xmonad`
+on this machine, per repo convention), **not** `binFileName dirs` and
+**not** anything `build-custom-xmonad.sh` just produced. `/usr/local/bin/xmonad`
+only changes when `install-custom-xmonad.sh` is run manually. So
+`--recompile && --restart` "worked" in the sense that the session survived
+and re-exec'd cleanly - but it silently re-ran the *old* installed binary,
+since neither subcommand alone updates `/usr/local/bin/xmonad`. gcc
+analogy: it's the difference between `make` (compiles a new binary
+somewhere) and `systemctl restart foo` (execs whatever the service file's
+`ExecStart` path currently points to) - running both back to back doesn't
+help if nothing moved the new binary into that path in between.
+
+### Why the "default GHC build" binary can differ in size from ours
+
+Because `detectCompile` prefers `CompileScript` outright, XMonad's own
+built-in `CompileGhc` path only ever runs when no `build`/`stack.yaml`/
+`flake.nix`/`*.cabal` is present. Its `ghcArgs` (`Core.hs`):
+
+```haskell
+[ "--make", "xmonad.hs", "-i", "-ilib", "-fforce-recomp"
+, "-main-is", "main", "-v0"
+, "-outputdir", buildDirName dirs, "-o", binFileName dirs ]
+```
+
+run with **cwd = `cfgDir`** (`~/.config/xmonad`), not our `WORK_DIR` - `-i`
+alone clears the default import search path (gcc analogy: `-nostdinc`),
+then `-ilib` adds back only `cfgDir/lib` as a module search dir, so any
+stray `.hs` sitting in `cfgDir` isn't accidentally picked up as a module -
+a scoping precaution our script doesn't currently have (we only ever
+compile the one named `xmonad.hs`, so it hasn't bitten us, but it would if
+a `lib/` directory of extra modules were ever added).
+
+None of `-v0`/`-i -ilib`/`-fforce-recomp` change *codegen*, so they don't
+explain a size delta by themselves. The two real levers, both already
+implicit rather than flagged on either command line:
+
+1. **Which `.ghc.environment.*` gets picked up** - determined entirely by
+   cwd, per the "cwd-triggered auto-loading" lesson above. Before this
+   session's refactor the file lived in `cfgDir` itself, so both XMonad's
+   own `CompileGhc` and our script (which also `cd`'d there) resolved the
+   *same* environment file. After moving it to `WORK_DIR`, XMonad's
+   built-in path would no longer find any environment file in `cfgDir` at
+   all (though moot here since `CompileScript` always wins first).
+2. **Store content-hash drift** - per the Cabal-store lesson above, two
+   builds nominally "the same" `xmonad-0.18.1`/`xmonad-contrib-0.18.2` can
+   resolve to different store hashes (different transitive deps, e.g. a
+   newer `X11`/`utf8-string`) if `cabal install --lib` was rerun between
+   builds, changing the linked code without any version number changing.
+
+This is the same phenomenon already logged in the "Compare" section below
+(6.2M vs 6.8M from GHC 9.14.1 vs 9.12.2) - the general lesson is that GHC
+binary size is a function of *which* compiler + *which* resolved package
+graph got linked, both decided implicitly (by cwd and by store state at
+build time), never by anything visible on the `ghc --make` command line
+itself - the opposite of gcc, where `-l`/`-L` on the command line is the
+one source of truth for what got linked.
+
+### Why stock `M-q` hot-swaps with an imperceptible blink, and ours doesn't
+
+Prebuilt-package `xmonad` (generic stub, `CompileGhc` path, no `build`
+script present) makes `--recompile && --restart` feel instant because both
+steps stay inside user-writable paths and reuse one fixed filename:
+
+1. `--recompile` overwrites `binFileName dirs` = `~/.cache/xmonad/xmonad-x86_64-linux`
+   **in place** - same path every time, no versioning, no `sudo`.
+2. `--restart`'s `executeFile "xmonad" True [] Nothing` re-execs the generic
+   stub off `$PATH`; the stub's own `buildLaunch` (`Main.hs`) then
+   `executeFile`s that same fixed cache path directly (`False` = no `$PATH`
+   search, since it's already an absolute path). Two `execve`s, no file
+   copy, no new path to point anything at - that's the whole "blink."
+
+Our pipeline can't do this without giving up things we deliberately added:
+every build gets a fresh `-rc-<timestamp>` name (RC provenance/rollback),
+and promoting anything to the path `--restart` actually execs
+(`/usr/local/bin/xmonad`) requires `sudo cp` + `ln -sf` via
+`install-custom-xmonad.sh` - a separate, deliberate step, never touched by
+`--recompile`/`--restart` themselves (see above). Stock trades
+versioning/rollback for speed; our setup trades speed for exactly the
+rollback safety stock doesn't have. Since config changes are rare here, a
+manual `--restart` (or a full reinstall) after a real edit is the right
+tradeoff - not worth re-plumbing `--recompile`/`--restart` to write directly
+into `/usr/local/bin/xmonad` just to shave a restart step.
+
+## 2026-08 GHC's implicit linking: the package env file is a linker script gcc never needs
+
+### Cabal store ~= `/usr/lib` + ldconfig cache, but per-user and hash-addressed
+
+`cabal install --lib xmonad-0.18.1 xmonad-contrib-0.18.2` builds both
+packages and drops them into `~/.cabal/store/ghc-<ver>/`, one
+directory per package, named `<name>-<version>-<hash>` (hash = full
+dependency resolution, so two different builds of "the same" version
+coexist without collision). This is the gcc-world equivalent of `make
+install` populating `/usr/lib`
+
+Cabal also registers each package into a **package database** (`package.db`)
+under that store dir - GHC's analogue of the `ldconfig` cache: an index
+mapping package name/version to the actual files, so the compiler doesn't
+need to be told exact paths every time.
+
+### GHC has explicit flags for this - we're just not using them here
+
+GHC's linking model does have a direct gcc parallel, if you want it:
+
+| gcc                          | GHC                                    |
+|-------------------------------|-----------------------------------------|
+| `-L/path/to/libs`             | `-package-db /path/to/package.db`       |
+| `-lfoo`                        | `-package foo` or `-package-id foo-1.0-<hash>` |
+| default system lib dirs        | GHC's global + user package db (implicit) |
+| `-nostdlib` / `-nodefaultlibs`  | `-hide-all-packages`                    |
+
+So this *could* be written gcc-style, fully explicit, no generated file:
+
+```sh
+ghc --make xmonad.hs \
+    -Wall \
+    -clear-package-db \
+    -global-package-db \
+    -package-db "${HOME}"/.cabal/store/ghc-"<ghc-ver>"/package.db \
+    -package xmonad \
+    -package xmonad-contrib \
+    -fforce-recomp \
+    -outputdir "$WORK_DIR" \
+    -o xmonad
+```
+that's exactly `-L` + `-l` per dependency
+
+Instead of
+```sh
+ghc --make xmonad.hs \
+    -Wall \
+    -fforce-recomp \
+    -main-is main \
+    -outputdir "$WORK_DIR" \
+    -o xmonad
+```
+using `.ghc.environment.*`
+
+
+### The environment file is that flag list, externalized
+
+`--package-env="$WORK_DIR"` makes cabal also write
+`$WORK_DIR/.ghc.environment.x86_64-linux-<ghc-ver>`, and the real file has
+more lines than just `package-id`:
+
+```
+clear-package-db
+global-package-db
+package-db /home/holmen1/.cabal/store/ghc-9.12.4/package.db
+package-id base-4.21.2.0-b708
+package-id xmonad-0.18.1-c8b7a5839caccdafd9aec4d51ca537398e363378faf3343c9d9036dd59379921
+package-id xmonad-contrib-0.18.2-17b44d76fac2a9101f5bba2fb8e5114c49c60de8c09b64c1cfdc4007eaf65306
+```
+
+The first two lines set up the db *search stack* before any `-package-id`
+is resolved - gcc equivalent of `-nostdlib` followed by manually re-adding
+back `-L/usr/lib -lc`:
+
+- `clear-package-db` = `-nostdlib`/`-nodefaultlibs`: drop GHC's implicit
+  global+user db stack, don't trust ambient defaults.
+- `global-package-db` = explicit `-L` for `/usr/lib`: re-add *only* GHC's
+  own global db (where `base`, `ghc-prim`, etc. live) back onto the stack,
+  by name, not by default inheritance.
+- `package-db /home/holmen1/.../package.db` = `-L$STORE_DIR`: add the
+  Cabal store's db as a second search location, for `xmonad`/`xmonad-contrib`.
+
+Then every `package-id` line is one `-package-id` flag, resolved against
+whichever db in that stack actually has it (`base` from the global db,
+`xmonad`/`xmonad-contrib` from the store db) - the full stack is rebuilt
+explicitly every time, not left to compiler defaults.
+
+### The one thing with no gcc equivalent: cwd-triggered auto-loading
+
+gcc never scans your current directory for a linker script. GHC does,
+for exactly this file: if a `.ghc.environment.*` file exists in GHC's cwd,
+it's read automatically, equivalent to every `-package-id` line in it
+being typed on the command line. No flag enables this - it's cwd-implicit,
+closer to a shell auto-sourcing `.envrc` than anything in the C toolchain.
+
+This is why `build-custom-xmonad.sh` does `cd "$WORK_DIR"` before
+`ghc --make "$ENV_DIR/xmonad.hs"`: the source path is absolute and
+unaffected by cwd, but the environment-file pickup is cwd-only
+
+### Flags worth noting
+
+- `-fforce-recomp`: skip GHC's mtime-based recompilation check (its rough
+  `make` equivalent) - always rebuild, no incremental-build speedup.
+- `-outputdir DIR`: put all intermediate `.o`/`.hi` here, see above.
+- `-Wall`: same meaning as gcc's `-Wall`.
+
+
 ## 2026-08 Upgrading libraries
 
 ### GHC

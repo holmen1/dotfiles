@@ -1,9 +1,17 @@
+# GHC build artifacts
+*.o
+*.hi
+*.dyn_o
+*.dyn_hi
+
 # Ignore test directory build artifacts but keep source
 # sandbox/
 _ghc_build/
+_cabal_build/
 
 # Cabal refused link
 cabal-build/xmonad.hs
+default-build/*.hs
 
 # Ignore binary files
 bin/
@@ -11,5 +19,3 @@ bin/
 # Cabal
 dist-newstyle/
 *.cabal
-*.hs
-

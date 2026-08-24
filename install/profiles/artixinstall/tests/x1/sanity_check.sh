@@ -24,7 +24,7 @@ check_service() {
     fi
 }
 
-printf "Sanity check — gadsden (artix/openrc)\n"
+printf "Sanity check — %s (%s)\n" "$2" "$1"
 
 hdr "Core commands"
 check_cmd git
@@ -57,8 +57,10 @@ check_service elogind
 check_service iwd
 
 hdr "Dotfile symlinks"
-check_symlink "$HOME/.config/nvim"
 check_symlink "$HOME/.xinitrc"
+check_symlink "$HOME/.config/xmonad"
+check_symlink "$HOME/.config/nvim"
+check_symlink "$HOME/.bashrc"
 
 hdr "Git"
 git_name=$(git config --global user.name 2>/dev/null)
