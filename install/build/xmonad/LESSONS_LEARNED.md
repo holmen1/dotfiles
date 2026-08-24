@@ -174,12 +174,11 @@ into `/usr/local/bin/xmonad` just to shave a restart step.
 ### Cabal store ~= `/usr/lib` + ldconfig cache, but per-user and hash-addressed
 
 `cabal install --lib xmonad-0.18.1 xmonad-contrib-0.18.2` builds both
-packages and drops them into `~/.local/state/cabal/store/ghc-<ver>/`, one
+packages and drops them into `~/.cabal/store/ghc-<ver>/`, one
 directory per package, named `<name>-<version>-<hash>` (hash = full
 dependency resolution, so two different builds of "the same" version
 coexist without collision). This is the gcc-world equivalent of `make
-install` populating `/usr/lib` - except versioned and hashed instead of
-whatever-was-last-installed-wins.
+install` populating `/usr/lib`
 
 Cabal also registers each package into a **package database** (`package.db`)
 under that store dir - GHC's analogue of the `ldconfig` cache: an index

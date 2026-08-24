@@ -17,7 +17,8 @@ BIN_DIR="$BUILD_DIR/bin"
 RELEASE_CANDIDATE=$BIN_DIR/xmonad-$XMONAD_VER-rc-"$(date +%Y%m%d_%H%M%S)"
 
 if command -v ghc >/dev/null 2>&1; then
-    echo "Using GHC from PATH: $(command -v ghc)"
+    GHC_VER="$(ghc --numeric-version)"
+    echo "Using ghc-$GHC_VER"
 else
     echo "Error: no ghc found on PATH"
     exit 1
@@ -33,6 +34,16 @@ mkdir -p "$BIN_DIR"
 echo ""
 echo "=== Compiling custom xmonad binary ==="
 cd "$WORK_DIR"
+# ghc --make $ENV_DIR/xmonad.hs \
+#     -Wall \
+#     -clear-package-db \
+#     -global-package-db \
+#     -package-db "${HOME}"/.cabal/store/ghc-"$GHC_VER"/package.db \
+#     -package xmonad \
+#     -package xmonad-contrib \
+#     -fforce-recomp \
+#     -outputdir "$WORK_DIR" \
+#     -o "$RELEASE_CANDIDATE"
 ghc --make $ENV_DIR/xmonad.hs \
     -Wall \
     -fforce-recomp \

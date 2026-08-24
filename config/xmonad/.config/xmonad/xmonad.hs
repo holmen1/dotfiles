@@ -15,7 +15,7 @@ myAppLauncher :: String
 myAppLauncher = "dmenu_run -fn 'Liberation Mono-16' -nb '#222222' -nf '#bbbbbb' -sb '#A300A3' -sf '#eeeeee'"
 
 myWorkspaces :: [WorkspaceId]
-myWorkspaces = map show [1 .. 4 :: Int]
+myWorkspaces = map show [1 .. 6 :: Int]
 
 myLayout :: Choose Tall (Choose (Mirror Tall) Full) a
 myLayout = tiled ||| Mirror tiled ||| Full
