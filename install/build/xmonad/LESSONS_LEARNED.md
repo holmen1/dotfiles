@@ -311,13 +311,29 @@ So this *could* be written gcc-style, fully explicit, no generated file:
 
 ```sh
 ghc --make xmonad.hs \
-    -package-db "$STORE_DIR/package.db" \
-    -package xmonad-0.18.1 \
-    -package xmonad-contrib-0.18.2 \
+    -Wall \
+    -clear-package-db \
+    -global-package-db \
+    -package-db "${HOME}"/.cabal/store/ghc-"<ghc-ver>"/package.db \
+    -package xmonad \
+    -package xmonad-contrib \
+    -fforce-recomp \
+    -outputdir "$WORK_DIR" \
     -o xmonad
 ```
+that's exactly `-L` + `-l` per dependency
 
-That's exactly `-L` + `-l` per dependency
+Instead of
+```sh
+ghc --make xmonad.hs \
+    -Wall \
+    -fforce-recomp \
+    -main-is main \
+    -outputdir "$WORK_DIR" \
+    -o xmonad
+```
+using `.ghc.environment.*`
+
 
 ### The environment file is that flag list, externalized
 

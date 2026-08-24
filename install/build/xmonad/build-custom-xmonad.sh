@@ -3,16 +3,14 @@
 # Compile and link the custom xmonad binary using plain GHC, against the
 # libraries/environment file installed by build-xmonad-libs.sh.
 #
-# No cabal project is needed here - GHC auto-discovers the GHC environment
-# file (.ghc.environment.*) when invoked with cwd set to the same directory
-# it lives in.
+# No cabal project is needed here, neither .ghc.environment.*,
+# since explicit library links gcc-style
 
 set -e
 
 XMONAD_VER="0.18.1"
 ENV_DIR=~/.config/xmonad
 BUILD_DIR=~/repos/dotfiles/install/build/xmonad
-WORK_DIR="$BUILD_DIR/work"
 BIN_DIR="$BUILD_DIR/bin"
 RELEASE_CANDIDATE=$BIN_DIR/xmonad-$XMONAD_VER-rc-"$(date +%Y%m%d_%H%M%S)"
 
@@ -33,22 +31,15 @@ mkdir -p "$BIN_DIR"
 
 echo ""
 echo "=== Compiling custom xmonad binary ==="
-cd "$WORK_DIR"
-# ghc --make $ENV_DIR/xmonad.hs \
-#     -Wall \
-#     -clear-package-db \
-#     -global-package-db \
-#     -package-db "${HOME}"/.cabal/store/ghc-"$GHC_VER"/package.db \
-#     -package xmonad \
-#     -package xmonad-contrib \
-#     -fforce-recomp \
-#     -outputdir "$WORK_DIR" \
-#     -o "$RELEASE_CANDIDATE"
 ghc --make $ENV_DIR/xmonad.hs \
     -Wall \
+    -clear-package-db \
+    -global-package-db \
+    -package-db "${HOME}"/.cabal/store/ghc-"$GHC_VER"/package.db \
+    -package xmonad \
+    -package xmonad-contrib \
     -fforce-recomp \
-    -main-is main \
-    -outputdir "$WORK_DIR" \
+    -outputdir "$BIN_DIR" \
     -o "$RELEASE_CANDIDATE"
 
 echo ""

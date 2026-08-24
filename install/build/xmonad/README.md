@@ -1,8 +1,8 @@
 # XMonad Build Factory
 
-Cabal builds and caches the libraries (`xmonad`, `xmonad-contrib`), fetched
-directly from Hackage. Plain GHC then compiles and links `xmonad.hs` against
-them - no generated `.cabal` project needed.
+Cabal builds and caches the libraries (`xmonad`, `xmonad-contrib`),
+fetched directly from Hackage.
+Plain GHC then compiles and links `xmonad.hs` `gcc`-style
 
 ## Build scripts
 
@@ -28,7 +28,7 @@ Ensure GHC used tested for current version.
 If there is no tested version in your package manager,
 [build GHC from source](../ghc/README.md).
 
-### Test cabal toolcain
+### Test a simple cabal toolcain
 
 Run `sandbox/smoke-test.sh` to test a simple build
 
@@ -61,5 +61,6 @@ See [LESSONS_LEARNED.md](LESSONS_LEARNED.md) for lessons learned.
 ## TODO
 
 -[x] Cabal build custom xmonad
+-[x] GHC build custom xmonad
 -[] xmonad --recompile && --restart
 -[] Configure LSP
