@@ -1,5 +1,116 @@
 # LESSONS LEARNED
 
+## 2026-08 A stale `~/.cache/xmonad/xmonad-x86_64-linux` silently won over `/usr/local/bin/xmonad`
+
+**Symptom:** edited `xmonad.hs` (4 → 6 workspaces), rebuilt with
+`build-custom-xmonad.sh`, reinstalled with `install-custom-xmonad.sh`
+(confirmed `/usr/local/bin/xmonad` symlink pointed at the new
+`/opt/xmonad/xmonad-...` binary), exited X, `startx` again - still 4
+workspaces. Persisted across many rebuild/reinstall cycles.
+
+**False leads chased first, in order:**
+1. GHC flags / build script bug - ruled out, build was reverted to a
+   known-good version and the symptom didn't change.
+2. `~/.xinitrc` not actually symlinked into the repo (stow/link never run,
+   or a stale `*.bak` in its place) - **checked and disproved**: the
+   symlink was correct.
+3. `.xinitrc`'s `check_essential xmonad` silently passing even for a
+   deliberately-broken test (`check_essential xmonadw`, and a direct
+   `exec /usr/local/bin/mynewxmonad` to a nonexistent path) - in
+   hindsight, likely a misremembered/hallucinated test rather than a real
+   observation; not corroborated afterward. Don't trust this one.
+4. Stale X server/lock files (`/tmp/.X0-lock`, orphaned `Xorg`/`xmonad`
+   processes surviving `exit`) - a **real, separately-documented** failure
+   mode for this machine (see `install/build/xlibre/README.md`,
+   "Stale X locks" / the OpenRC+elogind freeze writeup), and worth always
+   ruling out first on this hardware - but not the cause this time.
+
+**Actual root cause - found by @holmen1, not by any of the above
+theorizing:** while chasing lead 4 (stale processes/locks) with
+`pgrep -a xmonad` / `pgrep -a Xorg`, spotted the culprit by inspection
+rather than by any of the code-tracing done here - a stale binary sitting
+at `~/.cache/xmonad/xmonad-x86_64-linux` (`cacheDir </> "xmonad-" <> arch
+<> "-" <> os`, see `binFileName` in the next section) was somehow still
+being run instead of `/usr/local/bin/xmonad`, even when `.xinitrc` did
+`exec /usr/local/bin/xmonad` (or a differently-named custom binary)
+directly. Renaming the stale cache file away fixed it immediately. All
+four "false lead" theories above were dead ends; the fix came from
+looking at what was actually running (`pgrep -a`) and what was actually
+sitting in `~/.cache/xmonad/`, not from reasoning about it in the
+abstract - worth remembering next time a build/install pipeline "should"
+be doing the right thing but isn't: check the filesystem and the process
+table before the source code.
+
+**Open question - this appears to contradict the analysis below:** the
+"`--restart` re-execs `\"xmonad\"` off `$PATH`" section right below this
+one concludes `executeFile prog True [] Nothing` never touches
+`binFileName dirs` for our `CompileScript` setup, and should always
+re-resolve `/usr/local/bin/xmonad` fresh. That reasoning covers
+`xmonad --recompile && xmonad --restart`, but doesn't explain a *plain
+process launch* (`.xinitrc`'s `exec`) preferring the cache file. Prime
+suspect for next time this resurfaces: the `~/.config/xmonad/build`
+symlink (the thing that makes `detectCompile` pick `CompileScript` at
+all) being transiently missing during some earlier test - e.g. after a
+`stow`/relink - would make XMonad's *own* `CompileGhc` fallback kick in
+and write straight to `binFileName`, and if something afterward invoked
+that path directly (or a keybinding-triggered `--restart` ran once while
+`build` was absent), the stale cache file would be exactly the artifact
+left behind. Not confirmed - just the most consistent story with the code
+already traced below. If this happens again: check `readlink -f
+~/.config/xmonad/build` *and* `ls -la ~/.cache/xmonad/` before anything
+else.
+
+**Fix applied:** renamed/removed the stale
+`~/.cache/xmonad/xmonad-x86_64-linux`. `.xinitrc` was left untouched
+(reverted an `exec /usr/local/bin/xmonad` hardening edit - preference is
+to keep `.xinitrc` matching the working config as closely as possible
+rather than add defensive indirection for a bug that wasn't actually in
+`.xinitrc`).
+
+**Confirmed via controlled re-test (same day):** restored the stale file
+back to `~/.cache/xmonad/xmonad-x86_64-linux`, then launched with
+`exec /usr/local/bin/xmonad` (the known-good, freshly-rebuilt 6-workspace
+binary) directly - the stale 4-workspace behavior came back immediately.
+This rules out coincidence/placebo from the first fix and confirms the
+cache file, not the binary actually named in `exec`, is what ends up
+running or otherwise dictating the workspace count. The "open question"
+above (how a bare `exec` of the right path ends up influenced by the
+cache file at all) is therefore real and reproducible, not a fluke - it's
+just still unexplained *why*, since the code path traced in the section
+below says a plain launch (no `--restart` flag, no `XMONAD_RESTART`
+ClientMessage received) should never touch `binFileName` at all.
+
+**This is xmonad's own internal behavior, not a flaw in my build/install
+pipeline.** My workflow is deliberately: edit `xmonad.hs` -> rebuild ->
+`install-custom-xmonad.sh` -> full logout -> fresh `startx`. I never
+invoke `xmonad --recompile` or `xmonad --restart` myself (the default
+`mod-q` binding for that is overridden to `kill` in `myKeys` - see
+`xmonad.hs`), and don't plan to start relying on them - my rollback-safe
+`/opt/xmonad` + `/usr/local/bin` symlink approach already gives me
+everything `--recompile`/`--restart` are for, without the cache-file
+ambiguity documented above. So this whole cache-vs-`exec` mystery isn't
+blocking day-to-day use - it's `xmonad` itself behaving in an undocumented
+and slightly ugly way under the hood, worth digging into purely out of
+curiosity (internals rabbit hole for a rainy day), not out of necessity.
+
+**Next diagnostic steps, if this resurfaces:**
+1. `readlink -f /proc/<xmonad-pid>/exe` immediately after a fresh
+   `startx` - if it doesn't match `/opt/xmonad/xmonad-<installed-ts>`,
+   the running process silently re-exec'd into something else right
+   after launch (strongly points at an unexpected self-restart).
+2. `xprop -root` right after launch, looking for any queued/leftover
+   custom atoms (e.g. an `XMONAD_RESTART`-style `ClientMessage` never
+   consumed by a previous, uncleanly-terminated xmonad) - ties back to
+   the stale-X-server/lock-file lead above; a persisted root window
+   across a "failed" `startx` could carry a pending restart message into
+   the next process's very first event.
+3. `ls -la ~/.local/share/xmonad/xmonad.state` and diff its serialized
+   workspace count against `myWorkspaces` - if xmonad restores session
+   state from a stale 4-workspace snapshot on startup, that alone could
+   look identical to "still 4 workspaces" without the wrong *binary*
+   being involved at all. Delete this file as part of the retest to
+   isolate binary-cache vs. session-state as the actual variable.
+
 ## 2026-08 `xmonad --recompile` doesn't call our script the way we assumed
 
 Traced through `XMonad.Core`, `XMonad.Main`, `XMonad.Operations` (upstream
