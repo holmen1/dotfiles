@@ -46,6 +46,9 @@ map r rename
 # trash
 map zt trash
 
+# backup
+map b backup
+
 # delete
 map d delete
 
@@ -109,6 +112,15 @@ cmd compress ${{
 cmd terminal_here ${{
     dir="$PWD"; [ -d "$f" ] && dir="$f"
     setsid -f "$TERMINAL" -e bash -lc 'cd "$1"; exec bash -l' _ "$dir" >/dev/null 2>&1
+}}
+
+# define a custom backup command
+cmd backup ${{
+    set -f
+    printf "$f\n"
+    printf "backup? [Y/n] "
+    read ans
+    [ "$ans" != "n" ] && cp -a $f "$f.bak"
 }}
 
 # define a custom 'delete' command

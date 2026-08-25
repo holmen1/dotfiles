@@ -27,6 +27,7 @@
 | `ze`         | Extract                     |
 | `zc`         | Compress with tar and gunzip|
 | `zt`         | Move to .trash              |
+| `b`          | Make backup .bak            |
 | `d`          | Proper (safe) delete        |
 | `gt`         | Open terminal               |
 | `x`          | Execute file in subshell    |

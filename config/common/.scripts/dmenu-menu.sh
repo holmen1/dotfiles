@@ -34,7 +34,7 @@ case "$category" in
         sed -n 12,41p "$CONF_DIR/xmonad/README.md" | timeout 12s dmenu -l 25 -i -p "XMonad Help" \
 		$HELP_COLORS -fn "$FONT" ;;
       "lf")
-        sed -n 14,40p "$CONF_DIR/lf/README.md" | timeout 12s dmenu -l 23 -i -p "lf Help" \
+        sed -n 14,41p "$CONF_DIR/lf/README.md" | timeout 12s dmenu -l 24 -i -p "lf Help" \
 		$HELP_COLORS -fn "$FONT" ;;
       "wifi")
         "$SCRIPTS"/monitor-wifi.sh --help | timeout 12s dmenu -l 7 -p "wifi Help" \
