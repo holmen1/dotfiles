@@ -16,13 +16,13 @@ fi
 # Color definitions
 # Prompt colors use \[...\] to mark zero-width escapes for readline (PS1 only).
 export COLOR_RESET='\[\e[0m\]'           # Proper ANSI reset
-export COLOR_USER='\[\e[38;5;24m\]'      # Steel blue
-export COLOR_PATH='\[\e[38;5;33m\]'      # Electric blue
-export COLOR_GIT='\[\e[38;5;60m\]'       # Dark slate
-export COLOR_PROMPT='\[\e[38;5;40m\]'    # Forest green
+export COLOR_USER='\[\e[38;5;243m\]'     # Cool gray—user@host recedes
+export COLOR_PATH='\[\e[38;5;180m\]'     # Tan dust—path is readable but humble
+export COLOR_GIT='\[\e[38;5;72m\]'       # Retro green—branch distinct but warm
+export COLOR_PROMPT='\[\e[38;5;214m\]'   # Bright gold amber—prompt
 
-export LS_COLORS='di=38;5;32:fi=38;5;244:ln=38;5;111:ex=38;5;40:*.sh=38;5;40:*.py=38;5;24:*.js=38;5;111'
-export GREP_COLORS='ms=38;5;208:fn=38;5;111:ln=38;5;24'
+export LS_COLORS='di=38;5;226:fi=38;5;180:ln=38;5;214:ex=38;5;167:*.sh=38;5;40:*.py=38;5;24:*.js=38;5;111'
+export GREP_COLORS='ms=38;5;214:fn=38;5;180:ln=38;5;24'  # Match (gold), filename (tan), line (blue)
 
 ## Default (plain/unstyled) text tint via OSC 10
 # printf '\e]10;#d9b382\a'	# Amber-on-dark the standard on monochrome CRT terminals (DEC VT100/220, IBM 5151)
