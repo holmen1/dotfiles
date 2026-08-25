@@ -6,6 +6,7 @@ base-devel
 bash-language-server
 bc
 bear
+cabal-install
 clang
 cryptsetup
 cryptsetup-openrc

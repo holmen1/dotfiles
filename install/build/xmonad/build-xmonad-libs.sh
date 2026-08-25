@@ -1,12 +1,6 @@
 #!/bin/sh
 #
-# Build/install xmonad + xmonad-contrib libraries using Cabal, and write a
-# GHC environment file so a later bare `ghc --make` can link against them
-# without a generated .cabal project (see build-custom-xmonad.sh).
-#
-# Colocated with the real config (not the build factory) since this machine
-# is both the build machine and the only target - xmonad --recompile (M-q)
-# works for free as a side effect, though we don't rely on it.
+# Build/install xmonad + xmonad-contrib libraries using Cabal
 #
 # Prerequisites:
 #   - GHC + cabal-install, check that versions are tested
@@ -18,9 +12,6 @@ set -e
 
 XMONAD_VER="0.18.1"
 XMONAD_CONTRIB_VER="0.18.2"
-
-BUILD_DIR=~/repos/dotfiles/install/build/xmonad
-WORK_DIR=$BUILD_DIR/work
 
 if command -v ghc >/dev/null 2>&1; then
     echo "Using $(ghc --version)"
@@ -36,19 +27,15 @@ else
     exit 1
 fi
 
-mkdir -p "$WORK_DIR"
-
 echo ""
 echo "=== Updating Cabal package index ==="
 cabal update
 
 echo ""
-echo "=== Installing libraries into $WORK_DIR ==="
-# base ships as a boot/wired-in package with GHC itself - no need to
-# install it separately, and doing so can conflict with the compiler's
-# own copy.
+echo "=== Installing libraries into ~/.cabal/store ==="
+# base ships as a boot/wired-in package with GHC itself
+# no need separate install, and doing so can conflict with the compiler's install
 cabal install \
-    --package-env="$WORK_DIR" \
     --force-reinstalls \
     --lib \
     xmonad-"${XMONAD_VER}" \
@@ -56,6 +43,5 @@ cabal install \
 
 echo ""
 echo "=== Done ==="
-echo "GHC environment file written to: $WORK_DIR/.ghc.environment.*"
 echo "Libraries are cached in the shared Cabal store - rerun this script"
 echo "only when bumping xmonad/xmonad-contrib versions."
