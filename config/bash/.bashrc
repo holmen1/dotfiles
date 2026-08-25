@@ -68,9 +68,9 @@ ee() { # Echo variable capitalized
     VAR=${1^^}
     echo "${!VAR}"
 }
-# ss() { # Repeat last command with sudo # TODO bug
-#     sudo "$(history -p !!)"
-# }
+ss() { # Repeat last command with sudo
+    sudo $(history -p !!)
+}
 
 ### Aliases
 alias ls='ls --color=auto'
