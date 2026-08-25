@@ -4,6 +4,12 @@
 # **Custom Aliases**: Shortcuts for common commands and Git operations
 # **Productivity Functions**: Helper functions for directory navigation and file operations
 
+if command -v dash >/dev/null 2>&1; then
+    sudo ln -sf /usr/bin/dash /usr/bin/sh
+else
+    echo "sh -> bash"
+fi
+
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 

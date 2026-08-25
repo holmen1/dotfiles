@@ -10,6 +10,7 @@ cabal-install
 clang
 cryptsetup
 cryptsetup-openrc
+dash
 dhcpcd
 dhcpcd-openrc
 dmenu
