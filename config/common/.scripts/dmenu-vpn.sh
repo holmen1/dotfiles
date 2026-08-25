@@ -5,8 +5,10 @@ MONITOR_VPN_SCRIPT="$HOME/.scripts/monitor-vpn.sh"
 
 #fc-list | grep -qi "JetBrainsMono Nerd Font" \
 FONT="Liberation Mono-16"
+MENU_COLORS="-nb #222222 -nf #ffbf00 -sb #ffbf00 -sf #222222"
+# NB ignore globbing warning, breaks dmenu if using
 
-menu() { dmenu -i -p "$1" ${2:+-l "$2"} -nb "#222222" -nf "#ffffff" -sb "#A300A3" -sf "#ffffff" -fn "$FONT"; }
+menu() { dmenu -i -p "$1" ${2:+-l "$2"} $MENU_COLORS -fn "$FONT"; }
 
 choice=$(printf "connect\ndisconnect\nlocation\nstatus\nhelp" | menu "Mullvad:")
 case "$choice" in
