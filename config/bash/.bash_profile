@@ -6,12 +6,19 @@
 
 echo -n ""
 
+bsd_info() {
+        [ "$(cat "$HOME/.cache/bsd_attempt")" = "1" ] && echo "BSD need 2 runs (Xlibre issue)"
+}
+
 # Auto-startx on first tty (tty1 on Linux, ttyv0 on FreeBSD)
 if [[ -z $DISPLAY ]] && { [[ $(tty) = /dev/tty1 ]] || [[ $(tty) = /dev/ttyv0 ]]; }; then
     clear
-    echo "" # Add a newline for spacing
+    echo ""
     fastfetch --logo "none"
-    echo "" # Add a newline for spacing
+    echo ""
+
+    # Startup info BSD only
+    [ $(tty) = /dev/ttyv0 ] && echo "1" > $HOME/.cache/bsd_attempt && bsd_info
 
     for i in {6..1}; do
         # Force output flush and overwrite the same line

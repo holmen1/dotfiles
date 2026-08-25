@@ -49,32 +49,28 @@ bind '"\e[B": history-search-forward'
 export HISTCONTROL=ignoreboth:erasedups # Ignore duplicates and commands starting with space
 
 ### Custom functions
-# Open current directory in VSCode or Neovim
-cdc() {
+cdc() { # Open current directory in VSCode
 	cd "$1" && code .
 }
-cdv() {
+cdv() { # Open current directory in Neovim
 	cd "$1" && nvim .
 }
-# Create and change into a new directory
-mkcd() {
+mkcd() { # Create and change into a new directory
     mkdir -p "$1" && cd "$1" || exit
 }
-# Create backup file
-bak() {
+bak() { # Create backup file
     cp -a "$1" "$1.bak"
 }
-# Quick file search function
-ff() {
+ff() { # Quick file search function
     find "${2:-.}" -name "*$1*" 2>/dev/null
 }
-# Echo variable capitalized
-ee() {
+ee() { # Echo variable capitalized
     VAR=${1^^}
     echo "${!VAR}"
 }
-# Repeat last command with sudo
-ss() { sudo "$(history -p !!)" ; }
+# ss() { # Repeat last command with sudo # TODO bug
+#     sudo "$(history -p !!)"
+# }
 
 ### Aliases
 alias ls='ls --color=auto'
