@@ -32,6 +32,7 @@ Living index of TODOs found in code and documentation.
 ## Shell
 
 - Get proper POSIX sh instead of sh -> bash
+Installed dash, discovered to many bashisms, on hold
 
 ## Suggested improvements
 
