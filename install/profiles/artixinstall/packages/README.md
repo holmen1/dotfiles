@@ -30,6 +30,14 @@ sudo pacman -U ./package-name-<version>-<arch>.pkg.tar.zst
 pacman -Q package-name
 ```
 
+## List all packages installed from a given repository.
+
+Usage: paclist <repository ...>
+```bash
+# Arch repo
+paclist extra
+```
+
 ## Notes
 
 - Keep the old package file if you may need to reinstall it later.

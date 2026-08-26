@@ -48,13 +48,13 @@ noto-fonts
 openrc
 openresolv
 openssh
+pacman-contrib
 qemu-system-riscv
 ripgrep
 rust
 scrot
 shellcheck-bin
 shfmt
-sof-firmware
 stow
 strace
 tree
