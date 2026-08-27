@@ -386,7 +386,15 @@ Find and execute a command on each result:
 ```
 find /path/to/search -name "*.txt" -exec grep "search term" {} \;
 ```
+### Substitute Text in Previous Command
+```
+^old^new
+```
 
+### cd -
+```
+cd "$OLDPWD" && pwd
+```
 
 ### X11
 
