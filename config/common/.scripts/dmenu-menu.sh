@@ -8,8 +8,8 @@ XKB_STATE=$HOME/.cache/xkb-layout
 # Font detection
 #fc-list | grep -qi "JetBrainsMono Nerd Font" \
 FONT="Liberation Mono-16"
-MENU_COLORS="-nb #222222 -nf #ffbf00 -sb #ffbf00 -sf #222222"
-HELP_COLORS="-nb #222222 -nf #ffbf00 -sb #222222 -sf #ffbf00"
+MENU_COLORS="-nb #1c1c1c -nf #d9a441 -sb #d9a441 -sf #1c1c1c"
+HELP_COLORS="-nb #1c1c1c -nf #d9a441 -sb #1c1c1c -sf #d9a441"
 # NB ignore globbing warning, breaks dmenu if using
 
 current_xkb=$(cat "$XKB_STATE" 2>/dev/null || echo "se")

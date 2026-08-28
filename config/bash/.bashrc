@@ -13,16 +13,16 @@ fi
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# Color definitions
-# Prompt colors use \[...\] to mark zero-width escapes for readline (PS1 only).
-export COLOR_RESET='\[\e[0m\]'           # Proper ANSI reset
-export COLOR_USER='\[\e[38;5;243m\]'     # Cool gray—user@host recedes
-export COLOR_PATH='\[\e[38;5;180m\]'     # Tan dust—path is readable but humble
-export COLOR_GIT='\[\e[38;5;72m\]'       # Retro green—branch distinct but warm
-export COLOR_PROMPT='\[\e[38;5;214m\]'   # Bright gold amber—prompt
+# Color definitions (prompt uses \[...\] zero-width escapes for readline)
+export COLOR_RESET='\[\e[0m\]'
+export COLOR_USER='\[\e[38;5;243m\]'        # cool gray — user@host recedes
+export COLOR_PATH='\[\e[38;5;180m\]'        # tan — readable, humble
+export COLOR_GIT='\[\e[38;5;137m\]'         # warm ochre — branch
+export COLOR_PROMPT_OK='\[\e[38;5;179m\]'   # gold amber — $ when last exit 0
+export COLOR_PROMPT_ERR='\[\e[38;5;130m\]'  # deep red — $ when last exit != 0
 
-export LS_COLORS='di=38;5;226:fi=38;5;180:ln=38;5;214:ex=38;5;167:*.sh=38;5;40:*.py=38;5;24:*.js=38;5;111'
-export GREP_COLORS='ms=38;5;214:fn=38;5;180:ln=38;5;24'  # Match (gold), filename (tan), line (blue)
+export LS_COLORS='di=38;5;179:ln=38;5;185:ex=38;5;173:fi=38;5;187:or=31;01:*.sh=38;5;173:*.py=38;5;179:*.js=38;5;185'
+export GREP_COLORS='ms=38;5;214:fn=38;5;180:ln=38;5;137'
 
 ## Default (plain/unstyled) text tint via OSC 10
 # printf '\e]10;#d9b382\a'	# Amber-on-dark the standard on monochrome CRT terminals (DEC VT100/220, IBM 5151)

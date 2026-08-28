@@ -1,0 +1,35 @@
+# vim:ft=dircolors
+# Amber — warm red↔yellow, no green
+ln  38;5;185      # LINK   pale amber
+or  31;01         # ORPHAN default red
+di  01;38;5;179   # DIR    gold
+ex  38;5;173      # EXEC   burnt orange
+fi  38;5;187      # FILE   tan
+pi  38;5;179      # FIFO
+so  38;5;174      # SOCK
+bd  38;5;179;01   # BLK
+cd  38;5;179;01   # CHR
+su  38;5;173;01   # SETUID
+sg  38;5;173;01   # SETGID
+tw  38;5;179      # STICKY_OTHER_WRITABLE
+ow  38;5;179      # OTHER_WRITABLE
+st  38;5;179      # STICKY
+
+# grouped globs (one color each — compact)
+*.tar 38;5;130
+*.tgz 38;5;130
+*.zip 38;5;130
+*.gz  38;5;130
+*.xz  38;5;130
+*.zst 38;5;130
+*.rar 38;5;130
+
+*.jpg  38;5;174
+*.jpeg 38;5;174
+*.png  38;5;174
+*.gif  38;5;174
+*.bmp  38;5;174
+*.svg  38;5;174
+*.webp 38;5;174
+*.tif  38;5;174
+*.avi  38;5;174
