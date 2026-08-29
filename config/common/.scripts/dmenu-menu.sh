@@ -8,8 +8,6 @@ XKB_STATE=$HOME/.cache/xkb-layout
 # Font detection
 #fc-list | grep -qi "JetBrainsMono Nerd Font" \
 FONT="Liberation Mono-16"
-MENU_COLORS="-nb #1c1c1c -nf #d9a441 -sb #d9a441 -sf #1c1c1c"
-HELP_COLORS="-nb #1c1c1c -nf #d9a441 -sb #1c1c1c -sf #d9a441"
 # NB ignore globbing warning, breaks dmenu if using
 
 current_xkb=$(cat "$XKB_STATE" 2>/dev/null || echo "se")
@@ -20,34 +18,34 @@ vpn=$("$SCRIPTS"/monitor-vpn.sh --get-location)
 # Tray: keyboard, wifi, vpn and battery status
 # Main menu: Exit, Wifi or Help
 category=$(printf "Exit\nNetwork\nHelp" | timeout 4s dmenu -i -p "x[$current_xkb] w[$ssid] v[$vpn] b[$battery_level%]" \
-$MENU_COLORS \
+$DMENU_COLORS \
 -fn "$FONT")
 
 case "$category" in
   "Help")
-    app=$(printf "XKB\nlf\nXmonad\nwifi\nbash\nnvim" | dmenu -i -p "App:" $MENU_COLORS -fn "$FONT")
+    app=$(printf "XKB\nlf\nXmonad\nwifi\nbash\nnvim" | dmenu -i -p "App:" $DMENU_COLORS -fn "$FONT")
     case "$app" in
       "XKB")
         sed -n 9,37p "$CONF_DIR/xkb/README.md" | timeout 12s dmenu -l 29 -p "XKB Help" \
-		$HELP_COLORS -fn "$FONT" ;;
+		$DMENU_HELP_COLORS -fn "$FONT" ;;
       "Xmonad")
         sed -n 12,41p "$CONF_DIR/xmonad/README.md" | timeout 12s dmenu -l 25 -i -p "XMonad Help" \
-		$HELP_COLORS -fn "$FONT" ;;
+		$DMENU_HELP_COLORS -fn "$FONT" ;;
       "lf")
         sed -n 14,41p "$CONF_DIR/lf/README.md" | timeout 12s dmenu -l 24 -i -p "lf Help" \
-		$HELP_COLORS -fn "$FONT" ;;
+		$DMENU_HELP_COLORS -fn "$FONT" ;;
       "wifi")
         "$SCRIPTS"/monitor-wifi.sh --help | timeout 12s dmenu -l 7 -p "wifi Help" \
-		$HELP_COLORS -fn "$FONT" ;;
+		$DMENU_HELP_COLORS -fn "$FONT" ;;
       "bash")
         sed -n 51,74p "$CONF_DIR/bash/.bashrc" | timeout 12s dmenu -l 25 -p "git Help" \
-		$HELP_COLORS -fn "$FONT" ;;
+		$DMENU_HELP_COLORS -fn "$FONT" ;;
       "nvim")
         echo "<leader>sk" | timeout 2s dmenu -l 7 -p "Search Keymaps" \
-		$HELP_COLORS -fn "$FONT" ;;
+		$DMENU_HELP_COLORS -fn "$FONT" ;;
     esac ;;
   "Network")
-    net=$(printf "WiFi\nVPN" | dmenu -i -p "Net:" $MENU_COLORS -fn "$FONT")
+    net=$(printf "WiFi\nVPN" | dmenu -i -p "Net:" $DMENU_COLORS -fn "$FONT")
     case "$net" in
       "WiFi") "$SCRIPTS"/dmenu-wifi.sh ;;
       "VPN")  "$SCRIPTS"/dmenu-vpn.sh ;;

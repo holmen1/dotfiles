@@ -5,10 +5,9 @@ MONITOR_WIFI_SCRIPT="$HOME/.scripts/monitor-wifi.sh"
 
 #fc-list | grep -qi "JetBrainsMono Nerd Font" \
 FONT="Liberation Mono-16"
-MENU_COLORS="-nb #222222 -nf #ffbf00 -sb #ffbf00 -sf #222222"
-# NB ignore globbing warning, breaks dmenu if using
 
-menu() { dmenu -i -p "$1" ${2:+-l "$2"} $MENU_COLORS -fn "$FONT"; }
+# NB ignore globbing warning
+menu() { dmenu -i -p "$1" ${2:+-l "$2"} $DMENU_COLORS -fn "$FONT"; }
 
 action=$(printf "Scan\nManual\nDisconnect\nRestart" | menu "WiFi:")
 case "$action" in

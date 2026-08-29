@@ -18,8 +18,7 @@ export COLOR_RESET='\[\e[0m\]'
 export COLOR_USER='\[\e[38;5;243m\]'        # cool gray — user@host recedes
 export COLOR_PATH='\[\e[38;5;180m\]'        # tan — readable, humble
 export COLOR_GIT='\[\e[38;5;137m\]'         # warm ochre — branch
-export COLOR_PROMPT_OK='\[\e[38;5;179m\]'   # gold amber — $ when last exit 0
-export COLOR_PROMPT_ERR='\[\e[38;5;130m\]'  # deep red — $ when last exit != 0
+export COLOR_PROMPT='\[\e[38;5;179m\]'      # gold amber — $
 
 export LS_COLORS='di=38;5;179:ln=38;5;185:ex=38;5;173:fi=38;5;187:or=31;01:*.sh=38;5;173:*.hs=38;5;179:*.c=38;5;185:*.h=38;5;185'
 export GREP_COLORS='ms=38;5;214:fn=38;5;180:ln=38;5;137'
@@ -28,6 +27,10 @@ export GREP_COLORS='ms=38;5;214:fn=38;5;180:ln=38;5;137'
 # printf '\e]10;#d9b382\a'	# Amber-on-dark the standard on monochrome CRT terminals (DEC VT100/220, IBM 5151)
 printf '\e]10;#e8cfa8\a'	# softer
 # printf '\e]110;\a'		# To reset the default foreground back to st's config.h value:
+
+## Used in dmenu scripts
+export DMENU_COLORS="-nb #1c1c1c -nf #d9a441 -sb #d9a441 -sf #1c1c1c"
+export DMENU_HELP_COLORS="-nb #1c1c1c -nf #d9a441 -sb #1c1c1c -sf #d9a441"
 
 # Auto cd
 shopt -s autocd
