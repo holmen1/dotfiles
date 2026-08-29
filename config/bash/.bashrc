@@ -21,7 +21,7 @@ export COLOR_GIT='\[\e[38;5;137m\]'         # warm ochre — branch
 export COLOR_PROMPT_OK='\[\e[38;5;179m\]'   # gold amber — $ when last exit 0
 export COLOR_PROMPT_ERR='\[\e[38;5;130m\]'  # deep red — $ when last exit != 0
 
-export LS_COLORS='di=38;5;179:ln=38;5;185:ex=38;5;173:fi=38;5;187:or=31;01:*.sh=38;5;173:*.py=38;5;179:*.js=38;5;185'
+export LS_COLORS='di=38;5;179:ln=38;5;185:ex=38;5;173:fi=38;5;187:or=31;01:*.sh=38;5;173:*.hs=38;5;179:*.c=38;5;185:*.h=38;5;185'
 export GREP_COLORS='ms=38;5;214:fn=38;5;180:ln=38;5;137'
 
 ## Default (plain/unstyled) text tint via OSC 10

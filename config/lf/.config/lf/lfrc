@@ -5,6 +5,9 @@
 set shell bash
 set shellopts '-eu'
 
+# Prompt colors similar st
+set promptfmt "\033[38;5;243m%u@%h\033[0m:\033[38;5;180m%d\033[0m\033[38;5;187m%f\033[0m"
+
 # Show hidden files by default
 set hidden
 
