@@ -61,3 +61,8 @@ brew bundle --file=~/repos/dotfiles/install/macinstall/Brewfile
 ```
 ./scripts/link_config.sh install/macinstall/macos_links.conf
 ```
+
+## TODOs
+
+- [ ] [AeroSpace](https://nikitabobko.github.io/AeroSpace/guide)
+
