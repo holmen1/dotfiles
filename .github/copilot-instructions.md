@@ -38,8 +38,7 @@
 - **Artix sanity check (master):** `./install/profiles/artixinstall/tests/<computername>/sanity_check.sh`
 - **FreeBSD sanity check (master):** `./install/profiles/bsdinstall/tests/<computername>/sanity_check.sh`
 - **XLibre smoke test:** `./install/build/xlibre/test.sh`
-- **XMonad rebuild/debug loop:** `xmonad --recompile && xmonad --restart`
-- **XMonad build chain:** `build-xmonad-libs.sh` (deps), then `build-custom-xmonad.sh` (binary), then `install-custom-xmonad.sh`
+- **XMonad build chain:** `build-xmonad-libs.sh` (deps), then `build-custom-xmonad.sh` (binary), then `install-custom-xmonad.sh` (deploy) — all three are required; `xmonad --recompile && xmonad --restart` alone does **not** deploy a new binary on this machine (see Architecture below).
 
 ## Architecture
 
@@ -48,18 +47,21 @@
 - **Hostname-based profiles:** Computer name (from `hostname -s`) determines which package list and link config to use. This allows multiple machines with different setups from a single repo.
 - **Central link configuration:** `install/profiles/<distro>install/links/<hostname>/links.config` defines which stow packages from `config/` to symlink into `$HOME`. The linker (`config/common/.scripts/link_config.sh`) backs up conflicting real files as `*.bak`.
 - **Standalone build factories:** Source-built components in `install/build/` are self-contained. XMonad binaries are staged to `install/build/xmonad/bin/`, then installed to `/opt/xmonad/` and symlinked at `/usr/local/bin/xmonad`. GHC is installed directly to `/usr/local`.
+- **XMonad build chain:** `build-xmonad-libs.sh` uses Cabal only to install pinned `xmonad`/`xmonad-contrib` libraries into the shared Cabal store (rerun only when bumping versions). `build-custom-xmonad.sh` then compiles/links `xmonad.hs` directly with plain GHC (`gcc`-style, referencing the Cabal package db) — no per-project cabal file or `.ghc.environment.*` file is used. See `install/build/xmonad/LESSONS_LEARNED.md` for the debugging history behind this design.
+- **`xmonad --recompile` is hijacked:** `config/xmonad/.config/xmonad/build` is a symlink to `build-custom-xmonad.sh`. XMonad's `detectCompile` prefers an executable `build` script over its built-in GHC path, so `--recompile` always runs our script instead — but the script ignores the argument XMonad passes it and writes a fresh `-rc-<timestamp>` binary under `install/build/xmonad/bin/`, never to the cache path XMonad expects. `--restart` only re-execs whatever `xmonad` currently resolves to on `$PATH` (i.e. `/usr/local/bin/xmonad`), so **`--recompile && --restart` alone never deploys a new build** — `install-custom-xmonad.sh` must be run manually to promote it. See `install/build/xmonad/LESSONS_LEARNED.md` ("stale cache-binary" and "`--recompile` doesn't call our script the way we assumed" sections).
+- **Centralized color scheme:** `config/bash/.bashrc` is the single source of truth for terminal colors — it exports `LS_COLORS`, `GREP_COLORS`, `DMENU_COLORS`/`DMENU_HELP_COLORS`, and `OSC 10` tinting. dmenu scripts (`config/common/.scripts/dmenu-*.sh`) consume the exported `DMENU_*` variables, and `lf` inherits `LS_COLORS` directly (no separate lf colors file). See `config/colors/README.md` for the available schemes and how to switch between them.
 - **X11 session setup:** Starts with `config/artixinstall/.xinitrc` (Artix) or `config/bsdinstall/.xinitrc` (FreeBSD). Artix loads XMonad; FreeBSD loads dwm. Both set a base XKB layout in `.xinitrc`, then `xkb-toggle` handles the custom compiled keymap.
 
 ## Conventions
 
 - **Shell dialect:** Scripts are POSIX `sh` unless explicitly marked otherwise (e.g., `#!/bin/bash`). Avoid bashisms in shared scripts.
 - **Hardcoded path:** Many scripts assume the repo lives at `~/repos/dotfiles`. When editing commands or docs, keep this path in sync. If refactoring to use a different path, update all installer scripts and tests.
-- **Version naming in binaries:** Compiled binaries go to `/opt/<name>/xmonad-X.Y.Z` and are symlinked via `/usr/local/bin/xmonad` (no version in symlink). This allows parallel versions and easy rollback.
+- **Version naming in binaries:** Compiled xmonad binaries go to `/opt/xmonad/xmonad-X.Y.Z-YYYYMMDD_HHMMSS` (release-candidate marker stripped, build timestamp kept) and are symlinked via `/usr/local/bin/xmonad` (no version in symlink). This allows parallel versions and easy rollback.
 - **XKB OS variants:** The keymap is built by `build-xkb.sh` into `~/.cache/custom-keymap.xkb`. Toggle is handled by `xkb-toggle.sh` (linked to `/usr/local/bin/xkb-toggle`).
 - **Distro differences in config, not code:** If a tool differs between distros, create separate stow packages per distro (e.g., `config/artixinstall/` and `config/bsdinstall/`) rather than adding conditionals inside shared scripts. The link config selects which package to stow.
 - **Stow package organization:** Each directory in `config/` is a stow package (e.g., `config/nvim/`, `config/bash/`). The `links.config` file specifies which packages to stow. Packages should be self-contained and not depend on each other.
 - **Link config format:** `links.config` is a shell snippet sourced by the linker; it sets a `packages` variable as a space-separated list of stow package names (e.g. `packages="bash nvim xkb common artixinstall lf"`). The linker stows each named directory from `config/` into `$HOME`.
-- **Debugging:** When diagnosing issues, inspect the actual files and logs rather than guessing. Use sanity check scripts to verify setup state.
+- **Debugging:** When diagnosing issues, inspect the actual files and logs rather than guessing. Use sanity check scripts to verify setup state. `.xinitrc` no longer aborts when an essential program is missing — it logs to `~/.xinitrc-errors.log` and continues, so check that file first when the X session starts but behaves oddly.
 
 ## Common workflows
 
