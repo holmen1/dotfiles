@@ -5,8 +5,9 @@ Three coordinated, comfortable schemes for an ascetic Linux workstation
 `config.h` edits required — everything is driven with 256-color / truecolor
 escapes plus `OSC 10`, which `st` renders directly.
 
-Each scheme shares **one palette** across bash / dmenu / lf, so a role
-(e.g. "directory") looks identical everywhere it appears.
+Each scheme shares **one palette** across bash, dmenu, and lf. lf inherits
+the `LS_COLORS` value exported by bash, so a role (e.g. "directory") looks
+identical everywhere it appears.
 
 ## Schemes at a glance
 
@@ -19,7 +20,9 @@ Each scheme shares **one palette** across bash / dmenu / lf, so a role
 Notes shared by all schemes:
 - **dmenu** uses only two colors (background + accent), selection inverted —
   exactly as the current config.
-- **lf** keeps the default red (`31;01`) for orphan / missing links (`or`).
+- **lf** inherits `LS_COLORS` from `.bashrc`. `LF_COLORS` and
+  `~/.config/lf/colors` override it, so leave both unset when `.bashrc` is
+  the source of truth.
 - **Prompt**: `user@host` cool gray, path tan, git branch warm, and a `$`
   terminator that turns **red on a non-zero exit status**.
 
@@ -27,13 +30,11 @@ Notes shared by all schemes:
 
 ## How to apply
 
-1. **bash** — paste the scheme's `COLOR_*`, `LS_COLORS`, `GREP_COLORS`,
-   `OSC 10` and `PS1` blocks into `~/.bashrc` (replacing the current lines
-   ~18–29 and the `PS1` at ~123). See the shared exit-status snippet below.
-2. **dmenu** — replace `MENU_COLORS` / `HELP_COLORS` (lines 11–12 of your
-   dmenu script) with the scheme's pair.
-3. **lf** — save the scheme's lf block to `~/.config/lf/colors`, or point
-   `set dircolors` / `LF_COLORS` at it.
+All color settings live in `config/bash/.bashrc` (linked as `~/.bashrc`).
+Paste the chosen scheme's bash block there, replacing the existing
+`COLOR_*`, `LS_COLORS`, `GREP_COLORS`, `OSC 10`, `DMENU_COLORS`,
+`DMENU_HELP_COLORS`, and `PS1` settings. dmenu consumes the exported
+`DMENU_*` values and lf consumes the exported `LS_COLORS` value.
 
 ### Prompt exit-status snippet (shared by all schemes)
 
@@ -63,9 +64,6 @@ dmenu slots apply) the menu.
 | Directory       | `#d9a441` / 179    | `#5f9ea0` / 73     | `#e0913a` / 173    |
 | Symlink (ln)    | `#e0c060` / 185    | `#87afaf` / 109    | `#d7b060` / 179    |
 | Executable (ex) | `#cc7a33` / 173    | `#5f87af` / 67     | `#c0562e` / 166    |
-| Archive         | `#b0503a` / 130    | `#875f5f` / 95     | `#a23b2a` / 124    |
-| Media (image)   | `#c97a8a` / 174    | `#8787af` / 103    | `#b76e79` / 132    |
-| Audio           | `#c9a26b` / 137    | `#6c9a8b` / 108    | `#c99a5b` / 179    |
 | Orphan (or)     | red `31;01`        | red `31;01`        | red `31;01`        |
 | Prompt `$` OK   | `#d9a441` / 179    | `#5f9ea0` / 73     | `#e0913a` / 173    |
 | Prompt `$` ERR  | `#b0503a` / 130    | `#af5f5f` / 131    | `#a23b2a` / 124    |
@@ -96,69 +94,11 @@ export GREP_COLORS='ms=38;5;179:fn=38;5;180:ln=38;5;137'
 printf '\e]10;#e8cfa8\a'
 printf '\e]11;#1c1c1c\a'   # background (optional; harmless if st ignores)
 
+export DMENU_COLORS="-nb #1c1c1c -nf #d9a441 -sb #d9a441 -sf #1c1c1c"
+export DMENU_HELP_COLORS="-nb #1c1c1c -nf #d9a441 -sb #1c1c1c -sf #d9a441"
+
 # Exit-aware $ prompt (needs the shared __prompt_ec snippet above)
 export PS1="${COLOR_USER}\u@\h ${COLOR_PATH}\W${COLOR_GIT}\$(__git_ps1 ' (%s)')\[\e[38;5;\$([ \"\$__ec\" = 0 ] && echo 179 || echo 130)m\]\$ ${COLOR_RESET}"
-```
-
-### dmenu
-
-```sh
-MENU_COLORS="-nb #1c1c1c -nf #d9a441 -sb #d9a441 -sf #1c1c1c"
-HELP_COLORS="-nb #1c1c1c -nf #d9a441 -sb #1c1c1c -sf #d9a441"
-```
-
-### lf (`~/.config/lf/colors`)
-
-```dircolors
-# Amber — warm red↔yellow, no green
-ln  38;5;185      # LINK   pale amber
-or  31;01         # ORPHAN default red
-di  01;38;5;179   # DIR    gold
-ex  38;5;173      # EXEC   burnt orange
-fi  38;5;187      # FILE   tan
-pi  38;5;179      # FIFO
-so  38;5;174      # SOCK
-bd  38;5;179;01   # BLK
-cd  38;5;179;01   # CHR
-su  38;5;173;01   # SETUID
-sg  38;5;173;01   # SETGID
-tw  38;5;179      # STICKY_OTHER_WRITABLE
-ow  38;5;179      # OTHER_WRITABLE
-st  38;5;179      # STICKY
-
-# grouped globs (one color each — compact)
-*.tar 38;5;130
-*.tgz 38;5;130
-*.zip 38;5;130
-*.gz  38;5;130
-*.xz  38;5;130
-*.zst 38;5;130
-*.bz2 38;5;130
-*.7z  38;5;130
-*.rar 38;5;130
-*.deb 38;5;130
-*.rpm 38;5;130
-
-*.jpg  38;5;174
-*.jpeg 38;5;174
-*.png  38;5;174
-*.gif  38;5;174
-*.bmp  38;5;174
-*.svg  38;5;174
-*.webp 38;5;174
-*.tif  38;5;174
-*.mp4  38;5;174
-*.mkv  38;5;174
-*.webm 38;5;174
-*.avi  38;5;174
-*.mov  38;5;174
-
-*.mp3  38;5;137
-*.flac 38;5;137
-*.ogg  38;5;137
-*.opus 38;5;137
-*.wav  38;5;137
-*.m4a  38;5;137
 ```
 
 ---
@@ -184,67 +124,10 @@ export GREP_COLORS='ms=38;5;73:fn=38;5;109:ln=38;5;108'
 printf '\e]10;#c6c6c6\a'
 printf '\e]11;#1c1c1c\a'
 
+export DMENU_COLORS="-nb #1c1c1c -nf #5f9ea0 -sb #5f9ea0 -sf #1c1c1c"
+export DMENU_HELP_COLORS="-nb #1c1c1c -nf #5f9ea0 -sb #1c1c1c -sf #5f9ea0"
+
 export PS1="${COLOR_USER}\u@\h ${COLOR_PATH}\W${COLOR_GIT}\$(__git_ps1 ' (%s)')\[\e[38;5;\$([ \"\$__ec\" = 0 ] && echo 73 || echo 131)m\]\$ ${COLOR_RESET}"
-```
-
-### dmenu
-
-```sh
-MENU_COLORS="-nb #1c1c1c -nf #5f9ea0 -sb #5f9ea0 -sf #1c1c1c"
-HELP_COLORS="-nb #1c1c1c -nf #5f9ea0 -sb #1c1c1c -sf #5f9ea0"
-```
-
-### lf (`~/.config/lf/colors`)
-
-```dircolors
-# Ash — cool neutral gray/teal
-ln  38;5;109
-or  31;01
-di  01;38;5;73
-ex  38;5;67
-fi  38;5;251
-pi  38;5;73
-so  38;5;103
-bd  38;5;73;01
-cd  38;5;73;01
-su  38;5;67;01
-sg  38;5;67;01
-tw  38;5;73
-ow  38;5;73
-st  38;5;73
-
-*.tar 38;5;95
-*.tgz 38;5;95
-*.zip 38;5;95
-*.gz  38;5;95
-*.xz  38;5;95
-*.zst 38;5;95
-*.bz2 38;5;95
-*.7z  38;5;95
-*.rar 38;5;95
-*.deb 38;5;95
-*.rpm 38;5;95
-
-*.jpg  38;5;103
-*.jpeg 38;5;103
-*.png  38;5;103
-*.gif  38;5;103
-*.bmp  38;5;103
-*.svg  38;5;103
-*.webp 38;5;103
-*.tif  38;5;103
-*.mp4  38;5;103
-*.mkv  38;5;103
-*.webm 38;5;103
-*.avi  38;5;103
-*.mov  38;5;103
-
-*.mp3  38;5;108
-*.flac 38;5;108
-*.ogg  38;5;108
-*.opus 38;5;108
-*.wav  38;5;108
-*.m4a  38;5;108
 ```
 
 ---
@@ -270,67 +153,10 @@ export GREP_COLORS='ms=38;5;173:fn=38;5;180:ln=38;5;179'
 printf '\e]10;#e8cfa8\a'
 printf '\e]11;#1c1c1c\a'
 
+export DMENU_COLORS="-nb #1c1c1c -nf #e0913a -sb #e0913a -sf #1c1c1c"
+export DMENU_HELP_COLORS="-nb #1c1c1c -nf #e0913a -sb #1c1c1c -sf #e0913a"
+
 export PS1="${COLOR_USER}\u@\h ${COLOR_PATH}\W${COLOR_GIT}\$(__git_ps1 ' (%s)')\[\e[38;5;\$([ \"\$__ec\" = 0 ] && echo 173 || echo 124)m\]\$ ${COLOR_RESET}"
-```
-
-### dmenu
-
-```sh
-MENU_COLORS="-nb #1c1c1c -nf #e0913a -sb #e0913a -sf #1c1c1c"
-HELP_COLORS="-nb #1c1c1c -nf #e0913a -sb #1c1c1c -sf #e0913a"
-```
-
-### lf (`~/.config/lf/colors`)
-
-```dircolors
-# Ember — amber + deep red
-ln  38;5;179
-or  31;01
-di  01;38;5;173
-ex  38;5;166
-fi  38;5;187
-pi  38;5;173
-so  38;5;132
-bd  38;5;173;01
-cd  38;5;173;01
-su  38;5;166;01
-sg  38;5;166;01
-tw  38;5;173
-ow  38;5;173
-st  38;5;173
-
-*.tar 38;5;124
-*.tgz 38;5;124
-*.zip 38;5;124
-*.gz  38;5;124
-*.xz  38;5;124
-*.zst 38;5;124
-*.bz2 38;5;124
-*.7z  38;5;124
-*.rar 38;5;124
-*.deb 38;5;124
-*.rpm 38;5;124
-
-*.jpg  38;5;132
-*.jpeg 38;5;132
-*.png  38;5;132
-*.gif  38;5;132
-*.bmp  38;5;132
-*.svg  38;5;132
-*.webp 38;5;132
-*.tif  38;5;132
-*.mp4  38;5;132
-*.mkv  38;5;132
-*.webm 38;5;132
-*.avi  38;5;132
-*.mov  38;5;132
-
-*.mp3  38;5;179
-*.flac 38;5;179
-*.ogg  38;5;179
-*.opus 38;5;179
-*.wav  38;5;179
-*.m4a  38;5;179
 ```
 
 ---
@@ -345,6 +171,6 @@ for i in 179 173 185 187 130 174 137 73 67 109 251 103 108 166 124 132; do
 done
 ```
 
-lf reads its colors file on start; relaunch lf after editing.
-`.bashrc` changes apply in new shells or after `source ~/.bashrc`
-(the `OSC 10/11` lines re-tint the running terminal immediately).
+Restart lf after changing `LS_COLORS` in `.bashrc`.
+`.bashrc` changes apply in new shells or after `source ~/.bashrc` (the
+`OSC 10/11` lines re-tint the running terminal immediately).
