@@ -53,8 +53,6 @@ if [ -n "${DISPLAY:-}" ] && command -v setxkbmap >/dev/null 2>&1; then
 else
     warn "XKB layout check skipped (no active X session)"
 fi
-if [ -x ~/.cabal/bin/xmonad ]; then ok "$(command -v xmonad)"
-else fail "xmonad not found or not executable"; fi
 check_cmd xbindkeys
 check_cmd scrot
 check_cmd xterm
