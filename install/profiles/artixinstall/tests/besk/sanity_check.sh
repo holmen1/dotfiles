@@ -47,7 +47,7 @@ if [ -n "${DISPLAY:-}" ] && command -v setxkbmap >/dev/null 2>&1; then
     layout=$(setxkbmap -query 2>/dev/null | awk '$1 == "layout:" { print $2 }')
     layout_state=$(cat "$HOME/.cache/xkb-layout" 2>/dev/null)
     case "$layout_state:$layout" in
-        us:us|custom:se) ok "XKB layout and state: $layout_state" ;;
+        us:us|se:se|custom:us|custom:se) ok "XKB layout and state: $layout_state" ;;
         *) fail "XKB layout/state mismatch ('$layout_state'/'$layout')" ;;
     esac
 else

@@ -3,8 +3,10 @@ alsa-utils
 artix-archlinux-support
 base
 base-devel
+bash-language-server
 bc
 bear
+cabal-install
 checkbashisms
 clang
 cryptsetup
@@ -24,6 +26,7 @@ fd
 feh
 git
 grub
+haskell-language-server
 htop
 iwd
 iwd-openrc
@@ -36,6 +39,7 @@ linux-firmware
 linux-hardened
 linux-hardened-headers
 llvm
+lua-language-server
 lvm2
 man-db
 man-pages
@@ -54,6 +58,7 @@ shfmt
 stow
 strace
 tree
+viu
 xbindkeys
 xcape
 xclip
@@ -62,7 +67,5 @@ xf86-video-amdgpu
 xorg-server
 xorg-xev
 xorg-xinit
-xorg-setxkbmap
-xorg-xkbcomp
 xterm
 xwallpaper

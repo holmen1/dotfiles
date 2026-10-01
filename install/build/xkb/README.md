@@ -1,6 +1,6 @@
 # build/xkb
 
-Compiles the XKB keymap used by `dotfiles/xkb`.
+Compiles the XKB keymap
 
 ## Files
 
@@ -12,7 +12,7 @@ Compiles the XKB keymap used by `dotfiles/xkb`.
 ## Usage
 
 ```sh
-install/build/xkb/build-xkb.sh
+install/build/xkb/build-xkb.sh <se|us>
 ```
 
 Re-run whenever `symbols/local` changes.
@@ -26,5 +26,5 @@ sudo pacman -S xorg-setxkbmap xorg-xkbcomp
 ## How it works
 
 1. `setxkbmap -print` emits the base keymap description to stdout
-2. `sed` appends `+local(numpad)` to the `xkb_symbols` include line
-3. `xkbcomp` compiles the result into `dotfiles/xkb/.config/xkb/keymap.xkb`
+2. `sed` appends `+local(<layout>)` to the `xkb _symbols` include line
+3. `xkbcomp` compiles the result into `~/.cache/xkb/custom-keymap.xkb`
