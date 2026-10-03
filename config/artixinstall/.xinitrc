@@ -35,8 +35,14 @@ done
 unset _b
 
 # Set keymap (don't background - fast and should complete before apps start)
-setxkbmap se
-echo "se" > "$HOME/.cache/xkb-layout" # Cache current layout for dmenu status script
+XKB_DEFAULT_LAYOUT=se
+[ "$(hostname -s)" = "besk" ] && XKB_DEFAULT_LAYOUT=us
+if ! setxkbmap "$XKB_DEFAULT_LAYOUT"; then
+    echo >&2 "Failed to set XKB layout: $XKB_DEFAULT_LAYOUT"
+    exit 1
+fi
+mkdir -p "$HOME/.cache"
+echo "$XKB_DEFAULT_LAYOUT" > "$HOME/.cache/xkb-layout"
 
 # Set the default X cursor to the usual pointer
 xsetroot -cursor_name left_ptr &
