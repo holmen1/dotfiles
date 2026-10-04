@@ -79,6 +79,24 @@ Update the Framework BIOS, reboot, and check the running revision with
 `grep microcode /proc/cpuinfo`. Do not hide the message with `loglevel` or add
 `clearcpuid=rdseed`; the kernel has already applied the safe workaround.
 
+## Framework AMD (`besk`) touchpad tap-to-click (X11)
+
+To enable tap-to-click persistently with X11/libinput, create
+`/etc/X11/xorg.conf.d/90-touchpad.conf` with:
+
+```conf
+Section "InputClass"
+  Identifier "touchpad tap-to-click"
+  MatchIsTouchpad "on"
+  Driver "libinput"
+  Option "Tapping" "on"
+EndSection
+```
+
+Restart the X session for the setting to take effect. For a temporary test,
+`xinput` is provided by the `xorg-xinput` package; tap support can be toggled
+with the device's `libinput Tapping Enabled` property.
+
 ## Package strategy
 - Start with `packages/minimal/` — just enough to get X server running (`xorg-xinit`, `xterm`, xlibre)
 - Verify `startx` launches xterm before installing the full `packages/gadsden/` list
