@@ -210,9 +210,9 @@ defaults.ctl.card X
 ```
 
 #### Most Common Fixes (in order of likelihood)
-| Problem | Fix | Command / File |
-|---------------------------|---------------------------------------------------------------------|---------------|
-| Auto-Mute enabled | Disable in alsamixer | `alsamixer -c X` → Auto-Mute → Disabled |
+| Problem            | Fix                                                              | Command / File |
+|--------------------|------------------------------------------------------------------|---------------|
+| Auto-Mute enabled  | Disable in alsamixer | `alsamixer -c X` → Auto-Mute → Disabled, also toggle mute on channels (M) |
 | Wrong default card | Force analog card as default | `~/.asoundrc` or `/etc/asound.conf`:<br>`defaults.pcm.card X`<br>`defaults.ctl.card X` |
 | Wrong default card (alt) | Reorder loading | add a file at "/etc/modprobe.d/alsa.conf", with the line "options snd_hda_intel index=1,0 |
 | Missing SOF firmware | (Intel only) Install package | `sudo pacman -S sof-firmware alsa-ucm-conf` |

@@ -76,8 +76,9 @@ esac
 read -p "Build xkb keymap? [y/N] " ans
 case "$ans" in
     [Yy]*)
-    $XKB_DIR/build-xkb.sh
-    echo "Built xkb keymap"
+    LAYOUT=$(setxkbmap -query | awk '/^layout:/ {print $2}')
+    $XKB_DIR/build-xkb.sh "$LAYOUT"
+    echo "Built xkb custom $LAYOUT keymap"
     ;;
 esac
 
