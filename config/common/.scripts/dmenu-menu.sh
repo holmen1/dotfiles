@@ -7,7 +7,7 @@ XKB_STATE=$HOME/.cache/xkb-layout
 
 # Font detection
 #fc-list | grep -qi "JetBrainsMono Nerd Font" \
-FONT="Liberation Mono-16"
+FONT="Liberation Mono-20"
 # NB ignore globbing warning, breaks dmenu if using
 
 current_xkb=$(cat "$XKB_STATE" 2>/dev/null || echo "se")

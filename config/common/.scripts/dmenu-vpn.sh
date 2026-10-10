@@ -4,7 +4,7 @@
 MONITOR_VPN_SCRIPT="$HOME/.scripts/monitor-vpn.sh"
 
 #fc-list | grep -qi "JetBrainsMono Nerd Font" \
-FONT="Liberation Mono-16"
+FONT="Liberation Mono-18"
 
 # NB ignore globbing warning, breaks dmenu if using
 menu() { dmenu -i -p "$1" ${2:+-l "$2"} $DMENU_COLORS -fn "$FONT"; }
