@@ -173,17 +173,9 @@ For software not available via package managers (see [`install/build/`](./build/
 
 
 ### startx
-Enter tty via C-A-F2 or disable display manager (Arch: lightdm, FreeBSD: not applicable)  
-```$ sudo systemctl disable lightdm```  *(Arch only)*
 
-Start xmonad with: ```startx```  
-or something else, like  
-start xfce: ```startx /usr/bin/startxfce4```
-
-leave x session
-```
-$ pkill x 
-```
+See [docs/x11.md](../docs/x11.md#session-startup) — session startup, TTY access,
+and leaving the X session.
 
 ### Audio
 
@@ -297,23 +289,9 @@ docker run -it --rm artixlinux/artixlinux:base /bin/bash -c "echo hello world"
 > Tip:* For extra security, use SSH keys and disable password login in `/etc/ssh/sshd_config`.
 
 
-### Display manager  
+### Display manager
 
-To enable display manager, confirm ```.config/xmonad/xmonad-session-rc```linked   
-Edit xmonad-session like so
-```
-$ diff /usr/bin/xmonad-session /usr/bin/xmonad-session.bak 
-3c3
-< if [ -r ".config/xmonad/xmonad-session-rc" ]
----
-> if [ -r ".xmonad/xmonad-session-rc" ]
-5c5
-<   . .config/xmonad/xmonad-session-rc
----
->   . .xmonad/xmonad-session-rc
-```
-
-See [LESSONS_LEARNED.md](LESSONS_LEARNED.md) for lessons learned.
+See [docs/x11.md](../docs/x11.md#display-manager).
 
 
 ### VPN
@@ -346,22 +324,7 @@ $ sudo ln -s /opt/VSCode-linux-x64/bin/code /usr/local/bin/code
 
 ### Keyboard Shortcuts — TTY & X Session Access
 
-#### Linux (Arch/Artix)
-- `Ctrl+Alt+F2` through `Ctrl+Alt+F6` — Switch to TTY console
-- `Ctrl+Alt+F7` — Return to GUI/X session
-- `Ctrl+Alt+T` — Open terminal (desktop environment dependent)
-
-#### FreeBSD (Xlibre) — Black Screen Recovery
-- `Alt+F1`, `Alt+F2`, etc. — Cycle virtual consoles (if keyboard responds)
-- `Scroll Lock` then arrow keys — Alternative TTY switching
-- `Ctrl+Alt+Delete` or power cycle — Last resort reboot
-
-Once at TTY:
-```bash
-ps aux | grep X           # Check if X is running
-pkill -9 X                # Kill stuck Xlibre
-startx                    # Restart X session
-```
+See [docs/x11.md](../docs/x11.md#tty-switching--black-screen-recovery).
 
 ### Mounting USB Drives
 Identify the USB drive:
@@ -398,16 +361,6 @@ cd "$OLDPWD" && pwd
 
 ### X11
 
-Debug key bindings:
-```sh
-xbindkeys -k          # Press key to see keycode
-xev                   # Show all X events (key press, window focus, etc.)
-```
-
-Debug windows:
-```sh
-xprop                 # Click window to see properties
-xwininfo              # Click window to see geometry and ID
-xdotool search --name "window title"  # Find window by name
-```
+See [docs/x11.md](../docs/x11.md#debugging) — `xbindkeys -k`, `xev`, `xprop`,
+`xwininfo`, `xdotool`, and links to all X11 component docs.
 

@@ -67,18 +67,13 @@ Example: `key <AD07> { [ u, U, 7 ] };` means: normal=`u`, Shift=`U`, Super=`7`.
 
 ---
 
-## Installation (Arch Linux)
+## Installation
 
-```sh
-sudo pacman -S xorg-setxkbmap xorg-xkbcomp xcape
-```
-See [install/build/xkb/README.md](../../install/build/xkb/README.md) for build details.
+Build mechanics, dependencies, and usage:
+[install/build/xkb/README.md](../../install/build/xkb/README.md)
+(re-run the build whenever `symbols/local` changes).
 
-
-```sh
-# Once (or whenever symbols/local changes)
-install/build/xkb/build-xkb.sh
-```
+Extra runtime dependency: `xcape` (see below).
 
 ---
 

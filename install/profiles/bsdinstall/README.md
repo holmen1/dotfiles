@@ -290,7 +290,7 @@ pkg query -e '%a = 0' '%R %o' | awk '$1 != "FreeBSD-ports" && $1 != "FreeBSD-bas
 
 # LESSONS LEARNED
 
-See [install/build/xlibre/LESSONS_LEARNED.md](../../../build/xlibre/README.md) for XLibre-specific lessons learned.
+See [install/build/xlibre/README.md](../../build/xlibre/README.md) for XLibre-specific lessons learned.
 
 ---
 

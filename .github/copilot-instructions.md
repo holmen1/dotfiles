@@ -9,7 +9,7 @@
 
 ### Reference implementations
 
-**Artixinstall and bsdinstall are the master reference implementations.** Other distros (archinstall, debianinstall, macinstall) may be partially outdated. Always consult artixinstall or bsdinstall first for patterns and approach.
+**Artixinstall and bsdinstall are the master reference implementations.** Always consult artixinstall or bsdinstall first for patterns and approach. (Old archinstall/debianinstall guides and extras like Hyprland/xmobar live on the `stale` branch; macOS is config-only.)
 
 ## Build and install commands
 
@@ -47,10 +47,10 @@
 - **Hostname-based profiles:** Computer name (from `hostname -s`) determines which package list and link config to use. This allows multiple machines with different setups from a single repo.
 - **Central link configuration:** `install/profiles/<distro>install/links/<hostname>/links.config` defines which stow packages from `config/` to symlink into `$HOME`. The linker (`config/common/.scripts/link_config.sh`) backs up conflicting real files as `*.bak`.
 - **Standalone build factories:** Source-built components in `install/build/` are self-contained. XMonad binaries are staged to `install/build/xmonad/bin/`, then installed to `/opt/xmonad/` and symlinked at `/usr/local/bin/xmonad`. GHC is installed directly to `/usr/local`.
-- **XMonad build chain:** `build-xmonad-libs.sh` uses Cabal only to install pinned `xmonad`/`xmonad-contrib` libraries into the shared Cabal store (rerun only when bumping versions). `build-custom-xmonad.sh` then compiles/links `xmonad.hs` directly with plain GHC (`gcc`-style, referencing the Cabal package db) — no per-project cabal file or `.ghc.environment.*` file is used. See `install/build/xmonad/LESSONS_LEARNED.md` for the debugging history behind this design.
-- **`xmonad --recompile` is hijacked:** `config/xmonad/.config/xmonad/build` is a symlink to `build-custom-xmonad.sh`. XMonad's `detectCompile` prefers an executable `build` script over its built-in GHC path, so `--recompile` always runs our script instead — but the script ignores the argument XMonad passes it and writes a fresh `-rc-<timestamp>` binary under `install/build/xmonad/bin/`, never to the cache path XMonad expects. `--restart` only re-execs whatever `xmonad` currently resolves to on `$PATH` (i.e. `/usr/local/bin/xmonad`), so **`--recompile && --restart` alone never deploys a new build** — `install-custom-xmonad.sh` must be run manually to promote it. See `install/build/xmonad/LESSONS_LEARNED.md` ("stale cache-binary" and "`--recompile` doesn't call our script the way we assumed" sections).
-- **Centralized color scheme:** `config/bash/.bashrc` is the single source of truth for terminal colors — it exports `LS_COLORS`, `GREP_COLORS`, `DMENU_COLORS`/`DMENU_HELP_COLORS`, and `OSC 10` tinting. dmenu scripts (`config/common/.scripts/dmenu-*.sh`) consume the exported `DMENU_*` variables, and `lf` inherits `LS_COLORS` directly (no separate lf colors file). See `config/colors/README.md` for the available schemes and how to switch between them.
-- **X11 session setup:** Starts with `config/artixinstall/.xinitrc` (Artix) or `config/bsdinstall/.xinitrc` (FreeBSD). Artix loads XMonad; FreeBSD loads dwm. Both set a base XKB layout in `.xinitrc`, then `xkb-toggle` handles the custom compiled keymap.
+- **XMonad build chain:** `build-xmonad-libs.sh` uses Cabal only to install pinned `xmonad`/`xmonad-contrib` libraries into the shared Cabal store (rerun only when bumping versions). `build-custom-xmonad.sh` then compiles/links `xmonad.hs` directly with plain GHC — no per-project cabal file. Details: `install/build/xmonad/README.md`; history: `install/build/xmonad/LESSONS_LEARNED.md`.
+- **`xmonad --recompile` is hijacked, and `--recompile && --restart` never deploys:** `config/xmonad/.config/xmonad/build` symlinks to `build-custom-xmonad.sh`, which writes a fresh `-rc-<timestamp>` binary under `install/build/xmonad/bin/`, never to XMonad's cache path. `--restart` only re-execs `/usr/local/bin/xmonad`, so `install-custom-xmonad.sh` must be run manually to promote a build. See `install/build/xmonad/LESSONS_LEARNED.md`.
+- **Centralized color scheme:** `config/bash/.bashrc` is the single source of truth for terminal colors (`LS_COLORS`, `DMENU_*`, `OSC 10`); dmenu scripts and `lf` consume those exports. See `config/colors/README.md`.
+- **X11 session setup:** Starts with `config/artixinstall/.xinitrc` (Artix, xmonad) or `config/bsdinstall/.xinitrc` (FreeBSD, dwm); `xkb-toggle` applies the custom keymap. All X11 session/TTY/debugging topics are collected in `docs/x11.md`.
 
 ## Conventions
 

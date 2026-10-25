@@ -100,4 +100,4 @@ with the device's `libinput Tapping Enabled` property.
 ## Package strategy
 - Start with `packages/minimal/` — just enough to get X server running (`xorg-xinit`, `xterm`, xlibre)
 - Verify `startx` launches xterm before installing the full `packages/gadsden/` list
-- See [install/build/xlibre/LESSONS_LEARNED.md](../../build/xlibre/LESSONS_LEARNED.md) for xlibre-specific issues
+- See [install/build/xlibre/README.md](../../build/xlibre/README.md) for xlibre-specific issues

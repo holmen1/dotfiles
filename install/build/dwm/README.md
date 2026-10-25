@@ -46,6 +46,6 @@ Based on [dwm](https://st.suckless.org/) from the suckless.org team.
 
 ## TODO
 
-- [] xmonad keymap
-- [] cleanup
+- [ ] xmonad keymap
+- [ ] cleanup
 

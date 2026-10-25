@@ -28,6 +28,9 @@ are handled by swapping stow packages in
 | Dotfile linking   | stow          | stow      |
 | Keymaps           | setxkbmap/XKB | setxkbmap/XKB|
 
+All things X11 — session startup, TTY recovery, debugging, component links:
+[docs/x11.md](docs/x11.md)
+
 ---
 
 ## TL;DR
@@ -52,10 +55,11 @@ git clone --depth 1 --branch v0.0.4 https://github.com/holmen1/dotfiles.git ~/re
 
 - Chose distro:
 ```sh
-cd ~/repos/dotfiles/install/artixinstall
+cd ~/repos/dotfiles/install/profiles/artixinstall
 ```
 Run and follow the prompts
-(current artixinstall require manual build and install of: xlibre, ghc, xmonad **NB**):
+(current artixinstall requires manual build and install of ghc and xmonad **NB**;
+xlibre is installed from the Artix repos):
 
 ```sh
 ./configure-build-install-link.sh
@@ -66,9 +70,9 @@ Prompts per step:
 Configure git? [y/N]
 Generate SSH key? [y/N]
 Install yay? [y/N]
-/home/holmen1/repos/dotfiles/install/artixinstall/packages/gadsden/pkglist.txt
+/home/holmen1/repos/dotfiles/install/profiles/artixinstall/packages/gadsden/pkglist.txt
 Install pkglist? [y/N]
-/home/holmen1/repos/dotfiles/install/artixinstall/packages/gadsden/foreignpkglist.txt
+/home/holmen1/repos/dotfiles/install/profiles/artixinstall/packages/gadsden/foreignpkglist.txt
 Install foreignpkglist? [y/N]
 Rebuild xmonad? [y/N]
 Install xmonad? [y/N]
@@ -94,7 +98,7 @@ Sanity check — x1 (artix)
 --- X session
   [ok] startx
   [ok] /home/holmen1/.xinitrc
-  [ok] /home/holmen1/.cabal/bin/xmonad
+  [ok] /usr/local/bin/xmonad
   [ok] xbindkeys
   [ok] scrot
   [ok] xterm

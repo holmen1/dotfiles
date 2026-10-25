@@ -34,7 +34,7 @@ Goal: keep the functionality working, but make it understandable enough that eac
 - `lua/plugins/` for one file per plugin or plugin group.
 - `lua/custom/` for small local utilities that do not belong to a plugin.
 - `README.md` for user-facing usage notes.
-- `REFRACTOR_PLAN.md` for the work plan while the overhaul is in progress.
+- `docs/archive/nvim-REFACTOR_PLAN.md` for the (completed) work plan.
 
 ## Phases
 

@@ -1,5 +1,9 @@
 # GHC Toolchain Warmup for XMonad Build
 
+> **Experimental sandbox note** — not part of the normal build path.
+> The production chain is `build-xmonad-libs.sh` → `build-custom-xmonad.sh` →
+> `install-custom-xmonad.sh` (see [../../README.md](../../README.md)).
+
 ## Overview
 
 This document outlines a warmup exercise to confirm our Haskell toolchain works for building packages from Hackage using only GHC (no cabal-install). This is preparation for compiling xmonad without cabal.

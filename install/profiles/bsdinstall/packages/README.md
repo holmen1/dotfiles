@@ -36,7 +36,7 @@ pkg audit -F
 
 ## Package Management Philosophy
 - **Use `pkg` for binary packages** - Fast, tested, recommended for most software
-- **Use ports for custom builds** - When you need specific options or software unavailable as packages (see [../../README.md](../../README.md#building-from-ports-for-customlatest-builds))
+- **Use ports for custom builds** - When you need specific options or software unavailable as packages (see [../README.md](../README.md#building-from-ports-for-customlatest-builds))
 - **Keep it minimal** - FreeBSD doesn't bloat by default; install only what you need
 
 ## Descriptions
