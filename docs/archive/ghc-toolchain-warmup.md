@@ -1,4 +1,10 @@
-# GHC Toolchain Warmup for XMonad Build
+# GHC Toolchain Warmup for XMonad Build (archived)
+
+> **Archived:** experimental sandbox note (originally under
+> `install/build/xmonad/sandbox/ghc-build/`), not part of the normal build path.
+> The production chain is `build-xmonad-libs.sh` → `build-custom-xmonad.sh` →
+> `install-custom-xmonad.sh` (see
+> [`install/build/xmonad/README.md`](../../install/build/xmonad/README.md)).
 
 ## Overview
 

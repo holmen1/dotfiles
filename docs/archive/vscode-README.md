@@ -1,4 +1,8 @@
-# VSCode
+# VSCode (archived)
+
+> **Archived:** not part of the dotfiles system (no stow package). The install
+> steps live in [`docs/postinstall.md`](../postinstall.md#vs-code-binary-install);
+> the shortcuts below are generic VS Code defaults kept for reference.
 
 ## install
 

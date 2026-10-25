@@ -2,6 +2,7 @@
 
 Artix Linux base install (LVM on LUKS) + custom window manager (XMonad)
 
+Printable step-by-step checklist: [CHECKLIST.md](CHECKLIST.md)
 
 ## Pre-installation
 
@@ -275,8 +276,9 @@ or `:r!blkid` somewhere inside `/etc/default/grub`
 
 then replace `<uuid>` like so:
 ```sh
-GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet cryptdevice=UUID=<uuid>:cryptroot root=/dev/vg0/root"
+GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet cryptdevice=UUID=<uuid>:cryptroot root=/dev/vg0/root [amdgpu.dcdebugmask=0x610]"
 ```
+amdgpu quirk, see: [docs/hardware.md](../../../docs/hardware.md)
 ```bash
 grub-mkconfig -o /boot/grub/grub.cfg
 ```
@@ -460,14 +462,14 @@ less ~/.local/share/xorg/Xorg.0.log
 
 For systems requiring Haskell development or custom xmonad builds:
 
-- [GHC build scripts](../build/ghc/) - Install Haskell compiler from source
+- [GHC build scripts](../../build/ghc/) - Install Haskell compiler from source
 - Provides `ghc`, `runhaskell`, and Cabal library for building Haskell packages
 
 #### 4. XMonad Window Manager
 
 Building custom xmonad without cabal-install dependency:
 
-- [XMonad build scripts](../build/xmonad/) - Build xmonad and xmonad-contrib from source
+- [XMonad build scripts](../../build/xmonad/) - Build xmonad and xmonad-contrib from source
 - Uses `runhaskell Setup.lhs` with GHC's built-in Cabal library
 - Produces standalone binaries without cabal-install dependency
 
@@ -482,11 +484,11 @@ This will:
 - Enable services (openrc)
 - Run sanity check
 ```
-cd ~/repos/dotfiles/install/artixinstall
+cd ~/repos/dotfiles/install/profiles/artixinstall
 ./configure-build-install-link.sh
 ```
 ```bash
-/home/holmen1/repos/dotfiles/install/artixinstall/packages/gadsden/pkglist.txt
+/home/holmen1/repos/dotfiles/install/profiles/artixinstall/packages/gadsden/pkglist.txt
 Install pkglist? [y]
 Install xmonad? [y]
 Build st? [y]
@@ -518,9 +520,9 @@ Include = /etc/pacman.d/mirrorlist-arch
 
 ### Export installed packages
 
-```
-~/repos/dotfiles/install/artixinstall/scripts/export-pacman.sh \
-  ~/repos/dotfiles/install/artixinstall/packages/<hostname>
+```sh
+pacman -Qqe > ~/repos/dotfiles/install/profiles/artixinstall/packages/<hostname>/pkglist.txt
+pacman -Qqm > ~/repos/dotfiles/install/profiles/artixinstall/packages/<hostname>/foreignpkglist.txt
 ```
 
 ## Troubleshooting
@@ -548,6 +550,11 @@ artix-chroot /mnt bash
 - The Rad Lectures [Step-by-Step Artix Linux Install]
 (https://www.radleylewis.com/lab/guides/artix-openrc-install-guide/)
 
-## Lessons learned
+## Further notes
 
-See [LESSONS_LEARNED.md](LESSONS_LEARNED.md)
+- Artix vs Arch tooling, ISO rescue path, package strategy:
+  [docs/artix-install.md](../../../docs/artix-install.md)
+- Networking (iwd/dhcpcd/OpenRC): [docs/networking.md](../../../docs/networking.md)
+- Machine-specific quirks: [docs/hardware.md](../../../docs/hardware.md)
+- Archived incident history:
+  [docs/archive/artixinstall-LESSONS_LEARNED.md](../../../docs/archive/artixinstall-LESSONS_LEARNED.md)

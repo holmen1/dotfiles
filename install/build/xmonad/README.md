@@ -4,6 +4,8 @@ Cabal builds and caches the libraries (`xmonad`, `xmonad-contrib`),
 fetched directly from Hackage.
 Plain GHC then compiles and links `xmonad.hs` `gcc`-style
 
+Shared build conventions: [docs/build.md](../../../docs/build.md)
+
 ## Build scripts
 
 | Script                     | Purpose |
@@ -60,7 +62,10 @@ See [LESSONS_LEARNED.md](LESSONS_LEARNED.md) for lessons learned.
 
 ## TODO
 
--[x] Cabal build custom xmonad
--[x] GHC build custom xmonad
--[] xmonad --recompile && --restart
--[] Configure LSP
+- [x] Cabal build custom xmonad
+- [x] GHC build custom xmonad
+- [x] ~~`xmonad --recompile && --restart` as deploy path~~ — intentionally not a
+  deploy path; `--recompile` writes a fresh binary under `bin/` and `--restart`
+  only re-execs `/usr/local/bin/xmonad`. Run `install-custom-xmonad.sh` to deploy.
+  See [LESSONS_LEARNED.md](LESSONS_LEARNED.md).
+- [ ] Configure LSP

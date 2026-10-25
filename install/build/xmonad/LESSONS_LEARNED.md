@@ -1,5 +1,9 @@
 # LESSONS LEARNED
 
+> Canonical, durable rules from this file are summarized in
+> [`docs/build.md`](../../../docs/build.md) under **XMonad operational invariants**.
+> This file remains the full incident/forensics history.
+
 ## 2026-08 A stale `~/.cache/xmonad/xmonad-x86_64-linux` silently won over `/usr/local/bin/xmonad`
 
 **Symptom:** edited `xmonad.hs` (4 → 6 workspaces), rebuilt with
@@ -601,4 +605,3 @@ This is why you need to explicitly export HOSTNAME="xps" in:
 Your .xinitrc file (for startx)
 Your xmonad-session-rc script (for LightDM)
 By explicitly exporting the variable in these startup scripts, you ensure it's available in XMonad's environment when lookupEnv "HOSTNAME" is called.
-
