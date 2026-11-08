@@ -4,15 +4,14 @@ Living index of TODOs found in code and documentation.
 
 ## Repo docs
 
-- [README.md:193](README.md#L193) — add xv6 support.
+- xv6 support roadmap is tracked here (removed from README scope list).
 - [install/profiles/artixinstall/README.md:290](install/profiles/artixinstall/README.md#L290) — note about `xbacklight`/video support.
-- [install/build/ghc/README.md:42-44](install/build/ghc/README.md#L42-L44) — document HLS installation.
 
 ## XMonad
 
 - [config/xmonad/README.md:50](config/xmonad/README.md#L50) — investigate build warnings.
 - [config/xmonad/README.md:51-71](config/xmonad/README.md#L51-L71) — clarify workspace keybinding lambda.
-- [install/build/xmonad/LESSONS_LEARNED.md:543](install/build/xmonad/LESSONS_LEARNED.md#L543) — decide whether `xft` should be handled by GHC.
+- [install/build/xmonad/LESSONS_LEARNED.md:547](install/build/xmonad/LESSONS_LEARNED.md#L547) — decide whether `xft` should be handled by GHC.
 
 ## dwm
 
@@ -36,5 +35,3 @@ Installed dash, discovered to many bashisms, on hold
 ## Suggested improvements
 
 - Make the installer/profile layout fully consistent across Artix and FreeBSD, including naming and prompt order.
-- Add a short `TODO.md` workflow note in the README so humans know where to look for outstanding work.
-- Split recurring shell snippets and machine-specific X session choices into small shared helpers so the distro scripts stay easier to scan.

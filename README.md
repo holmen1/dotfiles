@@ -5,6 +5,8 @@ Minimal window manager
 Workstation setup for Linux, BSD, and macOS — dotfiles, installation guides, and build scripts
 
 Copilot instructions for models and humans: [.github/copilot-instructions.md](.github/copilot-instructions.md)
+Open work index: [TODO.md](TODO.md)
+Structured docs index: [docs/README.md](docs/README.md)
 
 - Menus and monitoring handled by dmenu and simple shell scripts
 - [Build](install/build) scripts included for source-built components:
@@ -190,5 +192,3 @@ Minimal "desktop" across multiple operating systems. Designed for low-spec hardw
 [stale](https://github.com/holmen1/dotfiles/tree/stale) branch, with older extras like Hyprland and xmobar kept there for reference)
 - BSD: FreeBSD
 - macOS: Some config (zsh, nvim, kitty)
-- Unix  (xv6) [TODO]
-

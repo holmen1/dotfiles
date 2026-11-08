@@ -1,6 +1,8 @@
 # artixinstall checklist
 
-Quick checklist — see [README.md](README.md) for the full guide.
+Printable checklist for tracking a manual install. Full guide:
+[README.md](README.md). Mark items with `[x]` on paper or in a local copy —
+don't commit checked-off state.
 
 - [ ] Erase disk
 - [ ] Partition

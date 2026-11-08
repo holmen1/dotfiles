@@ -5,6 +5,7 @@
 - `config/` holds the actual user configuration (dotfiles) organized by tool/component; these are symlinked into `$HOME` via stow.
 - `install/profiles/` holds OS-specific installer scripts and per-distro package lists.
 - `install/build/` holds build scripts for source-compiled components (xmonad, dwm, st, xkb, neovim, ghc, xlibre).
+- `docs/` holds structured long-form documentation (`docs/README.md` is the index); `docs/archive/` holds superseded documents kept for history.
 - The stack is X11-centric. Artix uses **xmonad**; FreeBSD uses **dwm**. Both use `st`, `xkb`, and `xlibre`.
 
 ### Reference implementations
@@ -79,8 +80,17 @@
 1. Add or edit files under `config/<tool>/` (e.g., `config/nvim/.config/nvim/init.lua`).
 2. Ensure the directory is listed in the appropriate `links.config` for systems that should use it.
 3. If the change is tool-specific, edit only that stow package.
-4. If distro-specific, create or modify the distro-specific package (e.g., `config/systemd-debian/` vs `config/openrc/`).
+4. If distro-specific, create or modify the distro-specific package (e.g., `config/artixinstall/` vs `config/bsdinstall/`).
 5. Re-link if the repo is already installed: `bash config/common/.scripts/link_config.sh <profile_links_config>`.
+
+### Documentation
+
+- `docs/README.md` is the documentation index — register any new doc there.
+- Durable, repeatable knowledge belongs in `docs/` topic guides: `x11.md` (session/TTY/debugging/input), `postinstall.md`, `networking.md`, `artix-install.md`, `hardware.md`, `build.md`, `vim-quickref.md`.
+- `LESSONS_LEARNED.md` files keep incident history and forensics; extract durable rules into `docs/` and cross-link.
+- READMEs stay concise entry points that link into `docs/`; deep explanation lives in the docs pages, not in READMEs.
+- Superseded documents go to `docs/archive/` with a header explaining why (never delete silently).
+- After doc moves/renames, verify all relative markdown links still resolve.
 
 ### Building a component locally for testing
 

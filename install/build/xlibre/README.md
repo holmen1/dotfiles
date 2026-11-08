@@ -1,5 +1,6 @@
 # XLibre
 
+Shared build conventions: [docs/build.md](../../../docs/build.md)
 
 ## Build and installation Procedure
 

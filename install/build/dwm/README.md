@@ -42,7 +42,7 @@ Some patches may fail if the source has changed, then review any .rej files and 
 | M-X        | toggle xkb |
 | M-S-Q      | exit       |
 
-Based on [dwm](https://st.suckless.org/) from the suckless.org team.
+Based on [dwm](https://dwm.suckless.org/) from the suckless.org team.
 
 ## TODO
 

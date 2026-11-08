@@ -104,7 +104,7 @@ cd ~/repos/dotfiles/install/bsdinstall
 ./configure-build-install-link.sh
 ```
 
-## Diaster recovery
+## Disaster recovery
 
 1. **Reboot and enter single-user mode** from the boot menu.
 2. At the prompt, remount filesystems:

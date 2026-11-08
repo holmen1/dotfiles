@@ -1,12 +1,14 @@
 # GHC
 
-Glasgow Haskell Compiler — installed from binary distribution into
+Glasgow Haskell Compiler — installed from binary distribution into `/usr/local`.
 
 Find versions from the main [GHC site](https://www.haskell.org/ghc/).
 
 **Note:** if you use a language server, check
 [ghc-version-support](https://haskell-language-server.readthedocs.io/en/latest/support/ghc-version-support.html)
 before choosing a version.
+
+Shared build conventions: [docs/build.md](../../../docs/build.md)
 
 ## Usage
 
@@ -41,4 +43,38 @@ no
 
 ## HLS
 
-<!-- TODO: document HLS installation -->
+Haskell Language Server (HLS) must match your GHC version. Start with the
+support matrix:
+[ghc-version-support](https://haskell-language-server.readthedocs.io/en/latest/support/ghc-version-support.html)
+
+### Install options
+
+#### Option A: ghcup (recommended)
+
+```bash
+ghcup install hls
+ghcup set hls latest
+```
+
+#### Option B: build from source via cabal
+
+```bash
+cabal update
+cabal install haskell-language-server
+```
+
+### Verify
+
+```bash
+haskell-language-server-wrapper --version
+haskell-language-server --version
+```
+
+### Troubleshooting
+
+- **Unsupported GHC version:** choose a supported GHC from the matrix, or install
+  an HLS version that explicitly supports your compiler.
+- **Editor still can’t find HLS:** ensure `haskell-language-server-wrapper` is on
+  `PATH` in the environment where the editor starts.
+- **Multiple GHC installs:** run `ghc --version` and `which ghc` in the same shell
+  your editor uses, then align HLS to that compiler.

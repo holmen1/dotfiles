@@ -4,6 +4,8 @@ Cabal builds and caches the libraries (`xmonad`, `xmonad-contrib`),
 fetched directly from Hackage.
 Plain GHC then compiles and links `xmonad.hs` `gcc`-style
 
+Shared build conventions: [docs/build.md](../../../docs/build.md)
+
 ## Build scripts
 
 | Script                     | Purpose |

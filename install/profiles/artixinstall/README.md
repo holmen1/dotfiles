@@ -2,6 +2,7 @@
 
 Artix Linux base install (LVM on LUKS) + custom window manager (XMonad)
 
+Printable step-by-step checklist: [CHECKLIST.md](CHECKLIST.md)
 
 ## Pre-installation
 
@@ -548,6 +549,11 @@ artix-chroot /mnt bash
 - The Rad Lectures [Step-by-Step Artix Linux Install]
 (https://www.radleylewis.com/lab/guides/artix-openrc-install-guide/)
 
-## Lessons learned
+## Further notes
 
-See [LESSONS_LEARNED.md](LESSONS_LEARNED.md)
+- Artix vs Arch tooling, ISO rescue path, package strategy:
+  [docs/artix-install.md](../../../docs/artix-install.md)
+- Networking (iwd/dhcpcd/OpenRC): [docs/networking.md](../../../docs/networking.md)
+- Machine-specific quirks: [docs/hardware.md](../../../docs/hardware.md)
+- Archived incident history:
+  [docs/archive/artixinstall-LESSONS_LEARNED.md](../../../docs/archive/artixinstall-LESSONS_LEARNED.md)

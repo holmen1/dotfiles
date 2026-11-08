@@ -1,4 +1,11 @@
-# LESSONS_LEARNED
+# LESSONS_LEARNED (archived)
+
+> **Archived:** all durable content has been extracted into structured docs:
+> - Networking → [`docs/networking.md`](../networking.md)
+> - Framework `besk` hardware notes → [`docs/hardware.md`](../hardware.md)
+> - Install notes (artix vs arch, rescue, packages) → [`docs/artix-install.md`](../artix-install.md)
+>
+> This file is kept only as original incident history.
 
 ## Installation
 - No guided installer (no `artixinstall` command) — manual process using `basestrap`
@@ -100,4 +107,4 @@ with the device's `libinput Tapping Enabled` property.
 ## Package strategy
 - Start with `packages/minimal/` — just enough to get X server running (`xorg-xinit`, `xterm`, xlibre)
 - Verify `startx` launches xterm before installing the full `packages/gadsden/` list
-- See [install/build/xlibre/README.md](../../build/xlibre/README.md) for xlibre-specific issues
+- See [install/build/xlibre/README.md](../../install/build/xlibre/README.md) for xlibre-specific issues
