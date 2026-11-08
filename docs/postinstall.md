@@ -181,6 +181,11 @@ docker run -it --rm artixlinux/artixlinux:base /bin/bash -c "echo hello world"
 Install and start:
 
 ```sh
+# Artix (OpenRC)
+sudo pacman -S openssh openssh-openrc
+sudo rc-update add sshd default
+sudo rc-service sshd start
+
 # Arch
 sudo pacman -S openssh
 sudo systemctl enable sshd && sudo systemctl start sshd
@@ -192,9 +197,13 @@ sudo sysrc sshd_enable=YES && sudo service sshd start
 Check status/logs:
 
 ```sh
+# Artix (OpenRC)
+sudo rc-service sshd status
+sudo grep sshd /var/log/auth.log
+
+# Arch
 sudo systemctl status sshd
 sudo journalctl -u sshd
-sudo grep sshd /var/log/auth.log
 ```
 
 If using UFW:
