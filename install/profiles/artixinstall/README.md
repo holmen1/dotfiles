@@ -276,8 +276,9 @@ or `:r!blkid` somewhere inside `/etc/default/grub`
 
 then replace `<uuid>` like so:
 ```sh
-GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet cryptdevice=UUID=<uuid>:cryptroot root=/dev/vg0/root"
+GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet cryptdevice=UUID=<uuid>:cryptroot root=/dev/vg0/root [amdgpu.dcdebugmask=0x610]"
 ```
+amdgpu quirk, see: [docs/hardware.md](../../../docs/hardware.md)
 ```bash
 grub-mkconfig -o /boot/grub/grub.cfg
 ```

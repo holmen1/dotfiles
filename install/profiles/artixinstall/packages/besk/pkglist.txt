@@ -43,6 +43,8 @@ lua-language-server
 lvm2
 man-db
 man-pages
+mullvad-vpn-daemon
+mullvad-vpn-openrc
 neovim
 noto-fonts
 openrc

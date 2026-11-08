@@ -209,6 +209,14 @@ sudo ufw status
 ## VPN (Mullvad)
 
 ```sh
+sudo pacman -S mullvad-vpn-daemon mullvad-vpn-openrc
+```
+```sh
+sudo rc-update add mullvad-daemon default
+sudo rc-service  mullvad-daemon start
+```
+
+```sh
 mullvad status
 mullvad account login <your_account_number>
 mullvad relay list
