@@ -225,24 +225,10 @@ sudo mv Downloads/VSCode-linux-x64/ /opt/
 sudo ln -s /opt/VSCode-linux-x64/bin/code /usr/local/bin/code
 ```
 
-## Storage + shell quick tips
+## Shell one-liners
 
-### Mounting USB drives
-
-```sh
-lsblk
-sudo mkdir -p /mnt/usb
-sudo mount /dev/sdX1 /mnt/usb
-sudo umount /mnt/usb
-```
-
-### One-liners
-
-```sh
-find /path/to/search -name "*.txt" -exec grep "search term" {} \;
-^old^new
-cd "$OLDPWD" && pwd
-```
+USB mount, `cd -`, history substitution, and `find` tips:
+[docs/shell.md](shell.md).
 
 ## X11 entry points
 

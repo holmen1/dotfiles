@@ -41,6 +41,7 @@ these pages for deeper explanations.
 
 ## Reference
 
+- [Shell commands](shell.md) — reusable one-liners (mount, disk images, TTY, `cd -`, history) and `.bashrc` shortcuts.
 - [Vim quick reference](vim-quickref.md) — generic Vim mappings (extracted from the nvim README).
 
 ## Archive

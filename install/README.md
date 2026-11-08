@@ -5,6 +5,7 @@ Guides for setting up environments quickly and consistently — Linux, BSD, macO
 ## Documentation map
 
 - Detailed post-install operations: [docs/postinstall.md](../docs/postinstall.md)
+- Reusable shell one-liners: [docs/shell.md](../docs/shell.md)
 - X11 startup/debugging/troubleshooting entry point: [docs/x11.md](../docs/x11.md)
 - Build conventions and component map: [docs/build.md](../docs/build.md)
 - Full docs index: [docs/README.md](../docs/README.md)
