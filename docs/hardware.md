@@ -23,6 +23,13 @@ mask has a small idle-power cost; do not narrow it without testing.
 Verify: `grep amdgpu /proc/cmdline`; the corresponding
 `/sys/module/amdgpu/parameters/dcdebugmask` value is `1552`.
 
+Status: removed fix
+    OS: Artix Linux x86_64
+    Host: Laptop 13 (AMD Ryzen AI 300 Series) (A7)
+    Kernel: Linux 7.2.10-hardened1-4-hardened
+
+Problem persist
+
 ### RDSEED32 boot message
 
 `RDSEED32 is broken. Disabling the corresponding CPUID bit.` is a mitigation,
