@@ -3,7 +3,7 @@
 > **Archived:** all durable content has been extracted into structured docs:
 > - Networking → [`docs/networking.md`](../networking.md)
 > - Framework `besk` hardware notes → [`docs/hardware.md`](../hardware.md)
-> - Install notes (artix vs arch, rescue, packages) → [`docs/artix-install.md`](../artix-install.md)
+> - Install notes (artix vs arch, rescue, packages) → [`docs/artix-post-install.md`](../artix-post-install.md)
 >
 > This file is kept only as original incident history.
 

@@ -19,7 +19,7 @@ Replace `sdX1` with the partition shown by `lsblk`.
 ### Recursive unmount
 
 Used when leaving a chroot or rescue mount tree (see the
-[Artix ISO rescue path](artix-install.md#iso-rescue-path-if-the-boot-path-fails)):
+[Artix ISO rescue path](artix-post-install.md#iso-rescue-path-if-the-boot-path-fails)):
 
 ```sh
 umount -R /mnt

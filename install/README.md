@@ -46,7 +46,7 @@ List installed terminfo: `toe [-a]`
 
 ## Base install
 
-- **Artix (full install):** [install/profiles/artixinstall/README.md](./profiles/artixinstall/README.md)
+- **Artix (full install):** [docs/artix-install-guide.md](../docs/artix-install-guide.md)
 - **FreeBSD:** [install/profiles/bsdinstall/README.md](./profiles/bsdinstall/README.md)
 - **macOS config:** [install/profiles/macinstall/README.md](./profiles/macinstall/README.md)
 

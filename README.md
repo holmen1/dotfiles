@@ -42,7 +42,7 @@ All things X11 — session startup, TTY recovery, debugging, component links:
 |        | Artix         | FreeBSD   |                       
 |--------|---------------|-----------
 | .iso   | [artix-base-openrc](https://artixlinux.org/download.php)|[FreeBSD](https://freebsd.org/where)|
-|My guide| [artixinstall](install/profiles/artixinstall/README.md)|[bsdinstall](install/profiles/bsdinstall/README.md)|
+|My guide| [artixinstall](docs/artix-install-guide.md)|[bsdinstall](install/profiles/bsdinstall/README.md)|
 
 1. **Install X server**
 from your distribution's provided packages or build and install
