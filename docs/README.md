@@ -6,9 +6,11 @@ these pages for deeper explanations.
 ## Core guides
 
 - [X11 guide](x11.md) — startup, TTY recovery, display manager notes, debugging.
-- [Post-install guide](postinstall.md) — WiFi, users/sudo, git/ssh, audio, docker, remote access, misc admin tasks.
 - [Networking](networking.md) — Artix/OpenRC networking: `iwd`, `dhcpcd`, `openresolv`, service commands.
-- [Artix install notes](artix-install.md) — Arch differences, ISO rescue path, package strategy.
+- [Artix installation guide](artix-install.md) — manual base installation.
+- [Artix post-install guide](artix-post-install.md) — post-install setup, rescue notes, and package management.
+- [FreeBSD installation guide](bsd-install.md) — guided base installation.
+- [FreeBSD post-install guide](bsd-post-install.md) — setup, recovery, ports, and package management.
 - [Hardware notes](hardware.md) — machine-specific quirks (Framework AMD display, RDSEED, touchpad).
 - [Build guide](build.md) — shared build conventions and links to component build docs.
 
@@ -19,13 +21,13 @@ these pages for deeper explanations.
 - Current extracted rules:
   - XMonad runtime/recompile/deploy invariants → [docs/build.md](build.md)
   - Artix/OpenRC networking → [docs/networking.md](networking.md)
-  - Artix install notes (basestrap, rescue, package strategy) → [docs/artix-install.md](artix-install.md)
+  - Artix post-install and package management → [docs/artix-post-install.md](artix-post-install.md)
   - Framework `besk` hardware notes → [docs/hardware.md](hardware.md)
 
 ## Install guides (profiles)
 
-- [Artix install](../install/profiles/artixinstall/README.md)
-- [FreeBSD install](../install/profiles/bsdinstall/README.md)
+- [Artix install](artix-install.md)
+- [FreeBSD install](bsd-install.md)
 - [macOS profile](../install/profiles/macinstall/README.md)
 
 ## Build component docs
@@ -49,6 +51,11 @@ these pages for deeper explanations.
 Superseded or out-of-scope documents, kept for history:
 
 - [nvim-REFACTOR_PLAN.md](archive/nvim-REFACTOR_PLAN.md) — completed nvim refactor plan
-- [artixinstall-LESSONS_LEARNED.md](archive/artixinstall-LESSONS_LEARNED.md) — extracted into networking/artix-install/hardware docs
+- [artixinstall-README.md](archive/artixinstall-README.md) — original Artix installation README, preserved as-is
+- [artixinstall-packages-README.md](archive/artixinstall-packages-README.md) — original Artix packages README, preserved as-is
+- [bsdinstall-README.md](archive/bsdinstall-README.md) — original FreeBSD installation README, preserved as-is
+- [bsdinstall-packages-README.md](archive/bsdinstall-packages-README.md) — original FreeBSD packages README, preserved as-is
+- [postinstall.md](archive/postinstall.md) — former shared post-install guide, merged into OS-specific guides
+- [artixinstall-LESSONS_LEARNED.md](archive/artixinstall-LESSONS_LEARNED.md) — extracted into networking, Artix post-install, and hardware docs
 - [vscode-README.md](archive/vscode-README.md) — outside the stow/dotfiles system
 - [ghc-toolchain-warmup.md](archive/ghc-toolchain-warmup.md) — xmonad sandbox experiment

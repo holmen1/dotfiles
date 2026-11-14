@@ -1,4 +1,9 @@
-# Post-install guide
+# Post-install guide (archived)
+
+> **Archived:** Applicable content has moved to the
+> [Artix post-install guide](../artix-post-install.md) and
+> [FreeBSD post-install guide](../bsd-post-install.md).
+> This historical copy retains its original OS-specific examples.
 
 Common post-install tasks that are not distro-installer specific. Keep
 `install/README.md` concise and use this page for details.
@@ -31,7 +36,7 @@ Use `chmod 444 /etc/resolv.conf` to prevent overwrites (`644` to edit again).
 ### Artix + OpenRC networking
 
 Full canonical networking rules (`iwd`, `dhcpcd`, `openresolv`, service
-commands) live in [docs/networking.md](networking.md).
+commands) live in [docs/networking.md](../networking.md).
 
 ## User + privilege setup
 
@@ -69,7 +74,7 @@ Arch systemd (if relevant):
 ExecStart=-/usr/bin/agetty --noreset --autologin yourusername --noclear - ${TERM}
 ```
 
-FreeBSD variant: see the [FreeBSD install guide](../install/profiles/bsdinstall/README.md#autologin).
+FreeBSD variant: see the [FreeBSD post-install guide](../bsd-post-install.md#autologin).
 
 ### Sudo without password
 
@@ -118,7 +123,7 @@ git clone https://github.com/holmen1/dotfiles.git
 ## Build from source
 
 For software not available from package managers, see:
-[install/build/README.md](../install/build/README.md) and [docs/build.md](build.md).
+[install/build/README.md](../../install/build/README.md) and [docs/build.md](../build.md).
 
 ## Audio (ALSA)
 
@@ -245,9 +250,9 @@ sudo ln -s /opt/VSCode-linux-x64/bin/code /usr/local/bin/code
 ## Shell one-liners
 
 USB mount, `cd -`, history substitution, and `find` tips:
-[docs/shell.md](shell.md).
+[docs/shell.md](../shell.md).
 
 ## X11 entry points
 
-- Session startup / display manager / debugging: [docs/x11.md](x11.md)
-- Troubleshooting X server specifics: [install/build/xlibre/README.md](../install/build/xlibre/README.md)
+- Session startup / display manager / debugging: [docs/x11.md](../x11.md)
+- Troubleshooting X server specifics: [install/build/xlibre/README.md](../../install/build/xlibre/README.md)
