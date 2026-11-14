@@ -139,13 +139,16 @@ Some need to built from source
 pacman -Syu
 ```
 
-#### 1. Install X server (Xlibre)
+#### 1. Install X server
 
-`xlibre-xserver` and `xlibre-input-libinput` are in the Artix **world** repository — install directly with pacman, no AUR or yay needed:
+The `besk` profile uses Xorg and the AMDGPU driver:
 
 ```
-sudo pacman -S xlibre-xserver xlibre-input-libinput
+sudo pacman -S xorg-server xf86-video-amdgpu
 ```
+
+Choose the appropriate video driver for the machine. The `gadsden` and `x1`
+package lists still specify XLibre; consult the applicable host's package list.
 
 #### 2. Install X stuff
 
@@ -280,8 +283,8 @@ versions).
 
 ### Package strategy
 
-- Start with `packages/minimal/` — just enough to get an X server running
-  (`xorg-xinit`, `xterm`, xlibre).
+- Start with just enough to get an X server running (`xorg-server`,
+  `xorg-xinit`, and `xterm` for `besk`).
 - Verify `startx` launches xterm before installing the full per-host
   package list (e.g. `packages/gadsden/`).
 - XLibre-specific issues:

@@ -1,21 +1,27 @@
 # artixinstall checklist
 
-Printable checklist for tracking a manual install. Full guide:
-[README.md](README.md). Mark items with `[x]` on paper or in a local copy —
-don't commit checked-off state.
+Printable checklist for tracking a manual install. See the [base install guide](../../../docs/artix-install.md)
+and [post-install guide](../../../docs/artix-post-install.md). Mark items with
+`[x]` on paper or in a local copy — don't commit checked-off state.
 
+## Base installation
+
+- [ ] Boot the OpenRC ISO and select keyboard layout
+- [ ] Identify and confirm the target disk
 - [ ] Erase disk
 - [ ] Partition
 - [ ] Create LUKS
 - [ ] Create LVM
 - [ ] Format
 - [ ] Mount
+- [ ] Verify network connectivity
 - [ ] Update the system clock
 - [ ] Install base system
 - [ ] Install a kernel
 - [ ] Generate fstab
 - [ ] chroot
-- [ ] passwd
+- [ ] Set root password
+- [ ] Initialize the pacman keyring
 - [ ] Configure system clock
 - [ ] Locale
 - [ ] Console keymap
@@ -25,10 +31,13 @@ don't commit checked-off state.
 - [ ] Network configuration
 - [ ] Exit chroot and reboot
 
+## Post-installation
+
 - [ ] Connect to WiFi
-- [ ] SSH key
+- [ ] Configure Git and SSH key, or prepare an existing key
 - [ ] Clone dotfiles
-- [ ] Install X server
-- [ ] Build GHC
-- [ ] Build XMonad
-- [ ] Run install script
+- [ ] Update system packages
+- [ ] Install Xorg and X utilities; verify `startx`
+- [ ] Build or install GHC as needed
+- [ ] Build XMonad libraries and custom binary as needed
+- [ ] Run install script, including XMonad installation, linking, services, and sanity check
