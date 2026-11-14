@@ -404,6 +404,8 @@ substitute those shown by `lsblk -f`, `pvs`, `vgs`, and `lvs`.
 
 ## Further notes
 
+- For an unencrypted installation without LVM or swap:
+  [simple installation guide](artix-install-simple.md)
 - Post-installation and Artix-specific notes:
   [docs/artix-post-install.md](artix-post-install.md)
 - Networking (iwd/dhcpcd/OpenRC): [docs/networking.md](networking.md)

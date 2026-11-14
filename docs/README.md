@@ -7,7 +7,8 @@ these pages for deeper explanations.
 
 - [X11 guide](x11.md) — startup, TTY recovery, display manager notes, debugging.
 - [Networking](networking.md) — Artix/OpenRC networking: `iwd`, `dhcpcd`, `openresolv`, service commands.
-- [Artix installation guide](artix-install.md) — manual base installation.
+- [Artix installation guide](artix-install.md) — encrypted LUKS/LVM base installation.
+- [Simple Artix installation](artix-install-simple.md) — unencrypted UEFI install without LVM or swap.
 - [Artix post-install guide](artix-post-install.md) — post-install setup, rescue notes, and package management.
 - [FreeBSD installation guide](bsd-install.md) — guided base installation.
 - [FreeBSD post-install guide](bsd-post-install.md) — setup, recovery, ports, and package management.
@@ -27,6 +28,7 @@ these pages for deeper explanations.
 ## Install guides (profiles)
 
 - [Artix install](artix-install.md)
+- [Artix simple install](artix-install-simple.md)
 - [FreeBSD install](bsd-install.md)
 - [macOS profile](../install/profiles/macinstall/README.md)
 
