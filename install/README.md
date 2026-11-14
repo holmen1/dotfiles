@@ -5,7 +5,7 @@ Guides for setting up environments quickly and consistently — Linux, BSD, macO
 ## Documentation map
 
 - Full docs index: [docs/README.md](../docs/README.md)
-- Detailed post-install operations: [docs/postinstall.md](../docs/postinstall.md)
+- Detailed post-install operations: [Artix](../docs/artix-post-install.md) and [FreeBSD](../docs/bsd-post-install.md)
 - Reusable shell one-liners: [docs/shell.md](../docs/shell.md)
 - X11 startup/debugging/troubleshooting entry point: [docs/x11.md](../docs/x11.md)
 - Build conventions and component map: [docs/build.md](../docs/build.md)
@@ -46,14 +46,14 @@ List installed terminfo: `toe [-a]`
 
 ## Base install
 
-- **Artix (full install):** [docs/artix-install-guide.md](../docs/artix-install-guide.md)
-- **FreeBSD:** [docs/bsd-install-guide.md](../docs/bsd-install-guide.md)
+- **Artix (base install):** [docs/artix-install.md](../docs/artix-install.md)
+- **FreeBSD:** [docs/bsd-install.md](../docs/bsd-install.md)
 - **macOS config:** [install/profiles/macinstall/README.md](./profiles/macinstall/README.md)
 
 ## Post-install (quick links)
 
 - Connectivity, users/sudo, git/ssh, docker, VPN, remote SSH server, and admin tips:
-  [docs/postinstall.md](../docs/postinstall.md)
+  [Artix post-install](../docs/artix-post-install.md) and [FreeBSD post-install](../docs/bsd-post-install.md)
 - X11 session startup/display manager/debugging:
   [docs/x11.md](../docs/x11.md)
 - Component builds:

@@ -86,7 +86,7 @@
 ### Documentation
 
 - `docs/README.md` is the documentation index — register any new doc there.
-- Durable, repeatable knowledge belongs in `docs/` topic guides: `x11.md` (session/TTY/debugging/input), `postinstall.md`, `networking.md`, `artix-install-guide.md`, `artix-post-install.md`, `hardware.md`, `build.md`, `shell.md` (reusable one-liners and the `.bashrc` shortcut index), `vim-quickref.md`.
+- Durable, repeatable knowledge belongs in `docs/` topic guides: `x11.md` (session/TTY/debugging/input), `networking.md`, `artix-install.md`, `artix-post-install.md`, `bsd-install.md`, `bsd-post-install.md`, `hardware.md`, `build.md`, `shell.md` (reusable one-liners and the `.bashrc` shortcut index), `vim-quickref.md`.
 - `LESSONS_LEARNED.md` files keep incident history and forensics; extract durable rules into `docs/` and cross-link.
 - READMEs stay concise entry points that link into `docs/`; deep explanation lives in the docs pages, not in READMEs.
 - Superseded documents go to `docs/archive/` with a header explaining why (never delete silently).

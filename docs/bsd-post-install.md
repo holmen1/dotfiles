@@ -1,6 +1,6 @@
 # FreeBSD post-install guide
 
-Continue from the [FreeBSD installation guide](bsd-install-guide.md).
+Continue from the [FreeBSD installation guide](bsd-install.md).
 
 ## Post-installation
 
@@ -9,6 +9,21 @@ Log in as root
 
 - Install sudo
 - Enable passwordless for `wheel`
+
+#### Sudo without password
+
+Edit sudoers using `EDITOR=vim visudo` and enable:
+
+```conf
+%wheel ALL=(ALL:ALL) NOPASSWD: ALL
+```
+
+If `/usr/local/etc/sudoers.d/00_user` contains `user ALL=(ALL) ALL`, it can
+override the group policy. Remove that file if wheel-based NOPASSWD is
+intended. Verify membership with `groups`.
+
+Passwordless login is risky; see the FreeBSD `passwd` and `pw` manuals before
+changing a user's authentication.
 
 ### Window Manager
 
@@ -33,10 +48,29 @@ service hostname restart
 ```
 
 ### Clone dotfiles
+
+Configure Git and, if creating a new SSH key, add its public key to GitHub:
+
+```sh
+git config --global user.name "$git_username"
+git config --global user.email "$git_email"
+ssh-keygen -t ed25519 -C "$git_email" -f ~/.ssh/id_ed25519 -N ""
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
+chmod 600 ~/.ssh/id_ed25519
+```
+
 ```bash
 mkdir repos
 cd repos
 git clone git@github.com:holmen1/dotfiles.git
+```
+
+Alternatively, clone via HTTPS:
+
+```sh
+mkdir -p ~/repos && cd ~/repos
+git clone https://github.com/holmen1/dotfiles.git
 ```
 
 #### Run install script
@@ -85,6 +119,25 @@ Then restart the network executing the following command:
 ```bash
 service netif restart
 ```
+
+### Confirm connectivity and DNS
+
+```sh
+ifconfig wlan0
+ping -c 3 1.1.1.1
+ping -c 3 freebsd.org
+```
+
+If `/etc/resolv.conf` is empty, nameservers can be added temporarily:
+
+```conf
+nameserver 8.8.8.8
+nameserver 1.1.1.1
+```
+
+The original shared guide suggested `chmod 444 /etc/resolv.conf` to prevent
+overwrites (`chmod 644` to edit again), but this can interfere with automatic
+DNS updates.
 
 ### Install packages
 
@@ -395,3 +448,22 @@ When a previously ports-only package becomes available via `pkg`:
    sudo pkg install <name>
    ```
 4. **Update tracking files:** Move the entry from `foreignpkglist.txt` to `pkglist.txt`.
+
+## SSH server (remote login)
+
+```sh
+sudo sysrc sshd_enable=YES
+sudo service sshd start
+sudo service sshd status
+```
+
+The shared guide's ALSA, Docker/OpenRC, Mullvad/OpenRC, Linux VS Code binary,
+and UFW installation examples are Artix-specific; see the
+[Artix post-install guide](artix-post-install.md) rather than running them on
+FreeBSD.
+
+## Further references
+
+- Source builds: [build overview](../install/build/README.md) and [build guide](build.md).
+- Shell one-liners: [shell guide](shell.md).
+- X11 session startup and debugging: [X11 guide](x11.md) and [XLibre](../install/build/xlibre/README.md).

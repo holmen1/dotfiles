@@ -5,7 +5,7 @@ Living index of TODOs found in code and documentation.
 ## Repo docs
 
 - xv6 support roadmap is tracked here (removed from README scope list).
-- [docs/artix-install-guide.md:292](docs/artix-install-guide.md#L292) — note about `xbacklight`/video support.
+- [docs/artix-install.md:292](docs/artix-install.md#L292) — note about `xbacklight`/video support.
 
 ## XMonad
 

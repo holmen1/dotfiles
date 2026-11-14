@@ -291,7 +291,7 @@ useradd -m -G wheel,video <username>
 ```
 video [maybe] needed to run `xbacklight` [TODO]
 
-Allow wheel group to use [sudo without password](postinstall.md#sudo-without-password)
+Allow wheel group to use [sudo without password](artix-post-install.md#sudo-without-password)
 
 ### Network configuration
 

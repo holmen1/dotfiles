@@ -1,7 +1,7 @@
 # Artix post-install guide
 
 Post-install setup, Artix-specific notes, and package-management reference for
-the [base installation guide](artix-install-guide.md).
+the [base installation guide](artix-install.md).
 
 ## Post-installation
 
@@ -35,8 +35,69 @@ ping -c 3 artixlinux.org  # tests DNS
 ```
 Recheck if `/etc/resolv.conf` empty
 
+If DNS is not configured, temporarily add nameservers to `/etc/resolv.conf`:
+
+```conf
+nameserver 8.8.8.8
+nameserver 1.1.1.1
+```
+
+The original setup used `chmod 444 /etc/resolv.conf` to prevent overwrites
+(`chmod 644` to edit again). This can interfere with automatic DNS updates;
+see [networking](networking.md) for the `iwd`/`openresolv` configuration.
+
+### User and privilege setup
+
+The base guide creates the user. To add supplementary groups later:
+
+```sh
+sudo usermod -aG input "$USER"
+# Or: sudo usermod -aG audio "$USER"
+```
+
+Deleting a user's password with `passwd -d username` permits passwordless
+login and is risky.
+
+#### Autologin
+
+For Artix, set the following in `/etc/conf.d/agetty.tty1`:
+
+```conf
+agetty_options="-a yourusername"
+```
+
+For an Arch systemd installation, the equivalent getty override is:
+
+```conf
+ExecStart=-/usr/bin/agetty --noreset --autologin yourusername --noclear - ${TERM}
+```
+
+### Sudo without password
+
+Edit sudoers using `EDITOR=vim visudo` and enable:
+
+```conf
+%wheel ALL=(ALL:ALL) NOPASSWD: ALL
+```
+
+If `/etc/sudoers.d/00_user` contains `user ALL=(ALL) ALL`, it can override
+the group policy. Remove that file if wheel-based NOPASSWD is intended.
+Verify membership with `groups`.
+
 ### Clone dotfiles
 
+#### Configure Git and SSH
+
+```sh
+git config --global user.name "$git_username"
+git config --global user.email "$git_email"
+ssh-keygen -t ed25519 -C "$git_email" -f ~/.ssh/id_ed25519 -N ""
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
+chmod 600 ~/.ssh/id_ed25519
+```
+
+Add the public key to GitHub. Alternatively, reuse an existing key as below.
 
 #### Switch to SSH (reusing existing key)
 
@@ -59,6 +120,13 @@ git clone git@github.com:holmen1/dotfiles.git
 Verify:
 ```
 git remote -v
+```
+
+For an HTTPS clone instead:
+
+```sh
+mkdir -p ~/repos && cd ~/repos
+git clone https://github.com/holmen1/dotfiles.git
 ```
 
 ### Install
@@ -276,6 +344,104 @@ Check the installed version with `pacman -Q package-name`. Keep a cached
 package file if you may need it again; locally built packages can be
 downgraded with `pacman -U` in the same way.
 
+## Audio (ALSA)
+
+Install `alsa-utils` and, if needed, `sof-firmware`:
+
+```sh
+sudo pacman -S alsa-utils
+```
+
+Diagnose with `aplay -l`, `lspci -nnk | grep -A3 -i audio`, and
+`dmesg | grep -iE 'sof|snd|hda|audio|codec'`. If the analog card is not card
+0, set its number in `~/.asoundrc` or `/etc/asound.conf`:
+
+```conf
+defaults.pcm.card X
+defaults.ctl.card X
+```
+
+Disable Auto-Mute and unmute channels in `alsamixer -c X` if needed. For
+missing Intel SOF firmware, install `sof-firmware` and `alsa-ucm-conf`.
+Other useful commands:
+
+```sh
+amixer -c X
+speaker-test -c 2
+speaker-test -D hw:X,0 -c 2
+sudo alsactl store
+```
+
+## Docker (Artix/OpenRC)
+
+```sh
+sudo pacman -S docker docker-openrc
+sudo rc-update add docker default
+sudo rc-service docker start
+docker info
+sudo usermod -aG docker "$USER"
+```
+
+After the group change takes effect, a smoke test is:
+
+```sh
+docker run -it --rm artixlinux/artixlinux:base /bin/bash -c "echo hello world"
+```
+
+## SSH server (remote login)
+
+```sh
+sudo pacman -S openssh openssh-openrc
+sudo rc-update add sshd default
+sudo rc-service sshd start
+sudo rc-service sshd status
+sudo grep sshd /var/log/auth.log
+```
+
+On Arch with systemd instead, install `openssh`, then use
+`sudo systemctl enable sshd && sudo systemctl start sshd`;
+check `systemctl status sshd` and `journalctl -u sshd`.
+
+If using UFW, install it, allow SSH before enabling it, then check its status:
+
+```sh
+sudo pacman -S ufw
+sudo ufw allow ssh
+sudo ufw enable
+sudo ufw status
+```
+
+## VPN (Mullvad)
+
+```sh
+sudo pacman -S mullvad-vpn-daemon mullvad-vpn-openrc
+sudo rc-update add mullvad-daemon default
+sudo rc-service mullvad-daemon start
+mullvad status
+mullvad account login <your_account_number>
+mullvad relay list
+mullvad relay set location se sto
+mullvad connect
+mullvad disconnect
+```
+
+## VS Code binary install
+
+The following is the original Linux binary install example; use the archive
+name and extracted directory for the version being installed:
+
+```sh
+tar -xvzf code-stable-x64-1734606550.tar.gz
+sudo mv Downloads/VSCode-linux-x64/ /opt/
+sudo ln -s /opt/VSCode-linux-x64/bin/code /usr/local/bin/code
+```
+
+## Further references
+
+- Source builds: [build overview](../install/build/README.md) and [build guide](build.md).
+- Shell one-liners: [shell guide](shell.md).
+- X11 session startup and debugging: [X11 guide](x11.md) and [XLibre](../install/build/xlibre/README.md).
+
 ## Lessons learned
 
 ### Keep `/bin/sh` pointing to a working shell
@@ -285,7 +451,7 @@ pointed to `dash`. When changing the `/bin/sh` link, make sure it still points
 to a shell that is installed and working.
 
 To recover, boot the Artix ISO and mount the installed root at `/mnt` using
-the [LUKS + LVM recovery steps](artix-install-guide.md#troubleshooting). Confirm
+the [LUKS + LVM recovery steps](artix-install.md#troubleshooting). Confirm
 that Bash is installed in the mounted system, then restore the link before
 rebooting:
 
