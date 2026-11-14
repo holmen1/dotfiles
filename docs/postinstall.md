@@ -69,7 +69,7 @@ Arch systemd (if relevant):
 ExecStart=-/usr/bin/agetty --noreset --autologin yourusername --noclear - ${TERM}
 ```
 
-FreeBSD variant: see the [FreeBSD install guide](../install/profiles/bsdinstall/README.md#autologin).
+FreeBSD variant: see the [FreeBSD post-install guide](bsd-post-install.md#autologin).
 
 ### Sudo without password
 
