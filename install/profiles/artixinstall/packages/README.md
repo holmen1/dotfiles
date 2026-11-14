@@ -1,8 +1,49 @@
 # packages
 
-Artix uses `pacman`, so downgrading a package is usually done with a cached package file or a manually downloaded older package.
+## Remove
+
+To remove a package and its dependencies which are not required by any other installed package:
+```bash
+pacman -R[n]s package_name
+```
+`-n` prevent creation of backup files
+
+***LESSONS LEARNED***
+Remove dash cause unable to reboot
+
+openrc unable to exec
+
+because sh -> dash
+
+solution: iso boot, relink sh to bash
+
+discovered could not mount cryptroot:unknown filesystem type LVM2_MEMBER
+solution:
+vgscan found vg0 type lvm2
+vgchange -ay
+
+mount /dev/mapper/vg0-root /mnt
+
+## Queries
+
+Query the local package database with the -Q flag, the sync database with the -S
+```bash
+pacman -Ss string1 string2 ...
+```
+
+To list all packages explicitly installed and not required as dependencies:
+```bash
+pacman -Qet
+```
+
+To view the dependency tree of a package:
+```bash
+pactree package_name
+```
 
 ## Downgrade from the local pacman cache
+
+Artix uses `pacman`, so downgrading a package is usually done with a cached package file or a manually downloaded older package.
 
 1. Find the package version you want:
    ```bash

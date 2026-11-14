@@ -4,14 +4,11 @@ artix-archlinux-support
 base
 base-devel
 bash-language-server
-bc
 bear
 cabal-install
-checkbashisms
 clang
 cryptsetup
 cryptsetup-openrc
-dash
 dhcpcd
 dhcpcd-openrc
 dmenu
@@ -26,7 +23,6 @@ fd
 feh
 git
 grub
-haskell-language-server
 htop
 iwd
 iwd-openrc
