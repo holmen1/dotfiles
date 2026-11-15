@@ -7,6 +7,7 @@ these pages for deeper explanations.
 
 - [X11 guide](x11.md) — startup, TTY recovery, display manager notes, debugging.
 - [Networking](networking.md) — Artix/OpenRC networking: `iwd`, `dhcpcd`, `openresolv`, service commands.
+- [Service management](service-management.md) — OpenRC on Artix and the distinct FreeBSD rc system.
 - [Artix installation guide](artix-install.md) — encrypted LUKS/LVM base installation.
 - [Simple Artix installation](artix-install-simple.md) — unencrypted UEFI install without LVM or swap.
 - [Artix post-install guide](artix-post-install.md) — post-install setup, rescue notes, and package management.

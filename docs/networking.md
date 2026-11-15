@@ -50,6 +50,9 @@ Then set `NameResolvingService=resolvconf` in `/etc/iwd/main.conf` and restart
 
 ## OpenRC service commands (vs systemd)
 
+For the broader Artix OpenRC and FreeBSD rc command overview, see the
+[service management guide](service-management.md).
+
 | systemd | OpenRC |
 |---|---|
 | `systemctl enable <svc>` | `rc-update add <svc> default` |
