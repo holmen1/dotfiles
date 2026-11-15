@@ -2,46 +2,11 @@
 
 Continue from the [FreeBSD installation guide](bsd-install.md).
 
-## Post-installation
+## Network
 
-Log in as root
-### sudo
-
-- Install sudo
-- Enable passwordless for `wheel`
-
-#### Sudo without password
-
-Edit sudoers using `EDITOR=vim visudo` and enable:
-
-```conf
-%wheel ALL=(ALL:ALL) NOPASSWD: ALL
-```
-
-If `/usr/local/etc/sudoers.d/00_user` contains `user ALL=(ALL) ALL`, it can
-override the group policy. Remove that file if wheel-based NOPASSWD is
-intended. Verify membership with `groups`.
-
-Passwordless login is risky; see the FreeBSD `passwd` and `pw` manuals before
-changing a user's authentication.
-
-### Window Manager
-
-```bash
-sudo pkg install xlibre [xlibre-xf86-video-intel]
-echo "exec xterm" > ~/.xinitrc
-startx -- -keeptty
-```
-[TROUBLESHOOTING XLIBRE](../install/build/xlibre/README.md)
-
-### Initial utilities
-
-- Install: `git`, `bash`, `curl`
-
-### Networking
-
-`bsdinstall` may already have configured the network interface. Inspect the
-existing settings before changing them:
+Verify that networking works before installing packages or cloning the
+repository. `bsdinstall` may already have configured the interface; inspect
+the current settings before changing them:
 
 ```sh
 ifconfig -a
@@ -50,64 +15,122 @@ netstat -rn
 cat /etc/resolv.conf
 ```
 
-For a wired DHCP connection that is not configured, replace `re0` with the
-interface shown by `ifconfig -a`:
+Add one `network` block per Wi-Fi network to `/etc/wpa_supplicant.conf`
+(create the file if needed):
 
-```sh
-sudo sysrc ifconfig_re0="DHCP"
-sudo service netif restart
+```conf
+network={
+    ssid="first-network-name"
+    psk="first-network-password"
+    priority=20
+}
+
+network={
+    ssid="second-network-name"
+    psk="second-network-password"
+    priority=10
+}
 ```
+
+When multiple saved networks are available, wpa_supplicant prefers the one
+with the higher `priority` value.
 
 Check connectivity with `ping -c 3 1.1.1.1` and
 `ping -c 3 freebsd.org`. For Wi-Fi setup, interface discovery, DHCP/DNS
 behavior, and troubleshooting, see the [networking guide](networking.md).
 
-### Shell, also need adding hostname if used in scripts
 
-```bash
-chsh -s /usr/local/bin/bash
+## Prepare the account and hostname
+
+Log in as root to install the small set of tools needed before the repository
+setup can run:
+
+```sh
+pkg install git bash sudo
+```
+
+The setup uses `sudo` to install packages and system-wide utilities. Ensure
+your user is in `wheel` and can use sudo; passwordless sudo is optional. To
+enable it, edit sudoers with `EDITOR=vi visudo`:
+
+```conf
+%wheel ALL=(ALL:ALL) NOPASSWD: ALL
+```
+
+If `/usr/local/etc/sudoers.d/00_user` contains a user-specific rule, check
+whether it overrides the wheel policy. Verify group membership with `groups`.
+
+The setup selects the package, link, and test profiles from the short
+hostname. The repository currently has a `besk` profile, so use that hostname
+if this machine should receive that configuration:
+
+```sh
 sysrc hostname="besk"
 service hostname restart
+hostname -s
 ```
 
-### Clone dotfiles
+For another hostname, add its package list, link configuration, and sanity
+check before running setup; otherwise the matching profile files will not be
+found.
 
-Configure Git and, if creating a new SSH key, add its public key to GitHub:
+## Test X before setup
+
+You can check that X starts before cloning and linking the full configuration:
 
 ```sh
-git config --global user.name "$git_username"
-git config --global user.email "$git_email"
-ssh-keygen -t ed25519 -C "$git_email" -f ~/.ssh/id_ed25519 -N ""
-eval "$(ssh-agent -s)"
-ssh-add ~/.ssh/id_ed25519
-chmod 600 ~/.ssh/id_ed25519
+sudo pkg install xlibre xterm
+printf 'exec xterm\n' > ~/.xinitrc
+startx -- -keeptty
 ```
 
-```bash
-mkdir repos
-cd repos
-git clone git@github.com:holmen1/dotfiles.git
-```
+Install `xlibre-xf86-video-intel` as well if your Intel graphics need that
+driver. This test overwrites `~/.xinitrc`; save an existing file first and
+restore it after the test if needed. For XLibre-specific problems, see the
+[XLibre troubleshooting guide](../install/build/xlibre/README.md).
 
-Alternatively, clone via HTTPS:
+## Run the BSD setup
+
+Clone the repository over HTTPS so setup does not depend on an SSH key:
 
 ```sh
-mkdir -p ~/repos && cd ~/repos
+mkdir -p ~/repos
+cd ~/repos
 git clone https://github.com/holmen1/dotfiles.git
 ```
 
-#### Run install script
+If your public key is already registered with GitHub, you can use
+`git@github.com:holmen1/dotfiles.git` instead.
 
-Press enter to skip steps, `y` as shown below.
-This will:
-- Install pkglist
-- Build and install `st`
-- Link dotfiles
-- Link utils to `/usr/local/bin`
-- Run sanity check
+Then start the interactive setup:
+
+```sh
+cd ~/repos/dotfiles
+./install/profiles/bsdinstall/configure-build-install-link.sh
 ```
-cd ~/repos/dotfiles/install/profiles/bsdinstall
-./configure-build-install-link.sh
+
+The setup offers to configure Git and generate an SSH key, install the
+hostname's package list, build and install `st` and `dwm`, build the Swedish
+XKB keymap, link the selected dotfiles, and add the `dmenu-menu` and
+`xkb-toggle` commands to `/usr/local/bin`. Dotfile links follow the selected
+profile; any conflicting files are backed up. Accept or skip each step at its
+prompt. The sanity check runs by default at the end; answer `n` to skip it.
+If setup generates an SSH key, add its public key to GitHub before using SSH
+remotes.
+
+After linking, set Bash as your login shell:
+
+```sh
+chsh -s /usr/local/bin/bash
+```
+
+Log out and back in for the new login shell to take effect.
+
+Start X with the linked configuration and follow the [X11 guide](x11.md) for
+troubleshooting:
+
+```sh
+startx -- -keeptty
 ```
 
 ## Disaster recovery
@@ -174,12 +197,12 @@ Run the sanity check script to verify your installation:
 ```
 
 This script verifies:
-- Essential commands (git, ssh, dwm, xterm)
-- Power management (wheel group, passwordless shutdown)
-- System monitoring services
-- Key bindings and input controls
+- Essential commands, including Bash, X, and the window manager
+- Bash as the configured login shell, wheel membership, and sudo availability
+- Key-binding tools and configuration, plus the custom keymap
 - Dotfile symlinks
-- Git and SSH configuration
+- Git identity and SSH key presence and permissions
+- X11 utilities and other required commands
 - Repository structure
 
 ### Building from Ports (For Custom/Latest Builds)
@@ -282,17 +305,11 @@ pkg query -e '%a = 0' '%R %o' | awk '$1 != "FreeBSD-ports" && $1 != "FreeBSD-bas
 - `%n` - Package name only
 
 
-## Lessons learned
-
-See [install/build/xlibre/README.md](../install/build/xlibre/README.md) for XLibre-specific lessons learned.
-
 ---
 
-### Differences from Arch
+### Differences from Arch/Artix
 
 - `bash` located in /usr/local/bin. So #!/bin/bash won't work.
-- No pacman / yay / AUR on FreeBSD — use `pkg` and `ports`.
-- No systemd — use rc(8) and rc.conf
 - mount -t msdosfs
 - GNU make vs BSD make — Use `gmake` for GNU Makefiles; FreeBSD's default `make` is BSD make with different syntax
 - Header ordering in C network programming — On FreeBSD, include `<sys/types.h>` before `<sys/socket.h>` and other network headers to avoid compilation errors
@@ -333,90 +350,15 @@ pkg audit -F
 ### Package management philosophy
 - **Use `pkg` for binary packages** - Fast, tested, recommended for most software
 - **Use ports for custom builds** - When you need specific options or software unavailable as packages (see [Building from Ports](#building-from-ports-for-customlatest-builds))
-- **Keep it minimal** - FreeBSD doesn't bloat by default; install only what you need
-
-### Descriptions
-
-#### Core System
-- `FreeBSD-set-base`, `FreeBSD-set-devel`, `FreeBSD-set-minimal`: Essential FreeBSD base system
-- `FreeBSD-kernel-generic`, `FreeBSD-kernel-generic-dbg`: Kernel and debugging symbols
-- `FreeBSD-set-src`: System sources (for ports and kernel development)
-- `FreeBSD-set-lib32`: 32-bit libraries (for compatibility)
-- `bash`: Bourne Again Shell (set as user shell via `chsh`)
-- `sudo`: Execute commands as root
-- `ca_root_nss`: Root SSL certificates
-- `pkg`: Package manager
-- `portconfig`: Configure port build options
-
-#### Hardware & Drivers
-- `drm-kmod`: Direct Rendering Manager kernel modules (modern GPU support)
-- `wifi-firmware-iwlwifi-kmod-7000`: Intel WiFi firmware (for Intel wireless cards)
-
-#### Display Server & Graphics
-- `xlibre-minimal`: XLibre server (X.Org fork, now available as binary package)
-- `xlibre-xf86-video-intel`: Intel graphics driver for XLibre
-- `xsetroot`: Set X root window properties
-- `xterm`: Terminal emulator for X
-
-#### Window Manager & Desktop Utilities
-- `dmenu`: Dynamic menu for X
-- `i3lock`: Screen locker
-- `xbindkeys`: Keybinding daemon
-- `xclip`: Clipboard integration for X
-- `xcompmgr`: Simple X compositor (transparency, shadows)
-- `feh`: Lightweight image viewer (wallpapers)
-- `scrot`: Screenshot tool
-- `dunst`: Lightweight notification daemon
-- `setxkbmap`: Set X keyboard layout
-
-#### Development Tools
-- `git`: Version control
-- `gcc`: GNU Compiler Collection
-- `gdb`: GNU Debugger
-- `gmake`: GNU Make (many projects require this instead of BSD make)
-- `llvm`: LLVM compiler infrastructure
-- `bison`: Parser generator (required by some build processes)
-- `pkgconf`: Package config tool (pkg-config alternative)
-
-#### Haskell Development (for XMonad)
-- `ghc`: Glasgow Haskell Compiler
-- `hs-cabal-install`: Haskell package manager
-- `hs-haskell-language-server`: LSP server for Haskell
-
-#### Editors & LSP
-- `neovim`: Modern Vim fork
-- `lua-language-server`: LSP for Lua (Neovim config)
-- `stylua`: Lua formatter
-- `tree-sitter-cli`: Parser generator for syntax highlighting
-
-#### Utilities
-- `fd`: Fast find alternative
-- `ripgrep`: Fast grep alternative
-- `tree`: Display directory structure
-- `lf`: Terminal file manager
-- `htop`: Interactive process viewer
-- `fastfetch`: System information tool
-- `wget`: Network downloader
-- `ncurses`: Terminal UI library
-
-#### Applications
-- `librewolf`: Privacy-focused Firefox fork
-- `python`: Python interpreter
-- `en-freebsd-doc`: FreeBSD documentation
-- `jetbrains-mono-nerd-font`: JetBrains Mono Nerd Font (individual package, much faster to upgrade than full nerd-fonts collection)
 
 ---
-
-### Profile-Specific Lists
-Each machine has its own package list in `besk/pkglist.txt` (or other profile names). This allows different configurations per system while sharing common packages.
 
 ### Missing from Binary Packages
 Some custom software is built from source in this repository rather than
 installed as a binary package:
-- **Custom XMonad**: Built with specific configuration
+- **Custom dwm**: Built with the repository's configuration
 - **Patched st terminal**: Custom patches applied
 
-> **Note:** XLibre was previously ports-only but is now available as a binary package. Always check `pkg search <name>` before resorting to ports — the situation changes as the ports tree matures.
 
 ### Migrating a Port to a Binary Package
 When a previously ports-only package becomes available via `pkg`:

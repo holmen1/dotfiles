@@ -21,7 +21,7 @@ are handled by swapping stow packages in
 
 |                   | Artix         | FreeBSD   |                       
 |-------------------|---------------|-----------
-| Display server    | XLibre (X11)  | XLibre (X11)|
+| Display server    | Xorg (X11)    | XLibre (X11)|
 | Window manager    | Xmonad        | dwm       |
 | Menus             | dmenu         | dmenu     |
 | Editor / IDE      | Neovim        | Neovim    |

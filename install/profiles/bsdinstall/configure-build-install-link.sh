@@ -78,7 +78,7 @@ sudo -k
 read -p "Build xkb keymap? [y/N] " ans
 case "$ans" in
     [Yy]*)
-    $XKB_DIR/build-xkb.sh
+    $XKB_DIR/build-xkb.sh se
     echo "Built xkb keymap"
     ;;
 esac
