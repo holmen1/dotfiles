@@ -77,7 +77,16 @@ restart() {
 }
 
 help() {
-    printf "ifconfig wlan0 up list scan\nwpa_cli add_network\nwpa_cli set_network <id> ssid \"name\"\nwpa_cli set_network <id> psk \"pass\"\nwpa_cli select_network <id>\n\nservice netif restart wlan0"
+    cat <<'EOF'
+Find interfaces: sysctl net.wlan.devices; ifconfig -a
+Scan: sudo ifconfig wlan0 up list scan
+Save networks: sudo ee /etc/wpa_supplicant.conf
+Add a network={...} block per SSID; see docs/networking.md.
+For wpa_cli, set ctrl_interface=/var/run/wpa_supplicant in that file.
+Reload: sudo wpa_cli -i wlan0 reconfigure
+Status: sudo wpa_cli -i wlan0 status (replace wlan0 with your interface)
+No control socket? sudo service netif restart (interrupts networking)
+EOF
 }
 
 # --- Main ---

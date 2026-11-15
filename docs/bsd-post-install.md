@@ -38,6 +38,29 @@ startx -- -keeptty
 
 - Install: `git`, `bash`, `curl`
 
+### Networking
+
+`bsdinstall` may already have configured the network interface. Inspect the
+existing settings before changing them:
+
+```sh
+ifconfig -a
+cat /etc/rc.conf
+netstat -rn
+cat /etc/resolv.conf
+```
+
+For a wired DHCP connection that is not configured, replace `re0` with the
+interface shown by `ifconfig -a`:
+
+```sh
+sudo sysrc ifconfig_re0="DHCP"
+sudo service netif restart
+```
+
+Check connectivity with `ping -c 3 1.1.1.1` and
+`ping -c 3 freebsd.org`. For Wi-Fi setup, interface discovery, DHCP/DNS
+behavior, and troubleshooting, see the [networking guide](networking.md).
 
 ### Shell, also need adding hostname if used in scripts
 
@@ -102,42 +125,6 @@ cd ~/repos/dotfiles/install/profiles/bsdinstall
 	service xxx stop
 	sysrc xxx_enable=NO
 	```
-
-### Logs
-`/var/log/daemon.log` is the primary log for system services — wpa_supplicant, dhclient, and other rc.d daemons write here.
-
-```bash
-tail -f /var/log/daemon.log          # live view
-```
-
-To list the wireless networks execute the following command:
-```bash
-ifconfig wlan0 up list scan
-```
-
-Then restart the network executing the following command:
-```bash
-service netif restart
-```
-
-### Confirm connectivity and DNS
-
-```sh
-ifconfig wlan0
-ping -c 3 1.1.1.1
-ping -c 3 freebsd.org
-```
-
-If `/etc/resolv.conf` is empty, nameservers can be added temporarily:
-
-```conf
-nameserver 8.8.8.8
-nameserver 1.1.1.1
-```
-
-The original shared guide suggested `chmod 444 /etc/resolv.conf` to prevent
-overwrites (`chmod 644` to edit again), but this can interfere with automatic
-DNS updates.
 
 ### Install packages
 
