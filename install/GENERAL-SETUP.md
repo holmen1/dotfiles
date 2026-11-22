@@ -19,9 +19,9 @@ X session also uses the configured terminal, window manager and XKB layout.
 Re-link the profile after updating to migrate an existing distro-specific
 `.xinitrc` symlink.
 
-The Artix `x1` profile uses Xorg, `st`, XMonad and the Swedish layout. It
-installs native packages using `pacman`; foreign
-packages are tracked but not installed by this setup. Link dotfiles before
+The Artix `x1` profile uses Xorg, `st`, XMonad and the Swedish layout. Its
+package helper installs native packages using `pacman`; foreign packages are
+tracked but not installed by this setup. Link dotfiles before
 building XMonad. The optional GHC and XMonad library prompts precede the
 XMonad build: the profile specifies GHC 9.12.4, XMonad 0.18.1 and
 xmonad-contrib 0.18.2. The GHC installer uses an x86_64 Debian 12 binary
@@ -31,6 +31,13 @@ keymap requires an active X display.
 The Artix `besk` profile is for the Framework laptop and uses the US layout;
 `gadsden` uses the Swedish layout and retains its legacy XLibre package list.
 Both use the same XMonad and GHC versions as `x1`.
+
+The `services` field lists services to enable at boot. Artix profiles enable
+`iwd`, `dbus` and `elogind` when prompted. FreeBSD profiles start with an
+empty list; add the desired rc service names to enable them through setup.
+
+The optional system-command link step uses
+`config/common/.scripts/link-system-commands.sh` for `/usr/local/bin`.
 
 Direct XMonad build and install scripts also use the matching host profile;
 without one they retain their standalone version defaults. The library and

@@ -22,7 +22,7 @@ load_host_profile() {
         return 1
     fi
     unset profile_hostname profile_os profile_distribution terminal window_manager \
-        xkb_layout packages pkg_packages foreign_packages ghc_version \
+        xkb_layout services packages pkg_packages foreign_packages ghc_version \
         xmonad_version xmonad_contrib_version
     . "$HOST_CONFIG" || return 1
     if [ "${profile_hostname-}" != "$HOSTNAME" ] || [ "${profile_os-}" != "$OS" ] ||

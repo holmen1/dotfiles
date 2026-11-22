@@ -47,13 +47,7 @@ case "$ans" in
         if [ "$OS" = FreeBSD ]; then
             "$CONFIG_DIR/bsdinstall/.scripts/install-pkg.sh" --profile "$HOST_CONFIG"
         else
-            set -f
-            for package in $pkg_packages; do
-                if ! pacman -Q "$package" >/dev/null 2>&1; then
-                    sudo pacman -S --noconfirm "$package"
-                fi
-            done
-            set +f
+            printf '%s\n' "$pkg_packages" | "$CONFIG_DIR/artixinstall/.scripts/install-pacman.sh"
         fi
         ;;
 esac
@@ -127,22 +121,13 @@ fi
 
 prompt "Link menu and xkbtoggle? [y/N] "
 case "$ans" in
-    [Yy]*)
-        sudo ln -sf "$CONFIG_DIR/common/.scripts/dmenu-menu.sh" /usr/local/bin/dmenu-menu
-        sudo ln -sf "$CONFIG_DIR/xkb/.scripts/xkb-toggle.sh" /usr/local/bin/xkb-toggle
-        [ -L /usr/local/bin/dmenu-menu ] && echo "dmenu-menu linked"
-        [ -L /usr/local/bin/xkb-toggle ] && echo "xkb-toggle linked"
-        ;;
+    [Yy]*) "$COMMON_DIR/link-system-commands.sh" ;;
 esac
 
-if [ "$OS" = Linux ]; then
+if [ -n "${services-}" ]; then
     prompt "Enable services? [y/N] "
     case "$ans" in
-        [Yy]*)
-            for service in iwd dbus elogind; do
-                sudo rc-update add "$service" default
-            done
-            ;;
+        [Yy]*) "$COMMON_DIR/enable-services.sh" ;;
     esac
 fi
 
