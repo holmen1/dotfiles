@@ -1,23 +1,14 @@
 #!/bin/sh
 
 DOTFILES_DIR=$HOME/repos/dotfiles
-HOSTNAME=$(hostname -s)
-OS=$(uname -s)
-PROFILE=$DOTFILES_DIR/install/hosts/$OS/$HOSTNAME.conf
-
-if [ "$OS" != FreeBSD ]; then
-    echo "Error: sanity checks are not supported on '$OS'" >&2
+. "$DOTFILES_DIR/config/common/.scripts/host-profile.sh"
+if ! select_host; then
+    echo "Error: sanity checks are not supported on this OS or distribution" >&2
     exit 1
 fi
-if [ ! -f "$PROFILE" ]; then
-    echo "Error: host configuration '$PROFILE' not found" >&2
-    exit 1
-fi
-unset profile_hostname profile_os terminal window_manager packages
-. "$PROFILE"
-if [ "${profile_hostname-}" != "$HOSTNAME" ] || [ "${profile_os-}" != "$OS" ] ||
-   [ -z "${terminal-}" ] || [ -z "${window_manager-}" ] || [ "${packages+x}" != x ]; then
-    echo "Error: invalid host configuration '$PROFILE'" >&2
+load_host_profile || exit 1
+if [ -z "${terminal-}" ] || [ -z "${window_manager-}" ] || [ "${packages+x}" != x ]; then
+    echo "Error: invalid host configuration '$HOST_CONFIG'" >&2
     exit 1
 fi
 
@@ -88,18 +79,49 @@ if linked bsdinstall; then
     check_link "$HOME/.xbindkeysrc"
 fi
 
+if linked artixinstall; then
+    check_command Xorg
+    check_command startx
+    check_command xbindkeys
+    check_link "$HOME/.xinitrc"
+    check_link "$HOME/.xbindkeysrc"
+    for service in iwd dbus elogind; do
+        if rc-service "$service" status >/dev/null 2>&1; then
+            ok "$service running"
+        else
+            warn "$service not running"
+        fi
+    done
+fi
+
+if linked xmonad; then
+    check_file "$HOME/.config/xmonad/xmonad.hs"
+fi
+
 if linked bash; then
     check_command bash
     check_link "$HOME/.bashrc"
-    if user_entry=$(pw usershow "$(id -un)" -7); then
-        user_shell=$(printf '%s\n' "$user_entry" | awk -F: '{print $10}')
-        if [ "$user_shell" = /usr/local/bin/bash ]; then
-            ok "Bash is the configured login shell"
+    if [ "$OS" = FreeBSD ]; then
+        if user_entry=$(pw usershow "$(id -un)" -7); then
+            user_shell=$(printf '%s\n' "$user_entry" | awk -F: '{print $10}')
+            if [ "$user_shell" = /usr/local/bin/bash ]; then
+                ok "Bash is the configured login shell"
+            else
+                fail "Login shell is '$user_shell', expected /usr/local/bin/bash"
+            fi
         else
-            fail "Login shell is '$user_shell', expected /usr/local/bin/bash"
+            fail "Could not check the login shell"
         fi
     else
-        fail "Could not check the login shell"
+        if user_entry=$(getent passwd "$(id -un)"); then
+            user_shell=$(printf '%s\n' "$user_entry" | awk -F: '{print $7}')
+            case "$user_shell" in
+                /bin/bash|/usr/bin/bash) ok "Bash is the configured login shell" ;;
+                *) fail "Login shell is '$user_shell', expected bash" ;;
+            esac
+        else
+            fail "Could not check the login shell"
+        fi
     fi
 fi
 

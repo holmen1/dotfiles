@@ -10,15 +10,8 @@
 
 set -e
 
-XMONAD_VER="0.18.1"
-XMONAD_CONTRIB_VER="0.18.2"
-
-if command -v ghc >/dev/null 2>&1; then
-    echo "Using $(ghc --version)"
-else
-    echo "Error: no ghc found on PATH"
-    exit 1
-fi
+. "$HOME/repos/dotfiles/install/build/xmonad/versions.sh"
+check_ghc_version
 
 if command -v cabal >/dev/null 2>&1; then
     echo "and cabal-install version $(cabal --numeric-version)"
@@ -38,6 +31,7 @@ echo "=== Installing libraries into ~/.cabal/store ==="
 cabal install \
     --force-reinstalls \
     --lib \
+    --with-compiler="$GHC_PATH" \
     xmonad-"${XMONAD_VER}" \
     xmonad-contrib-"${XMONAD_CONTRIB_VER}"
 

@@ -8,19 +8,13 @@
 
 set -e
 
-XMONAD_VER="0.18.1"
+. "$HOME/repos/dotfiles/install/build/xmonad/versions.sh"
 ENV_DIR=~/.config/xmonad
 BUILD_DIR=~/repos/dotfiles/install/build/xmonad
 BIN_DIR="$BUILD_DIR/bin"
 RELEASE_CANDIDATE=$BIN_DIR/xmonad-$XMONAD_VER-rc-"$(date +%Y%m%d_%H%M%S)"
 
-if command -v ghc >/dev/null 2>&1; then
-    GHC_VER="$(ghc --numeric-version)"
-    echo "Using ghc-$GHC_VER"
-else
-    echo "Error: no ghc found on PATH"
-    exit 1
-fi
+check_ghc_version
 
 if [ ! -f "$ENV_DIR/xmonad.hs" ]; then
     echo "Error: $ENV_DIR/xmonad.hs not found - stow the xmonad package first"
@@ -31,13 +25,13 @@ mkdir -p "$BIN_DIR"
 
 echo ""
 echo "=== Compiling custom xmonad binary ==="
-ghc --make $ENV_DIR/xmonad.hs \
+"$GHC_PATH" --make "$ENV_DIR/xmonad.hs" \
     -Wall \
     -clear-package-db \
     -global-package-db \
     -package-db "${HOME}"/.cabal/store/ghc-"$GHC_VER"/package.db \
-    -package xmonad \
-    -package xmonad-contrib \
+    -package "xmonad-$XMONAD_VER" \
+    -package "xmonad-contrib-$XMONAD_CONTRIB_VER" \
     -fforce-recomp \
     -outputdir "$BIN_DIR" \
     -o "$RELEASE_CANDIDATE"
