@@ -20,7 +20,7 @@ Re-link the profile after updating to migrate an existing distro-specific
 `.xinitrc` symlink.
 
 The Artix `x1` profile uses Xorg, `st`, XMonad and the Swedish layout. It
-installs native packages using `yay` when available, otherwise `pacman`; foreign
+installs native packages using `pacman`; foreign
 packages are tracked but not installed by this setup. Link dotfiles before
 building XMonad. The optional GHC and XMonad library prompts precede the
 XMonad build: the profile specifies GHC 9.12.4, XMonad 0.18.1 and

@@ -50,11 +50,7 @@ case "$ans" in
             set -f
             for package in $pkg_packages; do
                 if ! pacman -Q "$package" >/dev/null 2>&1; then
-                    if command -v yay >/dev/null 2>&1; then
-                        yay -S --noconfirm "$package"
-                    else
-                        sudo pacman -S --noconfirm "$package"
-                    fi
+                    sudo pacman -S --noconfirm "$package"
                 fi
             done
             set +f
