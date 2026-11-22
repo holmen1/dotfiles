@@ -9,6 +9,7 @@ these pages for deeper explanations.
 - [Networking](networking.md) — Artix/OpenRC networking: `iwd`, `dhcpcd`, `openresolv`, service commands.
 - [Service management](service-management.md) — OpenRC on Artix and the distinct FreeBSD rc system.
 - [Artix installation guide](artix-install.md) — encrypted LUKS/LVM base installation.
+- [Artix checklist](artix-checklist.md) — printable base and post-install checklist.
 - [Simple Artix installation](artix-install-simple.md) — unencrypted UEFI install without LVM or swap.
 - [Artix post-install guide](artix-post-install.md) — post-install setup, rescue notes, and package management.
 - [FreeBSD installation guide](bsd-install.md) — guided base installation.

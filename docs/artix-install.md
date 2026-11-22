@@ -2,7 +2,7 @@
 
 Artix Linux base installation with LVM on LUKS.
 
-Printable step-by-step checklist: [CHECKLIST.md](../install/profiles/artixinstall/CHECKLIST.md)
+Printable step-by-step checklist: [Artix checklist](artix-checklist.md)
 
 ## Pre-installation
 

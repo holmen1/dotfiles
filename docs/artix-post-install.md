@@ -147,8 +147,8 @@ The `besk` profile uses Xorg and the AMDGPU driver:
 sudo pacman -S xorg-server xf86-video-amdgpu
 ```
 
-Choose the appropriate video driver for the machine. The `gadsden` and `x1`
-package lists still specify XLibre; consult the applicable host's package list.
+Choose the appropriate video driver for the machine. The `gadsden` profile
+still specifies XLibre; consult the applicable host profile.
 
 #### 2. Install X stuff
 
@@ -174,44 +174,15 @@ less ~/.local/share/xorg/Xorg.0.log
 ```
 
 
-#### 3. Build or install Haskell Compiler (GHC)
+#### 3. Run the general setup
 
-For systems requiring Haskell development or custom xmonad builds:
+The setup offers package installation, dotfile linking, GHC and XMonad
+library builds, component builds, OpenRC service enablement, and a sanity
+check. See the [general setup guide](../install/GENERAL-SETUP.md) for the
+profile and build requirements.
 
-- [GHC build scripts](../install/build/ghc/) - Install Haskell compiler from source
-- Provides `ghc`, `runhaskell`, and Cabal library for building Haskell packages
-
-#### 4. XMonad Window Manager
-
-Building custom xmonad without cabal-install dependency:
-
-- [XMonad build scripts](../install/build/xmonad/) - Build xmonad and xmonad-contrib from source
-- Uses `runhaskell Setup.lhs` with GHC's built-in Cabal library
-- Produces standalone binaries without cabal-install dependency
-
-#### 5. Run install script
-
-Press enter to skip steps, `y` as shown below.
-This will:
-- Install pkglist
-- Install `xmonad`
-- Build and install `st`
-- Link dotfiles
-- Enable services (openrc)
-- Run sanity check
-```
-cd ~/repos/dotfiles/install/profiles/artixinstall
-./configure-build-install-link.sh
-```
-```bash
-/home/holmen1/repos/dotfiles/install/profiles/artixinstall/packages/gadsden/pkglist.txt
-Install pkglist? [y]
-Install xmonad? [y]
-Build st? [y]
-Install st? [y]
-Link dotfiles? [y]
-Enable services? [y]
-Run tests? [Y]
+```sh
+~/repos/dotfiles/install/configure-build-install-link.sh
 ```
 
 ## Package management
@@ -223,7 +194,7 @@ OpenRC equivalents for common packages:
 - `iwd-openrc`
 - `dbus-openrc`
 
-See the [x1 package lists](../install/profiles/artixinstall/packages/x1/) for an example.
+See the [x1 host profile](../install/hosts/Linux/x1.conf) for an example.
 
 All Arch repositories are disabled by default.
 To enable them install artix-archlinux-support from the galaxy repository,
@@ -235,15 +206,13 @@ Include = /etc/pacman.d/mirrorlist-arch
 
 ### Package lists
 
-Per-host package lists are stored under
-[`install/profiles/artixinstall/packages/`](../install/profiles/artixinstall/packages/).
-For example, see the [x1 package lists](../install/profiles/artixinstall/packages/x1/).
+Per-host package lists are stored in the
+[Linux host profiles](../install/hosts/Linux/).
 
 ### Export installed packages
 
 ```sh
-pacman -Qqe > ~/repos/dotfiles/install/profiles/artixinstall/packages/<hostname>/pkglist.txt
-pacman -Qqm > ~/repos/dotfiles/install/profiles/artixinstall/packages/<hostname>/foreignpkglist.txt
+~/repos/dotfiles/config/common/.scripts/export-packages.sh
 ```
 
 ## Artix-specific notes

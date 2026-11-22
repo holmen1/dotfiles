@@ -1,11 +1,22 @@
 #!/bin/sh
 
+. "$HOME/repos/dotfiles/config/common/.scripts/host-profile.sh"
+if ! select_host; then
+    echo "Error: X session is not supported on this OS or distribution" >&2
+    exit 1
+fi
+load_host_profile || exit 1
+if [ -z "${window_manager-}" ] || [ -z "${terminal-}" ] || [ -z "${xkb_layout-}" ]; then
+    echo "Error: missing X session configuration in '$HOST_CONFIG'" >&2
+    exit 1
+fi
+
 # --- Essential applications ---
 check_essential() {
-    command -v "$1" >/dev/null 2>&1 || { echo >&2 ".xinitrc require $1. Aborting"; }
+    command -v "$1" >/dev/null 2>&1 || echo >&2 "Required program $1 not installed."
 }
 {
-    check_essential xmonad
+    check_essential "$window_manager"
     check_essential xterm
 } 2>&1 | tee ~/.xinitrc-errors.log
 
@@ -13,7 +24,7 @@ check_essential() {
 check_optional() {
     command -v "$1" >/dev/null 2>&1 || echo "Warning: Optional program $1 not installed."
 }
-check_optional st
+check_optional "$terminal"
 check_optional xbindkeys
 check_optional xsetroot
 check_optional feh
@@ -22,7 +33,7 @@ check_optional xcompmgr
 
 # Set environment variables for applications (must be before any app (lf, xmonad) starts)
 export EDITOR=nvim
-export TERMINAL=st
+export TERMINAL="$terminal"
 
 # Set browser: use first installed from preference list
 for _b in brave chromium librewolf firefox chrome; do
@@ -35,14 +46,12 @@ done
 unset _b
 
 # Set keymap (don't background - fast and should complete before apps start)
-XKB_DEFAULT_LAYOUT=se
-[ "$(hostname -s)" = "besk" ] && XKB_DEFAULT_LAYOUT=us
-if ! setxkbmap "$XKB_DEFAULT_LAYOUT"; then
-    echo >&2 "Failed to set XKB layout: $XKB_DEFAULT_LAYOUT"
+if ! setxkbmap "$xkb_layout"; then
+    echo >&2 "Failed to set XKB layout: $xkb_layout"
     exit 1
 fi
 mkdir -p "$HOME/.cache"
-echo "$XKB_DEFAULT_LAYOUT" > "$HOME/.cache/xkb-layout"
+echo "$xkb_layout" > "$HOME/.cache/xkb-layout"
 
 # Set the default X cursor to the usual pointer
 xsetroot -cursor_name left_ptr &
@@ -83,5 +92,4 @@ fi
 # Let background processes initialize
 sleep 0.2
 
-# Start xmonad (xmonad should handle starting terminals via its config)
-exec xmonad
+exec "$window_manager"

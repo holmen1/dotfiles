@@ -1,8 +1,11 @@
 # artixinstall
 
+> Archived: the legacy Artix installer was removed. Its paths and commands
+> below are historical; use the [general setup guide](../../install/GENERAL-SETUP.md).
+
 Artix Linux base install (LVM on LUKS) + custom window manager (XMonad)
 
-Printable step-by-step checklist: [CHECKLIST.md](CHECKLIST.md)
+Printable step-by-step checklist: [Artix checklist](../artix-checklist.md)
 
 ## Pre-installation
 

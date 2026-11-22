@@ -1,7 +1,7 @@
-# artixinstall checklist
+# Artix installation checklist
 
-Printable checklist for tracking a manual install. See the [base install guide](../../../docs/artix-install.md)
-and [post-install guide](../../../docs/artix-post-install.md). Mark items with
+Printable checklist for tracking a manual install. See the [base install guide](artix-install.md)
+and [post-install guide](artix-post-install.md). Mark items with
 `[x]` on paper or in a local copy — don't commit checked-off state.
 
 ## Base installation
@@ -38,6 +38,6 @@ and [post-install guide](../../../docs/artix-post-install.md). Mark items with
 - [ ] Clone dotfiles
 - [ ] Update system packages
 - [ ] Install Xorg and X utilities; verify `startx`
-- [ ] Build or install GHC as needed
-- [ ] Build XMonad libraries and custom binary as needed
-- [ ] Run install script, including XMonad installation, linking, services, and sanity check
+- [ ] Run general setup and link dotfiles before building XMonad
+- [ ] Install GHC, build XMonad libraries and binary, and install XMonad as needed
+- [ ] Enable services and run the sanity check

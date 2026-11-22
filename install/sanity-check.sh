@@ -56,6 +56,7 @@ check_command "$terminal"
 check_command "$window_manager"
 
 if linked common; then
+    check_link "$HOME/.xinitrc"
     check_command git
     check_command ssh
     check_command dmenu-menu
@@ -72,19 +73,14 @@ if linked common; then
     fi
 fi
 
-if linked bsdinstall; then
+if linked bsdinstall || linked artixinstall; then
     check_command startx
     check_command xbindkeys
-    check_link "$HOME/.xinitrc"
     check_link "$HOME/.xbindkeysrc"
 fi
 
 if linked artixinstall; then
     check_command Xorg
-    check_command startx
-    check_command xbindkeys
-    check_link "$HOME/.xinitrc"
-    check_link "$HOME/.xbindkeysrc"
     for service in iwd dbus elogind; do
         if rc-service "$service" status >/dev/null 2>&1; then
             ok "$service running"
@@ -102,26 +98,21 @@ if linked bash; then
     check_command bash
     check_link "$HOME/.bashrc"
     if [ "$OS" = FreeBSD ]; then
-        if user_entry=$(pw usershow "$(id -un)" -7); then
-            user_shell=$(printf '%s\n' "$user_entry" | awk -F: '{print $10}')
-            if [ "$user_shell" = /usr/local/bin/bash ]; then
-                ok "Bash is the configured login shell"
-            else
-                fail "Login shell is '$user_shell', expected /usr/local/bin/bash"
-            fi
-        else
-            fail "Could not check the login shell"
-        fi
+        expected_shell=/usr/local/bin/bash
+        user_entry=$(pw usershow "$(id -un)" -7) || user_entry=
     else
-        if user_entry=$(getent passwd "$(id -un)"); then
-            user_shell=$(printf '%s\n' "$user_entry" | awk -F: '{print $7}')
-            case "$user_shell" in
-                /bin/bash|/usr/bin/bash) ok "Bash is the configured login shell" ;;
-                *) fail "Login shell is '$user_shell', expected bash" ;;
-            esac
-        else
-            fail "Could not check the login shell"
-        fi
+        expected_shell=bash
+        user_entry=$(getent passwd "$(id -un)") || user_entry=
+    fi
+    if [ -n "$user_entry" ]; then
+        user_shell=$(printf '%s\n' "$user_entry" | awk -F: '{print $NF}')
+        case "$OS:$user_shell" in
+            FreeBSD:/usr/local/bin/bash|Linux:/bin/bash|Linux:/usr/bin/bash)
+                ok "Bash is the configured login shell" ;;
+            *) fail "Login shell is '$user_shell', expected $expected_shell" ;;
+        esac
+    else
+        fail "Could not check the login shell"
     fi
 fi
 

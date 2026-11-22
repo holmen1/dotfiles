@@ -26,6 +26,22 @@ fi
 echo "Using config file: $CONFIG_FILE"
 echo ""
 
+case " $packages " in
+    *" common "*)
+        if [ -L "$TARGET/.xinitrc" ]; then
+            old_link=$(readlink "$TARGET/.xinitrc") || exit 1
+            case "$old_link" in /*) ;; *) old_link=$TARGET/$old_link ;; esac
+            old_dir=$(CDPATH= cd "$(dirname "$old_link")" 2>/dev/null && pwd -P) || old_dir=
+            stow_dir=$(CDPATH= cd "$STOW_DIR" && pwd -P) || exit 1
+            case "$old_dir/$(basename "$old_link")" in
+                "$stow_dir/artixinstall/.xinitrc"|"$stow_dir/bsdinstall/.xinitrc")
+                    ln -sf "repos/dotfiles/config/common/.xinitrc" "$TARGET/.xinitrc" || exit 1
+                    ;;
+            esac
+        fi
+        ;;
+esac
+
 failed=0
 for package in $packages; do
     # Dry run to find intended link targets, --adopt needed here to prevent escape

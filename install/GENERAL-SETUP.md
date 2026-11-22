@@ -14,9 +14,10 @@ Run the interactive setup or the sanity check directly:
 ```
 
 The sanity check checks the configured terminal and window manager, and
-skips feature checks for stow packages not listed in the profile.
-The configured components select build and install scripts; they do not
-change the X session configuration.
+skips feature checks for stow packages not listed in the profile. The shared
+X session also uses the configured terminal, window manager and XKB layout.
+Re-link the profile after updating to migrate an existing distro-specific
+`.xinitrc` symlink.
 
 The Artix `x1` profile uses Xorg, `st`, XMonad and the Swedish layout. It
 installs native packages using `yay` when available, otherwise `pacman`; foreign
@@ -26,6 +27,10 @@ XMonad build: the profile specifies GHC 9.12.4, XMonad 0.18.1 and
 xmonad-contrib 0.18.2. The GHC installer uses an x86_64 Debian 12 binary
 distribution, which must be compatible with the machine. Building the XKB
 keymap requires an active X display.
+
+The Artix `besk` profile is for the Framework laptop and uses the US layout;
+`gadsden` uses the Swedish layout and retains its legacy XLibre package list.
+Both use the same XMonad and GHC versions as `x1`.
 
 Direct XMonad build and install scripts also use the matching host profile;
 without one they retain their standalone version defaults. The library and
@@ -39,6 +44,5 @@ To update the package lists for the current host:
 ```
 
 Export updates the central profile only. On Artix it records explicitly
-installed native and foreign packages. The older `bsdinstall` and
-`artixinstall` installers and profiles remain independent and may differ
-from the central copies; the legacy Artix `x1` package list is stale.
+installed native and foreign packages. The older `bsdinstall` installer and
+its profiles remain independent and may differ from the central copies.
