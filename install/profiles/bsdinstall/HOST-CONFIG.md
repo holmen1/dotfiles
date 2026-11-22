@@ -25,11 +25,12 @@ the profile separately:
   ~/repos/dotfiles/install/profiles/bsdinstall/hosts/besk.conf
 ```
 
-On FreeBSD, update both package lists from explicitly installed packages:
+On FreeBSD, update both package lists from explicitly installed packages.
+The common exporter detects the OS and hostname and selects the matching
+profile:
 
 ```sh
-~/repos/dotfiles/config/bsdinstall/.scripts/export-pkg.sh \
-  ~/repos/dotfiles/install/profiles/bsdinstall/hosts/besk.conf
+~/repos/dotfiles/config/common/.scripts/export-packages.sh
 ```
 
 Export replaces the lists but preserves the rest of the profile. It groups
