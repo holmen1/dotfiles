@@ -1,0 +1,111 @@
+[   583.792] 
+X.Org X Server 1.21.1.26
+X Protocol Version 11, Revision 0
+[   583.792] Current Operating System: FreeBSD potato 15.1-RELEASE-p7 FreeBSD 15.1-RELEASE-p7 releng/15.1-n283696-bb03631fe3b7 GENERIC amd64
+[   583.792]  
+[   583.792] Current version of pixman: 0.46.4
+[   583.792] 	Before reporting problems, check http://wiki.x.org
+	to make sure that you have the latest version.
+[   583.792] Markers: (--) probed, (**) from config file, (==) default setting,
+	(++) from command line, (!!) notice, (II) informational,
+	(WW) warning, (EE) error, (NI) not implemented, (??) unknown.
+[   583.793] (==) Log file: "/var/log/Xorg.0.log", Time: Tue Nov 24 20:49:50 2026
+[   583.795] (==) Using system config directory "/usr/local/share/X11/xorg.conf.d"
+[   583.796] (==) No Layout section.  Using the first Screen section.
+[   583.796] (==) No screen section available. Using defaults.
+[   583.796] (**) |-->Screen "Default Screen Section" (0)
+[   583.796] (**) |   |-->Monitor "<default monitor>"
+[   583.797] (==) No monitor specified for screen "Default Screen Section".
+	Using a default monitor configuration.
+[   583.797] (**) Allowing byte-swapped clients
+[   583.797] (==) Automatically adding devices
+[   583.797] (==) Automatically enabling devices
+[   583.797] (==) Automatically adding GPU devices
+[   583.797] (==) Automatically binding GPU devices
+[   583.797] (==) Max clients allowed: 256, resource mask: 0x1fffff
+[   583.802] (==) FontPath set to:
+	/usr/local/share/fonts/misc/,
+	/usr/local/share/fonts/TTF/,
+	/usr/local/share/fonts/OTF/,
+	/usr/local/share/fonts/Type1/,
+	/usr/local/share/fonts/100dpi/,
+	/usr/local/share/fonts/75dpi/,
+	catalogue:/usr/local/etc/X11/fontpath.d
+[   583.802] (==) ModulePath set to "/usr/local/lib/xorg/modules"
+[   583.802] (II) The server relies on udev to provide the list of input devices.
+	If no devices become available, reconfigure udev or disable AutoAddDevices.
+[   583.803] (II) Module ABI versions:
+[   583.803] 	X.Org ANSI C Emulation: 0.4
+[   583.803] 	X.Org Video Driver: 25.2
+[   583.803] 	X.Org XInput driver : 24.4
+[   583.803] 	X.Org Server Extension : 10.0
+[   583.812] (--) PCI:*(0@0:2:0) 8086:22b1:17aa:5057 rev 33, Mem @ 0x90000000/16777216, 0x80000000/268435456, I/O @ 0x00002000/64, BIOS @ 0x????????/65536
+[   583.812] (II) LoadModule: "glx"
+[   583.813] (II) Loading /usr/local/lib/xorg/modules/extensions/libglx.so
+[   583.824] (II) Module glx: vendor="X.Org Foundation"
+[   583.824] 	compiled for 1.21.1.26, module version = 1.0.0
+[   583.824] 	ABI class: X.Org Server Extension, version 10.0
+[   583.825] (==) Matched intel as autoconfigured driver 0
+[   583.825] (==) Matched modesetting as autoconfigured driver 1
+[   583.825] (==) Matched scfb as autoconfigured driver 2
+[   583.825] (==) Matched vesa as autoconfigured driver 3
+[   583.825] (==) Assigned the driver to the xf86ConfigLayout
+[   583.825] (II) LoadModule: "intel"
+[   583.826] (II) Loading /usr/local/lib/xorg/modules/drivers/intel_drv.so
+[   583.829] (II) Module intel: vendor="X.Org Foundation"
+[   583.829] 	compiled for 1.21.1.26, module version = 2.99.917
+[   583.829] 	Module class: X.Org Video Driver
+[   583.829] 	ABI class: X.Org Video Driver, version 25.2
+[   583.830] (II) LoadModule: "modesetting"
+[   583.830] (II) Loading /usr/local/lib/xorg/modules/drivers/modesetting_drv.so
+[   583.832] (II) Module modesetting: vendor="X.Org Foundation"
+[   583.832] 	compiled for 1.21.1.26, module version = 1.21.1
+[   583.832] 	Module class: X.Org Video Driver
+[   583.832] 	ABI class: X.Org Video Driver, version 25.2
+[   583.832] (II) LoadModule: "scfb"
+[   583.832] (II) Loading /usr/local/lib/xorg/modules/drivers/scfb_drv.so
+[   583.833] (II) Module scfb: vendor="X.Org Foundation"
+[   583.833] 	compiled for 1.21.1.26, module version = 0.0.5
+[   583.833] 	ABI class: X.Org Video Driver, version 25.2
+[   583.833] (II) LoadModule: "vesa"
+[   583.833] (II) Loading /usr/local/lib/xorg/modules/drivers/vesa_drv.so
+[   583.834] (II) Module vesa: vendor="X.Org Foundation"
+[   583.834] 	compiled for 1.21.1.26, module version = 2.6.0
+[   583.834] 	Module class: X.Org Video Driver
+[   583.834] 	ABI class: X.Org Video Driver, version 25.2
+[   583.834] (II) intel: Driver for Intel(R) Integrated Graphics Chipsets:
+	i810, i810-dc100, i810e, i815, i830M, 845G, 854, 852GM/855GM, 865G,
+	915G, E7221 (i915), 915GM, 945G, 945GM, 945GME, Pineview GM,
+	Pineview G, 965G, G35, 965Q, 946GZ, 965GM, 965GME/GLE, G33, Q35, Q33,
+	GM45, 4 Series, G45/G43, Q45/Q43, G41, B43
+[   583.836] (II) intel: Driver for Intel(R) HD Graphics
+[   583.836] (II) intel: Driver for Intel(R) Iris(TM) Graphics
+[   583.836] (II) intel: Driver for Intel(R) Iris(TM) Pro Graphics
+[   583.836] (II) modesetting: Driver for Modesetting Kernel Drivers: kms
+[   583.836] (II) scfb: driver for wsdisplay framebuffer: scfb
+[   583.836] (II) VESA: driver for VESA chipsets: vesa
+[   583.836] (--) Using syscons driver with X support (version 2.0)
+[   583.836] (--) using VT number 9
+
+[   587.502] (WW) Falling back to old probe method for modesetting
+[   587.503] (WW) Falling back to old probe method for scfb
+[   587.503] scfb trace: probe start
+[   587.503] scfb trace: probe done
+[   587.503] (WW) VGA arbiter: cannot open kernel arbiter, no multi-card support
+[   587.503] (II) intel(0): Creating default Display subsection in Screen section
+	"Default Screen Section" for depth/fbbpp 24/32
+[   587.503] (==) intel(0): Depth 24, (--) framebuffer bpp 32
+[   587.503] (==) intel(0): RGB weight 888
+[   587.503] (==) intel(0): Default visual is TrueColor
+[   587.503] (--) intel(0): Integrated Graphics Chipset: Intel(R) HD Graphics
+[   587.504] (**) intel(0): Relaxed fencing enabled
+[   587.504] (**) intel(0): Wait on SwapBuffers? enabled
+[   587.504] (**) intel(0): Triple buffering? enabled
+[   587.504] (**) intel(0): Framebuffer tiled
+[   587.504] (**) intel(0): Pixmaps tiled
+[   587.504] (**) intel(0): 3D buffers tiled
+[   587.504] (**) intel(0): SwapBuffers wait enabled
+[   587.504] (==) intel(0): video overlay key set to 0x101fe
+[   587.676] (II) intel(0): Output eDP-1 has no monitor section
+[   587.681] (II) intel(0): Output DP-1 has no monitor section
+[   587.683] (II) intel(0): Output HDMI-1 has no monitor section
