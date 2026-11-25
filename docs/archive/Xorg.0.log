@@ -335,3 +335,28 @@ X Protocol Version 11, Revision 0
 [  3495.570] (II) event4  - Sleep Button: device removed
 [  3495.571] (II) event5  - AT keyboard: device removed
 [  3495.571] (II) event6  - SynPS/2 Synaptics TouchPad: device removed
+[  4071.255] (II) modeset(0): EDID vendor "BOE", prod id 1544
+[  4071.255] (II) modeset(0): Printing DDC gathered Modelines:
+[  4071.255] (II) modeset(0): Modeline "1366x768"x0.0   72.30  1366 1414 1446 1526  768 771 777 790 +hsync -vsync (47.4 kHz eP)
+[  4071.506] (II) modeset(0): EDID vendor "BOE", prod id 1544
+[  4071.506] (II) modeset(0): Printing DDC gathered Modelines:
+[  4071.506] (II) modeset(0): Modeline "1366x768"x0.0   72.30  1366 1414 1446 1526  768 771 777 790 +hsync -vsync (47.4 kHz eP)
+[  4071.696] (II) event0  - System keyboard multiplexer: is tagged by udev as: Keyboard
+[  4071.697] (II) event0  - System keyboard multiplexer: device is a keyboard
+[  4071.712] (II) event1  - System mouse: is tagged by udev as: Mouse
+[  4071.712] (II) event1  - System mouse: emulating high-resolution scroll wheel events.
+[  4071.718] (II) event1  - System mouse: device is a pointer
+[  4071.727] (II) event3  - Power Button: is tagged by udev as: Keyboard
+[  4071.728] (II) event3  - Power Button: device is a keyboard
+[  4071.736] (II) event4  - Sleep Button: is tagged by udev as: Keyboard
+[  4071.738] (II) event4  - Sleep Button: device is a keyboard
+[  4071.745] (II) event5  - AT keyboard: is tagged by udev as: Keyboard
+[  4071.747] (II) event5  - AT keyboard: device is a keyboard
+[  4071.817] (II) event6  - SynPS/2 Synaptics TouchPad: is tagged by udev as: Mouse Touchpad
+[  4071.855] (II) event6  - SynPS/2 Synaptics TouchPad: device is a touchpad
+[  4093.944] (II) event0  - System keyboard multiplexer: device removed
+[  4093.944] (II) event1  - System mouse: device removed
+[  4093.945] (II) event3  - Power Button: device removed
+[  4093.945] (II) event4  - Sleep Button: device removed
+[  4093.945] (II) event5  - AT keyboard: device removed
+[  4093.945] (II) event6  - SynPS/2 Synaptics TouchPad: device removed
