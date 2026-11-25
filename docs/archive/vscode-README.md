@@ -1,7 +1,7 @@
 # VSCode (archived)
 
 > **Archived:** not part of the dotfiles system (no stow package). The install
-> steps live in [`docs/postinstall.md`](../postinstall.md#vs-code-binary-install);
+> steps live in [`docs/artix-post-install.md`](../artix-post-install.md#vs-code-binary-install);
 > the shortcuts below are generic VS Code defaults kept for reference.
 
 ## install

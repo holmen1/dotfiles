@@ -1,16 +1,44 @@
 #!/bin/sh
 # FreeBSD
-# Install packages from pkglist
+# Install packages from a pkglist or host profile.
 
-[ $# -eq 0 ] && { echo "Usage: $0 <pkglist>"; exit 1; }
+usage() {
+    echo "Usage: $0 <pkglist> | --profile <host-config>" >&2
+    exit 1
+}
 
-[ -f "$1" ] || { echo "Error: $1 not found"; exit 1; }
+install_packages() {
+    while IFS= read -r package || [ -n "$package" ]; do
+        case "$package" in
+            *[![:space:]]*) ;;
+            *) continue ;;
+        esac
+        if ! pkg query '%n' "$package" >/dev/null 2>&1; then
+            echo "Installing $package..."
+            sudo pkg install -y "$package" || return 1
+        else
+            echo "$package is already installed, skipping."
+        fi
+    done
+}
 
-while IFS= read -r package; do
-    if ! pkg query '%n' "$package" >/dev/null 2>&1; then
-        echo "Installing $package..."
-        sudo pkg install -y "$package"
-    else
-        echo "$package is already installed, skipping."
+if [ "${1-}" = --profile ]; then
+    [ "$#" -eq 2 ] || usage
+    [ -f "$2" ] || { echo "Error: $2 not found" >&2; exit 1; }
+    profile=$2
+    case "$profile" in
+        */*) ;;
+        *) profile=./$profile ;;
+    esac
+    unset pkg_packages
+    . "$profile"
+    if [ "${pkg_packages+x}" != x ]; then
+        echo "Error: native package list missing from '$2'" >&2
+        exit 1
     fi
-done < "$1"
+    printf '%s\n' "$pkg_packages" | install_packages
+else
+    [ "$#" -eq 1 ] || usage
+    [ -f "$1" ] || { echo "Error: $1 not found" >&2; exit 1; }
+    install_packages < "$1"
+fi

@@ -7,7 +7,7 @@
 
 set -e
 
-XMONAD_VER="0.18.1"
+. "$HOME/repos/dotfiles/install/build/xmonad/versions.sh"
 BUILD_DIR=~/repos/dotfiles/install/build/xmonad
 OPT_DIR="/opt/xmonad"
 

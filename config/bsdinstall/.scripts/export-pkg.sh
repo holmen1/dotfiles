@@ -1,12 +1,14 @@
 #!/bin/sh
 # FreeBSD
 
-[ $# -eq 0 ] && { echo "Usage: $0 <output-directory>"; exit 1; }
+set -e
 
-# Export manually installed packages
-pkg query -e '%a = 0' '%R %o' | awk '$1 == "FreeBSD-ports" {print $2}' > "$1/pkglist.txt"
-echo "Exported list of explicitly installed packages to $1/pkglist.txt"
+[ "$#" -eq 1 ] || { echo "Usage: $0 <output-directory>" >&2; exit 1; }
+output_dir=$1
+query=$(mktemp "$output_dir/pkg-query.XXXXXX")
+trap 'rm -f "$query"' 0
+trap 'exit 1' HUP INT TERM
 
-# Export packages built from ports
-pkg query -e '%a = 0' '%R %o' | awk '$1 != "FreeBSD-ports" && $1 != "FreeBSD-base"  {print $2}' > "$1/foreignpkglist.txt"
-echo "Exported list of ports to $1/foreignpkglist.txt"
+pkg query -e '%a = 0' '%R %o' > "$query"
+awk '$1 == "FreeBSD-ports" {print $2}' "$query" > "$output_dir/pkglist.txt"
+awk '$1 != "FreeBSD-ports" && $1 != "FreeBSD-base" {print $2}' "$query" > "$output_dir/foreignpkglist.txt"

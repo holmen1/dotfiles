@@ -1,6 +1,0 @@
-libxinerama
-libxss
-noto-fonts
-xorg-xinit
-xterm
-

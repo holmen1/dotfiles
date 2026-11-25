@@ -78,6 +78,7 @@ echo "Checking your custom FreeBSD environment..."
 print_header "Essential Commands"
 check_command "git" "Git version control"
 check_command "ssh" "SSH client"
+check_command "bash" "Bash shell"
 check_command "startx" "X11 server starter"
 check_command "dwm" "Dynamic window manager"
 check_command "xterm" "Terminal emulator"
@@ -87,6 +88,14 @@ check_file "$HOME/.xinitrc" ".xinitrc file"
 
 # User
 print_header "User"
+user_name=$(id -un)
+user_shell=$(pw usershow "$user_name" -7 2>/dev/null | awk -F: '{print $10}')
+if [ "$user_shell" = "/usr/local/bin/bash" ]; then
+    print_pass "Bash is the configured login shell"
+else
+    print_fail "Login shell is '$user_shell' - expected /usr/local/bin/bash"
+fi
+
 if groups | grep -q "wheel"; then
     print_pass "User in wheel group"
 
