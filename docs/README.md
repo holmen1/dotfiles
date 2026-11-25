@@ -63,3 +63,4 @@ Superseded or out-of-scope documents, kept for history:
 - [artixinstall-LESSONS_LEARNED.md](archive/artixinstall-LESSONS_LEARNED.md) — extracted into networking, Artix post-install, and hardware docs
 - [vscode-README.md](archive/vscode-README.md) — outside the stow/dotfiles system
 - [ghc-toolchain-warmup.md](archive/ghc-toolchain-warmup.md) — xmonad sandbox experiment
+- [potato-freebsd-i915-panic.md](archive/potato-freebsd-i915-panic.md) — X startup kernel panic and unverified workaround
