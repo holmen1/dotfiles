@@ -61,8 +61,8 @@ xbindkeys
 xcape
 xclip
 xcompmgr
-xlibre-input-libinput
-xlibre-xserver
+xf86-input-libinput
+xorg-server
 xorg-xev
 xorg-xinit
 xterm
