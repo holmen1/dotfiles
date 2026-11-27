@@ -33,37 +33,11 @@ dd if=FreeBSD-{rel-latest}-RELEASE-amd64-memstick.img of=/dev/da0 bs=1M conv=syn
 ## Guided installation
 
 Once the system boots from the installation media, 
-a text-based installation program named `bsdinstall` starts, chose defaults
-
-### Wifi
-
-Advice: setup here, ensure it work before continue
-
-regdomain: ETSI2, SE  
-Install driver  
-IPv6 resolver (may not need)
-
-Once the scanning of the wireless networks has been carried out, that information will be added to the file ```/etc/wpa_supplicant.conf```
-
-```bash
-network={
-        scan_ssid=1 
-        ssid="FreeBSD" 
-        psk="12345678" 
-}
-```
-
-
-### Add user
-
-Add user to groups: wheel video (one at a time)
+a text-based installation program named `bsdinstall` starts, chose defaults, use ethernet
 
 otherwise my choice, see [bsdinstall_log](../install/profiles/bsdinstall/log/bsdinstall_log)  
 
-
 ## Post install
-
-Continue from the [FreeBSD installation guide](bsd-install.md).
 
 ### Network
 
@@ -125,6 +99,11 @@ behavior, and troubleshooting, see the [networking guide](networking.md)
 
 
 ### Prepare the account and hostname
+
+### Add user
+
+Add user to groups: wheel video (one at a time)
+
 
 Install small set of useful tools:
 ```sh
