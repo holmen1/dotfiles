@@ -3,7 +3,7 @@
 # Install packages from a pkglist or host profile.
 
 usage() {
-    echo "Usage: $0 <pkglist> | --profile <host-config>" >&2
+    echo "Usage: $0 --profile <host-config>" >&2
     exit 1
 }
 
@@ -23,7 +23,7 @@ install_packages() {
 }
 
 if [ "${1-}" = --profile ]; then
-    [ "$#" -eq 2 ] || usage
+    [ "$#" -eq 3 ] || usage
     [ -f "$2" ] || { echo "Error: $2 not found" >&2; exit 1; }
     profile=$2
     case "$profile" in
@@ -38,7 +38,5 @@ if [ "${1-}" = --profile ]; then
     fi
     printf '%s\n' "$pkg_packages" | install_packages
 else
-    [ "$#" -eq 1 ] || usage
-    [ -f "$1" ] || { echo "Error: $1 not found" >&2; exit 1; }
-    install_packages < "$1"
+    "Error: " >&2; exit 1;
 fi
