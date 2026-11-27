@@ -19,6 +19,23 @@ X session also uses the configured terminal, window manager and XKB layout.
 Re-link the profile after updating to migrate an existing distro-specific
 `.xinitrc` symlink.
 
+On FreeBSD, `install/pre-cbil.sh` can install the profile's `pkg_pre` list.
+The general setup's package prompt installs `pkg_packages` as before. To
+install a particular group separately, use:
+
+```sh
+~/repos/dotfiles/config/common/.scripts/import-packages.sh --pre
+```
+
+Replace `--pre` with `--packages` or `--foreign` to select `pkg_packages` or
+`foreign_packages`; omitting the option selects `--packages`. A selected
+variable must exist in the profile, though an empty list is allowed. Foreign
+origins are installed with `pkg` using the host's configured repositories;
+review them first because export classifies them using repository metadata.
+Export replaces `pkg_packages` and `foreign_packages`, not `pkg_pre`.
+Import selects the current FreeBSD host profile automatically. Artix import
+is not implemented yet.
+
 The Artix `x1` profile uses Xorg, `st`, XMonad and the Swedish layout. Its
 package helper installs native packages using `pacman`; foreign packages are
 tracked but not installed by this setup. Link dotfiles before

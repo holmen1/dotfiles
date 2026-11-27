@@ -14,7 +14,15 @@ then edit:
 - `xkb_layout`: layout passed to the XKB build script.
 - `packages`: space-separated stow package names under `config/`.
 - `pkg_packages`: one FreeBSD package origin per line, installed via `pkg`.
-- `foreign_packages`: tracked package origins; the installer does not install them.
+- `foreign_packages`: tracked package origins; the setup does not install them
+  automatically.
+
+The shared FreeBSD package helper defaults to `pkg_packages` when called with
+`--profile <host-config>`. Add `--pre`, `--packages`, or `--foreign` to
+select `pkg_pre`, `pkg_packages`, or `foreign_packages`, respectively.
+`pkg_pre` is optional and must be defined before selecting it. Foreign origins
+are installed with `pkg` using the configured repositories when explicitly
+selected.
 
 Keep the `# BEGIN <variable>` and `# END <variable>` markers intact so the
 shared `update_config_section` function can update the package lists. To link

@@ -45,7 +45,7 @@ prompt "Install pkglist? [y/N] "
 case "$ans" in
     [Yy]*)
         if [ "$OS" = FreeBSD ]; then
-            "$CONFIG_DIR/bsdinstall/.scripts/install-pkg.sh" --profile "$HOST_CONFIG"
+            "$COMMON_DIR/import-packages.sh" --packages
         else
             printf '%s\n' "$pkg_packages" | "$CONFIG_DIR/artixinstall/.scripts/install-pacman.sh"
         fi

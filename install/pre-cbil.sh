@@ -39,7 +39,7 @@ prompt "Install pre-pkglist? [y/N] "
 case "$ans" in
     [Yy]*)
         if [ "$OS" = FreeBSD ]; then
-            "$CONFIG_DIR/bsdinstall/.scripts/install-pkg.sh" "$pkg_pre"
+            "$COMMON_DIR/import-packages.sh" --pre
         else
             printf '%s\n' "$pkg_packages" | "$CONFIG_DIR/artixinstall/.scripts/install-pacman.sh"
         fi

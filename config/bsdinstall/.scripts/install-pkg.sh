@@ -3,7 +3,7 @@
 # Install packages from a pkglist or host profile.
 
 usage() {
-    echo "Usage: $0 --profile <host-config>" >&2
+    echo "Usage: $0 --profile <host-config> [--pre|--packages|--foreign]" >&2
     exit 1
 }
 
@@ -22,21 +22,34 @@ install_packages() {
     done
 }
 
-if [ "${1-}" = --profile ]; then
-    [ "$#" -eq 3 ] || usage
-    [ -f "$2" ] || { echo "Error: $2 not found" >&2; exit 1; }
-    profile=$2
-    case "$profile" in
-        */*) ;;
-        *) profile=./$profile ;;
-    esac
-    unset pkg_packages
-    . "$profile"
-    if [ "${pkg_packages+x}" != x ]; then
-        echo "Error: native package list missing from '$2'" >&2
-        exit 1
-    fi
-    printf '%s\n' "$pkg_packages" | install_packages
-else
-    "Error: " >&2; exit 1;
-fi
+[ "$#" -ge 2 ] && [ "$#" -le 3 ] && [ "$1" = --profile ] || usage
+case "${3---packages}" in
+    --pre) group=pkg_pre ;;
+    --packages) group=pkg_packages ;;
+    --foreign) group=foreign_packages ;;
+    *) usage ;;
+esac
+
+[ -f "$2" ] || { echo "Error: $2 not found" >&2; exit 1; }
+profile=$2
+case "$profile" in
+    */*) ;;
+    *) profile=./$profile ;;
+esac
+unset pkg_pre pkg_packages foreign_packages
+. "$profile" || exit 1
+case "$group" in
+    pkg_pre)
+        [ "${pkg_pre+x}" = x ] || { echo "Error: pkg_pre missing from '$2'" >&2; exit 1; }
+        package_list=$pkg_pre
+        ;;
+    pkg_packages)
+        [ "${pkg_packages+x}" = x ] || { echo "Error: pkg_packages missing from '$2'" >&2; exit 1; }
+        package_list=$pkg_packages
+        ;;
+    foreign_packages)
+        [ "${foreign_packages+x}" = x ] || { echo "Error: foreign_packages missing from '$2'" >&2; exit 1; }
+        package_list=$foreign_packages
+        ;;
+esac
+printf '%s\n' "$package_list" | install_packages
