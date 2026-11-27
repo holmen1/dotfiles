@@ -16,7 +16,9 @@ The general installer handles Artix and FreeBSD; the older bsdinstall remains in
 
 ### Distro installers (choose one)
 
-- **Artix (OpenRC) and FreeBSD:** `./install/configure-build-install-link.sh`
+- **Artix (OpenRC) and FreeBSD:** Run
+  `./install/pre-configure-build-install-link.sh`, then
+  `./install/configure-build-install-link.sh`
 - **Legacy FreeBSD:** `./install/profiles/bsdinstall/configure-build-install-link.sh`
 - **macOS (manual):** Use the `Brewfile` and the `install/profiles/macinstall/scripts/*.sh` helpers; there is no unified installer.
 

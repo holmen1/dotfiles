@@ -30,36 +30,15 @@ prompt() {
     IFS= read -r ans || ans=
 }
 
-prompt "Configure git? [y/N] "
-case "$ans" in
-    [Yy]*) "$COMMON_DIR/configure-git.sh" ;;
-esac
-
-prompt "Generate SSH key? [y/N] "
-case "$ans" in
-    [Yy]*) "$COMMON_DIR/generate-ssh-key.sh" ;;
-esac
-
 echo "$HOST_CONFIG"
-prompt "Install pkglist? [y/N] "
+prompt "Install package list? [y/N] "
 case "$ans" in
-    [Yy]*)
-        if [ "$OS" = FreeBSD ]; then
-            "$COMMON_DIR/import-packages.sh" --packages
-        else
-            printf '%s\n' "$pkg_packages" | "$CONFIG_DIR/artixinstall/.scripts/install-pacman.sh"
-        fi
-        ;;
+    [Yy]*) "$COMMON_DIR/import-packages.sh" --packages ;;
 esac
 
-prompt "Build $terminal? [y/N] "
+prompt "Install foreign packages? [y/N] "
 case "$ans" in
-    [Yy]*) "$BUILD_DIR/$terminal/build-$terminal.sh" ;;
-esac
-
-prompt "Install $terminal? [y/N] "
-case "$ans" in
-    [Yy]*) "$BUILD_DIR/$terminal/install-$terminal.sh" ;;
+    [Yy]*) "$COMMON_DIR/import-packages.sh" --foreign ;;
 esac
 
 if [ "$OS" = Linux ]; then
@@ -67,18 +46,6 @@ if [ "$OS" = Linux ]; then
     case "$ans" in
         [Yy]*) "$COMMON_DIR/link_config.sh" "$HOST_CONFIG" ;;
     esac
-
-    if [ "$window_manager" = xmonad ]; then
-        prompt "Install GHC $ghc_version? [y/N] "
-        case "$ans" in
-            [Yy]*) "$BUILD_DIR/ghc/build-ghc.sh" "$ghc_version" ;;
-        esac
-
-        prompt "Build xmonad libraries? [y/N] "
-        case "$ans" in
-            [Yy]*) "$BUILD_DIR/xmonad/build-xmonad-libs.sh" ;;
-        esac
-    fi
 fi
 
 prompt "Build $window_manager? [y/N] "

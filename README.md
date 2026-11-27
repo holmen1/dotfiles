@@ -55,8 +55,9 @@ from your distribution's provided packages or build and install
 git clone https://github.com/holmen1/dotfiles.git ~/repos/dotfiles
 ```
 
-- Run the general setup and follow the prompts:
+- Run the pre-setup and general setup in order, and follow the prompts:
 ```sh
+~/repos/dotfiles/install/pre-configure-build-install-link.sh
 ~/repos/dotfiles/install/configure-build-install-link.sh
 ```
 

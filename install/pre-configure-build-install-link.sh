@@ -18,6 +18,15 @@ if [ -z "${terminal-}" ] || [ -z "${window_manager-}" ] || [ -z "${xkb_layout-}"
     echo "Error: invalid host configuration '$HOST_CONFIG'" >&2
     exit 1
 fi
+if [ "$OS" = Linux ] && [ -z "${ghc_version-}" ]; then
+    echo "Error: GHC version missing from '$HOST_CONFIG'" >&2
+    exit 1
+fi
+if [ "$OS" = Linux ] && [ "$window_manager" = xmonad ] &&
+   { [ -z "${xmonad_version-}" ] || [ -z "${xmonad_contrib_version-}" ]; }; then
+    echo "Error: XMonad versions missing from '$HOST_CONFIG'" >&2
+    exit 1
+fi
 
 prompt() {
     printf '%s' "$1"
@@ -35,15 +44,44 @@ case "$ans" in
 esac
 
 echo "$HOST_CONFIG"
-prompt "Install pre-pkglist? [y/N] "
+if [ "$OS" = FreeBSD ]; then
+    prompt "Install pre-pkglist? [y/N] "
+else
+    prompt "Install pkglist? [y/N] "
+fi
 case "$ans" in
     [Yy]*)
         if [ "$OS" = FreeBSD ]; then
             "$COMMON_DIR/import-packages.sh" --pre
         else
-            printf '%s\n' "$pkg_packages" | "$CONFIG_DIR/artixinstall/.scripts/install-pacman.sh"
+            "$COMMON_DIR/import-packages.sh" --packages
         fi
         ;;
+esac
+
+if [ "$OS" = FreeBSD ]; then
+    prompt "Install GHC using pkg? [y/N] "
+else
+    prompt "Install GHC $ghc_version? [y/N] "
+fi
+case "$ans" in
+    [Yy]*)
+        if [ "$OS" = FreeBSD ]; then
+            if pkg query '%n' lang/ghc >/dev/null 2>&1; then
+                echo "lang/ghc is already installed, skipping."
+            else
+                sudo pkg install -y lang/ghc
+                sudo -k
+            fi
+        else
+            "$BUILD_DIR/ghc/build-ghc.sh" "$ghc_version"
+        fi
+        ;;
+esac
+
+prompt "Build xmonad libraries? [y/N] "
+case "$ans" in
+    [Yy]*) "$BUILD_DIR/xmonad/build-xmonad-libs.sh" ;;
 esac
 
 prompt "Build $terminal? [y/N] "
@@ -56,3 +94,4 @@ case "$ans" in
     [Yy]*) "$BUILD_DIR/$terminal/install-$terminal.sh" ;;
 esac
 
+"$DOTFILES_DIR/install/sanity-pre-check.sh"

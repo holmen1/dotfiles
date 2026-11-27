@@ -6,12 +6,22 @@ profile at `install/hosts/<OS>/<hostname>.conf`, using `uname -s`,
 hosts without a matching profile are not supported. Edit the profile to choose
 stow packages, system packages, terminal, window manager and XKB layout.
 
-Run the interactive setup or the sanity check directly:
+Run the pre-setup first, then the main setup and sanity check:
 
 ```sh
+~/repos/dotfiles/install/pre-configure-build-install-link.sh
 ~/repos/dotfiles/install/configure-build-install-link.sh
 ~/repos/dotfiles/install/sanity-check.sh
 ```
+
+The pre-setup configures Git and SSH, installs the initial package list, and
+builds/installs the terminal. It also prompts about GHC and XMonad libraries
+on every supported host. On FreeBSD, GHC is installed through `pkg`; on
+Artix, the configured GHC installer is used. The main setup prompts to install
+the package and foreign-package lists, then configures the window manager,
+XKB, and system links.
+The pre-setup finishes by checking SSH permissions and confirming GitHub
+recognizes the key.
 
 The sanity check checks the configured terminal and window manager, and
 skips feature checks for stow packages not listed in the profile. The shared
@@ -19,9 +29,9 @@ X session also uses the configured terminal, window manager and XKB layout.
 Re-link the profile after updating to migrate an existing distro-specific
 `.xinitrc` symlink.
 
-On FreeBSD, `install/pre-cbil.sh` can install the profile's `pkg_pre` list.
-The general setup's package prompt installs `pkg_packages` as before. To
-install a particular group separately, use:
+The pre-setup can install FreeBSD's `pkg_pre` list; Artix has no `pkg_pre`
+group. The main setup prompts for `pkg_packages` and `foreign_packages` on
+both systems. To install a particular group separately, use:
 
 ```sh
 ~/repos/dotfiles/config/common/.scripts/import-packages.sh --pre
@@ -29,21 +39,21 @@ install a particular group separately, use:
 
 Replace `--pre` with `--packages` or `--foreign` to select `pkg_packages` or
 `foreign_packages`; omitting the option selects `--packages`. A selected
-variable must exist in the profile, though an empty list is allowed. Foreign
-origins are installed with `pkg` using the host's configured repositories;
-review them first because export classifies them using repository metadata.
-Export replaces `pkg_packages` and `foreign_packages`, not `pkg_pre`.
-Import selects the current FreeBSD host profile automatically. Artix import
-is not implemented yet.
+variable must exist in the profile; an empty list is skipped. FreeBSD
+installs package origins with `pkg`; Artix uses `pacman` for both lists.
+Artix foreign packages must be available in a configured repository; the
+importer does not use an AUR helper. Export replaces `pkg_packages` and
+`foreign_packages`, not `pkg_pre`. Import selects the current supported host
+profile automatically.
 
 The Artix `x1` profile uses Xorg, `st`, XMonad and the Swedish layout. Its
-package helper installs native packages using `pacman`; foreign packages are
-tracked but not installed by this setup. Link dotfiles before
-building XMonad. The optional GHC and XMonad library prompts precede the
-XMonad build: the profile specifies GHC 9.12.4, XMonad 0.18.1 and
-xmonad-contrib 0.18.2. The GHC installer uses an x86_64 Debian 12 binary
-distribution, which must be compatible with the machine. Building the XKB
-keymap requires an active X display.
+package importer uses `pacman` for both native and foreign package lists.
+Link dotfiles before
+building XMonad. The optional GHC and XMonad library prompts in the pre-setup
+precede the XMonad build: the profile specifies GHC 9.12.4, XMonad 0.18.1 and
+xmonad-contrib 0.18.2. The Artix GHC installer uses an x86_64 Debian 12
+binary distribution, which must be compatible with the machine. Building the
+XKB keymap requires an active X display.
 
 The Artix `besk` profile is for the Framework laptop and uses the US layout;
 `gadsden` uses the Swedish layout and retains its legacy XLibre package list.
