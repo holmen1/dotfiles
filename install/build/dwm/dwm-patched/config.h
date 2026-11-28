@@ -19,7 +19,7 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "st", "lf" };
+static const char *tags[] = { "1", "2", "3", "4" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -64,10 +64,11 @@ static const char *termcmd[]  = { "st", NULL };
 static const char *filemgrcmd[]  = { "st", "-e", "lf", NULL };
 static const char *menucmd[]  = { "dmenu-menu", NULL };
 static const char *kbcmd[]  = { "xkb-toggle", NULL };
+static const char *browsercmd[]  = { "librewolf", NULL };
 
 Autostarttag autostarttaglist[] = {
 	{.cmd = termcmd, .tags = 1 << 0 },
-	{.cmd = filemgrcmd, .tags = 1 << 1 },
+	{.cmd = filemgrcmd, .tags = 1 << 3 },
 	{.cmd = NULL, .tags = 0 },
 };
 
@@ -76,6 +77,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_a,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,		    	XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,		    	XK_e,      spawn,          {.v = filemgrcmd } },
+	{ MODKEY,		    	XK_w,      spawn,          {.v = browsercmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
@@ -100,6 +102,8 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
+	TAGKEYS(                        XK_3,                      2)
+	TAGKEYS(                        XK_4,                      3)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 };
 

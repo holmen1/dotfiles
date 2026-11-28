@@ -39,6 +39,8 @@ Some patches may fail if the source has changed, then review any .rej files and 
 | M-Q        | kill window|
 | M-M        | menu       |
 | M-E        | filemanager|
+| M-A        | applauncher|
+| M-w        | browser    |
 | M-X        | toggle xkb |
 | M-S-Q      | exit       |
 
