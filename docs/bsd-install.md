@@ -162,7 +162,9 @@ and the package and hardware settings for this machine. Check `pkg_pre` before
 running pre-setup: it must exist to answer **Yes** to the pre-package prompt.
 Include the selected X server, graphics driver, `x11/xinit`, `x11/xterm`, and
 the `st` build dependencies (`devel/pkgconf`, `print/freetype2`, `x11/libX11`,
-`x11/libXft`, and `x11-fonts/fontconfig`) if they are not already installed.
+`x11-fonts/libXft`, and `x11-fonts/fontconfig`) if they are not already installed.
+The default `x11/xorg` metapackage brings in `xinit`, `xterm`, and the X
+libraries; ensure `pkg-config` is also available for building `st`.
 Review both `pkg_pre` and `pkg_packages` for the intended X server and driver;
 do not install conflicting servers.
 
