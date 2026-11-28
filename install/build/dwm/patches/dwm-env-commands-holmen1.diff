@@ -1,0 +1,23 @@
+diff --git a/config.def.h b/config.def.h
+--- a/config.def.h
++++ b/config.def.h
+@@ -62 +62 @@
+-static const char *termcmd[]  = { "st", NULL };
++static const char *termcmd[]  = { "xterm", NULL };
+@@ -64 +64,2 @@
+-static const char *filemgrcmd[]  = { "st", "-e", "lf", NULL };
++static const char *filemgrcmd[]  = { "xterm", "-e", "lf", NULL };
++static const char *browsercmd[]  = { "firefox", NULL };
+@@ -76,0 +78 @@
++	{ MODKEY,		    	XK_w,      spawn,          {.v = browsercmd } },
+diff --git a/dwm.c b/dwm.c
+--- a/dwm.c
++++ b/dwm.c
+@@ -1559,0 +1560 @@
++	const char *command;
+@@ -1563,0 +1565,5 @@
++	if ((command = getenv("TERMINAL")) && *command)
++		termcmd[0] = filemgrcmd[0] = command;
++	if ((command = getenv("BROWSER")) && *command)
++		browsercmd[0] = command;
++

@@ -1557,9 +1557,15 @@ void
 setup(void)
 {
 	int i;
+	const char *command;
 	XSetWindowAttributes wa;
 	Atom utf8string;
 	struct sigaction sa;
+
+	if ((command = getenv("TERMINAL")) && *command)
+		termcmd[0] = filemgrcmd[0] = command;
+	if ((command = getenv("BROWSER")) && *command)
+		browsercmd[0] = command;
 
 	/* do not transform children into zombies when they terminate */
 	sigemptyset(&sa.sa_mask);
