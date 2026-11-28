@@ -44,25 +44,28 @@ All things X11 — session startup, TTY recovery, debugging, component links:
 | .iso   | [artix-base-openrc](https://artixlinux.org/download.php)|[FreeBSD](https://freebsd.org/where)|
 |My guide| [artixinstall](docs/artix-install.md)|[bsdinstall](docs/bsd-install.md)|
 
-1. **Install X server**
-from your distribution's provided packages or build and install
-[Xlibre](https://github.com/X11Libre/xserver/wiki/Building-XLibre) from source
+1. **Clone the repository over HTTPS and run pre-setup from the TTY.** Add
+   the generated SSH key to GitHub before the pre-setup's final check.
 
-2. **Run install script** that will install, link and test your system
-
-- Clone this repository:
 ```sh
+mkdir -p ~/repos
 git clone https://github.com/holmen1/dotfiles.git ~/repos/dotfiles
+~/repos/dotfiles/install/scripts/pre-configure-build-install-link.sh
 ```
 
-- Run the pre-setup and general setup in order, and follow the prompts:
+2. **Switch the remote to SSH, then continue setup.** Pre-setup offers a
+   temporary xterm session for an optional X test. Full setup links the session
+   configuration and builds the window manager.
+
 ```sh
-~/repos/dotfiles/install/pre-configure-build-install-link.sh
+git -C ~/repos/dotfiles remote set-url origin git@github.com:holmen1/dotfiles.git
+git -C ~/repos/dotfiles ls-remote origin HEAD
 ~/repos/dotfiles/config/common/.scripts/configure-build-install-link.sh
 ```
 
-See the [general setup guide](install/GENERAL-SETUP.md) for host profiles,
-build requirements, and package export.
+See the [general setup guide](docs/guides/general-setup.md) for host profiles,
+build requirements, and package export. The
+[FreeBSD guide](docs/bsd-install.md) covers the optional early X test.
 ---
 
 ## Structure
@@ -80,6 +83,7 @@ dotfiles/
 │   ├── xmonad
 │   └── ...
 └── install
+    ├── scripts         # Shared pre-setup and sanity scripts
     ├── build           # Source-built components
     │   ├── dwm
     │   ├── ghc

@@ -98,4 +98,4 @@ Command blocks that belong with a procedure, not here:
 - XKB keymap checks: [config/xkb/README.md](../config/xkb/README.md)
 - OpenRC service commands: [networking.md](networking.md)
 - Build fetch and compile patterns: [build.md](build.md)
-- Post-install tasks: [Artix](artix-post-install.md) or [FreeBSD](bsd-post-install.md)
+- Post-install tasks: [Artix](artix-post-install.md) or [FreeBSD](bsd-install.md#post-install)

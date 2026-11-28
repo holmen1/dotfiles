@@ -3,6 +3,7 @@
 ## Repository map
 
 - `config/` holds the actual user configuration (dotfiles) organized by tool/component; these are symlinked into `$HOME` via stow.
+- `install/scripts/` holds the shared pre-setup and sanity scripts.
 - `install/hosts/` holds OS- and hostname-specific configuration plus shared and per-OS scripts; `install/hosts/macOS/mac02.conf` records the manual macOS Stow package selection and Homebrew setup.
 - `install/build/` holds build scripts for source-compiled components (xmonad, dwm, st, xkb, neovim, ghc, xlibre).
 - `docs/` holds structured long-form documentation (`docs/README.md` is the index); `docs/archive/` holds superseded documents kept for history.
@@ -17,7 +18,7 @@ The general installer handles Artix and FreeBSD; the former standalone FreeBSD i
 ### Distro installers (choose one)
 
 - **Artix (OpenRC) and FreeBSD:** Run
-  `./install/pre-configure-build-install-link.sh`, then
+  `./install/scripts/pre-configure-build-install-link.sh`, then
   `./config/common/.scripts/configure-build-install-link.sh`
 - **macOS (manual):** Use `install/hosts/macOS/Brewfile` and the `install/hosts/macOS/scripts/*.sh` helpers; there is no unified installer.
 
@@ -81,9 +82,9 @@ The general installer handles Artix and FreeBSD; the former standalone FreeBSD i
 ### Documentation
 
 - `docs/README.md` is the documentation index — register any new doc there.
-- Durable, repeatable knowledge belongs in `docs/` topic guides: `x11.md` (session/TTY/debugging/input), `networking.md`, `artix-install.md`, `artix-post-install.md`, `bsd-install.md`, `bsd-post-install.md`, `hardware.md`, `build.md`, `shell.md` (reusable one-liners and the `.bashrc` shortcut index), `vim-quickref.md`.
+- Durable, repeatable knowledge belongs in `docs/` topic guides: `x11.md` (session/TTY/debugging/input), `networking.md`, `artix-install.md`, `artix-post-install.md`, `bsd-install.md`, `hardware.md`, `build.md`, `shell.md` (reusable one-liners and the `.bashrc` shortcut index), `vim-quickref.md`, and `docs/guides/` for component and setup guides.
 - `LESSONS_LEARNED.md` files keep incident history and forensics; extract durable rules into `docs/` and cross-link.
-- READMEs stay concise entry points that link into `docs/`; deep explanation lives in the docs pages, not in READMEs.
+- Keep general installation READMEs concise and link into `docs/`; retain the main README and component documentation in `config/` and `install/build/`.
 - Superseded documents go to `docs/archive/` with a header explaining why (never delete silently).
 - After doc moves/renames, verify all relative markdown links still resolve.
 

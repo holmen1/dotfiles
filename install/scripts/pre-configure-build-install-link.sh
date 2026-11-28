@@ -60,6 +60,17 @@ case "$ans" in
         ;;
 esac
 
+prompt "Create temporary ~/.xinitrc for xterm? [y/N] "
+case "$ans" in
+    [Yy]*)
+        if [ ! -e "$HOME/.xinitrc" ] && [ ! -L "$HOME/.xinitrc" ]; then
+            printf 'exec xterm\n' > "$HOME/.xinitrc"
+        else
+            echo "Keeping existing ~/.xinitrc." >&2
+        fi
+        ;;
+esac
+
 if [ "$OS" = FreeBSD ]; then
     prompt "Install GHC using pkg? [y/N] "
 else
@@ -95,4 +106,4 @@ case "$ans" in
     [Yy]*) "$BUILD_DIR/$terminal/install-$terminal.sh" ;;
 esac
 
-"$DOTFILES_DIR/install/sanity-pre-check.sh"
+"$DOTFILES_DIR/install/scripts/sanity-pre-check.sh"

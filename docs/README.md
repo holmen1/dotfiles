@@ -12,10 +12,11 @@ these pages for deeper explanations.
 - [Artix checklist](artix-checklist.md) — printable base and post-install checklist.
 - [Simple Artix installation](artix-install-simple.md) — unencrypted UEFI install without LVM or swap.
 - [Artix post-install guide](artix-post-install.md) — post-install setup, rescue notes, and package management.
-- [FreeBSD installation guide](bsd-install.md) — guided base installation.
-- [FreeBSD post-install guide](bsd-post-install.md) — setup, recovery, ports, and package management.
+- [FreeBSD installation guide](bsd-install.md) — base installation, setup, recovery, and package management.
 - [Hardware notes](hardware.md) — machine-specific quirks (Framework AMD display, RDSEED, touchpad).
 - [Build guide](build.md) — shared build conventions and links to component build docs.
+- [Project overview](../README.md) and [installation overview](guides/install-overview.md).
+- [General setup](guides/general-setup.md) — profiles and interactive setup.
 
 ## Lessons-learned handling
 
@@ -32,7 +33,7 @@ these pages for deeper explanations.
 - [Artix install](artix-install.md)
 - [Artix simple install](artix-install-simple.md)
 - [FreeBSD install](bsd-install.md)
-- [macOS setup](../install/hosts/macOS/README.md)
+- [macOS setup](guides/macos.md)
 
 ## Build component docs
 
@@ -47,6 +48,11 @@ these pages for deeper explanations.
 
 ## Reference
 
+- [Terminal colors](../config/colors/README.md)
+- [Neovim configuration](../config/nvim/README.md) and [adding plugins](../config/nvim/ADDING_PLUGINS.md)
+- [XKB configuration](../config/xkb/README.md)
+- [XMonad configuration](../config/xmonad/README.md)
+- [lf configuration](../config/lf/README.md)
 - [Shell commands](shell.md) — reusable one-liners (mount, disk images, TTY, `cd -`, history) and `.bashrc` shortcuts.
 - [Vim quick reference](vim-quickref.md) — generic Vim mappings (extracted from the nvim README).
 

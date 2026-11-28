@@ -10,7 +10,7 @@ Similar artixinstall, using dwm, less features
 
 ## Stack
 
-* Display server: XLibre (X11)
+* Display server: X11 (selected in the host profile)
 * Window manager: dwm
 * Menus: dmenu
 * Editor: Neovim
@@ -77,7 +77,8 @@ When multiple saved networks are available, wpa_supplicant prefers the one
 with the higher `priority` value.
 
 
-Obtain the network device interface (iwm0)
+Find the wireless device interface. The commands below use `iwm0` as an
+example; substitute your device name:
 ```bash
 sysctl net.wlan.devices
 ```
@@ -129,53 +130,115 @@ whether it overrides the wheel policy. Verify group membership with `groups`.
 
 ### Hostname
 
+Set your chosen hostname; it must match a profile in `install/hosts/FreeBSD/`.
 ```sh
-sysrc hostname="besk"
-service hostname restart
+sudo sysrc hostname="your-hostname"
+sudo service hostname restart
 hostname -s
 ```
 
-### X
-
-User must be a member of the video group to run a graphical environment:
-```sh
-pw groupmod video -m username
-```
-
-You can check that X starts before cloning and linking the full configuration:
-```sh
-sudo pkg install xorg xterm drm-kmod xf86-video-intel
-sysrc kld_list+=i915kms
-printf 'exec xterm\n' > ~/.xinitrc
-startx -- -keeptty
-```
-
-
 ### Run the BSD setup
 
-Clone the repository over HTTPS so setup does not depend on an SSH key:
+Clone the repository from the TTY, then run pre-setup before testing X or
+starting the full setup.
+
+Clone the repository over HTTPS so the clone itself does not require an SSH
+key:
 
 ```sh
 mkdir -p ~/repos
 cd ~/repos
 git clone https://github.com/holmen1/dotfiles.git
-```
-
-If your public key is already registered with GitHub, you can use
-`git@github.com:holmen1/dotfiles.git` instead.
-
-Then start the interactive setup:
-
-```sh
 cd ~/repos/dotfiles
-./config/common/.scripts/configure-build-install-link.sh
 ```
 
-Start X with the linked configuration and follow the [X11 guide](x11.md) for
-troubleshooting:
+Inspect the profile selected by the short hostname:
+```sh
+hostname -s
+cat "install/hosts/FreeBSD/$(hostname -s).conf"
+```
+If it does not exist, copy an existing profile and update `profile_hostname`
+and the package and hardware settings for this machine. Check `pkg_pre` before
+running pre-setup: it must exist to answer **Yes** to the pre-package prompt.
+Include the selected X server, graphics driver, `x11/xinit`, `x11/xterm`, and
+the `st` build dependencies (`devel/pkgconf`, `print/freetype2`, `x11/libX11`,
+`x11/libXft`, and `x11-fonts/fontconfig`) if they are not already installed.
+Review both `pkg_pre` and `pkg_packages` for the intended X server and driver;
+do not install conflicting servers.
+
+The pre-setup's final check requires an Ed25519 SSH key that GitHub recognizes,
+even if you cloned over HTTPS. Generate the key when prompted (or beforehand),
+add `~/.ssh/id_ed25519.pub` to GitHub, and verify SSH authentication before the
+pre-setup reaches its final check.
+
+Run pre-setup first:
+```sh
+./install/scripts/pre-configure-build-install-link.sh
+```
+Answer **Yes** to install the prepared pre-package list and create the
+temporary `.xinitrc`. For a dwm profile, answer **No** to installing GHC early
+and building XMonad libraries. Build and install `st` during this step so it is
+available for the X test and the final dwm session.
+
+After pre-setup completes, switch the clone's remote to SSH and verify it:
+```sh
+git remote set-url origin git@github.com:holmen1/dotfiles.git
+git ls-remote origin HEAD
+```
+
+### Prepare graphics
+
+Ensure the user belongs to the `video` group, replacing `username` below with
+the actual login name:
+```sh
+sudo pw groupmod video -m username
+```
+Log out and back in if group membership was just changed.
+
+Configure the graphics driver for the machine. For Intel graphics using
+`i915kms`, for example, add it to `kld_list` if not already present and load
+it (or reboot):
+```sh
+sudo sysrc kld_list+=i915kms
+sudo kldload i915kms
+```
+
+### Optional early X test
+
+Pre-setup creates a temporary `~/.xinitrc` containing `exec xterm` when
+requested, without replacing an existing file. If one already exists, check
+its contents before testing.
+From the TTY, test X:
 ```sh
 startx -- -keeptty
 ```
+From `xterm`, start a larger `st` for the rest of the setup:
+```sh
+st -g 160x45+0+0 &
+```
+Adjust the columns and rows to fit the screen. Keep `xterm` open underneath:
+closing it ends the X session. Full setup links the dwm session for the next
+X launch.
+
+Then run full setup:
+
+```sh
+cd ~/repos/dotfiles
+mkdir -p ~/.cache
+./config/common/.scripts/configure-build-install-link.sh
+```
+Install the package list and, if the profile has one, the foreign-package
+list. Link dotfiles, build and install dwm, and link the system commands when
+prompted. The custom XKB keymap build needs an active X display and
+`~/.cache`; if running from the TTY, skip it and build it later from an X
+terminal. The linked `.xinitrc` applies the standard layout on startup.
+
+When full setup finishes, if you ran the early X test, exit `st` and then
+`xterm` to return to the TTY. Launch the linked dwm session:
+```sh
+startx -- -keeptty
+```
+For troubleshooting, see the [X11 guide](x11.md).
 
 ## Disaster recovery
 
@@ -270,7 +333,7 @@ During port builds, you'll see configuration dialogs with checkboxes for feature
 | `EXAMPLES` | Install example files | Disable unless learning the software |
 | `NLS` | Native Language Support (translations) | Disable if you only use English (saves 10-50MB) |
 | `X11` | X Window System support | Keep enabled if using a GUI |
-| `WAYLAND` | Wayland support | Disable if using X11/xlibre only |
+| `WAYLAND` | Wayland support | Disable if using X11 only |
 | `DEBUG` | Debug symbols | Disable unless developing (adds significant size) |
 | `IPV6` | IPv6 protocol support | Keep enabled (modern standard) |
 | `TEST` | Build and run tests | Disable (only for development) |
@@ -278,7 +341,7 @@ During port builds, you'll see configuration dialogs with checkboxes for feature
 **Best practices for beginners:**
 1. **First build:** Accept all defaults - they're tested and safe
 2. **Rebuilding for optimization:** Disable `DOCS`, `EXAMPLES`, `NLS`, `DEBUG` to save ~20-30% space
-3. **Critical ports (xlibre, gcc, llvm):** Use defaults - wrong options can break your system
+3. **Critical ports (gcc, llvm):** Use defaults - wrong options can break your system
 4. **Desktop applications:** Verify `X11` is enabled
 
 **Configuration commands:**
@@ -328,7 +391,7 @@ pkg query -e '%a = 0' '%R %o' | awk '$1 != "FreeBSD-ports" && $1 != "FreeBSD-bas
 
 **Query field meanings:**
 - `%a` - Automatic flag (0 = manually installed, 1 = dependency)
-- `%o` - Origin (e.g., `x11/xlibre-minimal`)
+- `%o` - Origin (e.g., `x11/xorg`)
 - `%R` - Repository name (e.g., `FreeBSD`, empty for local builds)
 - `%n` - Package name only
 
@@ -411,4 +474,4 @@ sudo service sshd status
 
 - Source builds: [build overview](../install/build/README.md) and [build guide](build.md).
 - Shell one-liners: [shell guide](shell.md).
-- X11 session startup and debugging: [X11 guide](x11.md) and [XLibre](../install/build/xlibre/README.md).
+- X11 session startup and debugging: [X11 guide](x11.md).
