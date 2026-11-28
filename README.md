@@ -50,7 +50,7 @@ All things X11 — session startup, TTY recovery, debugging, component links:
 ```sh
 mkdir -p ~/repos
 git clone https://github.com/holmen1/dotfiles.git ~/repos/dotfiles
-~/repos/dotfiles/install/scripts/pre-configure-build-install-link.sh
+~/repos/dotfiles/install/hosts/scripts/pre-configure-build-install-link.sh
 ```
 
 2. **Switch the remote to SSH, then continue setup.** Pre-setup offers a
@@ -83,7 +83,6 @@ dotfiles/
 │   ├── xmonad
 │   └── ...
 └── install
-    ├── scripts         # Shared pre-setup and sanity scripts
     ├── build           # Source-built components
     │   ├── dwm
     │   ├── ghc
@@ -93,7 +92,7 @@ dotfiles/
     │   ├── xlibre
     │   └── xmonad
     ├── hosts           # OS/hostname profiles and installation scripts
-    │   ├── scripts     # Shared host setup helpers
+    │   ├── scripts     # Shared host setup and pre-setup scripts
     │   ├── Linux       # Artix profiles and OS-specific scripts
     │   ├── FreeBSD     # FreeBSD profiles and OS-specific scripts
     │   └── macOS       # mac02 profile and manual Homebrew setup

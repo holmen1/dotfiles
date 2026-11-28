@@ -175,7 +175,7 @@ pre-setup reaches its final check.
 
 Run pre-setup first:
 ```sh
-./install/scripts/pre-configure-build-install-link.sh
+./install/hosts/scripts/pre-configure-build-install-link.sh
 ```
 Answer **Yes** to install the prepared pre-package list and create the
 temporary `.xinitrc`. For a dwm profile, answer **No** to installing GHC early

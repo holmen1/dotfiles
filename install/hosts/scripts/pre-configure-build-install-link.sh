@@ -106,4 +106,4 @@ case "$ans" in
     [Yy]*) "$BUILD_DIR/$terminal/install-$terminal.sh" ;;
 esac
 
-"$DOTFILES_DIR/install/scripts/sanity-pre-check.sh"
+"$HOST_SCRIPTS_DIR/sanity-pre-check.sh"

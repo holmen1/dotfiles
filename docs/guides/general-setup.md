@@ -12,7 +12,7 @@ first, followed by the main setup and sanity check:
 ```sh
 mkdir -p ~/repos
 git clone https://github.com/holmen1/dotfiles.git ~/repos/dotfiles
-~/repos/dotfiles/install/scripts/pre-configure-build-install-link.sh
+~/repos/dotfiles/install/hosts/scripts/pre-configure-build-install-link.sh
 git -C ~/repos/dotfiles remote set-url origin git@github.com:holmen1/dotfiles.git
 git -C ~/repos/dotfiles ls-remote origin HEAD
 ~/repos/dotfiles/config/common/.scripts/configure-build-install-link.sh

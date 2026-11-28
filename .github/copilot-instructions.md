@@ -3,7 +3,6 @@
 ## Repository map
 
 - `config/` holds the actual user configuration (dotfiles) organized by tool/component; these are symlinked into `$HOME` via stow.
-- `install/scripts/` holds the shared pre-setup and sanity scripts.
 - `install/hosts/` holds OS- and hostname-specific configuration plus shared and per-OS scripts; `install/hosts/macOS/mac02.conf` records the manual macOS Stow package selection and Homebrew setup.
 - `install/build/` holds build scripts for source-compiled components (xmonad, dwm, st, xkb, neovim, ghc, xlibre).
 - `docs/` holds structured long-form documentation (`docs/README.md` is the index); `docs/archive/` holds superseded documents kept for history.
@@ -18,7 +17,7 @@ The general installer handles Artix and FreeBSD; the former standalone FreeBSD i
 ### Distro installers (choose one)
 
 - **Artix (OpenRC) and FreeBSD:** Run
-  `./install/scripts/pre-configure-build-install-link.sh`, then
+  `./install/hosts/scripts/pre-configure-build-install-link.sh`, then
   `./config/common/.scripts/configure-build-install-link.sh`
 - **macOS (manual):** Use `install/hosts/macOS/Brewfile` and the `install/hosts/macOS/scripts/*.sh` helpers; there is no unified installer.
 
