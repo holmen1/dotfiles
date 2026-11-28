@@ -118,6 +118,5 @@ pkg delete -n xf86-video-intel
 If the proposed removal is acceptable, run `sudo pkg delete xf86-video-intel`.
 Remove `x11-drivers/xf86-video-intel` from the
 [potato profile](../../install/hosts/FreeBSD/potato.conf) as well, or the
-general installer may reinstall it. The separate
-[legacy profile](../../install/profiles/bsdinstall/hosts/potato.conf) uses
-XLibre and its differently named `xlibre-xf86-video-intel` package.
+general installer may reinstall it. An earlier FreeBSD profile used XLibre
+and its differently named `xlibre-xf86-video-intel` package.

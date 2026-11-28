@@ -3,14 +3,14 @@
 ## Repository map
 
 - `config/` holds the actual user configuration (dotfiles) organized by tool/component; these are symlinked into `$HOME` via stow.
-- `install/hosts/` holds OS- and hostname-specific configuration; `install/profiles/` holds legacy and manual OS-specific setup.
+- `install/hosts/` holds OS- and hostname-specific configuration plus shared and per-OS scripts; `install/hosts/macOS/mac02.conf` records the manual macOS Stow package selection and Homebrew setup.
 - `install/build/` holds build scripts for source-compiled components (xmonad, dwm, st, xkb, neovim, ghc, xlibre).
 - `docs/` holds structured long-form documentation (`docs/README.md` is the index); `docs/archive/` holds superseded documents kept for history.
 - The stack is X11-centric. Artix uses **xmonad**; FreeBSD uses **dwm**. Both use `st` and `xkb`; X server choice is host-specific.
 
 ### Reference implementations
 
-The general installer handles Artix and FreeBSD; the older bsdinstall remains independent. (Old archinstall/debianinstall guides and extras like Hyprland/xmobar live on the `stale` branch; macOS is config-only.)
+The general installer handles Artix and FreeBSD; the former standalone FreeBSD installer has been retired. (Old archinstall/debianinstall guides and extras like Hyprland/xmobar live on the `stale` branch; macOS remains config-only.)
 
 ## Build and install commands
 
@@ -18,9 +18,8 @@ The general installer handles Artix and FreeBSD; the older bsdinstall remains in
 
 - **Artix (OpenRC) and FreeBSD:** Run
   `./install/pre-configure-build-install-link.sh`, then
-  `./install/configure-build-install-link.sh`
-- **Legacy FreeBSD:** `./install/profiles/bsdinstall/configure-build-install-link.sh`
-- **macOS (manual):** Use the `Brewfile` and the `install/profiles/macinstall/scripts/*.sh` helpers; there is no unified installer.
+  `./config/common/.scripts/configure-build-install-link.sh`
+- **macOS (manual):** Use `install/hosts/macOS/Brewfile` and the `install/hosts/macOS/scripts/*.sh` helpers; there is no unified installer.
 
 ### Component builds
 
@@ -38,8 +37,7 @@ The general installer handles Artix and FreeBSD; the older bsdinstall remains in
 
 ## Test and verification commands
 
-- **General sanity check:** `./install/sanity-check.sh`
-- **Legacy FreeBSD sanity check:** `./install/profiles/bsdinstall/tests/<computername>/sanity_check.sh`
+- **General sanity check:** `./config/common/.scripts/sanity-check.sh`
 - **XLibre smoke test:** `./install/build/xlibre/test.sh`
 - **XMonad build chain:** `build-xmonad-libs.sh` (deps), then `build-custom-xmonad.sh` (binary), then `install-custom-xmonad.sh` (deploy) — all three are required; `xmonad --recompile && xmonad --restart` alone does **not** deploy a new binary on this machine (see Architecture below).
 
@@ -47,7 +45,7 @@ The general installer handles Artix and FreeBSD; the older bsdinstall remains in
 
 - **Reproducible multi-OS setup:** The general installer supports Artix and FreeBSD; macOS is handled separately.
 - **Hostname-based profiles:** `install/hosts/<OS>/<hostname>.conf` defines the package list, stow packages and components. Linux profiles additionally identify the distribution.
-- **Central link configuration:** The host profile's `packages` variable selects stow packages from `config/`. The linker (`config/common/.scripts/link_config.sh`) backs up conflicting real files as `*.bak`.
+- **Central link configuration:** The host profile's `packages` variable selects stow packages from `config/`. The linker (`install/hosts/scripts/link_config.sh`) backs up conflicting real files as `*.bak`.
 - **Standalone build factories:** Source-built components in `install/build/` are self-contained. XMonad binaries are staged to `install/build/xmonad/bin/`, then installed to `/opt/xmonad/` and symlinked at `/usr/local/bin/xmonad`. GHC is installed directly to `/usr/local`.
 - **XMonad build chain:** `build-xmonad-libs.sh` uses Cabal only to install pinned `xmonad`/`xmonad-contrib` libraries into the shared Cabal store (rerun only when bumping versions). `build-custom-xmonad.sh` then compiles/links `xmonad.hs` directly with plain GHC — no per-project cabal file. Details: `install/build/xmonad/README.md`; history: `install/build/xmonad/LESSONS_LEARNED.md`.
 - **`xmonad --recompile` is hijacked, and `--recompile && --restart` never deploys:** `config/xmonad/.config/xmonad/build` symlinks to `build-custom-xmonad.sh`, which writes a fresh `-rc-<timestamp>` binary under `install/build/xmonad/bin/`, never to XMonad's cache path. `--restart` only re-execs `/usr/local/bin/xmonad`, so `install-custom-xmonad.sh` must be run manually to promote a build. See `install/build/xmonad/LESSONS_LEARNED.md`.
@@ -70,7 +68,7 @@ The general installer handles Artix and FreeBSD; the older bsdinstall remains in
 ### Adding a new distro or computer profile
 
 1. Copy an existing `install/hosts/<OS>/<hostname>.conf` and set the host identity, components, stow packages, and package lists.
-2. Run `install/configure-build-install-link.sh` and `install/sanity-check.sh` on the host. A new OS or Linux distribution also requires explicit support in the general scripts.
+2. Run `config/common/.scripts/configure-build-install-link.sh` and `config/common/.scripts/sanity-check.sh` on the host. A new OS or Linux distribution also requires explicit support in the general scripts.
 
 ### Modifying or adding a dotfile
 
@@ -78,7 +76,7 @@ The general installer handles Artix and FreeBSD; the older bsdinstall remains in
 2. Ensure the directory is listed in the appropriate host profile for systems that should use it.
 3. If the change is tool-specific, edit only that stow package.
 4. If distro-specific, create or modify the distro-specific package (e.g., `config/artixinstall/` vs `config/bsdinstall/`).
-5. Re-link if the repo is already installed: `bash config/common/.scripts/link_config.sh <profile_links_config>`.
+5. Re-link if the repo is already installed: `bash install/hosts/scripts/link_config.sh <profile_links_config>`.
 
 ### Documentation
 

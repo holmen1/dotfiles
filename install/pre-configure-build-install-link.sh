@@ -5,9 +5,10 @@ set -e
 DOTFILES_DIR=$HOME/repos/dotfiles
 CONFIG_DIR=$DOTFILES_DIR/config
 COMMON_DIR=$CONFIG_DIR/common/.scripts
+HOST_SCRIPTS_DIR=$DOTFILES_DIR/install/hosts/scripts
 BUILD_DIR=$DOTFILES_DIR/install/build
 
-. "$COMMON_DIR/host-profile.sh"
+. "$HOST_SCRIPTS_DIR/host-profile.sh"
 if ! select_host; then
     echo "Error: setup is not supported on this OS or distribution" >&2
     exit 1
@@ -35,12 +36,12 @@ prompt() {
 
 prompt "Configure git? [y/N] "
 case "$ans" in
-    [Yy]*) "$COMMON_DIR/configure-git.sh" ;;
+    [Yy]*) "$HOST_SCRIPTS_DIR/configure-git.sh" ;;
 esac
 
 prompt "Generate SSH key? [y/N] "
 case "$ans" in
-    [Yy]*) "$COMMON_DIR/generate-ssh-key.sh" ;;
+    [Yy]*) "$HOST_SCRIPTS_DIR/generate-ssh-key.sh" ;;
 esac
 
 echo "$HOST_CONFIG"

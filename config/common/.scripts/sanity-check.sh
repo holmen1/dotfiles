@@ -1,7 +1,7 @@
 #!/bin/sh
 
 DOTFILES_DIR=$HOME/repos/dotfiles
-. "$DOTFILES_DIR/config/common/.scripts/host-profile.sh"
+. "$DOTFILES_DIR/install/hosts/scripts/host-profile.sh"
 if ! select_host; then
     echo "Error: sanity checks are not supported on this OS or distribution" >&2
     exit 1

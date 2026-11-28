@@ -182,7 +182,7 @@ check. See the [general setup guide](../install/GENERAL-SETUP.md) for the
 profile and build requirements.
 
 ```sh
-~/repos/dotfiles/install/configure-build-install-link.sh
+~/repos/dotfiles/config/common/.scripts/configure-build-install-link.sh
 ```
 
 ## Package management

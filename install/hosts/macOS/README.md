@@ -1,4 +1,8 @@
-# macinstall
+# macOS setup
+
+The `mac02.conf` file selects this host's Stow packages. macOS remains a
+manual setup: pass the profile to the shared linker and use the Homebrew
+helpers below as needed.
 
 ## Basic Homebrew Commands
 
@@ -47,17 +51,17 @@
 This command saves all your installed formulae and casks to the specified `Brewfile` in your dotfiles.
 
 ```bash
-brew bundle dump --file=~/repos/dotfiles/install/profiles/macinstall/Brewfile --force
+brew bundle dump --file=~/repos/dotfiles/install/hosts/macOS/Brewfile --force
 ```
 
 To install all packages and apps from your `Brewfile` on a new system:
 
 ```bash
-brew bundle --file=~/repos/dotfiles/install/profiles/macinstall/Brewfile
+brew bundle --file=~/repos/dotfiles/install/hosts/macOS/Brewfile
 ```
 
 
 ## Link dotfiles
 ```
-bash config/common/.scripts/link_config.sh install/profiles/macinstall/links/mac02/links.config
+bash install/hosts/scripts/link_config.sh install/hosts/macOS/mac02.conf
 ```

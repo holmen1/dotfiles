@@ -58,7 +58,7 @@ git clone https://github.com/holmen1/dotfiles.git ~/repos/dotfiles
 - Run the pre-setup and general setup in order, and follow the prompts:
 ```sh
 ~/repos/dotfiles/install/pre-configure-build-install-link.sh
-~/repos/dotfiles/install/configure-build-install-link.sh
+~/repos/dotfiles/config/common/.scripts/configure-build-install-link.sh
 ```
 
 See the [general setup guide](install/GENERAL-SETUP.md) for host profiles,
@@ -70,11 +70,11 @@ build requirements, and package export.
 ```bash
 dotfiles/  
 ├── config              # All user dotfiles to stow (one per editor/tool)
-│   ├── artixinstall    # Distro-specifc scripts
-│   ├── bsdinstall      # Distro-specifc scripts
+│   ├── artixinstall    # Artix-specific dotfiles
+│   ├── bsdinstall      # FreeBSD-specific dotfiles
 │   ├── bash
 │   ├── chromium
-│   ├── common          # Shared scripts
+│   ├── common          # Shared configuration and Stow-facing scripts
 │   ├── lf
 │   ├── nvim
 │   ├── xmonad
@@ -88,10 +88,11 @@ dotfiles/
     │   ├── xkb
     │   ├── xlibre
     │   └── xmonad
-    ├── hosts           # OS and hostname-specific configuration
-    ├── profiles        # Legacy FreeBSD and manual macOS setup
-    ├── configure-build-install-link.sh
-    └── sanity-check.sh
+    ├── hosts           # OS/hostname profiles and installation scripts
+    │   ├── scripts     # Shared host setup helpers
+    │   ├── Linux       # Artix profiles and OS-specific scripts
+    │   ├── FreeBSD     # FreeBSD profiles and OS-specific scripts
+    │   └── macOS       # mac02 profile and manual Homebrew setup
 ```
 
 ## Project Scope

@@ -4,7 +4,7 @@ XMONAD_VER=0.18.1
 XMONAD_CONTRIB_VER=0.18.2
 GHC_EXPECTED=
 
-. "$HOME/repos/dotfiles/config/common/.scripts/host-profile.sh"
+. "$HOME/repos/dotfiles/install/hosts/scripts/host-profile.sh"
 if select_host && [ -f "$HOST_CONFIG" ]; then
     load_host_profile
     if [ "${window_manager-}" = xmonad ]; then

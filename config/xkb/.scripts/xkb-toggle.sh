@@ -7,7 +7,7 @@ STATE="$HOME/.cache/xkb-layout"
 [ -f "$STATE" ] || { echo "Warning: $STATE not found; start X before toggling layouts." >&2; exit 1; }
 
 if [ "$(cat "$STATE")" = "custom" ]; then
-    . "$HOME/repos/dotfiles/config/common/.scripts/host-profile.sh"
+    . "$HOME/repos/dotfiles/install/hosts/scripts/host-profile.sh"
     if ! select_host; then
         echo "Error: XKB toggle is not supported on this OS or distribution" >&2
         exit 1

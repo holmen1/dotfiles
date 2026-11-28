@@ -1,3 +1,7 @@
+> Archived: these instructions describe the retired standalone FreeBSD
+> installer. Current host profiles and setup instructions live in
+> `install/hosts/FreeBSD/` and `install/GENERAL-SETUP.md`.
+
 # FreeBSD host configuration
 
 The FreeBSD installer selects `hosts/<hostname>.conf` using `hostname -s`
@@ -29,8 +33,8 @@ shared `update_config_section` function can update the package lists. To link
 the profile separately:
 
 ```sh
-~/repos/dotfiles/config/common/.scripts/link_config.sh \
-  ~/repos/dotfiles/install/profiles/bsdinstall/hosts/besk.conf
+~/repos/dotfiles/install/hosts/scripts/link_config.sh \
+  ~/repos/dotfiles/install/hosts/FreeBSD/besk.conf
 ```
 
 On FreeBSD, update both package lists from explicitly installed packages.

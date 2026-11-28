@@ -52,7 +52,7 @@ network={
 
 Add user to groups: wheel video (one at a time)
 
-otherwise my choice, see [bsdinstall_log](log/bsdinstall_log)  
+otherwise my choice, see [bsdinstall_log](bsdinstall_log.txt).
 
 ## Post-installation
 

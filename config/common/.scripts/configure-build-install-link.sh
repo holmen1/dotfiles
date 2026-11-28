@@ -5,9 +5,10 @@ set -e
 DOTFILES_DIR=$HOME/repos/dotfiles
 CONFIG_DIR=$DOTFILES_DIR/config
 COMMON_DIR=$CONFIG_DIR/common/.scripts
+HOST_SCRIPTS_DIR=$DOTFILES_DIR/install/hosts/scripts
 BUILD_DIR=$DOTFILES_DIR/install/build
 
-. "$COMMON_DIR/host-profile.sh"
+. "$HOST_SCRIPTS_DIR/host-profile.sh"
 if ! select_host; then
     echo "Error: setup is not supported on this OS or distribution" >&2
     exit 1
@@ -41,12 +42,10 @@ case "$ans" in
     [Yy]*) "$COMMON_DIR/import-packages.sh" --foreign ;;
 esac
 
-if [ "$OS" = Linux ]; then
-    prompt "Link dotfiles? [y/N] "
-    case "$ans" in
-        [Yy]*) "$COMMON_DIR/link_config.sh" "$HOST_CONFIG" ;;
-    esac
-fi
+prompt "Link dotfiles? [y/N] "
+case "$ans" in
+    [Yy]*) "$HOST_SCRIPTS_DIR/link_config.sh" "$HOST_CONFIG" ;;
+esac
 
 prompt "Build $window_manager? [y/N] "
 case "$ans" in
@@ -79,27 +78,20 @@ case "$ans" in
         ;;
 esac
 
-if [ "$OS" = FreeBSD ]; then
-    prompt "Link dotfiles? [y/N] "
-    case "$ans" in
-        [Yy]*) "$COMMON_DIR/link_config.sh" "$HOST_CONFIG" ;;
-    esac
-fi
-
 prompt "Link menu and xkbtoggle? [y/N] "
 case "$ans" in
-    [Yy]*) "$COMMON_DIR/link-system-commands.sh" ;;
+    [Yy]*) "$HOST_SCRIPTS_DIR/link-system-commands.sh" ;;
 esac
 
 if [ -n "${services-}" ]; then
     prompt "Enable services? [y/N] "
     case "$ans" in
-        [Yy]*) "$COMMON_DIR/enable-services.sh" ;;
+        [Yy]*) "$HOST_SCRIPTS_DIR/enable-services.sh" ;;
     esac
 fi
 
 prompt "Run tests? [Y/n] "
 case "$ans" in
     [Nn]) ;;
-    *) "$DOTFILES_DIR/install/sanity-check.sh" ;;
+    *) "$COMMON_DIR/sanity-check.sh" ;;
 esac

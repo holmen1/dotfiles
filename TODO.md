@@ -19,8 +19,7 @@ Living index of TODOs found in code and documentation.
 
 ## Build / install scripts
 
-- [config/common/.scripts/link_config.sh:12](config/common/.scripts/link_config.sh#L12) — improve handling of multiple packages writing to `.scripts`.
-- [install/profiles/bsdinstall/configure-build-install-link.sh:94](install/profiles/bsdinstall/configure-build-install-link.sh#L94) — TODO script.
+- [install/hosts/scripts/link_config.sh:12](install/hosts/scripts/link_config.sh#L12) — improve handling of multiple packages writing to `.scripts`.
 
 ## Neovim
 

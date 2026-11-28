@@ -14,6 +14,7 @@ select_host() {
         *) return 1 ;;
     esac
     HOST_CONFIG=$HOME/repos/dotfiles/install/hosts/$OS/$HOSTNAME.conf
+    OS_SCRIPTS_DIR=$HOME/repos/dotfiles/install/hosts/$OS/scripts
 }
 
 load_host_profile() {

@@ -10,16 +10,16 @@ Run the pre-setup first, then the main setup and sanity check:
 
 ```sh
 ~/repos/dotfiles/install/pre-configure-build-install-link.sh
-~/repos/dotfiles/install/configure-build-install-link.sh
-~/repos/dotfiles/install/sanity-check.sh
+~/repos/dotfiles/config/common/.scripts/configure-build-install-link.sh
+~/repos/dotfiles/config/common/.scripts/sanity-check.sh
 ```
 
 The pre-setup configures Git and SSH, installs the initial package list, and
 builds/installs the terminal. It also prompts about GHC and XMonad libraries
 on every supported host. On FreeBSD, GHC is installed through `pkg`; on
 Artix, the configured GHC installer is used. The main setup prompts to install
-the package and foreign-package lists, then configures the window manager,
-XKB, and system links.
+the package and foreign-package lists, then offers one shared dotfile-linking
+step before building/installing the window manager and XKB keymap.
 The pre-setup finishes by checking SSH permissions and confirming GitHub
 recognizes the key.
 
@@ -46,6 +46,11 @@ importer does not use an AUR helper. Export replaces `pkg_packages` and
 `foreign_packages`, not `pkg_pre`. Import selects the current supported host
 profile automatically.
 
+The general import/export entry points and runtime Wi-Fi/battery dispatchers
+are Stow-linked from `config/common/.scripts`. They select implementations
+under `install/hosts/Linux/scripts` or `install/hosts/FreeBSD/scripts`;
+shared host setup helpers live under `install/hosts/scripts`.
+
 The Artix `x1` profile uses Xorg, `st`, XMonad and the Swedish layout. Its
 package importer uses `pacman` for both native and foreign package lists.
 Link dotfiles before
@@ -64,7 +69,7 @@ The `services` field lists services to enable at boot. Artix profiles enable
 empty list; add the desired rc service names to enable them through setup.
 
 The optional system-command link step uses
-`config/common/.scripts/link-system-commands.sh` for `/usr/local/bin`.
+`install/hosts/scripts/link-system-commands.sh` for `/usr/local/bin`.
 
 Direct XMonad build and install scripts also use the matching host profile;
 without one they retain their standalone version defaults. The library and
@@ -78,5 +83,6 @@ To update the package lists for the current host:
 ```
 
 Export updates the central profile only. On Artix it records explicitly
-installed native and foreign packages. The older `bsdinstall` installer and
-its profiles remain independent and may differ from the central copies.
+installed native and foreign packages. FreeBSD setup now uses the same
+host-profile-driven installer as Artix; current FreeBSD profiles live in
+`install/hosts/FreeBSD/`.

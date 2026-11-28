@@ -35,7 +35,7 @@ dd if=FreeBSD-{rel-latest}-RELEASE-amd64-memstick.img of=/dev/da0 bs=1M conv=syn
 Once the system boots from the installation media, 
 a text-based installation program named `bsdinstall` starts, chose defaults, use ethernet
 
-otherwise my choice, see [bsdinstall_log](../install/profiles/bsdinstall/log/bsdinstall_log)  
+otherwise my choice, see the [archived bsdinstall log](archive/bsdinstall_log.txt).
 
 ## Post install
 
@@ -168,7 +168,7 @@ Then start the interactive setup:
 
 ```sh
 cd ~/repos/dotfiles
-./install/configure-build-install-link.sh
+./config/common/.scripts/configure-build-install-link.sh
 ```
 
 Start X with the linked configuration and follow the [X11 guide](x11.md) for

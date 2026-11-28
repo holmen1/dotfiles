@@ -1,6 +1,6 @@
 #!/bin/sh
 
-. "$HOME/repos/dotfiles/config/common/.scripts/host-profile.sh"
+. "$HOME/repos/dotfiles/install/hosts/scripts/host-profile.sh"
 if ! select_host; then
     echo "Error: X session is not supported on this OS or distribution" >&2
     exit 1

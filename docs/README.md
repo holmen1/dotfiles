@@ -27,12 +27,12 @@ these pages for deeper explanations.
   - Artix post-install and package management → [docs/artix-post-install.md](artix-post-install.md)
   - Framework `besk` hardware notes → [docs/hardware.md](hardware.md)
 
-## Install guides (profiles)
+## OS installation guides
 
 - [Artix install](artix-install.md)
 - [Artix simple install](artix-install-simple.md)
 - [FreeBSD install](bsd-install.md)
-- [macOS profile](../install/profiles/macinstall/README.md)
+- [macOS setup](../install/hosts/macOS/README.md)
 
 ## Build component docs
 
@@ -59,6 +59,9 @@ Superseded or out-of-scope documents, kept for history:
 - [artixinstall-packages-README.md](archive/artixinstall-packages-README.md) — original Artix packages README, preserved as-is
 - [bsdinstall-README.md](archive/bsdinstall-README.md) — original FreeBSD installation README, preserved as-is
 - [bsdinstall-packages-README.md](archive/bsdinstall-packages-README.md) — original FreeBSD packages README, preserved as-is
+- [legacy-bsdinstall-host-config.md](archive/legacy-bsdinstall-host-config.md) — legacy host profile instructions, superseded by the general setup
+- [bsdinstall_log.txt](archive/bsdinstall_log.txt) — historical FreeBSD installation transcript
+- [legacy-bsdinstall-post-install-packages.txt](archive/legacy-bsdinstall-post-install-packages.txt) — old bootstrap package list, now represented in current host profiles
 - [postinstall.md](archive/postinstall.md) — former shared post-install guide, merged into OS-specific guides
 - [artixinstall-LESSONS_LEARNED.md](archive/artixinstall-LESSONS_LEARNED.md) — extracted into networking, Artix post-install, and hardware docs
 - [vscode-README.md](archive/vscode-README.md) — outside the stow/dotfiles system
